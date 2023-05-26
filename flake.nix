@@ -30,6 +30,16 @@
           modules = [
 	    ./configuration.nix
 	    inputs.home-manager.nixosModules.home-manager
+	    {
+              home-manager = {
+                useGlobalPkgs = false;
+                useUserPackages = true;
+                users.taki = import ./home.nix;
+                extraSpecialArgs = {
+                  inherit inputs outputs;
+                };
+              };
+            }
 	  ];
 
           specialArgs = {
