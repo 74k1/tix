@@ -3,6 +3,10 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     rix101 = {
       url = "github:reo101/rix101";
     };
@@ -23,7 +27,10 @@
         taki = lib.nixosSystem {
           inherit system;
 
-          modules = [ ./configuration.nix ];
+          modules = [
+	    ./configuration.nix
+	    inputs.home-manager.nixosModules.home-manager
+	  ];
 
           specialArgs = {
             inherit inputs outputs;

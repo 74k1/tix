@@ -95,11 +95,6 @@
     description = "taki";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-      brave
-      keepassxc
-      starship
-    ];
   };
 
   programs.zsh = {
