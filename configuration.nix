@@ -44,27 +44,27 @@
   };
 
   # Enable the X11 windowing system.
-  #services.xserver.enable = true;
+  services.xserver.enable = true;
 
   # Enable the XFCE Desktop Environment.
-  #services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
   #services.xserver.displayManager.sessionPackages = with pkgs; [ sway ];
 
   # Wayland Specific
-  service.server = {
-    enable = true;
-    displayManager = {
-      defaultSession = "sway";
-      sessionPackages = with pkgs; [
-        sway
-      ];
-      gdm = {
-        enable = true;
-	wayland = true;
-      };
-    };
-  };
+  #services.xserver = {
+  #  enable = true;
+  #  displayManager = {
+  #    defaultSession = "sway";
+  #    sessionPackages = with pkgs; [
+  #      sway
+  #    ];
+  #    gdm = {
+  #      enable = true;
+#	wayland = true;
+#      };
+#    };
+ # };
 
 
   # Enable NVIDIA Drivers.
@@ -74,23 +74,21 @@
   # nvidia-drm modeset=1 is required for some wayland compositors, e.g. sway
   hardware.nvidia = {
     open = true;
-    modesetting.enable = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  #  modesetting.enable = true;
+  #  package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-
-  # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway
 
   # XDG Stuff?
-  xdg.portal = {
-    enable = true;
-    wlr = {
-      enable = true;
-    };
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
-    ];
-  };
+  #xdg.portal = {
+  #  enable = true;
+  #  wlr = {
+  #    enable = true;
+  #  };
+  #  extraPortals = with pkgs; [
+  #    xdg-desktop-portal-wlr
+  #    xdg-desktop-portal-gtk
+  #  ];
+  #};
 
   # Configure keymap in X11
   services.xserver = {
