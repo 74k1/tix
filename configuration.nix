@@ -163,7 +163,6 @@
      neofetch
      gnome.nautilus
      xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin
-     plata-theme arc-icon-theme papirus-icon-theme
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -51,7 +51,7 @@ vicmd_symbol = "[❮](green)"
 [git_branch]
 symbol = " "
 format = "[ $symbol$branch ]($style)"
-style = "bg:#22194b fg:#22EF92"
+style = "bg:#22194B fg:#22EF92"
 
 [jobs]
 symbol = ""
@@ -60,15 +60,18 @@ number_threshold = 1
 format = "[ $symbol ]($style)"
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style) )'
-style = "cyan"
+format = '([\[$all_status$ahead_behind\] ]($style))'
+style = "bg:#22194b fg:#22EF92"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
+style = "bg:#22194B fg:#22EF92"
 
 [git_metrics]
 disabled = false
+format = '([+$added ]($added_style))([-$deleted ]($deleted_style))'
+added_style = "bg:#22194B fg:#22EF92"
+deleted_style ="bg:#22194B fg:#FF5A74"
 
 [cmd_duration]
 format = "[$duration ]($style)"

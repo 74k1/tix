@@ -1,9 +1,21 @@
 { inputs, outputs, lib, pkgs, config, ... }:
 
 {
+  # imports =
+  #   (base:
+  #     (builtins.map
+  #       (module:
+  #         base + "/" + module)
+  #       (builtins.attrNames
+  #         (builtins.readDir
+  #           base))))
+  #   ./modules;
+
   imports = [
-    ./home-manager-modules/starship
-    ./home-manager-modules/zsh
+    ./modules/starship
+    ./modules/zsh
+    ./modules/wezterm
+    ./modules/nvim
   ];
 
   nixpkgs = {
@@ -21,7 +33,8 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    inputs.ukiyo.packages."x86_64-linux".default
+    inputs.ukiyo.packages."x86_64-linux".default papirus-icon-theme
+    tree
     brave
     keepassxc
     starship
