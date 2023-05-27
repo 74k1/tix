@@ -222,11 +222,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1685108129,
-        "narHash": "sha256-6Jv6LxrLfaueHj095oBUKBk++eW4Ya0qfHwhQVQqyoo=",
+        "lastModified": 1685189510,
+        "narHash": "sha256-Hq5WF7zIixojPgvhgcd6MBvywwycVZ9wpK/8ogOyoaA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bec196cd9b5f34213c7dc90ef2a524336df70e30",
+        "rev": "2d963854ae2499193c0c72fd67435fee34d3e4fd",
         "type": "github"
       },
       "original": {
@@ -486,6 +486,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1684935479,
+        "narHash": "sha256-6QMMsXMr2nhmOPHdti2j3KRHt+bai2zw+LJfdCl97Mk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f91ee3065de91a3531329a674a45ddcb3467a650",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nmd": {
       "flake": false,
       "locked": {
@@ -581,7 +597,8 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "rix101": "rix101"
+        "rix101": "rix101",
+        "ukiyo": "ukiyo"
       }
     },
     "systems": {
@@ -609,6 +626,24 @@
       "original": {
         "type": "tarball",
         "url": "https://github.com/ziglibs/tres/archive/707a09313b42e05d6ae22d1590499eece5f968ce.tar.gz"
+      }
+    },
+    "ukiyo": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1685214848,
+        "narHash": "sha256-4XdnZ9161tRz4OnXYt/r9pscXqrwp8NUYNE2kOlVJzc=",
+        "owner": "74k1",
+        "repo": "ukiyo",
+        "rev": "514cd51d842bfd4f0ea5f53b65f255cca45933b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "74k1",
+        "repo": "ukiyo",
+        "type": "github"
       }
     },
     "utils": {

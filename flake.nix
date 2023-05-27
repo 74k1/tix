@@ -10,12 +10,16 @@
     rix101 = {
       url = "github:reo101/rix101";
     };
+    ukiyo = {
+      url = "github:74k1/ukiyo";
+    };
   };
 
   outputs =
     { self
     , nixpkgs
     , rix101
+    , ukiyo
     , ...
     } @ inputs:
     let
@@ -49,3 +53,5 @@
       };
     };
 }
+
+

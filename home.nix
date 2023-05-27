@@ -2,11 +2,12 @@
 
 {
   imports = [
+    ./home-manager-modules/starship
+    ./home-manager-modules/zsh
   ];
 
   nixpkgs = {
     overlays = [];
-
     config.allowUnfree = true;
   };
 
@@ -20,35 +21,10 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    inputs.ukiyo.packages."x86_64-linux".default
     brave
     keepassxc
     starship
     wezterm
   ];
-
-#  # Use sway desktop environment with Wayland display server
-#  wayland.windowManager.sway = {
-#    enable = true;
-#    wrapperFeatures.gtk = true;
-#    # Sway-specific Configuration
-#    config = {
-#      terminal = "wezterm";
-#      menu = "wofi --show run";
-#      # Status bar(s)
-#      bars = [{
-#        fonts.size = 15.0;
-#        # command = "waybar"; You can change it if you want
-#        position = "bottom";
-#      }];
-#      # Display device configuration
-#      output = {
-#        eDP-1 = {
-#          # Set HIDP scale (pixel integer scaling)
-#          scale = "1";
-#        };
-#      };
-#    };
-#    # End of Sway-specificc Configuration
-#  };
-
 }
