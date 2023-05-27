@@ -119,6 +119,11 @@
     #media-session.enable = true;
   };
 
+  services.dbus = {
+    enable = true;
+    packages = [ pkgs.dconf ];
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
