@@ -49,6 +49,7 @@
   # Enable the XFCE Desktop Environment.
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
+  #services.xserver.desktopManager.xfce.xfce4-panel.enable = false;
   #services.xserver.displayManager.sessionPackages = with pkgs; [ sway ];
 
   # Wayland Specific

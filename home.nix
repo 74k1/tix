@@ -16,6 +16,7 @@
     ./modules/zsh
     ./modules/wezterm
     ./modules/nvim
+    ./modules/wall
   ];
 
   nixpkgs = {
@@ -42,10 +43,12 @@
     tree
     brave
     keepassxc
+    obsidian
     starship
     spotify
     spotify-tray
     discord
+    feh
     rofi
     polybar
   ];
