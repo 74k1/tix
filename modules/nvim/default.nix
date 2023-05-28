@@ -13,57 +13,144 @@
     extraConfig = ''
       set shiftwidth=2 softtabstop=2 expandtab
       set number relativenumber
+      set clipboard+=unnamedplus
     '';
     plugins = with pkgs.vimPlugins; [
-      # {
-      #   plugin = tokyonight-nvim;
-      #   type = "lua";
-      #   config = ''
-      #     vim.g.tokyonight_style = "night"                    -- The theme comes in three styles, storm, a darker variant night and day.
-      #     vim.g.tokyonight_terminal_colors = true             -- Configure the colors used when opening a :terminal in Neovim
-      #     vim.g.tokyonight_italic_comments = true             -- Make comments italic
-      #     vim.g.tokyonight_italic_keywords = true             -- Make keywords italic
-      #     vim.g.tokyonight_italic_functions = false           -- Make functions italic
-      #     vim.g.tokyonight_italic_variables = false           -- Make variables and identifiers italic
-      #     vim.g.tokyonight_transparent = false                -- Enable this to disable setting the background color
-      #     vim.g.tokyonight_hide_inactive_statusline = false   -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard StatusLine and LuaLine.
-      #     vim.g.tokyonight_sidebars = {}                      -- Set a darker background on sidebar-like windows. For example: ["qf", "vista_kind", "terminal", "packer"]
-      #     vim.g.tokyonight_transparent_sidebar = false        -- Sidebar like windows like NvimTree get a transparent background
-      #     vim.g.tokyonight_dark_sidebar = true                -- Sidebar like windows like NvimTree get a darker background
-      #     vim.g.tokyonight_dark_float = true                  -- Float windows like the lsp diagnostics windows get a darker background.
-      #     vim.g.tokyonight_colors = {}                        -- You can override specific color groups to use other groups or a hex color
-      #     vim.g.tokyonight_day_brightness = 0.3               -- Adjusts the brightness of the colors of the Day style. Number between 0 and 1, from dull to vibrant colors
-      #     vim.g.tokyonight_lualine_bold = false               -- When true, section headers in the lualine theme will be bold
-      # 
-      #     vim.cmd("colorscheme tokyonight")
-      #   '';
-      # }
       nvim-tree-lua
       comment-nvim
       telescope-nvim
       {
-        plugin = dashboard-nvim;
+        plugin = nvim-colorizer-lua;
         type = "lua";
+        config = ''
+          require("colorizer").setup()
+        '';
       }
       {
         plugin = indent-blankline-nvim;
         type = "lua";
         config = ''
-          vim.opt.termguicolors = true
-          vim.cmd([[highlight IndentBlanklineIndent1 guibg=#0c0718 gui=nocombine]])
-          vim.cmd([[highlight IndentBlanklineIndent2 guibg=#06040C gui=nocombine]])
-          require("indent_blankline").setup({
-            char = "",
-            char_highlight_list = {
-              "IndentBlanklineIndent1",
-              "IndentBlanklineIndent2",
-            },
-            space_char_highlight_list = {
-              "IndentBlanklineIndent1",
-              "IndentBlanklineIndent2",
-            },
+          require("indent-blankline").setup({
+            char = "|", -- "│",
+            char_list_blankline = { "|", "┊", "┆", "¦"},
+            space_char_blankline = " ",
+            max_indent_increase = 1,
+            use_treesitter = true,
+            show_end_of_line = false,
+            show_current_context = true,
             show_trailing_blankline_indent = false,
+            context_patterns = {
+                "class",
+                "function",
+                "method",
+                "while",
+                "do_statement",
+                "closure",
+                "for",
+            },
+            viewport_buffer = 50,
+            filetype_exclude = {
+                "help",
+                "terminal",
+                "dashboard",
+                "startify",
+                "alpha",
+                "packer",
+                "neogitstatus",
+                "tsplayground",
+                "aerial",
+            },
+            buftype_exclude = { "terminal" },
           })
+        '';
+      }
+      {
+        plugin = dashboard-nvim;
+        type = "lua";
+        config = ''
+          require("dashboard").setup({
+            theme = 'hyper',
+            config = {
+              week_header = {
+                enable = true,
+              },
+              shortcut = {
+                { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+                {
+                  icon = ' ',
+                  icon_hl = '@variable',
+                  desc = 'Files',
+                  group = 'Label',
+                  action = 'Telescope find_files',
+                  key = 'f',
+                },
+                {
+                  desc = ' Apps',
+                  group = 'DiagnosticHint',
+                  action = 'Telescope app',
+                  key = 'a',
+                },
+                {
+                  desc = ' dotfiles',
+                  group = 'Number',
+                  action = 'Telescope dotfiles',
+                  key = 'd',
+                },
+              },
+            },
+          })
+        '';
+      }
+      {
+        plugin = catppuccin-nvim;
+        type = "lua";
+        config = ''
+          require("catppuccin").setup({
+            flavour = "mocha", -- latte, frappe, macchiato, mocha
+            background = { -- :h background
+              light = "latte",
+              dark = "mocha",
+            },
+            transparent_background = true,
+            show_end_of_buffer = false, -- show the '~' characters after the end of buffers
+            term_colors = false,
+            dim_inactive = {
+              enabled = false,
+              shade = "dark",
+              percentage = 0.15,
+            },
+            no_italic = false, -- Force no italic
+            no_bold = false, -- Force no bold
+            no_underline = false, -- Force no underline
+            styles = {
+                comments = { "italic" },
+                conditionals = { "italic" },
+                loops = {},
+                functions = {},
+                keywords = {},
+                strings = {},
+                variables = {},
+                numbers = {},
+                booleans = {},
+                properties = {},
+                types = {},
+                operators = {},
+            },
+            color_overrides = {},
+            custom_highlights = {},
+            integrations = {
+                cmp = true,
+                gitsigns = true,
+                nvimtree = true,
+                telescope = true,
+                notify = false,
+                mini = false,
+                -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+            },
+          })
+
+          -- setup must be called before loading
+          vim.cmd.colorscheme "catppuccin"
         '';
       }
     ];

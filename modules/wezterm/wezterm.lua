@@ -30,8 +30,8 @@ config.colors = {
   --cursor_fg = 'xy',
   --cursor_border = 'xy',
 
-  selection_fg = '#FAFBFA',
-  selection_bg = '#261e3f',
+  --selection_fg = '#FAFBFA',
+  selection_bg = '#221754',--'#0e0c36',
 
   scrollbar_thumb = '#110b22',
 

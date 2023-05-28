@@ -43,6 +43,10 @@
     brave
     keepassxc
     starship
-    wezterm
+    spotify
+    spotify-tray
+    discord
+    rofi
+    polybar
   ];
 }
