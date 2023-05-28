@@ -20,6 +20,46 @@ config.harfbuzz_features = {
 -- font rendering
 config.freetype_render_target = "Light"
 
+-- color
+config.colors = {
+  foreground = '#EEF2EE',
+  background = '#06040C',
+
+  -- Override cursor:
+  --cursor_bg = 'xy',
+  --cursor_fg = 'xy',
+  --cursor_border = 'xy',
+
+  selection_fg = '#FAFBFA',
+  selection_bg = '#261e3f',
+
+  scrollbar_thumb = '#110b22',
+
+  split = '#110b22',
+
+  ansi = {
+    '#000000',
+    '#FC4A5C',
+    '#1AE981',
+    '#FCDF6D',
+    '#5665FB',
+    '#E068FB',
+    '#46D0F8',
+    '#EEF2EE',
+  },
+
+  brights = {
+    '#404040',
+    '#FF5A74',
+    '#40FE9F',
+    '#FFECA1',
+    '#6D7CFF',
+    '#ED77FF',
+    '#6BDAFD',
+    '#EEF2EE',
+  }
+}
+
 -- tab bar
 config.enable_tab_bar = false
 

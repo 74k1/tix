@@ -11,6 +11,12 @@
       ls = "${pkgs.exa}/bin/exa";
       ll = "${pkgs.exa}/bin/exa -l";
       la = "${pkgs.exa}/bin/exa -a";
+      cp = "cp -iv";
+      rm = "rm -iv";
+      fetch = "${pkgs.neofetch}/bin/neofetch";
+      nano = "${pkgs.neovim}/bin/nvim";
+      nv = "${pkgs.neovim}/bin/nvim";
+      ":q" = "exit";
       youcannotrebuild = "sudo nixos-rebuild switch --flake /home/taki/tix#taki"; # eva reference :^)
     };
 

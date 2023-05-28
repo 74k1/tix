@@ -2,6 +2,7 @@ format = """
 $username\
 [](bg:#332671 fg:#573fbd)\
 $hostname\
+$nix_shell\
 [](bg:#22194b fg:#332671)\
 $directory\
 $git_branch\
@@ -50,7 +51,7 @@ vicmd_symbol = "[❮](green)"
 
 [git_branch]
 symbol = " "
-format = "[ $symbol$branch ]($style)"
+format = "[$symbol$branch ]($style)"
 style = "bg:#22194B fg:#22EF92"
 
 [jobs]
@@ -145,7 +146,13 @@ symbol = "喝 "
 symbol = " "
 
 [nix_shell]
+format = '[$symbol$state(\($name\))]($style)'
 symbol = " "
+impure_msg = "󱔃 "
+pure_msg = "󱔅 "
+unknown_msg = ""
+heuristic = true
+style = "bg:#332671 fg:#6D7CFF"
 
 [nodejs]
 symbol = " "
@@ -208,6 +215,3 @@ symbol = " "
 
 [scala]
 symbol = " "
-
-[spack]
-symbol = "🅢 "

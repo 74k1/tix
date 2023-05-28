@@ -27,6 +27,10 @@
     username = "taki";
     homeDirectory = "/home/taki";
     stateVersion = "22.11";
+    sessionVariables = { 
+      SHELL = "${pkgs.zsh}/bin/zsh";
+      EDITOR = "nvim";
+    };
   };
 
   # Let Home Manager install and manage itself.
@@ -34,6 +38,7 @@
 
   home.packages = with pkgs; [
     inputs.ukiyo.packages."x86_64-linux".default papirus-icon-theme
+    wezterm
     tree
     brave
     keepassxc

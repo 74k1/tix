@@ -152,12 +152,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget curl tmux
-     wezterm
-     neovim
-     git
-     #ly
+     # ly
+     ntfs3g
+     git wget curl tmux
      exa bat tealdeer 
      pavucontrol
      neofetch

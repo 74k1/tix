@@ -40,13 +40,18 @@
       # }
       nvim-tree-lua
       comment-nvim
+      telescope-nvim
+      {
+        plugin = dashboard-nvim;
+        type = "lua";
+      }
       {
         plugin = indent-blankline-nvim;
         type = "lua";
-	config = ''
+        config = ''
           vim.opt.termguicolors = true
-          vim.cmd([[highlight IndentBlanklineIndent1 guibg=#1f1f1f gui=nocombine]])
-          vim.cmd([[highlight IndentBlanklineIndent2 guibg=#1a1a1a gui=nocombine]])
+          vim.cmd([[highlight IndentBlanklineIndent1 guibg=#0c0718 gui=nocombine]])
+          vim.cmd([[highlight IndentBlanklineIndent2 guibg=#06040C gui=nocombine]])
           require("indent_blankline").setup({
             char = "",
             char_highlight_list = {
@@ -61,7 +66,6 @@
           })
         '';
       }
-      telescope-nvim
     ];
   };
 }
