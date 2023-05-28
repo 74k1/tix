@@ -158,7 +158,7 @@
      exa bat tealdeer 
      pavucontrol
      neofetch
-     xorg.xkill
+     xorg.xkill xclip
      xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin
   ];
 

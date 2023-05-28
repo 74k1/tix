@@ -37,14 +37,14 @@
         };
       }
       {
-	name = "zsh-autosuggestions";
-	file = "zsh-autosuggestions.plugin.zsh";
-	src = pkgs.fetchFromGitHub {
-	  owner = "zsh-users";
-	  repo = "zsh-autosuggestions";
-	  rev = "a411ef3e0992d4839f0732ebeb9823024afaaaa8";
-	  sha256 = "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
-	};
+        name = "zsh-autosuggestions";
+        file = "zsh-autosuggestions.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "zsh-users";
+          repo = "zsh-autosuggestions";
+          rev = "a411ef3e0992d4839f0732ebeb9823024afaaaa8";
+          sha256 = "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
+        };
       }
       # {
       #   name = "zsh-autocomplete";
@@ -58,6 +58,4 @@
       # }
     ];
   };
-
-  #programs.zsh-autocomplete = { enable = true; };
 }
