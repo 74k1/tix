@@ -16,7 +16,7 @@
     ./modules/zsh
     ./modules/wezterm
     ./modules/nvim
-    ./modules/wall
+    #./modules/wall
   ];
 
   nixpkgs = {
@@ -52,4 +52,7 @@
     rofi
     polybar
   ];
+
+  # set Wall
+  #wall.setWall.enable = true;
 }

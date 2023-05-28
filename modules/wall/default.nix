@@ -19,7 +19,7 @@ with lib;
     };
   };
   config = {
-    services.xserver.displayManager.sessionCommands = mkIf config.fetchBackground.enable ''
+    services.xserver.displayManager.sessionCommands = mkIf config.setWall.enable ''
       ${pkgs.feh}/bin/feh ${config.setWall.random}--bg-scale ${config.setWall.src}
     '';
   };
