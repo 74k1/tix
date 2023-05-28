@@ -21,6 +21,11 @@
       telescope-nvim
       nvim-treesitter
       {
+        plugin = nvim-autopairs;
+        type = "lua";
+        config = builtins.readFile ./cfg/autopairs.lua;
+      }
+      {
         plugin = nvim-colorizer-lua;
         type = "lua";
         config = builtins.readFile ./cfg/colorizer.lua;

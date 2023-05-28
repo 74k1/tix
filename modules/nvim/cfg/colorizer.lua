@@ -1,5 +1,3 @@
 require("colorizer").setup({
-  {
-    mode = 'foreground';
-  }
+  mode = 'foreground';
 })
