@@ -32,9 +32,9 @@
           inherit system;
 
           modules = [
-	    ./configuration.nix
-	    inputs.home-manager.nixosModules.home-manager
-	    {
+            ./configuration.nix
+            inputs.home-manager.nixosModules.home-manager
+            {
               home-manager = {
                 useGlobalPkgs = false;
                 useUserPackages = true;
@@ -44,7 +44,7 @@
                 };
               };
             }
-	  ];
+          ];
 
           specialArgs = {
             inherit inputs outputs;

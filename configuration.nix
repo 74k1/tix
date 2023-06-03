@@ -46,16 +46,15 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    desktopManager = {
-      xfce = {
-        enable = true;
-        noDesktop = true;
-        enableXfwm = false;
-      };
-    };
+    #desktopManager = {
+    #  xfce = {
+    #    enable = true;
+    #    noDesktop = true;
+    #    enableXfwm = false; 
+    #  };
+    #};
     displayManager = {
       lightdm.enable = true;
-      defaultSession = "xfce";
     };
     windowManager.i3.enable = true;
   };
@@ -86,14 +85,20 @@
 
   # Enable NVIDIA Drivers.
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl.enable = true;
-
+  hardware = {
+    opengl.enable = true;
+    nvidia = {
+      open = true;
+      # modesetting.enable = true;
+      # package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+  };
   # nvidia-drm modeset=1 is required for some wayland compositors, e.g. sway
-  hardware.nvidia = {
-    open = true;
+  #hardware.nvidia = {
+  #  open = true;
   #  modesetting.enable = true;
   #  package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
+  #};
 
   # XDG Stuff?
   #xdg.portal = {

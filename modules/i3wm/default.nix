@@ -17,7 +17,7 @@ in {
       keybindings = lib.mkOptionDefault {
         # Term
         "Ctrl+${alt}+t" = "exec ${pkgs.wezterm}/bin/wezterm";
-
+        "${mod}+Return" = "exec ${pkgs.wezterm}/bin/wezterm";
         # Scrot
         "${mod}+x" = "exec sh -c '${pkgs.maim}/bin/maim -s | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
         "Print" = "exec sh -c '${pkgs.maim}/bin/maim -s | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
