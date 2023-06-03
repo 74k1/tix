@@ -1,6 +1,10 @@
 { lib, pkgs, config, ... }:
 
 {
+  home.packages = with pkgs; [
+    atuin
+  ];
+
   # zsh
   programs.zsh = {
     enable = true;
@@ -12,6 +16,7 @@
       ll = "${pkgs.exa}/bin/exa -l";
       la = "${pkgs.exa}/bin/exa -a";
       cp = "cp -iv";
+      mv = "mv -iv";
       rm = "rm -iv";
       fetch = "${pkgs.neofetch}/bin/neofetch";
       nano = "${pkgs.neovim}/bin/nvim";
@@ -24,6 +29,13 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
+
+    initExtra = ''
+      export ATUIN_NOBIND="true"
+      eval "$(${pkgs.atuin}/bin/atuin init zsh)"
+      bindkey '^r' _atuin_search_widget
+      ${builtins.readFile ./cfg/functions.zsh}
+    '';
 
     plugins = [
       {

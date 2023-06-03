@@ -44,12 +44,28 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    desktopManager = {
+      xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
+    };
+    displayManager = {
+      lightdm.enable = true;
+      defaultSession = "xfce";
+    };
+    windowManager.i3.enable = true;
+  };
 
   # Enable the XFCE Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
+  #services.xserver.displayManager.lightdm.enable = true;
+  #services.xserver.desktopManager.xfce.enable = true;
   #services.xserver.desktopManager.xfce.xfce4-panel.enable = false;
+  
+
   #services.xserver.displayManager.sessionPackages = with pkgs; [ sway ];
 
   # Wayland Specific
@@ -144,6 +160,9 @@
   nixpkgs.config.allowUnfree = true;
 
   nix = {
+    # Enable the newest nix version
+    package = pkgs.nixUnstable;
+
     # Enable flakes, the new `nix` commands and better support for flakes in it
     extraOptions = ''
       experimental-features = nix-command flakes repl-flake
@@ -159,8 +178,8 @@
      exa bat tealdeer 
      pavucontrol
      neofetch
-     xorg.xkill xclip
-     xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin
+     xorg.xkill xclip xdotool
+     xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

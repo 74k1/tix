@@ -1,0 +1,117 @@
+{ lib, pkgs, config, ... }:
+
+let
+  mod = "Mod4";
+  alt = "Mod1";
+  fm = "DP-0";
+  sm = "DP-2";
+in {
+  xsession.windowManager.i3 = {
+    enable = true;
+    config = {
+      modifier = mod;
+
+      # fonts = [""]
+      # bars = [ ];
+
+      keybindings = lib.mkOptionDefault {
+        # Term
+        "Ctrl+${alt}+t" = "exec ${pkgs.wezterm}/bin/wezterm";
+
+        # Scrot
+        "${mod}+x" = "exec sh -c '${pkgs.maim}/bin/maim -s | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
+        "Print" = "exec sh -c '${pkgs.maim}/bin/maim -s | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
+        # Mac-like Keybind :^)
+        "${alt}+Shift+s" = "exec sh -c '${pkgs.maim}/bin/maim -s | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
+
+        # Rofi
+        "${mod}+space" = "exec ${pkgs.rofi}/bin/rofi -show drun";
+        "${mod}+r" = "exec ${pkgs.rofi}/bin/rofi -show drun";
+
+        #pactl & playerctl
+        "XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 +5%";
+        "XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 -5%";
+        "XF86AudioMute" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute 0 toggle";
+        #"XF86MonBrightnessUp" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 5";
+        #"XF86MonBrightnessDown" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 5";
+        "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+        #"XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl pause";
+        "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+        "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
+
+        # Focus
+        "${mod}+j" = "focus down";
+        "${mod}+k" = "focus up";
+        "${mod}+h" = "focus left";
+        "${mod}+l" = "focus right";
+
+        # Move
+        "${mod}+Shift+j" = "move down";
+        "${mod}+Shift+k" = "move up";
+        "${mod}+Shift+h" = "move left";
+        "${mod}+Shift+l" = "move right";
+
+        # Multi Monitor Setup
+        #"${mod}+m" = "move workspace to output DP-X"
+        #"${mod}+Shift+m" = "move workspace to output DP-X"
+
+        # workspace binds
+        "${mod}+1" = "workspace 1";
+        "${mod}+2" = "workspace 2";
+        "${mod}+3" = "workspace 3";
+        "${mod}+4" = "workspace 4";
+        "${mod}+5" = "workspace 5";
+        "${mod}+6" = "workspace 6";
+        "${mod}+7" = "workspace 7";
+        "${mod}+8" = "workspace 8";
+        "${mod}+9" = "workspace 9";
+        "${mod}+0" = "workspace 10";
+        "${alt}+1" = "workspace 11";
+        "${alt}+2" = "workspace 12";
+        "${alt}+3" = "workspace 13";
+        "${alt}+4" = "workspace 14";
+        "${alt}+5" = "workspace 15";
+        "${alt}+6" = "workspace 16";
+        "${alt}+7" = "workspace 17";
+        "${alt}+8" = "workspace 18";
+        "${alt}+9" = "workspace 19";
+        "${alt}+0" = "workspace 20";
+
+        # i3 reload stuff
+        #"${mod}+Shift+c" = ""
+      };
+    };
+    extraConfig = ''
+      workspace 1 output ${fm}
+      workspace 2 output ${fm}
+      workspace 3 output ${fm}
+      workspace 4 output ${fm}
+      workspace 5 output ${fm}
+      workspace 6 output ${fm}
+      workspace 7 output ${fm}
+      workspace 8 output ${fm}
+      workspace 9 output ${fm}
+      workspace 10 output ${fm}
+      workspace 11 output ${sm}
+      workspace 12 output ${sm}
+      workspace 13 output ${sm}
+      workspace 14 output ${sm}
+      workspace 15 output ${sm}
+      workspace 16 output ${sm}
+      workspace 17 output ${sm}
+      workspace 18 output ${sm}
+      workspace 19 output ${sm}
+      workspace 20 output ${sm}
+              
+      for_window [window_type="dialog"] floating enable
+      for_window [window_type="utility"] floating enable
+      for_window [window_type="toolbar"] floating enable
+      for_window [window_type="splash"] floating enable
+      for_window [window_type="menu"] floating enable
+      for_window [window_type="dropdown_menu"] floating enable
+      for_window [window_type="popup_menu"] floating enable
+      for_window [window_type="tooltip"] floating enable
+      for_window [window_type="notification"] floating enable
+    '';
+  };
+}

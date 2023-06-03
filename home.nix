@@ -17,6 +17,7 @@
     ./modules/wezterm
     ./modules/nvim
     #./modules/wall
+    ./modules/i3wm
   ];
 
   nixpkgs = {
@@ -51,6 +52,7 @@
     feh
     rofi
     polybar
+    bat-extras.batman
   ];
 
   # set Wall
