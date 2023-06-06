@@ -18,6 +18,7 @@
     ./modules/nvim
     #./modules/wall
     ./modules/i3wm
+    ./modules/autorandr-rs
   ];
 
   nixpkgs = {
@@ -54,6 +55,11 @@
     polybar
     bat-extras.batman
   ];
+
+  services.autorandr-rs = {
+    enable = false;
+    config = ./modules/autorandr-rs/monitors.toml;
+  };
 
   # set Wall
   #wall.setWall.enable = true;

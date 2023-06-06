@@ -57,6 +57,20 @@
       lightdm.enable = true;
     };
     windowManager.i3.enable = true;
+    libinput = {
+      enable = true;
+
+      mouse = {
+        accelProfile = "flat";
+      };
+
+      touchpad = {
+        accelProfile = "flat";
+      };
+    };
+    screenSection = ''
+      Option "metamodes" "DP-2: 1920x1080_165 +1920+0, DP-0: 1920x1080_165 +0+0"
+    '';
   };
 
   # Enable the XFCE Desktop Environment.
