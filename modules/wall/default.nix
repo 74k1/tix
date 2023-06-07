@@ -1,26 +1,53 @@
 { config, lib, pkgs, ... }:
+
 with lib;
+
+let
+  cfg = config.services.wallpaper;
+in
 {
-  options.setWall = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-      description = ''enable Wall or not'';
-    };
-    src = mkOption {
-      type = types.str;
-      default = "./files/active/*";
-      description = ''file or to fetch Wall from'';
-    };
-    random = mkOption {
-      type = types.str;
-      default = "--randomize ";
-      description = ''randomize, if src is set to dir/* <-, otherwise set to ""'';
+  options = {
+    services.wallpaper = {
+      enable = lib.mkEnableOption "Random wallpaper service";
+
+      wallpaperUrl = lib.mkOption {
+        type = lib.types.str;
+        default = "https://wall.74k1.sh/";
+        example = "https://example.com/wallpaper.png";
+        description = "The URL of the wallpaper image.";
+      };
     };
   };
-  config = {
-    services.xserver.displayManager.sessionCommands = mkIf config.setWall.enable ''
-      ${pkgs.feh}/bin/feh ${config.setWall.random}--bg-scale ${config.setWall.src}
-    '';
+
+  config = mkIf cfg.enable {
+    systemd.user.services.wallpaper = {
+      Description = "Random Wallpaper service";
+      PartOf = [ "graphical-session.target" ];
+
+      Service = {
+        Type = "oneshot";
+        ExecStart = let
+          script = pkgs.writeShellScript "random-wallpaper" ''
+            #!/bin/sh
+            
+            # Create a temporary file to store the image
+            tempfile=$(${pkgs.coreutils}/bin/mktemp)
+
+            # Fetch random image from url
+            ${pkgs.curl}/bin/curl ${cfg.url} --output $tempfile
+
+            # Set the image as background
+            ${pkgs.feh}/bin/feh --bg-fill $tempfile
+
+            # Remove the temp file
+            rm $tempfile
+          '';
+        in "${script}";
+      };
+
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+    };
   };
 }

@@ -53,33 +53,36 @@
     #    enableXfwm = false; 
     #  };
     #};
-    displayManager = {
-      lightdm.enable = true;
-    };
+    #displayManager.ly = {
+    #  enable = true;
+    #  defaultUser = "taki";
+    #};
+    displayManager.lightdm.enable = true;
     windowManager.i3.enable = true;
     libinput = {
       enable = true;
-
-      mouse = {
-        accelProfile = "flat";
-      };
-
-      touchpad = {
-        accelProfile = "flat";
-      };
+      mouse.accelProfile = "flat";
+      touchpad.accelProfile = "flat"; 
     };
     screenSection = ''
       Option "metamodes" "DP-2: 1920x1080_165 +1920+0, DP-0: 1920x1080_165 +0+0"
     '';
   };
 
+  services.picom.enable = true;
+
   # Enable the XFCE Desktop Environment.
   #services.xserver.displayManager.lightdm.enable = true;
   #services.xserver.desktopManager.xfce.enable = true;
   #services.xserver.desktopManager.xfce.xfce4-panel.enable = false;
   
-
   #services.xserver.displayManager.sessionPackages = with pkgs; [ sway ];
+  
+  # Disable X.org Screensaver
+  
+  environment.extraInit = ''
+    xset s off -dpms
+  '';
 
   # Wayland Specific
   #services.xserver = {
@@ -194,7 +197,7 @@
      # ly
      ntfs3g
      git wget curl tmux
-     exa bat tealdeer 
+     exa bat tealdeer viu 
      pavucontrol
      neofetch
      xorg.xkill xclip xdotool

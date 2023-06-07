@@ -51,5 +51,9 @@
           };
         };
       };
+
+      packages.${system} = import ./pkgs {
+        pkgs = nixpkgs.legacyPackages.${system};
+      };
     };
 }
