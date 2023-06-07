@@ -17,6 +17,7 @@
     ./modules/wezterm
     ./modules/nvim
     ./modules/i3wm
+    ./modules/wall
   ];
 
   nixpkgs = {
@@ -53,6 +54,14 @@
     polybar
     bat-extras.batman
   ];
+  
+  # xsession = {
+  #   enable = true;
+  #   initExtra = ''
+  #     tempfile=$(${pkgs.coreutils}/bin/mktemp)
+  #     ${pkgs.curl}/bin/curl https://wall.74k1.sh/ --output $tempfile && ${pkgs.feh}/bin/feh --bg-fill $tempfile && rm $tempfile
+  #   '';
+  # };
 
   # set Wall
   services.wallpaper = {
