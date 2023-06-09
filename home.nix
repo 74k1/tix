@@ -18,6 +18,7 @@
     ./modules/nvim
     ./modules/i3wm
     ./modules/wall
+#    ./modules/gtk
   ];
 
   nixpkgs = {
@@ -53,6 +54,7 @@
     rofi
     polybar
     bat-extras.batman
+    evolution
   ];
   
   # xsession = {
