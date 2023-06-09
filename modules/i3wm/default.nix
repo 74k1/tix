@@ -12,7 +12,11 @@ in {
       modifier = mod;
 
       # fonts = [""]
-      # bars = [ ];
+      bars = [
+        {
+          mode = "invisible";
+        }
+      ];
 
       keybindings = lib.mkOptionDefault {
         # Term
@@ -77,7 +81,19 @@ in {
         "${alt}+9" = "workspace 19";
         "${alt}+0" = "workspace 20";
 
-        # i3 reload stuff
+        # move to second screen / 10s / alt + shift + num
+        "${alt}+Shfit+1" = "move container to workspace 11";
+        "${alt}+Shift+2" = "move container to workspace 12";
+        "${alt}+Shift+3" = "move container to workspace 13";
+        "${alt}+Shift+4" = "move container to workspace 14";
+        "${alt}+Shift+5" = "move container to workspace 15";
+        "${alt}+Shift+6" = "move container to workspace 16";
+        "${alt}+Shift+7" = "move container to workspace 17";
+        "${alt}+Shift+8" = "move container to workspace 18";
+        "${alt}+Shift+9" = "move container to workspace 19";
+        "${alt}+Shift+0" = "move container to workspace 20";
+        
+        # i3 reload shenanigans
         #"${mod}+Shift+c" = ""
       };
     };

@@ -19,6 +19,7 @@
     ./modules/i3wm
     ./modules/wall
 #    ./modules/gtk
+    ./modules/polybar
   ];
 
   nixpkgs = {
@@ -57,37 +58,8 @@
     evolution
   ];
   
-  # xsession = {
-  #   enable = true;
-  #   initExtra = ''
-  #     tempfile=$(${pkgs.coreutils}/bin/mktemp)
-  #     ${pkgs.curl}/bin/curl https://wall.74k1.sh/ --output $tempfile && ${pkgs.feh}/bin/feh --bg-fill $tempfile && rm $tempfile
-  #   '';
-  # };
-
   # set Wall
   services.wallpaper = {
     enable = true;
   };
-
-  # # set Wall :)
-  # services.wallpaper = {
-  #   enable = true;
-  # #  runOnce = true;
-  # };
-
-  # home.file.".background-image" = {
-  #   source = pkgs.fetchurl {
-  #     url = "https://wall.74k1.sh/radhika-agarwal-bQWp1wPtlnI-unsplash.png";
-  #     sha256 = "sha256-kXJfr5Z0GME2G/0ccGjhEn/lUjZ/IZ/nkUogvloakIA=";
-  #   };
-  #   # source = outputs.packages."x86_64-linux".image.overrideAttrs (oldAttrs:
-  #   #   {
-  #   #     src = pkgs.fetchurl {
-  #   #       url = "https://wall.74k1.sh/";
-  #   #       sha256 = "sha256-ZPSFq31EXL2eUtA4FmQNSRfrEZnOTeW3reLGDnkhy0A=";
-  #   #     };
-  #   #   }
-  #   # );
-  # };
  }
