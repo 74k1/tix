@@ -13,9 +13,9 @@ in {
 
       # fonts = [""]
       bars = [
-        {
-          mode = "invisible";
-        }
+        #{
+        #  mode = "invisible";
+        #}
       ];
 
       keybindings = lib.mkOptionDefault {
