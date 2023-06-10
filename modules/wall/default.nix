@@ -22,7 +22,9 @@ in
       enable = true;
       initExtra = ''
         tempfile=$(${pkgs.coreutils}/bin/mktemp)
-        ${pkgs.curl}/bin/curl ${cfg.wallpaperUrl} --output $tempfile && ${pkgs.feh}/bin/feh --bg-fill $tempfile && rm $tempfile
+        ${pkgs.curl}/bin/curl ${cfg.wallpaperUrl} --output $tempfile
+        ${pkgs.feh}/bin/feh --bg-fill $tempfile
+        rm $tempfile
       '';
     };
   };
