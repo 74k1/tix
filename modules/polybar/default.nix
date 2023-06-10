@@ -21,8 +21,9 @@ in {
       };
       extraConfig = builtins.readFile ./polybar.ini;
     };
+
     xsession.initExtra = ''
-      systemctl --user restart --now polybar.service
+      systemctl --user enable --now polybar.service
     '';
   };
 }
