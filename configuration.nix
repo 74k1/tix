@@ -8,6 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+#      ({options, lib, ...}: lib.mkIf (options ? virtualisation.memorySize) {
+#        users.users.taki.password = "foo";
+#      })
     ];
 
   # Bootloader.
@@ -41,6 +44,14 @@
     LC_PAPER = "en_GB.UTF-8";
     LC_TELEPHONE = "en_GB.UTF-8";
     LC_TIME = "en_GB.UTF-8";
+  };
+
+  # VM shenanigans
+  virtualisation.vmVariant = {
+    users = {
+      mutableUsers = false;
+      users.taki.password = "foo";
+    };
   };
 
   # Enable the X11 windowing system.

@@ -20,6 +20,7 @@
     ./modules/wall
 #    ./modules/gtk
     ./modules/polybar
+    ./modules/rofi
   ];
 
   nixpkgs = {
