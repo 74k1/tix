@@ -1,8 +1,8 @@
-{ config, inputs, pkgs, ... }:
+{ config, inputs, pkgs, self, ... }:
 {
   programs.rofi = {
     enable = true;
-    theme = "${pkgs.rofi}/share/rofi/themes/ukiyo.rasi";
+#    theme = "ukiyo";
     font="FiraCode Nerd Font 14";
     #font = "FantasqueSansMono Nerd Font 14";
     plugins = [

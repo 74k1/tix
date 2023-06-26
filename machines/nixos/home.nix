@@ -53,12 +53,18 @@
     spotify-tray
     discord
     feh
-    rofi
+#    rofi
     polybar
     bat-extras.batman
-    evolution
+    evolution dconf
+    qmk
+    ly
   ];
   
+  # evolution stuff
+  #programs.dconf.enable = true;
+  #services.gnome3.evolution-data-server.enable = true;
+
   # set Wall
   services.wallpaper = {
     enable = true;

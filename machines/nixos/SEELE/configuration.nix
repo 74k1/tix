@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/ly
 #      ({options, lib, ...}: lib.mkIf (options ? virtualisation.memorySize) {
 #        users.users.taki.password = "foo";
 #      })
@@ -64,10 +65,11 @@
     #    enableXfwm = false; 
     #  };
     #};
-    #displayManager.ly = {
-    #  enable = true;
-    #  defaultUser = "taki";
-    #};
+    # TODO
+    ## displayManager.ly = {
+    ##   enable = true;
+    ##   defaultUser = "taki";
+    ## };
     displayManager.lightdm.enable = true;
     windowManager.i3.enable = true;
     libinput = {
@@ -81,6 +83,16 @@
   };
 
   services.picom.enable = true;
+
+  #services.greetd = {
+  #  enable = true;
+  #  settings = {
+  #    default_session = {
+  #      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd i3";
+  #      user = "taki";
+  #    };
+  #  };
+  #};
 
   # Enable the XFCE Desktop Environment.
   #services.xserver.displayManager.lightdm.enable = true;
@@ -174,6 +186,11 @@
     packages = [ pkgs.dconf ];
   };
 
+  # udev qmk stuff
+  services.udev.packages = [
+    pkgs.qmk-udev-rules
+  ];
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -188,6 +205,10 @@
   programs.zsh = {
     enable = true;
   };
+
+  # Evolution shenanigans
+  programs.dconf.enable = true;
+  services.gnome.evolution-data-server.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -205,7 +226,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     # ly
+  #   ly
      ntfs3g
      git wget curl tmux
      exa bat tealdeer viu 

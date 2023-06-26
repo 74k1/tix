@@ -20,6 +20,10 @@
       comment-nvim
       telescope-nvim
       nvim-treesitter
+      nvim-cmp
+      cmp-buffer
+      cmp-path
+      cmp-cmdline
       {
         plugin = nvim-autopairs;
         type = "lua";
