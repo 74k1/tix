@@ -339,6 +339,27 @@
     },
     "nix-darwin": {
       "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1688973178,
+        "narHash": "sha256-nsIzOjD3v5zuozWeUvifEQ778C8cLMqW5ga5cfrmxAA=",
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "rev": "90ae979e352d241a86b73f8c7193bf7f749f37e4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lnl7",
+        "ref": "master",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+    "nix-darwin_2": {
+      "inputs": {
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
@@ -571,7 +592,7 @@
         "home-manager": "home-manager_2",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-colors": "nix-colors",
-        "nix-darwin": "nix-darwin",
+        "nix-darwin": "nix-darwin_2",
         "nix-on-droid": "nix-on-droid",
         "nixpkgs": "nixpkgs_3",
         "nur": "nur",
@@ -596,6 +617,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
         "rix101": "rix101",
         "ukiyo": "ukiyo"

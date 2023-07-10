@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     rix101 = {
       url = "github:reo101/rix101";
     };
@@ -18,6 +22,7 @@
   outputs =
     { self
     , nixpkgs
+    , nix-darwin
     , rix101
     , ukiyo
     , ...
@@ -49,6 +54,27 @@
           specialArgs = {
             inherit inputs outputs;
           };
+        };
+      };
+
+      darwinConfigurations = {
+        hisakata = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+
+          modules = [
+           ./darwin-configuration.nix
+           inputs.home-manager.darwinModules.home-manager
+           {
+            home-manager = {
+              useGlobalPkgs = false;
+              useUserPackages = true;
+              # users.74k1 = import ./darwin-home.nix;
+              extraSpecialArgs = {
+                inherit inputs outputs;
+              };
+            };
+           }
+          ];
         };
       };
 
