@@ -1,11 +1,21 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../../../modules/darwin/brew
+  ];
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages =
-    [ pkgs.vim
-    ];
+  environment.systemPackages = with pkgs; [
+    neovim
+    # karabiner-elements
+    discord
+    obsidian
+  ];
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix

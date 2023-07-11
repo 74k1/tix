@@ -12,15 +12,15 @@
   #   ./modules;
 
   imports = [
-    ./modules/starship
-    ./modules/zsh
-    ./modules/wezterm
-    ./modules/nvim
-    ./modules/i3wm
-    ./modules/wall
-#    ./modules/gtk
-    ./modules/polybar
-    ./modules/rofi
+    ../../modules/home-manager/starship
+    ../../modules/home-manager/zsh
+    ../../modules/home-manager/wezterm
+    ../../modules/home-manager/nvim
+    ../../modules/home-manager/i3wm
+    ../../modules/home-manager/wall
+    # ../../modules/home-manager/gtk
+    ../../modules/home-manager/polybar
+    ../../modules/home-manager/rofi
   ];
 
   nixpkgs = {

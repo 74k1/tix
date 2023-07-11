@@ -30,20 +30,19 @@
     let
       inherit (self) outputs;
       inherit (nixpkgs) lib;
-      system = "x86_64-linux";
     in {
       nixosConfigurations = {
-        taki = lib.nixosSystem {
-          inherit system;
+        SEELE = lib.nixosSystem {
+          system = "x86_64-linux";
 
           modules = [
-            ./configuration.nix
+            ./machines/nixos/SEELE/configuration.nix
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = false;
                 useUserPackages = true;
-                users.taki = import ./home.nix;
+                users.taki = import ./machines/nixos/home.nix;
                 extraSpecialArgs = {
                   inherit inputs outputs;
                 };
@@ -58,17 +57,17 @@
       };
 
       darwinConfigurations = {
-        hisakata = nix-darwin.lib.darwinSystem {
+        EVA = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
 
           modules = [
-           ./darwin-configuration.nix
+           ./machines/darwin/EVA/darwin-configuration.nix
            inputs.home-manager.darwinModules.home-manager
            {
             home-manager = {
               useGlobalPkgs = false;
               useUserPackages = true;
-              # users.74k1 = import ./darwin-home.nix;
+              # users.74k1 = import ./machines/darwin/darwin-home.nix;
               extraSpecialArgs = {
                 inherit inputs outputs;
               };
@@ -76,10 +75,6 @@
            }
           ];
         };
-      };
-
-      packages.${system} = import ./pkgs {
-        pkgs = nixpkgs.legacyPackages.${system};
       };
     };
 }
