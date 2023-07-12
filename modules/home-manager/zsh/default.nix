@@ -22,7 +22,7 @@
       nano = "${pkgs.neovim}/bin/nvim";
       nv = "${pkgs.neovim}/bin/nvim";
       ":q" = "exit";
-      youcannotrebuild = "sudo nixos-rebuild switch --flake /home/taki/tix#taki"; # eva reference :^)
+      youcannotrebuild = "sudo nixos-rebuild switch --flake ~/tix#taki |& nix run nixpkgs#nix-output-monitor"; # eva reference :^)
     };
 
     history = {
