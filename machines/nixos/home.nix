@@ -1,17 +1,7 @@
 { inputs, outputs, lib, pkgs, config, ... }:
 
 {
-  # imports =
-  #   (base:
-  #     (builtins.map
-  #       (module:
-  #         base + "/" + module)
-  #       (builtins.attrNames
-  #         (builtins.readDir
-  #           base))))
-  #   ./modules;
-
-  imports = builtins.map (module: import (../../../modules/home-manager + "/" + module)) [
+  imports = with outputs.homeManagerModules; [
     starship
     zsh
     wezterm

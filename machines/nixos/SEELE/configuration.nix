@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./modules/ly
 #      ({options, lib, ...}: lib.mkIf (options ? virtualisation.memorySize) {
 #        users.users.taki.password = "foo";
 #      })

@@ -1,7 +1,7 @@
 { inputs, outputs, lib, pkgs, config, ... }:
 
 {
-  imports = builtins.map (module: import (../../../modules/home-manager + "/" + module)) [
+  imports = with outputs.homeManagerModules; [
     starship
     zsh
     nvim

@@ -34,7 +34,6 @@
       nixosConfigurations = {
         SEELE = lib.nixosSystem {
           system = "x86_64-linux";
-
           modules = [
             ./machines/nixos/SEELE/configuration.nix
             inputs.home-manager.nixosModules.home-manager
@@ -49,12 +48,13 @@
               };
             }
           ];
-
           specialArgs = {
             inherit inputs outputs;
           };
         };
       };
+
+      nixosModules = import ./modules/nixos;
 
       darwinConfigurations = {
         EVA = nix-darwin.lib.darwinSystem {
@@ -74,7 +74,14 @@
             };
            }
           ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
         };
       };
+
+      darwinModules = import ./modules/darwin;
+
+      homeManagerModules = import ./modules/home-manager;
     };
 }

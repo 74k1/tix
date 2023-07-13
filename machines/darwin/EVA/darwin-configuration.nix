@@ -1,8 +1,13 @@
-{ config, pkgs, ... }:
+{ inputs, outputs, config, pkgs, lib, ... }:
 
 {
-  imports = builtins.map (module: import (../../../modules/darwin + "/" + module)) [
-    "brew"
+  # just in case lmao
+  # imports = builtins.map (module: import (../../../modules/darwin + "/" + module)) [
+  #   "brew"
+  # ];
+
+  imports = with outputs.darwinModules; [
+    brew
   ];
 
   # List packages installed in system profile. To search by name, run:
