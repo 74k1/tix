@@ -67,7 +67,7 @@
             home-manager = {
               useGlobalPkgs = false;
               useUserPackages = true;
-              # users.74k1 = import ./machines/darwin/darwin-home.nix;
+              users."74k1" = import ./machines/darwin/darwin-home.nix;
               extraSpecialArgs = {
                 inherit inputs outputs;
               };

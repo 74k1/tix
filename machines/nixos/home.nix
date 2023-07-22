@@ -22,10 +22,6 @@
     username = "taki";
     homeDirectory = "/home/taki";
     stateVersion = "22.11";
-    sessionVariables = { 
-      SHELL = "${pkgs.zsh}/bin/zsh";
-      EDITOR = "nvim";
-    };
   };
 
   # Let Home Manager install and manage itself.
@@ -54,6 +50,11 @@
   # evolution stuff
   #programs.dconf.enable = true;
   #services.gnome3.evolution-data-server.enable = true;
+
+  home.sessionVariables = {
+    SHELL = "${pkgs.zsh}/bin/zsh";
+    EDITOR = "nvim";
+  };
 
   # set Wall
   services.wallpaper = {
