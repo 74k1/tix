@@ -38,14 +38,9 @@ with lib;
     ];
     casks = [
       # "android-platform-tools"
-      # "discord"
-      # "docker"
-      # "font-fira-code-nerd-font"
+      "font-fira-code-nerd-font"
       "karabiner-elements"
       "caffeine"
-      # "scroll-reverser"
-      # "sf-symbols"
-      # "spotify"
     ];
     extraConfig = ''
       cask_args appdir: "~/Applications"

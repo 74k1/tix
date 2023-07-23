@@ -18,7 +18,14 @@
 
   home.packages = with pkgs; [
     bat-extras.batman
+    keepassxc
+    discord
+    obsidian
+    # neovim
+    # karabiner-elements
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   home.sessionVariables = {
     SHELL = "${pkgs.zsh}/bin/zsh";
