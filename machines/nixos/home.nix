@@ -40,14 +40,13 @@
     spotify-tray
     discord
     feh
-#    rofi
+    # rofi
     polybar
     bat-extras.batman
-    # evolution
-    # what was dconf for, forgot, i remember, it's the UI theme thing, doesnt work anyways, rem it too
-    # dconf
+    # evolution dconf
     qmk
     ly
+    zellij
   ];
   
   # evolution stuff
