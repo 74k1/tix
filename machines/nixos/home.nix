@@ -11,6 +11,7 @@
     # gtk
     polybar
     rofi
+    xorg
   ];
 
   nixpkgs = {
@@ -42,7 +43,9 @@
 #    rofi
     polybar
     bat-extras.batman
-    evolution dconf
+    # evolution
+    # what was dconf for, forgot, i remember, it's the UI theme thing, doesnt work anyways, rem it too
+    # dconf
     qmk
     ly
   ];

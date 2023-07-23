@@ -64,12 +64,6 @@
     #    enableXfwm = false; 
     #  };
     #};
-    # TODO
-    ## displayManager.ly = {
-    ##   enable = true;
-    ##   defaultUser = "taki";
-    ## };
-    displayManager.lightdm.enable = true;
     windowManager.i3.enable = true;
     libinput = {
       enable = true;
@@ -83,18 +77,18 @@
 
   services.picom.enable = true;
 
-  #services.greetd = {
-  #  enable = true;
-  #  settings = {
-  #    default_session = {
-  #      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd i3";
-  #      user = "taki";
-  #    };
-  #  };
-  #};
+  # services.greetd = {
+  #   enable = true;
+  #   settings = {
+  #     default_session = {
+  #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd startx";
+  #       user = "taki";
+  #     };
+  #   };
+  # };
 
   # Enable the XFCE Desktop Environment.
-  #services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
   #services.xserver.desktopManager.xfce.enable = true;
   #services.xserver.desktopManager.xfce.xfce4-panel.enable = false;
   
@@ -225,13 +219,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #   ly
      ntfs3g
      git wget curl tmux
      exa bat tealdeer viu 
      pavucontrol
      neofetch
-     xorg.xkill xclip xdotool
+     xorg.xkill xclip xdotool xorg.xinit
      xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
   ];
 

@@ -15,6 +15,7 @@
       ls = "${pkgs.exa}/bin/exa";
       ll = "${pkgs.exa}/bin/exa -l";
       la = "${pkgs.exa}/bin/exa -a";
+      tree = "${pkgs.exa}/bin/exa --tree";
       cp = "cp -iv";
       mv = "mv -iv";
       rm = "rm -iv";
@@ -22,7 +23,6 @@
       nano = "${config.programs.neovim.finalPackage}/bin/nvim";
       nv = "${config.programs.neovim.finalPackage}/bin/nvim";
       ":q" = "exit";
-      youcannotrebuild = "sudo --validate && sudo nixos-rebuild switch --flake ~/tix#SEELE |& nix run nixpkgs#nix-output-monitor"; # eva reference :^)
     };
 
     history = {

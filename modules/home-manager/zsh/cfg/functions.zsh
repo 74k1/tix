@@ -11,6 +11,13 @@ function nas() {
   rm -f $tmpfile
 }
 
+# eva reference :^)
+function youcannotrebuild() {
+  sudo --validate \
+    && sudo nixos-rebuild --flake ~/tix#SEELE "${@:-switch}" \
+    |& nix run nixpkgs#nix-output-monitor
+}
+
 # function nas() {
 #   local source="${1:-nixpkgs}"
 #   local search_results=$(nix search --json $source)
