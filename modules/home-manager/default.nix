@@ -9,5 +9,6 @@
   polybar = import ./polybar;
   wezterm = import ./wezterm;
   rofi = import ./rofi;
+  xplr = import ./xplr;
   xorg = import ./xorg;
 }

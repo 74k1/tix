@@ -31,6 +31,7 @@
   home.packages = with pkgs; [
     inputs.ukiyo.packages."x86_64-linux".default papirus-icon-theme
     wezterm
+    xplr
     tree
     brave
     keepassxc
