@@ -8,7 +8,7 @@
     nvim
     i3wm
     wall
-    # gtk
+    gtk
     polybar
     rofi
     xorg
@@ -29,30 +29,39 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    inputs.ukiyo.packages."x86_64-linux".default papirus-icon-theme
+    # theme
+    papirus-icon-theme
+    
+    # term
     wezterm
+    starship
+    feh viu
+    bat bat-extras.batman
+    exa
+    tealdeer
+    dunst
+    zellij
+    # tui fm
     xplr
-    tree
+
+    # gui stuff
     brave
     keepassxc
     obsidian
-    starship
     spotify
     spotify-tray
     discord
-    feh
-    # rofi
-    polybar
-    bat-extras.batman
-    # evolution dconf
-    qmk
-    ly
-    zellij
+    polybar # move to config.nix
+    # ly
+    # evolution
   ];
   
   # evolution stuff
-  #programs.dconf.enable = true;
   #services.gnome3.evolution-data-server.enable = true;
+
+  gtk.ukiyo = {
+    package = inputs.ukiyo.packages.x86_64-linux.default;
+  };
 
   home.sessionVariables = {
     SHELL = "${pkgs.zsh}/bin/zsh";

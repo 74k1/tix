@@ -1,11 +1,6 @@
 { inputs, outputs, config, pkgs, lib, ... }:
 
 {
-  # just in case lmao
-  # imports = builtins.map (module: import (../../../modules/darwin + "/" + module)) [
-  #   "brew"
-  # ];
-
   imports = with outputs.darwinModules; [
     brew
     yabai

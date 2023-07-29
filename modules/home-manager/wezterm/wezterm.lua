@@ -85,4 +85,7 @@ config.hyperlink_rules = {
   }
 }
 
+-- disable bell
+config.audible_bell = "Disabled";
+
 return config

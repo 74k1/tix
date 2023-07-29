@@ -1,22 +1,37 @@
-{ config, pkgs, ... }:
-{
-  home.package = [
-    inputs.ukiyo.packages.x86_64-linux.default
-  ];
+{ inputs, config, pkgs, lib, ... }:
 
-  gtk = {
-    theme = {
-      package = pkgs.ukiyo;
-      name = "Ukiyo";
+let
+  cfg = config.gtk.ukiyo;
+in
+{
+  options = {
+    gtk.ukiyo = {
+      package = lib.mkOption {
+        type = lib.types.package;
+        description = "Ukiyo package";
+      };
     };
-    iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus";
-    };
-    cursorTheme = {
-      package = pkgs.ukiyo;
-      name = "Ukiyo";
-      #size = 16;
+  };
+
+  config = {
+    home.packages = [
+      cfg.package
+    ];
+
+    gtk = {
+      theme = {
+        package = cfg.package;
+        name = "Ukiyo";
+      };
+      iconTheme = {
+        package = pkgs.papirus-icon-theme;
+        name = "Papirus";
+      };
+      cursorTheme = {
+        package = cfg.package;
+        name = "Ukiyo";
+        #size = 16;
+      };
     };
   };
 }

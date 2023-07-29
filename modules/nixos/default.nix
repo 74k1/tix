@@ -1,2 +1,3 @@
 {
+  ly = import ./ly;
 }

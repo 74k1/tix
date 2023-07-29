@@ -1,14 +1,13 @@
 {
-  wall = import ./wall;
-  i3wm = import ./i3wm;
+  gtk = import ./gtk;
   zsh = import ./zsh;
   nvim = import ./nvim;
-  gtk = import ./gtk;
-  ly = import ./ly;
   starship = import ./starship;
-  polybar = import ./polybar;
   wezterm = import ./wezterm;
   rofi = import ./rofi;
-  xplr = import ./xplr;
+  polybar = import ./polybar;
+  i3wm = import ./i3wm;
+  wall = import ./wall;
   xorg = import ./xorg;
+  xplr = import ./xplr;
 }

@@ -31,6 +31,8 @@
       inherit (self) outputs;
       inherit (nixpkgs) lib;
     in {
+      nixosModules = import ./modules/nixos;
+      
       nixosConfigurations = {
         SEELE = lib.nixosSystem {
           system = "x86_64-linux";
@@ -54,6 +56,8 @@
         };
       };
 
+      darwinModules = import ./modules/darwin;
+      
       darwinConfigurations = {
         EVA = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
@@ -78,8 +82,6 @@
         };
       };
 
-      nixosModules = import ./modules/nixos;
-      darwinModules = import ./modules/darwin;
       homeManagerModules = import ./modules/home-manager;
     };
 }

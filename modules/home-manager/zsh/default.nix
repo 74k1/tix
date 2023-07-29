@@ -15,7 +15,7 @@
       ls = "${pkgs.exa}/bin/exa";
       ll = "${pkgs.exa}/bin/exa -l";
       la = "${pkgs.exa}/bin/exa -a";
-      tree = "${pkgs.exa}/bin/exa --tree";
+      tree = "${pkgs.exa}/bin/exa --tree --icons";
       cp = "cp -iv";
       mv = "mv -iv";
       rm = "rm -iv";

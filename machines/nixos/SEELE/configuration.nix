@@ -1,17 +1,14 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { inputs, outputs, lib, config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-#      ({options, lib, ...}: lib.mkIf (options ? virtualisation.memorySize) {
-#        users.users.taki.password = "foo";
-#      })
-    ];
+  imports = with outputs.nixosModules; [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    # ({options, lib, ...}: lib.mkIf (options ? virtualisation.memorySize) {
+    #   users.users.taki.password = "foo";
+    # })
+
+    # ly
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -20,10 +17,6 @@
 
   networking.hostName = "SEELE"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -57,14 +50,11 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    #desktopManager = {
-    #  xfce = {
-    #    enable = true;
-    #    noDesktop = true;
-    #    enableXfwm = false; 
-    #  };
-    #};
-    windowManager.i3.enable = true;
+    windowManager.i3 = {
+      enable = true;
+      package = pkgs.i3-gaps;
+    };
+
     libinput = {
       enable = true;
       mouse.accelProfile = "flat";
@@ -87,34 +77,13 @@
   #   };
   # };
 
-  # Enable the XFCE Desktop Environment.
+  # I want tuigreet to work :(
   services.xserver.displayManager.lightdm.enable = true;
-  #services.xserver.desktopManager.xfce.enable = true;
-  #services.xserver.desktopManager.xfce.xfce4-panel.enable = false;
   
-  #services.xserver.displayManager.sessionPackages = with pkgs; [ sway ];
-  
-  # Disable X.org Screensaver
-  
+  # Disable xorg Screensaver
   environment.extraInit = ''
     xset s off -dpms
   '';
-
-  # Wayland Specific
-  #services.xserver = {
-  #  enable = true;
-  #  displayManager = {
-  #    defaultSession = "sway";
-  #    sessionPackages = with pkgs; [
-  #      sway
-  #    ];
-  #    gdm = {
-  #      enable = true;
-#	wayland = true;
-#      };
-#    };
- # };
-
 
   # Enable NVIDIA Drivers.
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -122,28 +91,8 @@
     opengl.enable = true;
     nvidia = {
       open = true;
-      # modesetting.enable = true;
-      # package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
-  # nvidia-drm modeset=1 is required for some wayland compositors, e.g. sway
-  #hardware.nvidia = {
-  #  open = true;
-  #  modesetting.enable = true;
-  #  package = config.boot.kernelPackages.nvidiaPackages.stable;
-  #};
-
-  # XDG Stuff?
-  #xdg.portal = {
-  #  enable = true;
-  #  wlr = {
-  #    enable = true;
-  #  };
-  #  extraPortals = with pkgs; [
-  #    xdg-desktop-portal-wlr
-  #    xdg-desktop-portal-gtk
-  #  ];
-  #};
 
   # Configure keymap in X11
   services.xserver = {
@@ -168,10 +117,6 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   services.dbus = {
@@ -179,7 +124,9 @@
     packages = [ pkgs.dconf ];
   };
 
-  # udev qmk stuff
+  programs.dconf.enable = true;
+  
+  # udev stuff for qmk
   services.udev.packages = [
     pkgs.qmk-udev-rules
   ];
@@ -200,7 +147,7 @@
   };
 
   # Evolution shenanigans
-  programs.dconf.enable = true;
+  #programs.dconf.enable = true;
   services.gnome.evolution-data-server.enable = true;
 
   # Allow unfree packages
@@ -221,9 +168,9 @@
   environment.systemPackages = with pkgs; [
      ntfs3g
      git wget curl tmux
-     exa bat tealdeer viu 
      pavucontrol
      neofetch
+     #dconf
      xorg.xkill xclip xdotool xorg.xinit
      xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
   ];

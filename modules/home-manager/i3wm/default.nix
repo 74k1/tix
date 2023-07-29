@@ -8,11 +8,20 @@ let
 in {
   xsession.windowManager.i3 = {
     enable = true;
+    package = pkgs.i3-gaps;
+
     config = {
       modifier = mod;
 
       # fonts = [""]
       bars = [ ];
+
+      window.border = 1;
+
+      gaps = {
+        inner = 15;
+        outer = 5;
+      };
 
       keybindings = lib.mkOptionDefault {
         # Term
