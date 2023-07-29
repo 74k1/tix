@@ -17,9 +17,13 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    # WM
+    yabai
+    skhd
+    
     bat-extras.batman
     keepassxc
-    discord
+    # discord
     obsidian
     # neovim
     # karabiner-elements

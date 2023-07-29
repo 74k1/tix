@@ -54,8 +54,6 @@
         };
       };
 
-      nixosModules = import ./modules/nixos;
-
       darwinConfigurations = {
         EVA = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
@@ -80,8 +78,8 @@
         };
       };
 
+      nixosModules = import ./modules/nixos;
       darwinModules = import ./modules/darwin;
-
       homeManagerModules = import ./modules/home-manager;
     };
 }

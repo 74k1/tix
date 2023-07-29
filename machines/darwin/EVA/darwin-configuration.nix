@@ -8,6 +8,7 @@
 
   imports = with outputs.darwinModules; [
     brew
+    yabai
   ];
 
   # List packages installed in system profile. To search by name, run:
@@ -19,17 +20,37 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Use a custom configuration.nix location.
-  # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
-  # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
-
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
-  # programs.fish.enable = true;
+
+  # TouchID for sudo
+  security.pam.enableSudoTouchIdAuth = true;
+
+  system = {
+    defaults = {
+      NSGlobalDomain = {
+        # Automatically show and hide the menu bar
+        _HIHideMenuBar = true;
+
+        # Set a fast key repeat rate
+        KeyRepeat = 2;
+
+        # Shorten delay before key repeat begins
+        InitialKeyRepeat = 12;
+      };
+      
+      dock = {
+        # Automatically show and hide the dock
+        autohide = true;
+
+        show-recents = false;
+      };
+    };
+  };
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
