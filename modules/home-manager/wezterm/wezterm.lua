@@ -20,9 +20,13 @@ config.harfbuzz_features = {
 -- font rendering
 config.freetype_render_target = "Light"
 
+-- window opacity
+config.window_background_opacity = 0.75
+
 -- color
 config.colors = {
   foreground = '#EEF2EE',
+  --background = 'rgba(50% 50% 50% 50%)',
   background = '#06040C',
 
   -- Override cursor:

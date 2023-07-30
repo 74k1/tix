@@ -3,6 +3,7 @@
   gtk = import ./gtk;
   i3wm = import ./i3wm;
   nvim = import ./nvim;
+  picom = import ./picom;
   polybar = import ./polybar;
   rofi = import ./rofi;
   starship = import ./starship;

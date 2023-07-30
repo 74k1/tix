@@ -65,7 +65,7 @@
     '';
   };
 
-  services.picom.enable = true;
+  # services.picom.enable = true;
 
   # services.greetd = {
   #   enable = true;

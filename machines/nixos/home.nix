@@ -6,6 +6,7 @@
     gtk
     i3wm
     nvim
+    picom
     polybar
     rofi
     starship
