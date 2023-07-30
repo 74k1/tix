@@ -60,6 +60,47 @@ config.colors = {
   }
 }
 
+--------------
+-- Keybinds --
+--------------
+local function keybind(mods, key, action)
+	if type(action) == "table" then
+		action = wezterm.action(action)
+	end
+
+	return {
+		mods = mods,
+		key = key,
+		action = action,
+	}
+end
+
+config.disable_default_key_bindings = true
+config.keys = {
+	---------------
+	-- Clipboard --
+	---------------
+	keybind("ALT", "c", { CopyTo = "Clipboard" }),
+	keybind("ALT", "v", { PasteFrom = "Clipboard" }),
+
+	---------------
+	-- Font size --
+	---------------
+	keybind("ALT|SHIFT", "UpArrow", "IncreaseFontSize"),
+	keybind("ALT|SHIFT", "DownArrow", "DecreaseFontSize"),
+
+	------------
+	-- Scroll --
+	------------
+	keybind("ALT", "u", { ScrollByPage = -1 }),
+	keybind("ALT", "d", { ScrollByPage = 1 }),
+
+	------------
+	-- Reload --
+	------------
+	keybind("CTRL|SHIFT", "r", "ReloadConfiguration"),
+}
+
 -- tab bar
 config.enable_tab_bar = false
 

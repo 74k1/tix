@@ -1,5 +1,16 @@
 { lib, pkgs, config, ... }:
 
+let
+  image-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "image-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "samodostal";
+      repo = "image.nvim";
+      rev = "dcabdf47b0b974b61d08eeafa2c519927e37cf27";
+      hash = "sha256-NY0jPUTlT70afUU9lz2rEphNlYZpGfn3rjHwb4EhGrA=";
+    };
+  };
+in
 {
   imports = [];
 
@@ -24,6 +35,11 @@
       cmp-buffer
       cmp-path
       cmp-cmdline
+      {
+        plugin = image-nvim;
+        type = "lua";
+        config = builtins.readFile ./cfg/image.lua;
+      }
       {
         plugin = nvim-autopairs;
         type = "lua";
