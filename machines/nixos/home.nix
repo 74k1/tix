@@ -41,8 +41,8 @@
     tealdeer
     dunst
     zellij
-    # tui fm
     xplr
+    ripgrep
 
     # gui stuff
     brave
