@@ -2,16 +2,17 @@
 
 {
   imports = with outputs.homeManagerModules; [
-    starship
-    zsh
-    wezterm
-    nvim
-    i3wm
-    wall
+    git
     gtk
+    i3wm
+    nvim
     polybar
     rofi
+    starship
+    wall
+    wezterm
     xorg
+    zsh
   ];
 
   nixpkgs = {
