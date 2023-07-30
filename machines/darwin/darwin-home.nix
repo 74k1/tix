@@ -13,23 +13,35 @@
     stateVersion = "23.05";
   };
 
-  # Let Home Manager install and manage itself.
+  # let home-manager install and manage itself
   programs.home-manager.enable = true;
 
+  nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
-    # WM
     yabai
     skhd
     
     bat-extras.batman
     keepassxc
-    # discord
+    discord
     obsidian
     # neovim
     # karabiner-elements
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  # install macos applications to the user env if the targetplatform is darwin
+  home.file."Applications/home-manager".source = let
+  apps = pkgs.buildEnv {
+    name = "home-manager-applications";
+    paths = config.home.packages;
+    pathsToLink = "/Applications";
+  };
+  in lib.mkIf pkgs.stdenv.targetPlatform.isDarwin "${apps}/Applications";
+
+  disabledModules = [
+    "targets/darwin/linkapps.nix"
+  ];
 
   home.sessionVariables = {
     SHELL = "${pkgs.zsh}/bin/zsh";

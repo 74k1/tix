@@ -41,7 +41,6 @@ with lib;
       "font-fira-code-nerd-font"
       "karabiner-elements"
       "caffeine"
-      "discord"
     ];
     extraConfig = ''
       cask_args appdir: "~/Applications"
