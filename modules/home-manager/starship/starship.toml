@@ -56,7 +56,7 @@ style = "bg:#22194B fg:#22EF92"
 
 [jobs]
 symbol = ""
-style = "bold red"
+style = "bg:#22194b fg:red"
 number_threshold = 1
 format = "[ $symbol ]($style)"
 
