@@ -28,10 +28,10 @@ in {
         "Ctrl+${alt}+t" = "exec ${pkgs.wezterm}/bin/wezterm";
         "${mod}+Return" = "exec ${pkgs.wezterm}/bin/wezterm";
         # Scrot
-        "${mod}+x" = "exec sh -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \"-i %i -g %g\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
-        "Print" = "exec sh -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \"-i %i -g %g\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
+        "${mod}+x" = "exec \"sh -e -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \\\\\"-i %i -g %g\\\\\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t \\\\\"image/png\\\\\"'\"";
+        "Print" = "exec \"sh -e -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \\\\\"-i %i -g %g\\\\\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t \\\\\"image/png\\\\\"'\"";
         # Mac-like Keybind :^)
-        "${alt}+Shift+s" = "exec sh -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \"-i %i -g %g\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
+        "${alt}+Shift+s" = "exec ${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f '-i %i -g %g') - | ${pkgs.xclip}/bin/xclip -selection clipboard -t 'image/png'";
 
         # Rofi
         "${mod}+space" = "exec ${pkgs.rofi}/bin/rofi -show drun";
@@ -87,7 +87,7 @@ in {
         "${mod}+${alt}+0" = "workspace 20";
 
         # move to second screen / 10s / alt + shift + num
-        "${mod}+${alt}+Shfit+1" = "move container to workspace 11";
+        "${mod}+${alt}+Shift+1" = "move container to workspace 11";
         "${mod}+${alt}+Shift+2" = "move container to workspace 12";
         "${mod}+${alt}+Shift+3" = "move container to workspace 13";
         "${mod}+${alt}+Shift+4" = "move container to workspace 14";

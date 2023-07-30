@@ -23,6 +23,7 @@
       nv = "${config.programs.neovim.finalPackage}/bin/nvim";
       rm = "rm -iv";
       tree = "${pkgs.exa}/bin/exa --tree --icons";
+      scrot = "${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f '-i %i -g %g') - | xclip -t 'image/png' -selection clipboard";
     };
 
     history = {
