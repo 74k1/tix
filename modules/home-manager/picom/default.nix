@@ -37,7 +37,6 @@
         # "window_type = 'desktop'"
         # "window_type = 'notification'"
         "class_g ~= 'slop'"
-        "class_g ~= 'polybar'"
         "class_g ~= 'Polybar'"
       ];
     };
