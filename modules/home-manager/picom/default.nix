@@ -8,11 +8,11 @@
       (0) (0)
     ]; # (-15) (-15)
     shadowOpacity = 0.2; # 0.75
-    # shadowExclude = [
-    #   "window type *= 'menu'"
-    #   "name ~= 'Firefox$'"
-    #   "focused = 1"
-    # ];
+    shadowExclude = [
+      "window_type *= 'dock'"
+      # "name ~= 'Firefox$'"
+      # "focused = 1"
+    ];
 
     activeOpacity = 1.0; # 1.0
     inactiveOpacity = 0.95; # 1.0
@@ -22,19 +22,24 @@
       normal = {
         blur-background = true;
       };
-      unknown = {
-        blur-background = false;
-      };
-      splash = {
-        blur-background = false;
-      };
     };
 
     settings = {
       blur = {
         method = "dual_kawase";
         strength = 5;
+        background = true;
+        background-frame = true;
+        background-fixed = true;
       };
+      blur-background-exclude = [
+        # "window_type = 'dock'"
+        # "window_type = 'desktop'"
+        # "window_type = 'notification'"
+        "class_g ~= 'slop'"
+        "class_g ~= 'polybar'"
+        "class_g ~= 'Polybar'"
+      ];
     };
 
     backend = "glx"; # xrender

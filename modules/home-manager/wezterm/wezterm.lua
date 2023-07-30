@@ -84,14 +84,14 @@ config.keys = {
 	---------------
 	-- Clipboard --
 	---------------
-	keybind("ALT", "c", { CopyTo = "Clipboard" }),
-	keybind("ALT", "v", { PasteFrom = "Clipboard" }),
+	keybind("CTRL|SHIFT", "c", { CopyTo = "Clipboard" }),
+	keybind("CTRL|SHIFT", "v", { PasteFrom = "Clipboard" }),
 
 	---------------
 	-- Font size --
 	---------------
-	keybind("ALT|SHIFT", "UpArrow", "IncreaseFontSize"),
-	keybind("ALT|SHIFT", "DownArrow", "DecreaseFontSize"),
+	keybind("CTRL|SHIFT", "UpArrow", "IncreaseFontSize"),
+	keybind("CTRL|SHIFT", "DownArrow", "DecreaseFontSize"),
 
 	------------
 	-- Scroll --

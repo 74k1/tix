@@ -28,10 +28,10 @@ in {
         "Ctrl+${alt}+t" = "exec ${pkgs.wezterm}/bin/wezterm";
         "${mod}+Return" = "exec ${pkgs.wezterm}/bin/wezterm";
         # Scrot
-        "${mod}+x" = "exec sh -c '${pkgs.maim}/bin/maim -s | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
-        "Print" = "exec sh -c '${pkgs.maim}/bin/maim -s | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
+        "${mod}+x" = "exec sh -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \"-i %i -g %g\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
+        "Print" = "exec sh -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \"-i %i -g %g\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
         # Mac-like Keybind :^)
-        "${alt}+Shift+s" = "exec sh -c '${pkgs.maim}/bin/maim -s | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
+        "${alt}+Shift+s" = "exec sh -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \"-i %i -g %g\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png'";
 
         # Rofi
         "${mod}+space" = "exec ${pkgs.rofi}/bin/rofi -show drun";

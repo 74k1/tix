@@ -39,12 +39,13 @@
     starship
     feh viu
     bat bat-extras.batman
-    exa
-    tealdeer
     dunst
-    zellij
-    xplr
+    exa
     ripgrep
+    scc
+    tealdeer
+    xplr
+    zellij
 
     # gui stuff
     brave

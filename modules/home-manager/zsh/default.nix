@@ -11,18 +11,18 @@
     enableCompletion = true;
 
     shellAliases = {
+      ":q" = "exit";
       cat = "${pkgs.bat}/bin/bat";
-      ls = "${pkgs.exa}/bin/exa";
-      ll = "${pkgs.exa}/bin/exa -l";
-      la = "${pkgs.exa}/bin/exa -a";
-      tree = "${pkgs.exa}/bin/exa --tree --icons";
       cp = "cp -iv";
-      mv = "mv -iv";
-      rm = "rm -iv";
       fetch = "${pkgs.neofetch}/bin/neofetch";
+      la = "${pkgs.exa}/bin/exa -a";
+      ll = "${pkgs.exa}/bin/exa -l";
+      ls = "${pkgs.exa}/bin/exa";
+      mv = "mv -iv";
       nano = "${config.programs.neovim.finalPackage}/bin/nvim";
       nv = "${config.programs.neovim.finalPackage}/bin/nvim";
-      ":q" = "exit";
+      rm = "rm -iv";
+      tree = "${pkgs.exa}/bin/exa --tree --icons";
     };
 
     history = {
