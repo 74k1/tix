@@ -1,8 +1,10 @@
-# tix - **t**aki's n**ix** flake
+# (t)aki's n(ix) flake
 
-## some help I've gotten:
+## credits / comments
 
-### [i3 + dunst indicators](https://gitlab.com/Nmoleo/i3-volume-brightness-indicator)
+### [Nmoleo](https://gitlab.com/Nmoleo)
+
+#### [i3 + dunst indicators](https://gitlab.com/Nmoleo/i3-volume-brightness-indicator)
 
 I've somewhat rewritten it. (see [this file](modules/home-manager/i3wm/duvolbr.nix))
 It now uses nix functions :) no more pactl/playerctl/libnotify package dependencies.
@@ -12,4 +14,4 @@ Make sure you have something of the following tho:
 * dunst
 * pipewire with pulseaudio (or directly pulseaudio) enabled
 
-### [polybar & playerctl](https://gitlab.com/Nmoleo/polybar_playerctl)
+#### [polybar & playerctl](https://gitlab.com/Nmoleo/polybar_playerctl)
