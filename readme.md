@@ -13,7 +13,7 @@
 <div>
     <h2>special thanks to</h2>
     <h3><a href="https://github.com/reo101">reo101</a></h3>
-    <a href="#"><img alt="clueless" src="https://cdn.7tv.app/emote/60b14a737a157a7f3360fb32/1x.webp"></img></a>
+    <a href="#"><img alt="clueless" src="https://cdn.7tv.app/emote/610db61cd86cd785a4738413/1x.webp"></img></a>
     <p>for helping a ton with nix :)</p>
     <h3><a href="https://gitlab.com/Nmoleo">Nmoleo</a></h3>
     <h4><a href="https://gitlab.com/Nmoleo/i3-volume-brightness-indicator">i3 + dunst indicators</a></h4>
