@@ -12,6 +12,7 @@
     starship
     wall
     wezterm
+    xdg
     xorg
     zsh
   ];
@@ -70,6 +71,7 @@
     SHELL = "${pkgs.zsh}/bin/zsh";
     EDITOR = "nvim";
   };
+
 
   # set Wall
   services.wallpaper = {
