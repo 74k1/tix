@@ -50,6 +50,7 @@
     tealdeer
     xplr
     zellij
+    qmk
 
     # gui stuff
     brave
