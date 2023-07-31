@@ -4,7 +4,6 @@
 
 <div>
     <h2>credits / comments</h2>
-    <br>
     <h3><a href="https://github.com/reo101">reo101</a></h3>
     <img alt="clueless" src="https://cdn.7tv.app/emote/60b14a737a157a7f3360fb32/1x.webp"></img>
     <br>
