@@ -5,6 +5,7 @@ let
   alt = "Mod1";
   fm = "DP-0";
   sm = "DP-2";
+  duvolbr = import ./duvolbr.nix { inherit pkgs; };
 in {
   xsession.windowManager.i3 = {
     enable = true;
@@ -37,16 +38,27 @@ in {
         "${mod}+space" = "exec ${pkgs.rofi}/bin/rofi -show drun";
         "${mod}+r" = "exec ${pkgs.rofi}/bin/rofi -show drun";
 
-        #pactl & playerctl
-        "XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 +5%";
-        "XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 -5%";
-        "XF86AudioMute" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute 0 toggle";
+        # pactl & playerctl # without script
+        #"XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 +5%";
+        #"XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 -5%";
+        #"XF86AudioMute" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute 0 toggle";
         #"XF86MonBrightnessUp" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 5";
         #"XF86MonBrightnessDown" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 5";
-        "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+        #"XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
         #"XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl pause";
-        "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
-        "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
+        #"XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+        #"XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
+
+        # pactl & playerctl # with script
+        "XF86AudioRaiseVolume" = "exec ${duvolbr} vol_up";
+        "XF86AudioLowerVolume" = "exec ${duvolbr} vol_down";
+        "XF86AudioMute" = "exec ${duvolbr} vol_mute";
+        #"XF86MonBrightnessUp" = "exec ${duvolbr} bri_up";
+        #"XF86MonBrightnessDown" = "exec ${duvolbr} bri_down";
+        "XF86AudioPlay" = "exec ${duvolbr} play_pause";
+        "XF86AudioPause" = "exec ${duvolbr} pause";
+        "XF86AudioNext" = "exec ${duvolbr} next_track";
+        "XF86AudioPrev" = "exec ${duvolbr} prev_track";
 
         # Focus
         "${mod}+j" = "focus down";
