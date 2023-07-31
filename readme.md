@@ -2,6 +2,10 @@
 
 ## credits / comments
 
+### [reo101](https://github.com/reo101)
+
+![clueless](https://cdn.7tv.app/emote/60b14a737a157a7f3360fb32/1x.webp)
+
 ### [Nmoleo](https://gitlab.com/Nmoleo)
 
 #### [i3 + dunst indicators](https://gitlab.com/Nmoleo/i3-volume-brightness-indicator)
