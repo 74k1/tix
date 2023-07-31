@@ -10,7 +10,7 @@
     <h3><a href="https://gitlab.com/Nmoleo">Nmoleo</a></h3>
     <h4><a href="https://gitlab.com/Nmoleo/i3-volume-brightness-indicator">i3 + dunst indicators</a></h4>
     <p>
-        I've somewhat rewritten it. (see [this file](modules/home-manager/i3wm/duvolbr.nix))
+        I've somewhat rewritten it. (see <a href="modules/home-manager/i3wm/duvolbr.nix">this file</a>)
         It now uses nix functions :) no more pactl/playerctl/libnotify package dependencies.
         Make sure you have something of the following tho:
         <ul>
