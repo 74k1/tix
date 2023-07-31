@@ -6,6 +6,7 @@
     <h2>credits / comments</h2>
     <h3><a href="https://github.com/reo101">reo101</a></h3>
     <img alt="clueless" src="https://cdn.7tv.app/emote/60b14a737a157a7f3360fb32/1x.webp"></img>
+    <p style="opacity:0.1;">helping a ton with nix :)</p>
     <br>
     <h3><a href="https://gitlab.com/Nmoleo">Nmoleo</a></h3>
     <h4><a href="https://gitlab.com/Nmoleo/i3-volume-brightness-indicator">i3 + dunst indicators</a></h4>
