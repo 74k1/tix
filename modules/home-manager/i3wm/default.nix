@@ -50,15 +50,15 @@ in {
         #"XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
 
         # pactl & playerctl # with script
-        "XF86AudioRaiseVolume" = "exec ${duvolbr} vol_up";
-        "XF86AudioLowerVolume" = "exec ${duvolbr} vol_down";
-        "XF86AudioMute" = "exec ${duvolbr} vol_mute";
-        #"XF86MonBrightnessUp" = "exec ${duvolbr} bri_up";
+        "XF86AudioRaiseVolume" = "exec ${duvolbr}/bin/duvolbr vol_up";
+        "XF86AudioLowerVolume" = "exec ${duvolbr}/bin/duvolbr vol_down";
+        "XF86AudioMute" = "exec ${duvolbr}/bin/duvolbr vol_mute";
+        #"XF86MonBrightnessUp" = "exec ${duvolbr}/bin/duvolbr bri_up";
         #"XF86MonBrightnessDown" = "exec ${duvolbr} bri_down";
-        "XF86AudioPlay" = "exec ${duvolbr} play_pause";
-        "XF86AudioPause" = "exec ${duvolbr} pause";
-        "XF86AudioNext" = "exec ${duvolbr} next_track";
-        "XF86AudioPrev" = "exec ${duvolbr} prev_track";
+        "XF86AudioPlay" = "exec ${duvolbr}/bin/duvbolbr play_pause";
+        "XF86AudioPause" = "exec ${duvolbr}/bin/duvolbr play_pause";
+        "XF86AudioNext" = "exec ${duvolbr}/bin/duvolbr next_track";
+        "XF86AudioPrev" = "exec ${duvolbr}/bin/duvolbr prev_track";
 
         # Focus
         "${mod}+j" = "focus down";

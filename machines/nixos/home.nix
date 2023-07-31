@@ -35,6 +35,9 @@
     # theme
     papirus-icon-theme
     
+    # my own scriptiboo
+    (import ../../modules/home-manager/i3wm/duvolbr.nix { inherit pkgs; })
+
     # term
     wezterm
     starship

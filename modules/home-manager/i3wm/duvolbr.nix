@@ -1,12 +1,12 @@
 { pkgs, ... }:
 let
-  vol_step = "5"; # how much the volume should step up/down on keypress
-  bri_step = "5"; # how much the brightness should step up/down on keypress
-  max_vol = "100"; # what the max volume should be
-  notif_timeout = "1000"; # the timeout of the notification in ms
-  download_album_art = "true"; # if this should download the album art in a tmp dir
-  show_album_art = "true"; # if you want to show an album art / local or tmp dir
-  show_music_in_vol_indicator = "true"; # if you want to show music in the vol indicator
+  vol_step="5"; # how much the volume should step up/down on keypress
+  bri_step="5"; # how much the brightness should step up/down on keypress
+  max_vol="100"; # what the max volume should be
+  notif_timeout="1000"; # the timeout of the notification in ms
+  download_album_art="true"; # if this should download the album art in a tmp dir
+  show_album_art="true"; # if you want to show an album art / local or tmp dir
+  show_music_in_vol_indicator="true"; # if you want to show music in the vol indicator
 in
 pkgs.writeShellScriptBin "duvolbr" ''
   # uses regex to get volume from pulseaudio
@@ -26,8 +26,8 @@ pkgs.writeShellScriptBin "duvolbr" ''
 
   # returns a mute icon, volume low icon or a volume high icon depending on the volume
   function get_vol_icon {
-    vol = $(get_vol)
-    mute = $(get_mute)
+    vol=$(get_vol)
+    mute=$(get_mute)
     if [ "$vol" -eq 0 ] || [ "$mute" == "yes" ] ; then
       vol_icon=""
     elif [ "$vol" -lt 50 ]; then
@@ -46,42 +46,42 @@ pkgs.writeShellScriptBin "duvolbr" ''
   function get_album_art {
     url=$(${pkgs.playerctl}/bin/playerctl -f "{{mpris:artUrl}}" metadata)
     if [[ $url == "file://"* ]]; then
-      album_art = "''${url/file:\/\//}"
+      album_art="''${url/file:\/\//}"
     elif [[ $url == "http://"* ]] && [[ "${download_album_art}" == "true" ]]; then
       # identify filename from URL
-      filename = "$(echo $url | sed "s/.*\///")"
+      filename="$(echo $url | sed "s/.*\///")"
       
       # download file to /tmp if it doesn't already exist
       if [ ! -f "/tmp/$filename" ]; then
         ${pkgs.wget}/bin/wget -O "/tmp/$filename" "$url"
       fi
 
-      album_art = "/tmp/$filename"
+      album_art="/tmp/$filename"
     ## TODO - the uh, https/http stuff
     elif [[ $url == "https://"* ]] && [[ "${download_album_art}" == "true" ]]; then
       # identify filename from URL
-      filename = "$(echo $url | sed "s/.*\///")"
+      filename="$(echo $url | sed "s/.*\///")"
 
       # download file to /tmp if it doesn't already exist
       if [ ! -f "/tmp/$filename" ]; then
         ${pkgs.wget}/bin/wget -O "/tmp/$filename" "$url"
       fi
 
-      album_art = "/tmp/$filename"
+      album_art="/tmp/$filename"
     else
-      album_art = ""
+      album_art=""
     fi
   }
 
   # displays a volume notification
   function show_vol_notif {
-    vol = $(get_mute)
+    vol=$(get_mute)
     get_vol_icon
 
     if [[ "${show_music_in_vol_indicator}" == "true" ]]; then
-      current_song = $(${pkgs.playerctl}/bin/playerctl -f "{{title}} - {{artist}}" metadata)
+      current_song=$(${pkgs.playerctl}/bin/playerctl -f "{{title}} - {{artist}}" metadata)
 
-      if [[ ${show_album_art} == "true" ]]; then
+      if [[ "${show_album_art}" == "true" ]]; then
         get_album_art
       fi
 
@@ -105,7 +105,7 @@ pkgs.writeShellScriptBin "duvolbr" ''
   }
 
   # displays a brightness notification
-  function show_brigthness_notif {
+  function show_bri_notif {
     bri=$(get_bri)
     echo $bri
     get_bri_icon
@@ -116,63 +116,63 @@ pkgs.writeShellScriptBin "duvolbr" ''
   # takes user input: "vol_up" "vol_down" "vol_mute" "bri_up" "bri_down" "next_track" "prev_track" "play_pause" "pause"
   case $1 in
     vol_up)
-    # unmutes, increases volume and displays notif
-    ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ 0
-    vol = $(get_vol)
-    if [ $(( "$vol" + "${vol_step}" )) -gt ${max_vol} ]; then
-      ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ ${max_vol}%
-    else
-      ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +${vol_step}%
-    fi
-    show_vol_notif
-    ;;
+      # unmutes, increases volume and displays notif
+      ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ 0
+      vol=$(get_vol)
+      if [ $(( "$vol" + "${vol_step}" )) -gt ${max_vol} ]; then
+        ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ ${max_vol}%
+      else
+        ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +${vol_step}%
+      fi
+      show_vol_notif
+      ;;
 
     vol_down)
-    # decreases volume and displays notif
-    ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -${vol_step}%
-    show_vol_notif
-    ;;
+      # decreases volume and displays notif
+      ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -${vol_step}%
+      show_vol_notif
+      ;;
 
     vol_mute)
-    # toggles mute and displays notif
-    ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
-    show_vol_notif
-    ;;
+      # toggles mute and displays notif
+      ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
+      show_vol_notif
+      ;;
 
     bri_up)
-    # increases brightness and display notif
-    sudo ${pkgs.light}/bin/light -A ${bri_step}
-    show_bri_notif
-    ;;
+      # increases brightness and display notif
+      sudo ${pkgs.light}/bin/light -A ${bri_step}
+      show_bri_notif
+      ;;
 
     bri_down)
-    # decreases brightness and display notif
-    sudo ${pkgs.light}/bin/light -U ${bri_step}
-    show_bri_notif
-    ;;
+      # decreases brightness and display notif
+      sudo ${pkgs.light}/bin/light -U ${bri_step}
+      show_bri_notif
+      ;;
 
     next_track)
-    # skips to next song and displays notif
-    ${pkgs.playerctl}/bin/playerctl next
-    sleep 0.5 && show_music_notif
-    ;;
+      # skips to next song and displays notif
+      ${pkgs.playerctl}/bin/playerctl next
+      sleep 0.5 && show_music_notif
+      ;;
 
     prev_track)
-    # skips to previous song and displays notif
-    ${pkgs.playerctl}/bin/playerctl previous
-    sleep 0.5 && show_music_notif
-    ;;
+      # skips to previous song and displays notif
+      ${pkgs.playerctl}/bin/playerctl previous
+      sleep 0.5 && show_music_notif
+      ;;
 
     play_pause)
-    # toggles play/pause and displays notif
-    ${pkgs.playerctl}/bin/playerctl play-pause
-    show_music_notif
-    ;;
+      # toggles play/pause and displays notif
+      ${pkgs.playerctl}/bin/playerctl play-pause
+      show_music_notif
+      ;;
 
     pause)
-    # just pauses and displays notif
-    ${pkgs.playerctl}/bin/playerctl pause
-    show_music_notif
-    ;;
+      # just pauses and displays notif
+      ${pkgs.playerctl}/bin/playerctl pause
+      show_music_notif
+      ;;
   esac
 ''
