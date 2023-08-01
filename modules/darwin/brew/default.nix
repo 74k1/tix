@@ -41,6 +41,9 @@ with lib;
       "font-fira-code-nerd-font"
       "karabiner-elements"
       "caffeine"
+      "mullvadvpn"
+      "keka"
+      "kekaexternalhelper"
     ];
     extraConfig = ''
       cask_args appdir: "~/Applications"

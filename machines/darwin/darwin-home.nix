@@ -26,6 +26,7 @@
     keepassxc
     discord
     obsidian
+    qbittorrent
     # neovim
     # karabiner-elements
   ];
