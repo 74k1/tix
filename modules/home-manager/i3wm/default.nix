@@ -19,6 +19,13 @@ in {
 
       window.border = 1;
 
+      # https://i3wm.org/docs/userguide.html#client_colors
+      #client.focused = "#7558FF";
+      #client.focused_inactive = "#404040";
+      #client.focused_tab_title = "#7558FF";
+      #client.unfocused = "#202020";
+      #client.urgent = "#FF5A74";
+
       gaps = {
         inner = 15;
         outer = 5;

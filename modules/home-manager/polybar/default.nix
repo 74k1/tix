@@ -4,7 +4,6 @@ with lib;
 
 let
   cfg = config.services.polybar;
-  
 in {
   config = {
     services.polybar = {
@@ -17,6 +16,12 @@ in {
       config = {
         "bar/main" = {
           monitor = "\${env:MONITOR:}";
+        };
+        "module/xyz" = {
+          type = "internal/pulseaudio";
+          interval = "5";
+          label-muted = "muted";
+          # click-middle = "pavucontrol";
         };
       };
       extraConfig = builtins.readFile ./polybar.ini;
