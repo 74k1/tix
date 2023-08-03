@@ -76,9 +76,13 @@
     EDITOR = "nvim";
   };
 
-
   # set Wall
   services.wallpaper = {
     enable = true;
   };
- }
+
+  # enable wezterm transparency
+  programs.wezterm = {
+    transparency = true;
+  };
+}

@@ -1,3 +1,6 @@
+{ transparency, ... }:
+
+''
 local wezterm = require 'wezterm'
 local config = {}
 
@@ -21,7 +24,11 @@ config.harfbuzz_features = {
 config.freetype_render_target = "Light"
 
 -- window opacity
-config.window_background_opacity = 0.75
+config.window_background_opacity = ${
+  if transparency
+  then "0.75"
+  else "1"
+}
 
 -- color
 config.colors = {
@@ -134,3 +141,4 @@ config.hyperlink_rules = {
 config.audible_bell = "Disabled";
 
 return config
+''
