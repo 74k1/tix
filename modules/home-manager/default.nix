@@ -1,6 +1,6 @@
 {
   git = import ./git;
-  gtk = import ./gtk;
+  theme = import ./theme;
   i3wm = import ./i3wm;
   nvim = import ./nvim;
   picom = import ./picom;

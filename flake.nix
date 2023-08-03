@@ -31,6 +31,14 @@
       inherit (self) outputs;
       inherit (nixpkgs) lib;
     in {
+      packages = {
+        "x86_64-linux" =
+          let
+            pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          in
+            import ./pkgs/default.nix { inherit pkgs; };
+      };
+
       nixosModules = import ./modules/nixos;
       
       nixosConfigurations = {

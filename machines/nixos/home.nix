@@ -3,13 +3,13 @@
 {
   imports = with outputs.homeManagerModules; [
     git
-    gtk
     i3wm
     nvim
     picom
     polybar
     rofi
     starship
+    theme
     wall
     wezterm
     xdg
@@ -18,7 +18,11 @@
   ];
 
   nixpkgs = {
-    overlays = [];
+    overlays = [
+      (final: prev: {
+        duvolbr = outputs.packages."x86_64-linux".duvolbr;
+      })
+    ];
     config.allowUnfree = true;
   };
 
@@ -36,7 +40,7 @@
     papirus-icon-theme
     
     # my own scriptiboo
-    (import ../../modules/home-manager/i3wm/duvolbr.nix { inherit pkgs; })
+    duvolbr
 
     # term
     wezterm
@@ -67,7 +71,7 @@
   # evolution stuff
   #services.gnome3.evolution-data-server.enable = true;
 
-  gtk.ukiyo = {
+  theme.ukiyo = {
     package = inputs.ukiyo.packages.x86_64-linux.default;
   };
 

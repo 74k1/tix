@@ -5,7 +5,6 @@ let
   alt = "Mod1";
   fm = "DP-0";
   sm = "DP-2";
-  duvolbr = import ./duvolbr.nix { inherit pkgs; };
 in {
   xsession.windowManager.i3 = {
     enable = true;
@@ -101,15 +100,15 @@ in {
         #"XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
 
         # pactl & playerctl # with script
-        "XF86AudioRaiseVolume" = "exec ${duvolbr}/bin/duvolbr vol_up";
-        "XF86AudioLowerVolume" = "exec ${duvolbr}/bin/duvolbr vol_down";
-        "XF86AudioMute" = "exec ${duvolbr}/bin/duvolbr vol_mute";
-        #"XF86MonBrightnessUp" = "exec ${duvolbr}/bin/duvolbr bri_up";
-        #"XF86MonBrightnessDown" = "exec ${duvolbr} bri_down";
-        "XF86AudioPlay" = "exec ${duvolbr}/bin/duvbolbr play_pause";
-        "XF86AudioPause" = "exec ${duvolbr}/bin/duvolbr play_pause";
-        "XF86AudioNext" = "exec ${duvolbr}/bin/duvolbr next_track";
-        "XF86AudioPrev" = "exec ${duvolbr}/bin/duvolbr prev_track";
+        "XF86AudioRaiseVolume" = "exec ${pkgs.duvolbr}/bin/duvolbr vol_up";
+        "XF86AudioLowerVolume" = "exec ${pkgs.duvolbr}/bin/duvolbr vol_down";
+        "XF86AudioMute" = "exec ${pkgs.duvolbr}/bin/duvolbr vol_mute";
+        #"XF86MonBrightnessUp" = "exec ${pkgs.duvolbr}/bin/duvolbr bri_up";
+        #"XF86MonBrightnessDown" = "exec ${pkgs.duvolbr} bri_down";
+        "XF86AudioPlay" = "exec ${pkgs.duvolbr}/bin/duvbolbr play_pause";
+        "XF86AudioPause" = "exec ${pkgs.duvolbr}/bin/duvolbr play_pause";
+        "XF86AudioNext" = "exec ${pkgs.duvolbr}/bin/duvolbr next_track";
+        "XF86AudioPrev" = "exec ${pkgs.duvolbr}/bin/duvolbr prev_track";
 
         # Focus
         "${mod}+j" = "focus down";

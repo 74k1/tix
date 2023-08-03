@@ -14,6 +14,10 @@ in
 {
   imports = [];
 
+  home.packages = with pkgs; [
+    ripgrep # For Telescope live-grep
+  ];
+  
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;

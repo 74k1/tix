@@ -16,7 +16,11 @@
   # let home-manager install and manage itself
   programs.home-manager.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    overlays = [];
+    config.allowUnfree = true;
+  };
+
 
   home.packages = with pkgs; [
     yabai
