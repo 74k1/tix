@@ -10,6 +10,7 @@ in {
   xsession.windowManager.i3 = {
     enable = true;
     package = pkgs.i3-gaps;
+    
 
     config = {
       modifier = mod;
@@ -24,21 +25,43 @@ in {
       colors = {
         focused = {
           border = "#7558FF";
+          background = "#3F259C"; # 3F259C
+          text = "#ffffff";
+          indicator = "#423194";
+          childBorder = "#352878";
         };
-        focused_inactive = {
+        focusedInactive = {
           border = "#404040";
+          background = "#5f676a";
+          text = "#ffffff";
+          indicator = "#484e50";
+          childBorder = "#5f676a";
         };
-        focused_tab_title = {
-          border = "#7558FF";
-        };
+        # focused_tab_title = {
+        #   border = "#7558FF";
+        # };
         unfocused = {
           border = "#202020";
+          background = "#222222";
+          text = "#888888";
+          indicator = "#292d2e";
+          childBorder = "#222222";
         };
         urgent = {
           border = "#FF5A74";
+          background = "#900000";
+          text = "#ffffff";
+          indicator = "#900000";
+          childBorder = "#900000";
+        };
+        placeholder = {
+          border = "#000000";
+          background = "#0c0c0c";
+          text = "#ffffff";
+          indicator = "#000000";
+          childBorder = "#0c0c0c";
         };
       };
-
 
       # https://i3wm.org/docs/userguide.html#client_colors
       #client.focused = "#7558FF";

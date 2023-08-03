@@ -7,7 +7,7 @@ in
   options = {
     programs.wezterm = {
       transparency = lib.mkOption {
-        type = lib.types.boolean;
+        type = lib.types.bool;
         description = "Whether to enable transparency or not";
         default = false;
       };
