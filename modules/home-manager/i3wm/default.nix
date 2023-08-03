@@ -19,6 +19,27 @@ in {
 
       window.border = 1;
 
+      # coloring:
+      # https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/lib/options.nix#L633C13-L633C23
+      colors = {
+        focused = {
+          border = "#7558FF";
+        };
+        focused_inactive = {
+          border = "#404040";
+        };
+        focused_tab_title = {
+          border = "#7558FF";
+        };
+        unfocused = {
+          border = "#202020";
+        };
+        urgent = {
+          border = "#FF5A74";
+        };
+      };
+
+
       # https://i3wm.org/docs/userguide.html#client_colors
       #client.focused = "#7558FF";
       #client.focused_inactive = "#404040";
