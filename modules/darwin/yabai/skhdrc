@@ -1,5 +1,5 @@
 # Open WezTerm
-cmd - return : wezterm
+# cmd - return : wezterm
 
 # Close window
 cmd - q : yabai -m window --close
