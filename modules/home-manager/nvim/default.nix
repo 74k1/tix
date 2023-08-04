@@ -1,13 +1,22 @@
 { lib, pkgs, config, ... }:
 
 let
+  nix-update-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "nix-update-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "reo101";
+      repo = "nix-update.nvim";
+      rev = "dd6f1d3ac74fd6b33e4f2d35274400cd27b48c2f";
+      sha256 = "sha256-4wEVHSBrKkZvpfidyrgRn0idcINbK0jyDvSEiTDFCus=";
+    };
+  };
   hmts-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "hmts-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "calops";
       repo = "hmts.nvim";
       rev = "v1.0.0";
-      hash = "sha256-NNiaHlE02XZyfRj8kXPLOAXlMs2BH1z7Q1AwHS/JTHo=";
+      sha256 = "sha256-NNiaHlE02XZyfRj8kXPLOAXlMs2BH1z7Q1AwHS/JTHo=";
     };
   };
   image-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -16,7 +25,7 @@ let
       owner = "samodostal";
       repo = "image.nvim";
       rev = "dcabdf47b0b974b61d08eeafa2c519927e37cf27";
-      hash = "sha256-NY0jPUTlT70afUU9lz2rEphNlYZpGfn3rjHwb4EhGrA=";
+      sha256 = "sha256-NY0jPUTlT70afUU9lz2rEphNlYZpGfn3rjHwb4EhGrA=";
     };
   };
 in
@@ -49,6 +58,11 @@ in
       cmp-path
       cmp-cmdline
       hmts-nvim
+      {
+        plugin = nix-update-nvim;
+        type = "lua";
+        config = builtins.readFile ./cfg/nix-update.lua;
+      }
       {
         plugin = image-nvim;
         type = "lua";
