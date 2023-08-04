@@ -29,13 +29,13 @@
     defaults = {
       NSGlobalDomain = {
         # Automatically show and hide the menu bar
-        _HIHideMenuBar = true;
+        #_HIHideMenuBar = true;
 
         # Set a fast key repeat rate
         KeyRepeat = 2;
 
         # Shorten delay before key repeat begins
-        InitialKeyRepeat = 12;
+        InitialKeyRepeat = 24;
       };
       
       dock = {
