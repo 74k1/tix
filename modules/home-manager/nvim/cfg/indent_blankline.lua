@@ -3,9 +3,9 @@ require("indent_blankline").setup({
   --char_list_blankline = { "|", "┊", "┆", "¦"},
   space_char_blankline = " ",
   max_indent_increase = 1,
-  use_treesitter = true,
+  --use_treesitter = false,
   show_end_of_line = false,
-  show_current_context = true,
+  show_current_context = false,
   --show_current_context_start = true,
   show_trailing_blankline_indent = false,
   context_patterns = {

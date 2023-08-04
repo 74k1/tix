@@ -1,6 +1,15 @@
 { lib, pkgs, config, ... }:
 
 let
+  hmts-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "hmts-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "calops";
+      repo = "hmts.nvim";
+      rev = "v1.0.0";
+      hash = "sha256-NNiaHlE02XZyfRj8kXPLOAXlMs2BH1z7Q1AwHS/JTHo=";
+    };
+  };
   image-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "image-nvim";
     src = pkgs.fetchFromGitHub {
@@ -34,11 +43,12 @@ in
       nvim-tree-lua
       comment-nvim
       telescope-nvim
-      nvim-treesitter
+      nvim-treesitter.withAllGrammars
       nvim-cmp
       cmp-buffer
       cmp-path
       cmp-cmdline
+      hmts-nvim
       {
         plugin = image-nvim;
         type = "lua";
