@@ -24,7 +24,7 @@ in {
       colors = {
         focused = {
           border = "#7558FF";
-          background = "#3F259C"; # 3F259C
+          background = "#3F259C";
           text = "#ffffff";
           indicator = "#423194";
           childBorder = "#352878";
@@ -36,9 +36,6 @@ in {
           indicator = "#484e50";
           childBorder = "#5f676a";
         };
-        # focused_tab_title = {
-        #   border = "#7558FF";
-        # };
         unfocused = {
           border = "#202020";
           background = "#222222";
@@ -62,13 +59,6 @@ in {
         };
       };
 
-      # https://i3wm.org/docs/userguide.html#client_colors
-      #client.focused = "#7558FF";
-      #client.focused_inactive = "#404040";
-      #client.focused_tab_title = "#7558FF";
-      #client.unfocused = "#202020";
-      #client.urgent = "#FF5A74";
-
       gaps = {
         inner = 15;
         outer = 5;
@@ -76,41 +66,41 @@ in {
 
       keybindings = lib.mkOptionDefault {
         # Term
-        "Ctrl+${alt}+t" = "exec ${pkgs.wezterm}/bin/wezterm";
-        "${mod}+Return" = "exec ${pkgs.wezterm}/bin/wezterm";
+        "Ctrl+${alt}+t" = "exec --no-startup-id ${pkgs.wezterm}/bin/wezterm";
+        "${mod}+Return" = "exec --no-startup-id ${pkgs.wezterm}/bin/wezterm";
         # "alt-tab"
-        "${mod}+Tab" = "exec ${pkgs.rofi}/bin/rofi -show window";
+        "${mod}+Tab" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi -show window";
         # Scrot
-        "${mod}+x" = "exec \"sh -e -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \\\\\"-i %i -g %g\\\\\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t \\\\\"image/png\\\\\"'\"";
-        "Print" = "exec \"sh -e -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \\\\\"-i %i -g %g\\\\\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t \\\\\"image/png\\\\\"'\"";
+        "${mod}+x" = "exec --no-startup-id \"sh -e -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \\\\\"-i %i -g %g\\\\\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t \\\\\"image/png\\\\\"'\"";
+        "Print" = "exec --no-startup-id \"sh -e -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \\\\\"-i %i -g %g\\\\\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t \\\\\"image/png\\\\\"'\"";
         # Mac-like Keybind :^)
-        "${alt}+Shift+s" = "exec ${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f '-i %i -g %g') - | ${pkgs.xclip}/bin/xclip -selection clipboard -t 'image/png'";
+        "${alt}+Shift+s" = "exec --no-startup-id \"sh -e -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \\\\\"-i %i -g %g\\\\\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t \\\\\"image/png\\\\\"'\"";
 
         # Rofi
-        "${mod}+space" = "exec ${pkgs.rofi}/bin/rofi -show drun";
-        "${mod}+r" = "exec ${pkgs.rofi}/bin/rofi -show drun";
+        "${mod}+space" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi -show drun";
+        "${mod}+r" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi -show drun";
 
         # pactl & playerctl # without script
-        #"XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 +5%";
-        #"XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 -5%";
-        #"XF86AudioMute" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute 0 toggle";
-        #"XF86MonBrightnessUp" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 5";
-        #"XF86MonBrightnessDown" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 5";
-        #"XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
-        #"XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl pause";
-        #"XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
-        #"XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
+        #"XF86AudioRaiseVolume" = "exec --no-startup-id ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 +5%";
+        #"XF86AudioLowerVolume" = "exec --no-startup-id ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 -5%";
+        #"XF86AudioMute" = "exec --no-startup-id ${pkgs.pulseaudio}/bin/pactl set-sink-mute 0 toggle";
+        #"XF86MonBrightnessUp" = "exec --no-startup-id ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 5";
+        #"XF86MonBrightnessDown" = "exec --no-startup-id ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 5";
+        #"XF86AudioPlay" = "exec --no-startup-id ${pkgs.playerctl}/bin/playerctl play-pause";
+        #"XF86AudioPause" = "exec --no-startup-id ${pkgs.playerctl}/bin/playerctl pause";
+        #"XF86AudioNext" = "exec --no-startup-id ${pkgs.playerctl}/bin/playerctl next";
+        #"XF86AudioPrev" = "exec --no-startup-id ${pkgs.playerctl}/bin/playerctl previous";
 
         # pactl & playerctl # with script
-        "XF86AudioRaiseVolume" = "exec ${pkgs.duvolbr}/bin/duvolbr vol_up";
-        "XF86AudioLowerVolume" = "exec ${pkgs.duvolbr}/bin/duvolbr vol_down";
-        "XF86AudioMute" = "exec ${pkgs.duvolbr}/bin/duvolbr vol_mute";
-        #"XF86MonBrightnessUp" = "exec ${pkgs.duvolbr}/bin/duvolbr bri_up";
-        #"XF86MonBrightnessDown" = "exec ${pkgs.duvolbr} bri_down";
-        "XF86AudioPlay" = "exec ${pkgs.duvolbr}/bin/duvbolbr play_pause";
-        "XF86AudioPause" = "exec ${pkgs.duvolbr}/bin/duvolbr play_pause";
-        "XF86AudioNext" = "exec ${pkgs.duvolbr}/bin/duvolbr next_track";
-        "XF86AudioPrev" = "exec ${pkgs.duvolbr}/bin/duvolbr prev_track";
+        "XF86AudioRaiseVolume" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr vol_up";
+        "XF86AudioLowerVolume" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr vol_down";
+        "XF86AudioMute" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr vol_mute";
+        #"XF86MonBrightnessUp" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr bri_up";
+        #"XF86MonBrightnessDown" = "exec --no-startup-id ${pkgs.duvolbr} bri_down";
+        "XF86AudioPlay" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvbolbr play_pause";
+        "XF86AudioPause" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr play_pause";
+        "XF86AudioNext" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr next_track";
+        "XF86AudioPrev" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr prev_track";
 
         # Focus
         "${mod}+j" = "focus down";
