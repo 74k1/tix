@@ -78,6 +78,8 @@ in {
         # Term
         "Ctrl+${alt}+t" = "exec ${pkgs.wezterm}/bin/wezterm";
         "${mod}+Return" = "exec ${pkgs.wezterm}/bin/wezterm";
+        # "alt-tab"
+        "${mod}+Tab" = "exec ${pkgs.rofi}/bin/rofi -show window";
         # Scrot
         "${mod}+x" = "exec \"sh -e -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \\\\\"-i %i -g %g\\\\\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t \\\\\"image/png\\\\\"'\"";
         "Print" = "exec \"sh -e -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \\\\\"-i %i -g %g\\\\\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t \\\\\"image/png\\\\\"'\"";

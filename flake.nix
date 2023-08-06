@@ -17,6 +17,9 @@
     ukiyo = {
       url = "github:74k1/ukiyo";
     };
+    wired = {
+      url = "github:Toqozz/wired-notify";
+    };
   };
 
   outputs =

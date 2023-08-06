@@ -47,7 +47,7 @@
     starship
     feh viu
     bat bat-extras.batman
-    dunst
+    # dunst
     exa
     ripgrep
     scc
@@ -55,6 +55,7 @@
     xplr
     zellij
     qmk
+    pulsemixer
 
     # gui stuff
     brave
@@ -63,7 +64,7 @@
     spotify
     spotify-tray
     discord
-    polybar # move to config.nix
+    # polybar
     # ly
     # evolution
   ];

@@ -1,12 +1,12 @@
 {
   git = import ./git;
-  theme = import ./theme;
   i3wm = import ./i3wm;
   nvim = import ./nvim;
   picom = import ./picom;
   polybar = import ./polybar;
   rofi = import ./rofi;
   starship = import ./starship;
+  theme = import ./theme;
   wall = import ./wall;
   wezterm = import ./wezterm;
   xdg = import ./xdg;
