@@ -1,0 +1,6 @@
+(
+  max_notifications: 10,
+  timeout: 20000,
+  poll_interval: 16,
+  history_length : 100
+)

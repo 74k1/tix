@@ -1,20 +1,29 @@
 { inputs, outputs, lib, pkgs, config, ... }:
 
 {
-  imports = with outputs.homeManagerModules; [
-    git
-    i3wm
-    nvim
-    picom
-    polybar
-    rofi
-    starship
-    theme
-    wall
-    wezterm
-    xdg
-    xorg
-    zsh
+  imports = builtins.concatLists [
+    # ext
+    [
+      inputs.wired.homeManagerModules.default
+    ]
+    
+    # int
+    (with outputs.homeManagerModules; [
+      git
+      i3wm
+      nvim
+      picom
+      polybar
+      rofi
+      starship
+      theme
+      wall
+      wezterm
+      wired
+      xdg
+      xorg
+      zsh
+    ])
   ];
 
   nixpkgs = {
@@ -22,6 +31,7 @@
       (final: prev: {
         duvolbr = outputs.packages."x86_64-linux".duvolbr;
       })
+      inputs.wired.overlays.default
     ];
     config.allowUnfree = true;
   };
@@ -47,7 +57,7 @@
     starship
     feh viu
     bat bat-extras.batman
-    # dunst
+    wired
     exa
     ripgrep
     scc
