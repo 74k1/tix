@@ -64,6 +64,11 @@ in
         config = builtins.readFile ./cfg/nix-update.lua;
       }
       {
+        plugin = clipboard-image-nvim;
+        type = "lua";
+        config = builtins.readFile ./cfg/clipboard-image.lua;
+      }
+      {
         plugin = image-nvim;
         type = "lua";
         config = builtins.readFile ./cfg/image.lua;
