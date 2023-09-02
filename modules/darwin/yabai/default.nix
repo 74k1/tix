@@ -2,14 +2,14 @@
 {
   services= {
     yabai = {
-      enable = true;
+      enable = false;
       package = pkgs.yabai;
       enableScriptingAddition = true;
       extraConfig = (builtins.readFile ./yabairc);
     };
 
     skhd = {
-      enable = true;
+      enable = false;
       package = pkgs.skhd;
       skhdConfig = (builtins.readFile ./skhdrc);
     };

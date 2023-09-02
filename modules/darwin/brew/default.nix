@@ -38,6 +38,7 @@ with lib;
     ];
     casks = [
       # "android-platform-tools"
+      "steam"
       "font-fira-code-nerd-font"
       "karabiner-elements"
       "caffeine"

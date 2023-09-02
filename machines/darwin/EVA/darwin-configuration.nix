@@ -38,12 +38,12 @@
         InitialKeyRepeat = 24;
       };
       
-      dock = {
+      # dock = {
         # Automatically show and hide the dock
-        autohide = true;
+        # autohide = true;
 
-        show-recents = false;
-      };
+        # show-recents = false;
+      # };
     };
   };
 

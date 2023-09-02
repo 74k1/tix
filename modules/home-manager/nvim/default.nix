@@ -58,6 +58,9 @@ in
       cmp-path
       cmp-cmdline
       hmts-nvim
+      vim-dadbod
+      vim-dadbod-ui
+      vim-dadbod-completion
       {
         plugin = nix-update-nvim;
         type = "lua";
@@ -86,7 +89,7 @@ in
       {
         plugin = indent-blankline-nvim;
         type = "lua";
-        config = builtins.readFile ./cfg/indent_blankline.lua;
+        config = builtins.readFile ./cfg/indent-blankline.lua;
       }
       {
         plugin = alpha-nvim;
