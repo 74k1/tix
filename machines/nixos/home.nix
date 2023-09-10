@@ -58,7 +58,7 @@
     feh viu
     bat bat-extras.batman
     wired
-    exa
+    eza
     ripgrep
     scc
     tealdeer
