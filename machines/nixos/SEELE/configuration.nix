@@ -61,7 +61,7 @@
       touchpad.accelProfile = "flat"; 
     };
     screenSection = ''
-      Option "metamodes" "DP-2: 1920x1080_165 +1920+0, DP-0: 1920x1080_165 +0+0"
+      Option "metamodes" "DP-2: 2560x1440_165 +0+0, DP-0: 2560x1440_165 +2560+0"
     '';
   };
 
