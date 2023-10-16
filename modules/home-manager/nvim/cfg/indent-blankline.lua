@@ -1,36 +1,51 @@
 require("ibl").setup({
-  --char = "|", -- "│",
-  --char_list_blankline = { "|", "┊", "┆", "¦"},
-  space_char_blankline = " ",
-  max_indent_increase = 1,
-  --use_treesitter = false,
-  show_end = false,
-  show_current_context = false,
-  --show_current_context_start = true,
-  show_trailing_blankline_indent = false,
-  context_patterns = {
-    "class",
-    "function",
-    "method",
-    "while",
-    "do_statement",
-    "closure",
-    "for",
-  },
   viewport_buffer = {
     min = 50,
     max = 600,
   },
-  filetype_exclude = {
-    "help",
-    "terminal",
-    "dashboard",
-    "startify",
-    "alpha",
-    "packer",
-    "neogitstatus",
-    "tsplayground",
-    "aerial",
+  
+  indent = {
+    char = "│"
   },
-  buftype_exclude = { "terminal" },
+  
+  whitespace = {
+    highlight = { "Whitespace", "NonText" },
+  },
+
+  scope = {
+    enabled = false,
+    show_start = true,
+    show_end = false,
+  },
+
+  exclude = {
+    filetypes = {
+      "help",
+      "terminal",
+      "dashboard",
+      "startify",
+      "alpha",
+      "packer",
+      "neogitstatus",
+      "tsplayground",
+      "aerial",
+    },
+    buftypes = {
+      "terminal",
+    },
+  },
+
+  --v2 space_char_blankline = " ",
+  --v2 max_indent_increase = 1,
+  --v2 show_current_context = false,
+  --show_current_context_start = true,
+  --context_patterns = {
+  --  "class",
+  --  "function",
+  --  "method",
+  --  "while",
+  --  "do_statement",
+  --  "closure",
+  --  "for",
+  --},
 })
