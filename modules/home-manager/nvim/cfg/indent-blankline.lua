@@ -1,10 +1,10 @@
-require("indent_blankline").setup({
+require("ibl").setup({
   --char = "|", -- "│",
   --char_list_blankline = { "|", "┊", "┆", "¦"},
   space_char_blankline = " ",
   max_indent_increase = 1,
   --use_treesitter = false,
-  show_end_of_line = false,
+  show_end = false,
   show_current_context = false,
   --show_current_context_start = true,
   show_trailing_blankline_indent = false,
@@ -17,7 +17,10 @@ require("indent_blankline").setup({
     "closure",
     "for",
   },
-  viewport_buffer = 50,
+  viewport_buffer = {
+    min = 50,
+    max = 600,
+  },
   filetype_exclude = {
     "help",
     "terminal",
