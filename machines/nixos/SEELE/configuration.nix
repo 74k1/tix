@@ -50,9 +50,27 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    windowManager.i3 = {
-      enable = true;
-      package = pkgs.i3-gaps;
+    
+    desktopManager = {
+      xterm.enable = false;
+      xfce.enable = true;
+    };
+
+    # windowManager.i3 = {
+    #   enable = true;
+    #   package = pkgs.i3-gaps;
+    # };
+
+    # greeter
+    displayManager = {
+      lightdm = {
+        enable = true;
+        greeters.slick = {
+          enable = true;
+          theme.name = "Ukiyo";
+        };
+      };
+      defaultSession = "xfce";
     };
 
     libinput = {
@@ -60,6 +78,7 @@
       mouse.accelProfile = "flat";
       touchpad.accelProfile = "flat"; 
     };
+
     screenSection = ''
       Option "metamodes" "DP-2: 2560x1440_165 +0+0, DP-0: 2560x1440_165 +2560+0"
     '';
@@ -76,9 +95,6 @@
   #     };
   #   };
   # };
-
-  # I want tuigreet to work :(
-  services.xserver.displayManager.lightdm.enable = true;
   
   # Disable xorg Screensaver
   environment.extraInit = ''

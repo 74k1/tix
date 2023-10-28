@@ -15,6 +15,13 @@ in
       example = "https://example.com/wallpaper.png";
       description = "The URL of the wallpaper image.";
     };
+
+    setWallCommand = mkOption {
+      type = types.str;
+      default = "${pkgs.feh}/bin/feh --bg-fill $tempfile";
+      example = "xfconf-query -c xfce4-desktop -p $(xfconf-query -c xfce4-desktop -l | grep 'workspace0/last-image') -s $tempfile";
+      description = "The command, that sets the wallpaper. ($tempfile is the wallpaper file)";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -23,7 +30,7 @@ in
       initExtra = ''
         tempfile=$(${pkgs.coreutils}/bin/mktemp)
         ${pkgs.curl}/bin/curl ${cfg.wallpaperUrl} --output $tempfile
-        ${pkgs.feh}/bin/feh --bg-fill $tempfile
+        ${cfg.setWallCommand}
         rm $tempfile
       '';
     };

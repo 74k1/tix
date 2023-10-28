@@ -91,11 +91,11 @@ in
         type = "lua";
         config = builtins.readFile ./cfg/indent-blankline.lua;
       }
-      {
-        plugin = alpha-nvim;
-        type = "lua";
-        config = builtins.readFile ./cfg/alpha.lua;
-      }
+      # {
+      #   plugin = alpha-nvim;
+      #   type = "lua";
+      #   config = builtins.readFile ./cfg/alpha.lua;
+      # }
       {
         plugin = catppuccin-nvim;
         type = "lua";

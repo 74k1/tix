@@ -177,7 +177,7 @@ in {
       workspace 18 output ${sm}
       workspace 19 output ${sm}
       workspace 20 output ${sm}
-              
+
       for_window [window_type="dialog"] floating enable
       for_window [window_type="utility"] floating enable
       for_window [window_type="toolbar"] floating enable

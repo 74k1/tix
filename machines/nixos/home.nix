@@ -10,7 +10,7 @@
     # int
     (with outputs.homeManagerModules; [
       git
-      i3wm
+      #i3wm
       nvim
       picom
       polybar
@@ -76,6 +76,10 @@
     # polybar
     # ly
     # evolution
+
+    # fonts
+    #material-symbols
+    #siji
   ];
   
   # evolution stuff
@@ -93,6 +97,7 @@
   # set Wall
   services.wallpaper = {
     enable = true;
+    setWallCommand = "xfconf-query -c xfce4-desktop -p $(xfconf-query -c xfce4-desktop -l | grep 'workspace0/last-image') -s $tempfile";
   };
 
   # enable wezterm transparency

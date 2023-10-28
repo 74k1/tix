@@ -6,6 +6,11 @@ let
   cfg = config.services.polybar;
 in {
   config = {
+    home.packages = with pkgs; [
+      # polybar
+      siji
+    ];
+    
     services.polybar = {
       enable = true;
       package = pkgs.polybar.override {
