@@ -53,19 +53,18 @@
     duvolbr
 
     # term
-    wezterm
-    starship
-    feh viu
     bat bat-extras.batman
-    wired
     eza
+    feh viu
+    pulsemixer
+    qmk
     ripgrep
     scc
+    starship
     tealdeer
-    xplr
+    wezterm
+    wired
     zellij
-    qmk
-    pulsemixer
 
     # gui stuff
     brave

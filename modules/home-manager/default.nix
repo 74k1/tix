@@ -12,6 +12,5 @@
   wired = import ./wired;
   xdg = import ./xdg;
   xorg = import ./xorg;
-  xplr = import ./xplr;
   zsh = import ./zsh;
 }
