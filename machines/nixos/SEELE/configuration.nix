@@ -53,7 +53,10 @@
     
     desktopManager = {
       xterm.enable = false;
-      xfce.enable = true;
+      xfce = {
+        enable = true;
+        enableXfwm = true;
+      };
     };
 
     # windowManager.i3 = {

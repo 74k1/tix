@@ -12,7 +12,7 @@
       git
       #i3wm
       nvim
-      picom
+      #picom
       polybar
       rofi
       starship
