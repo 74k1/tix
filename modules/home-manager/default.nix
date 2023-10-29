@@ -1,4 +1,5 @@
 {
+  bspwm = import ./bspwm;
   git = import ./git;
   i3wm = import ./i3wm;
   nvim = import ./nvim;

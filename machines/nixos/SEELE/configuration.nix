@@ -62,8 +62,8 @@
 
       windowManager.bspwm = {
         enable = true;
-        # package = pkgs.bspwm;
-        # sxhkd.package = pkgs.sxhkd;
+        package = pkgs.bspwm;
+        sxhkd.package = pkgs.sxhkd;
       };
 
       # greeter
@@ -75,7 +75,7 @@
             theme.name = "Ukiyo";
           };
         };
-        defaultSession = "bspwm";
+        defaultSession = "none+bspwm";
       };
 
       libinput = {
@@ -199,7 +199,6 @@
      git wget curl tmux
      pavucontrol
      neofetch
-     bspwm
      #dconf
      xorg.xkill xclip xdotool xorg.xinit
      xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin

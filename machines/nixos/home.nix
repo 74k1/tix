@@ -12,7 +12,9 @@
       git
       #i3wm
       nvim
-      #picom
+      bspwm
+      sxhkd
+      picom
       polybar
       rofi
       starship
@@ -97,7 +99,7 @@
   # set Wall
   services.wallpaper = {
     enable = true;
-    setWallCommand = "xfconf-query -c xfce4-desktop -p $(xfconf-query -c xfce4-desktop -l | grep 'workspace0/last-image') -s $tempfile";
+    # setWallCommand = "xfconf-query -c xfce4-desktop -p $(xfconf-query -c xfce4-desktop -l | grep 'workspace0/last-image') -s $tempfile";
   };
 
   # enable wezterm transparency
