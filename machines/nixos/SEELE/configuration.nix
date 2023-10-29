@@ -48,46 +48,56 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    
-    desktopManager = {
-      xterm.enable = false;
-      xfce = {
-        enable = true;
-        enableXfwm = true;
-      };
-    };
-
-    # windowManager.i3 = {
-    #   enable = true;
-    #   package = pkgs.i3-gaps;
-    # };
-
-    # greeter
-    displayManager = {
-      lightdm = {
-        enable = true;
-        greeters.slick = {
-          enable = true;
-          theme.name = "Ukiyo";
-        };
-      };
-      defaultSession = "xfce";
-    };
-
-    libinput = {
+  services = {
+    xserver = {
       enable = true;
-      mouse.accelProfile = "flat";
-      touchpad.accelProfile = "flat"; 
+      
+      # desktopManager = {
+      #   xterm.enable = false;
+      #   xfce = {
+      #     enable = true;
+      #     # enableXfwm = true;
+      #   };
+      # };
+
+      windowManager.bspwm = {
+        enable = true;
+        # package = pkgs.bspwm;
+        # sxhkd.package = pkgs.sxhkd;
+      };
+
+      # greeter
+      displayManager = {
+        lightdm = {
+          enable = true;
+          greeters.slick = {
+            enable = true;
+            theme.name = "Ukiyo";
+          };
+        };
+        defaultSession = "bspwm";
+      };
+
+      libinput = {
+        enable = true;
+        mouse.accelProfile = "flat";
+        touchpad.accelProfile = "flat"; 
+      };
+
+      screenSection = ''
+        Option "metamodes" "DP-2: 2560x1440_165 +0+0, DP-0: 2560x1440_165 +2560+0"
+      '';
     };
 
-    screenSection = ''
-      Option "metamodes" "DP-2: 2560x1440_165 +0+0, DP-0: 2560x1440_165 +2560+0"
-    '';
+    picom = {
+      enable = true;
+      fade = true;
+      # inactiveOpacity = "0.9";
+      shadow = true;
+      fadeDelta = 4;
+    };
   };
 
-  # services.picom.enable = true;
 
   # services.greetd = {
   #   enable = true;
@@ -189,6 +199,7 @@
      git wget curl tmux
      pavucontrol
      neofetch
+     bspwm
      #dconf
      xorg.xkill xclip xdotool xorg.xinit
      xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
