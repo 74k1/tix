@@ -1,6 +1,7 @@
 {
   bspwm = import ./bspwm;
   git = import ./git;
+  sxhkd = import ./sxhkd;
   i3wm = import ./i3wm;
   nvim = import ./nvim;
   picom = import ./picom;

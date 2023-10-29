@@ -13,8 +13,8 @@
       #i3wm
       nvim
       bspwm
-      sxhkd
       picom
+      sxhkd
       polybar
       rofi
       starship

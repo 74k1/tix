@@ -1,0 +1,11 @@
+# close window
+alt + F4
+  bspc node --close
+
+# program launcher
+super + @space
+  rofi -config -no-lazy-grab -show drun -modi drun
+
+# open terminal
+super + Return
+  bspc rule -a wezterm -o state=floating rectangle=1600x900x0x0 center=true && wezterm

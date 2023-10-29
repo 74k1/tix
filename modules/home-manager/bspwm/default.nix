@@ -1,8 +1,12 @@
 { config, lib, pkgs, ...}:
 
+let
+  cfg = config.xsession.windowManager.bspwm;
+in
 {
-  xsession.windowManager.bspwm = {
+  cfg = {
     enable = true;
     package = pkgs.bspwm;
+    extraConfig = import ./bspwmrc;
   };
 }
