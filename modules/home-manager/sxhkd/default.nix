@@ -5,7 +5,7 @@
     enable = true;
     package = pkgs.sxhkd;
 
-    # extraConfig = import ./sxhkdrc;
+    # extraConfig = builtins.readFile ./sxhkdrc;
     keybindings = {
       # open terminal
       "super + Return" = "bspc rule -a wezterm -o state=floating rectangle=1600x900x0x0 center=true && ${pkgs.wezterm}/bin/wezterm";

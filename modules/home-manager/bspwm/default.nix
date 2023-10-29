@@ -4,6 +4,6 @@
   xsession.windowManager.bspwm = {
     enable = true;
     package = pkgs.bspwm;
-    extraConfig = import ./bspwmrc;
+    extraConfig = builtins.readFile ./bspwmrc;
   };
 }
