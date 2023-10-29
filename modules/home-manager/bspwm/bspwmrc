@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# TODO: research how to bind workspaces across monitors
 # number of workspaces
 bspc monitor -d 1 2 3
 
