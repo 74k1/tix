@@ -1,11 +1,17 @@
 #!/bin/sh
 
 # TODO: research how to bind workspaces across monitors
-# number of workspaces
-bspc monitor -d 1 2 3
 
-# launch keybindings daemon
+# number of workspaces
+bspc monitor DP-0 -d I II III IV V VI VII VIII IX X
+bspc monitor DP-2 -d I II III IV V VI VII VIII IX X
+
+# launch
+## keybindings daemon
 pgrep -x sxhkd > /dev/null || sxhkd &
+
+## alttab
+pgrep -x alttab > /dev/null || alttab -d 1 -t 150x150 -i 64x64 -s 2 -bg '#1a1b26' -fg '#c0caf5' -frame '#573fbd' -bc '#22194b' -font 'xft:FiraCodeNFM-Reg' -b 1 &
 
 # window config
 bspc config border_width 0
