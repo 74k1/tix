@@ -20,7 +20,8 @@ in
       "${mod} + r" = "${pkgs.rofi}/bin/rofi -config -no-lazy-grab -show drun -modi drun";
 
       # alt-tab
-      "${alt} + Tab" = "${pkgs.rofi}/bin/rofi -kb-accept-entry '!Alt-Tab' -kb-row-down Alt-Tab -show window";
+      #"${alt} + Tab" = "${pkgs.xdotool}/bin/xdotool search --sync --limit 1 --class Rofi keyup --delay 0 Tab key --delay 0 Tab keyup --delay 0 Alt keydown --delay 0 Alt & ${pkgs.rofi}/bin/rofi -show window -kb-cancel 'Alt+Escape,Escape' -kb-accept-entry '!Alt-Tab,Return' -kb-row-down 'Alt+Tab,Alt+Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Shift+Tab,Alt+Up'";
+      "${alt} + {_,shift + }Tab" = "bspc node -f {next,prev}.local";
       
       # scrot
       "Print" = "sh -e -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \"-i %i -g %g\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t \"image/png\"'";
