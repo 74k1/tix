@@ -199,6 +199,7 @@
      git wget curl tmux
      pavucontrol
      neofetch
+     alttab
      #dconf
      xorg.xkill xclip xdotool xorg.xinit
      xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
