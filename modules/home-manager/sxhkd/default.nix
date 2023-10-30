@@ -18,6 +18,9 @@ in
       # rofi
       "${mod} + space" = "${pkgs.rofi}/bin/rofi -config -no-lazy-grab -show drun -modi drun";
       "${mod} + r" = "${pkgs.rofi}/bin/rofi -config -no-lazy-grab -show drun -modi drun";
+
+      # alt-tab
+      "${alt} + Tab" = "${pkgs.rofi}/bin/rofi -kb-accept-entry '!Alt-Tab' -kb-row-down Alt-Tab -show window";
       
       # scrot
       "Print" = "sh -e -c '${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f \"-i %i -g %g\") - | ${pkgs.xclip}/bin/xclip -selection clipboard -t \"image/png\"'";
