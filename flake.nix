@@ -20,6 +20,9 @@
     wired = {
       url = "github:Toqozz/wired-notify";
     };
+    spicetify-nix = {
+      url = "github:the-argus/spicetify-nix";
+    };
   };
 
   outputs =
@@ -28,6 +31,8 @@
     , nix-darwin
     , rix101
     , ukiyo
+    , wired
+    , spicetify-nix
     , ...
     } @ inputs:
     let

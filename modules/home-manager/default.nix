@@ -6,6 +6,7 @@
   picom = import ./x11/picom;
   polybar = import ./apps/polybar;
   rofi = import ./apps/rofi;
+  spotify = import ./apps/spotify;
   starship = import ./shell/starship;
   sxhkd = import ./x11/sxhkd;
   theme = import ./x11/theme;

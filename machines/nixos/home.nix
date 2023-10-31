@@ -15,6 +15,7 @@
       bspwm
       picom
       sxhkd
+      spotify
       polybar
       rofi
       starship
@@ -72,8 +73,8 @@
     brave
     keepassxc
     obsidian
-    spotify
-    spotify-tray
+    #spotify
+    #spotify-tray
     discord
     # polybar
     # ly
