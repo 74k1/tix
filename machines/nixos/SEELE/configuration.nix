@@ -8,6 +8,9 @@
     # })
 
     # ly
+    vm-test
+    locale
+    nix
   ];
 
   # Bootloader.
@@ -21,31 +24,31 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Zurich";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_GB.UTF-8";
-    LC_IDENTIFICATION = "en_GB.UTF-8";
-    LC_MEASUREMENT = "en_GB.UTF-8";
-    LC_MONETARY = "en_GB.UTF-8";
-    LC_NAME = "en_GB.UTF-8";
-    LC_NUMERIC = "en_GB.UTF-8";
-    LC_PAPER = "en_GB.UTF-8";
-    LC_TELEPHONE = "en_GB.UTF-8";
-    LC_TIME = "en_GB.UTF-8";
-  };
+  # # Set your time zone.
+  # time.timeZone = "Europe/Zurich";
+  #
+  # # Select internationalisation properties.
+  # i18n.defaultLocale = "en_US.UTF-8";
+  #
+  # i18n.extraLocaleSettings = {
+  #   LC_ADDRESS = "en_GB.UTF-8";
+  #   LC_IDENTIFICATION = "en_GB.UTF-8";
+  #   LC_MEASUREMENT = "en_GB.UTF-8";
+  #   LC_MONETARY = "en_GB.UTF-8";
+  #   LC_NAME = "en_GB.UTF-8";
+  #   LC_NUMERIC = "en_GB.UTF-8";
+  #   LC_PAPER = "en_GB.UTF-8";
+  #   LC_TELEPHONE = "en_GB.UTF-8";
+  #   LC_TIME = "en_GB.UTF-8";
+  # };
 
   # VM shenanigans
-  virtualisation.vmVariant = {
-    users = {
-      mutableUsers = false;
-      users.taki.password = "foo";
-    };
-  };
+  # virtualisation.vmVariant = {
+  #   users = {
+  #     mutableUsers = false;
+  #     users.taki.password = "foo";
+  #   };
+  # };
 
   # Enable the X11 windowing system.
   services = {
@@ -124,13 +127,13 @@
   };
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "ch";
-    xkbVariant = "";
-  };
+  # services.xserver = {
+  #   layout = "ch";
+  #   xkbVariant = "";
+  # };
 
   # Configure console keymap
-  console.keyMap = "sg";
+  # console.keyMap = "sg";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -179,18 +182,18 @@
   #programs.dconf.enable = true;
   services.gnome.evolution-data-server.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  nix = {
-    # Enable the newest nix version
-    package = pkgs.nixUnstable;
-
-    # Enable flakes, the new `nix` commands and better support for flakes in it
-    extraOptions = ''
-      experimental-features = nix-command flakes repl-flake
-    '';
-  };
+  # # Allow unfree packages
+  # nixpkgs.config.allowUnfree = true;
+  #
+  # nix = {
+  #   # Enable the newest nix version
+  #   package = pkgs.nixUnstable;
+  #
+  #   # Enable flakes, the new `nix` commands and better support for flakes in it
+  #   extraOptions = ''
+  #     experimental-features = nix-command flakes repl-flake
+  #   '';
+  # };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -199,10 +202,10 @@
      git wget curl tmux
      pavucontrol
      neofetch
-     alttab
+     #alttab
      #dconf
      xorg.xkill xclip xdotool xorg.xinit
-     xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
+     #xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -1,18 +1,18 @@
 {
-  bspwm = import ./bspwm;
-  git = import ./git;
-  sxhkd = import ./sxhkd;
-  i3wm = import ./i3wm;
-  nvim = import ./nvim;
-  picom = import ./picom;
-  polybar = import ./polybar;
-  rofi = import ./rofi;
-  starship = import ./starship;
-  theme = import ./theme;
-  wall = import ./wall;
-  wezterm = import ./wezterm;
-  wired = import ./wired;
-  xdg = import ./xdg;
-  xorg = import ./xorg;
-  zsh = import ./zsh;
+  bspwm = import ./x11/bspwm;
+  git = import ./shell/git;
+  i3wm = import ./x11/i3wm;
+  nvim = import ./shell/nvim;
+  picom = import ./x11/picom;
+  polybar = import ./apps/polybar;
+  rofi = import ./apps/rofi;
+  starship = import ./shell/starship;
+  sxhkd = import ./x11/sxhkd;
+  theme = import ./x11/theme;
+  wall = import ./x11/wall;
+  wezterm = import ./apps/wezterm;
+  wired = import ./apps/wired;
+  xdg = import ./x11/xdg;
+  xorg = import ./x11/xorg;
+  zsh = import ./shell/zsh;
 }
