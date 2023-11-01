@@ -9,6 +9,8 @@ in {
     home.packages = with pkgs; [
       # polybar
       siji
+      material-symbols
+      font-awesome
     ];
     
     services.polybar = {

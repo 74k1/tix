@@ -61,6 +61,7 @@ in
       vim-dadbod
       vim-dadbod-ui
       vim-dadbod-completion
+      vim-table-mode
       {
         plugin = nix-update-nvim;
         type = "lua";

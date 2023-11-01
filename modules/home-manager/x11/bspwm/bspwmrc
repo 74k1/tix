@@ -1,10 +1,8 @@
 #!/bin/sh
 
-# TODO: research how to bind workspaces across monitors
-
 # number of workspaces
-bspc monitor DP-2 -d I II III IV
-bspc monitor DP-0 -d 1 2 3 4
+bspc monitor DP-2 -d I II III
+bspc monitor DP-0 -d IV V VI
 
 # launch
 ## keybindings daemon
