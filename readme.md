@@ -1,5 +1,5 @@
 <div align="center">
-    <h1><samp>(t)aki's n(ix) flake</samp> ❄️</h1>
+    <h1><samp>(t)aki's n(ix) flake </samp>❄️</h1>
     <a href="https://github.com/74k1/tix/issues"><img src="https://img.shields.io/github/issues/74k1/tix?color=fab387&labelColor=303446&style=for-the-badge"></img></a>
     <a href="https://github.com/74k1/tix/stargazers"><img src="https://img.shields.io/github/stars/74k1/tix?color=fab387&labelColor=303446&style=for-the-badge"></img></a>
     <a href="#"><img src="https://img.shields.io/github/repo-size/74k1/tix?color=fab387&labelColor=303446&style=for-the-badge"></img></a>
