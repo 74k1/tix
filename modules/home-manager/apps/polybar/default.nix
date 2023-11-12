@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, ... }:
 
 with lib;
 
@@ -9,8 +9,9 @@ in {
     home.packages = with pkgs; [
       # polybar
       siji
-      material-symbols
-      font-awesome
+      inputs.ukiyo.packages.x86_64-linux.default
+      #material-symbols
+      #font-awesome
     ];
     
     services.polybar = {

@@ -17,6 +17,9 @@
     ukiyo = {
       url = "github:74k1/ukiyo";
     };
+    ChessSet = {
+      url = "github:74k1/ChessSet";
+    };
     wired = {
       url = "github:Toqozz/wired-notify";
     };
@@ -31,6 +34,7 @@
     , nix-darwin
     , rix101
     , ukiyo
+    , ChessSet
     , wired
     , spicetify-nix
     , ...
