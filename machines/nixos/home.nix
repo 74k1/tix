@@ -68,6 +68,7 @@
     wezterm
     wired
     zellij
+    #zoxide
 
     # gui stuff
     brave

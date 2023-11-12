@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     atuin
+    zoxide
   ];
 
   # zsh
@@ -14,6 +15,7 @@
       ":q" = "exit";
       cat = "${pkgs.bat}/bin/bat";
       cp = "cp -iv";
+      cd = "y";
       fetch = "${pkgs.neofetch}/bin/neofetch"; la = "${pkgs.eza}/bin/eza -a";
       ll = "${pkgs.eza}/bin/eza -l";
       ls = "${pkgs.eza}/bin/eza";
@@ -34,6 +36,7 @@
       export ATUIN_NOBIND="true"
       eval "$(${pkgs.atuin}/bin/atuin init zsh)"
       bindkey '^r' _atuin_search_widget
+      eval "$(${pkgs.zoxide}/bin/zoxide init --cmd y zsh)"
       ${builtins.readFile ./cfg/functions.zsh}
       
       # eva reference :^)
