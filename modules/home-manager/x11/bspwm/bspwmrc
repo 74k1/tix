@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # number of workspaces
-bspc monitor DP-2 -d I II III
-bspc monitor DP-0 -d IV V VI
+bspc monitor DP-2 -d ♔ ♕ ♖ ♘ ♗ ♙
+bspc monitor DP-0 -d ♚ ♛ ♜ ♞ ♝ ♟︎ 
 
 # window config
 bspc config border_width 2
@@ -48,4 +48,4 @@ bspc rule -a feh state=floating center=true
 # Autostart apps
 ## keybindings daemon
 pgrep -x sxhkd > /dev/null || sxhkd &
-
+systemctl --user restart polybar.service &

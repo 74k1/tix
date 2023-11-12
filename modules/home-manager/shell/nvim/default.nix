@@ -47,6 +47,7 @@ in
       set shiftwidth=2 softtabstop=2 expandtab
       set number relativenumber
       set clipboard=unnamedplus
+      let g:netrw_liststyle = 3
     '';
     plugins = with pkgs.vimPlugins; [
       nvim-tree-lua

@@ -5,20 +5,22 @@
     # ext
     [
       inputs.wired.homeManagerModules.default
+      inputs.nix-colors.homeManagerModules.default
     ]
     
     # int
     (with outputs.homeManagerModules; [
-      git
       #i3wm
-      nvim
       bspwm
+      colors
+      git
+      nvim
       picom
-      sxhkd
-      spotify
       polybar
       rofi
+      spotify
       starship
+      sxhkd
       theme
       wall
       wezterm
