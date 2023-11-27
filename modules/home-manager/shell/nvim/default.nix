@@ -50,12 +50,12 @@ in
       let g:netrw_liststyle = 3
 
       " Autocommands for vim-table-mode
-      augroup TableModeSetup
-        autocmd!
-        autocmd FileType markdown TableModeEnable
-        autocmd BufEnter * if &ft != 'markdown' | TableModeDisable | endif
-      augroup END
-      lua require'./plg/markdown_headings.lua'.init()
+      "augroup TableModeSetup
+      "  autocmd!
+      "  autocmd FileType markdown TableModeEnable
+      "  autocmd BufEnter * if &ft != 'markdown' | TableModeDisable | endif
+      "augroup END
+      " lua require'./plg/markdown_headings.lua'.init()
     '';
     plugins = with pkgs.vimPlugins; [
       nvim-tree-lua
