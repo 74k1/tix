@@ -66,7 +66,7 @@
               home-manager = {
                 useGlobalPkgs = false;
                 useUserPackages = true;
-                users.taki = import ./machines/nixos/home.nix;
+                users.taki = import ./machines/nixos/SEELE/home.nix;
                 extraSpecialArgs = {
                   inherit inputs outputs;
                 };
@@ -77,6 +77,26 @@
             inherit inputs outputs;
           };
         };
+	TOKYO-3 = lib.nixosSystem {
+          system = "x86_64-linux";
+	  modules = [
+            ./machines/nixos/TOKYO-3/configuration.nix
+	    inputs.home-manager.nixosModules.home-manager
+	    {
+	      home-manager = {
+	        useGlobalPkgs = false;
+		useUserPacker = true;
+		users.taki = import ./machines/nixos/TOKYO-3/home.nix;
+		extraSpecialArgs = {
+		  inherit inputs outputs;
+		};
+	      };
+	    }
+	  ];
+	  specialArgs = {
+	    inherit inputs outputs;
+	  };
+	};
       };
 
       darwinModules = import ./modules/darwin;
@@ -92,7 +112,7 @@
             home-manager = {
               useGlobalPkgs = false;
               useUserPackages = true;
-              users."74k1" = import ./machines/darwin/darwin-home.nix;
+              users."74k1" = import ./machines/darwin/EVA/darwin-home.nix;
               extraSpecialArgs = {
                 inherit inputs outputs;
               };
