@@ -41,6 +41,24 @@
     </table>
 </div>
 <div>
+    <h2>Programs</h2>
+    <p>
+    bla bla
+    </p>
+</div>
+<div>
+    <h2>Struct</h2>
+    <p>
+    bla bla
+    </p>
+    <h3>How to add a new machine</h3>
+    <p>
+        <ol>
+            <li>yippie</li>
+        </ol>
+    </p>
+</div>
+<div>
     <h2>Special Thanks to</h2>
     <h3><a href="https://github.com/reo101">reo101</a></h3>
     <a href="#"><img alt="clueless" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a>
