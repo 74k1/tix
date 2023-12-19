@@ -8,9 +8,40 @@
     <p>TODO: preview<p>
 </div>
 <div>
+    <h2>About</h2>
+    <p>
+    My very own nix config that I use on a daily basis. It's always in a continuing circle of improvements. Expect changes.
+    </p>
+    <h3>Hosts</h3>
+    <table>
+        <tr>
+            <th></th>
+            <th>Hostname</th>
+            <th>Type</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><a href="#"><img alt="desktop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
+            <td>SEELE</td>
+            <td>My Main Desktop<br>i9-13900k<br>RTX 3080ti</td>
+            <td>General purpose usage.</td>
+        </tr>
+        <tr>
+            <td><a href="#"><img alt="laptop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
+            <td>EVA</td>
+            <td>MacBook Air 13" M1</td>
+            <td>"main" laptop.. <sub>I'll get a Framework, when they add an ortho keyboard Layout.</sub></td>
+        </tr>
+        <tr>
+            <td><a href="#"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
+            <td>TOKYO-3</td>
+            <td>Custom Built Server<br>Ryzen 9 3900x<br>GTX 1060ti</td>
+            <td>Just for fun and my own VMs (hopefully with <a href="https://github.com/astro/microvm.nix">microvms</a> soon)</td>
+        </tr>
+    </table>
 </div>
 <div>
-    <h2>special thanks to</h2>
+    <h2>Special Thanks to</h2>
     <h3><a href="https://github.com/reo101">reo101</a></h3>
     <a href="#"><img alt="clueless" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a>
     <p>for helping a ton with nix :)</p>
