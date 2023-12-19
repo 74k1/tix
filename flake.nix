@@ -85,7 +85,7 @@
 	    {
 	      home-manager = {
 	        useGlobalPkgs = false;
-		useUserPacker = true;
+		useUserPackages = true;
 		users.taki = import ./machines/nixos/TOKYO-3/home.nix;
 		extraSpecialArgs = {
 		  inherit inputs outputs;
