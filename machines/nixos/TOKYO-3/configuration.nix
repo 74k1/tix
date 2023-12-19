@@ -27,7 +27,10 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhjipcpqKCIRFK3o5QqqjGteAFEJdabnZqgraK2n8pa taki@NERV"
     ];
+    shell = pkgs.zsh;
   };
+
+  programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [
     ntfs3g
@@ -38,13 +41,24 @@
   # Services
 
   # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
+  services = {
+    openssh = {
+      enable = true;
 
-    settings = {
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      PermitRootLogin = "yes";
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        PermitRootLogin = "yes";
+      };
+    };
+    sourcehut = {
+      enable = true;
+      meta.enable = true;
+      git.enable = false;
+      #settings."git.sr.ht" = {
+      #  oauth-client-id = "weewoo";
+      #  #oauth-client-secret = "weewoo2";
+      #};
     };
   };
 

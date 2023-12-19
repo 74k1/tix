@@ -2,15 +2,8 @@
 
 {
   imports = builtins.concatLists [
-    # ext
-    [
-      inputs.wired.homeManagerModules.default
-      inputs.nix-colors.homeManagerModules.default
-    ]
-    
     # int
     (with outputs.homeManagerModules; [
-      colors
       git
       nvim
       starship
@@ -39,7 +32,6 @@
     starship
     tealdeer
     wezterm
-    wired
     zellij
     #zoxide
   ];
