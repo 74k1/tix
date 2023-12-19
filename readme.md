@@ -23,20 +23,20 @@
         <tr>
             <td><a href="#"><img alt="desktop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
             <td>SEELE</td>
-            <td>My Main Desktop<br>i9-13900k<br>RTX 3080ti</td>
+            <td>Main Desktop<br><sub>i9-13900k<br>RTX 3080ti</sub></td>
             <td>General purpose usage.</td>
         </tr>
         <tr>
             <td><a href="#"><img alt="laptop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
             <td>EVA</td>
             <td>MacBook Air 13" M1</td>
-            <td>"main" laptop.. <sub>I'll get a Framework, when they add an ortho keyboard Layout.</sub></td>
+            <td>"main" laptop..<br><sub>I'll get a Framework, when they add an ortho keyboard Layout.</sub></td>
         </tr>
         <tr>
             <td><a href="#"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
             <td>TOKYO-3</td>
-            <td>Custom Built Server<br>Ryzen 9 3900x<br>GTX 1060ti</td>
-            <td>Just for fun and my own VMs (hopefully with <a href="https://github.com/astro/microvm.nix">microvms</a> soon)</td>
+            <td>Custom Server<br><sub>Ryzen 9 3900x<br>GTX 1060ti</sub></td>
+            <td>Just for fun and my own VMs<br><sub>hopefully with <a href="https://github.com/astro/microvm.nix">microvms</a> soon</sub></td>
         </tr>
     </table>
 </div>
