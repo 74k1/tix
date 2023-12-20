@@ -53,18 +53,30 @@
     };
     sourcehut = {
       enable = true;
+      nginx.enable = true;
+      postgresql.enable = true;
+      redis.enable = true;
+
       meta.enable = true;
       git.enable = false;
-      #settings."git.sr.ht" = {
-      #  oauth-client-id = "weewoo";
-      #  #oauth-client-secret = "weewoo2";
-      #};
+      
+      settings = {
+        "git.sr.ht" = {
+          oauth-client-id = "d07cb713d920702e";
+          oauth-client-secret = pkgs.writeText "gitsrht-oauth-client-secret" "3597288dc2c716e567db5384f493b09d";
+        };
+      };
+    };
+    postgresql = {
+      enable = true;
+      enableTCPIP = false;
+      settings.unix_socket_permissions = "0770";
     };
   };
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+  networking.firewall.allowedUDPPorts = [ 22 80 443 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
