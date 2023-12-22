@@ -50,6 +50,7 @@
     neofetch
     ntfs3g
     rage
+    age-plugin-yubikey
   ];
 
   # Services
