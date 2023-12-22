@@ -11,6 +11,14 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.darwin.follows = "";
+    };
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+    };
     rix101 = {
       url = "github:reo101/rix101";
     };
@@ -35,6 +43,8 @@
     { self
     , nixpkgs
     , nix-darwin
+    , agenix
+    , agenix-rekey
     , rix101
     , ukiyo
     , ChessSet
@@ -77,26 +87,42 @@
             inherit inputs outputs;
           };
         };
-	TOKYO-3 = lib.nixosSystem {
+        TOKYO-3 = lib.nixosSystem {
           system = "x86_64-linux";
-	  modules = [
+          modules = [
             ./machines/nixos/TOKYO-3/configuration.nix
-	    inputs.home-manager.nixosModules.home-manager
-	    {
-	      home-manager = {
-	        useGlobalPkgs = false;
-		useUserPackages = true;
-		users.taki = import ./machines/nixos/TOKYO-3/home.nix;
-		extraSpecialArgs = {
-		  inherit inputs outputs;
-		};
-	      };
-	    }
-	  ];
-	  specialArgs = {
-	    inherit inputs outputs;
-	  };
-	};
+            #agenix.nixosModules.default
+            #agenix-rekey.nixosModules.default
+            #{ environment.systemPackages = [ agenix-rekey.packages.x86_64-linux.default ]; }
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = false;
+                useUserPackages = true;
+                users.taki = import ./machines/nixos/TOKYO-3/home.nix;
+                extraSpecialArgs = {
+                  inherit inputs outputs;
+                };
+              };
+            }
+          ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
+        
+        # Expose the necessary information in your flake so agenix-rekey
+        # knows where it has to look for secrets and paths.
+        #
+        # Make sure that the pkgs passed here comes from the same nixpkgs version as
+        # the pkgs used on your hosts with `nixosConfigurations`, otherwise the rekeyed
+        # derivations will not be found!
+        agenix-rekey = agenix-rekey.configure {
+          userFlake = self;
+          nodes = self.nixosConfigurations;
+          # Example for colmena:
+          # inherit ((colmena.lib.makeHive self.colmena).introspect (x: x)) nodes;
+        };
       };
 
       darwinModules = import ./modules/darwin;

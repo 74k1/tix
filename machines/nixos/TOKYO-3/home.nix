@@ -24,6 +24,7 @@
 
   home.packages = with pkgs; [
     # term
+    #zoxide
     bat bat-extras.batman
     eza
     feh viu
@@ -33,7 +34,6 @@
     tealdeer
     wezterm
     zellij
-    #zoxide
   ];
   
   home.sessionVariables = {
