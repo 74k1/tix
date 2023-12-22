@@ -30,10 +30,20 @@
     shell = pkgs.zsh;
   };
 
+  age.rekey = {
+    # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
+    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGVrGnNjwaQ8CL4IBKWx0Z3A+PFpy96r0t8e2zc7jRr+ TOKYO-3";
+    # The path to the master identity used for decryption. See the option's description for more information.
+    masterIdentities = [
+      ./secrets/yubikey-1-on-person.pub
+      ./secrets/yubikey-2-at-home.pub
+    ];
+  };
+
   programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # agenix-rekey
+    inputs.agenix-rekey.packages.x86_64-linux.default
     btop
     docker-compose
     git wget curl tmux
@@ -67,7 +77,6 @@
   networking.firewall.allowedUDPPorts = [ 22 80 443 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
 
   # Docker
   virtualisation.docker.enable = true;

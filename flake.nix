@@ -64,6 +64,19 @@
             import ./pkgs/default.nix { inherit pkgs; };
       };
 
+      # Expose the necessary information in your flake so agenix-rekey
+      # knows where it has to look for secrets and paths.
+      #
+      # Make sure that the pkgs passed here comes from the same nixpkgs version as
+      # the pkgs used on your hosts with `nixosConfigurations`, otherwise the rekeyed
+      # derivations will not be found!
+      agenix-rekey = agenix-rekey.configure {
+        userFlake = self;
+        nodes = self.nixosConfigurations;
+        # Example for colmena:
+        # inherit ((colmena.lib.makeHive self.colmena).introspect (x: x)) nodes;
+      };
+
       nixosModules = import ./modules/nixos;
       
       nixosConfigurations = {
@@ -91,9 +104,8 @@
           system = "x86_64-linux";
           modules = [
             ./machines/nixos/TOKYO-3/configuration.nix
-            #agenix.nixosModules.default
-            #agenix-rekey.nixosModules.default
-            #{ environment.systemPackages = [ agenix-rekey.packages.x86_64-linux.default ]; }
+            agenix.nixosModules.default
+            agenix-rekey.nixosModules.default
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -109,19 +121,6 @@
           specialArgs = {
             inherit inputs outputs;
           };
-        };
-        
-        # Expose the necessary information in your flake so agenix-rekey
-        # knows where it has to look for secrets and paths.
-        #
-        # Make sure that the pkgs passed here comes from the same nixpkgs version as
-        # the pkgs used on your hosts with `nixosConfigurations`, otherwise the rekeyed
-        # derivations will not be found!
-        agenix-rekey = agenix-rekey.configure {
-          userFlake = self;
-          nodes = self.nixosConfigurations;
-          # Example for colmena:
-          # inherit ((colmena.lib.makeHive self.colmena).introspect (x: x)) nodes;
         };
       };
 
