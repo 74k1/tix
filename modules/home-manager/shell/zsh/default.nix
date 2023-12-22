@@ -13,7 +13,7 @@
 
     shellAliases = {
       ":q" = "exit";
-      ":E" = "${config.programs.neovim.finalPackage}/bin/nvim -c :E";
+      ":E" = "${config.programs.neovim.finalPackage}/bin/nvim +E";
       cat = "${pkgs.bat}/bin/bat";
       cp = "cp -iv";
       cd = "y";
