@@ -4,6 +4,9 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
+    inputs.agenix.nixosModules.default
+    inputs.agenix-rekey.nixosModules.default
+
     vm-test
     locale
     nix
