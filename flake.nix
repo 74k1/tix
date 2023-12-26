@@ -83,13 +83,13 @@
         SEELE = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./machines/nixos/SEELE/configuration.nix
+            ./hosts/nixos/SEELE/configuration.nix
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = false;
                 useUserPackages = true;
-                users.taki = import ./machines/nixos/SEELE/home.nix;
+                users.taki = import ./hosts/nixos/SEELE/home.nix;
                 extraSpecialArgs = {
                   inherit inputs outputs;
                 };
@@ -103,7 +103,7 @@
         TOKYO-3 = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./machines/nixos/TOKYO-3/configuration.nix
+            ./hosts/nixos/TOKYO-3/configuration.nix
             agenix.nixosModules.default
             agenix-rekey.nixosModules.default
             inputs.home-manager.nixosModules.home-manager
@@ -111,7 +111,7 @@
               home-manager = {
                 useGlobalPkgs = false;
                 useUserPackages = true;
-                users.taki = import ./machines/nixos/TOKYO-3/home.nix;
+                users.taki = import ./hosts/nixos/TOKYO-3/home.nix;
                 extraSpecialArgs = {
                   inherit inputs outputs;
                 };
@@ -131,13 +131,13 @@
           system = "aarch64-darwin";
 
           modules = [
-           ./machines/darwin/EVA/darwin-configuration.nix
+           ./hosts/darwin/EVA/darwin-configuration.nix
            inputs.home-manager.darwinModules.home-manager
            {
             home-manager = {
               useGlobalPkgs = false;
               useUserPackages = true;
-              users."74k1" = import ./machines/darwin/EVA/darwin-home.nix;
+              users."74k1" = import ./hosts/darwin/EVA/darwin-home.nix;
               extraSpecialArgs = {
                 inherit inputs outputs;
               };
