@@ -30,6 +30,7 @@
       zsh
     ])
   ];
+  
 
   nixpkgs = {
     overlays = [
@@ -38,7 +39,12 @@
       })
       inputs.wired.overlays.default
     ];
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "electron-25.9.0"
+      ];
+    };
   };
 
   home = {
