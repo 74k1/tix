@@ -17,11 +17,15 @@ in
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.DefaultDynamic;
+    theme = spicePkgs.themes.text;
 
     enabledExtensions = with spicePkgs.extensions; [
       shuffle
       hidePodcasts
+      playlistIcons
+      fullAlbumDate
+      fullAppDisplayMod
+      genre
     ];
   };
 }
