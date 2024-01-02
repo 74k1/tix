@@ -1,0 +1,6 @@
+[09:52:51 2024-01-02] FETCHING Version 2.29.1
+[09:52:51 2024-01-02] DOWNLOADING https://github.com/spicetify/spicetify-cli/releases/download/v2.29.1/spicetify-2.29.1-darwin-arm64.tar.gz
+[09:52:52 2024-01-02] EXTRACTING /Users/tim.raschle/.spicetify/spicetify.tar.gz
+[09:52:52 2024-01-02] SETTING EXECUTABLE PERMISSIONS TO /Users/tim.raschle/.spicetify/spicetify
+[09:52:52 2024-01-02] REMOVING /Users/tim.raschle/.spicetify/spicetify.tar.gz
+[09:52:52 2024-01-02] APPENDING /Users/tim.raschle/.spicetify to PATH in /Users/tim.raschle/.zshrc
