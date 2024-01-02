@@ -23,9 +23,9 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rix101 = {
-      url = "github:reo101/rix101";
-    };
+    # rix101 = {
+    #   url = "github:reo101/rix101";
+    # };
     ukiyo = {
       url = "github:74k1/ukiyo";
     };
@@ -49,7 +49,7 @@
     , nix-darwin
     , agenix
     , agenix-rekey
-    , rix101
+    # , rix101
     , ukiyo
     , ChessSet
     , wired
