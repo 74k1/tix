@@ -19,6 +19,10 @@
     agenix-rekey = {
       url = "github:oddlama/agenix-rekey";
     };
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     rix101 = {
       url = "github:reo101/rix101";
     };
@@ -104,8 +108,6 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/nixos/TOKYO-3/configuration.nix
-            agenix.nixosModules.default
-            agenix-rekey.nixosModules.default
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {

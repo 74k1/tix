@@ -7,6 +7,8 @@
     inputs.agenix.nixosModules.default
     inputs.agenix-rekey.nixosModules.default
 
+    inputs.nixos-generators.nixosModules.all-formats
+
     vm-test
     locale
     nix
