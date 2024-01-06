@@ -12,6 +12,7 @@
     vm-test
     locale
     nix
+    plex
   ];
 
   # Bootloader.
@@ -58,6 +59,20 @@
     age-plugin-yubikey
   ];
 
+  # NVIDIA
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+
+    open = false;
+    
+    nvidiaSettings = true;
+
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
   # Services
 
   services = {
@@ -79,10 +94,10 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
-  networking.firewall.allowedUDPPorts = [ 22 80 443 ];
+  #networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+  #networking.firewall.allowedUDPPorts = [ 22 80 443 ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # Docker
   virtualisation.docker.enable = true;
