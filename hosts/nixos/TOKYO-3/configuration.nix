@@ -12,7 +12,9 @@
     vm-test
     locale
     nix
+    gitea
     nvidia
+    # vaultwarden
     plex
   ];
 
@@ -74,18 +76,13 @@
         PermitRootLogin = "yes";
       };
     };
-
-    ## Gitea
-    gitea = {
-      enable = true;
-    };
   };
 
   fileSystems."/var/plex" = {
     device = "//255.255.255.255/share/plex";
     fsType = "cifs";
     options = [
-      "credentials=/home/taki/.cifs"
+      "credentials=/home/taki/cifs_secrets"
       "iocharset=utf8"
       "vers=3.0"
       "noperm"
