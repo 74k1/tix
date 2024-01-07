@@ -57,9 +57,12 @@
     ntfs3g
     rage
     age-plugin-yubikey
+    cifs-utils
   ];
 
   # NVIDIA
+
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -91,6 +94,18 @@
     gitea = {
       enable = true;
     };
+  };
+
+  fileSystems."/var/plex" = {
+    device = "//255.255.255.255/share/plex";
+    fsType = "cifs";
+    options = [
+      "credentials=/home/taki/.cifs"
+      "iocharset=utf8"
+      "vers=3.0"
+      "noperm"
+      "uid=0"
+    ];
   };
 
   # Open ports in the firewall.
