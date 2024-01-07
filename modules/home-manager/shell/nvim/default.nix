@@ -1,7 +1,7 @@
 { lib, pkgs, config, ... }:
 
 let
-  nix-update-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "nix-update-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "reo101";
@@ -10,7 +10,7 @@ let
       sha256 = "sha256-4wEVHSBrKkZvpfidyrgRn0idcINbK0jyDvSEiTDFCus=";
     };
   };
-  hmts-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  hmts-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "hmts-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "calops";
@@ -19,7 +19,7 @@ let
       sha256 = "sha256-NNiaHlE02XZyfRj8kXPLOAXlMs2BH1z7Q1AwHS/JTHo=";
     };
   };
-  image-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  image-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "image-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "samodostal";
