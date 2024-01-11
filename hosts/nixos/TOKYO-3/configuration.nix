@@ -16,6 +16,7 @@
     nvidia
     # vaultwarden
     plex
+    vikunja
   ];
 
   # Bootloader.
