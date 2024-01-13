@@ -6,7 +6,7 @@
     frontendHostname = "192.168.1.65";
     frontendScheme = "http";
 
-    environmentFiles = [ "/home/taki/vikunja.env.secret" ];
+    #environmentFiles = [ "/home/taki/vikunja_env_secrets" ];
 
     settings = {
       service.enableregistration = true;
