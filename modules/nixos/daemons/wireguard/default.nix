@@ -29,9 +29,10 @@
             })
             {
               SERN = {
-                PublicKey = "xyzxyzxyz"
+                PublicKey = "QACsJg17ScDNt/fvV3WvBnGYZ7+YFaiIfamznBfE7Rw="
                 AllowedIPs = [
-                "0.0.0.0/0"
+                  "10.100.0.2/24"
+                  "0.0.0.0/0"
                 ];
               };
             };

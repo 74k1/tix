@@ -16,6 +16,23 @@
   networking = {
     hostName = "SERN"; # Define your hostname.
     networkmanager.enable = true;
+    wireguard.interfaces = {
+      wg0 = {
+        ips = [ "10.100.0.2/24" ];
+        listenPort = 51820;
+
+        privateKeyFile = "/home/taki/wg_SERN_private_key_secrets";
+
+        peers = [
+          {
+            publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
+            allowedIPs = [ "0.0.0.0/0" ];
+
+            persistentKeepalive = 25;
+          }
+        ];
+      };
+    };
   };
 
   programs.zsh.enable = true;
