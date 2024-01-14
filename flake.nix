@@ -124,6 +124,26 @@
             inherit inputs outputs;
           };
         };
+        SERN = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/nixos/SERN/configuration.nix
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = false;
+                useUserPackages = true;
+                users.taki = import ./hosts/nixos/SERN/home.nix;
+                extraSpecialArgs = {
+                  inherit inputs outputs;
+                };
+              };
+            }
+          ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
       };
 
       darwinModules = import ./modules/darwin;

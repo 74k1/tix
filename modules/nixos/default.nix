@@ -7,6 +7,7 @@
   locale = import ./locale;
   ly = import ./daemons/ly;
   nix = import ./nix;
+  taki = import ./taki;
   nvidia = import ./nvidia;
   vm-test = import ./vm-test;
 }

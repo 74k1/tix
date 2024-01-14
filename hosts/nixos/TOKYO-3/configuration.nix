@@ -12,6 +12,7 @@
     vm-test
     locale
     nix
+    taki
     gitea
     nvidia
     # vaultwarden
@@ -27,21 +28,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.taki = {
-    isNormalUser = true;
-    description = "taki";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhjipcpqKCIRFK3o5QqqjGteAFEJdabnZqgraK2n8pa NERV"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF5VblfuasqhILQMzPNsJiEl4jVw+9HSa4rvH8ftHGZL MAGI"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAixkN1qkHsQI752vzxubx/2cGpuQN+ZFbMUswC3lBga SEELE"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKmsit4uJM5PL6HBiyHlC7fMhI9MvfK4fwVeK3lZnpjk EVA"
-    ];
-    shell = pkgs.zsh;
-  };
 
   age.rekey = {
     # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
