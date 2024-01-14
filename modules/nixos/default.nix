@@ -4,6 +4,7 @@
   vikunja = import ./daemons/vikunja;
   gitea = import ./daemons/gitea;
   vaultwarden = import ./daemons/vaultwarden;
+  wireguard = import ./daemons/wireguard;
   locale = import ./locale;
   ly = import ./daemons/ly;
   nix = import ./nix;

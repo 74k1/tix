@@ -18,6 +18,7 @@
     # vaultwarden
     plex
     vikunja
+    wireguard
   ];
 
   # Bootloader.
