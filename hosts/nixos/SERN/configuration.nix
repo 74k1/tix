@@ -14,7 +14,7 @@
   boot.loader.grub.device = "/dev/vda"; # or "nodev" for efi only
 
   networking = {
-    hostName = "SEELE"; # Define your hostname.
+    hostName = "SERN"; # Define your hostname.
     networkmanager.enable = true;
   };
 
