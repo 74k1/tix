@@ -1,20 +1,27 @@
 { config, lib, pkgs, ... }:
 {
-  services.vikunja = {
-    enable = true;
-    setupNginx = true;
-    frontendHostname = "192.168.1.65";
-    frontendScheme = "http";
+  services = {
+    vikunja = {
+      enable = true;
+      setupNginx = true;
+      frontendHostname = "example.com";
+      frontendScheme = "http";
 
-    #environmentFiles = [ "/home/taki/vikunja_env_secrets" ];
+      #environmentFiles = [ "/home/taki/vikunja_env_secrets" ];
 
-    settings = {
-      service.enableregistration = true;
+      settings = {
+        service.enableregistration = false;
 
-      defaultsettings = {
-        avatar_provider = "gravatar";
-        week_start = 1; # monday
+        defaultsettings = {
+          avatar_provider = "gravatar";
+          week_start = 1; # monday
+        };
       };
+    };
+
+    # hm
+    nginx = {
+      enable = true;
     };
   };
 }
