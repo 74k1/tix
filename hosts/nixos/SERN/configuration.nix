@@ -16,6 +16,8 @@
   networking = {
     hostName = "SERN"; # Define your hostname.
     networkmanager.enable = true;
+    firewall.allowedUDPPorts = [ 51820 22 ];
+    firewall.allowedTCPPorts = [ 22 ];
     wireguard.interfaces = {
       wg0 = {
         ips = [ "10.100.0.2/24" ];
@@ -26,8 +28,8 @@
         peers = [
           {
             publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
-            allowedIPs = [ "0.0.0.0/0" ];
-
+            allowedIPs = [ "10.100.0.1" ];
+            endpoint = "example.com:51820";
             persistentKeepalive = 25;
           }
         ];
