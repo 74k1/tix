@@ -58,6 +58,31 @@
         PermitRootLogin = "yes";
       };
     };
+
+    nginx = {
+      enable = true;
+      recommendedProxySettings = true;
+      recommendedTlsSettings = true;
+      virtualHosts = {
+        "example.com" = {
+          addSSL = true;
+          enableACME = true;
+          root = "/var/www/example.com/";
+        };
+        "td.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:80";
+          };
+        };
+      };
+    };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "boss@example.com";
   };
 
   # Open ports in the firewall.
