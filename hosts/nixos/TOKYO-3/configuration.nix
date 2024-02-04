@@ -15,6 +15,7 @@
     taki
     gitea
     nvidia
+    n8n
     # vaultwarden
     plex
     vikunja

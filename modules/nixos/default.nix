@@ -5,6 +5,7 @@
   gitea = import ./daemons/gitea;
   vaultwarden = import ./daemons/vaultwarden;
   wireguard = import ./daemons/wireguard;
+  n8n = import ./daemons/n8n;
   locale = import ./locale;
   ly = import ./daemons/ly;
   nix = import ./nix;

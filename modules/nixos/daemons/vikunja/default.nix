@@ -19,7 +19,6 @@
       };
     };
 
-    # hm
     nginx = {
       enable = true;
     };
