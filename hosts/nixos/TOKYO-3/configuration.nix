@@ -17,6 +17,7 @@
     nvidia
     n8n
     # vaultwarden
+    outline
     plex
     vikunja
     wireguard

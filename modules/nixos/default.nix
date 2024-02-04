@@ -1,6 +1,7 @@
 {
   plex = import ./daemons/plex;
   openssh = import ./daemons/openssh;
+  outline = import ./daemons/outline;
   vikunja = import ./daemons/vikunja;
   gitea = import ./daemons/gitea;
   vaultwarden = import ./daemons/vaultwarden;
