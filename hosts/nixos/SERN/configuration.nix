@@ -74,11 +74,18 @@
             proxyPass = "http://10.100.0.1:80";
           };
         };
-        "n8n.example.com" = {
+        # "n8n.example.com" = {
+        #   enableACME = true;
+        #   forceSSL = true;
+        #   locations."/" = {
+        #     proxyPass = "http://10.100.0.1:5678"
+        #   };
+        # };
+        "docs.example.com" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
-            proxyPass = "http://10.100.0.1:5678"
+            proxyPass = "http://10.100.0.1:3030";
           };
         };
         # "td.example.com-3456" = {
