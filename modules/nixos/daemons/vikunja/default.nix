@@ -4,8 +4,8 @@
     vikunja = {
       enable = true;
       setupNginx = true;
-      frontendHostname = "example.com";
-      frontendScheme = "http";
+      frontendHostname = "td.example.com";
+      frontendScheme = "https";
 
       #environmentFiles = [ "/home/taki/vikunja_env_secrets" ];
 
