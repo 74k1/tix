@@ -74,6 +74,13 @@
             proxyPass = "http://10.100.0.1:80";
           };
         };
+        "n8n.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:5678"
+          };
+        };
         # "td.example.com-3456" = {
         #   listen = [{ addr = "0.0.0.0"; port = 3456; }];
         #   serverAliases = [ "td.example.com" ];
