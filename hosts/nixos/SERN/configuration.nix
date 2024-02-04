@@ -81,11 +81,18 @@
         #     proxyPass = "http://10.100.0.1:5678"
         #   };
         # };
-        "docs.example.com" = {
+        "wiki.example.com" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
             proxyPass = "http://10.100.0.1:3030";
+          };
+        };
+        "auth.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:9091"
           };
         };
         # "td.example.com-3456" = {
