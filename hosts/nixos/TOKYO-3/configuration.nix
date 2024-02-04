@@ -10,6 +10,7 @@
     inputs.nixos-generators.nixosModules.all-formats
 
     vm-test
+    authelia
     locale
     nix
     taki
