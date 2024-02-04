@@ -6,6 +6,7 @@
     };
   };
   environment.systemPackages = with pkgs; [
-    nodejs_21
+    nodejs
   ];
+  programs.npm.enable = true;
 }
