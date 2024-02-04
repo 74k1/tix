@@ -16,15 +16,13 @@
   networking = {
     hostName = "SERN"; # Define your hostname.
     networkmanager.enable = true;
-    firewall.allowedUDPPorts = [ 51820 22 ];
-    firewall.allowedTCPPorts = [ 22 ];
+    firewall.allowedUDPPorts = [ 22 51820 ];
+    firewall.allowedTCPPorts = [ 22 80 443 3456 ];
     wireguard.interfaces = {
       wg0 = {
         ips = [ "10.100.0.2/24" ];
         listenPort = 51820;
-
         privateKeyFile = "/home/taki/wg_SERN_private_key_secrets";
-
         peers = [
           {
             publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
@@ -51,16 +49,16 @@
   services = {
     openssh = {
       enable = true;
-
       settings = {
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "yes";
       };
     };
-
     nginx = {
       enable = true;
+      recommendedGzipSettings = true;
+      recommendedOptimisation = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
       virtualHosts = {
@@ -76,6 +74,16 @@
             proxyPass = "http://10.100.0.1:80";
           };
         };
+        # "td.example.com-3456" = {
+        #   listen = [{ addr = "0.0.0.0"; port = 3456; }];
+        #   serverAliases = [ "td.example.com" ];
+        #   forceSSL = false;
+        #   enableACME = false;
+        #   locations."/" = {
+        #     proxyPass = "http://10.100.0.1:3456";
+        #     proxyWebsockets = true;
+        #   };
+        # };
       };
     };
   };
