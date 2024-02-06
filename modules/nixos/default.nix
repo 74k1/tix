@@ -1,5 +1,6 @@
 {
   plex = import ./daemons/plex;
+  couchdb = import ./daemons/couchdb;
   authelia = import ./daemons/authelia;
   openssh = import ./daemons/openssh;
   outline = import ./daemons/outline;

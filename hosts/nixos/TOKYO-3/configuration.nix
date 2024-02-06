@@ -14,6 +14,7 @@
     locale
     nix
     taki
+    couchdb
     gitea
     nvidia
     n8n

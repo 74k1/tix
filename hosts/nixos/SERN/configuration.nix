@@ -74,6 +74,13 @@
             proxyPass = "http://10.100.0.1:80";
           };
         };
+        "ls.example.com" = {
+          enableACME = true;6
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:5984";
+          };
+        };
         # "n8n.example.com" = {
         #   enableACME = true;
         #   forceSSL = true;
