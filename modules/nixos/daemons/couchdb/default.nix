@@ -2,8 +2,10 @@
 {
   services.couchdb = {
     enable = true;
-    adminUser = "couchdb";
-    adminPass = "wee";
+    adminUser = "broaden5289";
+    adminPass = "uwJ%YGWhjeb%HmASG2";
+    port = 5544;
+    bindAddress = "0.0.0.0";
     extraConfig = ''
       [couchdb]
       single_node=true
