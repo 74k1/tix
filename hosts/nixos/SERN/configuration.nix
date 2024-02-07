@@ -75,10 +75,10 @@
           };
         };
         "ls.example.com" = {
-          enableACME = true;6
+          enableACME = true;
           forceSSL = true;
           locations."/" = {
-            proxyPass = "http://10.100.0.1:5984";
+            proxyPass = "http://10.100.0.1:5544";
           };
         };
         # "n8n.example.com" = {
