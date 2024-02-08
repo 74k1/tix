@@ -1,5 +1,6 @@
 {
   plex = import ./daemons/plex;
+  fail2ban = import ./daemons/fail2ban;
   couchdb = import ./daemons/couchdb;
   authelia = import ./daemons/authelia;
   openssh = import ./daemons/openssh;

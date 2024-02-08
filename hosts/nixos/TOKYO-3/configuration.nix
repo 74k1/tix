@@ -13,6 +13,7 @@
     authelia
     locale
     nix
+    fail2ban
     taki
     couchdb
     gitea
