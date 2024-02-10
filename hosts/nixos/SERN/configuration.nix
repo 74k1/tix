@@ -95,13 +95,13 @@
         #     proxyPass = "http://10.100.0.1:3030";
         #   };
         # };
-        # "auth.example.com" = {
-        #   enableACME = true;
-        #   forceSSL = true;
-        #   locations."/" = {
-        #     proxyPass = "http://10.100.0.1:9091";
-        #   };
-        # };
+        "auth.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:9091";
+          };
+        };
         # "td.example.com-3456" = {
         #   listen = [{ addr = "0.0.0.0"; port = 3456; }];
         #   serverAliases = [ "td.example.com" ];
