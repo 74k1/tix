@@ -3,7 +3,7 @@
 {
   imports = with outputs.darwinModules; [
     brew
-    yabai
+    # yabai
   ];
 
   # List packages installed in system profile. To search by name, run:
