@@ -44,6 +44,12 @@
               "10.100.0.4/32"
             ];
           }
+          { # EVA
+            publicKey = "qL6QmOPbBx6Ej7HzNE/HwRo4vPts7EbTfIr/QMBIcyw=";
+            allowedIPs = [
+              "10.100.0.5/32"
+            ];
+          }
         ];
       };
     };

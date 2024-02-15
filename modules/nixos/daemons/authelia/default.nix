@@ -18,7 +18,7 @@
           host = "0.0.0.0";
         };
         authentication_backend.file = {
-          path = "/var/lib/authelia/users_db.yml";
+          path = "/var/lib/authelia-yukume/users_db.yml";
           watch = false;
           search = {
             email = false;
@@ -39,10 +39,11 @@
         access_control.default_policy = "two_factor";
         access_control.rules = [
           { domain = "*"; policy = "two_factor"; }
+          { domain = "wiki.example.com"; policy = "one_factor"; }
         ];
         session.domain = "example.com";
-        storage.local.path = "/var/lib/authelia/db.sqlite3";
-        notifier.filesystem.filename = "/var/lib/authelia/notif";
+        storage.local.path = "/var/lib/authelia-yukume/db.sqlite3";
+        notifier.filesystem.filename = "/var/lib/authelia-yukume/notif";
         log.level = "debug";
       };
     };
