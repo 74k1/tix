@@ -43,7 +43,6 @@
     btop
     git wget curl tmux
     neofetch
-    ntfs3g
   ];
 
   services = {
@@ -88,18 +87,36 @@
         #     proxyPass = "http://10.100.0.1:5678"
         #   };
         # };
-        # "wiki.example.com" = {
-        #   enableACME = true;
-        #   forceSSL = true;
-        #   locations."/" = {
-        #     proxyPass = "http://10.100.0.1:3030";
-        #   };
-        # };
+        "wiki.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:3030";
+            extraConfig = ''
+              include /etc/nginx/proxy_params;
+              proxy_set_header X-Forwarded-User $remote_user;
+              
+              auth_request https://auth.example.com/api/verify;
+              auth_request_set $target_url $scheme://$http_host$request_uri;
+              auth_request_set $user $upstream_http_remote_user;
+              proxy_set_header X-Forwarded-User $user;
+
+              error_page 401 =302 https://auth.example.com/?rd=$target_url;
+            '';
+          };
+        };
         "auth.example.com" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
             proxyPass = "http://10.100.0.1:9091";
+            proxyWebsockets = true;
+            extraConfig = ''
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto $scheme;
+            '';
           };
         };
         # "td.example.com-3456" = {
