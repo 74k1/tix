@@ -17,7 +17,7 @@
     hostName = "SERN"; # Define your hostname.
     networkmanager.enable = true;
     firewall.allowedUDPPorts = [ 22 51820 ];
-    firewall.allowedTCPPorts = [ 22 80 443 3456 ];
+    firewall.allowedTCPPorts = [ 22 80 443 465 993 ];
     wireguard.interfaces = {
       wg0 = {
         ips = [ "10.100.0.2/24" ];
@@ -119,11 +119,33 @@
         #     '';
         #   };
         # };
-        # "mail.example.com" = {
+        "mail.example.com-465" = {
+          listen = [{ addr = "0.0.0.0"; port = 465; ssl = true; }];
+          serverAliases = [ "mail.example.com" ];
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:465";
+            proxyWebsockets = true;
+          };
+        };
+        "mail.example.com-993" = {
+          listen = [{ addr = "0.0.0.0"; port = 993; ssl = true; }];
+          serverAliases = [ "mail.example.com" ];
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:143";
+            proxyWebsockets = true;
+          };
+        };
+        # "mail.example.com-995" = {
+        #   listen = [{ addr = "0.0.0.0"; port = 995; ssl = true; }];
+        #   serverAliases = [ "mail.example.com" ];
         #   enableACME = true;
         #   forceSSL = true;
         #   locations."/" = {
-        #     proxyPass = "http://10.100.0.1/";
+        #     proxyPass = "http://10.100.0.1:110";
         #     proxyWebsockets = true;
         #   };
         # };
