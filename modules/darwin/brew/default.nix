@@ -41,6 +41,7 @@ with lib;
       "steam"
       "font-fira-code-nerd-font"
       "karabiner-elements"
+      "bitwarden"
       "caffeine"
       "mullvadvpn"
       "keka"
