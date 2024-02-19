@@ -33,6 +33,16 @@
         ];
       };
     };
+    nat = {
+      enable = true;
+      externalInterface = "ens3";
+      internalInterfaces = [ "wg0" ];
+      forwardPorts = [
+        { destination = "10.100.0.1:25"; sourcePort = 25; } # SMTP
+        { destination = "10.100.0.1:143"; sourcePort = 143; } # IMAP
+        { destination = "10.100.0.1:110"; sourcePort = 110; } # POP3
+      ];
+    };
   };
 
   programs.zsh.enable = true;
@@ -100,7 +110,6 @@
         #       auth_request_set $target_url $scheme://$http_host$request_uri;
         #       auth_request_set $user $upstream_http_remote_user;
         #       proxy_set_header X-Forwarded-User $user;
-
         #       error_page 401 =302 https://auth.example.com/?rd=$target_url;
         #     '';
         #   };
@@ -119,26 +128,26 @@
         #     '';
         #   };
         # };
-        "mail.example.com-465" = {
-          listen = [{ addr = "0.0.0.0"; port = 465; ssl = true; }];
-          serverAliases = [ "mail.example.com" ];
-          enableACME = true;
-          forceSSL = true;
-          locations."/" = {
-            proxyPass = "http://10.100.0.1:465";
-            proxyWebsockets = true;
-          };
-        };
-        "mail.example.com-993" = {
-          listen = [{ addr = "0.0.0.0"; port = 993; ssl = true; }];
-          serverAliases = [ "mail.example.com" ];
-          enableACME = true;
-          forceSSL = true;
-          locations."/" = {
-            proxyPass = "http://10.100.0.1:143";
-            proxyWebsockets = true;
-          };
-        };
+        # "mail.example.com-465" = {
+        #   listen = [{ addr = "0.0.0.0"; port = 465; ssl = true; }];
+        #   serverAliases = [ "mail.example.com" ];
+        #   enableACME = true;
+        #   forceSSL = true;
+        #   locations."/" = {
+        #     proxyPass = "http://10.100.0.1:465";
+        #     proxyWebsockets = true;
+        #   };
+        # };
+        # "mail.example.com-993" = {
+        #   listen = [{ addr = "0.0.0.0"; port = 993; ssl = true; }];
+        #   serverAliases = [ "mail.example.com" ];
+        #   enableACME = true;
+        #   forceSSL = true;
+        #   locations."/" = {
+        #     proxyPass = "http://10.100.0.1:143";
+        #     proxyWebsockets = true;
+        #   };
+        # };
         # "mail.example.com-995" = {
         #   listen = [{ addr = "0.0.0.0"; port = 995; ssl = true; }];
         #   serverAliases = [ "mail.example.com" ];
