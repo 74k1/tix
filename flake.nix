@@ -38,6 +38,9 @@
     nix-colors = {
       url = "github:misterio77/nix-colors";
     };
+    simple-nixos-mailserver = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+    };
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
     };
@@ -53,6 +56,7 @@
     , ukiyo
     , ChessSet
     , wired
+    , simple-nixos-mailserver
     , spicetify-nix
     , ...
     } @ inputs:

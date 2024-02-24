@@ -9,6 +9,8 @@
 
     inputs.nixos-generators.nixosModules.all-formats
 
+    inputs.simple-nixos-mailserver.nixosModule
+
     vm-test
     authelia
     locale
@@ -16,11 +18,12 @@
     fail2ban
     taki
     couchdb
-    gitea
+    forgejo
     nvidia
     n8n
     # vaultwarden
     outline
+    mailserver
     plex
     vikunja
     wireguard
@@ -53,7 +56,7 @@
     docker-compose
     git wget curl tmux
     neofetch
-    ntfs3g
+    ntfs3g btrfs-progs
     rage
     age-plugin-yubikey
     cifs-utils
@@ -84,6 +87,12 @@
       "noperm"
       "uid=0"
     ];
+  };
+
+  fileSystems."/mnt/btrfs_pool" = {
+    device = "/dev/sda";
+    fsType = "btrfs";
+    options = [ "defaults" "noatime" "compress=zstd" "autodefrag" ];
   };
 
   # Open ports in the firewall.
