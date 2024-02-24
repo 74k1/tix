@@ -7,6 +7,8 @@
       locale
       nix
       taki
+      
+      # mailserver
     ];
 
   # Use the GRUB 2 boot loader.
@@ -17,7 +19,7 @@
     hostName = "SERN"; # Define your hostname.
     networkmanager.enable = true;
     firewall.allowedUDPPorts = [ 22 51820 ];
-    firewall.allowedTCPPorts = [ 22 80 443 465 993 ];
+    firewall.allowedTCPPorts = [ 22 25 80 110 143 443 465 587 993 995 ];
     wireguard.interfaces = {
       wg0 = {
         ips = [ "10.100.0.2/24" ];
@@ -33,16 +35,16 @@
         ];
       };
     };
-    nat = {
-      enable = true;
-      externalInterface = "ens3";
-      internalInterfaces = [ "wg0" ];
-      forwardPorts = [
-        { destination = "10.100.0.1:25"; sourcePort = 25; } # SMTP
-        { destination = "10.100.0.1:143"; sourcePort = 143; } # IMAP
-        { destination = "10.100.0.1:110"; sourcePort = 110; } # POP3
-      ];
-    };
+    # nat = {
+    #   enable = true;
+    #   externalInterface = "ens3";
+    #   internalInterfaces = [ "wg0" ];
+    #   forwardPorts = [
+    #     { destination = "10.100.0.1:25"; sourcePort = 25; } # SMTP
+    #     { destination = "10.100.0.1:143"; sourcePort = 143; } # IMAP
+    #     { destination = "10.100.0.1:110"; sourcePort = 110; } # POP3
+    #   ];
+    # };
   };
 
   programs.zsh.enable = true;
@@ -66,10 +68,55 @@
     };
     nginx = {
       enable = true;
+      package = pkgs.nginx.override { withMail = true; };
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
+      # config = ''
+      #   mail {
+      #     server_name mail.example.com;
+      #     auth_http localhost:9000/cgi-bin/auth;
+
+      #     proxy on;
+
+      #     imap_capabilities "IMAP4rev1" "UIDPLUS"; ##default
+
+      #     server {
+      #       listen 25;
+      #       protocol smtp;
+      #       smtp_auth none;
+      #     }
+      #     server {
+      #       listen 465;
+      #       protocol smtp;
+      #       smtp_auth none;
+      #     }
+      #     server {
+      #       listen 587;
+      #       protocol smtp;
+      #       smtp_auth none;
+      #     }
+      #     server {
+      #       listen 143;
+      #       protocol imap;
+      #       imap_auth none;
+      #     }
+      #     server {
+      #       listen 993;
+      #       protocol imap;
+      #       imap_auth none;
+      #     }
+      #     # server {
+      #     #   listen 110;
+      #     #   protocol pop3;
+      #     # }
+      #     # server {
+      #     #   listen 995;
+      #     #   protocol pop3;
+      #     # }
+      #   }
+      # '';
       virtualHosts = {
         "example.com" = {
           addSSL = true;
