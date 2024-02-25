@@ -24,6 +24,7 @@
     # vaultwarden
     outline
     mailserver
+    servarr
     plex
     vikunja
     wireguard
@@ -68,12 +69,43 @@
     ## OpenSSH
     openssh = {
       enable = true;
-
       settings = {
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "yes";
       };
+    };
+
+    samba = {
+      enable = true;
+      securityType = "user";
+      openFirewall = true;
+      extraConfig = ''
+        workgroup = WORKGROUP
+        server string = smbnix
+        netbios name = smbnix
+        security = user
+        hosts allow = 192.168.1. 10.100.0. 127.0.0.1 localhost
+        hosts deny = 0.0.0.0/0
+        guest account = nobody
+        map to guest = bad user
+      '';
+      shares = {
+        "plex_media" = {
+          path = "/mnt/btrfs_pool/plex_media";
+          browseable = "yes";
+          "read only" = "no";
+          "guest ok" = "yes";
+          "create mask" = "0644";
+          "directory mask" = "0755";
+          "force user" = "plex";
+          "force group" = "plex";
+        };
+      };
+    };
+    samba-wsdd = {
+      enable = true;
+      openFirewall = true;
     };
   };
 

@@ -11,6 +11,10 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    arion = {
+      url = "github:hercules-ci/arion";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,6 +54,7 @@
     { self
     , nixpkgs
     , nix-darwin
+    , arion
     , agenix
     , agenix-rekey
     # , rix101
@@ -113,6 +118,7 @@
           modules = [
             ./hosts/nixos/TOKYO-3/configuration.nix
             inputs.home-manager.nixosModules.home-manager
+            inputs.arion.nixosModules.arion
             {
               home-manager = {
                 useGlobalPkgs = false;

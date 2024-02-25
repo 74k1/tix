@@ -1,6 +1,7 @@
 {
   authelia = import ./daemons/authelia;
   couchdb = import ./daemons/couchdb;
+  servarr = import ./daemons/servarr;
   fail2ban = import ./daemons/fail2ban;
   forgejo = import ./daemons/forgejo;
   n8n = import ./daemons/n8n;
