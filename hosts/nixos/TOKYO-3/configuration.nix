@@ -23,7 +23,7 @@
     n8n
     # vaultwarden
     outline
-    mailserver
+    # mailserver
     servarr
     plex
     vikunja
