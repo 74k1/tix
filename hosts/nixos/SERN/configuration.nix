@@ -68,7 +68,7 @@
     };
     nginx = {
       enable = true;
-      package = pkgs.nginx.override { withMail = true; };
+      # package = pkgs.nginx.override { withMail = true; };
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
       recommendedProxySettings = true;
