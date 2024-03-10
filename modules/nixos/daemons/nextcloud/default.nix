@@ -7,6 +7,7 @@
     home = "/mnt/btrfs_pool/nextcloud_data";
     configureRedis = true;
     autoUpdateApps.enable = true;
+    maxUploadSize = "2048M";
     config = {
       adminpassFile = "/tmp/nextcloud_adminpass_secret";
     };
