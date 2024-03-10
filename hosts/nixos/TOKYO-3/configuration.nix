@@ -9,21 +9,20 @@
 
     inputs.nixos-generators.nixosModules.all-formats
 
-    inputs.simple-nixos-mailserver.nixosModule
-
     vm-test
     authelia
     locale
     nix
     fail2ban
     taki
+    nextcloud
     couchdb
     forgejo
     nvidia
     n8n
     # vaultwarden
     outline
-    # mailserver
+    mailserver
     servarr
     plex
     vikunja
@@ -34,10 +33,29 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "TOKYO-3"; # Define your hostname.
+  systemd.services.NetworkManager-wait-online.enable = false;
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "TOKYO-3"; # Define your hostname.
+    networkmanager.enable = true;
+
+    # wg-quick.interfaces = {
+    #   wg1 = {
+    #     address = [ "10.65.87.4/32" "fc00:bbbb:bbbb:bb01::2:5703/128" ];
+    #     privateKeyFile = "/home/taki/mullvad_private_key_secret";
+    #     dns = [ "10.64.0.1" ];
+    #     peers = [
+    #       {
+    #         publicKey = "5Ms10UxGjCSzwImTrvEjcygsWY8AfMIdYyRvgFuTqH8=";
+    #         allowedIPs = [ "0.0.0.0/0" "::0/0" ];
+    #         endpoint = "193.32.127.68:51820";
+    #         persistentKeepalive = 25;
+    #       }
+    #     ];
+    #   };
+    # };
+
+  };
 
   age.rekey = {
     # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts

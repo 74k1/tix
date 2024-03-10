@@ -1,5 +1,6 @@
 {
   authelia = import ./daemons/authelia;
+  nextcloud = import ./daemons/nextcloud;
   couchdb = import ./daemons/couchdb;
   servarr = import ./daemons/servarr;
   fail2ban = import ./daemons/fail2ban;
@@ -13,7 +14,7 @@
   wireguard = import ./daemons/wireguard;
   locale = import ./locale;
   ly = import ./daemons/ly;
-  mailserver = import ./mailserver;
+  mailserver = import ./daemons/mailserver;
   nix = import ./nix;
   nvidia = import ./nvidia;
   taki = import ./taki;
