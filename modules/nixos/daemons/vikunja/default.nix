@@ -3,7 +3,6 @@
   services = {
     vikunja = {
       enable = true;
-      setupNginx = true;
       frontendHostname = "td.example.com";
       frontendScheme = "https";
 
