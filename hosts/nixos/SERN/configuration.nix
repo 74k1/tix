@@ -19,7 +19,7 @@
     hostName = "SERN"; # Define your hostname.
     networkmanager.enable = true;
     firewall.allowedUDPPorts = [ 22 51820 ];
-    firewall.allowedTCPPorts = [ 22 25 80 110 143 443 465 587 993 995 ];
+    firewall.allowedTCPPorts = [ 22 25 80 143 443 465 587 993 4190 ];
     wireguard.interfaces = {
       wg0 = {
         ips = [ "10.100.0.2/24" ];
@@ -66,6 +66,109 @@
         PermitRootLogin = "yes";
       };
     };
+    
+    traefik = {
+      enable = true;
+      staticConfigOptions = {
+        entryPoints = {
+          mail.address = [ ":25" ":143" ":465" ":587" ":993" ":4190" ];
+
+          tcp.routers = {
+            "mail.example.com" = {
+              entryPoints = [ "mail" ];
+              rule = "HostSNI(mail.example.com)";
+              service = "mail-service@internal";
+            };
+          };
+
+          services = {
+            "mail-service@internal" = {
+              loadBalancers = { roundrobin = {}; };
+              servers = [
+                { address = "10.100.0.1:25"; }
+                { address = "10.100.0.1:143"; }
+                { address = "10.100.0.1:465"; }
+                { address = "10.100.0.1:587"; }
+                { address = "10.100.0.1:993"; }
+                { address = "10.100.0.1:4190"; }
+              ];
+            };
+          };
+        };
+      };
+    };
+
+    # haproxy = {
+    #   enable = true;
+    #   config = ''
+    #     defaults
+    #       option tcplog
+    #       timeout client 30s
+    #       timeout connect 5s
+    #       timeout server 30s
+
+    #     frontend imap_front
+    #       bind *:143
+    #       option tcplog
+    #       default_backend imap_back
+
+    #     frontend imaptls_front
+    #       bind *:993
+    #       option tcplog
+    #       default_backend imaptls_back
+
+    #     frontend sieve_front
+    #       bind *:4190
+    #       option tcplog
+    #       default_backend sieve_back
+
+    #     frontend smtp_front
+    #       bind *:25
+    #       option tcplog
+    #       default_backend smtp_back
+
+    #     frontend submission_front
+    #       bind *:587
+    #       option tcplog
+    #       default_backend submission_back
+
+    #     frontend submissions_front
+    #       bind *:465
+    #       option tcplog
+    #       default_backend submissions_back
+
+    #     backend imap_back
+    #       mode tcp
+    #       option ssl-hello-chk
+    #       server imap_server 10.100.0.1:143 weight 1 check
+    #     
+    #     backend imaptls_back
+    #       mode tcp
+    #       option ssl-hello-chk
+    #       server imaptls_server 10.100.0.1:993 weight 1 check ssl verify none
+
+    #     backend sieve_back
+    #       mode tcp
+    #       option ssl-hello-chk
+    #       server sieve_server 10.100.0.1:4190 weight 1 check
+
+    #     backend smtp_back
+    #       mode tcp
+    #       option ssl-hello-chk
+    #       server smtp_server 10.100.0.1:25 weight 1 check
+
+    #     backend submission_back
+    #       mode tcp
+    #       option ssl-hello-chk
+    #       server submission_server 10.100.0.1:587 weight 1 check
+    #     
+    #     backend submissions_back
+    #       mode tcp
+    #       option ssl-hello-chk
+    #       server submissions_server 10.100.0.1:465 weight 1 check ssl verify none
+    #   '';
+    # };
+
     nginx = {
       enable = true;
       # package = pkgs.nginx.override { withMail = true; };
@@ -127,7 +230,10 @@
           enableACME = true;
           forceSSL = true;
           locations."/" = {
-            proxyPass = "http://10.100.0.1:80";
+            proxyPass = "http://10.100.0.1:3456";
+            extraConfig = ''
+              client_max_body_size 20M;
+            '';
           };
         };
         "ls.example.com" = {
@@ -135,6 +241,25 @@
           forceSSL = true;
           locations."/" = {
             proxyPass = "http://10.100.0.1:5544";
+          };
+        };
+        "files.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations = {
+            "/" = {
+              proxyPass = "http://10.100.0.1:80";
+              extraConfig = ''
+                client_max_body_size 100G;
+                client_body_buffer_size 400M;
+              '';
+            };
+          #"/.well-known/carddav" = {
+          #    return = "301 $scheme://$host$remote.php/dav";
+          #  };
+          #"/.well-known/caldav" = {
+          #    return = "301 $scheme://$host$remote.php/dav";
+          #  };
           };
         };
         # "n8n.example.com" = {
