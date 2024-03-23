@@ -23,7 +23,11 @@ in {
         max-connections = 8192;
 
         proxy = {
-          trusted-networks = "{ \"127.0.0.0/8\", \"::1\", \"10.0.0.0/8\"}";
+          trusted-networks = {
+            "127.0.0.0/8" = "";
+            "::1" = "";
+            "10.0.0.0/8" = "";
+          };
         };
 
         security = {
@@ -72,7 +76,7 @@ in {
           };
 
           "management" = {
-            bind = [ "255.255.255.255:8088" ];
+            bind = [ "[::]:8088" ];
             protocol = "http";
           };
         };
