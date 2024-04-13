@@ -67,36 +67,36 @@
       };
     };
     
-    traefik = {
-      enable = true;
-      staticConfigOptions = {
-        entryPoints = {
-          mail.address = [ ":25" ":143" ":465" ":587" ":993" ":4190" ];
+    # traefik = {
+    #   enable = true;
+    #   staticConfigOptions = {
+    #     entryPoints = {
+    #       mail.address = [ ":25" ":143" ":465" ":587" ":993" ":4190" ];
 
-          tcp.routers = {
-            "mail.example.com" = {
-              entryPoints = [ "mail" ];
-              rule = "HostSNI(mail.example.com)";
-              service = "mail-service@internal";
-            };
-          };
+    #       tcp.routers = {
+    #         "mail.example.com" = {
+    #           entryPoints = [ "mail" ];
+    #           rule = "HostSNI(mail.example.com)";
+    #           service = "mail-service@internal";
+    #         };
+    #       };
 
-          services = {
-            "mail-service@internal" = {
-              loadBalancers = { roundrobin = {}; };
-              servers = [
-                { address = "10.100.0.1:25"; }
-                { address = "10.100.0.1:143"; }
-                { address = "10.100.0.1:465"; }
-                { address = "10.100.0.1:587"; }
-                { address = "10.100.0.1:993"; }
-                { address = "10.100.0.1:4190"; }
-              ];
-            };
-          };
-        };
-      };
-    };
+    #       services = {
+    #         "mail-service@internal" = {
+    #           loadBalancers = { roundrobin = {}; };
+    #           servers = [
+    #             { address = "10.100.0.1:25"; }
+    #             { address = "10.100.0.1:143"; }
+    #             { address = "10.100.0.1:465"; }
+    #             { address = "10.100.0.1:587"; }
+    #             { address = "10.100.0.1:993"; }
+    #             { address = "10.100.0.1:4190"; }
+    #           ];
+    #         };
+    #       };
+    #     };
+    #   };
+    # };
 
     # haproxy = {
     #   enable = true;
@@ -236,11 +236,18 @@
             '';
           };
         };
-        "ls.example.com" = {
+        # "ls.example.com" = {
+        #   enableACME = true;
+        #   forceSSL = true;
+        #   locations."/" = {
+        #     proxyPass = "http://10.100.0.1:5544";
+        #   };
+        # };
+        "git.example.com" = {
           enableACME = true;
           forceSSL = true;
-          locations."/" = {
-            proxyPass = "http://10.100.0.1:5544";
+          locations = {
+            "/".proxyPass = "http://10.100.0.1:3000";
           };
         };
         "files.example.com" = {
@@ -269,23 +276,13 @@
         #     proxyPass = "http://10.100.0.1:5678"
         #   };
         # };
-        # "wiki.example.com" = {
-        #   enableACME = true;
-        #   forceSSL = true;
-        #   locations."/" = {
-        #     proxyPass = "http://10.100.0.1:3030";
-        #     extraConfig = ''
-        #       include /etc/nginx/proxy_params;
-        #       proxy_set_header X-Forwarded-User $remote_user;
-        #       
-        #       auth_request https://auth.example.com/api/verify;
-        #       auth_request_set $target_url $scheme://$http_host$request_uri;
-        #       auth_request_set $user $upstream_http_remote_user;
-        #       proxy_set_header X-Forwarded-User $user;
-        #       error_page 401 =302 https://auth.example.com/?rd=$target_url;
-        #     '';
-        #   };
-        # };
+        "wiki.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:3030";
+          };
+        };
         # "auth.example.com" = {
         #   enableACME = true;
         #   forceSSL = true;
