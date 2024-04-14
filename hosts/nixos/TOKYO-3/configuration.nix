@@ -19,7 +19,7 @@
     couchdb
     forgejo
     nvidia
-    n8n
+    #n8n
     # vaultwarden
     outline
     mailserver
