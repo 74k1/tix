@@ -50,6 +50,12 @@
               "10.100.0.5/32"
             ];
           }
+          { # random VPS
+            publicKey = "Lb+FxLdix+at64z2F3H3tHEwtfkiI6WXp76+MsTQi2M=";
+            allowedIPs = [
+              "10.100.0.6/32"
+            ];
+          }
         ];
       };
     };

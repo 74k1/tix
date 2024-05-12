@@ -4,8 +4,7 @@
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    # Enable the newest nix version
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.stable;
 
     # Enable flakes, the new `nix` commands and better support for flakes in it
     extraOptions = ''

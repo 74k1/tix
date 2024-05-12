@@ -15,6 +15,7 @@
   locale = import ./locale;
   ly = import ./daemons/ly;
   mailserver = import ./daemons/mailserver;
+  minecraft-server = import ./daemons/minecraft-server;
   nix = import ./nix;
   nvidia = import ./nvidia;
   taki = import ./taki;
