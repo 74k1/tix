@@ -236,6 +236,13 @@
             '';
           };
         };
+        "mc.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:8123";
+          };
+        };
         # "ls.example.com" = {
         #   enableACME = true;
         #   forceSSL = true;
