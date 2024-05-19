@@ -35,6 +35,15 @@
     zellij
   ];
   
+  services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 86400;
+    maxCacheTtl = 86400;
+    enableZshIntegration = true;
+    pinentryPackage = pkgs.pinentry-curses;
+    enableSshSupport = true;
+  };
+
   home.sessionVariables = {
     SHELL = "${pkgs.zsh}/bin/zsh";
     EDITOR = "nvim";
