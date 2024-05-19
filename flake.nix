@@ -23,6 +23,10 @@
     agenix-rekey = {
       url = "github:oddlama/agenix-rekey";
     };
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,6 +61,7 @@
     , arion
     , agenix
     , agenix-rekey
+    , deploy-rs
     # , rix101
     , ukiyo
     , ChessSet
@@ -183,5 +188,47 @@
       };
 
       homeManagerModules = import ./modules/home-manager;
+
+      devShells.x86_64-linux =
+        let
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        in
+        {
+          default = pkgs.mkShell {
+            buildInputs = [
+              pkgs.git
+              agenix-rekey.packages."x86_64-linux".agenix-rekey
+              deploy-rs.packages."x86_64-linux".deploy-rs
+            ];
+          };
+          with-wireguard-tools = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              wireguard-tools
+            ];
+          };
+          niga = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              macchina
+            ];
+          };
+        };
+
+      deploy.nodes = {
+        SERN = {
+          hostname = "10.100.0.2";
+          sshOpts = [ "-p" "22" ];
+          sshUser = "taki";
+          user = "root";
+          interactiveSudo = true;
+          autoRollback = true;
+          magicRollback = true;
+          remoteBuild = false;
+          profiles.system = {
+            user = "root";
+            # Backreference to the flake output for the SERN configuration VVV
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.SERN;
+          };
+        };
+      };
     };
 }
