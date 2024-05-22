@@ -15,19 +15,19 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "calops";
       repo = "hmts.nvim";
-      rev = "v1.0.0";
-      sha256 = "sha256-NNiaHlE02XZyfRj8kXPLOAXlMs2BH1z7Q1AwHS/JTHo=";
+      rev = "v1.2.3";
+      sha256 = "sha256-kw3YJ21nhs/x9Jp7kvnL+9FuiSgLB1hO/ON3QeeZx9g=";
     };
   };
-  image-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "image-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "samodostal";
-      repo = "image.nvim";
-      rev = "dcabdf47b0b974b61d08eeafa2c519927e37cf27";
-      sha256 = "sha256-NY0jPUTlT70afUU9lz2rEphNlYZpGfn3rjHwb4EhGrA=";
-    };
-  };
+  # image-nvim = pkgs.vimUtils.buildVimPlugin {
+  #   name = "image-nvim";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "3rd";
+  #     repo = "image.nvim";
+  #     rev = "2a618c86d9f8fd9f7895d12b55ec2f31fd14fa05";
+  #     sha256 = "sha256-6nFzUchDQIvaTOv4lZ10q66m/ntU3dgVnlfBRodW+0Y=";
+  #   };
+  # };
   indentmini-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "indentmini-nvim";
     src = pkgs.fetchFromGitHub {
@@ -35,6 +35,15 @@ let
       repo = "indentmini.nvim";
       rev = "a432ba5863892f9cf56a9d5a3fac00fdf2280b26";
       sha256 = "sha256-AVurQa359qAJMLOYQBjqnqvuxXtr2ClyfPzIfFI+EaY=";
+    };
+  };
+  tfm-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "tfm-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "Rolv-Apneseth";
+      repo = "tfm.nvim";
+      rev = "fb0de2c96bf303216ac5d91ce9bdb7f430030f8b";
+      sha256 = "sha256-LiIPVNFEbbkCmqTU+fD23xtTVTIkf6Z5zb+E4Xuz9ps=";
     };
   };
 in
@@ -57,7 +66,7 @@ in
       set number relativenumber
       set clipboard=unnamedplus
       let g:netrw_liststyle = 3
-
+      
       " Autocommands for vim-table-mode
       "augroup TableModeSetup
       "  autocmd!
@@ -80,7 +89,8 @@ in
       vim-dadbod-ui
       vim-dadbod-completion
       vim-table-mode
-      neo-tree-nvim
+      # neo-tree-nvim
+      tfm-nvim
       {
         plugin = indentmini-nvim;
         type = "lua";
@@ -96,11 +106,11 @@ in
         type = "lua";
         config = builtins.readFile ./cfg/clipboard-image.lua;
       }
-      {
-        plugin = image-nvim;
-        type = "lua";
-        config = builtins.readFile ./cfg/image.lua;
-      }
+      # {
+      #   plugin = image-nvim;
+      #   type = "lua";
+      #   config = builtins.readFile ./cfg/image.lua;
+      # }
       {
         plugin = nvim-autopairs;
         type = "lua";
