@@ -17,7 +17,8 @@
       cat = "${pkgs.bat}/bin/bat";
       cp = "cp -iv";
       cd = "y";
-      fetch = "${pkgs.neofetch}/bin/neofetch"; la = "${pkgs.eza}/bin/eza -a";
+      fetch = "${pkgs.macchina}/bin/neofetch";
+      la = "${pkgs.eza}/bin/eza -a";
       ll = "${pkgs.eza}/bin/eza -l";
       ls = "${pkgs.eza}/bin/eza";
       mv = "mv -iv";
@@ -25,6 +26,7 @@
       nv = "${config.programs.neovim.finalPackage}/bin/nvim";
       rm = "rm -iv";
       tree = "${pkgs.eza}/bin/eza --tree --icons";
+      jo = "${pkgs.joshuto}/bin/joshuto";
       # scrot = "${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f '-i %i -g %g') - | xclip -t 'image/png' -selection clipboard";
     };
 
@@ -59,6 +61,30 @@
           else
             "home-manager" # what is this? plain home-manager, works on every system? ye, like wsl, not darwin, not nixos, not android :holeymoley: havent used yes on such a system but in theory all home mnanager modules would work on it aha. alr alr :hm:
         } --flake ~/tix ''$''\{1:-switch''\} "''$''\{@:2''\}" |& nix run nixpkgs#nix-output-monitor
+      }
+
+      function joshuto() {
+        ID="$$"
+        mkdir -p /tmp/$USER
+        OUTPUT_FILE="/tmp/$USER/joshuto-cwd-$ID"
+        env joshuto --output-file "$OUTPUT_FILE" $@
+        exit_code=$?
+        case "$exit_code" in
+          # regular exit
+       	  0)
+       	    ;;
+       	  # output contains current directory
+       	  101)
+       	    JOSHUTO_CWD=$(cat "$OUTPUT_FILE")
+       	    cd "$JOSHUTO_CWD"
+       	    ;;
+       	  # output selected files
+       	  102)
+       	    ;;
+       	  *)
+       	    echo "Exit code: $exit_code"
+       	    ;;
+       	esac
       }
     '';
 

@@ -28,6 +28,7 @@
     bat bat-extras.batman
     eza
     feh viu
+    joshuto
     ripgrep
     scc
     starship

@@ -2,9 +2,9 @@
 {
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud28;
+    package = pkgs.nextcloud29;
     extraApps = {
-      inherit (config.services.nextcloud.package.packages.apps) contacts calendar tasks onlyoffice twofactor_webauthn;
+      inherit (config.services.nextcloud.package.packages.apps) contacts calendar onlyoffice twofactor_webauthn;
     };
     extraAppsEnable = true;
     hostName = "files.example.com";

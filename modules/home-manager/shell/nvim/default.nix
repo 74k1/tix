@@ -6,8 +6,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "reo101";
       repo = "nix-update.nvim";
-      rev = "dd6f1d3ac74fd6b33e4f2d35274400cd27b48c2f";
-      sha256 = "sha256-4wEVHSBrKkZvpfidyrgRn0idcINbK0jyDvSEiTDFCus=";
+      rev = "f548b55b49fffe4f8f26d1773107773e1f65aa6e";
+      sha256 = "sha256-yeUHoiFi2Wrr2WUKPGJEKXLGH1F+8QoNWNa8ln+ef1k=";
     };
   };
   hmts-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -26,6 +26,15 @@ let
       repo = "image.nvim";
       rev = "dcabdf47b0b974b61d08eeafa2c519927e37cf27";
       sha256 = "sha256-NY0jPUTlT70afUU9lz2rEphNlYZpGfn3rjHwb4EhGrA=";
+    };
+  };
+  indentmini-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "indentmini-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "nvimdev";
+      repo = "indentmini.nvim";
+      rev = "a432ba5863892f9cf56a9d5a3fac00fdf2280b26";
+      sha256 = "sha256-AVurQa359qAJMLOYQBjqnqvuxXtr2ClyfPzIfFI+EaY=";
     };
   };
 in
@@ -71,6 +80,12 @@ in
       vim-dadbod-ui
       vim-dadbod-completion
       vim-table-mode
+      neo-tree-nvim
+      {
+        plugin = indentmini-nvim;
+        type = "lua";
+        config = builtins.readFile ./cfg/indentmini.lua;
+      }
       {
         plugin = nix-update-nvim;
         type = "lua";
@@ -96,11 +111,11 @@ in
         type = "lua";
         config = builtins.readFile ./cfg/colorizer.lua;
       }
-      {
-        plugin = indent-blankline-nvim;
-        type = "lua";
-        config = builtins.readFile ./cfg/indent-blankline.lua;
-      }
+      #{
+      #  plugin = indent-blankline-nvim;
+      #  type = "lua";
+      #  config = builtins.readFile ./cfg/indent-blankline.lua;
+      #}
       # {
       #   plugin = alpha-nvim;
       #   type = "lua";

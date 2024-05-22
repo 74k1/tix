@@ -31,6 +31,9 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:danth/stylix";
+    };
     #rix101 = {
     #  url = "github:reo101/rix101";
     #};
@@ -62,6 +65,7 @@
     , agenix
     , agenix-rekey
     , deploy-rs
+    , stylix
     # , rix101
     , ukiyo
     , ChessSet
@@ -98,6 +102,12 @@
       nixosModules = import ./modules/nixos;
       
       nixosConfigurations = {
+        nixosConfigurations.default = lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            inputs.stylix.nixosModules.stylix
+          ];
+        };
         SEELE = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [

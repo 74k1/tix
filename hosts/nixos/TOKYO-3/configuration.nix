@@ -23,7 +23,6 @@
     # vaultwarden
     outline
     mailserver
-    minecraft-server
     servarr
     plex
     vikunja
