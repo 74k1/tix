@@ -73,6 +73,8 @@
     scc
     starship
     tealdeer
+    joshuto
+
     wezterm
     wired
     zellij

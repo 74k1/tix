@@ -1,5 +1,6 @@
 {
   authelia = import ./daemons/authelia;
+  steam = import ./steam;
   nextcloud = import ./daemons/nextcloud;
   couchdb = import ./daemons/couchdb;
   servarr = import ./daemons/servarr;

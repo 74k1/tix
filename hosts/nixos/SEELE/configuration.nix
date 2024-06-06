@@ -11,6 +11,7 @@
     vm-test
     locale
     nix
+    steam
   ];
 
   # Bootloader.
