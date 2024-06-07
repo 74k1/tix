@@ -43,7 +43,7 @@
     ChessSet = {
       url = "github:74k1/ChessSet";
     };
-    wired = {
+    wired-notify = {
       url = "github:Toqozz/wired-notify";
     };
     nix-colors = {
@@ -69,7 +69,7 @@
     # , rix101
     , ukiyo
     , ChessSet
-    , wired
+    , wired-notify
     # , simple-nixos-mailserver
     , spicetify-nix
     , ...
@@ -108,16 +108,16 @@
             inputs.stylix.nixosModules.stylix
           ];
         };
-        SEELE = lib.nixosSystem {
+        wired = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hosts/nixos/SEELE/configuration.nix
+            ./hosts/nixos/wired/configuration.nix
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = false;
                 useUserPackages = true;
-                users.taki = import ./hosts/nixos/SEELE/home.nix;
+                users.taki = import ./hosts/nixos/wired/home.nix;
                 extraSpecialArgs = {
                   inherit inputs outputs;
                 };

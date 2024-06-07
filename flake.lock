@@ -889,7 +889,7 @@
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "ukiyo": "ukiyo",
-        "wired": "wired"
+        "wired-notify": "wired-notify"
       }
     },
     "rust-overlay": {
@@ -1084,18 +1084,18 @@
         "type": "github"
       }
     },
-    "wired": {
+    "wired-notify": {
       "inputs": {
         "flake-parts": "flake-parts_3",
         "nixpkgs": "nixpkgs_7",
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1715552757,
-        "narHash": "sha256-ZOgCSIcdvG8+RcZCXSAEmb/LZ2Ap9wU4nvbxNDA+QN0=",
+        "lastModified": 1717582696,
+        "narHash": "sha256-NfBasvGOrxOzkreAbVpa5KS+dMLq+oUid7Q27AaIk9o=",
         "owner": "Toqozz",
         "repo": "wired-notify",
-        "rev": "18b44306b2636fc7f238a9d946c7b8aac217122d",
+        "rev": "9fb2153a878f9b20f21a63ae5e7ee8f70f18c0d0",
         "type": "github"
       },
       "original": {

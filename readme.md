@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td><a href="#"><img alt="desktop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
-            <td>SEELE</td>
+            <td>wired</td>
             <td>Main Desktop<br><sub>i9-13900k<br>RTX 3080ti</sub></td>
             <td>General purpose usage.</td>
         </tr>

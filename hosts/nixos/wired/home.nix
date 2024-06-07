@@ -4,7 +4,7 @@
   imports = builtins.concatLists [
     # ext
     [
-      inputs.wired.homeManagerModules.default
+      inputs.wired-notify.homeManagerModules.default
       inputs.nix-colors.homeManagerModules.default
     ]
     
@@ -37,7 +37,7 @@
       (final: prev: {
         duvolbr = outputs.packages."x86_64-linux".duvolbr;
       })
-      inputs.wired.overlays.default
+      inputs.wired-notify.overlays.default
     ];
     config = {
       allowUnfree = true;
@@ -86,7 +86,8 @@
     obsidian
     #spotify
     #spotify-tray
-    discord
+    #discord
+    vesktop
     # polybar
     # ly
     # evolution
