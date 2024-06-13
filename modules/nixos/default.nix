@@ -1,23 +1,24 @@
 {
   authelia = import ./daemons/authelia;
   steam = import ./steam;
-  nextcloud = import ./daemons/nextcloud;
+  arion = import ./arion;
   couchdb = import ./daemons/couchdb;
-  servarr = import ./daemons/servarr;
   fail2ban = import ./daemons/fail2ban;
   forgejo = import ./daemons/forgejo;
+  locale = import ./locale;
+  ly = import ./daemons/ly;
   n8n = import ./daemons/n8n;
+  nextcloud = import ./daemons/nextcloud;
+  nix = import ./nix;
+  nvidia = import ./nvidia;
   openssh = import ./daemons/openssh;
   outline = import ./daemons/outline;
   plex = import ./daemons/plex;
+  servarr = import ./daemons/servarr;
+  taki = import ./taki;
+  transmission = import ./daemons/transmission;
   vaultwarden = import ./daemons/vaultwarden;
   vikunja = import ./daemons/vikunja;
-  wireguard = import ./daemons/wireguard;
-  locale = import ./locale;
-  ly = import ./daemons/ly;
-  mailserver = import ./daemons/mailserver;
-  nix = import ./nix;
-  nvidia = import ./nvidia;
-  taki = import ./taki;
   vm-test = import ./vm-test;
+  wireguard = import ./daemons/wireguard;
 }

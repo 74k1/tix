@@ -15,6 +15,15 @@
           avatar_provider = "gravatar";
           week_start = 1; # monday
         };
+
+        # mailer = {
+        #   enabled = true;
+        #   host = "example.com";
+        #   port = "587";
+        #   authtype = "plain";
+        #   username = "mail@example.com";
+        #   password = "pass"; # TODO; once secret management is working
+        # };
       };
     };
 

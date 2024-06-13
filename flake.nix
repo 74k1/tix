@@ -46,12 +46,9 @@
     wired-notify = {
       url = "github:Toqozz/wired-notify";
     };
-    nix-colors = {
-      url = "github:misterio77/nix-colors";
+    vpnconfinement = {
+      url = "github:Maroka-chan/VPN-Confinement";
     };
-    # simple-nixos-mailserver = {
-    #   url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
-    # };
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
     };
@@ -71,6 +68,7 @@
     , ChessSet
     , wired-notify
     # , simple-nixos-mailserver
+    , vpnconfinement
     , spicetify-nix
     , ...
     } @ inputs:
@@ -134,6 +132,8 @@
             ./hosts/nixos/TOKYO-3/configuration.nix
             inputs.home-manager.nixosModules.home-manager
             inputs.arion.nixosModules.arion
+            # ment this,  i VsVadi in flake.nix, this is flake.nix :) its also here
+            inputs.vpnconfinement.nixosModules.default
             {
               home-manager = {
                 useGlobalPkgs = false;

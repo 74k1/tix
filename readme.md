@@ -21,22 +21,28 @@
             <th>Purpose</th>
         </tr>
         <tr>
-            <td><a href="#"><img alt="desktop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
+            <td><a href="hosts/nixos/wired"><img alt="desktop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
             <td>wired</td>
-            <td>Main Desktop<br><sub>i9-13900k<br>RTX 3080ti</sub></td>
+            <td>Main Desktop<br><sub>i9-13900k<br>RX 7900 XT</sub></td>
             <td>General purpose usage.</td>
         </tr>
         <tr>
-            <td><a href="#"><img alt="laptop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
-            <td>EVA</td>
-            <td>MacBook Air 13" M1</td>
-            <td>"main" laptop..<br><sub>I'll get a Framework, when they add an ortho keyboard Layout.</sub></td>
+            <td><a href="hosts/nixos/cyberia"><img alt="laptop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
+            <td>cyberia</td>
+            <td>Minisforum V3</td>
+            <td>General purpose usage. - mobile</td>
         </tr>
         <tr>
-            <td><a href="#"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
-            <td>TOKYO-3</td>
-            <td>Custom Server<br><sub>Ryzen 9 3900x<br>GTX 1060ti</sub></td>
-            <td>Just for fun and my own VMs<br><sub>hopefully with <a href="https://github.com/astro/microvm.nix">microvms</a> soon</sub></td>
+            <td><a href="hosts/nixos/eiri"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
+            <td>eiri</td>
+            <td>Custom Server<br><sub>Ryzen 9 3900x<br>GTX 1080ti</sub></td>
+            <td>Just for fun.</td>
+        </tr>
+        <tr>
+            <td><a href="hosts/nixos/knights"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
+            <td>knights</td>
+            <td>VPS<br><sub><a href="https://alphavps.com/">from AlphaVPS</a></sub></td>
+            <td>Just for fun.</td>
         </tr>
     </table>
 </div>
@@ -49,13 +55,13 @@
 <div>
     <h2>Struct</h2>
     <p>
-    bla bla
+    \<insert how to do awesome struct here\>
     </p>
-    <h3>How to add a new machine</h3>
+</div>
+<div>
+    <h2>Packages</h2>
     <p>
-        <ol>
-            <li>yippie</li>
-        </ol>
+    \<packages from this repo\>
     </p>
 </div>
 <div>

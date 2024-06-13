@@ -84,6 +84,7 @@
     brave
     keepassxc
     obsidian
+    gnome.simple-scan
     #spotify
     #spotify-tray
     #discord

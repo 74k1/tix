@@ -9,8 +9,8 @@
 
     inputs.nixos-generators.nixosModules.all-formats
 
+    arion
     vm-test
-    authelia
     locale
     nix
     fail2ban
@@ -22,7 +22,7 @@
     # n8n
     # vaultwarden
     outline
-    mailserver
+    transmission
     servarr
     plex
     vikunja
@@ -150,9 +150,6 @@
   #networking.firewall.allowedUDPPorts = [ 22 80 443 ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
-
-  # Docker
-  virtualisation.docker.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

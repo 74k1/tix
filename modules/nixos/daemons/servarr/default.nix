@@ -29,25 +29,25 @@
     # TV
     sonarr.enable = true;
 
-    # Transmission
-    transmission = {
-      enable = true;
-      openRPCPort = true;
-      settings = { 
-        download-dir = "/mnt/btrfs_pool/torrents/download";
-        incomplete-dir = "/mnt/btrfs_pool/torrents/incomplete";
-        incomplete-dir-enabled = true;
-        rpc-bind-address = "0.0.0.0";
-        rpc-port = 9092;
-        rpc-whitelist = "192.168.1.*,10.100.0.*";
-        rpc-username = "taki";
-        rpc-password = "00000000";
-      };
-    };
+    # # Transmission
+    # transmission = {
+    #   enable = true;
+    #   openRPCPort = true;
+    #   settings = { 
+    #     download-dir = "/mnt/btrfs_pool/torrents/download";
+    #     incomplete-dir = "/mnt/btrfs_pool/torrents/incomplete";
+    #     incomplete-dir-enabled = true;
+    #     rpc-bind-address = "0.0.0.0";
+    #     rpc-port = 9092;
+    #     rpc-whitelist = "192.168.1.*,10.100.0.*";
+    #     rpc-username = "taki";
+    #     rpc-password = "00000000";
+    #   };
+    # };
   };
 
   virtualisation.arion = {
-    backend = "docker";
+    backend = "podman-socket";
     projects = {
       "flaresolverr".settings.services."flaresolverr".service = {
         image = "ghcr.io/flaresolverr/flaresolverr:latest";

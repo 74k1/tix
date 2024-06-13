@@ -1,13 +1,13 @@
 { inputs, outputs, lib, config, pkgs, ... }:
 let
-  berkeley-mono-typeface = pkgs.callPackage ../../pkgs/berkeley-mono-typeface { inherit pkgs };
+  #berkeley-mono-typeface = pkgs.callPackage ../../pkgs/berkeley-mono-typeface;
 in
 {
   # define user account - don't forget to set password with `passwd`
   users.users.taki = {
     isNormalUser = true;
     description = "taki";
-    extraGroups = [ "wheel" "networkmanager" "docker" "plex" ];
+    extraGroups = [ "wheel" "networkmanager" "plex" ];
     packages = with pkgs; [];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmB5TLlaoy7JVpMYP0voMEQrGn2WGYapppxnQRD5JRS SERN"
@@ -25,7 +25,7 @@ in
   };
   fonts = {
     fontDir.enable = true;
-    enableGhostsriptFonts = true;
+    #enableGhostsriptFonts = true;
     packages = with pkgs; [
       cantarell-fonts
       hack-font
@@ -36,7 +36,7 @@ in
       noto-fonts
       ubuntu_font_family
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono"]; } )
-      berkeley-mono-typeface # owo
+      #berkeley-mono-typeface # owo
     ];
   };
 }
