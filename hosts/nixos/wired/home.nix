@@ -10,19 +10,21 @@
     
     # int
     (with outputs.homeManagerModules; [
-      #i3wm
-      bspwm
+      hyprland
+      # i3wm
+      # bspwm
       colors
       git
       nvim
       picom
       polybar
-      rofi
+      #rofi
+      # wofi
       spotify
       starship
-      sxhkd
+      # sxhkd
       theme
-      wall
+      #wall
       wezterm
       wired
       xdg
@@ -111,10 +113,10 @@
   };
 
   # set Wall
-  services.wallpaper = {
-    enable = true;
-    # setWallCommand = "xfconf-query -c xfce4-desktop -p $(xfconf-query -c xfce4-desktop -l | grep 'workspace0/last-image') -s $tempfile";
-  };
+  #services.wallpaper = {
+  #  enable = true;
+  #  setWallCommand = "${pkgs.swww}/bin/swww img $tempfile";
+  #};
 
   # enable wezterm transparency
   programs.wezterm = {

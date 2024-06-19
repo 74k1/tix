@@ -13,6 +13,9 @@ end
 -- font
 config.font = wezterm.font("FiraCode Nerd Font Mono")
 
+-- wayland
+config.enable_wayland = false
+
 -- font options
 config.harfbuzz_features = {
   'calt=0',

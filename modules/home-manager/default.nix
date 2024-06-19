@@ -1,4 +1,5 @@
 {
+  hyprland = import ./wayland/hyprland;
   bspwm = import ./x11/bspwm;
   git = import ./shell/git;
   i3wm = import ./x11/i3wm;

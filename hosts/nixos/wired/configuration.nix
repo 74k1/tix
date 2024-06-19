@@ -25,61 +25,62 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # # Set your time zone.
-  # time.timeZone = "Europe/Zurich";
-  #
-  # # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  #
-  # i18n.extraLocaleSettings = {
-  #   LC_ADDRESS = "en_GB.UTF-8";
-  #   LC_IDENTIFICATION = "en_GB.UTF-8";
-  #   LC_MEASUREMENT = "en_GB.UTF-8";
-  #   LC_MONETARY = "en_GB.UTF-8";
-  #   LC_NAME = "en_GB.UTF-8";
-  #   LC_NUMERIC = "en_GB.UTF-8";
-  #   LC_PAPER = "en_GB.UTF-8";
-  #   LC_TELEPHONE = "en_GB.UTF-8";
-  #   LC_TIME = "en_GB.UTF-8";
-  # };
+  # HYPRLAND
+  
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    xwayland.enable = true;
+  };
 
-  # VM shenanigans
-  # virtualisation.vmVariant = {
-  #   users = {
-  #     mutableUsers = false;
-  #     users.taki.password = "foo";
-  #   };
-  # };
+  environment.sessionVariables = {
+    # If cursor becomes invisible
+    WLR_NO_HARDWARE_CURSORS = "1";
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
   # Enable the X11 windowing system.
   services = {
+    greetd = {
+      enable = true;
+      package = pkgs.greetd.tuigreet;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd hyprland";
+        };
+      };
+    };
     xserver = {
       enable = true;
-      
-      # desktopManager = {
-      #   xterm.enable = false;
-      #   xfce = {
-      #     enable = true;
-      #     # enableXfwm = true;
-      #   };
-      # };
-
-      windowManager.bspwm = {
-        enable = true;
-        package = pkgs.bspwm;
-        sxhkd.package = pkgs.sxhkd;
-      };
 
       # greeter
       displayManager = {
-        lightdm = {
-          enable = true;
-          greeters.slick = {
-            enable = true;
-            theme.name = "Ukiyo";
-          };
-        };
-        defaultSession = "none+bspwm";
+        # sddm = {
+        #   enable = true;
+        #   wayland.enable = true;
+        #   theme = "Ukiyo";
+        #   autoNumlock = true;
+        #   settings = {
+        #     Autologin = {
+        #       Session = "hyprland";
+        #       User = "taki";
+        #     };
+        #   };
+        # };
+        defaultSession = "hyprland";
+        # lightdm = {
+        #   enable = true;
+        #   greeters.slick = {
+        #     enable = true;
+        #     theme.name = "Ukiyo";
+        #   };
+        # };
       };
 
       libinput = {
@@ -93,13 +94,13 @@
       '';
     };
 
-    picom = {
-      enable = true;
-      fade = true;
-      # inactiveOpacity = "0.9";
-      shadow = true;
-      fadeDelta = 4;
-    };
+    # picom = {
+    #   enable = true;
+    #   fade = true;
+    #   # inactiveOpacity = "0.9";
+    #   shadow = true;
+    #   fadeDelta = 4;
+    # };
   };
 
 
@@ -123,7 +124,8 @@
   hardware = {
     opengl.enable = true;
     nvidia = {
-      open = true;
+      #open = true;
+      modesetting.enable = true;
     };
   };
 
@@ -200,14 +202,27 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
      ntfs3g
-     git wget curl tmux
+     git wget curlWithGnuTls tmux
      pavucontrol
+     nvidia-vaapi-driver
+     egl-wayland
+     kitty
      neofetch
+     brscan4
+     gnome.simple-scan
      #alttab
      #dconf
-     xorg.xkill xclip xdotool xorg.xinit
+     #xorg.xkill xclip xdotool xorg.xinit
      #xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
   ];
+
+
+  hardware.sane = {
+    enable = true;
+    brscan4 = {
+      enable = true;
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

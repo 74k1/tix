@@ -6,8 +6,16 @@
 
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
+    prime = {
+      sync.enable = true;
+      reverseSync.enable = true;
+
+    };
+
+    powerManagement = {
+      enable = false;
+      finegrained = false;
+    };
 
     open = false;
     
