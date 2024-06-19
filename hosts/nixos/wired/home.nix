@@ -5,7 +5,7 @@
     # ext
     [
       inputs.wired-notify.homeManagerModules.default
-      inputs.nix-colors.homeManagerModules.default
+      #inputs.nix-colors.homeManagerModules.default
     ]
     
     # int
@@ -13,7 +13,7 @@
       hyprland
       # i3wm
       # bspwm
-      colors
+      #colors
       git
       nvim
       picom
@@ -74,6 +74,7 @@
     ripgrep
     scc
     starship
+    discord
     tealdeer
     joshuto
 
