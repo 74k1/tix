@@ -47,7 +47,7 @@
   };
 
   virtualisation.arion = {
-    backend = "podman-socket";
+    backend = "docker";
     projects = {
       "flaresolverr".settings.services."flaresolverr".service = {
         image = "ghcr.io/flaresolverr/flaresolverr:latest";

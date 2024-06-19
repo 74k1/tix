@@ -52,6 +52,7 @@
     };
     vpnconfinement = {
       url = "github:Maroka-chan/VPN-Confinement";
+      # url = "github:rasmus-kirk/VPN-Confinement";
     };
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";

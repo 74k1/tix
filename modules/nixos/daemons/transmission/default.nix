@@ -17,9 +17,11 @@
   };
   
   # https://github.com/Maroka-chan/VPN-Confinement
-  vpnnamespaces.mull = {
+  vpnnamespaces.mul = {
     enable = true;
-    wireguardConfigFile = /home/taki/mullvad_novel_sloth.conf;
+    wireguardConfigFile = /. + "/tmp/mul0.conf";
+    # namespaceAddress = "192.168.11.1";
+    # bridgeAddress = "192.168.11.5";
     accessibleFrom = [
       "192.168.1.0/24"
       "10.0.0.0/24"
@@ -28,13 +30,13 @@
       { from = 9091; to = 9091; }
     ];
     openVPNPorts = [{
-      port = 60729;
+      port = 60669;
       protocol = "both";
     }];
   };
   
   systemd.services.transmission.vpnconfinement = {
     enable = true;
-    vpnnamespace = "mull";
+    vpnnamespace = "mul";
   };
 }

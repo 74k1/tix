@@ -8,6 +8,7 @@
   locale = import ./locale;
   ly = import ./daemons/ly;
   n8n = import ./daemons/n8n;
+  miniflux = import ./daemons/miniflux;
   nextcloud = import ./daemons/nextcloud;
   nix = import ./nix;
   nvidia = import ./nvidia;

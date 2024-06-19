@@ -47,5 +47,5 @@
     };
   };
 
-  environment.systemPackages = [ pkgs.nextcloud28 ];
+  environment.systemPackages = [ pkgs.nextcloud29 ];
 }

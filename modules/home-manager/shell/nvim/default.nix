@@ -65,7 +65,10 @@ in
       set shiftwidth=2 softtabstop=2 expandtab
       set number relativenumber
       set clipboard=unnamedplus
-      let g:netrw_liststyle = 3
+      " set t_Co=0
+      " set background=none
+      " lua vim.opt.termguicolors = false
+      "let g:netrw_liststyle = 3
       
       " Autocommands for vim-table-mode
       "augroup TableModeSetup
@@ -95,6 +98,11 @@ in
         plugin = indentmini-nvim;
         type = "lua";
         config = builtins.readFile ./cfg/indentmini.lua;
+      }
+      {
+        plugin = oil-nvim;
+        type = "lua";
+        config = builtins.readFile ./cfg/oil.lua;
       }
       {
         plugin = nix-update-nvim;
