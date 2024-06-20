@@ -51,8 +51,8 @@
       url = "github:Toqozz/wired-notify";
     };
     vpnconfinement = {
-      url = "github:Maroka-chan/VPN-Confinement";
-      # url = "github:rasmus-kirk/VPN-Confinement";
+      # url = "github:Maroka-chan/VPN-Confinement";
+      url = "github:74k1/VPN-Confinement";
     };
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
