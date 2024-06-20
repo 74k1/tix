@@ -74,7 +74,6 @@
     ripgrep
     scc
     starship
-    discord
     tealdeer
     joshuto
 
@@ -85,12 +84,13 @@
 
     # gui stuff
     brave
+    ungoogled-chromium
     keepassxc
     obsidian
     gnome.simple-scan
     #spotify
-    #spotify-tray
-    #discord
+    spotify-tray
+    discord
     vesktop
     # polybar
     # ly

@@ -6,7 +6,7 @@ in
 {
   # install spotify
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "spotify"
+    "spotify-tray"
   ];
 
   # import the flake's module
