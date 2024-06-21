@@ -2,8 +2,7 @@
 
 let
   cfg = config.theme.ukiyo;
-in
-{
+in {
   options = {
     theme.ukiyo = {
       package = lib.mkOption {

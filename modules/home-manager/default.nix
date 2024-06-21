@@ -1,4 +1,5 @@
 {
+  style = import ./stylix.nix;
   hyprland = import ./wayland/hyprland;
   bspwm = import ./x11/bspwm;
   git = import ./shell/git;

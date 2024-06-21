@@ -6,7 +6,7 @@ in
 {
   # install spotify
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "spotify-tray"
+    "spotify"
   ];
 
   # import the flake's module
@@ -15,32 +15,32 @@ in
   ];
 
   # configure spicetify :)
-  # programs.spicetify = {
-  #   enable = true;
-  #   theme = spicePkgs.themes.text;
-  #   colorScheme = "custom";
-  #   customColorScheme = {
-  #     accent             = "5665FB";
-  #     accent-active      = "6D7CFF";
-  #     accent-inactive    = "0E0C36";
-  #     banner             = "6D7CFF";
-  #     border-active      = "6D7CFF";
-  #     border-inactive    = "404040";
-  #     header             = "404040";
-  #     highlight          = "0E0C36";
-  #     main               = "06040C";
-  #     notification       = "1AE981";
-  #     notification-error = "FF5A74";
-  #     subtext            = "b3b3b3";
-  #     text               = "EEF2EE";
-  #   };
+  programs.spicetify = {
+    enable = true;
+    theme = spicePkgs.themes.text;
+    colorScheme = "custom";
+    customColorScheme = {
+      accent             = "5665FB";
+      accent-active      = "6D7CFF";
+      accent-inactive    = "0E0C36";
+      banner             = "6D7CFF";
+      border-active      = "6D7CFF";
+      border-inactive    = "404040";
+      header             = "404040";
+      highlight          = "0E0C36";
+      main               = "06040C";
+      notification       = "1AE981";
+      notification-error = "FF5A74";
+      subtext            = "b3b3b3";
+      text               = "EEF2EE";
+    };
 
-  #   enabledExtensions = with spicePkgs.extensions; [
-  #     shuffle
-  #     hidePodcasts
-  #     fullAlbumDate
-  #     fullAppDisplayMod
-  #     genre
-  #   ];
-  # };
+    enabledExtensions = with spicePkgs.extensions; [
+      shuffle
+      hidePodcasts
+      fullAlbumDate
+      fullAppDisplayMod
+      # genre
+    ];
+  };
 }

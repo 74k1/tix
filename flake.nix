@@ -106,17 +106,19 @@
       nixosModules = import ./modules/nixos;
       
       nixosConfigurations = {
-        nixosConfigurations.default = lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            inputs.stylix.nixosModules.stylix
-          ];
-        };
+        # nixosConfigurations.default = lib.nixosSystem {
+        #   specialArgs = { inherit inputs; };
+        #   modules = [
+        #     inputs.stylix.nixosModules.stylix
+        #   ];
+        # };
         wired = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./hosts/nixos/wired/configuration.nix
             inputs.home-manager.nixosModules.home-manager
+            stylix.nixosModules.stylix
+            stylix.homeManagerModules.stylix
             {
               home-manager = {
                 useGlobalPkgs = false;

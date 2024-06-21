@@ -24,6 +24,7 @@
       starship
       # sxhkd
       theme
+      style
       #wall
       wezterm
       wired
@@ -88,8 +89,8 @@
     keepassxc
     obsidian
     gnome.simple-scan
-    #spotify
-    spotify-tray
+    # spotify
+    #spotify-tray
     discord
     vesktop
     # polybar
