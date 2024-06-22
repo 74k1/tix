@@ -6,11 +6,10 @@
 
   hardware.nvidia = {
     modesetting.enable = true;
-    prime = {
-      sync.enable = true;
-      reverseSync.enable = true;
-
-    };
+    # prime = {
+    #   sync.enable = true;
+    #   reverseSync.enable = true;
+    # };
 
     powerManagement = {
       enable = false;
