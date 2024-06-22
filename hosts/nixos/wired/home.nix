@@ -5,6 +5,7 @@
     # ext
     [
       inputs.wired-notify.homeManagerModules.default
+      inputs.stylix.homeManagerModules.stylix
       #inputs.nix-colors.homeManagerModules.default
     ]
     
@@ -23,7 +24,7 @@
       spotify
       starship
       # sxhkd
-      theme
+      #theme
       style
       #wall
       wezterm

@@ -117,8 +117,8 @@
           modules = [
             ./hosts/nixos/wired/configuration.nix
             inputs.home-manager.nixosModules.home-manager
-            stylix.nixosModules.stylix
-            stylix.homeManagerModules.stylix
+            #stylix.nixosModules.stylix
+            # stylix.homeManagerModules.stylix
             {
               home-manager = {
                 useGlobalPkgs = false;

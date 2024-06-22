@@ -126,8 +126,8 @@
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   ];
   hardware.opengl = {
-    driSupport = true;
-    driSupport32Bit = true;
+    #driSupport = true;
+    #driSupport32Bit = true;
     extraPackages = with pkgs; [ 
       rocmPackages.clr.icd
       amdvlk
