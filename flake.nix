@@ -156,16 +156,16 @@
             inherit inputs outputs;
           };
         };
-        SERN = lib.nixosSystem {
+        knights = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hosts/nixos/SERN/configuration.nix
+            ./hosts/nixos/knights/configuration.nix
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = false;
                 useUserPackages = true;
-                users.taki = import ./hosts/nixos/SERN/home.nix;
+                users.taki = import ./hosts/nixos/knights/home.nix;
                 extraSpecialArgs = {
                   inherit inputs outputs;
                 };
@@ -231,7 +231,7 @@
         };
 
       deploy.nodes = {
-        SERN = {
+        knights = {
           hostname = "10.100.0.2";
           sshOpts = [ "-p" "22" ];
           sshUser = "taki";
@@ -242,8 +242,8 @@
           remoteBuild = false;
           profiles.system = {
             user = "root";
-            # Backreference to the flake output for the SERN configuration VVV
-            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.SERN;
+            # Backreference to the flake output for the knights configuration VVV
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.knights;
           };
         };
       };
