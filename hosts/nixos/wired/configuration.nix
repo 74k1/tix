@@ -125,31 +125,23 @@
   '';
 
   # Enable AMD GPU
-  boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.videoDrivers = [ "amdgpu" ];
-  systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-  ];
-  hardware.opengl = {
-    #driSupport = true;
-    #driSupport32Bit = true;
-    extraPackages = with pkgs; [ 
-      rocmPackages.clr.icd
-      amdvlk
-      driversi686Linux.amdvlk
-    ];
+  boot = {
+    kernelModules = [ "amdgpu" ];
+    initrd.kernelModules = [ "amdgpu" ];
   };
+  hardware.graphics.extraPackages = with pkgs; [ 
+    rocm-opencl-icd
+    rocm-opencl-runtime
+    # rocmPackages.clr.icd
+    # amdvlk
+    # driversi686Linux.amdvlk
+  ];
+
   boot.kernelParams = [
     "video=DP-2:2560x1440@165"
     "video=DP-1:2560x1440@165"
   ];
-  #hardware = {
-  #  opengl.enable = true;
-  #  nvidia = {
-  #    #open = true;
-  #    modesetting.enable = true;
-  #  };
-  #};
 
   # Configure keymap in X11
   # services.xserver = {

@@ -178,31 +178,31 @@
         };
       };
 
-      darwinModules = import ./modules/darwin;
-      
-      darwinConfigurations = {
-        EVA = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
+      # darwinModules = import ./modules/darwin;
+      # 
+      # darwinConfigurations = {
+      #   EVA = nix-darwin.lib.darwinSystem {
+      #     system = "aarch64-darwin";
 
-          modules = [
-           ./hosts/darwin/EVA/darwin-configuration.nix
-           inputs.home-manager.darwinModules.home-manager
-           {
-            home-manager = {
-              useGlobalPkgs = false;
-              useUserPackages = true;
-              users."74k1" = import ./hosts/darwin/EVA/darwin-home.nix;
-              extraSpecialArgs = {
-                inherit inputs outputs;
-              };
-            };
-           }
-          ];
-          specialArgs = {
-            inherit inputs outputs;
-          };
-        };
-      };
+      #     modules = [
+      #      ./hosts/darwin/EVA/darwin-configuration.nix
+      #      inputs.home-manager.darwinModules.home-manager
+      #      {
+      #       home-manager = {
+      #         useGlobalPkgs = false;
+      #         useUserPackages = true;
+      #         users."74k1" = import ./hosts/darwin/EVA/darwin-home.nix;
+      #         extraSpecialArgs = {
+      #           inherit inputs outputs;
+      #         };
+      #       };
+      #      }
+      #     ];
+      #     specialArgs = {
+      #       inherit inputs outputs;
+      #     };
+      #   };
+      # };
 
       homeManagerModules = import ./modules/home-manager;
 
@@ -223,7 +223,7 @@
               wireguard-tools
             ];
           };
-          niga = pkgs.mkShell {
+          macchina = pkgs.mkShell {
             buildInputs = with pkgs; [
               macchina
             ];
