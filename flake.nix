@@ -134,19 +134,18 @@
             inherit inputs outputs;
           };
         };
-        TOKYO-3 = lib.nixosSystem {
+        eiri = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hosts/nixos/TOKYO-3/configuration.nix
+            ./hosts/nixos/eiri/configuration.nix
             inputs.home-manager.nixosModules.home-manager
             inputs.arion.nixosModules.arion
-            # ment this,  i VsVadi in flake.nix, this is flake.nix :) its also here
             inputs.vpnconfinement.nixosModules.default
             {
               home-manager = {
                 useGlobalPkgs = false;
                 useUserPackages = true;
-                users.taki = import ./hosts/nixos/TOKYO-3/home.nix;
+                users.taki = import ./hosts/nixos/eiri/home.nix;
                 extraSpecialArgs = {
                   inherit inputs outputs;
                 };
