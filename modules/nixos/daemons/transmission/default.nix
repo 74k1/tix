@@ -12,6 +12,9 @@
       incomplete-dir = "/mnt/btrfs_pool/torrents/incomplete";
       incomplete-dir-enabled = true;
       peer-port = 60669;
+      max-peers-global = 10000;
+      peer-limit-global = 10000;
+      peer-limit-per-torrent = 500;
       ratio-limit = 10;
       ratio-limit-enabled = true;
       rename-partial-files = true;

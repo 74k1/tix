@@ -119,6 +119,16 @@
           "force user" = "plex";
           "force group" = "plex";
         };
+        "torrents" = {
+          path = "/mnt/btrfs_pool/torrents";
+          browseable = "yes";
+          "read only" = "no";
+          "guest ok" = "yes";
+          "create mask" = "0644";
+          "directory mask" = "0755";
+          "force user" = "transmission";
+          "force group" = "transmission";
+        };
       };
     };
     samba-wsdd = {
