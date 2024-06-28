@@ -5,13 +5,13 @@
     webHome = pkgs.flood-for-transmission;
     openRPCPort = true;
     settings = { 
-      blocklist-enabled = true;
+      blocklist-enabled = false;
       blocklist-url = "https://github.com/Naunter/BT_BlockLists/raw/master/bt_blocklists.gz";
       download-dir = "/mnt/btrfs_pool/torrents/download";
       encryption = 1;
       incomplete-dir = "/mnt/btrfs_pool/torrents/incomplete";
       incomplete-dir-enabled = true;
-      peer-port = 60669;
+      peer-port = 60729;
       max-peers-global = 10000;
       peer-limit-global = 10000;
       peer-limit-per-torrent = 500;
@@ -29,7 +29,7 @@
   
   vpnnamespaces.mu = {
     enable = true;
-    wireguardConfigFile = /. + "/tmp/mu.conf";
+    wireguardConfigFile = /tmp/mu.conf;
     namespaceAddress = "192.168.11.1";
     bridgeAddress = "192.168.11.5";
     accessibleFrom = [
@@ -39,9 +39,10 @@
     ];
     portMappings = [
       { from = 9091; to = 9091; }
+      { from = 60729; to = 60729; }
     ];
     openVPNPorts = [{
-      port = 60669;
+      port = 60729;
       protocol = "both";
     }];
   };

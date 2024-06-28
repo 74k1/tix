@@ -65,6 +65,11 @@ in
       set shiftwidth=2 softtabstop=2 expandtab
       set number relativenumber
       set clipboard=unnamedplus
+
+      " keybinds
+      lua vim.api.nvim_create_user_command("E", "<CMD>Oil<CMD>", {})
+      "lua vim.keymap.set("n", "-", vim.cmd.Oil, {})
+
       " set t_Co=0
       " set background=none
       " lua vim.opt.termguicolors = false
