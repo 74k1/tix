@@ -67,8 +67,8 @@ in
       set clipboard=unnamedplus
 
       " keybinds
-      lua vim.api.nvim_create_user_command("E", "<CMD>Oil<CMD>", {})
-      "lua vim.keymap.set("n", "-", vim.cmd.Oil, {})
+      lua vim.api.nvim_create_user_command("E", "Oil()", {})
+      "lua vim.keymap.set("n", "-", function() vim.cmd.Oil() end, {})
 
       " set t_Co=0
       " set background=none

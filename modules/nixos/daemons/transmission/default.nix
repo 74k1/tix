@@ -8,13 +8,19 @@
       blocklist-enabled = false;
       blocklist-url = "https://github.com/Naunter/BT_BlockLists/raw/master/bt_blocklists.gz";
       download-dir = "/mnt/btrfs_pool/torrents/download";
+      download-queue-enabled = false;
+      download-queue-size = 5;
       encryption = 1;
+      idle-seeding-limit = 30; # minutes
+      idle-seeding-limit-enabled = false;
       incomplete-dir = "/mnt/btrfs_pool/torrents/incomplete";
       incomplete-dir-enabled = true;
-      peer-port = 60729;
-      max-peers-global = 10000;
       peer-limit-global = 10000;
       peer-limit-per-torrent = 500;
+      peer-port = 60729;
+      peer-port-random-on-start = false;
+      port-forwarding-enabled = true;
+      lpd-enabled = true;
       ratio-limit = 10;
       ratio-limit-enabled = true;
       rename-partial-files = true;
@@ -39,7 +45,7 @@
     ];
     portMappings = [
       { from = 9091; to = 9091; }
-      { from = 60729; to = 60729; }
+      { from = 60729; to = 60729; protocol = "both"; }
     ];
     openVPNPorts = [{
       port = 60729;

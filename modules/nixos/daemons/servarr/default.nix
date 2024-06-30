@@ -67,38 +67,6 @@
           "5055:5055"
         ];
       };
-      "overseerr-alt".settings.services."overseerr-alt".service = {
-        image = "sctx/overseerr:latest";
-        restart = "unless-stopped";
-        environment = {
-          LOG_LEVEL = "debug";
-          TZ = "Europe/Zurich";
-          # optional
-          #PORT = "5055";
-        };
-        volumes = [
-          "/var/lib/overseerr-alt/config:/app/config"
-        ];
-        ports = [
-          "5056:5055"
-        ];
-      };
-      "overseerr-alp".settings.services."overseerr-alp".service = {
-        image = "sctx/overseerr:latest";
-        restart = "unless-stopped";
-        environment = {
-          LOG_LEVEL = "debug";
-          TZ = "Europe/Zurich";
-          # optional
-          #PORT = "5055";
-        };
-        volumes = [
-          "/var/lib/overseerr-alp/config:/app/config"
-        ];
-        ports = [
-          "5057:5055"
-        ];
-      };
       "flaresolverr".settings.services."flaresolverr".service = {
         image = "ghcr.io/flaresolverr/flaresolverr:latest";
         restart = "unless-stopped";
