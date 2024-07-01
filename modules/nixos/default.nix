@@ -14,7 +14,7 @@
   openssh = import ./daemons/openssh;
   outline = import ./daemons/outline;
   plex = import ./daemons/plex;
-  send = import ./send;
+  send = import ./daemons/send;
   servarr = import ./daemons/servarr;
   steam = import ./steam;
   taki = import ./taki;
