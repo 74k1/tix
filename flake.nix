@@ -54,10 +54,6 @@
       url = "github:Maroka-chan/VPN-Confinement";
       #url = "github:74k1/VPN-Confinement";
     };
-    immich = {
-      url = "github:jvanbruegge/server-config";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
     };
@@ -79,7 +75,6 @@
     , wired-notify
     # , simple-nixos-mailserver
     , vpnconfinement
-    , immich
     , spicetify-nix
     , ...
     } @ inputs:
@@ -143,10 +138,9 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/nixos/eiri/configuration.nix
-            inputs.home-manager.nixosModules.home-manager
             inputs.arion.nixosModules.arion
+            inputs.home-manager.nixosModules.home-manager
             inputs.vpnconfinement.nixosModules.default
-            inputs.immich.nixosModules.immich
             {
               home-manager = {
                 useGlobalPkgs = false;

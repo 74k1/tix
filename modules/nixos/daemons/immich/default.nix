@@ -1,11 +1,18 @@
 { config, lib, pkgs, ... }:
 {
-  services.immich = {
-    enable = true;
-    host = "0.0.0.0";
-    port = 2870;
-    mediaLocation = "/mnt/btrfs_pool/immich/";
-    openFirewall = true;
-    secretsFile = "/home/taki/immich_secret";
+  virtualisation.arion = {
+    backend = "docker";
+    projects."immich-redis".settings.services."immich-redis".service = {
+      image = "redis:alpine";
+      restart = "unless-stopped";
+      #command = "redis-server --save 20 1 --loglevel warning --requirepass oFSQJrEnHq2FoDz7W7Fp";
+      volumes = [
+        "/var/lib/send-redis/:/data"
+        "/etc/localtime:/etc/localtime:ro"
+      ];
+      ports = [
+        "6379:6379"
+      ];
+    };
   };
 }
