@@ -2,6 +2,7 @@
   arion = import ./arion;
   authelia = import ./daemons/authelia;
   couchdb = import ./daemons/couchdb;
+  immich = import ./daemons/immich;
   fail2ban = import ./daemons/fail2ban;
   forgejo = import ./daemons/forgejo;
   locale = import ./locale;

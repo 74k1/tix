@@ -28,9 +28,6 @@
         SEND_FOOTER_CLI_URL = "";
         SEND_FOOTER_SOURCE_URL = "";
       };
-      dependsOn = [
-        "send-redis"
-      ];
     };
   };
 }

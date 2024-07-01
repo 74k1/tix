@@ -9,24 +9,25 @@
 
     inputs.nixos-generators.nixosModules.all-formats
 
-    arion
-    vm-test
-    send
-    locale
-    nix
-    fail2ban
-    taki
-    nextcloud
-    couchdb
-    forgejo
-    nvidia
     # n8n
     # vaultwarden
+    arion
+    couchdb
+    fail2ban
+    forgejo
+    immich
+    locale
+    nextcloud
+    nix
+    nvidia
     outline
-    transmission
-    servarr
     plex
+    send
+    servarr
+    taki
+    transmission
     vikunja
+    vm-test
     wireguard
   ];
 
