@@ -146,7 +146,7 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.arion.nixosModules.arion
             inputs.vpnconfinement.nixosModules.default
-            inputs.immich.nixosModule.immich
+            inputs.immich.nixosModules.immich
             {
               home-manager = {
                 useGlobalPkgs = false;
