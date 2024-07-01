@@ -1,21 +1,22 @@
 {
-  authelia = import ./daemons/authelia;
-  steam = import ./steam;
   arion = import ./arion;
+  authelia = import ./daemons/authelia;
   couchdb = import ./daemons/couchdb;
   fail2ban = import ./daemons/fail2ban;
   forgejo = import ./daemons/forgejo;
   locale = import ./locale;
   ly = import ./daemons/ly;
-  n8n = import ./daemons/n8n;
   miniflux = import ./daemons/miniflux;
+  n8n = import ./daemons/n8n;
   nextcloud = import ./daemons/nextcloud;
   nix = import ./nix;
   nvidia = import ./nvidia;
   openssh = import ./daemons/openssh;
   outline = import ./daemons/outline;
   plex = import ./daemons/plex;
+  send = import ./send;
   servarr = import ./daemons/servarr;
+  steam = import ./steam;
   taki = import ./taki;
   transmission = import ./daemons/transmission;
   vaultwarden = import ./daemons/vaultwarden;

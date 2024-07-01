@@ -11,6 +11,7 @@
 
     arion
     vm-test
+    send
     locale
     nix
     fail2ban
