@@ -134,6 +134,26 @@
             inherit inputs outputs;
           };
         };
+        cyberia = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/nixos/cyberia/configuration.nix
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = false;
+                useUserPackages = true;
+                users.taki = import ./hosts/nixos/cyberia/home.nix;
+                extraSpecialArgs = {
+                  inherit inputs outputs;
+                };
+              };
+            }
+          ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
         eiri = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
