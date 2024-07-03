@@ -7,8 +7,8 @@
     #   users.users.taki.password = "foo";
     # })
 
-    # inputs.agenix.nixosModules.default
-    # inputs.agenix-rekey.nixosModules.default
+    inputs.agenix.nixosModules.default
+    inputs.agenix-rekey.nixosModules.default
 
     inputs.nixos-generators.nixosModules.all-formats
 
@@ -19,18 +19,29 @@
     steam
   ];
 
+  age.rekey = {
+    # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
+    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcSDZxE2I6ViR3oEMBGANuJeHqIUaq1MBYcRxokSOwR cyberia";
+    # The path to the master identity used for decryption. See the option's description for more information.
+    masterIdentities = [
+      ../../../secrets/yubikey-1-on-person.pub
+      ../../../secrets/yubikey-2-at-home.pub
+    ];
+    # storageMode = "local";
+    # Choose a dir to store the rekeyed secrets for this host.
+    # This cannot be shared with other hosts. Please refer to this path
+    # from your flake's root directory and not by a direct path literal like ./secrets
+    # localStorageDir = ./. + "/secrets/rekeyed/${config.networking.hostName}";
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "cyberia"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Enable networking
   networking.networkmanager.enable = true;
 
   # HYPRLAND
-  
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -38,10 +49,10 @@
   };
 
   # environment.sessionVariables = {
-    # If cursor becomes invisible
-    # WLR_NO_HARDWARE_CURSORS = "1";
-    # Hint electron apps to use wayland
-    # NIXOS_OZONE_WL = "1";
+  #   If cursor becomes invisible
+  #   WLR_NO_HARDWARE_CURSORS = "1";
+  #   Hint electron apps to use wayland
+  #   NIXOS_OZONE_WL = "1";
   # };
 
   xdg.portal = {
@@ -51,6 +62,7 @@
 
   # Enable the X11 windowing system.
   services = {
+    pcscd.enable = true;
     greetd = {
       enable = true;
       package = pkgs.greetd.tuigreet;
@@ -62,31 +74,9 @@
     };
     xserver = {
       enable = true;
-
-      # greeter
       displayManager = {
-        # sddm = {
-        #   enable = true;
-        #   wayland.enable = true;
-        #   theme = "Ukiyo";
-        #   autoNumlock = true;
-        #   settings = {
-        #     Autologin = {
-        #       Session = "hyprland";
-        #       User = "taki";
-        #     };
-        #   };
-        # };
         defaultSession = "hyprland";
-        # lightdm = {
-        #   enable = true;
-        #   greeters.slick = {
-        #     enable = true;
-        #     theme.name = "Ukiyo";
-        #   };
-        # };
       };
-
       libinput = {
         enable = true;
         mouse.accelProfile = "flat";
@@ -105,49 +95,15 @@
     #   fadeDelta = 4;
     # };
   };
-
-
-  # services.greetd = {
-  #   enable = true;
-  #   settings = {
-  #     default_session = {
-  #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd startx";
-  #       user = "taki";
-  #     };
-  #   };
-  # };
   
   # Disable xorg Screensaver
   environment.extraInit = ''
     xset s off -dpms
   '';
 
-  # Enable AMD GPU
-  # services.xserver.videoDrivers = [ "amdgpu" ];
-  # boot = {
-  #   kernelModules = [ "amdgpu" ];
-  #   initrd.kernelModules = [ "amdgpu" ];
-  # };
-  # hardware.graphics.extraPackages = with pkgs; [ 
-  #   rocm-opencl-icd
-  #   rocm-opencl-runtime
-  #   # rocmPackages.clr.icd
-  #   # amdvlk
-  #   # driversi686Linux.amdvlk
-  # ];
-
   boot.kernelParams = [
     "video=eDP-1:2560x1600@165"
   ];
-
-  # Configure keymap in X11
-  # services.xserver = {
-  #   layout = "ch";
-  #   xkbVariant = "";
-  # };
-
-  # Configure console keymap
-  # console.keyMap = "sg";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -168,16 +124,11 @@
     enable = true;
     packages = [ pkgs.dconf ];
   };
-
-  programs.dconf.enable = true;
   
   # udev stuff for qmk
   services.udev.packages = [
     pkgs.qmk-udev-rules
   ];
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.taki = {
@@ -192,21 +143,8 @@
   };
 
   # Evolution shenanigans
-  #programs.dconf.enable = true;
+  programs.dconf.enable = true;
   services.gnome.evolution-data-server.enable = true;
-
-  # # Allow unfree packages
-  # nixpkgs.config.allowUnfree = true;
-  #
-  # nix = {
-  #   # Enable the newest nix version
-  #   package = pkgs.nixUnstable;
-  #
-  #   # Enable flakes, the new `nix` commands and better support for flakes in it
-  #   extraOptions = ''
-  #     experimental-features = nix-command flakes repl-flake
-  #   '';
-  # };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

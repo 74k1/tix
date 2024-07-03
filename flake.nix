@@ -96,12 +96,14 @@
       # Make sure that the pkgs passed here comes from the same nixpkgs version as
       # the pkgs used on your hosts with `nixosConfigurations`, otherwise the rekeyed
       # derivations will not be found!
-      # agenix-rekey = agenix-rekey.configure {
-      #   userFlake = self;
-      #   nodes = [self.nixosConfigurations.wired];
-      #   # Example for colmena:
-      #   # inherit ((colmena.lib.makeHive self.colmena).introspect (x: x)) nodes;
-      # };
+      agenix-rekey = agenix-rekey.configure {
+        userFlake = self;
+        nodes = {
+          inherit (self.nixosConfigurations) cyberia;
+        };
+        # Example for colmena:
+        # inherit ((colmena.lib.makeHive self.colmena).introspect (x: x)) nodes;
+      };
 
       nixosModules = import ./modules/nixos;
       

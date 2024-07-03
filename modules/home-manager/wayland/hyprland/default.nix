@@ -4,7 +4,7 @@ let
     ${pkgs.waybar}/bin/waybar &
     hyprctl setcursor Ukiyo 16 &
     tempfile=$(${pkgs.coreutils}/bin/mktemp) &
-    ${pkgs.curl}/bin/curl https://wall.74k1.sh/ --output $tempfile&
+    ${pkgs.curl}/bin/curl https://wall.74k1.sh/ --output $tempfile &
     ${pkgs.swww}/bin/swww init &
     sleep 1
     ${pkgs.swww}/bin/swww img $tempfile & 

@@ -6,6 +6,8 @@
     zoxide
   ];
 
+  age.secrets.test_secret.file = secrets/secret_test.age;
+  
   # zsh
   programs.zsh = {
     enable = true;
@@ -15,6 +17,7 @@
       ":q" = "exit";
       ":E" = "${config.programs.neovim.finalPackage}/bin/nvim +E";
       cat = "${pkgs.bat}/bin/bat";
+      testt = lib.strings.fileContents config.age.secrets.test_secret.path;
       cp = "cp -iv";
       cd = "y";
       fetch = "${pkgs.macchina}/bin/neofetch";
