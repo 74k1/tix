@@ -28,6 +28,11 @@
       };
     };
     
+    # blesh (https://github.com/nix-community/home-manager/pull/3238)
+    # programs.blesh = {
+    #   enable = true;
+    # };
+
     # BASH
     bash = {
       enable = true;
