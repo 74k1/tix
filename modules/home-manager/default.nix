@@ -1,16 +1,17 @@
 {
-  style = import ./stylix.nix;
-  hyprland = import ./wayland/hyprland;
+  bash = import ./shell/bash;
   bspwm = import ./x11/bspwm;
-  git = import ./shell/git;
-  i3wm = import ./x11/i3wm;
   colors = import ./x11/colors;
+  git = import ./shell/git;
+  hyprland = import ./wayland/hyprland;
+  i3wm = import ./x11/i3wm;
   nvim = import ./shell/nvim;
   picom = import ./x11/picom;
   polybar = import ./apps/polybar;
   rofi = import ./apps/rofi;
   spotify = import ./apps/spotify;
   starship = import ./shell/starship;
+  style = import ./stylix.nix;
   sxhkd = import ./x11/sxhkd;
   theme = import ./x11/theme;
   wall = import ./x11/wall;

@@ -19,11 +19,14 @@
     # libva
     libva
     libva-utils
+    
+    # vaapi
+    nvidia-vaapi-driver
   ];
 
   hardware = {
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      #package = config.boot.kernelPackages.nvidiaPackages.stable;
       modesetting.enable = true;
 
       # prime.offload =
@@ -36,7 +39,7 @@
       # };
 
       powerManagement = {
-        enable = true;
+        enable = false;
         finegrained = false;
       };
 
@@ -45,6 +48,8 @@
       nvidiaPersistenced = true;
       forceFullCompositionPipeline = true;
     };
+
+    opengl.enable = true;
 
     graphics = {
       extraPackages = with pkgs; [ nvidia-vaapi-driver ];

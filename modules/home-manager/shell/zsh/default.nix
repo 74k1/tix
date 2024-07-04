@@ -6,7 +6,7 @@
     zoxide
   ];
 
-  age.secrets.test_secret.file = secrets/secret_test.age;
+  # age.secrets.test_secret.file = secrets/secret_test.age;
   
   # zsh
   programs.zsh = {
@@ -17,9 +17,9 @@
       ":q" = "exit";
       ":E" = "${config.programs.neovim.finalPackage}/bin/nvim +E";
       cat = "${pkgs.bat}/bin/bat";
-      testt = lib.strings.fileContents config.age.secrets.test_secret.path;
+      # testt = lib.strings.fileContents config.age.secrets.test_secret.path;
       cp = "cp -iv";
-      cd = "y";
+      cd = "z";
       fetch = "${pkgs.macchina}/bin/neofetch";
       la = "${pkgs.eza}/bin/eza -a";
       ll = "${pkgs.eza}/bin/eza -l";
@@ -29,7 +29,8 @@
       nv = "${config.programs.neovim.finalPackage}/bin/nvim";
       rm = "rm -iv";
       tree = "${pkgs.eza}/bin/eza --tree --icons";
-      jo = "${pkgs.joshuto}/bin/joshuto";
+      ycr = "youcannotrebuild";
+      # jo = "${pkgs.joshuto}/bin/joshuto";
       # scrot = "${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f '-i %i -g %g') - | xclip -t 'image/png' -selection clipboard";
     };
 
@@ -42,7 +43,7 @@
       export ATUIN_NOBIND="true"
       eval "$(${pkgs.atuin}/bin/atuin init zsh)"
       bindkey '^r' _atuin_search_widget
-      eval "$(${pkgs.zoxide}/bin/zoxide init --cmd y zsh)"
+      eval "$(${pkgs.zoxide}/bin/zoxide init --cmd z zsh)"
       ${builtins.readFile ./cfg/functions.zsh}
       
       # eva reference :^)

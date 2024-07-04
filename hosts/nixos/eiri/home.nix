@@ -7,6 +7,7 @@
       git
       nvim
       starship
+      # bash
       zsh
     ])
   ];
@@ -28,7 +29,8 @@
     bat bat-extras.batman
     eza
     feh viu
-    joshuto
+    yazi
+    # joshuto
     ripgrep
     scc
     starship
@@ -46,7 +48,7 @@
   };
 
   home.sessionVariables = {
-    SHELL = "${pkgs.zsh}/bin/zsh";
+    SHELL = "${pkgs.zsh}/bin/bash";
     EDITOR = "nvim";
   };
 }
