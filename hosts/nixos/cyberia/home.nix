@@ -18,7 +18,7 @@
       git
       nvim
       picom
-      polybar
+      # polybar
       #rofi
       # wofi
       spotify
@@ -87,12 +87,13 @@
     # gui stuff
     brave
     ungoogled-chromium
+    krita
     keepassxc
     obsidian
     gnome.simple-scan
     # spotify
     #spotify-tray
-    discord
+    # discord
     vesktop
     # polybar
     # ly
