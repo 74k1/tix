@@ -30,6 +30,8 @@
       rm = "rm -iv";
       tree = "${pkgs.eza}/bin/eza --tree --icons";
       ycr = "youcannotrebuild";
+      nlg = "${config.programs.neovim.finalPackage}/bin/nvim +\"Telescope live_grep\" ./";
+      nff = "${config.programs.neovim.finalPackage}/bin/nvim +\"Telescope find_files\" ./";
       # jo = "${pkgs.joshuto}/bin/joshuto";
       # scrot = "${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f '-i %i -g %g') - | xclip -t 'image/png' -selection clipboard";
     };

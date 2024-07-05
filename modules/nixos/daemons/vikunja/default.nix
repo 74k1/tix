@@ -23,6 +23,7 @@
         #   authtype = "plain";
         #   username = "mail@example.com";
         #   password = "pass"; # TODO; once secret management is working
+        # do they have file pass?
         # };
       };
     };

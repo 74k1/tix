@@ -52,6 +52,8 @@ in
 
   home.packages = with pkgs; [
     ripgrep # For Telescope live-grep
+    nil # Nix Language Server
+    bash-language-server # Bash :-)
   ];
   
   programs.neovim = {
@@ -84,21 +86,39 @@ in
       " lua require'./plg/markdown_headings.lua'.init()
     '';
     plugins = with pkgs.vimPlugins; [
-      nvim-tree-lua
-      comment-nvim
-      telescope-nvim
-      nvim-treesitter.withAllGrammars
-      nvim-cmp
-      cmp-buffer
-      cmp-path
-      cmp-cmdline
-      hmts-nvim
-      vim-dadbod
-      vim-dadbod-ui
-      vim-dadbod-completion
-      vim-table-mode
       # neo-tree-nvim
+      cmp-buffer
+      cmp-cmdline
+      cmp-nvim-lsp
+      cmp-path
+      cmp_luasnip
+      comment-nvim
+      hmts-nvim
+      luasnip
+      nvim-tree-lua
+      nvim-treesitter.withAllGrammars
+      telescope-nvim
       tfm-nvim
+      vim-dadbod
+      vim-dadbod-completion
+      vim-dadbod-ui
+      vim-nix
+      vim-table-mode
+      {
+        plugin = nvim-lspconfig;
+        type = "lua";
+        config = builtins.readFile ./cfg/lspconfig.lua;
+      }
+      {
+        plugin = nvim-cmp;
+        type = "lua";
+        config = builtins.readFile ./cfg/cmp.lua;
+      }
+      {
+        plugin = fidget-nvim;
+        type = "lua";
+        config = builtins.readFile ./cfg/fidget.lua;
+      }
       {
         plugin = indentmini-nvim;
         type = "lua";
