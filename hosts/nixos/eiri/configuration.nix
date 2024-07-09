@@ -11,6 +11,7 @@
 
     # n8n
     # vaultwarden
+    affine
     arion
     couchdb
     fail2ban

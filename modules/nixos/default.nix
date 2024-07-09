@@ -12,6 +12,7 @@
   nextcloud = import ./daemons/nextcloud;
   nix = import ./nix;
   nvidia = import ./nvidia;
+  affine = import ./daemons/affine;
   openssh = import ./daemons/openssh;
   outline = import ./daemons/outline;
   plex = import ./daemons/plex;
