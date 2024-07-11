@@ -99,7 +99,7 @@
       agenix-rekey = agenix-rekey.configure {
         userFlake = self;
         nodes = {
-          inherit (self.nixosConfigurations) cyberia;
+          inherit (self.nixosConfigurations) cyberia eiri;
         };
         # Example for colmena:
         # inherit ((colmena.lib.makeHive self.colmena).introspect (x: x)) nodes;
@@ -253,6 +253,21 @@
         };
 
       deploy.nodes = {
+        eiri = {
+          hostname = "255.255.255.255"; # should change this to 10.0.0.1 someday, when i have wg on cyberia
+          sshOpts = [ "-p" "22" ];
+          sshUser = "taki";
+          user = "root";
+          interactiveSudo = true;
+          autoRollback = true;
+          magicRollback = true;
+          remoteBuild = false;
+          profiles.system = {
+            user = "root";
+            # Backreference to the flake output for the knights configuration VVV
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.knights;
+          };
+        };
         knights = {
           hostname = "10.100.0.2";
           sshOpts = [ "-p" "22" ];

@@ -13,7 +13,7 @@
     # vaultwarden
     affine
     arion
-    couchdb
+    # couchdb
     fail2ban
     forgejo
     immich
@@ -65,9 +65,16 @@
     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGVrGnNjwaQ8CL4IBKWx0Z3A+PFpy96r0t8e2zc7jRr+ eiri";
     # The path to the master identity used for decryption. See the option's description for more information.
     masterIdentities = [
-      ./secrets/yubikey-1-on-person.pub
-      ./secrets/yubikey-2-at-home.pub
+      # ../../../secrets/yubikey-1-on-person.pub
+      "${inputs.self}/secrets/yubikey-1-on-person.pub"
+      # ../../../secrets/yubikey-2-at-home.pub
+      "${inputs.self}/secrets/yubikey-2-at-home.pub"
     ];
+    storageMode = "local";
+    # Choose a dir to store the rekeyed secrets for this host.
+    # This cannot be shared with other hosts. Please refer to this path
+    # from your flake's root directory and not by a direct path literal like ./secrets
+    localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
   };
 
   programs.zsh.enable = true;

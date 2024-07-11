@@ -13,6 +13,7 @@
     inputs.nixos-generators.nixosModules.all-formats
 
     # ly
+    openssh
     vm-test
     locale
     nix
@@ -24,14 +25,16 @@
     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcSDZxE2I6ViR3oEMBGANuJeHqIUaq1MBYcRxokSOwR cyberia";
     # The path to the master identity used for decryption. See the option's description for more information.
     masterIdentities = [
-      ../../../secrets/yubikey-1-on-person.pub
-      ../../../secrets/yubikey-2-at-home.pub
+      # ../../../secrets/yubikey-1-on-person.pub
+      "${inputs.self}/secrets/yubikey-1-on-person.pub"
+      # ../../../secrets/yubikey-2-at-home.pub
+      "${inputs.self}/secrets/yubikey-2-at-home.pub"
     ];
-    # storageMode = "local";
+    storageMode = "local";
     # Choose a dir to store the rekeyed secrets for this host.
     # This cannot be shared with other hosts. Please refer to this path
     # from your flake's root directory and not by a direct path literal like ./secrets
-    # localStorageDir = ./. + "/secrets/rekeyed/${config.networking.hostName}";
+    localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
   };
 
   # Bootloader.
