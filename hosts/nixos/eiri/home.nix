@@ -48,7 +48,7 @@
   };
 
   home.sessionVariables = {
-    SHELL = "${pkgs.zsh}/bin/bash";
+    SHELL = "${pkgs.zsh}/bin/zsh";
     EDITOR = "nvim";
   };
 }
