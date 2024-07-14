@@ -265,7 +265,7 @@
           profiles.system = {
             user = "root";
             # Backreference to the flake output for the knights configuration VVV
-            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.knights;
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.eiri;
           };
         };
         knights = {
