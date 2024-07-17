@@ -72,6 +72,14 @@
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
       virtualHosts = {
+        "ip.74k1.sh" = {
+          locations."/" = {
+            return = "200 $remote_addr\n";
+            extraConfig = ''
+              default_type text/plain;
+            '';
+          };
+        };
         "example.com" = {
           addSSL = true;
           enableACME = true;
