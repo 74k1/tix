@@ -1,13 +1,13 @@
 { inputs, outputs, config, lib, pkgs, ... }:
 {
-  age.secrets."mullvad_config" = {
-    # btw, new nix treesitter indent queries, i/e. indenting is now reasonable
-    rekeyFile = "${inputs.self}/secrets/mullvad_config.age";
-    name = "mu.conf";
-    # mode = "770";
-    # owner = "nextcloud";
-    # group = "nextcloud";
-  };
+  # age.secrets."mullvad_config" = {
+  #   # btw, new nix treesitter indent queries, i/e. indenting is now reasonable
+  #   rekeyFile = "${inputs.self}/secrets/mullvad_config.age";
+  #   name = "mu.conf";
+  #   # mode = "770";
+  #   # owner = "nextcloud";
+  #   # group = "nextcloud";
+  # };
 
   services.transmission = {
     enable = true;
@@ -45,8 +45,8 @@
   
   vpnnamespaces.mu = {
     enable = true;
-    # wireguardConfigFile = /tmp/mu.conf;
-    wireguardConfigFile = config.age.secrets."mullvad_config".path;
+    wireguardConfigFile = /tmp/mu.conf;
+    # wireguardConfigFile = config.age.secrets."mullvad_config".path;
     namespaceAddress = "192.168.11.1";
     bridgeAddress = "192.168.11.5";
     accessibleFrom = [
