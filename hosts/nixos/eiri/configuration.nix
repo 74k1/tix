@@ -10,7 +10,7 @@
     inputs.nixos-generators.nixosModules.all-formats
 
     # n8n
-    # vaultwarden
+    vaultwarden
     affine
     arion
     # couchdb

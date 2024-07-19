@@ -85,6 +85,11 @@
           enableACME = true;
           root = "/var/www/example.com/";
         };
+        "vw.example.com" = {
+          # enableACME = true;
+          # forceSSL = true;
+          locations."/".proxyPass = "10.100.0.1:8222";
+        };
         "td.example.com" = {
           enableACME = true;
           forceSSL = true;
@@ -95,13 +100,13 @@
             '';
           };
         };
-        "mc.example.com" = {
-          enableACME = true;
-          forceSSL = true;
-          locations."/" = {
-            proxyPass = "http://10.100.0.1:8123";
-          };
-        };
+        # "mc.example.com" = {
+        #   enableACME = true;
+        #   forceSSL = true;
+        #   locations."/" = {
+        #     proxyPass = "http://10.100.0.1:8123";
+        #   };
+        # };
         # "ls.example.com" = {
         #   enableACME = true;
         #   forceSSL = true;
@@ -112,9 +117,7 @@
         "git.example.com" = {
           enableACME = true;
           forceSSL = true;
-          locations = {
-            "/".proxyPass = "http://10.100.0.1:3000";
-          };
+          locations."/".proxyPass = "http://10.100.0.1:3000";
         };
         "files.example.com" = {
           enableACME = true;
