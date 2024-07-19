@@ -85,11 +85,23 @@
           enableACME = true;
           root = "/var/www/example.com/";
         };
-        "vw.example.com" = {
+        "vault.example.com" = {
           enableACME = true;
           forceSSL = true;
-          locations."/".proxyPass = "10.100.0.1:8222";
+          locations."/" = {
+            proxyPass = "10.100.0.1:8222";
+            extraConfig = ''
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+            '';
+          };
         };
+        # "vw.example.com" = {
+        #   enableACME = true;
+        #   forceSSL = true;
+        #   locations."/".proxyPass = "10.100.0.1:8222";
+        # };
         "td.example.com" = {
           enableACME = true;
           forceSSL = true;
