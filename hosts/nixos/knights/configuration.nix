@@ -86,8 +86,8 @@
           root = "/var/www/example.com/";
         };
         "vw.example.com" = {
-          # enableACME = true;
-          # forceSSL = true;
+          enableACME = true;
+          forceSSL = true;
           locations."/".proxyPass = "10.100.0.1:8222";
         };
         "td.example.com" = {
