@@ -16,7 +16,7 @@
             )
             (lib.mapAttrs
               (user: _:
-                { password = "foo"; }
+                { password = "password"; }
               )
             )
           ];
