@@ -1,5 +1,6 @@
 { config, lib, pkgs, ... }:
 {
+  environment.
   virtualisation.arion = {
     backend = "docker";
     projects = {
