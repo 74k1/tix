@@ -19,6 +19,23 @@
     steam
   ];
 
+  age.rekey = {
+    # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
+    # hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcSDZxE2I6ViR3oEMBGANuJeHqIUaq1MBYcRxokSOwR cyberia";
+    # The path to the master identity used for decryption. See the option's description for more information.
+    masterIdentities = [
+      # ../../../secrets/yubikey-1-on-person.pub
+      "${inputs.self}/secrets/yubikey-1-on-person.pub"
+      # ../../../secrets/yubikey-2-at-home.pub
+      "${inputs.self}/secrets/yubikey-2-at-home.pub"
+    ];
+    storageMode = "local";
+    # Choose a dir to store the rekeyed secrets for this host.
+    # This cannot be shared with other hosts. Please refer to this path
+    # from your flake's root directory and not by a direct path literal like ./secrets
+    localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -156,7 +173,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  # sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {

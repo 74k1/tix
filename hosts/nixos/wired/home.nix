@@ -20,8 +20,8 @@
       picom
       polybar
       #rofi
-      # wofi
-      spotify
+      #wofi
+      #spotify
       starship
       # sxhkd
       #theme
@@ -92,6 +92,7 @@
     gnome.simple-scan
     # spotify
     #spotify-tray
+    spotify-player
     discord
     vesktop
     # polybar
