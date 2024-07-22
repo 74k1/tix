@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 {
-  environment.
+  systemd.services."arion-appflowy".preStart = ''
+    if ! [ -d /var/lib/AppFlowy-Cloud ]; then; git clone https://github.com/AppFlowy-IO/AppFlowy-Cloud /var/lib/AppFlowy-Cloud; else; git -C /var/lib/AppFlowy-Cloud pull; fi
+  '';
   virtualisation.arion = {
     backend = "docker";
     projects = {
@@ -41,7 +43,7 @@
           restart = "on-failure";
           build = {
             context = "./postgres";
-            dockerfile = "postgres.Dockerfile"
+            dockerfile = "postgres.Dockerfile";
           };
           environment = {
             POSTGRES_USER = "postgres";
@@ -75,19 +77,19 @@
             GOTRUE_DB_DRIVER = "postgres";
             #API_EXTERNAL_URL = "${API_EXTERNAL_URL}";
             #DATABASE_URL = "${GOTRUE_DATABASE_URL}";
-            PORT = "9999"
+            PORT = "9999";
             #GOTRUE_SMTP_HOST = "${GOTRUE_SMTP_HOST}";                          # e.g. smtp.gmail.com
             #GOTRUE_SMTP_PORT = "${GOTRUE_SMTP_PORT}";                          # e.g. 465
             #GOTRUE_SMTP_USER = "${GOTRUE_SMTP_USER}";                          # email sender, e.g. noreply@appflowy.io
             #GOTRUE_SMTP_PASS = "${GOTRUE_SMTP_PASS}";                          # email password
-            GOTRUE_MAILER_URLPATHS_CONFIRMATION = "/gotrue/verify";
-            GOTRUE_MAILER_URLPATHS_INVITE = "/gotrue/verify";
-            GOTRUE_MAILER_URLPATHS_RECOVERY = "/gotrue/verify";
-            GOTRUE_MAILER_URLPATHS_EMAIL_CHANGE = "/gotrue/verify";
+            # GOTRUE_MAILER_URLPATHS_CONFIRMATION = "/gotrue/verify";
+            # GOTRUE_MAILER_URLPATHS_INVITE = "/gotrue/verify";
+            # GOTRUE_MAILER_URLPATHS_RECOVERY = "/gotrue/verify";
+            # GOTRUE_MAILER_URLPATHS_EMAIL_CHANGE = "/gotrue/verify";
             #GOTRUE_SMTP_ADMIN_EMAIL = "${GOTRUE_SMTP_ADMIN_EMAIL}";                # email with admin privileges e.g. internal@appflowy.io
-            GOTRUE_SMTP_MAX_FREQUENCY = "${GOTRUE_SMTP_MAX_FREQUENCY:-1ns}";       # set to 1ns for running tests
-            GOTRUE_RATE_LIMIT_EMAIL_SENT = "${GOTRUE_RATE_LIMIT_EMAIL_SENT:-100}"; # number of email sendable per minute
-            GOTRUE_MAILER_AUTOCONFIRM = "${GOTRUE_MAILER_AUTOCONFIRM:-false}";     # change this to true to skip email confirmation
+            # GOTRUE_SMTP_MAX_FREQUENCY = "${GOTRUE_SMTP_MAX_FREQUENCY:-1ns}";       # set to 1ns for running tests
+            # GOTRUE_RATE_LIMIT_EMAIL_SENT = "${GOTRUE_RATE_LIMIT_EMAIL_SENT:-100}"; # number of email sendable per minute
+            # GOTRUE_MAILER_AUTOCONFIRM = "${GOTRUE_MAILER_AUTOCONFIRM:-false}";     # change this to true to skip email confirmation
             # Google OAuth config
             #GOTRUE_EXTERNAL_GOOGLE_ENABLED = "${GOTRUE_EXTERNAL_GOOGLE_ENABLED}";
             #GOTRUE_EXTERNAL_GOOGLE_CLIENT_ID = "${GOTRUE_EXTERNAL_GOOGLE_CLIENT_ID}";
