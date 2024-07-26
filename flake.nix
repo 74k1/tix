@@ -198,6 +198,26 @@
             inherit inputs outputs;
           };
         };
+        morpheus = lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./hosts/nixos/morpheus/configuration.nix
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = false;
+                useUserPackages = true;
+                users.taki = import ./hosts/nixos/morpheus/home.nix;
+                extraSpecialArgs = {
+                  inherit inputs outputs;
+                };
+              };
+            }
+          ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
       };
 
       # darwinModules = import ./modules/darwin;
