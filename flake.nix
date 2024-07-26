@@ -11,6 +11,11 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      # NOTE: not overriding since NixOS-WSL is flaky (relies on stable)
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
     arion = {
       url = "github:hercules-ci/arion";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -218,6 +223,26 @@
             inherit inputs outputs;
           };
         };
+        psyche = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/nixos/psyche/configuration.nix
+            # inputs.home-manager.nixosModules.home-manager
+            # {
+            #   home-manager = {
+            #     useGlobalPkgs = false;
+            #     useUserPackages = true;
+            #     users.taki = import ./hosts/nixos/psyche/home.nix;
+            #     extraSpecialArgs = {
+            #       inherit inputs outputs;
+            #     };
+            #   };
+            # }
+          ];
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
       };
 
       # darwinModules = import ./modules/darwin;
@@ -301,6 +326,21 @@
             user = "root";
             # Backreference to the flake output for the knights configuration VVV
             path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.knights;
+          };
+        };
+        morpheus = {
+          hostname = "192.168.1.61"; # temporarily
+          sshOpts = [ "-p" "22" ];
+          sshUser = "taki";
+          user = "root";
+          interactiveSudo = true;
+          autoRollback = true;
+          magicRollback = true;
+          remoteBuild = false; # important, weak device
+          profiles.system = {
+            user = "root";
+            # Backreference to the flake output for the knights configuration VVV
+            path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.morpheus;
           };
         };
       };
