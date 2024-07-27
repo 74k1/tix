@@ -18,6 +18,7 @@
     forgejo
     immich
     locale
+    ollama
     nextcloud
     nix
     nvidia
