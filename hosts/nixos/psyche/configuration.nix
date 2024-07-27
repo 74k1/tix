@@ -1,25 +1,35 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-# NixOS-WSL specific options are documented on the NixOS-WSL repository:
-# https://github.com/nix-community/NixOS-WSL
-
 { inputs, outputs, config, lib, pkgs, ... }:
+
+# to rebuild:
+# `sudo nixos-rebuild boot --flake ./#psyche`
+# `exit`
+# `wsl -t NixOS`
+# `wsl -d NixOS --user root exit`
+# `wsl -t NixOS`
+# run nixos as normal again
 
 {
   imports = [
     # include NixOS-WSL modules
     inputs.nixos-wsl.nixosModules.default
+    outputs.nixosModules.nix
   ];
 
   wsl = {
     enable = true;
     defaultUser = "taki";
+    interop.register = true;
   };
 
-  wsl.interop.register = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  environment.systemPackages = with pkgs; [
+    git
+    wget
+    curl
+    neofetch
+    deploy-rs
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
