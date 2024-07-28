@@ -2,9 +2,10 @@
 {
   services.ollama = {
     enable = true;
-    host = "0.0.0.0";
+    host = "127.0.0.1";
     port = 11434;
     acceleration = "cuda";
+    models = "/mnt/btrfs_pool/ollama_models";
     environmentVariables = {
       OLLAMA_ORIGINS = "*";
     };
