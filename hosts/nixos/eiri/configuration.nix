@@ -162,7 +162,7 @@
   # };
 
   fileSystems."/mnt/btrfs_pool" = {
-    device = "/dev/sda";
+    device = "UUID=9ce8e79d-aa13-4f76-981f-c438eb821669";
     fsType = "btrfs";
     options = [ "defaults" "noatime" "compress=zstd" "autodefrag" ];
   };
