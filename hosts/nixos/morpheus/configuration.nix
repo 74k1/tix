@@ -26,6 +26,7 @@
     vim
     neovim
     wget
+    tmux
   ];
 
   # Enable the OpenSSH daemon.
