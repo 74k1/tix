@@ -11,7 +11,10 @@
       experimental-features = nix-command flakes repl-flake
     '';
 
-    settings.trusted-users = [ "root" "taki" ];
+    settings = {
+      trusted-users = [ "root" "taki" ];
+      cores = 4;
+    };
   };
 
 }
