@@ -21,7 +21,7 @@
       # polybar
       #rofi
       # wofi
-      spotify
+      #spotify
       starship
       # sxhkd
       #theme
@@ -78,7 +78,7 @@
     starship
     tealdeer
     joshuto
-
+    spotify-player
     wezterm
     wired
     zellij

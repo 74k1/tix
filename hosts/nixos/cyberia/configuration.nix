@@ -17,6 +17,7 @@
     vm-test
     locale
     nix
+    taki
     steam
   ];
 
@@ -75,6 +76,7 @@
         };
       };
     };
+
     xserver = {
       enable = true;
       displayManager = {
@@ -132,14 +134,6 @@
   services.udev.packages = [
     pkgs.qmk-udev-rules
   ];
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.taki = {
-    isNormalUser = true;
-    description = "taki";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
-  };
 
   programs.zsh = {
     enable = true;
