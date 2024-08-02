@@ -11,7 +11,7 @@ if wezterm.config_builder then
 end
 
 -- font
-config.font = wezterm.font("FiraCode Nerd Font Mono")
+config.font = wezterm.font("BerkeleyMono Nerd Font Mono")
 
 -- wayland
 config.enable_wayland = false

@@ -1,7 +1,7 @@
 { inputs, outputs, lib, config, pkgs, ... }:
-#let
-  #berkeley-mono-typeface = pkgs.callPackage ../../pkgs/berkeley-mono-typeface;
-#in
+let
+  berkeley-ttf = pkgs.callPackage "${inputs.self}/pkgs/berkeley-font" { inherit pkgs; };
+in
 {
   # define user account - don't forget to set password with `passwd`
   users.users.taki = {
@@ -38,7 +38,7 @@
       noto-fonts
       ubuntu_font_family
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono"]; } )
-      #berkeley-mono-typeface # owo
+      berkeley-ttf # owo
     ];
   };
 }

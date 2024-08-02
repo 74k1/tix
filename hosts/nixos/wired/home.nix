@@ -40,6 +40,7 @@
     overlays = [
       (final: prev: {
         duvolbr = outputs.packages."x86_64-linux".duvolbr;
+        berkeley-ttf = outputs.packages."x86_64-linux".berkeley-ttf;
       })
       inputs.wired-notify.overlays.default
     ];
@@ -66,7 +67,8 @@
     
     # my own scriptiboo
     duvolbr
-
+    berkeley-ttf 
+    
     # term
     bat bat-extras.batman
     eza
