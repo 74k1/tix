@@ -5,7 +5,7 @@
     inputs.agenix-rekey.flakeModule
   ];
 
-  perSystem = { self, lib, pkgs, system, inputs', ... }: {
+  perSystem = { self', lib, pkgs, system, inputs', ... }: {
     agenix-rekey.nodes = {
       inherit (self.nixosConfigurations)
         cyberia

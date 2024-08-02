@@ -15,9 +15,9 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF5VblfuasqhILQMzPNsJiEl4jVw+9HSa4rvH8ftHGZL navi"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAixkN1qkHsQI752vzxubx/2cGpuQN+ZFbMUswC3lBga wired"
       # "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKmsit4uJM5PL6HBiyHlC7fMhI9MvfK4fwVeK3lZnpjk EVA"
-      "ssh-rsa blabla xyz@xyz"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGVrGnNjwaQ8CL4IBKWx0Z3A+PFpy96r0t8e2zc7jRr+ eiri"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcSDZxE2I6ViR3oEMBGANuJeHqIUaq1MBYcRxokSOwR cyberia"
+      "ssh-rsa blabla xyz@xyz"
     ];
     shell = pkgs.zsh;
   };

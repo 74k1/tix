@@ -12,6 +12,7 @@
   n8n = import ./daemons/n8n;
   nextcloud = import ./daemons/nextcloud;
   nix = import ./nix;
+  pcscd = import ./pcscd;
   nvidia = import ./nvidia;
   affine = import ./daemons/affine;
   openssh = import ./daemons/openssh;

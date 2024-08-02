@@ -3,7 +3,7 @@ pkgs.stdenv.mkDerivation {
   pname = "berkeley-mono-typeface";
   version = "1.009";
 
-  src = ~/berkeley-mono.zip
+  src = ~/berkeley-mono.zip;
 
   unpackPhase = ''
     runHook preUnpack
@@ -19,4 +19,4 @@ pkgs.stdenv.mkDerivation {
 
     runHook postInstall
   ''
-}
+};

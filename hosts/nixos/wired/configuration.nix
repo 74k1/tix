@@ -17,6 +17,7 @@
     locale
     nix
     steam
+    pcscd
   ];
 
   age.rekey = {
@@ -55,12 +56,12 @@
     xwayland.enable = true;
   };
 
-  # environment.sessionVariables = {
+  environment.sessionVariables = {
     # If cursor becomes invisible
     # WLR_NO_HARDWARE_CURSORS = "1";
     # Hint electron apps to use wayland
-    # NIXOS_OZONE_WL = "1";
-  # };
+    NIXOS_OZONE_WL = "0";
+  };
 
   xdg.portal = {
     enable = true;

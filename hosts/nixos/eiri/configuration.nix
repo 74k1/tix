@@ -66,7 +66,8 @@
 
   age.rekey = {
     # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
-    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGVrGnNjwaQ8CL4IBKWx0Z3A+PFpy96r0t8e2zc7jRr+ eiri";
+    # hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGVrGnNjwaQ8CL4IBKWx0Z3A+PFpy96r0t8e2zc7jRr+ eiri";
+    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGNn2DDUnITFao47ugOzCxufnXkblnWXfFwaPfNu/JLm eiri";
     # The path to the master identity used for decryption. See the option's description for more information.
     masterIdentities = [
       # ../../../secrets/yubikey-1-on-person.pub
