@@ -89,9 +89,11 @@
       enable = true;
       mouse.accelProfile = "flat";
       # touchpad.accelProfile = "flat"; 
-      naturalScrolling = true;
-      middleEmulation = true;
-      tapping = true;
+      touchpad = {
+        naturalScrolling = true;
+        middleEmulation = true;
+        tapping = true;
+      };
     };
     # picom = {
     #   enable = true;
