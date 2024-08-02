@@ -234,7 +234,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
      ntfs3g
-     git wget curlWithGnuTls tmux
+     git wget curl tmux
      pavucontrol
      nvidia-vaapi-driver
      egl-wayland
