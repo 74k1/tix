@@ -2,8 +2,10 @@
 
 {
   flake = {
-    nixosModules = import ../modules/nixos;
+    nixosModules = import "${inputs.self}/modules/nixos";
 
-    homeManagerModules = import ../modules/home-manager;
+    darwinModules = import "${inputs.self}/modules/darwin";
+
+    homeManagerModules = import "${inputs.self}/modules/home-manager";
   };
 }

@@ -7,7 +7,7 @@ let
     inherit system;
     modules = [
       # Main config
-      ../hosts/nixos/${hostname}/configuration.nix
+      "${inputs.self}/hosts/nixos/${hostname}/configuration.nix"
       # nix-topology
       inputs.nix-topology.nixosModules.default
     ] ++ lib.optionals home-manager [
@@ -17,7 +17,7 @@ let
         home-manager = {
           useGlobalPkgs = false;
           useUserPackages = true;
-          users.taki = import ../hosts/nixos/${hostname}/home.nix;
+          users.taki = import "${inputs.self}/hosts/nixos/${hostname}/home.nix";
           extraSpecialArgs = {
             inherit inputs outputs;
           };
