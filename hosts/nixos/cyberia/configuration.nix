@@ -155,7 +155,7 @@
      nvidia-vaapi-driver
      egl-wayland
      kitty
-     neofetch
+     fastfetch
      brscan4
      simple-scan
      #alttab

@@ -52,7 +52,7 @@
   environment.systemPackages = with pkgs; [
     btop
     git wget curl tmux
-    neofetch
+    fastfetch
   ];
 
   services = {

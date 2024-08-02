@@ -27,7 +27,7 @@
     git
     wget
     curl
-    neofetch
+    fastfetch
     deploy-rs
   ];
 

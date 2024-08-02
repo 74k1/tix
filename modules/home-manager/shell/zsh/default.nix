@@ -20,7 +20,7 @@
       # testt = lib.strings.fileContents config.age.secrets.test_secret.path;
       cp = "cp -iv";
       cd = "z";
-      fetch = "${pkgs.macchina}/bin/neofetch";
+      fetch = "${pkgs.fastfetch}/bin/fastfetch";
       la = "${pkgs.eza}/bin/eza -a";
       ll = "${pkgs.eza}/bin/eza -l";
       ls = "${pkgs.eza}/bin/eza";

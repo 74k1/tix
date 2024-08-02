@@ -89,7 +89,7 @@
     btop
     docker-compose
     git wget curl tmux
-    neofetch
+    fastfetch
     ntfs3g btrfs-progs
     rage
     age-plugin-yubikey
