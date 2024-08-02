@@ -79,19 +79,20 @@
 
     xserver = {
       enable = true;
-      displayManager = {
-        defaultSession = "hyprland";
-      };
-      libinput = {
-        enable = true;
-        mouse.accelProfile = "flat";
-        # touchpad.accelProfile = "flat"; 
-        naturalScrolling = true;
-        middleEmulation = true;
-        tapping = true;
-      };
     };
 
+    displayManager = {
+      defaultSession = "hyprland";
+    };
+    
+    libinput = {
+      enable = true;
+      mouse.accelProfile = "flat";
+      # touchpad.accelProfile = "flat"; 
+      naturalScrolling = true;
+      middleEmulation = true;
+      tapping = true;
+    };
     # picom = {
     #   enable = true;
     #   fade = true;
@@ -154,7 +155,7 @@
      kitty
      neofetch
      brscan4
-     gnome.simple-scan
+     simple-scan
      #alttab
      #dconf
      #xorg.xkill xclip xdotool xorg.xinit

@@ -89,7 +89,7 @@
     ungoogled-chromium
     keepassxc
     obsidian
-    gnome.simple-scan
+    simple-scan
     # spotify
     #spotify-tray
     spotify-player

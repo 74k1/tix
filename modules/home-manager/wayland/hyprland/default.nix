@@ -49,7 +49,7 @@ in
         "$mod, r, exec, ${pkgs.wofi}/bin/wofi --show drun"
 
         # apps?
-        "$mod, n, exec, ${pkgs.cinnamon.nemo}/bin/nemo"
+        "$mod, n, exec, ${pkgs.nemo}/bin/nemo"
         "$mod, w, exec, brave"
 
         # multimedia

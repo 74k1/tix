@@ -90,7 +90,7 @@
     krita
     keepassxc
     obsidian
-    gnome.simple-scan
+    simple-scan
     # spotify
     #spotify-tray
     # discord

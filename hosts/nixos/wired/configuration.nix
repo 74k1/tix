@@ -79,42 +79,44 @@
         };
       };
     };
+    
     xserver = {
       enable = true;
 
       # greeter
-      displayManager = {
-        # sddm = {
-        #   enable = true;
-        #   wayland.enable = true;
-        #   theme = "Ukiyo";
-        #   autoNumlock = true;
-        #   settings = {
-        #     Autologin = {
-        #       Session = "hyprland";
-        #       User = "taki";
-        #     };
-        #   };
-        # };
-        defaultSession = "hyprland";
-        # lightdm = {
-        #   enable = true;
-        #   greeters.slick = {
-        #     enable = true;
-        #     theme.name = "Ukiyo";
-        #   };
-        # };
-      };
-
-      libinput = {
-        enable = true;
-        mouse.accelProfile = "flat";
-        touchpad.accelProfile = "flat"; 
-      };
 
       screenSection = ''
         Option "metamodes" "DP-2: 2560x1440_165 +0+0, DP-0: 2560x1440_165 +2560+0"
       '';
+    };
+
+    displayManager = {
+      # sddm = {
+      #   enable = true;
+      #   wayland.enable = true;
+      #   theme = "Ukiyo";
+      #   autoNumlock = true;
+      #   settings = {
+      #     Autologin = {
+      #       Session = "hyprland";
+      #       User = "taki";
+      #     };
+      #   };
+      # };
+      defaultSession = "hyprland";
+      # lightdm = {
+      #   enable = true;
+      #   greeters.slick = {
+      #     enable = true;
+      #     theme.name = "Ukiyo";
+      #   };
+      # };
+    };
+
+    libinput = {
+      enable = true;
+      mouse.accelProfile = "flat";
+      touchpad.accelProfile = "flat"; 
     };
 
     # picom = {
@@ -241,7 +243,7 @@
      kitty
      neofetch
      brscan4
-     gnome.simple-scan
+     simple-scan
      #alttab
      #dconf
      #xorg.xkill xclip xdotool xorg.xinit
