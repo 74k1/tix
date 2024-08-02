@@ -82,13 +82,13 @@
       ];
 
       imports = [
-        ./nix/configurations.nix
-        ./nix/devshells.nix
-        ./nix/packages.nix
-        ./nix/modules.nix
-        ./nix/agenix.nix
-        ./nix/topology.nix
-        ./nix/pkgs.nix
+        ./modules/flake/configurations.nix
+        ./modules/flake/devshells.nix
+        ./modules/flake/packages.nix
+        ./modules/flake/modules.nix
+        ./modules/flake/agenix.nix
+        ./modules/flake/topology.nix
+        ./modules/flake/pkgs.nix
       ];
 
       perSystem = { self, lib, pkgs, system, inputs', ... }: {
