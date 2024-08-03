@@ -13,7 +13,8 @@
 
     settings = {
       trusted-users = [ "root" "taki" ];
-      cores = 4;
+      # cores = 4;
+      # max-jobs = 1;
     };
   };
 
