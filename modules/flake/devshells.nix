@@ -1,8 +1,9 @@
 { lib, config, self, inputs, withSystem, ... }:
-
 {
   perSystem = { self, lib, pkgs, system, inputs', ... }: {
     devShells = {
+      # usage:
+      # `nix develop `
       default = pkgs.mkShell {
         buildInputs = [
           pkgs.git
@@ -21,6 +22,5 @@
         ];
       };
     };
-
   };
 }

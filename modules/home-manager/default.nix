@@ -4,7 +4,6 @@
   colors = import ./x11/colors;
   git = import ./shell/git;
   hyprland = import ./wayland/hyprland;
-  waybar = import ./wayland/waybar;
   i3wm = import ./x11/i3wm;
   nvim = import ./shell/nvim;
   picom = import ./x11/picom;
@@ -12,10 +11,11 @@
   rofi = import ./apps/rofi;
   spotify = import ./apps/spotify;
   starship = import ./shell/starship;
-  style = import ./stylix.nix;
+  style = import ./stylix;
   sxhkd = import ./x11/sxhkd;
   theme = import ./x11/theme;
   wall = import ./x11/wall;
+  waybar = import ./wayland/waybar;
   wezterm = import ./apps/wezterm;
   wired = import ./apps/wired;
   xdg = import ./x11/xdg;
