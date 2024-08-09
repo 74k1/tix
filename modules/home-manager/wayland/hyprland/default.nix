@@ -14,6 +14,9 @@ in
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    plugins = [
+      pkgs.hyprlandPlugins.hy3
+    ];
     settings = {
       exec-once = ''${startupScript}/bin/start'';
 

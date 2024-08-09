@@ -14,7 +14,7 @@ in {
   config = {
     stylix = {
       enable = true;
-      image = "${inputs.self}/wall.png";
+      image = "${inputs.self}/modules/home-manager/stylix/wall.png";
       cursor = {
         package = cfg.package;
         name = "Ukiyo";
