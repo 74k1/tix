@@ -1,22 +1,23 @@
 {
+  affine = import ./daemons/affine;
   arion = import ./arion;
   authelia = import ./daemons/authelia;
   couchdb = import ./daemons/couchdb;
-  ollama = import ./daemons/ollama;
-  immich = import ./daemons/immich;
   fail2ban = import ./daemons/fail2ban;
   forgejo = import ./daemons/forgejo;
+  glance = import ./daemons/glance;
+  immich = import ./daemons/immich;
   locale = import ./locale;
   ly = import ./daemons/ly;
   miniflux = import ./daemons/miniflux;
   n8n = import ./daemons/n8n;
   nextcloud = import ./daemons/nextcloud;
   nix = import ./nix;
-  pcscd = import ./pcscd;
   nvidia = import ./nvidia;
-  affine = import ./daemons/affine;
+  ollama = import ./daemons/ollama;
   openssh = import ./daemons/openssh;
   outline = import ./daemons/outline;
+  pcscd = import ./pcscd;
   plex = import ./daemons/plex;
   send = import ./daemons/send;
   servarr = import ./daemons/servarr;
