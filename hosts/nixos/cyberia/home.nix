@@ -27,7 +27,7 @@
       #theme
       style
       #wall
-      wezterm
+      #wezterm
       wired
       xdg
       xorg
@@ -79,7 +79,7 @@
     tealdeer
     joshuto
     spotify-player
-    wezterm
+    # wezterm
     wired
     zellij
     #zoxide
@@ -123,7 +123,7 @@
   #};
 
   # enable wezterm transparency
-  programs.wezterm = {
-    transparency = true;
-  };
+  # programs.wezterm = {
+  #   transparency = true;
+  # };
 }

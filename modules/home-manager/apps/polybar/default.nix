@@ -34,7 +34,7 @@ in {
         };
         "module/pulse" = {
           click-left = "${pkgs.pulseaudio}/bin/pactl -- set-sink-volume @DEFAULT_SINK@ 100%";
-          click-right = "${pkgs.wezterm}/bin/wezterm -e ${pkgs.pulsemixer}/bin/pulsemixer";
+          #click-right = "${pkgs.wezterm}/bin/wezterm -e ${pkgs.pulsemixer}/bin/pulsemixer";
         };
       };
       extraConfig = builtins.readFile ./polybar.ini;
