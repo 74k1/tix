@@ -11,10 +11,10 @@
     mesa
 
     # vulkan
-    vulkan-tools
-    vulkan-loader
-    vulkan-validation-layers
-    vulkan-extension-layer
+    # vulkan-tools
+    # vulkan-loader
+    # vulkan-validation-layers
+    # vulkan-extension-layer
 
     # libva
     libva
@@ -26,7 +26,8 @@
 
   hardware = {
     nvidia = {
-      #package = config.boot.kernelPackages.nvidiaPackages.stable;
+      #package = config.boot.kernelPackages.nvidiaPackages.production;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
       modesetting.enable = true;
 
       # prime.offload =

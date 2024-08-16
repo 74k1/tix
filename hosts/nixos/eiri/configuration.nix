@@ -20,7 +20,7 @@
     forgejo
     immich
     locale
-    ollama
+    # ollama
     nextcloud
     nix
     nvidia
