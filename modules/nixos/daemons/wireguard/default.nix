@@ -32,6 +32,12 @@
               "10.100.0.2/32"
             ];
           }
+          { # cyberia
+            publicKey = "eR6y0rHuhb+qhBaZWWigQnjHjZ1m4oRJzYVPrv3CgBM=";
+            allowedIPs = [
+              "10.100.0.10/32"
+            ];
+          }
           { # MAGI
             publicKey = "JOf290ilGAOw2msc6aQsE+oSjvLA1g9Cvw6RvmsTJj4=";
             allowedIPs = [

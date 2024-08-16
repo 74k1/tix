@@ -158,6 +158,8 @@
      fastfetch
      brscan4
      simple-scan
+     acpi
+     wireguard-tools
      #alttab
      #dconf
      #xorg.xkill xclip xdotool xorg.xinit
