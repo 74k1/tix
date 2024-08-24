@@ -27,7 +27,7 @@
       #theme
       style
       #wall
-      #wezterm
+      wezterm
       wired
       xdg
       xorg
@@ -79,13 +79,15 @@
     tealdeer
     joshuto
     spotify-player
-    # wezterm
+    wezterm
     wired
     zellij
     #zoxide
 
     # gui stuff
     brave
+    plex-desktop
+    swaylock-fancy
     ungoogled-chromium
     krita
     keepassxc
