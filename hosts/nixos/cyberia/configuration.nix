@@ -160,7 +160,9 @@
     acpi # Battery
     wireguard-tools
 
-    inputs.agenix.packages.${pkgs.system}.agenix-rekey
+    rage
+    inputs.agenix-rekey.packages.${pkgs.system}.agenix-rekey
+    wl-clipboard
 
     #alttab
     #dconf

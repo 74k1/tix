@@ -8,7 +8,7 @@ in
     programs.wezterm = {
       transparency = lib.mkOption {
         type = lib.types.bool;
-        description = "Whether to enable transparency or not";
+        description = "transparency?";
         default = false;
       };
     };
@@ -17,7 +17,7 @@ in
   config = {
     home.packages = with pkgs; [
       wezterm
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono"]; })
     ];
 
     programs.wezterm = {
