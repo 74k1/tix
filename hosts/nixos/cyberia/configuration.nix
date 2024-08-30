@@ -148,21 +148,24 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     ntfs3g
-     git wget curl tmux
-     pavucontrol
-     nvidia-vaapi-driver
-     egl-wayland
-     kitty # def. term
-     fastfetch # neofetch
-     brscan4 # Brother Driver?
-     simple-scan # Document Scanner
-     acpi # Battery
-     wireguard-tools
-     #alttab
-     #dconf
-     #xorg.xkill xclip xdotool xorg.xinit
-     #xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
+    ntfs3g
+    git wget curl tmux
+    pavucontrol
+    nvidia-vaapi-driver
+    egl-wayland
+    kitty # def. term
+    fastfetch # neofetch
+    brscan4 # Brother Driver?
+    simple-scan # Document Scanner
+    acpi # Battery
+    wireguard-tools
+
+    inputs.agenix.packages.${pkgs.system}.agenix-rekey
+
+    #alttab
+    #dconf
+    #xorg.xkill xclip xdotool xorg.xinit
+    #xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
   ];
 
 
