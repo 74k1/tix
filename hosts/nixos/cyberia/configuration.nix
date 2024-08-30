@@ -21,6 +21,9 @@
     steam
   ];
 
+  # profile things idk
+  taki.gui.enable = true;
+
   age.rekey = {
     # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcSDZxE2I6ViR3oEMBGANuJeHqIUaq1MBYcRxokSOwR cyberia";
