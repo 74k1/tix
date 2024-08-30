@@ -38,7 +38,7 @@ in
       noto-fonts
       ubuntu_font_family
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono"]; } )
-      #berkeley-ttf # owo
+      berkeley-ttf # owo
     ];
   };
 }

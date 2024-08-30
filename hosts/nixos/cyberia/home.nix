@@ -126,7 +126,7 @@
   #};
 
   # enable wezterm transparency
-  # programs.wezterm = {
-  #   transparency = true;
-  # };
+  programs.wezterm = {
+    transparency = true;
+  };
 }

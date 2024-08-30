@@ -11,7 +11,16 @@ if wezterm.config_builder then
 end
 
 -- font
---config.font = wezterm.font "FiraMono Nerd Font"
+config.font = wezterm.font_with_fallback {
+  "BerkeleyMono Nerd Font Mono",
+  "Berkeley Mono",
+  "FiraCode Nerd Font Mono",
+  "FiraMono Nerd Font",
+  "JetBrains Mono"
+}
+
+-- temp fix. (NixOS/nixpkgs/issues/336069)
+config.front_end = "WebGpu"
 
 -- wayland
 config.enable_wayland = false

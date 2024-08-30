@@ -41,9 +41,9 @@ in
       
       bind = [
         # term
-        #"$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
-        "$mod, Return, exec, ${pkgs.kitty}/bin/kitty"
-        #"Control_L, alt, exec, ${pkgs.wezterm}/bin/wezterm"
+        "$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
+        #"$mod, Return, exec, ${pkgs.kitty}/bin/kitty"
+        "Control_L, alt, exec, ${pkgs.wezterm}/bin/wezterm"
 
         # kill # not sure yet
         "$mod, C, killactive,"
