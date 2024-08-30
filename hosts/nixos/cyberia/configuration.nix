@@ -72,7 +72,7 @@
       package = pkgs.greetd.tuigreet;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd hyprland";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd river";
         };
       };
     };
@@ -82,7 +82,7 @@
     };
 
     displayManager = {
-      defaultSession = "hyprland";
+      defaultSession = "river";
     };
     
     libinput = {
@@ -153,11 +153,11 @@
      pavucontrol
      nvidia-vaapi-driver
      egl-wayland
-     kitty
-     fastfetch
-     brscan4
-     simple-scan
-     acpi
+     kitty # def. term
+     fastfetch # neofetch
+     brscan4 # Brother Driver?
+     simple-scan # Document Scanner
+     acpi # Battery
      wireguard-tools
      #alttab
      #dconf

@@ -4,6 +4,7 @@
   colors = import ./x11/colors;
   git = import ./shell/git;
   hyprland = import ./wayland/hyprland;
+  river = import ./wayland/river;
   i3wm = import ./x11/i3wm;
   nvim = import ./shell/nvim;
   picom = import ./x11/picom;

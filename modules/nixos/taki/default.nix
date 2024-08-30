@@ -1,6 +1,6 @@
 { inputs, outputs, lib, config, pkgs, ... }:
 let
-  berkeley-ttf = pkgs.callPackage "${inputs.self}/pkgs/berkeley-font" { inherit pkgs; };
+  berkeley-ttf = pkgs.callPackage "${inputs.self}/pkgs/berkeley-ttf.nix" { inherit pkgs; };
 in
 {
   # define user account - don't forget to set password with `passwd`
@@ -38,7 +38,7 @@ in
       noto-fonts
       ubuntu_font_family
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono"]; } )
-      # berkeley-ttf # owo
+      #berkeley-ttf # owo
     ];
   };
 }

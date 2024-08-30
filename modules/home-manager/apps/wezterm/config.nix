@@ -11,10 +11,7 @@ if wezterm.config_builder then
 end
 
 -- font
-config.font = wezterm.font_with_fallback {
-  "BerkeleyMono Nerd Font Mono",
-  "JetBrains Mono",
-}
+config.font = wezterm.font "JetBrains Mono"
 
 -- wayland
 config.enable_wayland = false
