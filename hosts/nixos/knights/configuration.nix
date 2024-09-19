@@ -71,6 +71,28 @@
       recommendedOptimisation = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
+      streamConfig = ''
+        log_format proxy_log '$remote_addr [$time_local] "$protocol" $status $bytes_sent $bytes_received';
+        access_log /var/log/nginx/ssh_stream.log proxy_log;
+        upstream git_server {
+          server 10.0.0.1:22;
+        }
+        upstream default_ssh {
+          server localhost:22;
+        }
+        server {
+          listen 22;
+          proxy_pass $name;
+
+          ssl_preread on;
+          proxy_ssl_name $ssl_preread_server_name;
+
+          set $name default_ssh;
+          if ($ssl_preread_server_name = "git.example.com") {
+            set $name git_server;
+          }
+        }
+      '';
       virtualHosts = {
         "ip.74k1.sh" = {
           locations."/" = {
