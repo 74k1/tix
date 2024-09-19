@@ -65,17 +65,29 @@
       };
     };
 
-    stunnel = {
+    traefik = {
       enable = true;
-      servers = {
-        ssh = {
-          accept = 22;
-          connect = "localhost:22";
-        };
-        git_ssh = {
-          accept = 22;
-          sni = "git.example.com";
-          connect = "10.0.0.1:22";
+      staticConfigOptions = {
+        api = {};
+        entryPoints.ssh.address = ":22";
+      };
+      dynamicConfigOptions = {
+        tcp = {
+          routers = {
+            git-ssh = {
+              rule = "HostSNI(`git.example.com`)";
+              service = "git-service";
+            };
+            default-ssh = {
+              rule = "HostSNI(`*`)";
+              service = "default-service";
+            };
+          };
+
+          services = {
+            git-service.loadBalancer.servers = [{ url = "10.0.0.1:22"; }];
+            default-service.loadBalancer.servers = [{ url = "localhost:22"; }];
+          };
         };
       };
     };
