@@ -1,13 +1,18 @@
 { lib, pkgs, config, ... }:
 
 {
-  home.packages = with pkgs; [
-    atuin
-    zoxide
-    fzf
-  ];
+  home = {
+    packages = with pkgs; [
+      atuin
+      zoxide
+      fzf
+    ];
+
+    file.".config/starship.zsh".text = builtins.readFile ./cfg/functions.zsh;
+  };
 
   # zsh
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -16,8 +21,8 @@
     defaultKeymap = "emacs";
     dotDir = ".config/zsh";
 
-    initExtraFirst = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-    # promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+    # initExtraFirst = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+    initExtraFirst = "source ${pkgs.spaceship-prompt}/lib/spaceship-prompt/spaceship.zsh";
 
     shellAliases = {
       ":q" = "exit";
@@ -48,12 +53,15 @@
 
     # ${builtins.readFile ./cfg/functions.zsh}
     initExtra = ''
+      # Atuin
       export ATUIN_NOBIND="true"
       eval "$(${pkgs.atuin}/bin/atuin init zsh)"
       bindkey '^r' _atuin_search_widget
+
+      # Zoxide
       eval "$(${pkgs.zoxide}/bin/zoxide init --cmd z zsh)"
-      
-      # eva reference :^)
+
+      # NixOS Rebuild / eva reference :^)
       youcannotrebuild () {
         ${
           let
@@ -72,8 +80,9 @@
         } --flake ~/tix ''$''\{1:-switch''\} "''$''\{@:2''\}" |& nix run nixpkgs#nix-output-monitor
       }
 
+      # Joshuto
       function joshuto() {
-        ID="\$\$"
+        ID="$$"
         mkdir -p /tmp/$USER
         OUTPUT_FILE="/tmp/$USER/joshuto-cwd-$ID"
         env joshuto --output-file "$OUTPUT_FILE" $@
