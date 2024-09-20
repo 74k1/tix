@@ -17,7 +17,7 @@
     hostName = "knights"; # Define your hostname.
     networkmanager.enable = true;
     firewall.allowedUDPPorts = [ 22 51820 ];
-    firewall.allowedTCPPorts = [ 22 25 80 143 443 465 587 993 4190 ];
+    firewall.allowedTCPPorts = [ 22 25 80 143 443 465 587 993 2202 4190 ];
     wireguard.interfaces = {
       wg0 = {
         ips = [ "10.100.0.2/24" ];
@@ -58,6 +58,7 @@
   services = {
     openssh = {
       enable = true;
+      ports = [ 2202 ];
       settings = {
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
@@ -65,39 +66,38 @@
       };
     };
 
-    traefik = {
-      enable = true;
-      staticConfigOptions = {
-        api = {};
-        entryPoints.ssh.address = ":22";
-      };
-      dynamicConfigOptions = {
-        tcp = {
-          routers = {
-            git-ssh = {
-              rule = "HostSNI(`git.example.com`)";
-              service = "git-service";
-            };
-            default-ssh = {
-              rule = "HostSNI(`*`)";
-              service = "default-service";
-            };
-          };
-
-          services = {
-            git-service.loadBalancer.servers = [{ url = "10.0.0.1:22"; }];
-            default-service.loadBalancer.servers = [{ url = "localhost:22"; }];
-          };
-        };
-      };
-    };
-    
     nginx = {
       enable = true;
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
+      streamConfig = ''
+        log_format proxy_log '$remote_addr [$time_local] "$protocol" $status $bytes_sent $bytes_received';
+
+        access_log /var/log/nginx/ssh_stream.log proxy_log;
+
+        upstream git_server {
+          server 10.0.0.1:22;
+        }
+
+        upstream default_ssh {
+          server localhost:2202;
+        }
+
+        server {
+          listen 22;
+          proxy_pass $name;
+
+          ssl_preread on;
+          proxy_ssl_name $ssl_preread_server_name;
+
+          set $name default_ssh;
+          if ($ssl_preread_server_name = "git.example.com") {
+              set $name git_server;
+          }
+        }
+      '';
       virtualHosts = {
         "ip.74k1.sh" = {
           locations."/" = {
