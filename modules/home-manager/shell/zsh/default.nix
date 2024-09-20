@@ -16,6 +16,7 @@
     defaultKeymap = "emacs";
     dotDir = ".config/zsh";
 
+    initExtraFirst = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
     # promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 
     shellAliases = {
@@ -30,13 +31,13 @@
       ls = "${pkgs.eza}/bin/eza";
       mv = "mv -iv";
       nano = "${config.programs.neovim.finalPackage}/bin/nvim";
-      nv = "${config.programs.neovim.finalPackage}/bin/nvim";
+      n = "${config.programs.neovim.finalPackage}/bin/nvim";
       rm = "rm -iv";
       tree = "${pkgs.eza}/bin/eza --tree --icons";
       ycr = "youcannotrebuild";
       nlg = "${config.programs.neovim.finalPackage}/bin/nvim +\"Telescope live_grep\" ./";
       nff = "${config.programs.neovim.finalPackage}/bin/nvim +\"Telescope find_files\" ./";
-      # jo = "${pkgs.joshuto}/bin/joshuto";
+      jo = "${pkgs.joshuto}/bin/joshuto";
       # scrot = "${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f '-i %i -g %g') - | xclip -t 'image/png' -selection clipboard";
     };
 
@@ -95,39 +96,6 @@
        	esac
       }
     '';
-
-    # plugins = [
-      # {
-      #   name = "fast-syntax-highlighting";
-      #   file = "fast-syntax-highlighting.plugin.zsh";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "zdharma-continuum";
-      #     repo = "fast-syntax-highlighting";
-      #     rev = "13d7b4e63468307b6dcb2dadf6150818f242cbff";
-      #     sha256 = "sha256-AmsexwVombgVmRvl4O9Kd/WbnVJHPTXETxBv18PDHz4=";
-      #   };
-      # }
-      # {
-      #   name = "zsh-autosuggestions";
-      #   file = "zsh-autosuggestions.plugin.zsh";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "zsh-users";
-      #     repo = "zsh-autosuggestions";
-      #     rev = "a411ef3e0992d4839f0732ebeb9823024afaaaa8";
-      #     sha256 = "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
-      #   };
-      # }
-      # {
-      #   name = "zsh-autocomplete";
-      #   file = "zsh-autocomplete.plugin.zsh";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "marlonrichert";
-      #     repo = "zsh-autocomplete";
-      #     rev = "6a80e62dd4a1c78e00932f9b02537b526ab2fcce";
-      #     sha256 = "sha256-gIJKmJxZCTV7sPON52ixk4ZxoaxbY3ZZghzZ5DiHG6M=";
-      #   };
-      # }
-    # ];
   };
 
   # programs.carapace = {
