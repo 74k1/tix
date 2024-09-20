@@ -8,7 +8,7 @@
       fzf
     ];
 
-    file.".config/starship.zsh".text = builtins.readFile ./cfg/functions.zsh;
+    # file.".config/spaceship.zsh".text = builtins.readFile ./cfg/spaceship.zsh;
   };
 
   # zsh
@@ -22,7 +22,7 @@
     dotDir = ".config/zsh";
 
     # initExtraFirst = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-    initExtraFirst = "source ${pkgs.spaceship-prompt}/lib/spaceship-prompt/spaceship.zsh";
+    # initExtraFirst = "source ${pkgs.spaceship-prompt}/lib/spaceship-prompt/spaceship.zsh";
 
     shellAliases = {
       ":q" = "exit";
@@ -53,6 +53,13 @@
 
     # ${builtins.readFile ./cfg/functions.zsh}
     initExtra = ''
+      # prompt() {
+      #   PS1="$(${pkgs.powerline-rs}/bin/powerline-rs --shell zsh $?)"
+      # }
+      # precmd_functions+=(prompt)
+
+      ${builtins.readFile ./cfg/prompt.zsh}
+
       # Atuin
       export ATUIN_NOBIND="true"
       eval "$(${pkgs.atuin}/bin/atuin init zsh)"
