@@ -4,20 +4,24 @@
   home.packages = with pkgs; [
     atuin
     zoxide
+    fzf
   ];
 
-  # age.secrets.test_secret.file = secrets/secret_test.age;
-  
   # zsh
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    defaultKeymap = "emacs";
+    dotDir = ".config/zsh";
+
+    # promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 
     shellAliases = {
       ":q" = "exit";
       ":E" = "${config.programs.neovim.finalPackage}/bin/nvim +E";
       cat = "${pkgs.bat}/bin/bat";
-      # testt = lib.strings.fileContents config.age.secrets.test_secret.path;
       cp = "cp -iv";
       cd = "z";
       fetch = "${pkgs.fastfetch}/bin/fastfetch";
@@ -41,19 +45,17 @@
       path = "${config.xdg.dataHome}/zsh/history";
     };
 
+    # ${builtins.readFile ./cfg/functions.zsh}
     initExtra = ''
       export ATUIN_NOBIND="true"
       eval "$(${pkgs.atuin}/bin/atuin init zsh)"
       bindkey '^r' _atuin_search_widget
       eval "$(${pkgs.zoxide}/bin/zoxide init --cmd z zsh)"
-      ${builtins.readFile ./cfg/functions.zsh}
       
       # eva reference :^)
       youcannotrebuild () {
         ${
           let
-            inherit (lib.strings)
-              hasInfix;
             inherit (pkgs.hostPlatform)
               isx86_64 isAarch64
               isLinux isDarwin;
@@ -65,12 +67,12 @@
           else if isAarch64 then
             "nix-on-droid"
           else
-            "home-manager" # what is this? plain home-manager, works on every system? ye, like wsl, not darwin, not nixos, not android :holeymoley: havent used yes on such a system but in theory all home mnanager modules would work on it aha. alr alr :hm:
+            "home-manager"
         } --flake ~/tix ''$''\{1:-switch''\} "''$''\{@:2''\}" |& nix run nixpkgs#nix-output-monitor
       }
 
       function joshuto() {
-        ID="$$"
+        ID="\$\$"
         mkdir -p /tmp/$USER
         OUTPUT_FILE="/tmp/$USER/joshuto-cwd-$ID"
         env joshuto --output-file "$OUTPUT_FILE" $@
@@ -94,27 +96,27 @@
       }
     '';
 
-    plugins = [
-      {
-        name = "fast-syntax-highlighting";
-        file = "fast-syntax-highlighting.plugin.zsh";
-        src = pkgs.fetchFromGitHub {
-          owner = "zdharma-continuum";
-          repo = "fast-syntax-highlighting";
-          rev = "13d7b4e63468307b6dcb2dadf6150818f242cbff";
-          sha256 = "sha256-AmsexwVombgVmRvl4O9Kd/WbnVJHPTXETxBv18PDHz4=";
-        };
-      }
-      {
-        name = "zsh-autosuggestions";
-        file = "zsh-autosuggestions.plugin.zsh";
-        src = pkgs.fetchFromGitHub {
-          owner = "zsh-users";
-          repo = "zsh-autosuggestions";
-          rev = "a411ef3e0992d4839f0732ebeb9823024afaaaa8";
-          sha256 = "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
-        };
-      }
+    # plugins = [
+      # {
+      #   name = "fast-syntax-highlighting";
+      #   file = "fast-syntax-highlighting.plugin.zsh";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "zdharma-continuum";
+      #     repo = "fast-syntax-highlighting";
+      #     rev = "13d7b4e63468307b6dcb2dadf6150818f242cbff";
+      #     sha256 = "sha256-AmsexwVombgVmRvl4O9Kd/WbnVJHPTXETxBv18PDHz4=";
+      #   };
+      # }
+      # {
+      #   name = "zsh-autosuggestions";
+      #   file = "zsh-autosuggestions.plugin.zsh";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "zsh-users";
+      #     repo = "zsh-autosuggestions";
+      #     rev = "a411ef3e0992d4839f0732ebeb9823024afaaaa8";
+      #     sha256 = "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
+      #   };
+      # }
       # {
       #   name = "zsh-autocomplete";
       #   file = "zsh-autocomplete.plugin.zsh";
@@ -125,7 +127,7 @@
       #     sha256 = "sha256-gIJKmJxZCTV7sPON52ixk4ZxoaxbY3ZZghzZ5DiHG6M=";
       #   };
       # }
-    ];
+    # ];
   };
 
   # programs.carapace = {
