@@ -14,7 +14,8 @@ in {
   config = {
     stylix = {
       enable = true;
-      image = "${inputs.self}/modules/home-manager/stylix/wall.png";
+      # image = "${inputs.self}/modules/home-manager/stylix/wall.png";
+      image = ./wall.png;
       cursor = {
         package = cfg.package;
         name = "Ukiyo";
@@ -38,30 +39,47 @@ in {
         base0F = "EB52FF";
       };
       fonts = {
-        serif = {
-          package = pkgs.dejavu_fonts;
-          name = "DejaVu Serif";
-        };
-        
-        sansSerif = {
-          package = pkgs.dejavu_fonts;
-          name = "DejaVu Sans";
-        };
-        
-        monospace = {
-          package = pkgs.dejavu_fonts;
-          name = "DejaVu Sans Mono";
-        };
+        # serif = {
+        #   package = pkgs.dejavu_fonts;
+        #   name = "DejaVu Serif";
+        # };
+        #
+        # sansSerif = {
+        #   package = pkgs.dejavu_fonts;
+        #   name = "DejaVu Sans";
+        # };
+        #
+        # monospace = {
+        #   package = pkgs.dejavu_fonts;
+        #   name = "DejaVu Sans Mono";
+        # };
 
         emoji = {
           package = pkgs.twitter-color-emoji;
           name = "Twemoji";
         };
       };
-      #autoEnable = false;
-      #target = {
-      #  gnome.enable = false;
-      #};
+      autoEnable = false;
+      target = {
+        tmux.enable = false;
+        gnome.enable = false;
+        gtk = {
+          enable = false;
+          extraCss = ''
+            // Remove rounded corners
+            window.background { border-radius: 0; }
+          '';
+        };
+        neovim = {
+          enable = false;
+          transparentBackground = {
+            main = true;
+            signColumn = true;
+          };
+        };
+        yazi.enable = false;
+        zathura.enable = false;
+      };
     };
   };
 }
