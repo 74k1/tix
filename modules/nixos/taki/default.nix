@@ -3,7 +3,6 @@ let
   berkeley-ttf = pkgs.callPackage "${inputs.self}/pkgs/berkeley-ttf.nix" { inherit pkgs; };
 in
 {
-<<<<<<< Updated upstream
   options = {
     taki.gui = {
       # NEW way: bool, default false --v

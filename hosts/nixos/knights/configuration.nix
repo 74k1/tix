@@ -58,7 +58,7 @@
   services = {
     openssh = {
       enable = true;
-      # ports = [ 2202 ];
+      ports = [ 2202 ];
       settings = {
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
@@ -151,7 +151,14 @@
           locations."/" = {
             proxyPass = "http://10.100.0.1:3000";
             extraConfig = ''
-              client_max_body_size 100m;
+              client_max_body_size 0;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_http_version 1.1;
+              proxy_set_header Connection "";
+              proxy_buffering off;
+              proxy_read_timeout 36000s;
+              proxy_redirect off;
             '';
           };
         };
