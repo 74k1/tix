@@ -70,6 +70,9 @@
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
     };
+    zen-browser = {
+      url = "github:MarceColl/zen-browser-flake";
+    };
   };
 
   outputs = inputs:
