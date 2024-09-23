@@ -120,7 +120,7 @@ font-synthetic-style = bold,italic,bold-italic
 # 
 # To generally disable most ligatures, use `-calt`, `-liga`, and `-dlig` (as
 # separate repetitive entries in your config).
-font-feature = -calt -dlig -liga
+font-feature = -calt,-dlig,-liga
 
 # Font size in points. This value can be a non-integer and the nearest integer
 # pixel size will be selected. If you have a high dpi display where 1pt = 2px
@@ -1731,7 +1731,7 @@ gtk-single-instance = desktop
 # 
 # Changing this value at runtime and reloading the configuration will only
 # affect new windows.
-gtk-titlebar = true
+gtk-titlebar = false
 
 # Determines the side of the screen that the GTK tab bar will stick to.
 # Top, bottom, left, and right are supported. The default is top.
@@ -1752,7 +1752,7 @@ gtk-tabs-location = top
 #    more subtle border.
 # 
 # Changing this value at runtime will only affect new windows.
-adw-toolbar-style = raised
+adw-toolbar-style = flat
 
 # If `true` (default), then the Ghostty GTK tabs will be "wide." Wide tabs
 # are the new typical Gnome style where tabs fill their available space.
