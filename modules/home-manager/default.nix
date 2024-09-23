@@ -18,6 +18,7 @@
   wall = import ./x11/wall;
   waybar = import ./wayland/waybar;
   wezterm = import ./apps/wezterm;
+  ghostty = import ./apps/ghostty;
   wired = import ./apps/wired;
   xdg = import ./x11/xdg;
   xorg = import ./x11/xorg;

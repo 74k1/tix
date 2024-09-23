@@ -28,6 +28,7 @@
       style
       #wall
       wezterm
+      ghostty
       wired
       xdg
       xorg

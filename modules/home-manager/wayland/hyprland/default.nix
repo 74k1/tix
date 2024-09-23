@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, outputs, system, ... }:
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
@@ -41,9 +41,9 @@ in
       
       bind = [
         # term
-        "$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
+        #"$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
         #"$mod, Return, exec, ${pkgs.kitty}/bin/kitty"
-        "Control_L, alt, exec, ${pkgs.wezterm}/bin/wezterm"
+        "$mod, Return, exec, ${inputs.ghostty.packages.x86_64-linux.default}/bin/ghostty"
 
         # kill # not sure yet
         "$mod, C, killactive,"
