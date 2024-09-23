@@ -244,7 +244,6 @@
      fastfetch
      brscan4
      simple-scan
-     inputs.zen-browser.packages."${system}".default
      #alttab
      #dconf
      #xorg.xkill xclip xdotool xorg.xinit

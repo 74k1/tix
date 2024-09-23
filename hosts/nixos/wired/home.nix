@@ -82,13 +82,14 @@
     joshuto
 
     wezterm
+    inputs.ghostty.packages."${system}".default
     wired
     zellij
     #zoxide
 
     # gui stuff
     brave
-    # inputs.zen-browser.packages."${system}".default
+    inputs.zen-browser.packages."${system}".zen-browser
     ungoogled-chromium
     keepassxc
     obsidian

@@ -3,9 +3,7 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
+    flake-parts = { url = "github:hercules-ci/flake-parts"; inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -71,7 +69,10 @@
       url = "github:the-argus/spicetify-nix";
     };
     zen-browser = {
-      url = "github:MarceColl/zen-browser-flake";
+      url = "github:heywoodlh/flakes/main?dir=zen-browser";
+    };
+    ghostty = {
+      url = "git+file:///home/taki/dev/ghostty";
     };
   };
 

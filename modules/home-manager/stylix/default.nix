@@ -59,27 +59,27 @@ in {
           name = "Twemoji";
         };
       };
-      autoEnable = false;
-      target = {
-        tmux.enable = false;
-        gnome.enable = false;
-        gtk = {
-          enable = false;
-          extraCss = ''
-            // Remove rounded corners
-            window.background { border-radius: 0; }
-          '';
-        };
-        neovim = {
-          enable = false;
-          transparentBackground = {
-            main = true;
-            signColumn = true;
-          };
-        };
-        yazi.enable = false;
-        zathura.enable = false;
-      };
+      autoEnable = true; # false;
+      # target = {
+      #   tmux.enable = false;
+      #   gnome.enable = false;
+      #   gtk = {
+      #     enable = false;
+      #     extraCss = ''
+      #       // Remove rounded corners
+      #       window.background { border-radius: 0; }
+      #     '';
+      #   };
+      #   neovim = {
+      #     enable = false;
+      #     transparentBackground = {
+      #       main = true;
+      #       signColumn = true;
+      #     };
+      #   };
+      #   yazi.enable = false;
+      #   zathura.enable = false;
+      # };
     };
   };
 }
