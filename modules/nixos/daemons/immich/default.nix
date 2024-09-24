@@ -1,18 +1,18 @@
-{ config, lib, pkgs, ... }:
+# VVV we have access to flake from here
+{ inputs, config, lib, pkgs, ... }:
 {
-  # virtualisation.arion = {
-  #   backend = "docker";
-  #   projects."immich-redis".settings.services."immich-redis".service = {
-  #     image = "redis:alpine";
-  #     restart = "unless-stopped";
-  #     #command = "redis-server --save 20 1 --loglevel warning --requirepass oFSQJrEnHq2FoDz7W7Fp";
-  #     volumes = [
-  #       "/var/lib/send-redis/:/data"
-  #       "/etc/localtime:/etc/localtime:ro"
-  #     ];
-  #     ports = [
-  #       "6379:6379"
-  #     ];
-  #   };
-  # };
+  imports = [
+    "${inputs.nixpkgs-master}/nixos/modules/services/web-apps/immich.nix"
+  ];
+
+  services.immich = {
+    enable = true;
+    # default would try to get it from pkgs
+    package = inputs.immich.legacyPackages.x86_64-linux.immich;
+    mediaLocation = "/mnt/btrfs_pools/immich_media/";
+    # environment = '''';
+    # secretsFile = /tmp/immich_secret; # als need to look at this now... try to do it without to see whar happen
+    host = "localhost";
+    port = 3001;
+  };
 }

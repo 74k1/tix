@@ -13,6 +13,7 @@
         server = {
           DOMAIN = "git.example.com";
           ROOT_URL = "https://git.example.com/";
+          SSH_PORT = 727;
         };
         actions = {
           ENABLED = true;

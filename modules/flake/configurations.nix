@@ -89,6 +89,7 @@ in
         };
         knights = {
           hostname = "10.100.0.2";
+          sshOpts = [ "-p" "2202" ];
         };
         morpheus = {
           # temporarily
