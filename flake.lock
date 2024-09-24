@@ -673,11 +673,11 @@
         "zig": "zig"
       },
       "locked": {
-        "lastModified": 1727028345,
-        "narHash": "sha256-MSxU8fFPBO83zaYRP1HTHBEYbXytHH8dNUWNk8tyoVs=",
+        "lastModified": 1727098270,
+        "narHash": "sha256-aQWTFd6sHRcompWFAbUCobJvYJcaa0aCN+fY6qZRT9w=",
         "ref": "refs/heads/main",
-        "rev": "826ba6e46e85bb42a2cc48a08c0da1d5a95df75e",
-        "revCount": 7407,
+        "rev": "70eb5b7485c0264dbcd9943ff2934f819ee90263",
+        "revCount": 7420,
         "type": "git",
         "url": "file:///home/taki/dev/ghostty"
       },
@@ -813,11 +813,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726985855,
-        "narHash": "sha256-NJPGK030Y3qETpWBhj9oobDQRbXdXOPxtu+YgGvZ84o=",
+        "lastModified": 1727111745,
+        "narHash": "sha256-EYLvFRoTPWtD+3uDg2wwQvlz88OrIr3zld+jFE5gDcY=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "04213d1ce4221f5d9b40bcee30706ce9a91d148d",
+        "rev": "21c021862fa696c8199934e2153214ab57150cb6",
         "type": "github"
       },
       "original": {
@@ -889,11 +889,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1727106019,
-        "narHash": "sha256-BkxhOjX7+omS+EivXGjrPTMJGbajLPQ00ELTwqmuJLU=",
+        "lastModified": 1727173505,
+        "narHash": "sha256-DaiWKEntVBrgy1OZEGW3izIfzyIr1jav/Jpo9tqL4EU=",
         "ref": "refs/heads/main",
-        "rev": "508bde1f61b1264c9621b937657088f09f318ce0",
-        "revCount": 5248,
+        "rev": "00c862686354d139a53222d41a1c80d698a50c43",
+        "revCount": 5253,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -1138,6 +1138,22 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/5daf0514482af3f97abaefc78a6606365c9108e2.tar.gz"
       }
     },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1727173215,
+        "narHash": "sha256-OtMlWYCqBDbnEsByoows785Gem9CSMiXYEBiKKtStk4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "965289e5e07243f1cde3212d8bcaf726d36c5c46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1685801374,
@@ -1220,11 +1236,11 @@
     },
     "nixpkgs_12": {
       "locked": {
-        "lastModified": 1727047510,
-        "narHash": "sha256-P9MpW9XepmxeGEJ13I5BwpL1g+aZ6poA3Bdx1Wdhgd8=",
+        "lastModified": 1727135852,
+        "narHash": "sha256-MddIcGJ9qbAFjj1WV5yQ2t7JsSE+c/nXmPJ5JgrwSSo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "122d20b8ba111b5b6d00e8a90431b4cadce097d6",
+        "rev": "ee35dc7c19dd00e4a122e36b24603687f6d04359",
         "type": "github"
       },
       "original": {
@@ -1449,6 +1465,7 @@
         "nixos-generators": "nixos-generators",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_5",
+        "nixpkgs-master": "nixpkgs-master",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "ukiyo": "ukiyo",
@@ -1804,11 +1821,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726933538,
-        "narHash": "sha256-xTqnMoJsEojuvqJLuM+U7EZ7q71efaj3pbvjutq4TXc=",
+        "lastModified": 1727109343,
+        "narHash": "sha256-1PFckA8Im7wMSl26okwOKqBZeCFLD3LvZZFaxswDhbY=",
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
-        "rev": "4880c50146d0c2a3152d2b02f79253810c330c11",
+        "rev": "4adb6c4c41ee5014bfe608123bfeddb26e5f5cea",
         "type": "github"
       },
       "original": {
@@ -1825,11 +1842,11 @@
       },
       "locked": {
         "dir": "zen-browser",
-        "lastModified": 1727049981,
-        "narHash": "sha256-WMoz6eBlgEqn3Dp/UHK5+4kUiD3BT4s07JXEfNOFB5k=",
+        "lastModified": 1727138897,
+        "narHash": "sha256-p7OzneO4AejP26267XFaLFYAL/twSQQXGK5AmcbfpwY=",
         "owner": "heywoodlh",
         "repo": "flakes",
-        "rev": "d84876f2e2e477ac3dca4bb320c724cb51a71961",
+        "rev": "0554f6bcc7f75d92b3ea618c48a31e51240b1749",
         "type": "github"
       },
       "original": {

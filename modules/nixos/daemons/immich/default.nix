@@ -12,7 +12,7 @@
     mediaLocation = "/mnt/btrfs_pools/immich_media/";
     # environment = '''';
     # secretsFile = /tmp/immich_secret; # als need to look at this now... try to do it without to see whar happen
-    host = "localhost";
+    host = "0.0.0.0";
     port = 3001;
   };
 }
