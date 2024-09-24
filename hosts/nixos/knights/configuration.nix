@@ -76,7 +76,6 @@
         upstream git_server {
           server 10.0.0.1:727;
         }
-      
         server {
           listen 22;
           proxy_pass git_server;
@@ -156,12 +155,12 @@
                 client_body_buffer_size 400M;
               '';
             };
-          #"/.well-known/carddav" = {
-          #    return = "301 $scheme://$host$remote.php/dav";
-          #  };
-          #"/.well-known/caldav" = {
-          #    return = "301 $scheme://$host$remote.php/dav";
-          #  };
+            # "/.well-known/carddav" = {
+            #   return = "301 $scheme://$host$remote.php/dav";
+            # };
+            # "/.well-known/caldav" = {
+            #   return = "301 $scheme://$host$remote.php/dav";
+            # };
           };
         };
         "immich.example.com" = {
@@ -171,8 +170,8 @@
             proxyPass = "http://10.100.0.1:3001";
             # see https://immich.app/docs/administration/reverse-proxy/
             extraConfig = ''
-              client_max_body_size 5000M;
-              proxy_set_header Host $http_host;
+              client_max_body_size 10G;
+              proxy_set_header Host $host;
               proxy_set_header X-Real-IP $remote_addr;
               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
               proxy_set_header X-Forwarded-Proto $scheme;
