@@ -14,6 +14,6 @@
     host = "0.0.0.0";
     port = 3001;
     # takes too long to build. disabling AI
-    #machine-learning.enable = false;
+    machine-learning.enable = false;
   };
 }
