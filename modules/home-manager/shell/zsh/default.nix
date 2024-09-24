@@ -3,16 +3,16 @@
 {
   home = {
     packages = with pkgs; [
+      zsh-powerlevel10k
       atuin
       zoxide
       fzf
     ];
 
-    # file.".config/spaceship.zsh".text = builtins.readFile ./cfg/spaceship.zsh;
+    file.".config/.p10k.zsh".source = ./cfg/p10k.zsh;
   };
 
   # zsh
-
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -21,8 +21,7 @@
     defaultKeymap = "emacs";
     dotDir = ".config/zsh";
 
-    # initExtraFirst = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-    # initExtraFirst = "source ${pkgs.spaceship-prompt}/lib/spaceship-prompt/spaceship.zsh";
+    initExtraFirst = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 
     shellAliases = {
       ":q" = "exit";
@@ -53,12 +52,7 @@
 
     # ${builtins.readFile ./cfg/functions.zsh}
     initExtra = ''
-      # prompt() {
-      #   PS1="$(${pkgs.powerline-rs}/bin/powerline-rs --shell zsh $?)"
-      # }
-      # precmd_functions+=(prompt)
-
-      ${builtins.readFile ./cfg/prompt.zsh}
+      source ~/.config/zsh/.p10k.zsh
 
       # Atuin
       export ATUIN_NOBIND="true"
