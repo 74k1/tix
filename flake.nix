@@ -77,7 +77,7 @@
       url = "github:heywoodlh/flakes/main?dir=zen-browser";
     };
     ghostty = {
-      url = "git+file:///home/taki/dev/ghostty";
+      url = "git+ssh://git@github.com/ghostty-org/ghostty";
       inputs.nixpkgs-stable.follows = "nixpkgs";
     };
   };

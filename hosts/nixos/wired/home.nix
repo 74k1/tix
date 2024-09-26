@@ -69,9 +69,12 @@
     # my own scriptiboo
     duvolbr
     berkeley-ttf 
+
+    # uhhh clipboard
+    wl-clipboard-rs
     
     # term
-    bat bat-extras.batman
+    bat
     eza
     feh viu
     pulsemixer
