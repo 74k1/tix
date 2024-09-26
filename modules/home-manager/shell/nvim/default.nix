@@ -93,6 +93,7 @@ in
       cmp-path
       cmp_luasnip
       comment-nvim
+      venn-nvim
       hmts-nvim
       luasnip
       nvim-tree-lua
