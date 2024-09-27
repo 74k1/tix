@@ -12,6 +12,9 @@
 
     inputs.nixos-generators.nixosModules.all-formats
 
+    # cachix
+    substituters
+
     # ly
     vm-test
     locale
