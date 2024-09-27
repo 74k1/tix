@@ -74,7 +74,8 @@
       url = "github:the-argus/spicetify-nix";
     };
     zen-browser = {
-      url = "github:heywoodlh/flakes/main?dir=zen-browser";
+      #url = "github:heywoodlh/flakes/main?dir=zen-browser";
+      url = "github:ch4og/zen-browser-flake";
     };
     ghostty = {
       url = "git+ssh://git@github.com/ghostty-org/ghostty";

@@ -1,5 +1,6 @@
 {
   affine = import ./daemons/affine;
+  substituters = import ./substituters;
   arion = import ./arion;
   authelia = import ./daemons/authelia;
   couchdb = import ./daemons/couchdb;

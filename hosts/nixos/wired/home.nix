@@ -93,7 +93,8 @@
 
     # gui stuff
     brave
-    inputs.zen-browser.packages."${system}".zen-browser
+    #inputs.zen-browser.packages."${system}".zen-browser
+    inputs.zen-browser.packages."${system}".default
     ungoogled-chromium
     keepassxc
     obsidian
