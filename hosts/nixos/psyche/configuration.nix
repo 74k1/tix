@@ -19,6 +19,8 @@
     enable = true;
     defaultUser = "taki";
     interop.register = true;
+    useWindowsDriver = true; # OpenGL windows drivers
+    wslConf.network.hostname = "psyche";
   };
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
@@ -29,6 +31,7 @@
     curl
     fastfetch
     deploy-rs
+    neovim
   ];
 
   # This value determines the NixOS release from which the default

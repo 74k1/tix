@@ -69,7 +69,7 @@ in
         };
         psyche = {
           system = "x86_64-linux";
-          home-manager = false;
+          # home-manager = false;
         };
       };
 

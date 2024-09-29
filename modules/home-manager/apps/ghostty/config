@@ -308,20 +308,20 @@ minimum-contrast = 1
 # For definitions on all the codes [see this cheat
 # sheet](https://www.ditig.com/256-colors-cheat-sheet).
 palette = 0=#000000
-palette = 1=#ff5789
-palette = 2=#45ff82
-palette = 3=#ffe16e
-palette = 4=#5767ff
+palette = 1=#ff5487
+palette = 2=#54ff80
+palette = 3=#ffda6a
+palette = 4=#6682ff
 palette = 5=#eb6aff
-palette = 6=#46daf8
+palette = 6=#4ccefe
 palette = 7=#f1f1f0
 palette = 8=#404040
-palette = 9=#fa5889
-palette = 10=#65ff98
-palette = 11=#f9e69d
-palette = 12=#6a78f7
-palette = 13=#f76aff
-palette = 14=#6be4fd
+palette = 9=#ff6593
+palette = 10=#77ff9a
+palette = 11=#ffe188
+palette = 12=#8399ff
+palette = 13=#f08eff
+palette = 14=#74d9fe
 palette = 15=#f1f1f0
 
 palette = 16=#000000
