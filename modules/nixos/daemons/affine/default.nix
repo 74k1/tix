@@ -72,7 +72,7 @@
         };
 
         "affine-postgres".service = {
-          image = "postgres";
+          image = "postgres:16";
           container_name = "affine_postgres";
           restart = "unless-stopped";
           volumes = [

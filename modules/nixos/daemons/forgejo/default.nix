@@ -2,7 +2,7 @@
 {
   age.secrets."forgejo_runner_token" = {
     rekeyFile = "${inputs.self}/secrets/forgejo_runer_token.age";
-    # mode = "";
+    mode = "770";
     owner = "forgejo";
     group = "forgejo";
   };
@@ -29,23 +29,23 @@
       };
     };
     # Runner
-    gitea-actions-runner = {
-      package = pkgs.forgejo-actions-runner;
-      instances.default = {
-        enable = true;
-        name = "monolith";
-        url = "https://git.example.com";
-        #tokenFile = "/tmp/forgejo-runner-token";
-        tokenFile = config.age.secrets."forgejo_runner_token".path;
-        labels = [
-          "ubuntu-latest:docker://node:16-bullseye"
-          "ubuntu-22.04:docker://node:16-bullseye"
-          "ubuntu-20.04:docker://node:16-bullseye"
-          "ubuntu-18.04:docker://node:16-buster"
-          # "native:host"
-        ];
-      };
-    };
+    # gitea-actions-runner = {
+    #   package = pkgs.forgejo-actions-runner;
+    #   instances.default = {
+    #     enable = true;
+    #     name = "monolith";
+    #     url = "https://git.example.com";
+    #     #tokenFile = "/tmp/forgejo-runner-token";
+    #     tokenFile = config.age.secrets."forgejo_runner_token".path;
+    #     labels = [
+    #       "ubuntu-latest:docker://node:16-bullseye"
+    #       "ubuntu-22.04:docker://node:16-bullseye"
+    #       "ubuntu-20.04:docker://node:16-bullseye"
+    #       "ubuntu-18.04:docker://node:16-buster"
+    #       # "native:host"
+    #     ];
+    #   };
+    # };
   };
 
 }

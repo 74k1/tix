@@ -27,7 +27,7 @@
   hardware = {
     nvidia = {
       # package = config.boot.kernelPackages.nvidiaPackages.production;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      # package = config.boot.kernelPackages.nvidiaPackages.stable;
       modesetting.enable = true;
 
       # prime.offload =
@@ -46,7 +46,7 @@
 
       open = false;
       nvidiaSettings = true;
-      nvidiaPersistenced = true;
+      # nvidiaPersistenced = true;
       forceFullCompositionPipeline = true;
     };
 
