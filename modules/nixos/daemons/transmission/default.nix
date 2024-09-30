@@ -42,7 +42,7 @@
     };
   };
   
-  vpnnamespaces.mu = {
+  vpnNamespaces.mu = {
     enable = true;
     wireguardConfigFile = config.age.secrets."mullvad_config".path;
     namespaceAddress = "192.168.11.1";
