@@ -13,7 +13,7 @@
     inputs.nixos-generators.nixosModules.all-formats
 
     # cachix
-    substituters
+    #substituters
 
     # ly
     vm-test

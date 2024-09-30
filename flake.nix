@@ -79,6 +79,7 @@
     };
     ghostty = {
       url = "git+ssh://git@github.com/ghostty-org/ghostty";
+      # url = "git+file:///home/taki/dev/ghostty/";
       inputs.nixpkgs-stable.follows = "nixpkgs";
     };
   };
