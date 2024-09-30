@@ -4,8 +4,8 @@
     rekeyFile = "${inputs.self}/secrets/mullvad_config.age";
     name = "mu.conf";
     # mode = "770";
-    # owner = "nextcloud";
-    # group = "nextcloud";
+    # owner = "mullvad";
+    # group = "mullvad";
   };
 
   services.transmission = {
@@ -44,7 +44,6 @@
   
   vpnnamespaces.mu = {
     enable = true;
-    # wireguardConfigFile = /tmp/mu.conf;
     wireguardConfigFile = config.age.secrets."mullvad_config".path;
     namespaceAddress = "192.168.11.1";
     bridgeAddress = "192.168.11.5";

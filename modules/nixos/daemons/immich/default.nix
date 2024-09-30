@@ -6,11 +6,10 @@
 
   services.immich = {
     enable = true;
-    # default would try to get it from pkgs
     package = pkgs.immich; # inputs.nixpkgs-master.outputs.legacyPackages.x86_64-linux.immich;
     mediaLocation = "/mnt/btrfs_pool/immich_media/";
     # environment = '''';
-    # secretsFile = /tmp/immich_secret; # als need to look at this now... try to do it without to see whar happen
+    # secretsFile = /tmp/immich_secret;
     host = "0.0.0.0";
     port = 3001;
     # takes too long to build. disabling AI

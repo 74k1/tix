@@ -1,12 +1,11 @@
 { config, pkgs, inputs, outputs, ... }:
 {
-  # age.secrets."nextcloud_admin" = {
-  #   # btw, new nix treesitter indent queries, i/e. indenting is now reasonable
-  #   rekeyFile = "${inputs.self}/secrets/nextcloud_admin.age";
-  #   mode = "770";
-  #   owner = "nextcloud";
-  #   group = "nextcloud";
-  # };
+  age.secrets."nextcloud_admin" = {
+    rekeyFile = "${inputs.self}/secrets/nextcloud_admin.age";
+    mode = "770";
+    owner = "nextcloud";
+    group = "nextcloud";
+  };
 
   services.nextcloud = {
     enable = true;
@@ -22,8 +21,8 @@
     maxUploadSize = "100G";
     fastcgiTimeout = 360;
     config = {
-      adminpassFile = "/tmp/nextcloud_adminpass_secret";
-      # adminpassFile = config.age.secrets."nextcloud_admin".path;
+      # adminpassFile = "/tmp/nextcloud_adminpass_secret";
+      adminpassFile = config.age.secrets."nextcloud_admin".path;
     };
     nginx.hstsMaxAge = 15552000;
     phpOptions = {

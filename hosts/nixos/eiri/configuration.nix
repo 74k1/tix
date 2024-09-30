@@ -1,5 +1,12 @@
 { inputs, outputs, lib, config, pkgs, ... }:
 {
+  age.secrets."cifs_secret" = {
+    rekeyFile = "${inputs.self}/secrets/cifs_secret.age";
+    mode = "770";
+    # owner = "";
+    # group = "";
+  };
+  
   imports = with outputs.nixosModules; [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -158,7 +165,8 @@
   #   device = "//255.255.255.255/share/plex";
   #   fsType = "cifs";
   #   options = [
-  #     "credentials=/home/taki/cifs_secrets"
+  #     "credentials=${config.age.secrets."cifs_secret".path}"
+  #     # "credentials=/home/taki/cifs_secrets"
   #     "iocharset=utf8"
   #     "vers=3.0"
   #     "noperm"

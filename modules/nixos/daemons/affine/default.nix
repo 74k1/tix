@@ -1,5 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, ... }:
 {
+  age.secrets."affine_secret" = {
+    rekeyFile = "${inputs.self}/secrets/affine_secret.age";
+    mode = "770";
+    # owner = "";
+    # group = "";
+  };
   environment.systemPackages = with pkgs; [
     nodejs_22
   ];
@@ -29,7 +35,8 @@
             "/mnt/btrfs_pool/affine_storage:/root/.affine/storage"
           ];
           env_file = [
-            "/home/taki/affine_secret"
+            # "/home/taki/affine_secret"
+            config.age.secrets."affine_secret".path
           ];
           environment = {
             NODE_OPTIONS = "--import=./scripts/register.js";

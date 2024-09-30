@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, ... }:
 {
+  age.secrets."vaultwarden_secret" = {
+    rekeyFile = "${inputs.self}/secrets/vaultwarden_secret.age";
+    # mode = "770";
+    # owner = "";
+    # group = "";
+  };
   services.vaultwarden = {
     enable = true;
-    environmentFile = "/home/taki/vaultwarden_env_secrets";
+    # environmentFile = "/home/taki/vaultwarden_env_secrets";
+    environmentFile = config.age.secrets."vaultwarden_secret".path;
     dbBackend = "sqlite";
     # backupDir = "/vaultwarden";
     config = {

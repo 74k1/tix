@@ -1,12 +1,19 @@
-{ config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, ... }:
 {
+  age.secrets."vikunja_secret" = {
+    rekeyFile = "${inputs.self}/secrets/vikunja_secret.age";
+    # mode = "770";
+    # owner = "";
+    # group = "";
+  };
   services = {
     vikunja = {
       enable = true;
       frontendHostname = "td.example.com";
       frontendScheme = "https";
 
-      #environmentFiles = [ "/home/taki/vikunja_env_secrets" ];
+      # doesnt exist v
+      # environmentFile = config.age.secrets."vikunja_secret".path;
 
       settings = {
         service.enableregistration = false;
