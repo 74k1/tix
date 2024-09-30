@@ -79,8 +79,8 @@
     openssh = {
       enable = true;
       ports = [ 2202 ];
-      logLevel = "VERBOSE";
       settings = {
+        logLevel = "VERBOSE";
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "yes";
