@@ -1,10 +1,17 @@
-{ config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, ... }:
 {
+  age.secrets."forgejo_runner_token" = {
+    rekeyFile = "${inputs.self}/secrets/forgejo_runer_token.age";
+    # mode = "";
+    owner = "forgejo";
+    group = "forgejo";
+  };
   # Git Server
   services = {
     forgejo = {
       enable = true;
       package = pkgs.forgejo;
+      lfs.enable = true;
       settings = {
         service = {
           DISABLE_REGISTRATION = true;
@@ -28,7 +35,8 @@
         enable = true;
         name = "monolith";
         url = "https://git.example.com";
-        tokenFile = "/tmp/forgejo-runner-token";
+        #tokenFile = "/tmp/forgejo-runner-token";
+        tokenFile = config.age.secrets."forgejo_runner_token".path;
         labels = [
           "ubuntu-latest:docker://node:16-bullseye"
           "ubuntu-22.04:docker://node:16-bullseye"
