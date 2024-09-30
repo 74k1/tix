@@ -94,6 +94,8 @@
     rage
     age-plugin-yubikey
     cifs-utils
+    # minecwaft
+    jdk17
   ];
 
   # Services

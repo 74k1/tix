@@ -9,6 +9,7 @@
       starship
       # bash
       zsh
+      ssh-agent
     ])
   ];
 

@@ -2,15 +2,17 @@
   bash = import ./shell/bash;
   bspwm = import ./x11/bspwm;
   colors = import ./x11/colors;
+  ghostty = import ./apps/ghostty;
   git = import ./shell/git;
   hyprland = import ./wayland/hyprland;
-  river = import ./wayland/river;
   i3wm = import ./x11/i3wm;
   nvim = import ./shell/nvim;
   picom = import ./x11/picom;
   polybar = import ./apps/polybar;
+  river = import ./wayland/river;
   rofi = import ./apps/rofi;
   spotify = import ./apps/spotify;
+  ssh-agent = import ./shell/ssh-agent;
   starship = import ./shell/starship;
   style = import ./stylix;
   sxhkd = import ./x11/sxhkd;
@@ -18,7 +20,6 @@
   wall = import ./x11/wall;
   waybar = import ./wayland/waybar;
   wezterm = import ./apps/wezterm;
-  ghostty = import ./apps/ghostty;
   wired = import ./apps/wired;
   xdg = import ./x11/xdg;
   xorg = import ./x11/xorg;

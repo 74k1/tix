@@ -56,9 +56,30 @@
   ];
 
   services = {
+    fail2ban = {
+      enable = true;
+      maxretry = 3;
+      ignoreIP = [
+        "10.0.0.0/8"
+      ];
+      bantime = "24h";
+      bantime-increment = {
+        enable = true;
+        # formula = "ban.Time * math.exp(float(ban.Count+1)*banFactor)/math.exp(1*banFactor)";
+        multipliers = "1 2 4 8 16 32 64 128";
+        overalljails = true;
+      };
+      jails = {
+        nginx-http-auth.settings = { enabled = true; };
+        nginx-botsearch.settings = { enabled = true; };
+        nginx-bad-request.settings = { enabled = true; };
+      };
+    };
+
     openssh = {
       enable = true;
       ports = [ 2202 ];
+      logLevel = "VERBOSE";
       settings = {
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
@@ -72,15 +93,20 @@
       recommendedOptimisation = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
-      streamConfig = ''
-        upstream git_server {
-          server 10.0.0.1:727;
-        }
-        server {
-          listen 22;
-          proxy_pass git_server;
-        }
+      config = ''
+        proxy_headers_hash_bucket_size 128;
       '';
+      # proxy_headers_hash_max_size 512;
+      
+      # streamConfig = ''
+      #   upstream git_server {
+      #     server 10.0.0.1:727;
+      #   }
+      #   server {
+      #     listen 22;
+      #     proxy_pass git_server;
+      #   }
+      # '';
       virtualHosts = {
         "ip.74k1.sh" = {
           locations."/" = {
@@ -170,7 +196,7 @@
             proxyPass = "http://10.100.0.1:3001";
             # see https://immich.app/docs/administration/reverse-proxy/
             extraConfig = ''
-              client_max_body_size 10G;
+              client_max_body_size 20G;
               proxy_set_header Host $host;
               proxy_set_header X-Real-IP $remote_addr;
               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -180,9 +206,9 @@
               proxy_set_header Upgrade $http_upgrade;
               proxy_set_header Connection "upgrade";
 
-              proxy_read_timeout 600s;
-              proxy_send_timeout 600s;
-              send_timeout 600s;
+              proxy_read_timeout 43200s;
+              proxy_send_timeout 43200s;
+              send_timeout 43200s;
             '';
           };
         };

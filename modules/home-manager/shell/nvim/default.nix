@@ -102,6 +102,7 @@ in
       cmp-nvim-lsp
       cmp-path
       cmp_luasnip
+      lush-nvim
       comment-nvim
       hmts-nvim
       luasnip
