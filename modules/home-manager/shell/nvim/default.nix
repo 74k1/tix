@@ -46,15 +46,6 @@ let
       sha256 = "sha256-LiIPVNFEbbkCmqTU+fD23xtTVTIkf6Z5zb+E4Xuz9ps=";
     };
   };
-  tsukiyo-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "tsukiyo-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "74k1";
-      repo = "tsukiyo.nvim";
-      rev = "178c0059fd1aaa775493d05078b607430fb7db26";
-      hash = "sha256-sy5hggbZPojsVEKKyxq44EhBpitk9becvCFQc/96NCU=";
-    };
-  };
 in
 {
   imports = [];
@@ -96,6 +87,7 @@ in
     '';
     plugins = with pkgs.vimPlugins; [
       # neo-tree-nvim
+      oxocarbon-nvim
       tsukiyo-nvim
       cmp-buffer
       cmp-cmdline
