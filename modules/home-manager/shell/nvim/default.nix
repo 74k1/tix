@@ -88,7 +88,7 @@ in
     plugins = with pkgs.vimPlugins; [
       # neo-tree-nvim
       oxocarbon-nvim
-      tsukiyo-nvim
+      # tsukiyo-nvim
       cmp-buffer
       cmp-cmdline
       cmp-nvim-lsp
