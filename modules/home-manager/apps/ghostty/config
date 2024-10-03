@@ -29,7 +29,6 @@
 # applying a slant to the regular style. If you want to disable these
 # synthesized styles then you can use the `font-style` configurations
 # as documented below.
-# 
 # You can disable styles completely by using the `font-style` set of
 # configurations. See the documentation for `font-style` for more information.
 # 
@@ -227,8 +226,8 @@ background-opacity = 0.8
 # in the terminal. If you wish to send the encoded value to the program,
 # specify the "unconsumed:" prefix before the entire keybind. For example:
 # "unconsumed:ctrl+a=reload_config"
-keybind = ctrl+d=scroll_page_fractional:-0.5
-keybind = ctrl+u=scroll_page_fractional:0.5
+keybind = ctrl+d=scroll_page_fractional:0.5
+keybind = ctrl+u=scroll_page_fractional:-0.5
 
 # The style of the macOS titlebar. Available values are: "native",
 # "transparent", "tabs", and "hidden".
