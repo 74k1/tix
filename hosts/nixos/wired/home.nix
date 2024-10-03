@@ -108,6 +108,10 @@
     # ly
     # evolution
 
+    prismlauncher
+    jdk17
+    libGLU
+
     # fonts
     #material-symbols
     #siji
