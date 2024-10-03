@@ -1,3 +1,21 @@
+# The style of the cursor. This sets the default style. A running program can
+# still request an explicit cursor style using escape sequences (such as `CSI
+# q`). Shell configurations will often request specific cursor styles.
+# 
+# Note that shell integration will automatically set the cursor to a bar at
+# a prompt, regardless of this configuration. You can disable that behavior
+# by specifying `shell-integration-features = no-cursor` or disabling shell
+# integration entirely.
+# 
+# Valid values are:
+# 
+#   * `block`
+#   * `bar`
+#   * `underline`
+#   * `block_hollow`
+# 
+cursor-style = block
+
 # The font families to use.
 # 
 # You can generate the list of valid values using the CLI:
@@ -135,6 +153,23 @@ cursor-style = block
 # or greater than 1 will be clamped to the nearest valid value.
 background-opacity = 0.8
 
+# Shell integration features to enable if shell integration itself is enabled.
+# The format of this is a list of features to enable separated by commas. If
+# you prefix a feature with `no-` then it is disabled. If you omit a feature,
+# its default value is used, so you must explicitly disable features you don't
+# want. You can also use `true` or `false` to turn all features on or off.
+# 
+# Available features:
+# 
+#   * `cursor` - Set the cursor to a blinking bar at the prompt.
+# 
+#   * `sudo` - Set sudo wrapper to preserve terminfo.
+# 
+#   * `title` - Set the window title via shell integration.
+# 
+# Example: `cursor`, `no-cursor`, `sudo`, `no-sudo`, `title`, `no-title`
+shell-integration-features = no-sudo,title
+
 # Key bindings. The format is `trigger=action`. Duplicate triggers will
 # overwrite previously set values.
 # 
@@ -226,8 +261,8 @@ background-opacity = 0.8
 # in the terminal. If you wish to send the encoded value to the program,
 # specify the "unconsumed:" prefix before the entire keybind. For example:
 # "unconsumed:ctrl+a=reload_config"
-keybind = ctrl+d=scroll_page_fractional:0.5
-keybind = ctrl+u=scroll_page_fractional:-0.5
+keybind = unconsumed:ctrl+d=scroll_page_fractional:0.5
+keybind = unconsumed:ctrl+u=scroll_page_fractional:-0.5
 
 # The style of the macOS titlebar. Available values are: "native",
 # "transparent", "tabs", and "hidden".
