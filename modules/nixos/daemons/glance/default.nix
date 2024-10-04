@@ -35,7 +35,7 @@
                   type = "calendar";
                 }
                 {
-                  location = "Gossau SG, Switzerland";
+                  location = "Gossau, St. Gallen, Switzerland";
                   type = "weather";
                 }
               ];
