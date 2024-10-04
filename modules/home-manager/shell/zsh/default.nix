@@ -30,9 +30,9 @@
       cp = "cp -iv";
       cd = "z";
       fetch = "${pkgs.fastfetch}/bin/fastfetch";
-      la = "${pkgs.eza}/bin/eza -a";
-      ll = "${pkgs.eza}/bin/eza -l";
-      ls = "${pkgs.eza}/bin/eza";
+      la = "${pkgs.eza}/bin/eza -a --icons=auto";
+      ll = "${pkgs.eza}/bin/eza -l --icons=auto";
+      ls = "${pkgs.eza}/bin/eza --icons=auto";
       mv = "mv -iv";
       nano = "${config.programs.neovim.finalPackage}/bin/nvim";
       n = "${config.programs.neovim.finalPackage}/bin/nvim";

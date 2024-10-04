@@ -261,8 +261,8 @@ shell-integration-features = no-sudo,title
 # in the terminal. If you wish to send the encoded value to the program,
 # specify the "unconsumed:" prefix before the entire keybind. For example:
 # "unconsumed:ctrl+a=reload_config"
-keybind = unconsumed:ctrl+d=scroll_page_fractional:0.5
-keybind = unconsumed:ctrl+u=scroll_page_fractional:-0.5
+keybind = unconsumed:alt+d=scroll_page_fractional:0.5
+keybind = unconsumed:alt+u=scroll_page_fractional:-0.5
 
 # The style of the macOS titlebar. Available values are: "native",
 # "transparent", "tabs", and "hidden".
