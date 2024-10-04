@@ -21,6 +21,9 @@
           DOMAIN = "git.example.com";
           ROOT_URL = "https://git.example.com/";
           SSH_PORT = 727;
+          START_SSH_SERVER = true;
+          SSH_SERVER_USE_PROXY_PROTOCOL = true;
+
         };
         actions = {
           ENABLED = true;
