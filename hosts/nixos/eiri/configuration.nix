@@ -28,6 +28,7 @@
     immich
     locale
     # ollama
+    glance
     nextcloud
     nix
     nvidia

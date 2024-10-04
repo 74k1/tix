@@ -9,7 +9,7 @@
 
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud29;
+    package = pkgs.nextcloud30;
     # extraApps = {
     #   inherit (config.services.nextcloud.package.packages.apps) contacts calendar onlyoffice;
     # };
