@@ -607,11 +607,11 @@
         "zig": "zig"
       },
       "locked": {
-        "lastModified": 1727966977,
-        "narHash": "sha256-8vVbjPPjnC0FOf1b5O2pfMJEKST4Teq1qFgLFiViJ5U=",
+        "lastModified": 1728002754,
+        "narHash": "sha256-V9vP5dIUwHVGXltfVUv7OOGymBJCOzsQ6qu1nnGK0Rg=",
         "ref": "refs/heads/main",
-        "rev": "e78a56a0339f89d7cbdb3159e81969c3de32263f",
-        "revCount": 7599,
+        "rev": "694ca32edda93c2dc8af635c0f2399d2d816fcae",
+        "revCount": 7601,
         "type": "git",
         "url": "ssh://git@github.com/ghostty-org/ghostty"
       },
@@ -747,11 +747,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727817100,
-        "narHash": "sha256-dlyV9/eiWkm/Y/t2+k4CFZ29tBvCANmJogEYaHeAOTw=",
+        "lastModified": 1728041527,
+        "narHash": "sha256-03liqiJtk9UP7YQHW4r8MduKCK242FQzud8iWvvlK+o=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "437ec62009fa8ceb684eb447d455ffba25911cf9",
+        "rev": "509dbf8d45606b618e9ec3bbe4e936b7c5bc6c1e",
         "type": "github"
       },
       "original": {
@@ -824,11 +824,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1727900725,
-        "narHash": "sha256-yS4oC5G/FKrsrRjk03cGzTEXHAwfjP7azFHoKvlFfD8=",
+        "lastModified": 1728031287,
+        "narHash": "sha256-uGudMapfYGI7mY5mOZrb5tXYeGhp8Oar7w72qyeFiQA=",
         "ref": "refs/heads/main",
-        "rev": "de68e065fe861d7ca01eca267df4c305bc6e73c2",
-        "revCount": 5287,
+        "rev": "1ed925b69c2854a3f345cbeb7dca29a6286ca926",
+        "revCount": 5289,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -977,11 +977,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727707210,
-        "narHash": "sha256-8XZp5XO2FC6INZEZ2WlwErtvFVpl45ACn8CJ2hfTA0Y=",
+        "lastModified": 1727999297,
+        "narHash": "sha256-LTJuQPCsSItZ/8TieFeP30iY+uaLoD0mT0tAj1gLeyQ=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "f61d5f2051a387a15817007220e9fb3bbead57b3",
+        "rev": "8c8388ade72e58efdeae71b4cbb79e872c23a56b",
         "type": "github"
       },
       "original": {
@@ -1100,11 +1100,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1727976057,
-        "narHash": "sha256-StCy3WXi/592+oOV+y4vlEbwA+TPz26tMgxjS9lXF20=",
+        "lastModified": 1728053693,
+        "narHash": "sha256-cjnfi1+wh2yhTGqRr3FrUQovgVaJ2m+vb8s3Irj2+mA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3b36b87e1a367c55dcee2ae424ff2a00df9378bb",
+        "rev": "99db8c915cff8c0452e82431dabcb95d4b2ef301",
         "type": "github"
       },
       "original": {
