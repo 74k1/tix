@@ -80,7 +80,7 @@
       enable = true;
       ports = [ 2202 ];
       settings = {
-        logLevel = "VERBOSE";
+        LogLevel = "VERBOSE";
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "yes";
@@ -98,15 +98,15 @@
       '';
       # proxy_headers_hash_max_size 512;
       
-      # streamConfig = ''
-      #   upstream git_server {
-      #     server 10.0.0.1:727;
-      #   }
-      #   server {
-      #     listen 22;
-      #     proxy_pass git_server;
-      #   }
-      # '';
+      streamConfig = ''
+        upstream git_server {
+          server 10.0.0.1:727;
+        }
+        server {
+          listen 22;
+          proxy_pass git_server;
+        }
+      '';
       virtualHosts = {
         "ip.74k1.sh" = {
           locations."/" = {
