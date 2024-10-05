@@ -6,8 +6,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "74k1";
       repo = "tsukiyo.nvim";
-      rev = "b067a159caf6fbd068749e56d1d374e166a0a42f";
-      sha256 = "sha256-oBFvQO7qqT5P/f1fwTgYsK/6RozOEoJenyB25V74i/g=";
+      rev = "ec7c45fde8218b602d1e35e06fb925bf28c3a8c5";
+      sha256 = "sha256-4CAQSfv/alS+Cie6Eqhpx16OyOoEsTyM766SkO/6cpI=";
     };
   };
   nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -76,6 +76,7 @@ in
       set shiftwidth=2 softtabstop=2 expandtab
       set number relativenumber
       set clipboard=unnamedplus
+      colorscheme tsukiyo
 
       " keybinds
       lua vim.api.nvim_create_user_command("E", "Oil", {})
