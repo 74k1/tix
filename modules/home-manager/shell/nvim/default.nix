@@ -1,13 +1,22 @@
 { lib, pkgs, config, ... }:
 
 let
+  tsukiyo-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "tsukiyo-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "74k1";
+      repo = "tsukiyo.nvim";
+      rev = "b067a159caf6fbd068749e56d1d374e166a0a42f";
+      sha256 = "sha256-oBFvQO7qqT5P/f1fwTgYsK/6RozOEoJenyB25V74i/g=";
+    };
+  };
   nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "nix-update-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "reo101";
       repo = "nix-update.nvim";
-      rev = "f548b55b49fffe4f8f26d1773107773e1f65aa6e";
-      sha256 = "sha256-yeUHoiFi2Wrr2WUKPGJEKXLGH1F+8QoNWNa8ln+ef1k=";
+      rev = "83062fa4197e7971d1a63cac05d6feaf8378062e";
+      sha256 = "sha256-9hTApOq0UFu6oBGNd4Pzou55vS3hSxF//wP1eE3hGS8=";
     };
   };
   hmts-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -15,8 +24,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "calops";
       repo = "hmts.nvim";
-      rev = "v1.2.3";
-      sha256 = "sha256-kw3YJ21nhs/x9Jp7kvnL+9FuiSgLB1hO/ON3QeeZx9g=";
+      rev = "v1.2.4";
+      sha256 = "sha256-8FJlLw5LApQs7S8xEh2UE9wdYCAweZTbvgozCGPfQJc=";
     };
   };
   # image-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -33,8 +42,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "nvimdev";
       repo = "indentmini.nvim";
-      rev = "a432ba5863892f9cf56a9d5a3fac00fdf2280b26";
-      sha256 = "sha256-AVurQa359qAJMLOYQBjqnqvuxXtr2ClyfPzIfFI+EaY=";
+      rev = "8922b7ec3f1d556b0805d025f0122e50da387303";
+      sha256 = "sha256-Mqexuzid4LzncqEfl5Q69ZyNBNGDvs5ULoKhZf9io1o=";
     };
   };
   tfm-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -87,13 +96,14 @@ in
     '';
     plugins = with pkgs.vimPlugins; [
       # neo-tree-nvim
-      oxocarbon-nvim
-      # tsukiyo-nvim
+      # oxocarbon-nvim
+      tsukiyo-nvim
       cmp-buffer
       cmp-cmdline
       cmp-nvim-lsp
       cmp-path
       cmp_luasnip
+      hotpot-nvim
       lush-nvim
       comment-nvim
       hmts-nvim
