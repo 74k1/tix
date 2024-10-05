@@ -56,6 +56,12 @@
               "10.100.0.5/32"
             ];
           }
+          { # uhh
+            publicKey = "qTjY9GxMetYXNOVPaWqWDLblP3yPqrMS0WHiUUQ7GQw=";
+            allowedIPs = [
+              "10.100.0.6/32"
+            ];
+          }
         ];
       };
     };
