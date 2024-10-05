@@ -76,7 +76,6 @@ in
       set shiftwidth=2 softtabstop=2 expandtab
       set number relativenumber
       set clipboard=unnamedplus
-      colorscheme tsukiyo
 
       " keybinds
       lua vim.api.nvim_create_user_command("E", "Oil", {})
@@ -98,7 +97,6 @@ in
     plugins = with pkgs.vimPlugins; [
       # neo-tree-nvim
       # oxocarbon-nvim
-      tsukiyo-nvim
       cmp-buffer
       cmp-cmdline
       cmp-nvim-lsp
@@ -119,6 +117,11 @@ in
       vim-dadbod-ui
       vim-nix
       vim-table-mode
+      {
+        plugin = tsukiyo-nvim;
+        type = "lua";
+        config = builtins.readFile ./cfg/tsukiyo.lua;
+      }
       {
         plugin = nvim-lspconfig;
         type = "lua";
