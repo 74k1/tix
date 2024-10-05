@@ -42,6 +42,7 @@
       nlg = "${config.programs.neovim.finalPackage}/bin/nvim +\"Telescope live_grep\" ./";
       nff = "${config.programs.neovim.finalPackage}/bin/nvim +\"Telescope find_files\" ./";
       jo = "${pkgs.joshuto}/bin/joshuto";
+      fyf = "${pkgs.fzf}/bin/fzf";
       # scrot = "${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f '-i %i -g %g') - | xclip -t 'image/png' -selection clipboard";
       ga = "${lib.getExe config.programs.git.package} add .";
       gac = "${lib.getExe config.programs.git.package} add . && ${lib.getExe config.programs.git.package} commit -a -m \"fix/feat: $(curl -s https://whatthecommit.com/index.txt)\"";
