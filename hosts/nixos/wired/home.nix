@@ -107,6 +107,7 @@
     # polybar
     # ly
     # evolution
+    mullvad-vpn
 
     prismlauncher
     jdk17

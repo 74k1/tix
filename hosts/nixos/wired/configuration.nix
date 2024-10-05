@@ -122,6 +122,8 @@
       touchpad.accelProfile = "flat"; 
     };
 
+    mullvad-vpn.enable = true;
+
     # picom = {
     #   enable = true;
     #   fade = true;
