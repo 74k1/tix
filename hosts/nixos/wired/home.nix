@@ -108,6 +108,7 @@
     # ly
     # evolution
     mullvad-vpn
+    plasticity
 
     prismlauncher
     jdk17
