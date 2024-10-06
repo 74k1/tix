@@ -1,7 +1,7 @@
 { config, lib, pkgs, ...}:
 {
   services.outline = {
-    enable = true;
+    enable = false;
     port = 3030;
     publicUrl = "https://wiki.example.com";
     storage = {
