@@ -102,8 +102,6 @@ in
       cmp-nvim-lsp
       cmp-path
       cmp_luasnip
-      hotpot-nvim
-      lush-nvim
       comment-nvim
       hmts-nvim
       luasnip
@@ -116,11 +114,22 @@ in
       vim-dadbod-completion
       vim-dadbod-ui
       vim-nix
-      vim-table-mode
+      # vim-table-mode
+      vim-shellcheck
       {
-        plugin = tsukiyo-nvim;
+        plugin = oxocarbon-nvim;
         type = "lua";
-        config = builtins.readFile ./cfg/tsukiyo.lua;
+        config = builtins.readFile ./cfg/oxocarbon.lua;
+      }
+      # {
+      #   plugin = tsukiyo-nvim;
+      #   type = "lua";
+      #   config = builtins.readFile ./cfg/tsukiyo.lua;
+      # }
+      {
+        plugin = markview-nvim;
+        type = "lua";
+        config = builtins.readFile ./cfg/markview.lua;
       }
       {
         plugin = nvim-lspconfig;
