@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, outputs, system, config, lib, pkgs, ... }:
 {
   wayland.windowManager.river = {
     enable = true;
@@ -34,7 +34,28 @@
       };
       map = {
         normal = {
-          "Alt Q" = "close";
+          # Close Session?
+          "Super+Shift E" = "exit";
+
+          # Wofi
+          "Super Space" = "spawn ${pkgs.wofi}/bin/wofi --show drun";
+          "Super R" = "spawn ${pkgs.wofi}/bin/wofi --show drun";
+
+          # Apps
+          "Super Return" = "spawn ${inputs.ghostty.packages.x86_64-linux.default}/bin/ghostty";
+          "Super N" = "spawn ${pkgs.nemo}/bin/nemo";
+          "Super W" = "spawn ${inputs.zen-browser.packages."${system}".default}/bin/zen";
+
+          # Multimedia
+          "XF86AudioPlay" = "spawn ${pkgs.playerctl}/bin/playerctl play-pause";
+          "XF86AudioPause" = "spawn ${pkgs.playerctl}/bin/playerctl pause";
+          "XF86AudioNext" = "spawn ${pkgs.duvolbr}/bin/duvolbr next_track";
+          "XF86AudioPrev" = "spawn ${pkgs.duvolbr}/bin/duvolbr prev_track";
+
+          # Window Management
+          "Super Q" = "close";
+          "Print" = "spawn ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area";
+
         };
       };
       rule-add = {
@@ -49,16 +70,12 @@
       };
       set-cursor-warp = "on-output-change";
       set-repeat = "50 300";
-      spawn = [
-        "brave"
-        "wezterm"
-      ];
+      spawn = [];
       xcursor-theme = "Ukiyo 12"; 
     };
     extraConfig = ''
+      riverctl keyboard-layout ch &
       rivertile -view-padding 6 -outer-padding 6 &
-      riverctl map normal Super Return spawn wezterm &
-      riverctl map normal Super+Shift E exit &
     '';
   };
 }
