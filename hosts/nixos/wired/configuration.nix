@@ -260,10 +260,13 @@
   ];
 
 
-  hardware.sane = {
-    enable = true;
-    brscan4 = {
+  hardware = {
+    yeetmouse.enable = true;
+    sane = {
       enable = true;
+      brscan4 = {
+        enable = true;
+      };
     };
   };
 
