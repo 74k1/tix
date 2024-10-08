@@ -21,6 +21,8 @@
     nix
     steam
     pcscd
+
+    yeetmouse
   ];
 
   age.rekey = {
