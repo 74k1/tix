@@ -77,6 +77,11 @@
       #url = "github:heywoodlh/flakes/main?dir=zen-browser";
       url = "github:ch4og/zen-browser-flake";
     };
+    yeetmouse = {
+      # see PR: https://github.com/AndyFilter/YeetMouse/pull/1
+      # url = "github:AndyFilter/YeetMouse/master?dir=nix";
+      url = "github:kitten/YeetMouse/master?dir=nix";
+    };
     ghostty = {
       url = "git+ssh://git@github.com/ghostty-org/ghostty";
       # url = "git+file:///home/taki/dev/ghostty/";
