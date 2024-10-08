@@ -23,8 +23,6 @@
     nix
     steam
     pcscd
-
-    yeetmouse
   ];
 
   age.rekey = {
@@ -261,7 +259,12 @@
 
 
   hardware = {
-    yeetmouse.enable = true;
+    yeetmouse = {
+      enable = true;
+      parameters = {
+        ScrollsPerTick = 1;
+      };
+    };
     sane = {
       enable = true;
       brscan4 = {
