@@ -7,8 +7,5 @@
   ...
 }:
 { 
-  imports = [
-    inputs.yeetmouse.nixosModules.default
-  ];
   options.hardware.yeetmouse.enable = true;
 }

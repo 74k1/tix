@@ -12,6 +12,8 @@
 
     inputs.nixos-generators.nixosModules.all-formats
 
+    inputs.yeetmouse.nixosModules.default
+
     # cachix
     #substituters
 
