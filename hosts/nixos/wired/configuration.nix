@@ -262,6 +262,13 @@
     yeetmouse = {
       enable = true;
       parameters = {
+        AccelerationMode = "motivity";
+        Sensitivity = 0.8;
+        OutputCap = 0.0;
+        InputCap = 0.0;
+        Offset = 0.0;
+        Acceleration = 1.05;
+        Midpoint = 5.0;
         ScrollsPerTick = 1;
       };
     };
