@@ -61,6 +61,7 @@
     # ${builtins.readFile ./cfg/functions.zsh}
     initExtra = ''
       source ~/.config/zsh/.p10k.zsh
+      export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
       # Atuin
       export ATUIN_NOBIND="true"

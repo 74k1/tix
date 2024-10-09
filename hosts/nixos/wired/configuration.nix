@@ -157,13 +157,16 @@
     kernelModules = [ "amdgpu" ];
     initrd.kernelModules = [ "amdgpu" ];
   };
-  hardware.graphics.extraPackages = with pkgs; [ 
-    rocm-opencl-icd
-    rocm-opencl-runtime
-    # rocmPackages.clr.icd
-    # amdvlk
-    # driversi686Linux.amdvlk
-  ];
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [ 
+      rocm-opencl-icd
+      rocm-opencl-runtime
+      # rocmPackages.clr.icd
+      # amdvlk
+      # driversi686Linux.amdvlk
+    ];
+  };
 
   boot.kernelParams = [
     "video=DP-2:2560x1440@165"
