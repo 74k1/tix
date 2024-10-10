@@ -1,4 +1,4 @@
-{ inputs, outputs, system, config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, ... }:
 {
   wayland.windowManager.river = {
     enable = true;
@@ -44,7 +44,7 @@
           # Apps
           "Super Return" = "spawn ${inputs.ghostty.packages.x86_64-linux.default}/bin/ghostty";
           "Super N" = "spawn ${pkgs.nemo}/bin/nemo";
-          "Super W" = "spawn ${inputs.zen-browser.packages."${system}".default}/bin/zen";
+          "Super W" = "spawn ${inputs.zen-browser.packages."${pkgs.system}".default}/bin/zen";
 
           # Multimedia
           "XF86AudioPlay" = "spawn ${pkgs.playerctl}/bin/playerctl play-pause";

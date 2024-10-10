@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, outputs, system, ... }:
+{ config, lib, pkgs, inputs, outputs, ... }:
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
