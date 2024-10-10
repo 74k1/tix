@@ -3,6 +3,7 @@ let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
     hyprctl setcursor Ukiyo 16 &
+    systemctl --user start plasma-polkit-agent&
     '';
     #tempfile=$(${pkgs.coreutils}/bin/mktemp) &
     #${pkgs.curl}/bin/curl https://wall.74k1.sh/ --output $tempfile &
@@ -130,9 +131,7 @@ in
       ];
     };
   };
-
-  # home.systemPackages = [
-  #   pkgs.waybar
-  #   pkgs.eww
-  # ];
+  home.packages = with pkgs; [
+    polkit-kde-agent
+  ];
 }

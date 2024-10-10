@@ -48,9 +48,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     yeetmouse = {
-      # see PR: https://github.com/AndyFilter/YeetMouse/pull/1
-      # url = "github:AndyFilter/YeetMouse/master?dir=nix";
-      url = "github:kitten/YeetMouse/master?dir=nix";
+      url = "github:AndyFilter/YeetMouse/master?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
