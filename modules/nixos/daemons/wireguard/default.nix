@@ -1,5 +1,12 @@
 { inputs, outputs, config, lib, pkgs, ... }:
 {
+  age.secrets."wireguard_private_key" = {
+    rekeyFile = "${inputs.self}/secrets/wireguard_private_key.age";
+    # mode = "770";
+    # owner = "nextcloud";
+    # group = "nextcloud";
+  };
+
   # if internet problems occur, check ip route lol
   # sudo ip route del default dev wg0
   # ^ this should do the trick.
@@ -23,7 +30,8 @@
           ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o enp0s31f6 -j MASQUERADE
         '';
 
-        privateKeyFile = "/home/taki/wg_private_key_secrets";
+        # privateKeyFile = "/home/taki/wg_private_key_secrets";
+        privateKeyFile = config.age.secrets."wireguard_private_key".path;
 
         peers = [
           { # knights
