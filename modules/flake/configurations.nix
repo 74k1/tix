@@ -71,6 +71,9 @@ in
           system = "x86_64-linux";
           # home-manager = false;
         };
+        duvet = {
+          system = "x86_64-linux";
+        };
       };
 
     deploy.nodes = lib.flip lib.pipe
@@ -96,6 +99,10 @@ in
           hostname = "192.168.1.61";
           # important, weak device
           remoteBuild = false;
+        };
+        duvet = {
+          hostname = "new.taki.moe";
+          # sshOpts = [ "-p" "2202" ];
         };
       };
   };
