@@ -108,7 +108,7 @@
       #     };
       #   };
       # };
-      defaultSession = "hyprland";
+      defaultSession = "Hyprland";
       # lightdm = {
       #   enable = true;
       #   greeters.slick = {

@@ -15,9 +15,12 @@ in
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    package = pkgs.hyprland;
     plugins = [
       pkgs.hyprlandPlugins.hy3
     ];
+    xwayland.enable = true;
+    systemd.enable = true;
     settings = {
       exec-once = ''${startupScript}/bin/start'';
 
@@ -133,5 +136,6 @@ in
   };
   home.packages = with pkgs; [
     polkit-kde-agent
+    hyprland
   ];
 }
