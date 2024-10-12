@@ -43,11 +43,11 @@
   networking = {
     hostName = "knights"; # Define your hostname.
     networkmanager.enable = true;
-    firewall = {
-      enable = true;
-      allowedUDPPorts = [ 80 443 2202 51820 ];
-      allowedTCPPorts = [ 80 443 2202 51820 ];
-    };
+    # firewall = {
+    #   enable = true;
+    #   allowedUDPPorts = [ 80 443 2202 51820 ];
+    #   allowedTCPPorts = [ 80 443 2202 51820 ];
+    # };
     wireguard.interfaces = {
       wg0 = {
         ips = [ "10.100.0.2/24" ];
@@ -270,7 +270,7 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "email@example.com";
+    defaults.email = "mail@example.com";
   };
 
   # Open ports in the firewall.
