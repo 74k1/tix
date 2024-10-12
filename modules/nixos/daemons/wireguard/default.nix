@@ -34,7 +34,7 @@
         privateKeyFile = config.age.secrets."wireguard_private_key".path;
 
         peers = [
-          { # knights
+          { # knights / proxy
             publicKey = "QACsJg17ScDNt/fvV3WvBnGYZ7+YFaiIfamznBfE7Rw=";
             allowedIPs = [
               "10.100.0.2/32"
