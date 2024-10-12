@@ -22,8 +22,8 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedUDPPorts = [ 2202 ];
-      allowedTCPPorts = [ 2202 ];
+      allowedUDPPorts = [ 80 443 2202 ];
+      allowedTCPPorts = [ 80 443 2202 ];
     };
 
     # wireguard.interfaces = {
@@ -83,8 +83,57 @@
         KbdInteractiveAuthentication = false;
       };
     };
-  };
 
+    phpfpm.pools.mypool = {
+      user = "nobody";
+      settings = {
+        "pm" = "dynamic";
+        "listen.owner" = config.services.nginx.user;
+        "pm.max_children" = 5;
+        "pm.start_servers" = 2;
+        "pm.min_spare_servers" = 1;
+        "pm.max_spare_servers" = 3;
+        "pm.max_requests" = 500;
+      };
+    };
+
+    nginx = {
+      enable = true;
+      recommendedGzipSettings = true;
+      recommendedOptimisation = true;
+      recommendedProxySettings = true;
+      recommendedTlsSettings = true;
+      virtualHosts = {
+        "ip.74k1.sh" = {
+          locations."/" = {
+            return = "200 $remote_addr\n";
+            extraConfig = ''
+              default_type text/plain;
+            '';
+          };
+        };
+        "wall.74k1.sh" = {
+          addSSL = true;
+          enableACME = true;
+          root = "/var/www/wall.74k1.sh/";
+          locations."~ \\.php$".extraConfig = ''
+            fastcgi_pass unix:${config.services.phpfpm.pools.mypool.socket};
+            fastcgi_index index.php;
+          '';
+        };
+        "74k1.sh" = {
+          addSSL = true;
+          enableACME = true;
+          root = "/var/www/74k1.sh/";
+        };
+        "taki.moe" = {
+          addSSL = true;
+          enableACME = true;
+          root = "/var/www/taki.moe/";
+        };
+      };
+    };
+  };
 
   security.acme = {
     acceptTerms = true;
