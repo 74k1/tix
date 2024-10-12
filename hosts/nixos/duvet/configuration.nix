@@ -14,7 +14,6 @@
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "ext4"];
 
   documentation.nixos.enable = false;
 
