@@ -1,19 +1,44 @@
 { inputs, outputs, config, lib, pkgs, ... }:
 {
+  age.secrets."wireguard_private_key" = {
+    rekeyFile = "${inputs.self}/secrets/knights_wireguard_private_key.age";
+  };
+  
   imports = with outputs.nixosModules; [ 
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    
+    inputs.agenix.nixosModules.default
+    inputs.agenix-rekey.nixosModules.default
 
-      locale
-      nix
-      taki
-    ];
+    locale
+    nix
+    taki
+];
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
   documentation.nixos.enable = false;
+
+  age.rekey = {
+    # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
+    # use strictly `ssh-keyscan <remote ip>` from host
+    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFJp2WfgRJJHY6FF48vdSr2ZsTcvJqYTrewLNNeEB0Ps knights";
+    # The path to the master identity used for decryption. See the option's description for more information.
+    masterIdentities = [
+      # ../../../secrets/yubikey-1-on-person.pub
+      "${inputs.self}/secrets/yubikey-1-on-person.pub"
+      # ../../../secrets/yubikey-2-at-home.pub
+      "${inputs.self}/secrets/yubikey-2-at-home.pub"
+    ];
+    storageMode = "local";
+    # Choose a dir to store the rekeyed secrets for this host.
+    # This cannot be shared with other hosts. Please refer to this path
+    # from your flake's root directory and not by a direct path literal like ./secrets
+    localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
+  };
 
   networking = {
     hostName = "knights"; # Define your hostname.
@@ -23,21 +48,22 @@
       allowedUDPPorts = [ 2202 51820 ];
       allowedTCPPorts = [ 25 80 143 443 465 587 993 2202 4190 ];
     };
-    # wireguard.interfaces = {
-    #   wg0 = {
-    #     ips = [ "10.100.0.2/24" ];
-    #     listenPort = 51820;
-    #     privateKeyFile = "/home/taki/wg_knights_private_key_secrets";
-    #     peers = [
-    #       {
-    #         publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
-    #         allowedIPs = [ "10.100.0.1" ];
-    #         endpoint = "example.com:51820";
-    #         persistentKeepalive = 25;
-    #       }
-    #     ];
-    #   };
-    # };
+    wireguard.interfaces = {
+      wg0 = {
+        ips = [ "10.100.0.2/24" ];
+        listenPort = 51820;
+        # privateKeyFile = "/home/taki/wg_knights_private_key_secrets";
+        privateKeyFile = config.age.secrets."wireguard_private_key".path;
+        peers = [
+          {
+            publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
+            allowedIPs = [ "10.100.0.1" ];
+            endpoint = "example.com:51820";
+            persistentKeepalive = 25;
+          }
+        ];
+      };
+    };
     # nat = {
     #   enable = true;
     #   externalInterface = "ens3";

@@ -92,7 +92,8 @@ in
           hostname = "255.255.255.255";
         };
         knights = {
-          hostname = "example.com";
+          # hostname = "example.com";
+          hostname = "255.255.255.255";
           sshOpts = [ "-p" "2202" ];
         };
         morpheus = {
