@@ -8,6 +8,8 @@
   perSystem = { self', lib, pkgs, system, inputs', ... }: {
     agenix-rekey.nodes = {
       inherit (self.nixosConfigurations)
+        knights
+        wired
         cyberia
         eiri;
     };
