@@ -35,7 +35,7 @@
 
         peers = [
           { # knights / proxy
-            publicKey = "QACsJg17ScDNt/fvV3WvBnGYZ7+YFaiIfamznBfE7Rw=";
+            publicKey = "dVVhzsUPOT4ln5v4agYw/MxhIb8frEp74oSEIIadgH0=";
             allowedIPs = [
               "10.100.0.2/32"
             ];
