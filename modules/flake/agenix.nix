@@ -9,8 +9,6 @@
     agenix-rekey.nodes = {
       inherit (self.nixosConfigurations)
         knights
-        wired
-        cyberia
         eiri;
     };
   };
