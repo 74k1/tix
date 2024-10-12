@@ -13,11 +13,13 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
+  documentation.nixos.enable = false;
+
   networking = {
     hostName = "knights"; # Define your hostname.
     networkmanager.enable = true;
     firewall = {
-      enabled = true;
+      enable = true;
       allowedUDPPorts = [ 2202 51820 ];
       allowedTCPPorts = [ 25 80 143 443 465 587 993 2202 4190 ];
     };
