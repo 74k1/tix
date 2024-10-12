@@ -88,6 +88,7 @@ in
       {
         eiri = {
           # should change this to 10.0.0.1 someday, when i have wg on cyberia
+          # but how do I deploy from wired
           hostname = "255.255.255.255";
         };
         knights = {
@@ -101,7 +102,7 @@ in
           remoteBuild = false;
         };
         duvet = {
-          hostname = "new.taki.moe";
+          hostname = "taki.moe";
           sshOpts = [ "-p" "2202" ];
         };
       };

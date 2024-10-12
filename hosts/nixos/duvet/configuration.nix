@@ -25,22 +25,6 @@
       allowedUDPPorts = [ 80 443 2202 ];
       allowedTCPPorts = [ 80 443 2202 ];
     };
-
-    # wireguard.interfaces = {
-    #   wg0 = {
-    #     ips = [ "10.100.0.2/24" ];
-    #     listenPort = 51820;
-    #     privateKeyFile = "/home/taki/wg_knights_private_key_secrets";
-    #     peers = [
-    #       {
-    #         publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
-    #         allowedIPs = [ "10.100.0.1" ];
-    #         endpoint = "example.com:51820";
-    #         persistentKeepalive = 25;
-    #       }
-    #     ];
-    #   };
-    # };
   };
 
   programs.zsh.enable = true;
@@ -116,6 +100,7 @@
           addSSL = true;
           enableACME = true;
           root = "/var/www/wall.74k1.sh/";
+          locations."/".index = "index.php";
           locations."~ \\.php$".extraConfig = ''
             fastcgi_pass unix:${config.services.phpfpm.pools.mypool.socket};
             fastcgi_index index.php;
