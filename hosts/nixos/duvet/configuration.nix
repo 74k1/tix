@@ -1,5 +1,7 @@
 { inputs, outputs, config, lib, pkgs, ... }:
 {
+  # See [NixOS on Hetzner Cloud Wiki](https://wiki.nixos.org/wiki/Install_NixOS_on_Hetzner_Cloud)
+
   imports = with outputs.nixosModules; [ 
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -12,6 +14,9 @@
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "ext4"];
+
+  documentation.nixos.enable = false;
 
   networking = {
     hostName = "duvet"; # Define your hostname.
@@ -39,7 +44,7 @@
   
   environment.systemPackages = with pkgs; [
     btop
-    git wget curl tmux
+    git wget curl tmux unzip zip
     fastfetch
   ];
 
@@ -68,10 +73,9 @@
       enable = true;
       ports = [ 2202 ];
       settings = {
-        LogLevel = "VERBOSE";
+        PermitRootLogin = "yes";
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
-        PermitRootLogin = "yes";
       };
     };
   };
