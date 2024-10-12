@@ -1,8 +1,8 @@
 { inputs, outputs, config, lib, pkgs, ... }:
 {
-  age.secrets."wireguard_private_key" = {
-    rekeyFile = "${inputs.self}/secrets/knights_wireguard_private_key.age";
-  };
+  # age.secrets."knights_wireguard_private_key" = {
+  #   rekeyFile = "${inputs.self}/secrets/knights_wireguard_private_key.age";
+  # };
   
   imports = with outputs.nixosModules; [ 
     # Include the results of the hardware scan.
@@ -48,22 +48,21 @@
       allowedUDPPorts = [ 2202 51820 ];
       allowedTCPPorts = [ 25 80 143 443 465 587 993 2202 4190 ];
     };
-    wireguard.interfaces = {
-      wg0 = {
-        ips = [ "10.100.0.2/24" ];
-        listenPort = 51820;
-        # privateKeyFile = "/home/taki/wg_knights_private_key_secrets";
-        privateKeyFile = config.age.secrets."wireguard_private_key".path;
-        peers = [
-          {
-            publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
-            allowedIPs = [ "10.100.0.1" ];
-            endpoint = "example.com:51820";
-            persistentKeepalive = 25;
-          }
-        ];
-      };
-    };
+    # wireguard.interfaces = {
+    #   wg0 = {
+    #     ips = [ "10.100.0.2/24" ];
+    #     listenPort = 51820;
+    #     privateKeyFile = config.age.secrets."knights_wireguard_private_key".path;
+    #     peers = [
+    #       {
+    #         publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
+    #         allowedIPs = [ "10.100.0.1" ];
+    #         endpoint = "example.com:51820";
+    #         persistentKeepalive = 25;
+    #       }
+    #     ];
+    #   };
+    # };
     # nat = {
     #   enable = true;
     #   externalInterface = "ens3";
