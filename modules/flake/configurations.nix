@@ -102,7 +102,7 @@ in
         };
         duvet = {
           hostname = "new.taki.moe";
-          # sshOpts = [ "-p" "2202" ];
+          sshOpts = [ "-p" "2202" ];
         };
       };
   };

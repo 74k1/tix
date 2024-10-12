@@ -20,8 +20,12 @@
   networking = {
     hostName = "duvet"; # Define your hostname.
     networkmanager.enable = true;
-    firewall.allowedUDPPorts = [ 22 ];
-    firewall.allowedTCPPorts = [ 22 ];
+    firewall = {
+      enable = true;
+      allowedUDPPorts = [ 2202 ];
+      allowedTCPPorts = [ 2202 ];
+    };
+
     # wireguard.interfaces = {
     #   wg0 = {
     #     ips = [ "10.100.0.2/24" ];
@@ -47,53 +51,45 @@
     fastfetch
   ];
 
+  users.users.root.hashedPassword = "!"; # Disable root login
+
   services = {
-    # fail2ban = {
-    #   enable = true;
-    #   maxretry = 3;
-    #   ignoreIP = [
-    #     "10.0.0.0/8"
-    #   ];
-    #   bantime = "24h";
-    #   bantime-increment = {
-    #     enable = true;
-    #     # formula = "ban.Time * math.exp(float(ban.Count+1)*banFactor)/math.exp(1*banFactor)";
-    #     multipliers = "1 2 4 8 16 32 64 128";
-    #     overalljails = true;
-    #   };
-    #   jails = {
-    #     nginx-http-auth.settings = { enabled = true; };
-    #     nginx-botsearch.settings = { enabled = true; };
-    #     nginx-bad-request.settings = { enabled = true; };
-    #   };
-    # };
+    fail2ban = {
+      enable = true;
+      maxretry = 3;
+      ignoreIP = [
+        "10.0.0.0/8"
+      ];
+      bantime = "24h";
+      bantime-increment = {
+        enable = true;
+        # formula = "ban.Time * math.exp(float(ban.Count+1)*banFactor)/math.exp(1*banFactor)";
+        multipliers = "1 2 4 8 16 32 64 128";
+        overalljails = true;
+      };
+      jails = {
+        nginx-http-auth.settings = { enabled = true; };
+        nginx-botsearch.settings = { enabled = true; };
+        nginx-bad-request.settings = { enabled = true; };
+      };
+    };
 
     openssh = {
       enable = true;
       ports = [ 2202 ];
       settings = {
-        PermitRootLogin = "yes";
+        PermitRootLogin = "no";
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
       };
     };
   };
 
+
   security.acme = {
     acceptTerms = true;
-    defaults.email = "boss@example.com";
+    defaults.email = "74k1@pm.me";
   };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

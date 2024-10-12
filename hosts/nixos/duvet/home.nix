@@ -4,7 +4,6 @@
     (with outputs.homeManagerModules; [
       git
       nvim
-      starship
       zsh
     ])
   ];
@@ -21,12 +20,9 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    bat bat-extras.batman
+    bat
     eza
-    feh viu
     ripgrep
-    scc
-    starship
     tealdeer
     zellij
   ];
