@@ -87,193 +87,185 @@
   ];
 
   services = {
-    # fail2ban = {
-    #   enable = true;
-    #   maxretry = 3;
-    #   ignoreIP = [
-    #     "10.0.0.0/8"
-    #   ];
-    #   bantime = "24h";
-    #   bantime-increment = {
-    #     enable = true;
-    #     # formula = "ban.Time * math.exp(float(ban.Count+1)*banFactor)/math.exp(1*banFactor)";
-    #     multipliers = "1 2 4 8 16 32 64 128";
-    #     overalljails = true;
-    #   };
-    #   jails = {
-    #     nginx-http-auth.settings = { enabled = true; };
-    #     nginx-botsearch.settings = { enabled = true; };
-    #     nginx-bad-request.settings = { enabled = true; };
-    #   };
-    # };
+    fail2ban = {
+      enable = true;
+      maxretry = 3;
+      ignoreIP = [
+        "10.0.0.0/8"
+      ];
+      bantime = "24h";
+      bantime-increment = {
+        enable = true;
+        # formula = "ban.Time * math.exp(float(ban.Count+1)*banFactor)/math.exp(1*banFactor)";
+        multipliers = "1 2 4 8 16 32 64 128";
+        overalljails = true;
+      };
+      jails = {
+        nginx-http-auth.settings = { enabled = true; };
+        nginx-botsearch.settings = { enabled = true; };
+        nginx-bad-request.settings = { enabled = true; };
+      };
+    };
 
     openssh = {
       enable = true;
       ports = [ 2202 ];
       settings = {
-        PermitRootLogin = "yes";
+        PermitRootLogin = "no";
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
       };
     };
 
-    # nginx = {
-    #   enable = true;
-    #   recommendedGzipSettings = true;
-    #   recommendedOptimisation = true;
-    #   recommendedProxySettings = true;
-    #   recommendedTlsSettings = true;
-    #   config = ''
-    #     proxy_headers_hash_max_size 512;
-    #   '';
-    #   
-    #   # streamConfig = ''
-    #   #   upstream git_server {
-    #   #     server 10.0.0.1:727;
-    #   #   }
-    #   #   server {
-    #   #     listen 22;
-    #   #     proxy_pass git_server;
-    #   #   }
-    #   # '';
-    #   virtualHosts = {
-    #     "ip.74k1.sh" = {
-    #       locations."/" = {
-    #         return = "200 $remote_addr\n";
-    #         extraConfig = ''
-    #           default_type text/plain;
-    #         '';
-    #       };
-    #     };
-    #     "example.com" = {
-    #       addSSL = true;
-    #       enableACME = true;
-    #       root = "/var/www/example.com/";
-    #     };
-    #     "vw.example.com" = {
-    #       enableACME = true;
-    #       forceSSL = true;
-    #       locations."/" = {
-    #         proxyPass = "http://10.100.0.1:8222";
-    #         proxyWebsockets = true;
-    #       };
-    #     };
-    #     "td.example.com" = {
-    #       enableACME = true;
-    #       forceSSL = true;
-    #       locations."/" = {
-    #         proxyPass = "http://10.100.0.1:3456";
-    #         extraConfig = ''
-    #           client_max_body_size 20M;
-    #         '';
-    #       };
-    #     };
-    #     # "mc.example.com" = {
-    #     #   enableACME = true;
-    #     #   forceSSL = true;
-    #     #   locations."/" = {
-    #     #     proxyPass = "http://10.100.0.1:8123";
-    #     #   };
-    #     # };
-    #     # "ls.example.com" = {
-    #     #   enableACME = true;
-    #     #   forceSSL = true;
-    #     #   locations."/" = {
-    #     #     proxyPass = "http://10.100.0.1:5544";
-    #     #   };
-    #     # };
-    #     "git.example.com" = {
-    #       enableACME = true;
-    #       forceSSL = true;
-    #       locations."/" = {
-    #         proxyPass = "http://10.100.0.1:3000";
-    #         extraConfig = ''
-    #           client_max_body_size 0;
-    #           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    #           proxy_set_header X-Real-IP $remote_addr;
-    #           proxy_http_version 1.1;
-    #           proxy_set_header Connection "";
-    #           proxy_buffering off;
-    #           proxy_read_timeout 36000s;
-    #           proxy_redirect off;
-    #         '';
-    #       };
-    #     };
-    #     "files.example.com" = {
-    #       enableACME = true;
-    #       forceSSL = true;
-    #       locations = {
-    #         "/" = {
-    #           proxyPass = "http://10.100.0.1:80";
-    #           extraConfig = ''
-    #             client_max_body_size 100G;
-    #             client_body_buffer_size 400M;
-    #           '';
-    #         };
-    #         # "/.well-known/carddav" = {
-    #         #   return = "301 $scheme://$host$remote.php/dav";
-    #         # };
-    #         # "/.well-known/caldav" = {
-    #         #   return = "301 $scheme://$host$remote.php/dav";
-    #         # };
-    #       };
-    #     };
-    #     "immich.example.com" = {
-    #       enableACME = true;
-    #       forceSSL = true;
-    #       locations."/" = {
-    #         proxyPass = "http://10.100.0.1:3001";
-    #         # see https://immich.app/docs/administration/reverse-proxy/
-    #         extraConfig = ''
-    #           client_max_body_size 20G;
-    #           proxy_set_header Host $host;
-    #           proxy_set_header X-Real-IP $remote_addr;
-    #           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    #           proxy_set_header X-Forwarded-Proto $scheme;
+    nginx = {
+      enable = true;
+      recommendedGzipSettings = true;
+      recommendedOptimisation = true;
+      recommendedProxySettings = true;
+      recommendedTlsSettings = true;
+      config = ''
+        proxy_headers_hash_max_size 512;
+      '';
+      
+      # streamConfig = ''
+      #   upstream git_server {
+      #     server 10.0.0.1:727;
+      #   }
+      #   server {
+      #     listen 22;
+      #     proxy_pass git_server;
+      #   }
+      # '';
+      virtualHosts = {
+        "example.com" = {
+          addSSL = true;
+          enableACME = true;
+          root = "/var/www/example.com/";
+        };
+        "vw.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:8222";
+            proxyWebsockets = true;
+          };
+        };
+        "td.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:3456";
+            extraConfig = ''
+              client_max_body_size 20M;
+            '';
+          };
+        };
+        # "mc.example.com" = {
+        #   enableACME = true;
+        #   forceSSL = true;
+        #   locations."/" = {
+        #     proxyPass = "http://10.100.0.1:8123";
+        #   };
+        # };
+        # "ls.example.com" = {
+        #   enableACME = true;
+        #   forceSSL = true;
+        #   locations."/" = {
+        #     proxyPass = "http://10.100.0.1:5544";
+        #   };
+        # };
+        "git.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:3000";
+            extraConfig = ''
+              client_max_body_size 0;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_http_version 1.1;
+              proxy_set_header Connection "";
+              proxy_buffering off;
+              proxy_read_timeout 36000s;
+              proxy_redirect off;
+            '';
+          };
+        };
+        "files.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations = {
+            "/" = {
+              proxyPass = "http://10.100.0.1:80";
+              extraConfig = ''
+                client_max_body_size 100G;
+                client_body_buffer_size 400M;
+              '';
+            };
+            # "/.well-known/carddav" = {
+            #   return = "301 $scheme://$host$remote.php/dav";
+            # };
+            # "/.well-known/caldav" = {
+            #   return = "301 $scheme://$host$remote.php/dav";
+            # };
+          };
+        };
+        "immich.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:3001";
+            # see https://immich.app/docs/administration/reverse-proxy/
+            extraConfig = ''
+              client_max_body_size 50G;
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto $scheme;
 
-    #           proxy_http_version 1.1;
-    #           proxy_set_header Upgrade $http_upgrade;
-    #           proxy_set_header Connection "upgrade";
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
 
-    #           proxy_read_timeout 43200s;
-    #           proxy_send_timeout 43200s;
-    #           send_timeout 43200s;
-    #         '';
-    #       };
-    #     };
-    #     # "n8n.example.com" = {
-    #     #   enableACME = true;
-    #     #   forceSSL = true;
-    #     #   locations."/" = {
-    #     #     proxyPass = "http://10.100.0.1:5678"
-    #     #   };
-    #     # };
-    #     "wiki.example.com" = {
-    #       enableACME = true;
-    #       forceSSL = true;
-    #       locations."/" = {
-    #         proxyPass = "http://10.100.0.1:3030";
-    #         extraConfig = ''
-    #           proxy_http_version 1.1;
-    #           proxy_set_header Upgrade $http_upgrade;
-    #           proxy_set_header Connection "upgrade";
-    #         '';
-    #       };
-    #     };
-    #     "forever.example.com" = {
-    #       enableACME = true;
-    #       forceSSL = true;
-    #       locations."/" = {
-    #         proxyPass = "http://10.100.0.1:3010";
-    #         extraConfig = ''
-    #           proxy_http_version 1.1;
-    #           proxy_set_header Upgrade $http_upgrade;
-    #           proxy_set_header Connection "upgrade";
-    #         '';
-    #       };
-    #     };
-    #   };
-    # };
+              proxy_read_timeout 43200s;
+              proxy_send_timeout 43200s;
+              send_timeout 43200s;
+            '';
+          };
+        };
+        # "n8n.example.com" = {
+        #   enableACME = true;
+        #   forceSSL = true;
+        #   locations."/" = {
+        #     proxyPass = "http://10.100.0.1:5678"
+        #   };
+        # };
+        "wiki.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:3030";
+            extraConfig = ''
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+            '';
+          };
+        };
+        "forever.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:3010";
+            extraConfig = ''
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+            '';
+          };
+        };
+      };
+    };
   };
 
   security.acme = {
