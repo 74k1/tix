@@ -191,25 +191,25 @@
             '';
           };
         };
-        # "files.example.com" = {
-        #   enableACME = true;
-        #   forceSSL = true;
-        #   locations = {
-        #     "/" = {
-        #       proxyPass = "http://10.100.0.1:80";
-        #       extraConfig = ''
-        #         client_max_body_size 100G;
-        #         client_body_buffer_size 400M;
-        #       '';
-        #     };
-        #     # "/.well-known/carddav" = {
-        #     #   return = "301 $scheme://$host$remote.php/dav";
-        #     # };
-        #     # "/.well-known/caldav" = {
-        #     #   return = "301 $scheme://$host$remote.php/dav";
-        #     # };
-        #   };
-        # };
+        "files.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations = {
+            "/" = {
+              proxyPass = "http://10.100.0.1:80";
+              extraConfig = ''
+                client_max_body_size 100G;
+                client_body_buffer_size 400M;
+              '';
+            };
+            # "/.well-known/carddav" = {
+            #   return = "301 $scheme://$host$remote.php/dav";
+            # };
+            # "/.well-known/caldav" = {
+            #   return = "301 $scheme://$host$remote.php/dav";
+            # };
+          };
+        };
         "immich.example.com" = {
           enableACME = true;
           forceSSL = true;
@@ -270,7 +270,7 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "boss@example.com";
+    defaults.email = "email@example.com";
   };
 
   # Open ports in the firewall.
