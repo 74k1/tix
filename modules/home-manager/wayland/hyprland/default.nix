@@ -16,9 +16,9 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
-    plugins = [
-      pkgs.hyprlandPlugins.hy3
-    ];
+    # plugins = [
+    #   pkgs.hyprlandPlugins.hy3
+    # ];
     xwayland.enable = true;
     systemd.enable = true;
     settings = {

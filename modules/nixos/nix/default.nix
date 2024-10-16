@@ -8,7 +8,7 @@
 
     # Enable flakes, the new `nix` commands and better support for flakes in it
     extraOptions = ''
-      experimental-features = nix-command flakes repl-flake
+      experimental-features = nix-command flakes
     '';
 
     settings = {
