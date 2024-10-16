@@ -262,20 +262,20 @@
 
 
   hardware = {
-    # yeetmouse = {
-    #   enable = true;
-    #   parameters = {
-    #     AccelerationMode = "jump"; # looks most like motivity in Raw Accel
-    #     Sensitivity = 0.8;
-    #     # Offset = -15.0;
-    #     # PreScale = 0.20;
-    #     PreScale = 1.0;
-    #     Acceleration = 1.56;
-    #     Midpoint = 5.0;
-    #     UseSmoothing = true;
-    #     ScrollsPerTick = 1;
-    #   };
-    # };
+    yeetmouse = {
+      enable = true;
+      parameters = {
+        AccelerationMode = "jump"; # looks most like motivity in Raw Accel
+        Sensitivity = 0.8;
+        # Offset = -15.0;
+        # PreScale = 0.20;
+        PreScale = 1.0;
+        Acceleration = 1.56;
+        Midpoint = 5.0;
+        UseSmoothing = true;
+        ScrollsPerTick = 1;
+      };
+    };
     sane = {
       enable = true;
       brscan4 = {
