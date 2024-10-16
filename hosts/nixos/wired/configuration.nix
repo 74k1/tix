@@ -271,7 +271,7 @@
         # PreScale = 0.20;
         PreScale = 1.0;
         Acceleration = 1.56;
-        Midpoint = 5.0;
+        Midpoint = 7.0;
         UseSmoothing = true;
         ScrollsPerTick = 1;
       };
