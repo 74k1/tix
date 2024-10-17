@@ -49,11 +49,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1728927706,
-        "narHash": "sha256-vRGSgoh25vylB9BTtt+zEt3NfK4ZM9OMX7huAbA6qGc=",
+        "lastModified": 1729172588,
+        "narHash": "sha256-BLAyMpW3onKZ0tOfXRY26baJL9fZ/OogccFWO0uNyuw=",
         "owner": "oddlama",
         "repo": "agenix-rekey",
-        "rev": "fb10b6f54375a0fd40fd0b11e274b03906d4a598",
+        "rev": "0488a23f882df0de8107e46da88177bd038ab4d2",
         "type": "github"
       },
       "original": {
@@ -785,11 +785,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1729027341,
-        "narHash": "sha256-IqWD7bA9iJVifvJlB4vs2KUXVhN+d9lECWdNB4jJ0tE=",
+        "lastModified": 1729165983,
+        "narHash": "sha256-gtcodl79t5ZbbX4TSx4RNyggasEvLdVnc/IM+RyxqJw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2a4fd1cfd8ed5648583dadef86966a8231024221",
+        "rev": "78a7a070bbcc3b37cc36080c2a3514207d427b3b",
         "type": "github"
       },
       "original": {
@@ -863,11 +863,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1729072891,
-        "narHash": "sha256-JzM1lA124i3Ck3KeSYIyVOmc322YsbkP+snlVuMaPco=",
+        "lastModified": 1729113795,
+        "narHash": "sha256-tV6aeQZ1wvAVDi+JW+IpXH9xQjZX+ZNFsuQCfWj2zWs=",
         "ref": "refs/heads/main",
-        "rev": "0baf166d39260c6d1d422cf528fb5fedc3010cdb",
-        "revCount": 5345,
+        "rev": "b57086aa4362117c1f1025246f618d760e44b026",
+        "revCount": 5349,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -1049,11 +1049,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728867876,
-        "narHash": "sha256-NCyOA8WZNoojmXH+kBDrQj3LwvakYNzSc0h+LTXkmPE=",
+        "lastModified": 1729127034,
+        "narHash": "sha256-42AMGl+dh4I2wGgICSeDI1mqYaDEJhwqquHJ1vA0QiQ=",
         "owner": "nix-community",
         "repo": "nixos-generators",
-        "rev": "fdf142111597f6c6283cf5ffe092b6293a3911d0",
+        "rev": "dd28a0806e7124fe392c33c9ccaa12f21970401f",
         "type": "github"
       },
       "original": {
@@ -1112,11 +1112,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1729101633,
-        "narHash": "sha256-MX/raGgcwuFiqHUJ/SPaA1niZy12w99v4dWjGqYCgtU=",
+        "lastModified": 1729172891,
+        "narHash": "sha256-YrsEHIqtkv6MKmIVvPcJE3gwOJ9baabyhAz+1CXQNWc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6ae5c7581c172bf21b0998d3a6ad187d94b688bf",
+        "rev": "3f092f903aa71c7d930d5e3b7d2604f990d48f36",
         "type": "github"
       },
       "original": {
@@ -1877,16 +1877,16 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1729100828,
-        "narHash": "sha256-7yJQG3z+kBK38SKKwKYUad74jTKhuS8NZ9CP1G42pMY=",
-        "owner": "AndyFilter",
+        "lastModified": 1729172899,
+        "narHash": "sha256-VSxwZTrUuyLASviqNnkDA7fCl+4vUiQlhUsHCBiTkuA=",
+        "owner": "74k1",
         "repo": "YeetMouse",
-        "rev": "489bf1eaf5428b6b802cd8151e00acd4ed41e26a",
+        "rev": "7f4c34bc7ea408ac66d2ffed3ac59c46f15c2768",
         "type": "github"
       },
       "original": {
         "dir": "nix",
-        "owner": "AndyFilter",
+        "owner": "74k1",
         "ref": "master",
         "repo": "YeetMouse",
         "type": "github"

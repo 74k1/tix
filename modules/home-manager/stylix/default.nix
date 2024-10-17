@@ -38,27 +38,27 @@ in {
         base0E = "B366FF";
         base0F = "EB52FF";
       };
-      fonts = {
-        # serif = {
-        #   package = pkgs.dejavu_fonts;
-        #   name = "DejaVu Serif";
-        # };
-        #
-        # sansSerif = {
-        #   package = pkgs.dejavu_fonts;
-        #   name = "DejaVu Sans";
-        # };
-        #
-        # monospace = {
-        #   package = pkgs.dejavu_fonts;
-        #   name = "DejaVu Sans Mono";
-        # };
-
-        emoji = {
-          package = pkgs.twitter-color-emoji;
-          name = "Twemoji";
-        };
-      };
+      # fonts = {
+      #   # serif = {
+      #   #   package = pkgs.dejavu_fonts;
+      #   #   name = "DejaVu Serif";
+      #   # };
+      #   #
+      #   # sansSerif = {
+      #   #   package = pkgs.dejavu_fonts;
+      #   #   name = "DejaVu Sans";
+      #   # };
+      #   #
+      #   # monospace = {
+      #   #   package = pkgs.dejavu_fonts;
+      #   #   name = "DejaVu Sans Mono";
+      #   # };
+      #
+      #   emoji = {
+      #     package = pkgs.twitter-color-emoji;
+      #     name = "Twemoji";
+      #   };
+      # };
       autoEnable = true; # false;
       # target = {
       #   tmux.enable = false;
