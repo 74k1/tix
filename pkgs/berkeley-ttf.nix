@@ -4,7 +4,7 @@ pkgs.stdenv.mkDerivation {
   version = "1.009";
 
   # src = /home/taki/berkeley-mono-typeface_noLig.zip;
-  src = ./pkgs/assets/berkeley-mono-typeface_noLig.zip;
+  src = ./assets/berkeley-mono-typeface_noLig.zip;
 
   unpackPhase = ''
     runHook preUnpack
