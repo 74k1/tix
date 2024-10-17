@@ -623,11 +623,11 @@
         "zig": "zig"
       },
       "locked": {
-        "lastModified": 1729085059,
-        "narHash": "sha256-PcAXbmf4OGIBH0O6vK/827lnWwC4N41kMt+dHi7VpOk=",
+        "lastModified": 1729173441,
+        "narHash": "sha256-WmhSdNAi+PIUuJscRGFbldw9sDsYVsO41iVXWw/vTmc=",
         "ref": "refs/heads/main",
-        "rev": "7b668d3dc1cd78e4600c9ed5de0027329fb4d098",
-        "revCount": 7724,
+        "rev": "b38c5876a0527f7e1b310d122999b70875836b29",
+        "revCount": 7726,
         "type": "git",
         "url": "ssh://git@github.com/ghostty-org/ghostty"
       },
@@ -785,11 +785,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1729165983,
-        "narHash": "sha256-gtcodl79t5ZbbX4TSx4RNyggasEvLdVnc/IM+RyxqJw=",
+        "lastModified": 1729171802,
+        "narHash": "sha256-Eip3uI+XeyAfBoQXpkm/F7eG3M7AgvzSyhyJdzxVt74=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "78a7a070bbcc3b37cc36080c2a3514207d427b3b",
+        "rev": "9c1a1c7df49a9b28539ccb509b36d0b81e41391c",
         "type": "github"
       },
       "original": {
@@ -863,11 +863,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1729113795,
-        "narHash": "sha256-tV6aeQZ1wvAVDi+JW+IpXH9xQjZX+ZNFsuQCfWj2zWs=",
+        "lastModified": 1729174818,
+        "narHash": "sha256-Mi2D5p4cJ9FQBTBPLHmYZF+xSGiwf6mwVQ+RspnS+z0=",
         "ref": "refs/heads/main",
-        "rev": "b57086aa4362117c1f1025246f618d760e44b026",
-        "revCount": 5349,
+        "rev": "495b92fb535f51a38e5130e6b89bd1fb01ce8cfb",
+        "revCount": 5350,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -1112,11 +1112,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1729172891,
-        "narHash": "sha256-YrsEHIqtkv6MKmIVvPcJE3gwOJ9baabyhAz+1CXQNWc=",
+        "lastModified": 1729186406,
+        "narHash": "sha256-Mo0O07tWvUiW5F4O1lEFnaFnb3xVrQ4OnB+bAf0GlUA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3f092f903aa71c7d930d5e3b7d2604f990d48f36",
+        "rev": "73bd40281687e5bd0dadb63b34865231fd20e7e4",
         "type": "github"
       },
       "original": {
@@ -1877,16 +1877,16 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1729172899,
-        "narHash": "sha256-VSxwZTrUuyLASviqNnkDA7fCl+4vUiQlhUsHCBiTkuA=",
-        "owner": "74k1",
+        "lastModified": 1729182803,
+        "narHash": "sha256-3JAdDoGigEnSS2jEZMc9HfrY2cfYflZiGKp9DLUjq7Y=",
+        "owner": "AndyFilter",
         "repo": "YeetMouse",
-        "rev": "7f4c34bc7ea408ac66d2ffed3ac59c46f15c2768",
+        "rev": "ba430f6da3f53b318505590e732cbf0c6031d315",
         "type": "github"
       },
       "original": {
         "dir": "nix",
-        "owner": "74k1",
+        "owner": "AndyFilter",
         "ref": "master",
         "repo": "YeetMouse",
         "type": "github"
