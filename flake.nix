@@ -48,8 +48,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     yeetmouse = {
-      # url = "github:74k1/YeetMouse/master?dir=nix";
-      url = "github:AndyFilter/YeetMouse/master?dir=nix";
+      url = "github:74k1/YeetMouse/master?dir=nix";
+      # url = "github:AndyFilter/YeetMouse/master?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
