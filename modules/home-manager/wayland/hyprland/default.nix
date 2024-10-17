@@ -57,6 +57,9 @@ in
         "$mod, r, exec, ${pkgs.wofi}/bin/wofi --show drun"
         #"$mod, d, exec, ${pkgs.wofi}/bin/wofi --show drun"
 
+        # scrot
+        ", Print, exec, ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area"
+
         # apps?
         "$mod, n, exec, ${pkgs.nemo}/bin/nemo"
         "$mod, w, exec, ${pkgs.brave}/bin/brave"
