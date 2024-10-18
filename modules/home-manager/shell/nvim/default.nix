@@ -181,11 +181,11 @@ in
         type = "lua";
         config = builtins.readFile ./cfg/colorizer.lua;
       }
-      #{
-      #  plugin = indent-blankline-nvim;
-      #  type = "lua";
-      #  config = builtins.readFile ./cfg/indent-blankline.lua;
-      #}
+      # {
+      #   plugin = indent-blankline-nvim;
+      #   type = "lua";
+      #   config = builtins.readFile ./cfg/indent-blankline.lua;
+      # }
       # {
       #   plugin = alpha-nvim;
       #   type = "lua";
