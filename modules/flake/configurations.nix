@@ -74,6 +74,9 @@ in
         duvet = {
           system = "x86_64-linux";
         };
+        octo = {
+          system = "aarch64-linux";
+        };
       };
 
     deploy.nodes = lib.flip lib.pipe
