@@ -105,6 +105,12 @@ in
           # important, weak device
           remoteBuild = false;
         };
+        octo = {
+          # temporarily
+          hostname = "192.168.1.73";
+          # important, weak device
+          remoteBuild = false;
+        };
         duvet = {
           hostname = "taki.moe";
           sshOpts = [ "-p" "2202" ];

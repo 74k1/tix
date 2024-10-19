@@ -10,7 +10,7 @@
 ];
 
   # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
+  boot.loader.grub.enable = false;
   boot.loader.generic-extlinux-compatible.enable = true;
 
   documentation.nixos.enable = false;
@@ -41,6 +41,10 @@
         KbdInteractiveAuthentication = false;
       };
     };
+    # octoprint = {
+    #   enable = true;
+    #   openFirewall = true; # 5000
+    # };
   };
 
   security.acme = {
