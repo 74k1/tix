@@ -110,7 +110,7 @@
     # evolution
     mullvad-vpn
     plasticity
-    cura
+    curaengine
 
     prismlauncher
     jdk17
