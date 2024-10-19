@@ -110,7 +110,7 @@
     # evolution
     mullvad-vpn
     plasticity
-    zoom-us
+    cura
 
     prismlauncher
     jdk17

@@ -263,7 +263,7 @@
 
   hardware = {
     yeetmouse = {
-      enable = true;
+      enable = false;
       parameters = {
         AccelerationMode = "jump"; # looks most like motivity in Raw Accel
         Sensitivity = 0.8;
