@@ -9,6 +9,12 @@
     taki
   ];
 
+  nixpkgs.overlays = [
+    (_prev: _final: {
+      octoprint = inputs.nixpkgs-master.legacyPackages.${pkgs.hostPlatform.system}.octoprint;
+    })
+  ];
+
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = false;
   boot.loader.generic-extlinux-compatible.enable = true;
@@ -29,7 +35,7 @@
     ouch
     git wget curl tmux
     fastfetch
-    inputs.nixpkgs-master.legacyPackages.aarch64-linux.octoprint
+    inputs.nixpkgs-master.legacyPackages.${pkgs.hostPlatform.system}.octoprint
   ];
 
   services = {
@@ -44,20 +50,20 @@
     };
     octoprint = {
       enable = true;
-      # openFirewall = true; # 5000
-      plugins = plugins: with plugins; [
-        octoprint-dashboard
-        # octoprint-firmwareupdater
-        # octoprint-bedlevelvisualizer
-        # octoprint-preheat
-        # octoprint-fullscreen
-        # octoprint-camerasettings
-        # octoprint-printtimegenius
-        # simpleemergencystop
-        themeify
-        # octoprint-uicustomizer
-        stlviewer
-      ];
+      openFirewall = true; # 5000
+      # plugins = plugins: with plugins; [
+      #   octoprint-dashboard
+      #   # octoprint-firmwareupdater
+      #   # octoprint-bedlevelvisualizer
+      #   # octoprint-preheat
+      #   # octoprint-fullscreen
+      #   # octoprint-camerasettings
+      #   # octoprint-printtimegenius
+      #   # simpleemergencystop
+      #   themeify
+      #   # octoprint-uicustomizer
+      #   stlviewer
+      # ];
     };
   };
   # Open ports in the firewall.
