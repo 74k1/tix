@@ -7,7 +7,6 @@
     locale
     nix
     taki
-    "${inputs.nixpkgs-master}/nixos/modules/services/misc/octoprint.nix"
   ];
 
   # Use the GRUB 2 boot loader.
