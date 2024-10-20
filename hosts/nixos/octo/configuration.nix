@@ -7,7 +7,8 @@
     locale
     nix
     taki
-];
+    "${inputs.nixpkgs-master}/nixos/modules/services/misc/octoprint.nix"
+  ];
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = false;
@@ -29,6 +30,7 @@
     ouch
     git wget curl tmux
     fastfetch
+    inputs.nixpkgs-master.legacyPackages.aarch64-linux.octoprint
   ];
 
   services = {
@@ -41,17 +43,11 @@
         KbdInteractiveAuthentication = false;
       };
     };
-    # octoprint = {
-    #   enable = true;
-    #   openFirewall = true; # 5000
-    # };
+    octoprint = {
+      enable = true;
+      openFirewall = true; # 5000
+    };
   };
-
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "mail@example.com";
-  };
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

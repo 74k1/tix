@@ -6,6 +6,7 @@
   couchdb = import ./daemons/couchdb;
   fail2ban = import ./daemons/fail2ban;
   forgejo = import ./daemons/forgejo;
+  octoprint = import ./daemons/octoprint;
   glance = import ./daemons/glance;
   immich = import ./daemons/immich;
   locale = import ./locale;
