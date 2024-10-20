@@ -135,6 +135,10 @@ in
       workspace = [
         ""
       ];
+
+      windowrulev2 = [
+        "float, title:(.*Bitwarden Password Manager.*)"
+      ];
     };
   };
   home.packages = with pkgs; [
