@@ -51,19 +51,19 @@
     octoprint = {
       enable = true;
       openFirewall = true; # 5000
-      # plugins = plugins: with plugins; [
-      #   octoprint-dashboard
-      #   # octoprint-firmwareupdater
-      #   # octoprint-bedlevelvisualizer
-      #   # octoprint-preheat
-      #   # octoprint-fullscreen
-      #   # octoprint-camerasettings
-      #   # octoprint-printtimegenius
-      #   # simpleemergencystop
-      #   themeify
-      #   # octoprint-uicustomizer
-      #   stlviewer
-      # ];
+      plugins = plugins: with plugins; [
+        dashboard
+        firmwareupdater
+        bedlevelvisualizer
+        fullscreen
+        # smartpreheat
+        # camerasettings
+        # PrintTimeGenius
+        simpleemergencystop
+        themeify
+        # uicustomizer
+        stlviewer
+      ];
     };
   };
   # Open ports in the firewall.
