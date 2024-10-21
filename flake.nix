@@ -59,6 +59,9 @@
     stylix = {
       url = "github:danth/stylix";
     };
+    nix-colors = {
+      url = "github:misterio77/nix-colors";
+    };
     #rix101 = {
     #  url = "github:reo101/rix101";
     #};
