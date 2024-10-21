@@ -96,6 +96,8 @@
     brave
     #inputs.zen-browser.packages."${system}".zen-browser
     inputs.zen-browser.packages."${system}".default
+    thunderbird
+    google-chrome
     ungoogled-chromium
     keepassxc
     obsidian
