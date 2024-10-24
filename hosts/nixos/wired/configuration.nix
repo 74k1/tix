@@ -160,13 +160,13 @@
   };
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [ 
-      rocm-opencl-icd
-      rocm-opencl-runtime
-      # rocmPackages.clr.icd
-      # amdvlk
-      # driversi686Linux.amdvlk
-    ];
+    # extraPackages = with pkgs; [ 
+    #   rocm-opencl-icd
+    #   rocm-opencl-runtime
+    #   # rocmPackages.clr.icd
+    #   # amdvlk
+    #   # driversi686Linux.amdvlk
+    # ];
   };
 
   boot.kernelParams = [

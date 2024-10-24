@@ -32,6 +32,7 @@
           tap = false;
         };
       };
+      # Key Bindings
       map = {
         normal = {
           # Close Session?
@@ -39,7 +40,7 @@
 
           # Wofi
           "Super Space" = "spawn ${pkgs.wofi}/bin/wofi --show drun";
-          "Super R" = "spawn ${pkgs.wofi}/bin/wofi --show drun";
+          "Super R" = "spawn ${pkgs.wofi}/bin/wofi j-show drun";
 
           # Apps
           "Super Return" = "spawn ${inputs.ghostty.packages.x86_64-linux.default}/bin/ghostty";
@@ -52,10 +53,38 @@
           "XF86AudioNext" = "spawn ${pkgs.duvolbr}/bin/duvolbr next_track";
           "XF86AudioPrev" = "spawn ${pkgs.duvolbr}/bin/duvolbr prev_track";
 
-          # Window Management
-          "Super Q" = "close";
+          # Scrot
           "Print" = "spawn ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area";
 
+          # Window Management
+          "Super Q" = "close";
+          "Super+Shift+Control Q" = "exit";
+
+          "Super J" = "focus-view next";
+          "Super K" = "focus-view preview";
+          "Super+Shift J" = "swap next";
+          "Super+Shift K" = "swap previous";
+
+          "Super Period" = "focus-output next";
+          "Super Comma" = "focus-output previous";
+          "Super+Shift Period" = "send-to-output next";
+          "Super+Shift Comma" = "send-to-output previous";
+
+          "Super H" = "send-layout-cmd rivertile \"main-ratio -0.05\"";
+          "Super L" = "send-layout-cmd rivertile \"main-ratio +0.05\"";
+          "Super+Shift H" = "send-layout-cmd rivertile \"main-count +1\"";
+          "Super+Shift L" = "send-layout-cmd rivertile \"main-ratio -1\"";
+        };
+      };
+      # Mouse Bindings
+      map-pointer = {
+        normal = {
+          # Window Management
+          "Super BTN_LEFT" = "move-view";
+          "Super BTN_RIGHT" = "resize-view";
+
+          # Toggle Floating with Super + Middle Mouse Button
+          "Super BTN_MIDDLE" = "toggle-float";
         };
       };
       rule-add = {
