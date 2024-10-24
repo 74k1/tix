@@ -10,7 +10,7 @@ require("lspconfig").nixd.setup({
       },
       options = {
         nixos = {
-          expr = 'let flake = builtins.getFlake "git+ssh://git@github.com/74k1/tix"; in flake.nixosConfigurations.wired.options',
+          expr = 'let flake = builtins.getFlake "git+ssh://git@github.com/74k1/tix"; in (flake.inputs..nixpkgs.lib.nixosSystem {system = "x86_64-linux"; modules = []; }).options',
         },
         -- home_manager = {
         --   expr = '(builtins.getFlake "git+ssh://git@github.com/74k1/tix").homeConfigurations.idk.options',
