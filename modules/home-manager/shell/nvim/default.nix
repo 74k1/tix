@@ -61,8 +61,9 @@ in
 
   home.packages = with pkgs; [
     ripgrep # For Telescope live-grep
-    nil # Nix Language Server
     bash-language-server # Bash :-)
+    nixd # Nix Language Server
+    alejandra # Nix Formatter
   ];
   
   programs.neovim = {

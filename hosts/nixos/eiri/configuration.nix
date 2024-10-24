@@ -116,6 +116,7 @@
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "yes";
+        UsePAM = true;
       };
     };
 

@@ -45,8 +45,8 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedUDPPorts = [ 80 443 2202 51820 ];
-      allowedTCPPorts = [ 80 443 2202 51820 ];
+      allowedUDPPorts = [ 80 443 2202 2277 51820 ];
+      allowedTCPPorts = [ 80 443 2202 2277 51820 ];
     };
     wireguard.interfaces = {
       wg0 = {
@@ -129,7 +129,7 @@
       
       # streamConfig = ''
       #   upstream git_server {
-      #     server 10.0.0.1:727;
+      #     server 10.0.0.1:2277;
       #   }
       #   server {
       #     listen 22;
