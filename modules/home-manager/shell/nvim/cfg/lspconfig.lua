@@ -8,14 +8,17 @@ require("lspconfig").nixd.setup({
       formatting = {
         command = { "alejandra" },
       },
-      -- options = {
-      --   nixos = {
-      --     expr = '(builtins.getFlake "git+ssh://git@github.com/74k1/tix").nixosConfigurations.${system}.options',
-      --   },
-      --   home_manager = {
-      --     expr = '(builtins.getFlake "git+ssh://git@github.com/74k1/tix").homeConfigurations.${system}.options',
-      --   },
-      -- },
+      options = {
+        nixos = {
+          expr = 'let flake = builtins.getFlake "git+ssh://git@github.com/74k1/tix"; in flake.nixosConfigurations.wired.options',
+        },
+        -- home_manager = {
+        --   expr = '(builtins.getFlake "git+ssh://git@github.com/74k1/tix").homeConfigurations.idk.options',
+        -- },
+        ["flake-parts"] = {
+          expr = 'let flake = builtins.getFlake "git+ssh://git@github.com/74k1/tix"; in flake.debug.options // flake.currentSystem.options',
+        },
+      },
     },
   },
 })
