@@ -6,8 +6,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "74k1";
       repo = "tsukiyo.nvim";
-      rev = "c659216b0b9ff7ac6bbca82e02317bf19886b331";
-      sha256 = "sha256-GioMCTpgefks8JEHXdOlE7QzLI33TW6YuTDYYbO4yxE=";
+      rev = "d9377933d93bac522ad8e6b54b77c80219e217b8";
+      sha256 = "sha256-H/RI0jXTtJk1RMjsjC4IWT6/80p2BCHG7u1Q1LW0oZg=";
     };
   };
   nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
