@@ -6,8 +6,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "74k1";
       repo = "tsukiyo.nvim";
-      rev = "ec7c45fde8218b602d1e35e06fb925bf28c3a8c5";
-      sha256 = "sha256-4CAQSfv/alS+Cie6Eqhpx16OyOoEsTyM766SkO/6cpI=";
+      rev = "c659216b0b9ff7ac6bbca82e02317bf19886b331";
+      sha256 = "sha256-GioMCTpgefks8JEHXdOlE7QzLI33TW6YuTDYYbO4yxE=";
     };
   };
   nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -117,16 +117,16 @@ in
       vim-nix
       # vim-table-mode
       vim-shellcheck
-      {
-        plugin = oxocarbon-nvim;
-        type = "lua";
-        config = builtins.readFile ./cfg/oxocarbon.lua;
-      }
       # {
-      #   plugin = tsukiyo-nvim;
+      #   plugin = oxocarbon-nvim;
       #   type = "lua";
-      #   config = builtins.readFile ./cfg/tsukiyo.lua;
+      #   config = builtins.readFile ./cfg/oxocarbon.lua;
       # }
+      {
+        plugin = tsukiyo-nvim;
+        type = "lua";
+        config = builtins.readFile ./cfg/tsukiyo.lua;
+      }
       {
         plugin = markview-nvim;
         type = "lua";

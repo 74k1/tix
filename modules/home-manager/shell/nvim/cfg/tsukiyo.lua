@@ -1,1 +1,1 @@
-vim.cmd("colorscheme tsukiyo")
+-- vim.cmd("colorscheme tsukiyo")
