@@ -32,6 +32,8 @@
     nextcloud
     nix
     nvidia
+    syncthing
+    atuin
     outline
     plex
     send
