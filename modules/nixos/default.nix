@@ -1,6 +1,5 @@
 {
   affine = import ./daemons/affine;
-  substituters = import ./substituters;
   arion = import ./arion;
   authelia = import ./daemons/authelia;
   couchdb = import ./daemons/couchdb;
@@ -23,6 +22,8 @@
   send = import ./daemons/send;
   servarr = import ./daemons/servarr;
   steam = import ./steam;
+  substituters = import ./substituters;
+  syncthing = import ./daemons/syncthing;
   taki = import ./taki;
   transmission = import ./daemons/transmission;
   vaultwarden = import ./daemons/vaultwarden;
