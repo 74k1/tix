@@ -1,10 +1,16 @@
 { inputs, outputs, lib, config, pkgs, ... }:
 {
-  age.secrets."cifs_secret" = {
-    rekeyFile = "${inputs.self}/secrets/cifs_secret.age";
-    mode = "770";
-    # owner = "";
-    # group = "";
+  age.secrets = {
+    "cifs_secret" = {
+      rekeyFile = "${inputs.self}/secrets/cifs_secret.age";
+      mode = "770";
+      # owner = "";
+      # group = "";
+    };
+    # "librechat_env_secret" = {
+    #   rekeyFile = "${inputs.self}/secrets/librechat_env_secret.age";
+    #   mode = "770";
+    # };
   };
   
   imports = with outputs.nixosModules; [
@@ -29,7 +35,7 @@
     locale
     
     # ollama
-    librechat
+    # librechat
 
     glance
     nextcloud
@@ -39,7 +45,7 @@
     atuin
     outline
     plex
-    send
+    # send
     servarr
     taki
     transmission
@@ -125,13 +131,11 @@
       };
     };
 
-    librechat-docker = {
-      enable = true;
-      port = 3080;
-      jwtSecret = "";
-      openaiApiKey = "";
-      anthropicApiKey = "";
-    };
+    # librechat-docker = {
+    #   enable = true;
+    #   port = 3080;
+    #   environmentFile = config.age.secrets."librechat_env_secret".path;
+    # };
 
     samba = {
       enable = true;

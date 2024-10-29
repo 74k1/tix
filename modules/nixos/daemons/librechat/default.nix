@@ -18,6 +18,12 @@ in {
       description = "Port to expose LibreChat";
     };
 
+    environmentFile = lib.mkOption {
+      type = lib.types.nullOr lib.types.path;
+      default = null;
+      description = "Path to environment file containing secrets";
+    };
+
     mongoUsername = lib.mkOption {
       type = lib.types.str;
       default = "admin";
@@ -28,29 +34,6 @@ in {
       type = lib.types.str;
       default = "password";
       description = "MongoDB password";
-    };
-
-    jwtSecret = lib.mkOption {
-      type = lib.types.str;
-      description = "JWT secret for authentication";
-    };
-
-    allowRegistration = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-      description = "Whether to allow user registration";
-    };
-
-    openaiApiKey = lib.mkOption {
-      type = lib.types.str;
-      default = "";
-      description = "OpenAI API key";
-    };
-
-    anthropicApiKey = lib.mkOption {
-      type = lib.types.str;
-      default = "";
-      description = "Anthropic API key";
     };
   };
 
@@ -72,12 +55,16 @@ in {
                 ports = ["${toString cfg.port}:3080"];
                 environment = {
                   PORT = "3080";
-                  MONGO_URI = "mongodb://${cfg.mongoUsername}:${cfg.mongoPassword}@mongodb:27017/";
-                  ALLOW_REGISTRATION = toString cfg.allowRegistration;
-                  JWT_SECRET = cfg.jwtSecret;
-                  OPENAI_API_KEY = cfg.openaiApiKey;
-                  ANTHROPIC_API_KEY = cfg.anthropicApiKey;
+                  MONGO_URI = "mongodb://${cfg.mongoUsername}:${cfg.mongoPassword}@mongodb:27017/LibreChat?retryWrites=true";
+                  # Basic settings with secure defaults
+                  ALLOW_REGISTRATION = "false";
+                  ALLOW_SOCIAL_LOGIN = "false";
+                  SESSION_EXPIRY = toString (1000 * 60 * 15); # 15 minutes
+                  REFRESH_TOKEN_EXPIRY = toString ((1000 * 60 * 60 * 24) * 7); # 7 days
                 };
+                env_file = lib.mkIf (cfg.environmentFile != null) [
+                  cfg.environmentFile
+                ];
                 depends_on = ["mongodb"];
                 restart = "unless-stopped";
               };
@@ -100,8 +87,5 @@ in {
         };
       };
     };
-
-    # Enable required services
-    # virtualisation.docker.enable = true;
   };
 }
