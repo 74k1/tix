@@ -42,6 +42,6 @@ stdenv.mkDerivation rec {
     homepage = "https://librechat.ai";
     license = licenses.mit;
     platforms = platforms.unix;
-    maintainers = with maintainers; [ "74k1" ];
+    maintainers = [ "74k1" ];
   };
 }
