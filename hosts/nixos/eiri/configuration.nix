@@ -7,10 +7,10 @@
       # owner = "";
       # group = "";
     };
-    "librechat_env_secret" = {
-      rekeyFile = "${inputs.self}/secrets/librechat_env_secret.age";
-      mode = "770";
-    };
+    # "librechat_env_secret" = {
+    #   rekeyFile = "${inputs.self}/secrets/librechat_env_secret.age";
+    #   mode = "770";
+    # };
   };
   
   imports = with outputs.nixosModules; [
@@ -35,7 +35,7 @@
     locale
     
     # ollama
-    librechat
+    # librechat
 
     glance
     nextcloud
@@ -131,15 +131,15 @@
       };
     };
 
-    librechat = {
-      enable = true;
-      # port = 3080;
-      # environmentFile = config.age.secrets."librechat_env_secret".path;
-      user = "librechat";
-      group = "librechat";
-      mongodbDatabase = "librechat";
-      stateDir = "/var/lib/librechat";
-    };
+    # librechat = {
+    #   enable = true;
+    #   # port = 3080;
+    #   # environmentFile = config.age.secrets."librechat_env_secret".path;
+    #   user = "librechat";
+    #   group = "librechat";
+    #   mongodbDatabase = "librechat";
+    #   stateDir = "/var/lib/librechat";
+    # };
 
     samba = {
       enable = true;
