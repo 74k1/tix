@@ -27,7 +27,10 @@
     forgejo
     immich
     locale
+    
     # ollama
+    librechat
+
     glance
     nextcloud
     nix
@@ -120,6 +123,14 @@
         PermitRootLogin = "yes";
         UsePAM = true;
       };
+    };
+
+    librechat-docker = {
+      enable = true;
+      port = 3080;
+      jwtSecret = "";
+      openaiApiKey = "";
+      anthropicApiKey = "";
     };
 
     samba = {

@@ -8,6 +8,7 @@
   forgejo = import ./daemons/forgejo;
   glance = import ./daemons/glance;
   immich = import ./daemons/immich;
+  librechat = import ./daemons/librechat;
   locale = import ./locale;
   ly = import ./daemons/ly;
   miniflux = import ./daemons/miniflux;
