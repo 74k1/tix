@@ -55,9 +55,9 @@
       address = "0.0.0.0";
       allowSystemControl = true;
       settings.authorization = {
-        force_logins = true;
+        # force_logins = true;
         trusted_clients = [ "192.168.1.0/24" "127.0.0.1/32" ];
-        cors_domains = [ "*.lan" ];
+        # cors_domains = [ "*.lan" ];
       };
     };
 

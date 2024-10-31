@@ -107,7 +107,7 @@ in
         };
         octo = {
           # temporarily
-          hostname = "192.168.1.102";
+          hostname = "255.255.255.255";
           # important, weak device
           remoteBuild = false;
         };
