@@ -62,10 +62,39 @@
       enable = true;
       address = "0.0.0.0";
       allowSystemControl = true;
-      settings.authorization = {
-        force_logins = true;
-        trusted_clients = [ "192.168.1.0/24" "127.0.0.1/32" "::1/128" ];
-        # cors_domains = [ "*.lan" ];
+      settings = {
+        authorization = {
+          force_logins = true;
+          trusted_clients = [
+            "10.0.0.0/8"
+            "127.0.0.0/8"
+            "169.254.0.0/16"
+            "172.16.0.0/12"
+            "192.168.0.0/16"
+            "FE80::/10"
+            "::1/128"
+          ];
+          cors_domains = [
+            "*.local"
+            "*.lan"
+            "*://localhost"
+            "*://app.fluidd.xyz"
+          ];
+        };
+
+        octoprint_compat = {};
+
+        history = {};
+
+        update_manager = {
+          enable_auto_refresh = true;
+        };
+
+        "update_manager fluidd" = {
+          type = "web";
+          repo = "fluidd-core/fluidd";
+          path = "/var/lib/fluidd";
+        };
       };
     };
 
@@ -101,8 +130,8 @@
     # };
   };
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 80 7125 ];
+  networking.firewall.allowedUDPPorts = [ 80 7125 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
