@@ -603,11 +603,11 @@
         "zig": "zig"
       },
       "locked": {
-        "lastModified": 1730155692,
-        "narHash": "sha256-2p90mOK7JC3Rt8hH2tQDV4WxbukjWpq2+OH2WptEgag=",
+        "lastModified": 1730336412,
+        "narHash": "sha256-Dfj46s3lfQJ60iJahwYx9o1KI/4eq746zMvX9wUs280=",
         "ref": "refs/heads/main",
-        "rev": "c413f2445d8fc9af8919bae818ec01b5a543cec2",
-        "revCount": 7836,
+        "rev": "9bc9ea27bcc799c7fddedc8e8bf4a23690a34639",
+        "revCount": 7854,
         "type": "git",
         "url": "ssh://git@github.com/ghostty-org/ghostty"
       },
@@ -843,11 +843,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1730143527,
-        "narHash": "sha256-3uRuQHxAd/+8PptDpIZZlC588O0eTV1mTa+z8v4cWPU=",
+        "lastModified": 1730330432,
+        "narHash": "sha256-IfwPXZNjQlToqV37RjUhm9dofHaqZD3BTB4J111OmGQ=",
         "ref": "refs/heads/main",
-        "rev": "d679d200299ed4670f0d0f138c793d5f507b7cec",
-        "revCount": 5390,
+        "rev": "7c7a84ff60f8c1e00c6a0de3f7656f0bbd933d56",
+        "revCount": 5395,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -1012,11 +1012,11 @@
         "pre-commit-hooks": "pre-commit-hooks_3"
       },
       "locked": {
-        "lastModified": 1730136771,
-        "narHash": "sha256-lnAyG05e9uxFL7jw0ojBHpch9UjZRZ1X3RymmZipeE4=",
+        "lastModified": 1730284926,
+        "narHash": "sha256-4aIBZ4/xTDYP9yuU67atTC/tRE3NDONBTybBqwOXMso=",
         "owner": "oddlama",
         "repo": "nix-topology",
-        "rev": "95ce4eb09c986cc78b5962c8a07ac9537adfed1c",
+        "rev": "927567a4d46831c4e417a7c440b83d915bd5d7a1",
         "type": "github"
       },
       "original": {
@@ -1126,11 +1126,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1730233517,
-        "narHash": "sha256-SXb2AI9CuxOnqD6oUVVFF8jI6R2Qwe9NL2VphU0HNZo=",
+        "lastModified": 1730345572,
+        "narHash": "sha256-zolMQSYl8kAeKzu14LtuNCppIG4VT5moWZg0FThgaVM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "37fd70b130b03774cd65c7d27a3d1fa2909365b0",
+        "rev": "1c1f544ba25a154dc37ae8a18c3d7ba3e32061bf",
         "type": "github"
       },
       "original": {

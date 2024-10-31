@@ -9,11 +9,11 @@
     taki
   ];
 
-  nixpkgs.overlays = [
-    (_prev: _final: {
-      octoprint = inputs.nixpkgs-master.legacyPackages.${pkgs.hostPlatform.system}.octoprint;
-    })
-  ];
+  # nixpkgs.overlays = [
+  #   (_prev: _final: {
+  #     octoprint = inputs.nixpkgs-master.legacyPackages.${pkgs.hostPlatform.system}.octoprint;
+  #   })
+  # ];
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = false;
@@ -35,6 +35,7 @@
     ouch
     git wget curl tmux
     fastfetch
+    libraspberrypi
     inputs.nixpkgs-master.legacyPackages.${pkgs.hostPlatform.system}.octoprint
   ];
 
@@ -48,23 +49,48 @@
         KbdInteractiveAuthentication = false;
       };
     };
-    octoprint = {
+
+    moonraker = {
       enable = true;
-      openFirewall = true; # 5000
-      plugins = plugins: with plugins; [
-        dashboard
-        firmwareupdater
-        bedlevelvisualizer
-        fullscreen
-        # smartpreheat
-        # camerasettings
-        # PrintTimeGenius
-        simpleemergencystop
-        themeify
-        # uicustomizer
-        stlviewer
-      ];
+      address = "0.0.0.0";
+      allowSystemControl = true;
+      settings.authorization = {
+        force_logins = true;
+        trusted_clients = [ "192.168.1.0/24" "127.0.0.1/32" ];
+        cors_domains = [ "*.lan" ];
+      };
     };
+
+    klipper = {
+      enable = true;
+      inherit (config.services.moonraker) user group;
+      firmwares.mcu = {
+        enable = true;
+        configFile = ./config;
+        serial = "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0";
+      };
+      mutableConfig = true;
+      mutableConfigFolder = config.services.moonraker.stateDir + "/config";
+      configFile = ./printer.cfg;
+    };
+    
+    # octoprint = {
+    #   enable = true;
+    #   openFirewall = true; # 5000
+    #   plugins = plugins: with plugins; [
+    #     dashboard
+    #     firmwareupdater
+    #     bedlevelvisualizer
+    #     fullscreen
+    #     # smartpreheat
+    #     # camerasettings
+    #     # PrintTimeGenius
+    #     simpleemergencystop
+    #     themeify
+    #     # uicustomizer
+    #     stlviewer
+    #   ];
+    # };
   };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

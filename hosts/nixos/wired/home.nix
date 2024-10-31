@@ -104,7 +104,8 @@
     simple-scan
     # spotify
     #spotify-tray
-    spotify-player
+    inputs.nixpkgs-master.outputs.legacyPackages.x86_64-linux.spotify-player
+    # spotify-player
     discord
     vesktop
     # polybar
