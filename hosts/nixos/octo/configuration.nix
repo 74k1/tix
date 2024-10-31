@@ -50,13 +50,21 @@
       };
     };
 
+    fluidd = {
+      enable = true;
+      hostName = "octo";
+      nginx.locations."/webcam".proxyPass = "http://127.0.0.1:8080/stream";
+    };
+
+    nginx.clientMaxBodySize = "1000m";
+
     moonraker = {
       enable = true;
       address = "0.0.0.0";
       allowSystemControl = true;
       settings.authorization = {
-        # force_logins = true;
-        trusted_clients = [ "192.168.1.0/24" "127.0.0.1/32" ];
+        force_logins = true;
+        trusted_clients = [ "192.168.1.0/24" "127.0.0.1/32" "::1/128" ];
         # cors_domains = [ "*.lan" ];
       };
     };
