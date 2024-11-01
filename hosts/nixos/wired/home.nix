@@ -135,6 +135,13 @@
   theme.ukiyo = {
     package = inputs.ukiyo.packages.x86_64-linux.default;
   };
+  
+  gtk = {
+    iconTheme = {
+      name = "Adwaita";
+      package = pkgs.gnome.adwaita-icon-theme;
+    };
+  };
 
   home.sessionVariables = {
     SHELL = "${pkgs.zsh}/bin/zsh";
