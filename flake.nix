@@ -23,6 +23,9 @@
       # NOTE: not overriding since NixOS-WSL is flaky (relies on stable)
       # inputs.nixpkgs.follows = "nixpkgs";
     };
+    raspberry-pi-nix = {
+      url = "github:nix-community/raspberry-pi-nix";
+    };
     arion = {
       url = "github:hercules-ci/arion";
       inputs.nixpkgs.follows = "nixpkgs";
