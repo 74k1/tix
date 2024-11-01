@@ -97,6 +97,7 @@
     #inputs.zen-browser.packages."${system}".zen-browser
     inputs.zen-browser.packages."${system}".default
     thunderbird
+    pcmanfm
     google-chrome
     ungoogled-chromium
     keepassxc
@@ -120,6 +121,8 @@
     prismlauncher
     jdk17
     libGLU
+
+    zoom-us
 
     # fonts
     #material-symbols
