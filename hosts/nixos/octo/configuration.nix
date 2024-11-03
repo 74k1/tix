@@ -4,18 +4,18 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
-    inputs.raspberry-pi-nix.nixosModules.raspberry-pi
+    # inputs.raspberry-pi-nix.nixosModules.raspberry-pi
 
     locale
     nix
     taki
   ];
 
-  raspberry-pi-nix.board = "bcm2711";
+  # raspberry-pi-nix.board = "bcm2711";
 
-  hardware.raspberry-pi = {
-    config.all.options.camera_auto_detect.enable = true;
-};
+  # hardware.raspberry-pi = {
+  #   config.all.options.camera_auto_detect.enable = true;
+  # };
 
   # nixpkgs.overlays = [
   #   (_prev: _final: {
@@ -24,8 +24,8 @@
   # ];
 
   # Use the GRUB 2 boot loader.
-  # boot.loader.grub.enable = false;
-  # boot.loader.generic-extlinux-compatible.enable = true;
+  boot.loader.grub.enable = false;
+  boot.loader.generic-extlinux-compatible.enable = true;
 
   documentation.nixos.enable = false;
 
