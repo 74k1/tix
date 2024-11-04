@@ -76,6 +76,7 @@ writeShellApplication {
 
     # Create a temporary file for the email mapping
     temp_file=$(mktemp)
+    trap 'rm -f "$temp_file"' EXIT
 
     # Write the email mappings to the temporary file in proper git-mailmap format
     for old_email in "''${!email_map[@]}"; do
@@ -89,17 +90,15 @@ writeShellApplication {
         FILTER_REPO_ARGS="$FILTER_REPO_ARGS --force"
     fi
 
-    eval "git filter-repo $FILTER_REPO_ARGS"
-
-    # Remove the temporary file
-    rm "$temp_file"
-
-    if [ $? -eq 0 ]; then
+    if eval "git filter-repo $FILTER_REPO_ARGS"; then
         echo "Success! Email addresses and names have been updated in the repository."
         echo ""
         echo "Next steps:"
         echo "1. Verify the changes: git log"
         echo "2. Push to remote (if desired): git push origin --force"
+    else
+        echo "Error: Failed to update repository history."
+        exit 1
     fi
   '';
 
