@@ -46,7 +46,7 @@
     firewall = {
       enable = true;
       allowedUDPPorts = [ 80 443 2202 2277 51820 ];
-      allowedTCPPorts = [ 80 443 2202 2277 51820 ];
+      allowedTCPPorts = [ 80 443 2202 2277 51820 22 ];  # Added port 22 for Forgejo SSH
     };
     wireguard.interfaces = {
       wg0 = {
@@ -127,15 +127,19 @@
       #   proxy_headers_hash_max_size 512;
       # '';
       
-      # streamConfig = ''
-      #   upstream git_server {
-      #     server 10.0.0.1:2277;
-      #   }
-      #   server {
-      #     listen 22;
-      #     proxy_pass git_server;
-      #   }
-      # '';
+      # Configure SSH forwarding for Forgejo
+      streamConfig = ''
+        upstream git_ssh {
+          server 10.100.0.1:2277;  # Forward to Forgejo's SSH port (2277)
+        }
+        
+        server {
+          listen 22;  # Listen on standard SSH port
+          proxy_protocol on;  # Enable PROXY protocol as required by Forgejo
+          proxy_pass git_ssh;
+        }
+      '';
+
       virtualHosts = {
         "example.com" = {
           addSSL = true;
@@ -302,4 +306,3 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
 }
-
