@@ -77,6 +77,7 @@ in
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGVrGnNjwaQ8CL4IBKWx0Z3A+PFpy96r0t8e2zc7jRr+ eiri"
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcSDZxE2I6ViR3oEMBGANuJeHqIUaq1MBYcRxokSOwR cyberia"
           "ssh-rsa blabla xyz@xyz"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIN3OFdq3TJVDqezXSSPLT43T8FKFFTMkkO1Tzah9CIo cardno:25_162_733" # GPG
         ];
         shell = pkgs.zsh;
       };

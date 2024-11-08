@@ -13,6 +13,7 @@
   rofi = import ./apps/rofi;
   spotify = import ./apps/spotify;
   ssh-agent = import ./shell/ssh-agent;
+  gpg-agent = import ./gpg-agent;
   starship = import ./shell/starship;
   style = import ./stylix;
   sxhkd = import ./x11/sxhkd;

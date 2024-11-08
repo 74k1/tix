@@ -2,9 +2,5 @@
 {
   services.pcscd = {
     enable = true;
-    plugins = [];
-    extraArgs = [];
-    readerConfig = ''
-    '';
   };
 }

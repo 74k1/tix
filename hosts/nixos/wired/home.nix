@@ -34,6 +34,7 @@
       xdg
       xorg
       zsh
+      gpg-agent
     ])
   ];
   
