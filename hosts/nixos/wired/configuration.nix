@@ -255,6 +255,7 @@
      fastfetch
      brscan4
      simple-scan
+     nurl
      #alttab
      #dconf
      #xorg.xkill xclip xdotool xorg.xinit
