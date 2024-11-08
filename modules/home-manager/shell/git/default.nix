@@ -3,7 +3,7 @@
   programs.git = {
     enable = true;
     userName = "74k1";
-    userEmail = "git@temporamail.net";
+    userEmail = "git.t@betsumei.com";
     extraConfig.core.editor = "nvim";
   };
 }

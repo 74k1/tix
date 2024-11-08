@@ -116,36 +116,32 @@
     plasticity
     # cura
     # curaengine_stable
-    orca-slicer
+    # inputs.nixpkgs-master.outputs.legacyPackages.x86_64-linux.orca-slicer
+    # orca-slicer
     prusa-slicer
-    # (orca-slicer.overrideAttrs (
-    #   final: prev: {
-    #     version = "2.2.0";
-    #     src = fetchFromGitHub {
-    #       owner = "SoftFever";
-    #       repo = "OrcaSlicer";
-    #       rev = "v${final.version}";
-    #       hash = "sha256-h+cHWhrp894KEbb3ic2N4fNTn13WlOSYoMsaof0RvRI=";
-    #     };
-    #     patches = builtins.filter (
-    #       p:
-    #       (builtins.baseNameOf p) != "0002-fix-build-for-gcc-13.diff"
-    #       && (builtins.baseNameOf p) != "meshboolean-const.patch"
-    #     ) prev.patches;
-    #   }
-    # ))
 
     prismlauncher
     jdk17
     libGLU
 
-    shortwave # radio
+    # shortwave # radio
+    goodvibes
+    gst_all_1.gstreamer
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-bad
+    gst_all_1.gst-plugins-ugly
+
+    newsflash # rss
+    hieroglyphic # find latex symbols
 
     zoom-us
 
     # fonts
     #material-symbols
     #siji
+
+    inputs.nixpkgs-ittools.outputs.legacyPackages.x86_64-linux.it-tools
   ];
   
   # evolution stuff

@@ -6,6 +6,11 @@
     nixpkgs-master = {
       url = "github:NixOS/nixpkgs/master";
     };
+    # TESTS
+    nixpkgs-ittools = {
+      url = "github:akotro/nixpkgs/it-tools";
+    };
+    #
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
