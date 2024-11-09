@@ -66,7 +66,7 @@ in
       users.users.taki = {
         isNormalUser = true;
         description = "taki";
-        extraGroups = [ "wheel" "networkmanager" "plex" ];
+        extraGroups = [ "wheel" "networkmanager" "plex" "user-with-access-to-virtualbox" ];
         # packages = with pkgs; [];
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmB5TLlaoy7JVpMYP0voMEQrGn2WGYapppxnQRD5JRS knights"
