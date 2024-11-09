@@ -96,6 +96,7 @@
     # gui stuff
     brave
     #inputs.zen-browser.packages."${system}".zen-browser
+    inputs.self.packages."${system}".lumen
     inputs.zen-browser.packages."${system}".default
     thunderbird
     pcmanfm
