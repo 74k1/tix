@@ -40,6 +40,10 @@
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-topology = {
+      url = "github:oddlama/nix-topology";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -87,6 +91,8 @@
         ./nix/packages.nix
         ./nix/modules.nix
         ./nix/agenix.nix
+        ./nix/topology.nix
+        ./nix/pkgs.nix
       ];
 
       perSystem = { self, lib, pkgs, system, inputs', ... }: {

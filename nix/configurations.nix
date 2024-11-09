@@ -8,6 +8,8 @@ let
     modules = [
       # Main config
       ../hosts/nixos/${hostname}/configuration.nix
+      # nix-topology
+      inputs.nix-topology.nixosModules.default
     ] ++ lib.optionals home-manager [
       # Home Manager
       inputs.home-manager.nixosModules.home-manager
