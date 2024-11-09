@@ -50,6 +50,7 @@
     taki
     transmission
     vikunja
+    youtrack
     vm-test
     wireguard
   ];

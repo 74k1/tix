@@ -3,6 +3,7 @@
   arion = import ./arion;
   atuin = import ./daemons/atuin;
   authelia = import ./daemons/authelia;
+  youtrack = import ./daemons/youtrack;
   couchdb = import ./daemons/couchdb;
   fail2ban = import ./daemons/fail2ban;
   forgejo = import ./daemons/forgejo;
