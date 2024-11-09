@@ -22,7 +22,7 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-TCtLgU32q1E5ZoV8FsGXFf8P/+C+W03dTOQm6xXF+nU=";
   };
 
-  cargoSha256 = "sha256-SCrRlhwfEDe9BbBYAB1wJW27px1mgcsG2SmDmYrrG0U=";
+  cargoHash = "sha256-SCrRlhwfEDe9BbBYAB1wJW27px1mgcsG2SmDmYrrG0U=";
 
   nativeBuildInputs = [
     pkg-config
@@ -38,13 +38,13 @@ rustPlatform.buildRustPackage rec {
     darwin.apple_sdk.frameworks.SystemConfiguration
   ];
 
-  OPENSSL_NO_VENDOR = 1;
+  env.OPENSSL_NO_VENDOR = 1;
 
-  meta = with lib; {
+  meta = {
     description = "Instant AI Git Commit message generator";
     homepage = "https://github.com/jnsahaj/lumen";
-    license = licenses.mit;
+    license = lib.licenses.mit;
     maintainers = [ ];
-    platforms = platforms.all;
+    platforms = lib.platforms.all;
   };
 }
