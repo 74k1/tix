@@ -7,6 +7,8 @@
     inputs.agenix.nixosModules.default
     inputs.agenix-rekey.nixosModules.default
 
+    inputs.arion.nixosModules.arion
+    inputs.vpnconfinement.nixosModules.default
     inputs.nixos-generators.nixosModules.all-formats
 
     # n8n
