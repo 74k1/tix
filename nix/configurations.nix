@@ -49,11 +49,7 @@ in
   flake = {
     nixosConfigurations = lib.flip lib.pipe
       [
-        (builtins.mapAttrs
-           (hostname: args:
-              lib.nameValuePair
-                args.hostname
-                (mkNixosHost hostname args)))
+        (builtins.mapAttrs mkNixosHost)
       ]
       {
         wired = {
