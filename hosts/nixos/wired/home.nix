@@ -133,6 +133,8 @@
     hieroglyphic # find latex symbols
 
     zoom-us
+    # onlyoffice-bin
+    libreoffice-qt
 
     # fonts
     #material-symbols
