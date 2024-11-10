@@ -141,7 +141,10 @@
     #material-symbols
     #siji
 
-    inputs.nixpkgs-ittools.outputs.legacyPackages.x86_64-linux.it-tools
+    rage
+    age-plugin-yubikey
+    inputs.agenix-rekey.packages.x86_64-linux.default
+    restic
   ];
   
   # evolution stuff

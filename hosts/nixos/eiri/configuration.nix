@@ -24,6 +24,8 @@
     inputs.vpnconfinement.nixosModules.default
     inputs.nixos-generators.nixosModules.all-formats
 
+    restic
+
     # n8n
     vaultwarden
     affine
@@ -105,16 +107,21 @@
   programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [
-    inputs.agenix-rekey.packages.x86_64-linux.default
-    btop
-    docker-compose
-    git wget curl tmux
-    fastfetch
-    ntfs3g btrfs-progs
+    git
+    wget
+    curl
+    tmux
+    ntfs3g
+    btrfs-progs
+    cifs-utils
     rage
     age-plugin-yubikey
-    cifs-utils
-    # minecwaft
+    inputs.agenix-rekey.packages.x86_64-linux.default
+    restic
+
+    btop
+    docker-compose
+    fastfetch
     jdk17
   ];
 

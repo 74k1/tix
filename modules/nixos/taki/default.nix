@@ -18,7 +18,6 @@ in
         extraGroups = [ "wheel" "networkmanager" "plex" "user-with-access-to-virtualbox" ];
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 blabla xyz@xyz" # GPG
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhjipcpqKCIRFK3o5QqqjGteAFEJdabnZqgraK2n8pa taki"
           "ssh-rsa blabla xyz@xyz"
         ];
         shell = pkgs.zsh;
