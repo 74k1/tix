@@ -42,7 +42,7 @@
     nix
     nvidia
     syncthing
-    atuin
+    # atuin
     outline
     plex
     # send
@@ -50,7 +50,7 @@
     taki
     transmission
     vikunja
-    youtrack
+    # youtrack
     vm-test
     wireguard
   ];

@@ -26,11 +26,11 @@
     openDefaultPorts = true;
     overrideDevices = false;
     overrideFolders = false;
-    options = {
+    settings = {
       relaysEnabled = true;
       urAccepted = -1;
     };
   };
 
-  systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true"; # Don't create default ~/Sync folder
+  # systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true"; # Don't create default ~/Sync folder
 }
