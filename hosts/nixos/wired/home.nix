@@ -105,6 +105,7 @@
     keepassxc
     obsidian
     simple-scan
+    qbittorrent
     # spotify
     #spotify-tray
     inputs.nixpkgs-master.outputs.legacyPackages.x86_64-linux.spotify-player
