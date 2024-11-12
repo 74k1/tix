@@ -5,6 +5,8 @@ let
 
   mkNixosHost = hostname: { system, home-manager ? true }: lib.nixosSystem {
     inherit system;
+    # the `perSystem` function gives you access to the shit inside the `perSystem` blocks
+    pkgs = withSystem system ({ pkgs, ... }: pkgs);
     modules = [
       # Main config
       "${inputs.self}/hosts/nixos/${hostname}/configuration.nix"
@@ -15,7 +17,8 @@ let
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
-          useGlobalPkgs = false;
+          # Use same `pkgs` as the NixOS above
+          useGlobalPkgs = true;
           useUserPackages = true;
           users.taki = import "${inputs.self}/hosts/nixos/${hostname}/home.nix";
           extraSpecialArgs = {

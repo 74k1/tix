@@ -123,6 +123,8 @@
         ./modules/flake/pkgs.nix
       ];
 
+      debug = true;
+
       perSystem = { self, lib, pkgs, system, inputs', ... }: {
         # Stuff with auto-inserted ${system}, like `packages` and `devShells`
       };

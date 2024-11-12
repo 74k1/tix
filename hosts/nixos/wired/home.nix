@@ -40,21 +40,21 @@
   ];
   
 
-  nixpkgs = {
-    overlays = [
-      (final: prev: {
-        duvolbr = outputs.packages."x86_64-linux".duvolbr;
-        berkeley-ttf = outputs.packages."x86_64-linux".berkeley-ttf;
-      })
-      inputs.wired-notify.overlays.default
-    ];
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        "electron-25.9.0"
-      ];
-    };
-  };
+  # nixpkgs = {
+  #   # overlays = [
+  #   #   (final: prev: {
+  #   #     duvolbr = outputs.packages.${pkgs.hostPlatform.system}.duvolbr;
+  #   #     berkeley-ttf = outputs.packages.${pkgs.hostPlatform.system}.berkeley-ttf;
+  #   #   })
+  #   #   inputs.wired-notify.overlays.default
+  #   # ];
+  #   # config = {
+  #   #   allowUnfree = true;
+  #   #   permittedInsecurePackages = [
+  #   #     "electron-25.9.0"
+  #   #   ];
+  #   # };
+  # };
 
   home = {
     username = "taki";
