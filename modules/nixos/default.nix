@@ -1,5 +1,6 @@
 {
   affine = import ./daemons/affine;
+  docmost = import ./daemons/docmost;
   arion = import ./arion;
   atuin = import ./daemons/atuin;
   restic = import ./daemons/restic;

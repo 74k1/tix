@@ -29,6 +29,7 @@
     # n8n
     vaultwarden
     affine
+    docmost
     arion
     # couchdb
     fail2ban
