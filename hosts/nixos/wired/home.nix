@@ -90,6 +90,7 @@
 
     wezterm
     inputs.ghostty.packages."${system}".default
+    clipit
     wired
     zellij
     #zoxide
