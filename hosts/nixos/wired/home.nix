@@ -17,6 +17,7 @@
       # bspwm
       #colors
       git
+      firefox
       nvim
       picom
       polybar

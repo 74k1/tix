@@ -11,6 +11,7 @@
   polybar = import ./apps/polybar;
   river = import ./wayland/river;
   rofi = import ./apps/rofi;
+  firefox = import ./apps/firefox;
   spotify = import ./apps/spotify;
   ssh-agent = import ./shell/ssh-agent;
   gpg-agent = import ./gpg-agent;
