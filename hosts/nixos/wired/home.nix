@@ -17,7 +17,7 @@
       # bspwm
       #colors
       git
-      firefox
+      # firefox
       nvim
       picom
       polybar
@@ -148,6 +148,7 @@
     age-plugin-yubikey
     inputs.agenix-rekey.packages.x86_64-linux.default
     restic
+    firefox
   ];
   
   # evolution stuff
