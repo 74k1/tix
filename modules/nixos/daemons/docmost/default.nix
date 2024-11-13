@@ -39,6 +39,7 @@
           environment = {
             APP_URL = "https://forever.example.com/";
             JWT_TOKEN_EXPIRES_IN = "30d";
+            MAIL_DRIVER = "smtp";
             DATABASE_URL = "postgresql://docmost:docmost@docmost-db:5432/docmost?schema=public";
             REDIS_URL = "redis://docmost-redis:6379";
           };

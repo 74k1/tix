@@ -7,8 +7,8 @@
       url = "github:NixOS/nixpkgs/master";
     };
     # TESTS
-    nixpkgs-ittools = {
-      url = "github:akotro/nixpkgs/it-tools";
+    jvanbruegge-linkwarden = {
+      url = "github:jvanbruegge/nixpkgs/linkwarden";
     };
     #
     flake-parts = {

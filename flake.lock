@@ -296,11 +296,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1731384210,
-        "narHash": "sha256-tx0rDWEeNIJ+UIAb+4glyknpJai7HU54f8ucUr0GD9E=",
+        "lastModified": 1731470588,
+        "narHash": "sha256-radsH6TieMS9S2+NQgWOV+Md6/Kz7lD+Q1GEmIxvjCY=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "33cbf67f367cf0a1f5c5ecab5877e32cb5796681",
+        "rev": "6cfc4ff20b755e675848c0417da3017a92a206e1",
         "type": "gitlab"
       },
       "original": {
@@ -637,11 +637,11 @@
         "zig": "zig"
       },
       "locked": {
-        "lastModified": 1731382085,
-        "narHash": "sha256-LsodhMaIkXdlAalv/t1xNA3xAnJ5ukclMDNM779/n2E=",
+        "lastModified": 1731469793,
+        "narHash": "sha256-ZewQYTlsysOt6orTIIKNR+y43iklehOzeBF/Gfy7fog=",
         "ref": "refs/heads/main",
-        "rev": "2661792cf7e322ef165271db71e8977fa2188cab",
-        "revCount": 7944,
+        "rev": "523e3a6ae3e62463b309c1b3222bafd7b1fb11ef",
+        "revCount": 7949,
         "type": "git",
         "url": "ssh://git@github.com/ghostty-org/ghostty"
       },
@@ -996,6 +996,22 @@
         "type": "github"
       }
     },
+    "jvanbruegge-linkwarden": {
+      "locked": {
+        "lastModified": 1728484014,
+        "narHash": "sha256-7IMblJ/L4wVLVXvkn6bdSvzN7cJJ4l/ZFfizNvnCuzI=",
+        "owner": "jvanbruegge",
+        "repo": "nixpkgs",
+        "rev": "75c84ce6cc2c8e0ae8820e3419b30ea6b4fd6799",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jvanbruegge",
+        "ref": "linkwarden",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "libcamera-src": {
       "flake": false,
       "locked": {
@@ -1056,11 +1072,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731424394,
-        "narHash": "sha256-J+POQgWQdjhuF1pEnkVKWPJ+dM62FTepk6TmJdj3O5U=",
+        "lastModified": 1731454423,
+        "narHash": "sha256-TtwvgFxUa0wyptLhQbKaixgNW1UXf3+TDqfX3Kp63oM=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "e30d226a24e4079d068321f935dbf30626f08dc8",
+        "rev": "6c71c49e2448e51ad830ed211024e6d0edc50116",
         "type": "github"
       },
       "original": {
@@ -1165,22 +1181,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-ittools": {
-      "locked": {
-        "lastModified": 1730853518,
-        "narHash": "sha256-uGO5/yn9GCkn5gKc8H6a6msh002xR7ZqT5st9falWmc=",
-        "owner": "akotro",
-        "repo": "nixpkgs",
-        "rev": "8b66100d577d44f243fc9736e0126183efe77129",
-        "type": "github"
-      },
-      "original": {
-        "owner": "akotro",
-        "ref": "it-tools",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1697935651,
@@ -1210,11 +1210,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1731433909,
-        "narHash": "sha256-uB4TW3PP9ZC85OjbNV3n5VPAFEdJ5852erzlaE9+vSs=",
+        "lastModified": 1731525795,
+        "narHash": "sha256-01D0wWETGNtwBxeHfVlwiVCNB6nzKPOLL2G9awjyjpY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ef9b4bce3e4829beefebc2246d08517732fbffbf",
+        "rev": "eddc58aebd2a2f232e76df9c64faa4d884acd1ea",
         "type": "github"
       },
       "original": {
@@ -1541,11 +1541,11 @@
         "u-boot-src": "u-boot-src"
       },
       "locked": {
-        "lastModified": 1730778617,
-        "narHash": "sha256-DzqHK+JpH+uqXIuq7QM+GU5g4Z6H6ne1tVKMqBYj0g4=",
+        "lastModified": 1731453829,
+        "narHash": "sha256-GzdsZR30UPMsbNM1dBlOmeXzhxcPXq79RDl4qOILpmU=",
         "owner": "nix-community",
         "repo": "raspberry-pi-nix",
-        "rev": "57e8e8e84221c0f89d50a871ce1705e345fd7912",
+        "rev": "3a016ff26c2ca6e0052f3f17c892bb7406eb0c84",
         "type": "github"
       },
       "original": {
@@ -1566,13 +1566,13 @@
         "ghostty": "ghostty",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
+        "jvanbruegge-linkwarden": "jvanbruegge-linkwarden",
         "nix-colors": "nix-colors",
         "nix-darwin": "nix-darwin",
         "nix-topology": "nix-topology",
         "nixos-generators": "nixos-generators",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_5",
-        "nixpkgs-ittools": "nixpkgs-ittools",
         "nixpkgs-master": "nixpkgs-master",
         "raspberry-pi-nix": "raspberry-pi-nix",
         "spicetify-nix": "spicetify-nix",
@@ -2086,11 +2086,11 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1729614985,
-        "narHash": "sha256-m2qE7LjM1Ton2nhL7UVuORJPfJcWabhj+K1GpQKqjPY=",
+        "lastModified": 1731493794,
+        "narHash": "sha256-hFeJygYsYT42GSj+73ym9Z11LxyZTJRgzPYnJrmhyvw=",
         "owner": "AndyFilter",
         "repo": "YeetMouse",
-        "rev": "14b70c139fa4c7a5e2821891cec29687906e7440",
+        "rev": "793b86ce6b0a1afd1fafcfeb9c79c7b30f4594a4",
         "type": "github"
       },
       "original": {

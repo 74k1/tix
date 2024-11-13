@@ -53,6 +53,7 @@
     taki
     transmission
     vikunja
+    linkwarden
     # youtrack
     vm-test
     wireguard
