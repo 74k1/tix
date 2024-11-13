@@ -244,7 +244,7 @@
         #     proxyPass = "http://10.100.0.1:5678"
         #   };
         # };
-        "linkwarden.example.com" = {
+        "links.example.com" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
