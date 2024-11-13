@@ -260,7 +260,7 @@
           enableACME = true;
           forceSSL = true;
           locations."/" = {
-            proxyPass = "http://10.100.0.1:3010";
+            proxyPass = "http://10.100.0.1:3033";
             extraConfig = ''
               proxy_http_version 1.1;
               proxy_set_header Upgrade $http_upgrade;
