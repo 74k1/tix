@@ -28,8 +28,8 @@
 
         "/mnt/btrfs_pool/syncthing_data"
 
-        "/mnt/btrfs_pool/affine_storage"
-        "/var/lib/affine"
+        "/mnt/btrfs_pool/docmost_storage"
+        "/var/lib/docmost"
       ];
       repository = "/mnt/btrfs_pool/restic_backup";
       timerConfig = {

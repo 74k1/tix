@@ -37,7 +37,7 @@
             config.age.secrets."docmost_env_secret".path
           ];
           environment = {
-            APP_URL = "http://255.255.255.255:3033";
+            APP_URL = "https://forever.example.com/";
             JWT_TOKEN_EXPIRES_IN = "30d";
             DATABASE_URL = "postgresql://docmost:docmost@docmost-db:5432/docmost?schema=public";
             REDIS_URL = "redis://docmost-redis:6379";
