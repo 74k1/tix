@@ -9,6 +9,21 @@
   };
 
   services.restic.backups = {
+    "mc" = {
+      initialize = true;
+      passwordFile = config.age.secrets."restic_password".path;
+      paths = [
+        "/home/taki/minecraft/world"
+      ];
+      repository = "/home/taki/minecraft_backup";
+      timerConfig = {
+        OnCalendar = "hourly";
+        Persistent = true;
+      };
+      pruneOpts = [
+        "--keep-daily 31"
+      ];
+    };
     "local" = {
       initialize = true;
       passwordFile = config.age.secrets."restic_password".path;
