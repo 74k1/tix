@@ -64,6 +64,7 @@ in
     bash-language-server # Bash :-)
     nixd # Nix Language Server
     alejandra # Nix Formatter
+    rust-analyzer
   ];
   
   programs.neovim = {
@@ -102,6 +103,7 @@ in
       cmp-cmdline
       cmp-nvim-lsp
       cmp-path
+      cmp-emoji
       cmp_luasnip
       comment-nvim
       hmts-nvim
