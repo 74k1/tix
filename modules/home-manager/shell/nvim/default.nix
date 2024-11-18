@@ -64,7 +64,10 @@ in
     bash-language-server # Bash :-)
     nixd # Nix Language Server
     alejandra # Nix Formatter
-    rust-analyzer
+    rust-analyzer # Rust Language Server
+    vscode-langservers-extracted # HTML, CSS, JSON, ESLINT Language Server
+    # superhtml # HTML Language Server
+    emmet-ls # Emmet Language Server (cool snippets)
   ];
   
   programs.neovim = {

@@ -1,3 +1,17 @@
+require("lspconfig").html.setup({
+  cmd = { "vscode-html-language-server", "--stdio" },
+  init_options = {
+    embeddedLanguages = {
+      configurationSection = { "html", "css", "javascript" },
+      embeddedLanguages = {
+        css = true,
+        javascript = true
+      },
+      provideFormatter = true
+    }
+  },
+})
+require("lspconfig").bashls.setup({})
 require("lspconfig").nixd.setup({
   cmd = { "nixd" },
   settings = {
@@ -22,7 +36,6 @@ require("lspconfig").nixd.setup({
     },
   },
 })
-require("lspconfig").bashls.setup({})
 require("lspconfig").rust_analyzer.setup({
   on_attach = function(client, bufnr)
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
