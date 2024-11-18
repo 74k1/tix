@@ -101,7 +101,8 @@
     inputs.self.packages."${system}".lumen
     inputs.zen-browser.packages."${system}".default
     thunderbird
-    pcmanfm
+    # pcmanfm
+    nemo
     google-chrome
     ungoogled-chromium
     keepassxc

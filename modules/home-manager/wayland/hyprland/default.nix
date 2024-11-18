@@ -36,10 +36,10 @@ in
         "DP-2,2560x1440@165,0x0,1"
       ];
 
-      decoration = {
-        shadow_offset = "0 5";
-        # "col.shadow" = "rgba(00000099)";
-      };
+      # decoration = {
+      #   shadow_offset = "0 5";
+      #   # "col.shadow" = "rgba(00000099)";
+      # };
 
       "$mod" = "SUPER";
       
