@@ -124,6 +124,7 @@
     # inputs.nixpkgs-master.outputs.legacyPackages.x86_64-linux.orca-slicer
     # orca-slicer
     prusa-slicer
+    zathura
 
     prismlauncher
     jdk17
