@@ -115,6 +115,7 @@
     spotify-player
     discord
     vesktop
+    zed-editor
     # polybar
     # ly
     # evolution
