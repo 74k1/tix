@@ -304,6 +304,23 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+  services.syncthing = {
+    enable = true;
+
+    # Declarative node IDs
+    # cert = config.age.secrets."syncthing_cert".path;
+    # key = config.age.secrets."syncthing_key".path;
+
+    guiAddress = "127.0.0.1:8384";
+    openDefaultPorts = true;
+    overrideDevices = false;
+    overrideFolders = false;
+    settings = {
+      relaysEnabled = true;
+      urAccepted = -1;
+    };
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
