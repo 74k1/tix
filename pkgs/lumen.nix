@@ -13,16 +13,16 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "lumen";
-  version = "1.3.0";
+  version = "1.6.0";
 
   src = fetchFromGitHub {
     owner = "jnsahaj";
     repo = "lumen";
     rev = "v${version}";
-    hash = "sha256-6FkYzby7LBcgdobcgwXvBV97wkZTNb3jhnQgGpch7Pg=";
+    hash = "sha256-d5K6ttOs1tnOg4GChMd5IBlucPTDaypqfC7qss5j5yU=";
   };
 
-  cargoHash = "sha256-3vTt2QeY0Z4quGV/EOPFBslulZj2b8auc0TH1h2CeAw=";
+  cargoHash = "sha256-dN96HCY7z8G2ziGTT/lJ/FsIMPcynl6Eb5sfbK31Boo=";
 
   nativeBuildInputs = [
     pkg-config
