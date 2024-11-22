@@ -55,7 +55,6 @@
   networking.networkmanager.enable = true;
 
   # HYPRLAND
-  
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -90,33 +89,13 @@
       enable = true;
 
       # greeter
-
       screenSection = ''
         Option "metamodes" "DP-2: 2560x1440_165 +0+0, DP-0: 2560x1440_165 +2560+0"
       '';
     };
 
     displayManager = {
-      # sddm = {
-      #   enable = true;
-      #   wayland.enable = true;
-      #   theme = "Ukiyo";
-      #   autoNumlock = true;
-      #   settings = {
-      #     Autologin = {
-      #       Session = "hyprland";
-      #       User = "taki";
-      #     };
-      #   };
-      # };
       defaultSession = "Hyprland";
-      # lightdm = {
-      #   enable = true;
-      #   greeters.slick = {
-      #     enable = true;
-      #     theme.name = "Ukiyo";
-      #   };
-      # };
     };
 
     libinput = {
@@ -126,27 +105,8 @@
     };
 
     mullvad-vpn.enable = true;
-
-    # picom = {
-    #   enable = true;
-    #   fade = true;
-    #   # inactiveOpacity = "0.9";
-    #   shadow = true;
-    #   fadeDelta = 4;
-    # };
   };
 
-
-  # services.greetd = {
-  #   enable = true;
-  #   settings = {
-  #     default_session = {
-  #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd startx";
-  #       user = "taki";
-  #     };
-  #   };
-  # };
-  
   # Disable xorg Screensaver
   environment.extraInit = ''
     xset s off -dpms
@@ -174,17 +134,24 @@
     "video=DP-1:2560x1440@165"
   ];
 
-  # Configure keymap in X11
-  # services.xserver = {
-  #   layout = "ch";
-  #   xkbVariant = "";
-  # };
-
-  # Configure console keymap
-  # console.keyMap = "sg";
-
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ hplip ];
+    browsing = true;
+    browsedConf = ''
+      BrowseDNSSDSubTypes _cups,_print
+      BrowseLocalProtocols all
+      BrowseRemoteProtocols all
+      CreateIPPPrinterQueues All
+      BrowseProtocols all
+    '';
+  };
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
 
   # Enable sound with pipewire.
   # sound.enable = true;
