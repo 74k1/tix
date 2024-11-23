@@ -16,13 +16,15 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
-    # plugins = [
-    #   pkgs.hyprlandPlugins.hy3
-    # ];
+    plugins = [
+      pkgs.hyprlandPlugins.hy3
+    ];
     xwayland.enable = true;
     systemd.enable = true;
     settings = {
       exec-once = ''${startupScript}/bin/start'';
+
+      # "layout" = "hy3";
 
       # keyboard layout
       "input" = {
@@ -61,6 +63,7 @@ in
         ", Print, exec, ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area"
 
         # apps?
+        "$mod, e, exec, ${pkgs.nemo}/bin/nemo"
         "$mod, n, exec, ${pkgs.nemo}/bin/nemo"
         "$mod, w, exec, ${pkgs.brave}/bin/brave"
 
