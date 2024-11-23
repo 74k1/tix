@@ -112,7 +112,6 @@ in
       hmts-nvim
       luasnip
       nvim-tree-lua
-      nvim-treesitter.withAllGrammars
       telescope-nvim
       tfm-nvim
       venn-nvim
@@ -131,6 +130,11 @@ in
         plugin = tsukiyo-nvim;
         type = "lua";
         config = builtins.readFile ./cfg/tsukiyo.lua;
+      }
+      {
+        plugin = nvim-treesitter.withAllGrammars;
+        type = "lua";
+        config = builtins.readFile ./cfg/TSconfig.lua;
       }
       {
         plugin = markview-nvim;

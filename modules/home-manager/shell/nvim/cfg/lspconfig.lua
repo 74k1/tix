@@ -1,4 +1,50 @@
+local default_capabilities = vim.lsp.protocol.make_client_capabilities()
+local lsp_capabilities = vim.tbl_deep_extend(
+  "force",
+  default_capabilities,
+  {
+    textDocument = {
+      completion = {
+        completionItem = {
+          resolveSupport = {
+            properties = {
+              "documentation",
+              "detail",
+              "additionalTextEdits",
+            },
+          },
+          documentationFormat = {
+            "markdown",
+          },
+          deprecatedSupport = true,
+          snippetSupport = true,
+          commitCharactersSupport = true,
+          labelDetailsSupport = true,
+          insertReplaceSupport = true,
+          preselectSupport = true,
+          tagSupport = {
+            valueSet = {
+              1,
+            },
+          },
+        },
+      },
+      foldingRange = {
+        lineFoldingOnly = true,
+        dynamicRegistration = false,
+      },
+      workspace = {
+        didChangeWatchedFiles = {
+          dynamicRegistration = true,
+          relative_pattern_support = true,
+        },
+      },
+    },
+  }
+)
+
 require("lspconfig").html.setup({
+  capabilities = lsp_capabilities,
   cmd = { "vscode-html-language-server", "--stdio" },
   init_options = {
     embeddedLanguages = {
