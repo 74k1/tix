@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ inputs, outputs, lib, pkgs, config, ... }:
 
 {
   home = {
@@ -45,8 +45,8 @@
       fyf = "${pkgs.fzf}/bin/fzf";
       # scrot = "${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f '-i %i -g %g') - | xclip -t 'image/png' -selection clipboard";
       ga = "${lib.getExe config.programs.git.package} add .";
-      gac = "${lib.getExe config.programs.git.package} add . && ${lib.getExe config.programs.git.package} commit -a -m \"fix/feat: $(curl -s https://whatthecommit.com/index.txt)\"";
-      gacp = "${lib.getExe config.programs.git.package} add . && ${lib.getExe config.programs.git.package} commit -a -m \"fix/feat: $(curl -s https://whatthecommit.com/index.txt)\" && ${lib.getExe config.programs.git.package} push";
+      gac = "ga && commit -m \"$(lumen draft --context 'use conventional commits (at the start, use feat:/fix:/chore:/...) & leave all characters lowercase')\"";
+      gacp = "gac && ${lib.getExe config.programs.git.package} push";
     };
 
     history = {
