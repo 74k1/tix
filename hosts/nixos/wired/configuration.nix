@@ -278,6 +278,10 @@
     # cert = config.age.secrets."syncthing_cert".path;
     # key = config.age.secrets."syncthing_key".path;
 
+    user = "taki";
+    group = "users";
+    dataDir = "/home/taki";
+
     guiAddress = "127.0.0.1:8384";
     openDefaultPorts = true;
     overrideDevices = false;

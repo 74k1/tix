@@ -116,6 +116,10 @@
     discord
     vesktop
 
+    akira-unstable
+    vala
+    pantheon.elementary-gtk-theme
+    pantheon.elementary-icon-theme
 
     # polybar
     # ly
