@@ -45,7 +45,7 @@
       fyf = "${pkgs.fzf}/bin/fzf";
       # scrot = "${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f '-i %i -g %g') - | xclip -t 'image/png' -selection clipboard";
       ga = "${lib.getExe config.programs.git.package} add .";
-      gac = "ga && commit -m \"$(lumen draft --context 'use conventional commits (at the start, use feat:/fix:/chore:/...) & leave all characters lowercase')\"";
+      gac = "ga && ${lib.getExe config.programs.git.package} commit -m \"$(lumen draft --context 'use conventional commits (at the start, use feat:/fix:/chore:/...) & leave all characters lowercase')\"";
       gacp = "gac && ${lib.getExe config.programs.git.package} push";
     };
 
