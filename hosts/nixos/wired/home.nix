@@ -116,6 +116,8 @@
     discord
     vesktop
 
+    mpv
+
     akira-unstable
     vala
     pantheon.elementary-gtk-theme
