@@ -205,10 +205,10 @@
       options = [
         "rw"
         "noatime"
-        "vers=4.1"
-        "rsize=65536"
-        "wsize=65536"
-        "auto"
+        "nfsvers=4.1"
+        "x-systemd.automount" # auto mount on use
+        "x-systemd.idle-timeout=3600" # disconnect after 60 minutes
+        "noauto" # auto mount on use
         "nofail"
         "_netdev"
       ];
