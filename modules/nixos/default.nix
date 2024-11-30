@@ -4,7 +4,6 @@
   linkwarden = import ./daemons/linkwarden;
   arion = import ./arion;
   atuin = import ./daemons/atuin;
-  ocis = import ./daemons/ocis;
   restic = import ./daemons/restic;
   authelia = import ./daemons/authelia;
   couchdb = import ./daemons/couchdb;
