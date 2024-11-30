@@ -42,6 +42,7 @@
 
     glance
     nextcloud
+    ocis
     nix
     nvidia
     syncthing
