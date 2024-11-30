@@ -213,7 +213,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     ntfs3g
+     ntfs3g davfs2
      git wget curl tmux
      pavucontrol
      nvidia-vaapi-driver
