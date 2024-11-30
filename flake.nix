@@ -6,9 +6,6 @@
     nixpkgs-master = {
       url = "github:NixOS/nixpkgs/master";
     };
-    nixpkgs-stable = {
-      url = "github:NixOS/nixpkgs/nixos-24.11";
-    };
     # TESTS
     jvanbruegge-linkwarden = {
       url = "github:jvanbruegge/nixpkgs/linkwarden";
