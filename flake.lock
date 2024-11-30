@@ -1222,11 +1222,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1733006144,
-        "narHash": "sha256-6qKFxD1EvsMC5AOpReuhxkqRyk4dxAhBAPtwdJ8MPTM=",
+        "lastModified": 1733009702,
+        "narHash": "sha256-1ZJFOVsaOT9f/Mk/Ag7/XOwuke8q/sEpwBsSHEkwJzs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "337b082d286a6efb43b52729a2bae617adba3cbc",
+        "rev": "eecda1aa70422b297feb77c34de66bc639e30299",
         "type": "github"
       },
       "original": {
@@ -1264,22 +1264,6 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-24.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-stable_3": {
-      "locked": {
-        "lastModified": 1732824227,
-        "narHash": "sha256-fYNXgpu1AEeLyd3fQt4Ym0tcVP7cdJ8wRoqJ+CtTRyY=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "c71ad5c34d51dcbda4c15f44ea4e4aa6bb6ac1e9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-24.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -1598,7 +1582,6 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-master": "nixpkgs-master",
-        "nixpkgs-stable": "nixpkgs-stable_3",
         "raspberry-pi-nix": "raspberry-pi-nix",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
