@@ -103,6 +103,7 @@
     thunderbird
     # pcmanfm
     nemo
+    nextcloud-client
     google-chrome
     ungoogled-chromium
     keepassxc

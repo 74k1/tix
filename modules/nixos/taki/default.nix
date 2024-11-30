@@ -15,7 +15,7 @@ in
       users.users.taki = {
         isNormalUser = true;
         description = "taki";
-        extraGroups = [ "wheel" "networkmanager" "plex" "user-with-access-to-virtualbox" "davfs2" ];
+        extraGroups = [ "wheel" "networkmanager" "plex" "user-with-access-to-virtualbox" ];
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 blabla xyz@xyz" # GPG
           "ssh-rsa blabla xyz@xyz"
