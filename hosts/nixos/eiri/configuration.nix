@@ -193,23 +193,26 @@
     };
   };
 
-  # fileSystems."/var/plex" = {
-  #   device = "//255.255.255.255/share/plex";
-  #   fsType = "cifs";
-  #   options = [
-  #     "credentials=${config.age.secrets."cifs_secret".path}"
-  #     # "credentials=/home/taki/cifs_secrets"
-  #     "iocharset=utf8"
-  #     "vers=3.0"
-  #     "noperm"
-  #     "uid=0"
-  #   ];
-  # };
-
-  fileSystems."/mnt/btrfs_pool" = {
-    device = "UUID=9ce8e79d-aa13-4f76-981f-c438eb821669";
-    fsType = "btrfs";
-    options = [ "defaults" "noatime" "compress=zstd" "autodefrag" ];
+  fileSystems = {
+    "/mnt/btrfs_pool" = {
+      device = "UUID=9ce8e79d-aa13-4f76-981f-c438eb821669";
+      fsType = "btrfs";
+      options = [ "defaults" "noatime" "compress=zstd" "autodefrag" ];
+    };
+    "/mnt/koi" = {
+      device = "255.255.255.255:/volume1/backup";
+      fsType = "nfs";
+      options = [
+        "rw"
+        "noatime"
+        "vers=4.1"
+        "rsize=65536"
+        "wsize=65536"
+        "auto"
+        "nofail"
+        "_netdev"
+      ];
+    };
   };
 
   # Open ports in the firewall.
