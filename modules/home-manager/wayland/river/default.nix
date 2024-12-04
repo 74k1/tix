@@ -100,7 +100,7 @@
       set-cursor-warp = "on-output-change";
       set-repeat = "50 300";
       spawn = [];
-      xcursor-theme = "Ukiyo 12"; 
+      # xcursor-theme = "Ukiyo 12"; 
     };
     extraConfig = ''
       riverctl keyboard-layout ch &

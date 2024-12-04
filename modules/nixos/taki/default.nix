@@ -38,7 +38,16 @@ in
           monaspace
           noto-fonts
           ubuntu_font_family
-          (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono"]; } )
+          nerd-fonts.fira-code
+          nerd-fonts.droid-sans-mono
+          nerd-fonts.jetbrains-mono
+          nerd-fonts.noto
+          nerd-fonts.hack
+          nerd-fonts.tinos
+          nerd-fonts.mplus
+          nerd-fonts.lilex
+          nerd-fonts.zed-mono
+
           berkeley-ttf
         ];
       };

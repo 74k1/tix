@@ -12,7 +12,7 @@
 
     inputs.nixos-generators.nixosModules.all-formats
 
-    inputs.yeetmouse.nixosModules.default
+    inputs.kitten-yeetmouse.nixosModules.default
 
     # cachix
     #substituters
@@ -236,7 +236,7 @@
 
   hardware = {
     yeetmouse = {
-      enable = false;
+      enable = true;
       parameters = {
         AccelerationMode = "jump"; # looks most like motivity in Raw Accel
         Sensitivity = 0.8;

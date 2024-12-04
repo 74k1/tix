@@ -17,7 +17,8 @@ in
   config = {
     home.packages = with pkgs; [
       wezterm
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono"]; })
+      nerd-fonts.fira-code
+      nerd-fonts.droid-sans-mono
     ];
 
     programs.wezterm = {

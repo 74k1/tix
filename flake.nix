@@ -10,6 +10,10 @@
     jvanbruegge-linkwarden = {
       url = "github:jvanbruegge/nixpkgs/linkwarden";
     };
+    kitten-yeetmouse = {
+      url = "github:kitten/YeetMouse/feat/input-handler-overrides?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -59,11 +63,11 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    yeetmouse = {
-      # url = "github:74k1/YeetMouse/master?dir=nix";
-      url = "github:AndyFilter/YeetMouse/master?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # yeetmouse = {
+    #   # url = "github:74k1/YeetMouse/master?dir=nix";
+    #   url = "github:AndyFilter/YeetMouse/master?dir=nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       # url = "github:hyprwm/Hyprland";
