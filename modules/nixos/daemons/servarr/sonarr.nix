@@ -76,6 +76,7 @@ in
       sonarr.gid = config.ids.gids.sonarr;
     };
 
+    # this doesn't work. i'll have to figure this out
     nixpkgs.config.permittedInsecurePackages = [
       "aspnetcore-runtime-6.0.36"
       "aspnetcore-runtime-wrapped-6.0.36"
