@@ -118,6 +118,7 @@
     vesktop
 
     mpv
+    ascii-draw
 
     akira-unstable
     vala
@@ -148,8 +149,10 @@
     hieroglyphic # find latex symbols
 
     zoom-us
-    # onlyoffice-bin
+    onlyoffice-bin
     libreoffice-qt
+
+    wireshark
 
     # fonts
     #material-symbols

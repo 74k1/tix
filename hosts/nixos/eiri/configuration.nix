@@ -49,7 +49,7 @@
     outline
     plex
     # send
-    # servarr
+    servarr
     taki
     transmission
     vikunja

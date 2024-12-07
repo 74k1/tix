@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
+    ./sonarr.nix
     ./radarr-alt.nix
     ./sonarr-alt.nix
     ./radarr-alp.nix

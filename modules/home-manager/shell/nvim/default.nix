@@ -7,7 +7,7 @@ let
       owner = "74k1";
       repo = "tsukiyo.nvim";
       rev = "d9377933d93bac522ad8e6b54b77c80219e217b8";
-      sha256 = "sha256-H/RI0jXTtJk1RMjsjC4IWT6/80p2BCHG7u1Q1LW0oZg=";
+      hash = "sha256-H/RI0jXTtJk1RMjsjC4IWT6/80p2BCHG7u1Q1LW0oZg=";
     };
   };
   nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -15,8 +15,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "reo101";
       repo = "nix-update.nvim";
-      rev = "83062fa4197e7971d1a63cac05d6feaf8378062e";
-      sha256 = "sha256-9hTApOq0UFu6oBGNd4Pzou55vS3hSxF//wP1eE3hGS8=";
+      rev = "5b322f828820db2a34c6b4b439ce4e7a3b7d4c77";
+      hash = "sha256-x0WAlBD6gKEqTDH9I/Qy9gqIHoFfE5XLcjwSn8RYwag=";
     };
   };
   hmts-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -24,8 +24,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "calops";
       repo = "hmts.nvim";
-      rev = "v1.2.4";
-      sha256 = "sha256-8FJlLw5LApQs7S8xEh2UE9wdYCAweZTbvgozCGPfQJc=";
+      rev = "v1.2.5";
+      hash = "sha256-V5dwIJdxBulFVKk1iSlf4H5NRz1UH7uYQeMvwtgkpIs=";
     };
   };
   # image-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -42,17 +42,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "nvimdev";
       repo = "indentmini.nvim";
-      rev = "8922b7ec3f1d556b0805d025f0122e50da387303";
-      sha256 = "sha256-Mqexuzid4LzncqEfl5Q69ZyNBNGDvs5ULoKhZf9io1o=";
-    };
-  };
-  tfm-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "tfm-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "Rolv-Apneseth";
-      repo = "tfm.nvim";
-      rev = "fb0de2c96bf303216ac5d91ce9bdb7f430030f8b";
-      sha256 = "sha256-LiIPVNFEbbkCmqTU+fD23xtTVTIkf6Z5zb+E4Xuz9ps=";
+      rev = "03c24a3e76eb9d65ddbd080aa2bfb6d3d6c85058";
+      hash = "sha256-qJgB/Ap2SM/vxlZ8F8kIS/AwtzkNPrvC0b30Rw/i8Tc=";
     };
   };
 in
@@ -113,7 +104,6 @@ in
       luasnip
       nvim-tree-lua
       telescope-nvim
-      tfm-nvim
       venn-nvim
       vim-dadbod
       vim-dadbod-completion
