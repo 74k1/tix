@@ -24,6 +24,7 @@ let
           extraSpecialArgs = {
             inherit inputs outputs;
           };
+          backupFileExtension = "backup";
         };
       }
     ];
