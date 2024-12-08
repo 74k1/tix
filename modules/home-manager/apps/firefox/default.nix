@@ -5,36 +5,6 @@
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.wrapFirefox pkgs.firefox-bin-unwrapped {
-      nativeMessagingHosts = [ pkgs.tridactyl-native ];
-      extraPolicies = {
-        DisableAppUpdate = true;
-        DisableFirefoxStudies = true;
-        DisablePocket = true;
-        DontCheckDefaultBrowser = true;
-        PictureInPicture = {
-          Enabled = false;
-          Locked = true;
-        };
-        RequestedLocales = [ "en" ];
-        UserMessaging = {
-          ExtensionRecommendations = false;
-          FeatureRecommendations = true;
-          UrlbarInterventions = true;
-          SkipOnboarding = true;
-        };
-
-        # FIXME currently this method is not working
-        # https://github.com/mozilla/policy-templates/blob/master/README.md#extensionsettings
-        # see https://github.com/shahinism/45r4r/blob/c03d535f15318dda28881f3299c816226fa70248/home/features/desktop/firefox.nix#L387-L527
-
-        home.file = {
-          ".mozilla/native-messaging-hosts/tridactyl.json" = {
-            source = "${pkgs.tridactyl-native}/lib/mozilla/native-messaging-hosts/tridactyl.json";
-          };
-        };
-      };
-    };
     profiles.taki = {
       name = "taki";
       search.engines = {
@@ -71,6 +41,7 @@
         # USER CONF
         "browser.download.panel.shown" = true;
         "media.videocontrols.picture-in-picture.enabled" = false;
+        "sidebar.revamp" = true;
         
         # Main Config is based on BetterFox @
         # https://github.com/yokoffing/Betterfox
@@ -204,7 +175,7 @@
 
         # Mozilla
         "accessibility.force_disabled" = 1;
-        "identity.fxaccounts.enabled" = false;
+        # "identity.fxaccounts.enabled" = false;
         "browser.tabs.firefox-view" = false;
         "permissions.default.desktop-notification" = 2;
         "permissions.default.geo" = 2;
@@ -338,18 +309,6 @@
         # Allow copy to clipboard
         "dom.events.asyncClipboard.clipboardItem" = true;
       };
-
-      extensions = [
-        inputs.firefox-addons.packages."x86_64-linux".bitwarden
-        inputs.firefox-addons.packages."x86_64-linux".ublock-origin
-        inputs.firefox-addons.packages."x86_64-linux".sponsorblock
-        inputs.firefox-addons.packages."x86_64-linux".tridactyl
-        inputs.firefox-addons.packages."x86_64-linux".sidebery
-        inputs.firefox-addons.packages."x86_64-linux".metamask
-        inputs.firefox-addons.packages."x86_64-linux".violentmonkey
-        inputs.firefox-addons.packages."x86_64-linux".video-downloadhelper
-        inputs.firefox-addons.packages."x86_64-linux".hls-stream-detector
-      ];
     };
   };
 }

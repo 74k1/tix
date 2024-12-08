@@ -21,12 +21,13 @@
   ollama = import ./daemons/ollama;
   openssh = import ./daemons/openssh;
   outline = import ./daemons/outline;
-  pcscd = import ./pcscd;
+  pcscd = import ./daemons/pcscd;
   plex = import ./daemons/plex;
   send = import ./daemons/send;
   servarr = import ./daemons/servarr;
-  steam = import ./steam;
+  steam = import ./apps/steam;
   substituters = import ./substituters;
+  firefox = import ./apps/firefox;
   syncthing = import ./daemons/syncthing;
   taki = import ./taki;
   transmission = import ./daemons/transmission;

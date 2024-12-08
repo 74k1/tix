@@ -23,6 +23,7 @@
     nix
     steam
     pcscd
+    firefox
   ];
 
   age.rekey = {
