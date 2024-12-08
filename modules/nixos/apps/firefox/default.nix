@@ -27,6 +27,7 @@ in {
       DisablePocket = true;
       DisableTelemetry = true;
       DontCheckDefaultBrowser = true;
+      DisableFirefoxAccounts = false;
 
       RequestedLocales = [ "en" ];
 

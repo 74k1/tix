@@ -175,7 +175,6 @@
 
         # Mozilla
         "accessibility.force_disabled" = 1;
-        # "identity.fxaccounts.enabled" = false;
         "browser.tabs.firefox-view" = false;
         "permissions.default.desktop-notification" = 2;
         "permissions.default.geo" = 2;
