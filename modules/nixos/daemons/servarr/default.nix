@@ -1,7 +1,12 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  cfg_sonarr = config.services.sonarr;
+in {
   imports = [
-    ./sonarr.nix
     ./radarr-alt.nix
     ./sonarr-alt.nix
     ./radarr-alp.nix
@@ -27,12 +32,12 @@
   };
 
   users.users = {
-    lidarr.extraGroups = [ "plex" "transmission" ];
-    radarr.extraGroups = [ "plex" "transmission" ];
-    radarr-alt.extraGroups = [ "plex" "transmission" ];
-    radarr-alp.extraGroups = [ "plex" "transmission" ];
-    sonarr.extraGroups = [ "plex" "transmission" ];
-    sonarr-alp.extraGroups = [ "plex" "transmission" ];
+    lidarr.extraGroups = ["plex" "transmission"];
+    radarr.extraGroups = ["plex" "transmission"];
+    radarr-alt.extraGroups = ["plex" "transmission"];
+    radarr-alp.extraGroups = ["plex" "transmission"];
+    sonarr.extraGroups = ["plex" "transmission"];
+    sonarr-alp.extraGroups = ["plex" "transmission"];
   };
 
   virtualisation.arion = {
