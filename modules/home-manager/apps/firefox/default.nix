@@ -7,6 +7,7 @@
     enable = true;
     profiles.taki = {
       name = "taki";
+      search.force = true;
       search.engines = {
         "Bing".metaData.hidden = true;
         "eBay".metaData.hidden = true;

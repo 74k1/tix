@@ -9,5 +9,16 @@
       key = "46F3422F63A313697EAB83D51CF155F76F213503";
       signByDefault = true;
     };
+    delta = {
+      enable = true;
+      options = {
+        # whitespace-error-style = "22 reverse";
+        line-numbers = true;
+        side-by-side = true;
+        navigate = true;
+        color-only = true;
+        max-line-length = 0; # disable trunc
+      };
+    };
   };
 }
