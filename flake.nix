@@ -101,6 +101,10 @@
       #url = "github:heywoodlh/flakes/main?dir=zen-browser";
       url = "github:ch4og/zen-browser-flake";
     };
+    affinity-nix = {
+      url = "github:mrshmllow/affinity-nix";
+      # url = "github:74k1/affinity-nix/patch";
+    };
     ghostty = {
       url = "git+ssh://git@github.com/ghostty-org/ghostty";
       # url = "git+file:///home/taki/dev/ghostty/";

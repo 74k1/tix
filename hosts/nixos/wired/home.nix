@@ -40,21 +40,21 @@
   ];
   
 
-  # nixpkgs = {
-  #   # overlays = [
-  #   #   (final: prev: {
-  #   #     duvolbr = outputs.packages.${pkgs.hostPlatform.system}.duvolbr;
-  #   #     berkeley-ttf = outputs.packages.${pkgs.hostPlatform.system}.berkeley-ttf;
-  #   #   })
-  #   #   inputs.wired-notify.overlays.default
-  #   # ];
-  #   # config = {
-  #   #   allowUnfree = true;
-  #   #   permittedInsecurePackages = [
-  #   #     "electron-25.9.0"
-  #   #   ];
-  #   # };
-  # };
+  nixpkgs = {
+    # overlays = [
+    #   (final: prev: {
+    #     duvolbr = outputs.packages.${pkgs.hostPlatform.system}.duvolbr;
+    #     berkeley-ttf = outputs.packages.${pkgs.hostPlatform.system}.berkeley-ttf;
+    #   })
+    #   inputs.wired-notify.overlays.default
+    # ];
+    config = {
+      allowUnfree = true;
+      # permittedInsecurePackages = [
+      #   "electron-25.9.0"
+      # ];
+    };
+  };
 
   home = {
     username = "taki";
@@ -100,6 +100,9 @@
     #inputs.zen-browser.packages."${system}".zen-browser
     inputs.self.packages."${system}".lumen
     inputs.zen-browser.packages."${system}".default
+    inputs.affinity-nix.packages."${system}".photo
+    inputs.affinity-nix.packages."${system}".designer
+    inputs.affinity-nix.packages."${system}".publisher
     thunderbird
     # pcmanfm
     nemo
