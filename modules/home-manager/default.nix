@@ -5,6 +5,7 @@
   ghostty = import ./apps/ghostty;
   git = import ./shell/git;
   hyprland = import ./wayland/hyprland;
+  niri = import ./wayland/niri;
   i3wm = import ./x11/i3wm;
   nvim = import ./shell/nvim;
   picom = import ./x11/picom;
