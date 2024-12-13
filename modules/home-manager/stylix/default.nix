@@ -60,11 +60,14 @@ in {
         };
       };
       autoEnable = true; # false;
+      targets = {
+        spicetify.enable = false;
+      };
       # target = {
       #   tmux.enable = false;
-      #   gnome.enable = false;
+      #   gnome.enable = true;
       #   gtk = {
-      #     enable = false;
+      #     enable = true;
       #     extraCss = ''
       #       // Remove rounded corners
       #       window.background { border-radius: 0; }

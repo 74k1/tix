@@ -23,7 +23,7 @@
       polybar
       #rofi
       #wofi
-      #spotify
+      # spotify
       starship
       # sxhkd
       #theme
@@ -40,7 +40,7 @@
   ];
   
 
-  nixpkgs = {
+  # nixpkgs = {
     # overlays = [
     #   (final: prev: {
     #     duvolbr = outputs.packages.${pkgs.hostPlatform.system}.duvolbr;
@@ -48,13 +48,13 @@
     #   })
     #   inputs.wired-notify.overlays.default
     # ];
-    config = {
-      allowUnfree = true;
+    # config = {
+      # allowUnfree = true;
       # permittedInsecurePackages = [
       #   "electron-25.9.0"
       # ];
-    };
-  };
+    # };
+  # };
 
   home = {
     username = "taki";
@@ -99,10 +99,18 @@
     brave
     #inputs.zen-browser.packages."${system}".zen-browser
     inputs.self.packages."${system}".lumen
-    inputs.zen-browser.packages."${system}".default
-    inputs.affinity-nix.packages."${system}".photo
-    inputs.affinity-nix.packages."${system}".designer
-    inputs.affinity-nix.packages."${system}".publisher
+    (inputs.zen-browser.packages."${system}".default.overrideAttrs (oldAttrs: {
+      meta = {};
+    }))
+    (inputs.affinity-nix.packages."${system}".photo.overrideAttrs (oldAttrs: {
+      meta = {};
+    }))
+    (inputs.affinity-nix.packages."${system}".designer.overrideAttrs (oldAttrs: {
+      meta = {};
+    }))
+    (inputs.affinity-nix.packages."${system}".publisher.overrideAttrs (oldAttrs: {
+      meta = {};
+    }))
     thunderbird
     # pcmanfm
     nemo

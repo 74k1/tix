@@ -95,14 +95,15 @@
       #url = "github:74k1/VPN-Confinement";
     };
     spicetify-nix = {
-      url = "github:the-argus/spicetify-nix";
+      url = "github:Gerg-L/spicetify-nix";
     };
     zen-browser = {
       #url = "github:heywoodlh/flakes/main?dir=zen-browser";
       url = "github:ch4og/zen-browser-flake";
     };
     affinity-nix = {
-      url = "github:mrshmllow/affinity-nix";
+      # url = "github:mrshmllow/affinity-nix";
+      url = "git+file:///home/taki/dev/affinity-nix";
       # url = "github:74k1/affinity-nix/patch";
     };
     ghostty = {
@@ -128,7 +129,7 @@
         ./modules/flake/modules.nix
         ./modules/flake/agenix.nix
         ./modules/flake/topology.nix
-        ./modules/flake/pkgs.nix
+        ./modules/flake/nixpkgs.nix
       ];
 
       debug = true;

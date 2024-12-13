@@ -11,13 +11,13 @@ in
 
   # import the flake's module
   imports = [
-    inputs.spicetify-nix.homeManagerModule
+    inputs.spicetify-nix.homeManagerModules
   ];
 
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.text;
+    theme = lib.mkForce spicePkgs.themes.text;
     colorScheme = "custom";
     customColorScheme = {
       accent             = "5665FB";
