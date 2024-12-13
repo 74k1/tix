@@ -8,6 +8,7 @@
     };
     tixpkgs = {
       url = "github:74k1/tixpkgs/main";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     # TESTS
     jvanbruegge-linkwarden = {
@@ -105,8 +106,8 @@
       url = "github:ch4og/zen-browser-flake";
     };
     affinity-nix = {
-      # url = "github:mrshmllow/affinity-nix";
-      url = "git+file:///home/taki/dev/affinity-nix";
+      url = "github:mrshmllow/affinity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
       # url = "github:74k1/affinity-nix/patch";
     };
     ghostty = {
