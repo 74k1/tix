@@ -1,9 +1,10 @@
-{ inputs
-, outputs
-, config
-, pkgs
-, ... }:
 {
+  inputs,
+  outputs,
+  config,
+  pkgs,
+  ...
+}: {
   age.secrets."restic_password" = {
     rekeyFile = "${inputs.self}/secrets/restic_password.age";
   };
@@ -33,7 +34,7 @@
 
         "/var/lib/nextcloud"
         "/mnt/btrfs_pool/nextcloud_data"
-        
+
         "/var/lib/forgejo"
         "/var/lib/gitea"
 
@@ -67,7 +68,7 @@
 
         "/var/lib/nextcloud"
         "/mnt/btrfs_pool/nextcloud_data"
-        
+
         "/var/lib/forgejo"
         "/var/lib/gitea"
 

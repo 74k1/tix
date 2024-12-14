@@ -1,19 +1,24 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
 {
-  age.secrets."mullvad_config" = {
-    rekeyFile = "${inputs.self}/secrets/mullvad_config.age";
-    name = "mu.conf";
-    # mode = "770";
-    # owner = "mullvad";
-    # group = "mullvad";
-  };
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  # self,
+  ...
+}: {
+  imports = [
+    (toString ../vpnconfinement)
+    # self.nixosModules.vpnconfinement
+    # "${self}/modules/nixos/daemons/vpnconfinement"
+  ];
 
   services.transmission = {
     enable = true;
     package = pkgs.transmission_4;
     webHome = pkgs.flood-for-transmission;
     openRPCPort = true;
-    settings = { 
+    settings = {
       blocklist-enabled = false;
       blocklist-url = "https://github.com/Naunter/BT_BlockLists/raw/master/bt_blocklists.gz";
       download-dir = "/mnt/btrfs_pool/torrents/download";
@@ -41,27 +46,7 @@
       start-added-torrents = true;
     };
   };
-  
-  vpnNamespaces.mu = {
-    enable = true;
-    wireguardConfigFile = config.age.secrets."mullvad_config".path;
-    namespaceAddress = "192.168.11.1";
-    bridgeAddress = "192.168.11.5";
-    accessibleFrom = [
-      "192.168.0.0/16"
-      "10.0.0.0/24"
-      "127.0.0.1/32"
-    ];
-    portMappings = [
-      { from = 9091; to = 9091; }
-      { from = 60729; to = 60729; protocol = "both"; }
-    ];
-    openVPNPorts = [{
-      port = 60729;
-      protocol = "both";
-    }];
-  };
-  
+
   systemd.services.transmission.vpnconfinement = {
     enable = true;
     vpnnamespace = "mu";

@@ -1,16 +1,16 @@
 {
   affine = import ./daemons/affine;
-  docmost = import ./daemons/docmost;
-  linkwarden = import ./daemons/linkwarden;
   arion = import ./arion;
   atuin = import ./daemons/atuin;
-  restic = import ./daemons/restic;
   authelia = import ./daemons/authelia;
   couchdb = import ./daemons/couchdb;
+  docmost = import ./daemons/docmost;
   fail2ban = import ./daemons/fail2ban;
+  firefox = import ./apps/firefox;
   forgejo = import ./daemons/forgejo;
   glance = import ./daemons/glance;
   immich = import ./daemons/immich;
+  linkwarden = import ./daemons/linkwarden;
   locale = import ./locale;
   ly = import ./daemons/ly;
   miniflux = import ./daemons/miniflux;
@@ -23,16 +23,20 @@
   outline = import ./daemons/outline;
   pcscd = import ./daemons/pcscd;
   plex = import ./daemons/plex;
+  restic = import ./daemons/restic;
+  scrutiny = import ./daemons/scrutiny;
   send = import ./daemons/send;
   servarr = import ./daemons/servarr;
+  slskd = import ./daemons/slskd;
+  soularr = import ./daemons/soularr;
   steam = import ./apps/steam;
   substituters = import ./substituters;
-  firefox = import ./apps/firefox;
   syncthing = import ./daemons/syncthing;
   taki = import ./taki;
   transmission = import ./daemons/transmission;
   vaultwarden = import ./daemons/vaultwarden;
   vikunja = import ./daemons/vikunja;
   vm-test = import ./vm-test;
+  vpnconfinement = import ./daemons/vpnconfinement;
   wireguard = import ./daemons/wireguard;
 }

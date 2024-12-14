@@ -26,6 +26,8 @@
 
     restic
 
+    scrutiny
+
     # n8n
     vaultwarden
     affine
@@ -52,6 +54,7 @@
     servarr
     taki
     transmission
+    # slskd
     vikunja
     linkwarden
     # youtrack
