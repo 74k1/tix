@@ -139,7 +139,7 @@
     # polybar
     # ly
     # evolution
-    mullvad-vpn
+    protonvpn-gui
     plasticity
     # cura
     # curaengine_stable

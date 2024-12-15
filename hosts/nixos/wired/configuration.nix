@@ -104,8 +104,6 @@
       mouse.accelProfile = "flat";
       touchpad.accelProfile = "flat"; 
     };
-
-    mullvad-vpn.enable = true;
   };
 
   # Disable xorg Screensaver

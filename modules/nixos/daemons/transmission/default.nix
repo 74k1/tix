@@ -8,10 +8,23 @@
   ...
 }: {
   imports = [
-    (toString ../vpnconfinement)
-    # self.nixosModules.vpnconfinement
-    # "${self}/modules/nixos/daemons/vpnconfinement"
+    ../vpnconfinement
   ];
+
+  vpnNamespaces.proton = {
+    portMappings = [
+      {
+        from = 9091;
+        to = 9091;
+      }
+    ];
+    openVPNPorts = [
+      {
+        port = 60729;
+        protocol = "both";
+      }
+    ];
+  };
 
   services.transmission = {
     enable = true;
@@ -33,7 +46,7 @@
       peer-limit-per-torrent = 500;
       peer-port = 60729;
       peer-port-random-on-start = false;
-      port-forwarding-enabled = true;
+      port-forwarding-enabled = false;
       lpd-enabled = true;
       ratio-limit = 10;
       ratio-limit-enabled = true;
@@ -49,6 +62,26 @@
 
   systemd.services.transmission.vpnconfinement = {
     enable = true;
-    vpnnamespace = "mu";
+    vpnnamespace = "proton";
   };
+
+  # systemd.services.transmission-proton-port-forward = {
+  #   description = "ProtonVPN Port Forwarding for Transmission";
+  #   after = ["network-online.target" "proton.service" "transmission.service"];
+  #   requires = ["proton.service" "transmission.service"];
+  #   wantedBy = ["multi-user.target"];
+  #
+  #   vpnconfinement = {
+  #     enable = true;
+  #     vpnnamespace = "proton";
+  #   };
+  #
+  #   script = ''
+  #     while true; do
+  #       ${pkgs.libnatpmp}/bin/natpmpc -g 10.2.0.1 -a 60729 0 tcp 60
+  #       ${pkgs.libnatpmp}/bin/natpmpc -g 10.2.0.1 -a 60729 0 udp 60
+  #       sleep 45
+  #     done
+  #   '';
+  # };
 }

@@ -96,7 +96,7 @@
     };
     vpnconfinement = {
       url = "github:Maroka-chan/VPN-Confinement";
-      #url = "github:74k1/VPN-Confinement";
+      # url = "github:74k1/VPN-Confinement";
     };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";

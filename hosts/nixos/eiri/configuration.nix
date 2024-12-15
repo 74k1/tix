@@ -7,6 +7,7 @@
       # owner = "";
       # group = "";
     };
+
     # "librechat_env_secret" = {
     #   rekeyFile = "${inputs.self}/secrets/librechat_env_secret.age";
     #   mode = "770";
@@ -54,7 +55,7 @@
     servarr
     taki
     transmission
-    # slskd
+    slskd
     vikunja
     linkwarden
     # youtrack
@@ -66,29 +67,16 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.kernel.sysctl = {
+    "fs.inotify.max_user_instances" = 512;
+    "fs.inotify.max_user_watches" = 640000;
+  };
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
   networking = {
     hostName = "eiri"; # Define your hostname.
     networkmanager.enable = true;
-
-    # wg-quick.interfaces = {
-    #   wg1 = {
-    #     address = [ "10.65.87.4/32" "fc00:bbbb:bbbb:bb01::2:5703/128" ];
-    #     privateKeyFile = "/home/taki/mullvad_private_key_secret";
-    #     dns = [ "10.64.0.1" ];
-    #     peers = [
-    #       {
-    #         publicKey = "5Ms10UxGjCSzwImTrvEjcygsWY8AfMIdYyRvgFuTqH8=";
-    #         allowedIPs = [ "0.0.0.0/0" "::0/0" ];
-    #         endpoint = "193.32.127.68:51820";
-    #         persistentKeepalive = 25;
-    #       }
-    #     ];
-    #   };
-    # };
-
   };
 
   age.rekey = {
