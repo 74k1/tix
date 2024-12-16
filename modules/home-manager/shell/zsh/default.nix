@@ -29,6 +29,7 @@
       cat = "${pkgs.bat}/bin/bat";
       cp = "cp -iv";
       cd = "z";
+      j = "z";
       fetch = "${pkgs.fastfetch}/bin/fastfetch";
       la = "${pkgs.eza}/bin/eza -a --icons=auto";
       ll = "${pkgs.eza}/bin/eza -l --icons=auto";
