@@ -43,6 +43,12 @@
         "browser.download.panel.shown" = true;
         "media.videocontrols.picture-in-picture.enabled" = false;
         "sidebar.revamp" = true;
+
+        # Check SMOOTHFOX below
+        # "general.smoothScroll.currentVelocityWeighting" = 0;
+        # "general.smoothScroll.mouseWheel.durationMaxMS" = 250;
+        # "general.smoothScroll.stopDecelerationWeighting" = 0.82;
+        # "mousewheel.min_line_scroll_amount" = 25;
         
         # Main Config is based on BetterFox @
         # https://github.com/yokoffing/Betterfox
@@ -276,9 +282,19 @@
         "layout.css.has-selector.enabled" = true;
 
         ################# SMOOTHFOX #################
+        "apz.overscroll.enabled" = true;
         "general.smoothScroll" = true;
-        "mousewheel.default.delta_multiplier_y" = 275;
-        "general.autoScroll" = true;
+        "general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS" = 12;
+        "general.smoothScroll.msdPhysics.enabled" = true;
+        "general.smoothScroll.msdPhysics.motionBeginSpringConstant" = 600;
+        "general.smoothScroll.msdPhysics.regularSpringConstant" = 650;
+        "general.smoothScroll.msdPhysics.slowdownMinDeltaMS" = 25;
+        "general.smoothScroll.msdPhysics.slowdownMinDeltaRatio" = "2";
+        "general.smoothScroll.msdPhysics.slowdownSpringConstant" = 250;
+        "general.smoothScroll.currentVelocityWeighting" = "1";
+        "general.smoothScroll.stopDecelerationWeighting" = "1";
+        "mousewheel.default.delta_multiplier_y" = 300;
+
 
         ################# OVERRIDES #################
         "browser.startup.homepage" = "";

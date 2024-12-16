@@ -115,6 +115,7 @@
     # pcmanfm
     nemo
     nextcloud-client
+    fractal
     google-chrome
     ungoogled-chromium
     keepassxc
