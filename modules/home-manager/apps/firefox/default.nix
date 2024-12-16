@@ -36,8 +36,19 @@
           definedAliases = [ ":n" "@mynixos" ];
         };
       };
-      
+      # userChrome == FF Interface
+      userChrome = /* css */ ''
+        .toolbarbutton-icon[src^="page-icon:https://github.com"]{
+          filter: invert(1) !important;
+        }
+        .tab-icon-image[src*="github.com"] {
+          filter: invert(1) !important;
+        }
+      '';
+      # userContent == web-pages and internal pages like about:newtab & about:home
+      userContent = /* css */ ''
 
+      '';
       settings = {
         # USER CONF
         "browser.download.panel.shown" = true;
