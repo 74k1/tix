@@ -113,6 +113,11 @@
     }))
     thunderbird
     # pcmanfm
+  
+    vscode
+
+    r2modman
+
     nemo
     nextcloud-client
     fractal

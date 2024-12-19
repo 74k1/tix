@@ -93,6 +93,7 @@ in
     plugins = with pkgs.vimPlugins; [
       # neo-tree-nvim
       # oxocarbon-nvim
+      copilot-vim
       cmp-buffer
       cmp-cmdline
       cmp-nvim-lsp

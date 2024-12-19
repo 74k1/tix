@@ -69,7 +69,7 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.kernel.sysctl = {
     "fs.inotify.max_user_instances" = 512;
-    "fs.inotify.max_user_watches" = 640000;
+    "fs.inotify.max_user_watches" = 1048576;
   };
 
   systemd.services.NetworkManager-wait-online.enable = false;

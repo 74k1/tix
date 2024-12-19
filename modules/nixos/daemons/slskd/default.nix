@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [
+    ./slskd.nix
     ../vpnconfinement
   ];
 
@@ -14,12 +15,6 @@
       {
         from = 5030;
         to = 5030;
-      }
-    ];
-    openVPNPorts = [
-      {
-        port = 50300;
-        protocol = "both";
       }
     ];
   };
@@ -35,7 +30,7 @@
     settings = {
       soulseek = {
         diagnostic_level = "Info";
-        listen_port = 50300; # has to be dynamic. to whatever i get
+        # listen_port = 50300; # has to be dynamic. to whatever i get
       };
       global.upload.slots = 5;
       directories = {

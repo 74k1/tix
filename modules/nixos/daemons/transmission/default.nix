@@ -18,12 +18,6 @@
         to = 9091;
       }
     ];
-    openVPNPorts = [
-      {
-        port = 60729;
-        protocol = "both";
-      }
-    ];
   };
 
   services.transmission = {
