@@ -12,7 +12,7 @@
     # int
     (with outputs.homeManagerModules; [
       hyprland
-      river
+      cliphist
       # i3wm
       # bspwm
       #colors

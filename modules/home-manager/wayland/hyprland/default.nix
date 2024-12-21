@@ -3,7 +3,8 @@ let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
     hyprctl setcursor Ukiyo 16 &
-    systemctl --user start plasma-polkit-agent&
+    systemctl --user start plasma-polkit-agent &
+    ${pkgs.wl-clipboard-rs}/bin/wl-copy --watch cliphist store &
     '';
     #tempfile=$(${pkgs.coreutils}/bin/mktemp) &
     #${pkgs.curl}/bin/curl https://wall.74k1.sh/ --output $tempfile &
@@ -23,8 +24,6 @@ in
     systemd.enable = true;
     settings = {
       exec-once = ''${startupScript}/bin/start'';
-
-      # "layout" = "hy3";
 
       # keyboard layout
       "input" = {
@@ -54,10 +53,12 @@ in
         # kill # not sure yet
         "$mod, C, killactive,"
 
-        # rofi
+        # wofi
         "$mod, space, exec, ${pkgs.wofi}/bin/wofi --show drun"
         "$mod, r, exec, ${pkgs.wofi}/bin/wofi --show drun"
         #"$mod, d, exec, ${pkgs.wofi}/bin/wofi --show drun"
+        # wofi clipboard manager
+        "$mod, v, exec, ${pkgs.cliphist}/bin/cliphist list | ${pkgs.wofi}/bin/wofi -dmenu | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard-rs}/bin/wl-copy"
 
         # scrot
         ", Print, exec, ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area"
@@ -146,6 +147,8 @@ in
   };
   home.packages = with pkgs; [
     polkit-kde-agent
+    cliphist
+    wl-clipboard-rs
     hyprland
   ];
 }

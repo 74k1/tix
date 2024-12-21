@@ -1,21 +1,22 @@
 {
   bash = import ./shell/bash;
   bspwm = import ./x11/bspwm;
+  cliphist = import ./wayland/cliphist;
   colors = import ./x11/colors;
+  firefox = import ./apps/firefox;
   ghostty = import ./apps/ghostty;
   git = import ./shell/git;
+  gpg-agent = import ./gpg-agent;
   hyprland = import ./wayland/hyprland;
-  niri = import ./wayland/niri;
   i3wm = import ./x11/i3wm;
+  niri = import ./wayland/niri;
   nvim = import ./shell/nvim;
   picom = import ./x11/picom;
   polybar = import ./apps/polybar;
   river = import ./wayland/river;
   rofi = import ./apps/rofi;
-  firefox = import ./apps/firefox;
   spotify = import ./apps/spotify;
   ssh-agent = import ./shell/ssh-agent;
-  gpg-agent = import ./gpg-agent;
   starship = import ./shell/starship;
   style = import ./stylix;
   sxhkd = import ./x11/sxhkd;
