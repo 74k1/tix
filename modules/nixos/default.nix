@@ -1,5 +1,6 @@
 {
   affine = import ./daemons/affine;
+  audiobookshelf = import ./daemons/audiobookshelf;
   arion = import ./arion;
   atuin = import ./daemons/atuin;
   authelia = import ./daemons/authelia;
@@ -10,6 +11,7 @@
   forgejo = import ./daemons/forgejo;
   glance = import ./daemons/glance;
   librechat = import ./daemons/librechat;
+  paperless = import ./daemons/paperless;
   immich = import ./daemons/immich;
   linkwarden = import ./daemons/linkwarden;
   locale = import ./locale;

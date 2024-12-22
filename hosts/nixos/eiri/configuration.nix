@@ -31,6 +31,9 @@
 
     # n8n
     vaultwarden
+    audiobookshelf
+    paperless
+    miniflux
     affine
     docmost
     arion
