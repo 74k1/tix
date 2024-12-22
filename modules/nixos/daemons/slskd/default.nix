@@ -10,7 +10,7 @@
     ../vpnconfinement
   ];
 
-  vpnNamespaces.proton = {
+  vpnNamespaces.prsl = {
     portMappings = [
       {
         from = 5030;
@@ -52,7 +52,7 @@
 
   systemd.services.slskd.vpnconfinement = {
     enable = true;
-    vpnnamespace = "proton";
+    vpnnamespace = "prsl";
   };
 
   # systemd.services.slskd-proton-port-forward = {

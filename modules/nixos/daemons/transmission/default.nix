@@ -11,7 +11,7 @@
     ../vpnconfinement
   ];
 
-  vpnNamespaces.proton = {
+  vpnNamespaces.prtr = {
     portMappings = [
       {
         from = 9091;
@@ -56,7 +56,7 @@
 
   systemd.services.transmission.vpnconfinement = {
     enable = true;
-    vpnnamespace = "proton";
+    vpnnamespace = "prtr";
   };
 
   # systemd.services.transmission-proton-port-forward = {

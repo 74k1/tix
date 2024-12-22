@@ -97,6 +97,7 @@
 
     # gui stuff
     brave
+    osu-lazer-bin
     #inputs.zen-browser.packages."${system}".zen-browser
     inputs.tixpkgs.packages."${system}".lumen
     (inputs.zen-browser.packages."${system}".default.overrideAttrs (oldAttrs: {
@@ -145,7 +146,7 @@
     # polybar
     # ly
     # evolution
-    protonvpn-gui
+    protonvpn-cli_2
     plasticity
     # cura
     # curaengine_stable

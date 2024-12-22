@@ -9,6 +9,7 @@
   firefox = import ./apps/firefox;
   forgejo = import ./daemons/forgejo;
   glance = import ./daemons/glance;
+  librechat = import ./daemons/librechat;
   immich = import ./daemons/immich;
   linkwarden = import ./daemons/linkwarden;
   locale = import ./locale;

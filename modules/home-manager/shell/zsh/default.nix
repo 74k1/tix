@@ -37,6 +37,10 @@
       mv = "mv -iv";
       nano = "${config.programs.neovim.finalPackage}/bin/nvim";
       n = "${config.programs.neovim.finalPackage}/bin/nvim";
+      nd = "nix develop";
+      ns = "nix shell";
+      nr = "nix run";
+      nb = "nix build";
       rm = "rm -iv";
       tree = "${pkgs.eza}/bin/eza --tree --icons";
       ycr = "youcannotrebuild";
