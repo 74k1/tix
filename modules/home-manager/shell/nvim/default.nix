@@ -15,8 +15,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "reo101";
       repo = "nix-update.nvim";
-      rev = "5b322f828820db2a34c6b4b439ce4e7a3b7d4c77";
-      hash = "sha256-x0WAlBD6gKEqTDH9I/Qy9gqIHoFfE5XLcjwSn8RYwag=";
+      rev = "28e92807add9fecaa64c35999069bceea045da34";
+      hash = "sha256-C4Pe5xjdXevCzj5Q1sGpPrieeY1JdGyJyuqVQ8ROcr0=";
     };
   };
   hmts-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -166,10 +166,15 @@ in
         type = "lua";
         config = builtins.readFile ./cfg/nix-update.lua;
       }
+      # {
+      #   plugin = clipboard-image-nvim;
+      #   type = "lua";
+      #   config = builtins.readFile ./cfg/clipboard-image.lua;
+      # }
       {
-        plugin = clipboard-image-nvim;
+        plugin = img-clip-nvim;
         type = "lua";
-        config = builtins.readFile ./cfg/clipboard-image.lua;
+        config = builtins.readFile ./cfg/img-clip.lua;
       }
       {
         plugin = image-nvim;
@@ -186,21 +191,6 @@ in
         type = "lua";
         config = builtins.readFile ./cfg/colorizer.lua;
       }
-      # {
-      #   plugin = indent-blankline-nvim;
-      #   type = "lua";
-      #   config = builtins.readFile ./cfg/indent-blankline.lua;
-      # }
-      # {
-      #   plugin = alpha-nvim;
-      #   type = "lua";
-      #   config = builtins.readFile ./cfg/alpha.lua;
-      # }
-      # {
-      #   plugin = catppuccin-nvim;
-      #   type = "lua";
-      #   config = builtins.readFile ./cfg/catppuccin.lua;
-      # }
     ];
   };
 }
