@@ -50,17 +50,6 @@ in
 {
   imports = [];
 
-  home.packages = with pkgs; [
-    ripgrep # For Telescope live-grep
-    bash-language-server # Bash :-)
-    nixd # Nix Language Server
-    alejandra # Nix Formatter
-    rust-analyzer # Rust Language Server
-    vscode-langservers-extracted # HTML, CSS, JSON, ESLINT Language Server
-    # superhtml # HTML Language Server
-    emmet-ls # Emmet Language Server (cool snippets)
-  ];
-  
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
@@ -68,6 +57,21 @@ in
     vimAlias = true;
     vimdiffAlias = true;
     defaultEditor = true;
+    extraLuaPackages = ps: [
+      ps.magick # for image.nvim
+    ];
+    extraPackages = [
+      pkgs.ripgrep # For Telescope live-grep
+      pkgs.bash-language-server # Bash :-)
+      pkgs.nixd # Nix Language Server
+      pkgs.alejandra # Nix Formatter
+      pkgs.rust-analyzer # Rust Language Server
+      pkgs.vscode-langservers-extracted # HTML, CSS, JSON, ESLINT Language Server
+      # pkgs.superhtml # HTML Language Server
+      pkgs.emmet-ls # Emmet Language Server (cool snippets)
+      pkgs.imagemagick # for image.nvim
+      pkgs.curl # for image.nvim remote images
+    ];
     extraConfig = ''
       set shiftwidth=2 softtabstop=2 expandtab
       set number relativenumber
@@ -167,11 +171,11 @@ in
         type = "lua";
         config = builtins.readFile ./cfg/clipboard-image.lua;
       }
-      # {
-      #   plugin = image-nvim;
-      #   type = "lua";
-      #   config = builtins.readFile ./cfg/image.lua;
-      # }
+      {
+        plugin = image-nvim;
+        type = "lua";
+        config = builtins.readFile ./cfg/image.lua;
+      }
       {
         plugin = nvim-autopairs;
         type = "lua";
