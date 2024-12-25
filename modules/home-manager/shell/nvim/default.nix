@@ -71,6 +71,7 @@ in
       pkgs.emmet-ls # Emmet Language Server (cool snippets)
       pkgs.imagemagick # for image.nvim
       pkgs.curl # for image.nvim remote images
+      pkgs.nodejs # for copilot-lua
     ];
     extraConfig = ''
       set shiftwidth=2 softtabstop=2 expandtab
@@ -97,7 +98,7 @@ in
     plugins = with pkgs.vimPlugins; [
       # neo-tree-nvim
       # oxocarbon-nvim
-      copilot-vim
+      # copilot-vim
       cmp-buffer
       cmp-cmdline
       cmp-nvim-lsp
@@ -130,6 +131,16 @@ in
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
         config = builtins.readFile ./cfg/TSconfig.lua;
+      }
+      {
+        plugin = copilot-cmp;
+        type = "lua";
+        config = builtins.readFile ./cfg/copilot-cmp.lua;
+      }
+      {
+        plugin = copilot-lua;
+        type = "lua";
+        config = builtins.readFile ./cfg/copilot-lua.lua;
       }
       {
         plugin = markview-nvim;
