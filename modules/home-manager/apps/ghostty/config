@@ -101,7 +101,7 @@ font-feature = -calt,-dlig,-liga
 font-size = 14.5
 
 # Background color for the window.
-background = #090613
+background = #0a0711
 
 # Foreground color for the window.
 foreground = #eff0eb

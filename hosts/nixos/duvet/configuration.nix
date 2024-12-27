@@ -136,6 +136,11 @@
           addSSL = true;
           enableACME = true;
           root = "/var/www/taki.moe/";
+          # locations."/".index = "index.php";
+          locations."~ \\.php$".extraConfig = ''
+            fastcgi_pass unix:${config.services.phpfpm.pools.mypool.socket};
+            fastcgi_index index.php;
+          '';
         };
       };
     };

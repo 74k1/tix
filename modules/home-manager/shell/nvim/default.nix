@@ -6,8 +6,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "74k1";
       repo = "tsukiyo.nvim";
-      rev = "d9377933d93bac522ad8e6b54b77c80219e217b8";
-      hash = "sha256-H/RI0jXTtJk1RMjsjC4IWT6/80p2BCHG7u1Q1LW0oZg=";
+      rev = "fa08090d321bc5971aa30f2d423ab30f820b635e";
+      hash = "sha256-8gRjl8aGxHPERIZ+P3KUQmDZPJxvXOMnB47I9TkH9/U=";
     };
   };
   nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -71,7 +71,7 @@ in
       pkgs.emmet-ls # Emmet Language Server (cool snippets)
       pkgs.imagemagick # for image.nvim
       pkgs.curl # for image.nvim remote images
-      pkgs.nodejs # for copilot-lua
+      # pkgs.nodejs # for copilot-lua
     ];
     extraConfig = ''
       set shiftwidth=2 softtabstop=2 expandtab
@@ -132,16 +132,16 @@ in
         type = "lua";
         config = builtins.readFile ./cfg/TSconfig.lua;
       }
-      {
-        plugin = copilot-cmp;
-        type = "lua";
-        config = builtins.readFile ./cfg/copilot-cmp.lua;
-      }
-      {
-        plugin = copilot-lua;
-        type = "lua";
-        config = builtins.readFile ./cfg/copilot-lua.lua;
-      }
+      # {
+      #   plugin = copilot-cmp;
+      #   type = "lua";
+      #   config = builtins.readFile ./cfg/copilot-cmp.lua;
+      # }
+      # {
+      #   plugin = copilot-lua;
+      #   type = "lua";
+      #   config = builtins.readFile ./cfg/copilot-lua.lua;
+      # }
       {
         plugin = markview-nvim;
         type = "lua";
