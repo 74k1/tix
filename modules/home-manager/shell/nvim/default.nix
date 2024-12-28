@@ -1,13 +1,11 @@
-{ lib, pkgs, config, ... }:
-
-let
+{pkgs, ...}: let
   tsukiyo-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "tsukiyo-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "74k1";
       repo = "tsukiyo.nvim";
-      rev = "fa08090d321bc5971aa30f2d423ab30f820b635e";
-      hash = "sha256-8gRjl8aGxHPERIZ+P3KUQmDZPJxvXOMnB47I9TkH9/U=";
+      rev = "55a555dac45971d6c519625190c157e7d3db6e25";
+      hash = "sha256-s+e2Ag6hkhJgT4Xag6qCipO9M4snGqNioeWKWD9Rm+w=";
     };
   };
   nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -17,6 +15,15 @@ let
       repo = "nix-update.nvim";
       rev = "28e92807add9fecaa64c35999069bceea045da34";
       hash = "sha256-C4Pe5xjdXevCzj5Q1sGpPrieeY1JdGyJyuqVQ8ROcr0=";
+    };
+  };
+  let-it-snow-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "let-it-snow-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "marcussimonsen";
+      repo = "let-it-snow.nvim";
+      rev = "823511ad1b0d36e44f9c5e2418892e7438f23a41";
+      hash = "sha256-9fDgVzzrLBoITdIFMva4EpopG+IV1Y5imw9j3gBPVzk=";
     };
   };
   hmts-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -46,8 +53,7 @@ let
       hash = "sha256-qJgB/Ap2SM/vxlZ8F8kIS/AwtzkNPrvC0b30Rw/i8Tc=";
     };
   };
-in
-{
+in {
   imports = [];
 
   programs.neovim = {
@@ -73,37 +79,43 @@ in
       pkgs.curl # for image.nvim remote images
       # pkgs.nodejs # for copilot-lua
     ];
-    extraConfig = ''
-      set shiftwidth=2 softtabstop=2 expandtab
-      set number relativenumber
-      set clipboard=unnamedplus
+    extraConfig =
+      /*
+      vim
+      */
+      ''
+        set shiftwidth=2 softtabstop=2 expandtab
+        set number relativenumber
+        set clipboard=unnamedplus
 
-      " keybinds
-      lua vim.api.nvim_create_user_command("E", "Oil", {})
-      "lua vim.keymap.set("n", "-", function() vim.cmd.Oil() end, {})
+        lua vim.g.mapleader = " "
 
-      " set t_Co=0
-      " set background=none
-      " lua vim.opt.termguicolors = false
-      "let g:netrw_liststyle = 3
-      
-      " Autocommands for vim-table-mode
-      "augroup TableModeSetup
-      "  autocmd!
-      "  autocmd FileType markdown TableModeEnable
-      "  autocmd BufEnter * if &ft != 'markdown' | TableModeDisable | endif
-      "augroup END
-      " lua require'./plg/markdown_headings.lua'.init()
-    '';
+        " Oil
+        lua vim.keymap.set("n", "-", "<cmd>Oil<CR>")
+        lua vim.api.nvim_create_user_command("E", "Oil", {})
+
+        " Find Files
+        lua vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
+        lua vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>")
+        lua vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>")
+
+        " rest
+        " Autocommands for vim-table-mode
+        "augroup TableModeSetup
+        "  autocmd!
+        "  autocmd FileType markdown TableModeEnable
+        "  autocmd BufEnter * if &ft != 'markdown' | TableModeDisable | endif
+        "augroup END
+        " lua require'./plg/markdown_headings.lua'.init()
+      '';
     plugins = with pkgs.vimPlugins; [
       # neo-tree-nvim
-      # oxocarbon-nvim
-      # copilot-vim
+      # vim-table-mode
       cmp-buffer
       cmp-cmdline
+      cmp-emoji
       cmp-nvim-lsp
       cmp-path
-      cmp-emoji
       cmp_luasnip
       comment-nvim
       hmts-nvim
@@ -115,13 +127,7 @@ in
       vim-dadbod-completion
       vim-dadbod-ui
       vim-nix
-      # vim-table-mode
       vim-shellcheck
-      # {
-      #   plugin = oxocarbon-nvim;
-      #   type = "lua";
-      #   config = builtins.readFile ./cfg/oxocarbon.lua;
-      # }
       {
         plugin = tsukiyo-nvim;
         type = "lua";
@@ -131,6 +137,13 @@ in
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
         config = builtins.readFile ./cfg/TSconfig.lua;
+      }
+      {
+        plugin = let-it-snow-nvim;
+        type = "lua";
+        config = /* lua */ ''
+          require('let-it-snow').setup({delay = 50})
+        '';
       }
       # {
       #   plugin = copilot-cmp;

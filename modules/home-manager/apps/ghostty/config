@@ -1,3 +1,4 @@
+# vim: ft=ghostty
 # The style of the cursor. This sets the default style. A running program can
 # still request an explicit cursor style using escape sequences (such as `CSI
 # q`). Shell configurations will often request specific cursor styles.
@@ -263,6 +264,8 @@ shell-integration-features = no-sudo,title
 # "unconsumed:ctrl+a=reload_config"
 keybind = unconsumed:alt+d=scroll_page_fractional:0.5
 keybind = unconsumed:alt+u=scroll_page_fractional:-0.5
+keybind = ctrl+shift+1=increase_font_size:1
+# keybind = ctrl+1=increase_font_size:1
 
 # The style of the macOS titlebar. Available values are: "native",
 # "transparent", "tabs", and "hidden".

@@ -57,25 +57,9 @@
   systemd.services.transmission.vpnconfinement = {
     enable = true;
     vpnnamespace = "prtr";
+    # vlnr = {
+    #   enable = true;
+    #   service = "transmission";
+    # };
   };
-
-  # systemd.services.transmission-proton-port-forward = {
-  #   description = "ProtonVPN Port Forwarding for Transmission";
-  #   after = ["network-online.target" "proton.service" "transmission.service"];
-  #   requires = ["proton.service" "transmission.service"];
-  #   wantedBy = ["multi-user.target"];
-  #
-  #   vpnconfinement = {
-  #     enable = true;
-  #     vpnnamespace = "proton";
-  #   };
-  #
-  #   script = ''
-  #     while true; do
-  #       ${pkgs.libnatpmp}/bin/natpmpc -g 10.2.0.1 -a 60729 0 tcp 60
-  #       ${pkgs.libnatpmp}/bin/natpmpc -g 10.2.0.1 -a 60729 0 udp 60
-  #       sleep 45
-  #     done
-  #   '';
-  # };
 }
