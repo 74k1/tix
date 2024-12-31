@@ -44,7 +44,7 @@
     # overlays = [
     #   (final: prev: {
     #     duvolbr = outputs.packages.${pkgs.hostPlatform.system}.duvolbr;
-    #     berkeley-ttf = outputs.packages.${pkgs.hostPlatform.system}.berkeley-ttf;
+    #     berkeley-otf = outputs.packages.${pkgs.hostPlatform.system}.berkeley-otf;
     #   })
     #   inputs.wired-notify.overlays.default
     # ];
@@ -71,7 +71,7 @@
     
     # my own scriptiboo
     duvolbr
-    berkeley-ttf 
+    berkeley-otf 
 
     # uhhh clipboard
     wl-clipboard-rs
@@ -90,7 +90,7 @@
 
     wezterm
     inputs.ghostty.packages."${system}".default
-    clipit
+    # clipit
     wired
     zellij
     #zoxide
@@ -103,15 +103,15 @@
     (inputs.zen-browser.packages."${system}".default.overrideAttrs (oldAttrs: {
       meta = {};
     }))
-    (inputs.affinity-nix.packages."${system}".photo.overrideAttrs (oldAttrs: {
-      meta = {};
-    }))
-    (inputs.affinity-nix.packages."${system}".designer.overrideAttrs (oldAttrs: {
-      meta = {};
-    }))
-    (inputs.affinity-nix.packages."${system}".publisher.overrideAttrs (oldAttrs: {
-      meta = {};
-    }))
+    # (inputs.affinity-nix.packages."${system}".photo.overrideAttrs (oldAttrs: {
+    #   meta = {};
+    # }))
+    # (inputs.affinity-nix.packages."${system}".designer.overrideAttrs (oldAttrs: {
+    #   meta = {};
+    # }))
+    # (inputs.affinity-nix.packages."${system}".publisher.overrideAttrs (oldAttrs: {
+    #   meta = {};
+    # }))
     thunderbird
     # pcmanfm
   
@@ -138,7 +138,7 @@
     mpv
     ascii-draw
 
-    akira-unstable
+    # akira-unstable
     vala
     pantheon.elementary-gtk-theme
     pantheon.elementary-icon-theme

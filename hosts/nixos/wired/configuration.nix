@@ -136,7 +136,7 @@
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ hplip ];
+    # drivers = with pkgs; [ hplip ];
     browsing = true;
     browsedConf = ''
       BrowseDNSSDSubTypes _cups,_print
@@ -234,6 +234,20 @@
   };
 
   hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      input = {
+        General = {
+          UserspaceHID = true;
+        };
+      };
+      settings = {
+        General = {
+          Experimental = true;
+        };
+      };
+    };
     yeetmouse = {
       enable = true;
       parameters = {
@@ -291,6 +305,7 @@
         urAccepted = -1;
       };
     };
+    blueman.enable = true;
   };
 
   # Open ports in the firewall.

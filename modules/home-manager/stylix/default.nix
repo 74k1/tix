@@ -1,6 +1,7 @@
 { inputs, config, lib, pkgs, ... }:
 let
   cfg = config.theme.ukiyo;
+  berkeley-otf = pkgs.callPackage "${inputs.self}/pkgs/berkeley-otf.nix" { inherit pkgs; };
 in {
   options = {
     theme.ukiyo = {
@@ -49,10 +50,10 @@ in {
         #   name = "DejaVu Sans";
         # };
         #
-        # monospace = {
-        #   package = pkgs.dejavu_fonts;
-        #   name = "DejaVu Sans Mono";
-        # };
+        monospace = {
+          package = berkeley-otf;
+          name = "TX02 Nerd Font";
+        };
 
         emoji = {
           package = pkgs.twitter-color-emoji;

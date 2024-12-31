@@ -41,7 +41,7 @@
     # overlays = [
     #   (final: prev: {
     #     duvolbr = outputs.packages."x86_64-linux".duvolbr;
-    #     berkeley-ttf = outputs.packages."x86_64-linux".berkeley-ttf;
+    #     berkeley-otf = outputs.packages."x86_64-linux".berkeley-otf;
     #   })
     #   inputs.wired-notify.overlays.default
     # ];
@@ -68,7 +68,7 @@
     
     # my own scriptiboo
     # duvolbr
-    # berkeley-ttf 
+    # berkeley-otf 
 
     # uhhh clipboard
     # wl-clipboard-rs

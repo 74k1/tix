@@ -1,6 +1,6 @@
 { inputs, outputs, lib, config, pkgs, ... }:
 let
-  berkeley-ttf = pkgs.callPackage "${inputs.self}/pkgs/berkeley-ttf.nix" { inherit pkgs; };
+  berkeley-otf = pkgs.callPackage "${inputs.self}/pkgs/berkeley-otf.nix" { inherit pkgs; };
 in
 {
   options = {
@@ -48,7 +48,7 @@ in
           nerd-fonts.lilex
           nerd-fonts.zed-mono
 
-          berkeley-ttf
+          berkeley-otf
         ];
       };
     })

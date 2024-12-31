@@ -51,6 +51,9 @@
     agenix-rekey = {
       url = "github:oddlama/agenix-rekey";
     };
+    blog = {
+      url = "git+ssh://git@github.com/74k1/blog.git";
+    };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -111,8 +114,7 @@
       # url = "github:74k1/affinity-nix/patch";
     };
     ghostty = {
-      url = "git+ssh://git@github.com/ghostty-org/ghostty";
-      # url = "git+file:///home/taki/dev/ghostty/";
+      url = "github:/ghostty-org/ghostty";
       inputs.nixpkgs-stable.follows = "nixpkgs";
     };
   };

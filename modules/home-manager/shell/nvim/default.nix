@@ -4,8 +4,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "74k1";
       repo = "tsukiyo.nvim";
-      rev = "55a555dac45971d6c519625190c157e7d3db6e25";
-      hash = "sha256-s+e2Ag6hkhJgT4Xag6qCipO9M4snGqNioeWKWD9Rm+w=";
+      rev = "814860e55aa8f68293be33b19d54a2cebf3c80e9"; 
+      hash = "sha256-l0JF3rim5XacdFp/ywtHaXCxvb/MH49jkaPHrdBojcs=";
     };
   };
   nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -13,8 +13,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "reo101";
       repo = "nix-update.nvim";
-      rev = "28e92807add9fecaa64c35999069bceea045da34";
-      hash = "sha256-C4Pe5xjdXevCzj5Q1sGpPrieeY1JdGyJyuqVQ8ROcr0=";
+      rev = "fcb5a3c6806fc205fcd978213926566c003b7d27";
+      hash = "sha256-7aUoe5k0imn8TYEwmMaT8nmy3EK/MBtz/uwxmx4KGMQ=";
     };
   };
   let-it-snow-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -128,6 +128,7 @@ in {
       vim-dadbod-ui
       vim-nix
       vim-shellcheck
+      mini-map
       {
         plugin = tsukiyo-nvim;
         type = "lua";

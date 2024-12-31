@@ -1,5 +1,5 @@
 { transparency, ... }:
-
+/* lua */
 ''
 local wezterm = require 'wezterm'
 local config = {}
@@ -12,8 +12,9 @@ end
 
 -- font
 config.font = wezterm.font_with_fallback {
-  "BerkeleyMono Nerd Font Mono",
-  "Berkeley Mono",
+  "TX02 Nerd Font",
+  -- "BerkeleyMono Nerd Font Mono",
+  -- "Berkeley Mono",
   "FiraCode Nerd Font Mono",
   "FiraMono Nerd Font",
   "JetBrains Mono"

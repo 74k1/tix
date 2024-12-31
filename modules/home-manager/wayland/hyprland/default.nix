@@ -150,6 +150,6 @@ in
     cliphist
     wl-clipboard-rs
     hyprland
-    # hyprland-qtutils
+    hyprland-qtutils
   ];
 }

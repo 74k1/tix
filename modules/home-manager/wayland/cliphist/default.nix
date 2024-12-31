@@ -4,8 +4,5 @@
     enable = true;
     package = pkgs.cliphist;
     allowImages = true;
-    # extraOptions = [
-    #
-    # ];
   };
 }

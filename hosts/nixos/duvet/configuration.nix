@@ -20,22 +20,28 @@
 
   documentation.nixos.enable = false;
 
-  age.rekey = {
-    # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
-    # use strictly `ssh-keyscan <remote ip>` from host
-    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC0pG+xpBOghFWXY7eQHOxyGuWzh2NrcLp7e9Kpgjooq duvet";
-    # The path to the master identity used for decryption. See the option's description for more information.
-    masterIdentities = [
-      # ../../../secrets/yubikey-1-on-person.pub
-      "${inputs.self}/secrets/yubikey-1-on-person.pub"
-      # ../../../secrets/yubikey-2-at-home.pub
-      "${inputs.self}/secrets/yubikey-2-at-home.pub"
-    ];
-    storageMode = "local";
-    # Choose a dir to store the rekeyed secrets for this host.
-    # This cannot be shared with other hosts. Please refer to this path
-    # from your flake's root directory and not by a direct path literal like ./secrets
-    localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
+  age = {
+    rekey = {
+      # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
+      # use strictly `ssh-keyscan <remote ip>` from host
+      hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC0pG+xpBOghFWXY7eQHOxyGuWzh2NrcLp7e9Kpgjooq duvet";
+      # The path to the master identity used for decryption. See the option's description for more information.
+      masterIdentities = [
+        # ../../../secrets/yubikey-1-on-person.pub
+        "${inputs.self}/secrets/yubikey-1-on-person.pub"
+        # ../../../secrets/yubikey-2-at-home.pub
+        "${inputs.self}/secrets/yubikey-2-at-home.pub"
+      ];
+      storageMode = "local";
+      # Choose a dir to store the rekeyed secrets for this host.
+      # This cannot be shared with other hosts. Please refer to this path
+      # from your flake's root directory and not by a direct path literal like ./secrets
+      localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
+    };
+    # secrets."gh-private-repo-token" = {
+    #   rekeyFile = "${inputs.self}/secrets/github_private_repo_token.age";
+    #   owner = "blog";
+    # };
   };
 
   networking = {
@@ -57,6 +63,20 @@
   ];
 
   users.users.root.hashedPassword = "!"; # Disable root login
+
+  system.activationScripts.buildBlog = /* bash */ ''
+    echo "Deploying pre-built blog..."
+    ${pkgs.coreutils}/bin/rm -rf /var/www/blog
+    ${pkgs.coreutils}/bin/install -d -m 0755 -o taki -g users /var/www/blog
+    ${pkgs.coreutils}/bin/cp -r ${inputs.blog.packages.x86_64-linux.website}/dist/* /var/www/blog/
+    ${pkgs.coreutils}/bin/chmod -R 0755 /var/www/blog
+    ${pkgs.coreutils}/bin/chown -R taki:users /var/www/blog
+    echo "Finished deploying blog."
+  '';
+
+  systemd.tmpfiles.rules = [
+    "d /var/www/blog 0755 taki users -"
+  ];
 
   services = {
     fail2ban = {
@@ -130,7 +150,7 @@
         "74k1.sh" = {
           addSSL = true;
           enableACME = true;
-          root = "/var/www/74k1.sh/";
+          root = "/var/www/blog/";
         };
         "taki.moe" = {
           addSSL = true;
@@ -148,7 +168,7 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "74k1@pm.me";
+    defaults.email = "mail@74k1.sh";
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
