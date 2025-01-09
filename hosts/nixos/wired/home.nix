@@ -150,9 +150,11 @@
     plasticity
     # cura
     # curaengine_stable
+
+    inputs.orca-fix.outputs.legacyPackages.x86_64-linux.orca-slicer
     # inputs.nixpkgs-master.outputs.legacyPackages.x86_64-linux.orca-slicer
     # orca-slicer
-    prusa-slicer
+    # prusa-slicer
     zathura
 
     prismlauncher
