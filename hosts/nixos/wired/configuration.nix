@@ -129,8 +129,10 @@
   };
 
   boot.kernelParams = [
-    "video=DP-2:2560x1440@165"
+    "quiet"
+    "splash"
     "video=DP-1:2560x1440@165"
+    "video=DP-2:1920x1080@165"
   ];
 
   # Enable CUPS to print documents.

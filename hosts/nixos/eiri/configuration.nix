@@ -33,7 +33,7 @@
     vaultwarden
     audiobookshelf
     paperless
-    miniflux
+    commafeed
     affine
     docmost
     arion

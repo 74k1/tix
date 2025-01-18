@@ -16,7 +16,7 @@
   linkwarden = import ./daemons/linkwarden;
   locale = import ./locale;
   ly = import ./daemons/ly;
-  miniflux = import ./daemons/miniflux;
+  commafeed = import ./daemons/commafeed;
   n8n = import ./daemons/n8n;
   nextcloud = import ./daemons/nextcloud;
   nix = import ./nix;

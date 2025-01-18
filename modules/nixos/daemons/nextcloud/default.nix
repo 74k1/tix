@@ -23,6 +23,7 @@
     config = {
       # adminpassFile = "/tmp/nextcloud_adminpass_secret";
       adminpassFile = config.age.secrets."nextcloud_admin".path;
+      dbtype = "sqlite";
     };
     nginx.hstsMaxAge = 15552000;
     phpOptions = {
