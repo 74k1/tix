@@ -48,7 +48,7 @@ in
         # term
         #"$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
         #"$mod, Return, exec, ${pkgs.kitty}/bin/kitty"
-        "$mod, Return, exec, ${inputs.ghostty.packages.x86_64-linux.default}/bin/ghostty"
+        "$mod, Return, exec, ${pkgs.ghostty}/bin/ghostty"
 
         # kill # not sure yet
         "$mod, C, killactive,"

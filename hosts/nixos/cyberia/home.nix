@@ -96,8 +96,7 @@
     simple-scan
     # spotify
     #spotify-tray
-    # discord
-    vesktop
+    discord
     # polybar
     # ly
     # evolution

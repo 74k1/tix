@@ -88,8 +88,10 @@
     tealdeer
     joshuto
 
+    blueman
+
     wezterm
-    inputs.ghostty.packages."${system}".default
+    ghostty
     # clipit
     wired
     zellij
@@ -100,9 +102,9 @@
     osu-lazer-bin
     #inputs.zen-browser.packages."${system}".zen-browser
     inputs.tixpkgs.packages."${system}".lumen
-    (inputs.zen-browser.packages."${system}".default.overrideAttrs (oldAttrs: {
-      meta = {};
-    }))
+    # (inputs.zen-browser.packages."${system}".default.overrideAttrs (oldAttrs: {
+    #   meta = {};
+    # }))
     # (inputs.affinity-nix.packages."${system}".photo.overrideAttrs (oldAttrs: {
     #   meta = {};
     # }))
@@ -133,7 +135,6 @@
     # inputs.nixpkgs-master.outputs.legacyPackages.x86_64-linux.spotify-player
     spotify-player
     discord
-    vesktop
 
     mpv
     ascii-draw
@@ -187,6 +188,9 @@
   
   # evolution stuff
   #services.gnome3.evolution-data-server.enable = true;
+
+  # Whether to enable a proxy forwarding Bluetooth MIDI controls via MPRIS2 to control media players.
+  services.mpris-proxy.enable = true;
 
   theme.ukiyo = {
     package = inputs.ukiyo.packages.x86_64-linux.default;

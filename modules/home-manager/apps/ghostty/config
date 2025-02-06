@@ -67,7 +67,7 @@ cursor-style = block
 # 
 # Changing this configuration at runtime will only affect new terminals, i.e.
 # new windows, tabs, etc.
-font-family = TX02 Nerd Font
+font-family = TX-02 Regular
 
 # Apply a font feature. This can be repeated multiple times to enable multiple
 # font features. You can NOT set multiple font features with a single value
@@ -86,7 +86,7 @@ font-family = TX02 Nerd Font
 # 
 # To generally disable most ligatures, use `-calt`, `-liga`, and `-dlig` (as
 # separate repetitive entries in your config).
-font-feature = -calt,-dlig,-liga
+font-feature = aalt,-calt,-dlig,-liga
 
 # Font size in points. This value can be a non-integer and the nearest integer
 # pixel size will be selected. If you have a high dpi display where 1pt = 2px

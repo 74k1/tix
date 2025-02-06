@@ -102,7 +102,6 @@
     #spotify-tray
     # spotify-player
     # discord
-    # vesktop
     # polybar
     # ly
     # evolution

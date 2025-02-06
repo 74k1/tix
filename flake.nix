@@ -108,18 +108,13 @@
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
     };
-    zen-browser = {
-      #url = "github:heywoodlh/flakes/main?dir=zen-browser";
-      url = "github:ch4og/zen-browser-flake";
+    filestash-nix = {
+      url = "github:MatthewCroughan/filestash-nix";
     };
     affinity-nix = {
       url = "github:mrshmllow/affinity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
       # url = "github:74k1/affinity-nix/patch";
-    };
-    ghostty = {
-      url = "github:/ghostty-org/ghostty";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
     };
   };
 

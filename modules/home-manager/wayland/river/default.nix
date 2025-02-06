@@ -43,7 +43,7 @@
           "Super R" = "spawn ${pkgs.wofi}/bin/wofi j-show drun";
 
           # Apps
-          "Super Return" = "spawn ${inputs.ghostty.packages.x86_64-linux.default}/bin/ghostty";
+          "Super Return" = "spawn ${pkgs.ghostty}/bin/ghostty";
           "Super N" = "spawn ${pkgs.nemo}/bin/nemo";
           "Super W" = "spawn ${inputs.zen-browser.packages."${pkgs.system}".default}/bin/zen";
 

@@ -61,6 +61,7 @@
     slskd
     vikunja
     linkwarden
+    # filestash
     # youtrack
     vm-test
     wireguard

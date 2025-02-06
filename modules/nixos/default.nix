@@ -3,6 +3,7 @@
   audiobookshelf = import ./daemons/audiobookshelf;
   arion = import ./arion;
   atuin = import ./daemons/atuin;
+  filestash = import ./daemons/filestash;
   authelia = import ./daemons/authelia;
   couchdb = import ./daemons/couchdb;
   docmost = import ./daemons/docmost;
