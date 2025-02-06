@@ -6,6 +6,7 @@
   filestash = import ./daemons/filestash;
   authelia = import ./daemons/authelia;
   couchdb = import ./daemons/couchdb;
+  firefox-syncserver = import ./daemons/firefox-syncserver;
   docmost = import ./daemons/docmost;
   fail2ban = import ./daemons/fail2ban;
   firefox = import ./apps/firefox;
