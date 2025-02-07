@@ -11,6 +11,10 @@
     enable = true;
     # https://github.com/Athou/commafeed/blob/master/commafeed-server/doc/commafeed.md
     environment = {
+      # Port & Conn
+      CF_SERVER_APPLICATIONCONNECTORS_0_PORT = 8083;
+      CF_SERVER_APPLICATIONCONNECTORS_0_TYPE = "http";
+
       # Configuration
       COMMAFEED_HIDE_FROM_WEB_CRAWLERS = true;
       COMMAFEED_PASSWORD_RECOVERY_ENABLED = true;
@@ -27,7 +31,7 @@
       COMMAFEED_DATABASE_CLEANUP_MAX_FEED_CAPACITY = 1000;
 
       # Users settings
-      COMMAFEED_USERS_ALLOW_REGISTRATIONS = true; # temporary, to add new users
+      COMMAFEED_USERS_ALLOW_REGISTRATIONS = false; # temporary, to add new users
     };
     # environmentFile = config.age.secrets."commafeed_env".path;
   };

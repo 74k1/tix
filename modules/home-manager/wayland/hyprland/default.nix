@@ -28,6 +28,8 @@ in
       # keyboard layout
       "input" = {
         kb_layout = "ch";
+        repeat_delay = 250;
+        repeat_rate = 50;
       };
 
       # monitor
@@ -36,6 +38,10 @@ in
         "DP-1,2560x1440@165,0x0,1"
         "DP-2,1920x1080@60,-1080x0,1,transform,1"
       ];
+
+      animations = {
+        enabled = false;
+      };
 
       # decoration = {
       #   shadow_offset = "0 5";

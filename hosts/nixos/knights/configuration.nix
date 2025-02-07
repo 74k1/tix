@@ -195,6 +195,13 @@
             '';
           };
         };
+        "news.example.com" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:8083";
+          };
+        };
         "files.example.com" = {
           enableACME = true;
           forceSSL = true;

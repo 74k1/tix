@@ -9,7 +9,7 @@
     settings = {
       web.listen = {
         host = "0.0.0.0";
-        port = 8083;
+        port = 8883;
       };
     };
     collector = {
