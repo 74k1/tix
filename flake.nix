@@ -18,10 +18,6 @@
       url = "github:kitten/YeetMouse/feat/input-handler-overrides?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    orca-fix = {
-      url = "github:liberodark/nixpkgs/orca-fix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     #
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
