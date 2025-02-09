@@ -34,6 +34,7 @@
     audiobookshelf
     paperless
     commafeed
+    miniflux
     affine
     docmost
     arion
