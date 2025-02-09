@@ -2606,22 +2606,6 @@
         "type": "github"
       }
     },
-    "orca-fix": {
-      "locked": {
-        "lastModified": 1737630003,
-        "narHash": "sha256-zX9kmYEaPU4g+NC3NpDy7KEGV5RlXFcifNg8tivd9CU=",
-        "owner": "liberodark",
-        "repo": "nixpkgs",
-        "rev": "13eb9ce5b5c051be0fa1d0ff073ea8db6dc14d54",
-        "type": "github"
-      },
-      "original": {
-        "owner": "liberodark",
-        "ref": "orca-fix",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "poetry2nix": {
       "flake": false,
       "locked": {
@@ -2827,7 +2811,6 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_9",
         "nixpkgs-master": "nixpkgs-master",
-        "orca-fix": "orca-fix",
         "raspberry-pi-nix": "raspberry-pi-nix",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
