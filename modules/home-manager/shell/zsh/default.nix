@@ -64,36 +64,22 @@
     };
 
     # ${builtins.readFile ./cfg/functions.zsh}
-    initExtra = ''
+    initExtra = /* sh */ ''
       source ~/.config/zsh/.p10k.zsh
       export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
       # Atuin
-      export ATUIN_NOBIND="true"
-      eval "$(${pkgs.atuin}/bin/atuin init zsh)"
-      bindkey '^r' _atuin_search_widget
+      # export ATUIN_NOBIND="true"
+      # eval "$(${pkgs.atuin}/bin/atuin init zsh)"
+      # bindkey '^r' _atuin_search_widget
 
       # Zoxide
-      eval "$(${pkgs.zoxide}/bin/zoxide init --cmd z zsh)"
+      # eval "$(${pkgs.zoxide}/bin/zoxide init --cmd z zsh)"
 
-      # NixOS Rebuild / eva reference :^)
-      youcannotrebuild () {
-        ${
-          let
-            inherit (pkgs.hostPlatform)
-              isx86_64 isAarch64
-              isLinux isDarwin;
-          in
-          if isx86_64 && isLinux then
-            "sudo --validate && sudo nixos-rebuild"
-          else if isDarwin then
-            "darwin-rebuild"
-          else if isAarch64 then
-            "nix-on-droid"
-          else
-            "home-manager"
-        } --flake ~/tix ''$''\{1:-switch''\} "''$''\{@:2''\}" |& nix run nixpkgs#nix-output-monitor
-      }
+      if [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]
+      then
+          exec ${pkgs.fish}/bin/fish -l
+      fi
     '';
   };
 

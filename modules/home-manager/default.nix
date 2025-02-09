@@ -28,4 +28,5 @@
   xdg = import ./x11/xdg;
   xorg = import ./x11/xorg;
   zsh = import ./shell/zsh;
+  fish = import ./shell/fish;
 }

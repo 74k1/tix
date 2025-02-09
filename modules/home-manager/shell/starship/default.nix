@@ -4,7 +4,7 @@
   imports = [];
 
   programs.starship = {
-    enable = true;
+    enable = false;
     enableBashIntegration = true;
     # enableZshIntegration = true;
     settings = builtins.fromTOML (builtins.readFile ./starship.toml);

@@ -33,7 +33,7 @@
     vaultwarden
     audiobookshelf
     paperless
-    commafeed
+    # commafeed
     miniflux
     affine
     docmost

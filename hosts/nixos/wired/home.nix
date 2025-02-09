@@ -35,6 +35,7 @@
       xdg
       xorg
       zsh
+      fish 
       gpg-agent
     ])
   ];
