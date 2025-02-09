@@ -199,7 +199,7 @@
           enableACME = true;
           forceSSL = true;
           locations."/" = {
-            proxyPass = "http://10.100.0.1:8083";
+            proxyPass = "http://10.100.0.1:8084";
           };
         };
         "files.example.com" = {
