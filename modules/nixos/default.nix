@@ -8,6 +8,7 @@
   couchdb = import ./daemons/couchdb;
   docmost = import ./daemons/docmost;
   fail2ban = import ./daemons/fail2ban;
+  kanboard = import ./daemons/kanboard;
   filestash = import ./daemons/filestash;
   firefox = import ./apps/firefox;
   firefox-syncserver = import ./daemons/firefox-syncserver;

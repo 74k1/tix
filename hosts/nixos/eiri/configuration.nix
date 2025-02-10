@@ -61,6 +61,7 @@
     transmission
     slskd
     vikunja
+    kanboard
     linkwarden
     # filestash
     # youtrack
