@@ -8,22 +8,12 @@ let
   };
 
   kanboardWithTheme = pkgs.kanboard.overrideAttrs (oldAttrs: rec {
-    installPhase = ''
-      runHook preInstall
-
-      # Create the main Kanboard directory
-      mkdir -p $out/share/kanboard
-
-      # Copy Kanboard's files into the output.
-      cp -rv . $out/share/kanboard
-
+    postInstall =  oldAttrs.postInstall + ''
       # Create the plugins directory if it does not exist.
       mkdir -p $out/share/kanboard/plugins/ThemeRevision
 
       # Unpack ThemeRevision into the plugins folder.
       cp -rv ${themeRevision}/* $out/share/kanboard/plugins/ThemeRevision
-
-      runHook postInstall
     '';
   });
 in
