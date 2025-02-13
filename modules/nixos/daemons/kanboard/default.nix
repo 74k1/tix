@@ -8,7 +8,7 @@ let
   };
 
   kanboardWithTheme = pkgs.kanboard.overrideAttrs (oldAttrs: rec {
-    postInstall =  oldAttrs.postInstall + ''
+    postInstall =  (oldAttrs.postInstall or "") + ''
       # Create the plugins directory if it does not exist.
       mkdir -p $out/share/kanboard/plugins/ThemeRevision
 

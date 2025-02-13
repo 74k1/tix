@@ -216,6 +216,7 @@
   environment.systemPackages = with pkgs; [
      ntfs3g
      git wget curl tmux
+     shpool
      pavucontrol
      nvidia-vaapi-driver
      egl-wayland
