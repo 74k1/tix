@@ -48,6 +48,7 @@
     # librechat
 
     glance
+    it-tools
     nextcloud
     nix
     nvidia
@@ -110,6 +111,7 @@
     wget
     curl
     tmux
+    shpool
     ntfs3g
     btrfs-progs
     cifs-utils
@@ -210,6 +212,11 @@
         "_netdev"
       ];
     };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "mail@example.com";
   };
 
   # Open ports in the firewall.

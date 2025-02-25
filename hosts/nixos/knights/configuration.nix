@@ -141,6 +141,13 @@
       '';
 
       virtualHosts = {
+        "it.74k1.sh" = {
+          addSSL = true;
+          enableACME = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:80"; # local nginx
+          };
+        };
         "example.com" = {
           addSSL = true;
           enableACME = true;
@@ -168,7 +175,7 @@
           enableACME = true;
           forceSSL = true;
           locations."/" = {
-            proxyPass = "http://10.100.0.1:80";
+            proxyPass = "http://10.100.0.1:80"; # local nginx
             # extraConfig = ''
             #   proxy_set_header Host $host;
             #   proxy_set_header X-Real-IP $remote_addr;

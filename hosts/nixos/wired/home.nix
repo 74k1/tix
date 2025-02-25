@@ -99,7 +99,7 @@
     #zoxide
 
     # gui stuff
-    brave
+    # brave
     osu-lazer-bin
     #inputs.zen-browser.packages."${system}".zen-browser
     inputs.tixpkgs.packages."${system}".lumen

@@ -17,6 +17,7 @@
   immich = import ./daemons/immich;
   librechat = import ./daemons/librechat;
   linkwarden = import ./daemons/linkwarden;
+  it-tools = import ./daemons/it-tools;
   locale = import ./locale;
   ly = import ./daemons/ly;
   miniflux = import ./daemons/miniflux;

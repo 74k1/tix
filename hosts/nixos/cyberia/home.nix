@@ -88,7 +88,7 @@
     # gui stuff
     brave
     plex-desktop
-    swaylock-fancy
+    # swaylock-fancy
     ungoogled-chromium
     krita
     keepassxc

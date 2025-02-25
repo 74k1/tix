@@ -18,6 +18,9 @@
       url = "github:kitten/YeetMouse/feat/input-handler-overrides?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-akotro-it-tools = {
+      url = "github:akotro/nixpkgs/add-it-tools-service";
+    };
     #
     flake-parts = {
       url = "github:hercules-ci/flake-parts";

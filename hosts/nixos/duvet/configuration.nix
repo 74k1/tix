@@ -130,6 +130,8 @@
       recommendedTlsSettings = true;
       virtualHosts = {
         "ip.74k1.sh" = {
+          addSSL = true;
+          enableACME = true;
           locations."/" = {
             return = "200 $remote_addr\n";
             extraConfig = ''
