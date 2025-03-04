@@ -27,6 +27,7 @@
     };
     nginx.hstsMaxAge = 15552000;
     phpOptions = {
+      "bulkupload.enabled" = "false";
       "max_execution_time" = "600";
       "max_input_time" = "600";
       "default_socket_timeout" = "360";

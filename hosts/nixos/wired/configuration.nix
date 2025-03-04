@@ -12,7 +12,7 @@
 
     inputs.nixos-generators.nixosModules.all-formats
 
-    inputs.kitten-yeetmouse.nixosModules.default
+    inputs.yeetmouse.nixosModules.default
 
     # cachix
     #substituters
@@ -225,6 +225,8 @@
      brscan4
      simple-scan
      nurl
+     # flatpak
+     # gnome.gnome-software
      #alttab
      #dconf
      #xorg.xkill xclip xdotool xorg.xinit
@@ -309,6 +311,7 @@
       };
     };
     blueman.enable = true;
+    flatpak.enable = true;
   };
 
   # Open ports in the firewall.

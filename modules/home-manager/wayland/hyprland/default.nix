@@ -152,7 +152,7 @@ in
     };
   };
   home.packages = with pkgs; [
-    polkit-kde-agent
+    kdePackages.polkit-kde-agent-1
     cliphist
     wl-clipboard-rs
     hyprland
