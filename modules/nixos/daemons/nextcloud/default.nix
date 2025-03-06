@@ -9,7 +9,7 @@
 
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud30;
+    package = pkgs.nextcloud31;
     # extraApps = {
     #   inherit (config.services.nextcloud.package.packages.apps) contacts calendar onlyoffice;
     # };
@@ -27,7 +27,6 @@
     };
     nginx.hstsMaxAge = 15552000;
     phpOptions = {
-      "bulkupload.enabled" = "false";
       "max_execution_time" = "600";
       "max_input_time" = "600";
       "default_socket_timeout" = "360";
@@ -57,5 +56,5 @@
     };
   };
 
-  environment.systemPackages = [ pkgs.nextcloud30 ];
+  environment.systemPackages = [ pkgs.nextcloud31 ];
 }

@@ -23,6 +23,13 @@
       { name = "puffer"; src = pkgs.fishPlugins.puffer.src; }
       { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
     ];
+    functions = {
+      fish_command_not_found.body = ''
+        echo "Command $argv[1] not found!"
+        echo "You could perhaps do:"
+        echo "nix run nixpkgs#$argv[1] -- $argv[2..]"
+      '';
+    };
     shellAliases = {
       ":E" = "${config.programs.neovim.finalPackage}/bin/nvim +E";
       ":q" = "exit";
