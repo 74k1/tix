@@ -247,11 +247,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1741903299,
-        "narHash": "sha256-CsiGHs9twXyfUvhVhRzIy4WiVjLCwMqEUzQrZER0Mmo=",
+        "lastModified": 1741904139,
+        "narHash": "sha256-VuEQaQUTBVxJYRyHF8uIoVvnq9uJd2uDk55beZiJSPM=",
         "ref": "refs/heads/main",
-        "rev": "564bf18f8c3dde084d9336584b170b3a37373c8d",
-        "revCount": 30,
+        "rev": "23a7f7161aa294b91e45308c64657d77096a3e69",
+        "revCount": 32,
         "type": "git",
         "url": "ssh://git@github.com/74k1/blog.git"
       },
