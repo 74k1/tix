@@ -29,6 +29,8 @@
 
     scrutiny
 
+    crowdsec
+
     # n8n
     vaultwarden
     audiobookshelf
@@ -50,6 +52,7 @@
     glance
     it-tools
     nextcloud
+    umami
     nix
     nvidia
     syncthing
@@ -149,47 +152,6 @@
     #   mongodbDatabase = "librechat";
     #   stateDir = "/var/lib/librechat";
     # };
-
-    samba = {
-      enable = true;
-      openFirewall = true;
-      settings = {
-        global = {
-          "workgroup" = "WORKGROUP";
-          "server string" = "smbnix";
-          "netbios name" = "smbnix";
-          "security" = "user";
-          "hosts allow" = "192.168.1. 10.100.0. 127.0.0.1 localhost";
-          "hosts deny" = "0.0.0.0/0";
-          "guest account" = "nobody";
-          "map to guest" = "bad user";
-        };
-        "plex_media" = {
-          path = "/mnt/btrfs_pool/plex_media";
-          browseable = "yes";
-          "read only" = "no";
-          "guest ok" = "yes";
-          "create mask" = "0644";
-          "directory mask" = "0755";
-          "force user" = "plex";
-          "force group" = "plex";
-        };
-        "torrents" = {
-          path = "/mnt/btrfs_pool/torrents";
-          browseable = "yes";
-          "read only" = "no";
-          "guest ok" = "yes";
-          "create mask" = "0644";
-          "directory mask" = "0755";
-          "force user" = "transmission";
-          "force group" = "transmission";
-        };
-      };
-    };
-    samba-wsdd = {
-      enable = true;
-      openFirewall = true;
-    };
   };
 
   fileSystems = {

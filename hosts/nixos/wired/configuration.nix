@@ -255,16 +255,16 @@
     };
     yeetmouse = {
       enable = true;
-      parameters = {
-        AccelerationMode = "jump"; # looks most like motivity in Raw Accel
-        Sensitivity = 0.8;
-        # Offset = -15.0;
-        # PreScale = 0.20;
-        PreScale = 1.0;
-        Acceleration = 1.56;
-        Midpoint = 7.0;
-        UseSmoothing = true;
-        ScrollsPerTick = 1;
+      sensitivity = 0.8;
+      outputCap = 0.0;
+      inputCap = 0.0;
+      offset = 0.0;
+      preScale = 1.0;
+      mode.jump = {
+        acceleration = 1.56;
+        midpoint = 7.0;
+        smoothness = 1.0;
+        useSmoothing = true;
       };
     };
     sane = {

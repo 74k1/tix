@@ -14,10 +14,9 @@
     jvanbruegge-linkwarden = {
       url = "github:jvanbruegge/nixpkgs/linkwarden";
     };
-    # kitten-yeetmouse = {
-    #   url = "github:kitten/YeetMouse/feat/input-handler-overrides?dir=nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    diogotcorreira-umami = {
+      url = "github:diogotcorreia/nixpkgs/umami-init";
+    };
     nixpkgs-akotro-it-tools = {
       url = "github:akotro/nixpkgs/add-it-tools-service";
     };
@@ -61,6 +60,10 @@
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    crowdsec = {
+      url = "git+https://codeberg.org/kampka/nix-flake-crowdsec.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,8 +77,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     yeetmouse = {
-      # url = "github:74k1/YeetMouse/master?dir=nix";
-      url = "github:AndyFilter/YeetMouse/driver/experimental?dir=nix";
+      # url = "github:AndyFilter/YeetMouse/driver/experimental?dir=nix";
+      url = "github:kitten/YeetMouse/@kitten/feat/update-nix-module-options?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
@@ -109,6 +112,9 @@
     };
     filestash-nix = {
       url = "github:MatthewCroughan/filestash-nix";
+    };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
     };
     affinity-nix = {
       url = "github:mrshmllow/affinity-nix";

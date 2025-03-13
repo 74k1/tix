@@ -6,6 +6,9 @@
       inherit system;
       overlays = lib.attrValues self.overlays ++ [
         inputs.nix-topology.overlays.default
+
+        (_: _: inputs.tixpkgs.packages.${system})
+
         # Pseudo-overlay to add our own packages everywhere
         (_: _: self.packages.${system})
       ];

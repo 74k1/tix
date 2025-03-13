@@ -9,6 +9,8 @@
       inputs.agenix.nixosModules.default
       inputs.agenix-rekey.nixosModules.default
 
+      crowdsec-bouncer
+
       locale
       nix
       taki
@@ -68,7 +70,7 @@
     echo "Deploying pre-built blog..."
     ${pkgs.coreutils}/bin/rm -rf /var/www/blog
     ${pkgs.coreutils}/bin/install -d -m 0755 -o taki -g users /var/www/blog
-    ${pkgs.coreutils}/bin/cp -r ${inputs.blog.packages.x86_64-linux.website}/dist/* /var/www/blog/
+    ${pkgs.coreutils}/bin/cp -r ${inputs.blog.packages.x86_64-linux.website}/* /var/www/blog/
     ${pkgs.coreutils}/bin/chmod -R 0755 /var/www/blog
     ${pkgs.coreutils}/bin/chown -R taki:users /var/www/blog
     echo "Finished deploying blog."
@@ -79,25 +81,25 @@
   ];
 
   services = {
-    fail2ban = {
-      enable = true;
-      maxretry = 3;
-      ignoreIP = [
-        "10.0.0.0/8"
-      ];
-      bantime = "24h";
-      bantime-increment = {
-        enable = true;
-        # formula = "ban.Time * math.exp(float(ban.Count+1)*banFactor)/math.exp(1*banFactor)";
-        multipliers = "1 2 4 8 16 32 64 128";
-        overalljails = true;
-      };
-      jails = {
-        nginx-http-auth.settings = { enabled = true; };
-        nginx-botsearch.settings = { enabled = true; };
-        nginx-bad-request.settings = { enabled = true; };
-      };
-    };
+    # fail2ban = {
+    #   enable = true;
+    #   maxretry = 3;
+    #   ignoreIP = [
+    #     "10.0.0.0/8"
+    #   ];
+    #   bantime = "24h";
+    #   bantime-increment = {
+    #     enable = true;
+    #     # formula = "ban.Time * math.exp(float(ban.Count+1)*banFactor)/math.exp(1*banFactor)";
+    #     multipliers = "1 2 4 8 16 32 64 128";
+    #     overalljails = true;
+    #   };
+    #   jails = {
+    #     nginx-http-auth.settings = { enabled = true; };
+    #     nginx-botsearch.settings = { enabled = true; };
+    #     nginx-bad-request.settings = { enabled = true; };
+    #   };
+    # };
 
     openssh = {
       enable = true;
@@ -119,6 +121,15 @@
         "pm.min_spare_servers" = 1;
         "pm.max_spare_servers" = 3;
         "pm.max_requests" = 500;
+      };
+    };
+
+    crowdsec-firewall-bouncer = {
+      settings = {
+        api.server = {
+          # SECRET
+          api_key = "00000000";
+        };
       };
     };
 
@@ -170,7 +181,7 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "mail@74k1.sh";
+    defaults.email = "mail@example.com";
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,

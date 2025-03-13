@@ -36,6 +36,7 @@
       xorg
       zsh
       fish 
+      yazi
       gpg-agent
     ])
   ];
@@ -116,11 +117,17 @@
     #   meta = {};
     # }))
     thunderbird
+
+    # tixpkgs
+    zui
+    brimcap
     # pcmanfm
   
     vscode
 
     r2modman
+
+    rustdesk
 
     nemo
     nextcloud-client
@@ -139,6 +146,8 @@
 
     mpv
     ascii-draw
+
+    gnome-keyring
 
     # akira-unstable
     vala
@@ -164,6 +173,8 @@
     libGLU
 
     telegram-desktop
+
+    inputs.zen-browser.packages."${system}".twilight
 
     # shortwave # radio
     goodvibes

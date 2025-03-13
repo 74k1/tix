@@ -18,6 +18,7 @@
   spotify = import ./apps/spotify;
   ssh-agent = import ./shell/ssh-agent;
   starship = import ./shell/starship;
+  yazi = import ./shell/yazi;
   style = import ./stylix;
   sxhkd = import ./x11/sxhkd;
   theme = import ./x11/theme;

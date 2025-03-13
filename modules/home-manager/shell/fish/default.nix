@@ -48,7 +48,11 @@
       tree = "${pkgs.eza}/bin/eza --tree --icons=auto";
       youcannotrebuild = "sudo nixos-rebuild switch --flake ~/tix";
       ycr = "youcannotrebuild";
-      jo = "${pkgs.joshuto}/bin/joshuto";
+      nfu = "nix flake update";
+      nb = "nix build";
+      nr = "nix run";
+      nd = "nix develop";
+      #jo = "${pkgs.joshuto}/bin/joshuto";
       ga = "${lib.getExe config.programs.git.package} add .";
       gac = "ga && ${lib.getExe config.programs.git.package} commit -m \"$(lumen draft --context 'use conventional commits (at the start, use feat:/fix:/chore:/...) & leave all characters lowercase')\"";
       gacp = "gac && ${lib.getExe config.programs.git.package} push";

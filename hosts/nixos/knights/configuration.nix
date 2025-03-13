@@ -11,6 +11,8 @@
     inputs.agenix.nixosModules.default
     inputs.agenix-rekey.nixosModules.default
 
+    crowdsec-bouncer
+
     locale
     nix
     taki
@@ -117,6 +119,15 @@
       };
     };
 
+    crowdsec-firewall-bouncer = {
+      settings = {
+        api.server = {
+          # SECRET
+          api_key = "00000000";
+        };
+      };
+    };
+
     nginx = {
       enable = true;
       recommendedGzipSettings = true;
@@ -146,6 +157,13 @@
           enableACME = true;
           locations."/" = {
             proxyPass = "http://10.100.0.1:80"; # local nginx
+          };
+        };
+        "umami.74k1.sh" = {
+          addSSL = true;
+          enableACME = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:3034";
           };
         };
         "example.com" = {
