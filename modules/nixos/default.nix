@@ -15,6 +15,7 @@
   firefox-syncserver = import ./daemons/firefox-syncserver;
   forgejo = import ./daemons/forgejo;
   glance = import ./daemons/glance;
+  graylog = import ./daemons/graylog;
   immich = import ./daemons/immich;
   it-tools = import ./daemons/it-tools;
   kanboard = import ./daemons/kanboard;
@@ -46,6 +47,7 @@
   transmission = import ./daemons/transmission;
   umami = import ./daemons/umami;
   vaultwarden = import ./daemons/vaultwarden;
+  vector = import ./daemons/vector;
   vikunja = import ./daemons/vikunja;
   vm-test = import ./vm-test;
   vpnconfinement = import ./daemons/vpnconfinement;

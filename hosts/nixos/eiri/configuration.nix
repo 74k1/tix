@@ -1,11 +1,15 @@
 { inputs, outputs, lib, config, pkgs, ... }:
 {
   age.secrets = {
-    "cifs_secret" = {
-      rekeyFile = "${inputs.self}/secrets/cifs_secret.age";
-      mode = "770";
-      # owner = "";
-      # group = "";
+    # "cifs_secret" = {
+    #   rekeyFile = "${inputs.self}/secrets/cifs_secret.age";
+    #   mode = "770";
+    #   # owner = "";
+    #   # group = "";
+    # };
+
+    "namecheap_api_secrets" = {
+      rekeyFile = "${inputs.self}/secrets/namecheap_api_secrets.age";
     };
 
     # "librechat_env_secret" = {
@@ -30,6 +34,7 @@
     scrutiny
 
     crowdsec
+    graylog
 
     # n8n
     vaultwarden
@@ -41,7 +46,7 @@
     docmost
     arion
     # couchdb
-    fail2ban
+    # fail2ban
     forgejo
     immich
     locale
@@ -66,7 +71,7 @@
     slskd
     vikunja
     kanboard
-    linkwarden
+    # linkwarden
     # filestash
     # youtrack
     vm-test
@@ -152,6 +157,32 @@
     #   mongodbDatabase = "librechat";
     #   stateDir = "/var/lib/librechat";
     # };
+
+    nginx = {
+      enable = true;
+      recommendedGzipSettings = true;
+      recommendedOptimisation = true;
+      recommendedProxySettings = true;
+      recommendedTlsSettings = true;
+
+      
+      virtualHosts = {
+        "eiri.74k1.sh" = {
+          addSSL = true;
+          enableACME = true;
+          locations."/" = {
+            proxyPass = "http://127.0.0.1";
+          };
+        };
+        # "transmission.eiri.74k1.sh" = {
+        #   addSSL = true;
+        #   enableACME = true;
+        #   locations."/" = {
+        #     proxyPass = "http://127.0.0.1:9091";
+        #   };
+        # };
+      };
+    };
   };
 
   fileSystems = {
@@ -179,6 +210,22 @@
   security.acme = {
     acceptTerms = true;
     defaults.email = "mail@example.com";
+    certs = {
+      "eiri.74k1.sh" = {
+        domain = "eiri.74k1.sh";
+        dnsProvider = "namecheap";
+        dnsPropagationCheck = true;
+        environmentFile = config.age.secrets."namecheap_api_secrets".path;
+        # credentialFiles = {
+        #   "NAMECHEAP_API_KEY_FILE" = ;
+        #   "NAMECHEAP_API_USER_FILE" = ;
+        # };
+        extraDomainNames = [
+          "*.eiri.74k1.sh"
+        ];
+        webroot = null;
+      };
+    };
   };
 
   # Open ports in the firewall.

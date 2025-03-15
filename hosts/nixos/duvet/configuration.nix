@@ -9,6 +9,7 @@
       inputs.agenix.nixosModules.default
       inputs.agenix-rekey.nixosModules.default
 
+      # fail2ban
       crowdsec-bouncer
 
       locale
