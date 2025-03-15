@@ -23,7 +23,7 @@ in
     enable = true;
     package = kanboardWithTheme;
     domain = "kb.example.com";
-    dataDir = "/mnt/brtfs_pool/kanboard";
+    dataDir = "/mnt/btrfs_pool/kanboard";
     nginx = { };
   };
 }

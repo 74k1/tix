@@ -4,7 +4,9 @@
   cliphist = import ./wayland/cliphist;
   colors = import ./x11/colors;
   firefox = import ./apps/firefox;
+  fish = import ./shell/fish;
   ghostty = import ./apps/ghostty;
+  jujutsu = import ./shell/jujutsu;
   git = import ./shell/git;
   gpg-agent = import ./gpg-agent;
   hyprland = import ./wayland/hyprland;
@@ -18,7 +20,6 @@
   spotify = import ./apps/spotify;
   ssh-agent = import ./shell/ssh-agent;
   starship = import ./shell/starship;
-  yazi = import ./shell/yazi;
   style = import ./stylix;
   sxhkd = import ./x11/sxhkd;
   theme = import ./x11/theme;
@@ -28,6 +29,6 @@
   wired = import ./apps/wired;
   xdg = import ./x11/xdg;
   xorg = import ./x11/xorg;
+  yazi = import ./shell/yazi;
   zsh = import ./shell/zsh;
-  fish = import ./shell/fish;
 }

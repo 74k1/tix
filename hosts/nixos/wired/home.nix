@@ -17,6 +17,7 @@
       # bspwm
       #colors
       git
+      jujutsu
       firefox
       nvim
       picom
@@ -127,7 +128,7 @@
 
     r2modman
 
-    rustdesk
+    # rustdesk
 
     nemo
     nextcloud-client

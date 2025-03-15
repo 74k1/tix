@@ -10,6 +10,7 @@
       # bash
       zsh
       ssh-agent
+      jujutsu
     ])
   ];
 

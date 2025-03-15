@@ -18,6 +18,7 @@ in {
       # image = "${inputs.self}/modules/home-manager/stylix/wall.png";
       image = ./wall.png;
       cursor = {
+        size = 16;
         package = cfg.package;
         name = "Ukiyo";
       };
