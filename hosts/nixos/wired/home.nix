@@ -12,6 +12,7 @@
     # int
     (with outputs.homeManagerModules; [
       hyprland
+      # niri
       cliphist
       # i3wm
       # bspwm
