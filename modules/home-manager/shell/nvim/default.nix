@@ -4,7 +4,7 @@
     src = pkgs.fetchFromGitHub {
       owner = "74k1";
       repo = "tsukiyo.nvim";
-      rev = "814860e55aa8f68293be33b19d54a2cebf3c80e9"; 
+      rev = "814860e55aa8f68293be33b19d54a2cebf3c80e9";
       hash = "sha256-l0JF3rim5XacdFp/ywtHaXCxvb/MH49jkaPHrdBojcs=";
     };
   };
@@ -49,8 +49,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "nvimdev";
       repo = "indentmini.nvim";
-      rev = "03c24a3e76eb9d65ddbd080aa2bfb6d3d6c85058";
-      hash = "sha256-qJgB/Ap2SM/vxlZ8F8kIS/AwtzkNPrvC0b30Rw/i8Tc=";
+      rev = "59c2be5387e3a3308bb43f07e7e39fde0628bd4d";
+      hash = "sha256-RtNPlILvlEyIFfDK8NTq8LPZR5vIl6uBxeE3vftUS6g=";
     };
   };
 in {
@@ -128,11 +128,43 @@ in {
       vim-dadbod-ui
       vim-nix
       vim-shellcheck
-      mini-map
       {
         plugin = tsukiyo-nvim;
         type = "lua";
         config = builtins.readFile ./cfg/tsukiyo.lua;
+      }
+      {
+        plugin = mini-ai;
+        type = "lua";
+        config =
+          /*
+          lua
+          */
+          ''
+            require("mini.ai").setup()
+          '';
+      }
+      {
+        plugin = mini-map;
+        type = "lua";
+        config =
+          /*
+          lua
+          */
+          ''
+            require("mini.map").setup()
+          '';
+      }
+      {
+        plugin = mini-diff;
+        type = "lua";
+        config =
+          /*
+          lua
+          */
+          ''
+            require("mini.diff").setup()
+          '';
       }
       {
         plugin = nvim-treesitter.withAllGrammars;
@@ -142,9 +174,13 @@ in {
       {
         plugin = let-it-snow-nvim;
         type = "lua";
-        config = /* lua */ ''
-          require('let-it-snow').setup({delay = 50})
-        '';
+        config =
+          /*
+          lua
+          */
+          ''
+            require('let-it-snow').setup({delay = 50})
+          '';
       }
       # {
       #   plugin = copilot-cmp;

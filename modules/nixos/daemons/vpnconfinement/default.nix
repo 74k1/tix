@@ -27,6 +27,13 @@
         # "10.0.0.0/24"
         "127.0.0.1/32"
       ];
+
+      # ouro = {
+      #   enable = true;
+      #   gateway = "10.2.0.1";
+      #   interface = "prsl0";
+      #   slskd.enable = true;
+      # };
     };
     prtr = {
       enable = true;
@@ -39,6 +46,19 @@
         # "10.0.0.0/24"
         "127.0.0.1/32"
       ];
+
+      # ouro = {
+      #   enable = true;
+      #   gateway = "10.2.0.1";
+      #   interface = "prtr0";
+      #
+      #   transmission = {
+      #     enable = true;
+      #     rpc_file = ./yee.age ; # file path with ENV vars perhaps
+      #     # RPC_USER=user
+      #     # RPC_PASS=xyz
+      #   };
+      # };
     };
   };
 }
