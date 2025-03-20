@@ -21,7 +21,7 @@
       };
       signing = {
         backend = "gpg";
-        sign-all = true;
+        behavior = "own";
         key = "46F3422F63A313697EAB83D51CF155F76F213503";
       };
       core = {
