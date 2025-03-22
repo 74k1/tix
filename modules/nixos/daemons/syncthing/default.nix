@@ -1,5 +1,10 @@
 { inputs, outputs, config, lib, pkgs, ... }:
 {
+  disabledModules = [ "services/networking/syncthing.nix" ];
+
+  imports = [
+    ../../../syncthing.nix
+  ];
   # age.secrets = {
   #   "syncthing_cert" = {
   #     rekeyFile = "${inputs.self}/secrets/syncthing_cert_pem";
