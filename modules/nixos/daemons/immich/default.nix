@@ -6,7 +6,7 @@
 
   services.immich = {
     enable = true;
-    package = inputs.nixpkgs-master.outputs.legacyPackages.x86_64-linux.immich;
+    package = pkgs.master.immich;
     mediaLocation = "/mnt/btrfs_pool/immich_media/";
     # environment = '''';
     # secretsFile = /tmp/immich_secret;

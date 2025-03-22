@@ -10,6 +10,7 @@
   services = {
     graylog = {
       enable = true;
+      package = pkgs.graylog-6_0;
       extraConfig = ''
         http_bind_address = 0.0.0.0:9000
       '';

@@ -187,6 +187,13 @@
             proxyPass = "http://10.100.0.1:80"; # local nginx
           };
         };
+        "send.74k1.sh" = {
+          addSSL = true;
+          enableACME = true;
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:1444"; # local nginx
+          };
+        };
         "umami.74k1.sh" = {
           addSSL = true;
           enableACME = true;

@@ -12,7 +12,7 @@
     # int
     (with outputs.homeManagerModules; [
       hyprland
-      # niri
+      niri
       cliphist
       # i3wm
       # bspwm
@@ -142,7 +142,7 @@
     qbittorrent
     # spotify
     #spotify-tray
-    # inputs.nixpkgs-master.outputs.legacyPackages.x86_64-linux.spotify-player
+    # pkgs.master.spotify-player
     spotify-player
     discord
 
@@ -165,7 +165,7 @@
     # curaengine_stable
 
     # inputs.orca-fix.outputs.legacyPackages.x86_64-linux.orca-slicer
-    # inputs.nixpkgs-master.outputs.legacyPackages.x86_64-linux.orca-slicer
+    # pkgs.master.orca-slicer
     orca-slicer
     # prusa-slicer
     zathura

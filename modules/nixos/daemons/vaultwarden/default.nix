@@ -8,7 +8,7 @@
   };
   services.vaultwarden = {
     enable = true;
-    package = inputs.nixpkgs-master.outputs.legacyPackages.x86_64-linux.vaultwarden;
+    package = pkgs.master.vaultwarden;
     # environmentFile = "/home/taki/vaultwarden_env_secrets";
     environmentFile = config.age.secrets."vaultwarden_secret".path;
     dbBackend = "sqlite";

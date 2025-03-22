@@ -64,6 +64,7 @@ in {
       autoEnable = true; # false;
       targets = {
         spicetify.enable = false;
+        firefox.profileNames = [ "taki" ];
       };
       # target = {
       #   tmux.enable = false;

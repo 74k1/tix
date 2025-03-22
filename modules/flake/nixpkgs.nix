@@ -2,8 +2,7 @@
 
 {
   perSystem = { pkgs, system, ... }: {
-    _module.args.pkgs = import inputs.nixpkgs {
-      inherit system;
+    _module.args.pkgs = let
       overlays = lib.attrValues self.overlays ++ [
         inputs.nix-topology.overlays.default
 
@@ -11,6 +10,24 @@
 
         # Pseudo-overlay to add our own packages everywhere
         (_: _: self.packages.${system})
+      ];
+    in import inputs.nixpkgs {
+      inherit system;
+      overlays = overlays ++ [
+        # NOTE: `nixpkgs-stable` -> `pkgs.stable.*`
+        # NOTE: `nixpkgs-master` -> `pkgs.master.*`
+        # NOTE: `nixpkgs` -> `pkgs.*` 
+        (_: _: lib.pipe inputs [
+          (lib.concatMapAttrs
+            (name: input:
+              if lib.hasPrefix "nixpkgs-" name then {
+                ${lib.removePrefix "nixpkgs-" name} = import input {
+                  inherit system;
+                  inherit overlays;
+                };
+              } else {
+              }))
+        ])
       ];
       config = {
         allowUnfree = true;

@@ -9,20 +9,20 @@
       name = "taki";
       search.force = true;
       search.engines = {
-        "Bing".metaData.hidden = true;
-        "eBay".metaData.hidden = true;
+        "bing".metaData.hidden = true;
+        "ebay".metaData.hidden = true;
         "Perplexity" = {
           urls = [{ template = "https://www.perplexity.ai/search?focus=internet&q={searchTerms}"; }];
           definedAliases = [ ":p" "@perplexity" "@pp" ];
         };
-        "Google" = {
+        "google" = {
           urls = [{ template = "https://www.google.com/search?q={searchTerms}"; }];
-          iconUpdateURL = "https://icons.duckduckgo.com/ip3/google.com.ico";
+          icon = "https://icons.duckduckgo.com/ip3/google.com.ico";
           definedAliases = [ ":g" "@google" ];
         };
-        "DuckDuckGo" = {
+        "ddg" = {
           urls = [{ template = "https://duckduckgo.com/?t=h_&q={searchTerms}&ia=web"; }];
-          iconUpdateURL = "https://icons.duckduckgo.com/ip3/duckduckgo.com.ico";
+          icon = "https://icons.duckduckgo.com/ip3/duckduckgo.com.ico";
           definedAliases = [ ":g" "@google" ];
         };
         "Brave Search" = {

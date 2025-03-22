@@ -118,6 +118,7 @@ in {
       cmp-path
       cmp_luasnip
       comment-nvim
+      nvzone-typr
       hmts-nvim
       luasnip
       nvim-tree-lua

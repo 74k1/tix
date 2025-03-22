@@ -19,7 +19,7 @@
 
   # nixpkgs.overlays = [
   #   (_prev: _final: {
-  #     octoprint = inputs.nixpkgs-master.legacyPackages.${pkgs.hostPlatform.system}.octoprint;
+  #     octoprint = pkgs.master.octoprint;
   #   })
   # ];
 
@@ -44,7 +44,7 @@
     git wget curl tmux
     fastfetch
     libraspberrypi
-    # inputs.nixpkgs-master.legacyPackages.${pkgs.hostPlatform.system}.octoprint
+    # pkgs.master.octoprint
   ];
 
   services = {

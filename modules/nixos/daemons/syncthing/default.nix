@@ -17,6 +17,8 @@
   services.syncthing = {
     enable = true;
 
+    package = pkgs.stable.syncthing;
+
     # Declarative node IDs
     # cert = config.age.secrets."syncthing_cert".path;
     # key = config.age.secrets."syncthing_key".path;

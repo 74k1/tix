@@ -4,11 +4,6 @@ let
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
 in
 {
-  # install spotify
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "spotify"
-  ];
-
   # import the flake's module
   imports = [
     inputs.spicetify-nix.homeManagerModules

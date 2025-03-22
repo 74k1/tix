@@ -64,7 +64,7 @@
     # atuin
     outline
     plex
-    # send
+    send
     servarr
     taki
     transmission
