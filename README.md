@@ -14,7 +14,7 @@
         <li><strong>Window Manager</strong> • <a href="https://github.com/YaLTeR/niri/">Niri</a> Scrollable WM!</li>
         <li><strong>Shell</strong> • <a href="https://github.com/fish-shell/fish-shell">fish</a> The user-friendly command line shell</li>
         <li><strong>Terminal</strong> • <a href="https://github.com/ghostty-org/ghostty">Ghostty</a> a fast, feature-rich terminal emulator</li>
-        <li><strong>Notify Daemon</strong> • <a href="https://github.com/dunst-project/dunst">dunst</a> lightweight notification daemon</li>
+        <li><strong>Notify Daemon</strong> • <a href="https://github.com/Toqozz/wired-notify">wired</a> lightweight notification daemon</li>
         <li><strong>Panel</strong> • <a href="https://github.com/Alexays/Waybar">Waybar</a> Highly customizable Wayland bar.</li>
         <li><strong>Launcher</strong> • <a href="https://hg.sr.ht/~scoopta/wofi">Wofi</a> Rofi but for Wayland</li>
         <li><strong>File Manager</strong> • <a href="https://github.com/sxyazi/yazi">Yazi</a> Fast terminal file manager.</li>
