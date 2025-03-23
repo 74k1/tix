@@ -128,8 +128,6 @@
   
     vscode
 
-    themix-gui
-
     r2modman
 
     # rustdesk
