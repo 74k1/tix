@@ -5,7 +5,32 @@
     <a href="LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=ca9ee6&colorA=313244&colorB=cba6f7"/></a>
     <br>
     <p>TODO: preview<p>
+    <a href="#octocat--hi-there-thanks-for-dropping-by">
+        <picture>
+            <img alt="preview" align="right" width="400px" src="/.github/assets/preview.png">
+        </picture>
+    </a>
+    <ul>
+        <li><strong>Window Manager</strong> • <a href="https://github.com/YaLTeR/niri/">Niri</a> Scrollable WM!</li>
+        <li><strong>Shell</strong> • <a href="https://github.com/fish-shell/fish-shell">fish</a> The user-friendly command line shell</li>
+        <li><strong>Terminal</strong> • <a href="https://github.com/ghostty-org/ghostty">Ghostty</a> a fast, feature-rich terminal emulator</li>
+        <li><strong>Notify Daemon</strong> • <a href="https://github.com/dunst-project/dunst">dunst</a> lightweight notification daemon</li>
+        <li><strong>Panel</strong> • <a href="https://github.com/Alexays/Waybar">Waybar</a> Highly customizable Wayland bar.</li>
+        <li><strong>Launcher</strong> • <a href="https://hg.sr.ht/~scoopta/wofi">Wofi</a> Rofi but for Wayland</li>
+        <li><strong>File Manager</strong> • <a href="https://github.com/sxyazi/yazi">Yazi</a> Fast terminal file manager.</li>
+        <li><strong>Editor of Choice</strong> • <a href="https://github.com/neovim/neovim">Neovim</a> ❤️</li>
+        <li><strong>GTK Theme</strong> • <a href="https://github.com/74k1/tsukiyo.gtk">Tsukiyo.gtk</a> My own GTK Theme!</li>
+    </ul>
 </div>
+
+
+| # Screenshots                     |                                   |
+| :-------------------------------: | :-------------------------------: |
+| <img src="/.github/assets/1.png"> | <img src="/.github/assets/2.png"> |
+| <img src="/.github/assets/3.png"> | <img src="/.github/assets/4.png"> |
+| <img src="/.github/assets/5.png"> | <img src="/.github/assets/6.png"> |
+
+
 <div>
     <h2>About</h2>
     <p>
