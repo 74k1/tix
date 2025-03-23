@@ -98,7 +98,7 @@
         "Mod+C" = { repeat = false; action = close-window; };
         "Mod+S".action = switch-preset-column-width;
         "Mod+F".action = maximize-column;
-        # "Mod+Shift+F".action = fullscreen-window;
+        "Mod+Shift+F".action = fullscreen-window;
         "Mod+W".action = toggle-column-tabbed-display;
 
         "Mod+Comma".action = consume-window-into-column;
@@ -152,14 +152,14 @@
         border = {
           enable = true;
           width = 1;
-          active = { color = "rgb(127 200 255)"; };
-          inactive = { color = "rgb(80 80 80)"; };
+          active = { color = "#5767FF"; };
+          inactive = { color = "#5F5A65"; };
         };
         focus-ring = {
           enable = false;
           width = 1;
-          active = { color = "rgb(127 200 255)"; };
-          inactive = { color = "rgb(80 80 80)"; };
+          active = { color = "#5767FF"; };
+          inactive = { color = "#5F5A65"; };
         };
         shadow = {
           enable = true;
@@ -173,7 +173,7 @@
         };
         insert-hint = {
           enable = false;
-          display = { color = "rgb(127 200 255 / 50%)"; };
+          display = { color = "rgb(87 103 255 / 50%)"; };
         };
         preset-column-widths = [
           {proportion = 0.25;}
