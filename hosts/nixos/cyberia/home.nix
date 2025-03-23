@@ -11,15 +11,20 @@
     
     # int
     (with outputs.homeManagerModules; [
+      fastfetch
       hyprland
+      niri
       river
+      cliphist
       # i3wm
       # bspwm
       #colors
       git
+      jujutsu
+      firefox
       nvim
       picom
-      # polybar
+      polybar
       #rofi
       # wofi
       #spotify
@@ -29,28 +34,31 @@
       style
       #wall
       wezterm
+      ghostty
       wired
       xdg
       xorg
       zsh
+      fish
+      yazi
+      gpg-agent
     ])
   ];
-  
 
-  nixpkgs = {
-    overlays = [
-      (final: prev: {
-        duvolbr = outputs.packages."x86_64-linux".duvolbr;
-      })
-      inputs.wired-notify.overlays.default
-    ];
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        "electron-25.9.0"
-      ];
-    };
-  };
+  # nixpkgs = {
+  #   overlays = [
+  #     (final: prev: {
+  #       duvolbr = outputs.packages."x86_64-linux".duvolbr;
+  #     })
+  #     inputs.wired-notify.overlays.default
+  #   ];
+  #   config = {
+  #     allowUnfree = true;
+  #     permittedInsecurePackages = [
+  #       "electron-25.9.0"
+  #     ];
+  #   };
+  # };
 
   home = {
     username = "taki";
@@ -67,6 +75,7 @@
     
     # my own scriptiboo
     duvolbr
+    berkeley-otf
 
     # term
     bat bat-extras.batman
@@ -79,14 +88,15 @@
     starship
     tealdeer
     joshuto
-    spotify-player
+
     wezterm
+    ghostty
     wired
     zellij
     #zoxide
 
     # gui stuff
-    brave
+    # brave
     plex-desktop
     # swaylock-fancy
     ungoogled-chromium
@@ -101,6 +111,57 @@
     # ly
     # evolution
 
+    thunderbird
+
+    zui
+    brimcap
+
+    nemo
+    fractal
+    google-chrome
+    qbittorrent
+
+    spotify-player
+
+    mpv
+    ascii-draw
+
+    gnome-keyring
+
+    vala
+    pantheon.elementary-gtk-theme
+    pantheon.elementary-icon-theme
+
+    protonvpn-cli_2
+
+    orca-slicer
+
+    zathura
+
+    prismlauncher
+    jdk17
+    libGLU
+
+    telegram-desktop
+
+    inputs.zen-browser.packages."${system}".twilight
+
+    goodvibes
+    newsflash
+    hieroglyphic
+
+    zoom-us
+
+    onlyoffice-bin
+    libreoffice-qt
+
+    wireshark
+
+    rage
+    age-plugin-yubikey
+    inputs.agenix-rekey.packages.x86_64-linux.default
+    restic
+
     # fonts
     #material-symbols
     #siji
@@ -109,8 +170,18 @@
   # evolution stuff
   #services.gnome3.evolution-data-server.enable = true;
 
+  # Whether to enable a proxy forwarding Bluetooth MIDI controls via MPRIS2 to control media players.
+  services.mpris-proxy.enable = true;
+
   theme.ukiyo = {
     package = inputs.ukiyo.packages.x86_64-linux.default;
+  };
+
+  gtk = {
+    iconTheme = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+    };
   };
 
   home.sessionVariables = {

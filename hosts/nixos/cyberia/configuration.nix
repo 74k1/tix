@@ -1,5 +1,7 @@
 { inputs, outputs, lib, config, pkgs, ... }:
 {
+  disabledModules = [ "services/networking/syncthing.nix" ];
+
   imports = with outputs.nixosModules; [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -12,6 +14,8 @@
 
     inputs.nixos-generators.nixosModules.all-formats
 
+    ../../../modules/syncthing.nix
+
     # ly
     openssh
     vm-test
@@ -19,6 +23,8 @@
     nix
     taki
     steam
+    pcscd
+    firefox
   ];
 
   # profile things idk
@@ -67,6 +73,13 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
+  environment.sessionVariables = {
+    # If cursor becomes invisible
+    # WLR_NO_HARDWARE_CURSORS = "1";
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "0";
+  };
+
   # Enable the X11 windowing system.
   services = {
     pcscd.enable = true;
@@ -75,7 +88,7 @@
       package = pkgs.greetd.tuigreet;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd river";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd niri-session";
         };
       };
     };
@@ -85,7 +98,7 @@
     };
 
     displayManager = {
-      defaultSession = "river";
+      defaultSession = "niri-session";
     };
     
     libinput = {
@@ -113,11 +126,21 @@
   '';
 
   boot.kernelParams = [
+    "quiet"
+    "splash"
     "video=eDP-1:2560x1600@165"
   ];
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services = {
+    printing.enable = true;
+
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+    };
+  };
+
 
   # Enable sound with pipewire.
   security.rtkit.enable = true;
@@ -156,30 +179,75 @@
     git wget curl tmux
     pavucontrol
     nvidia-vaapi-driver
-    egl-wayland
     kitty # def. term
+    egl-wayland
     fastfetch # neofetch
-    brscan4 # Brother Driver?
     simple-scan # Document Scanner
     acpi # Battery
     wireguard-tools
+    nurl
 
     rage
-    inputs.agenix-rekey.packages.${pkgs.system}.agenix-rekey
     wl-clipboard
+    inputs.agenix-rekey.packages.x86_64-linux.default
 
     #alttab
     #dconf
     #xorg.xkill xclip xdotool xorg.xinit
-    #xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
   ];
 
-
-  hardware.sane = {
-    enable = true;
-    brscan4 = {
+  hardware = {
+    sane = {
       enable = true;
+      brscan4 = {
+        enable = true;
+      };
     };
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      input = {
+        General = {
+          UserspaceHID = true;
+        };
+      };
+      settings = {
+        General = {
+          Experimental = true;
+        };
+      };
+    };
+  };
+
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-gnome3;
+    enableSSHSupport = true;
+  };
+
+  services = {
+    syncthing = {
+      enable = true;
+      # package = pkgs.stable.syncthing;
+
+      # Declarative node IDs
+      # cert = config.age.secrets."syncthing_cert".path;
+      # key = config.age.secrets."syncthing_key".path;
+
+      user = "taki";
+      group = "users";
+      dataDir = "/home/taki";
+
+      guiAddress = "127.0.0.1:8384";
+      openDefaultPorts = true;
+      overrideDevices = false;
+      overrideFolders = false;
+      settings = {
+        relaysEnabled = true;
+        urAccepted = -1;
+      };
+    };
+    blueman.enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

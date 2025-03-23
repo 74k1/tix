@@ -7,6 +7,7 @@
   fish = import ./shell/fish;
   ghostty = import ./apps/ghostty;
   jujutsu = import ./shell/jujutsu;
+  fastfetch = import ./shell/fastfetch;
   git = import ./shell/git;
   gpg-agent = import ./gpg-agent;
   hyprland = import ./wayland/hyprland;

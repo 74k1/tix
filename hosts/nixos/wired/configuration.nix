@@ -65,7 +65,7 @@
       package = pkgs.greetd.tuigreet;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd Hyprland";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd niri-session";
         };
       };
     };
@@ -80,7 +80,15 @@
     };
 
     displayManager = {
-      defaultSession = "Hyprland";
+      # ly = {
+      #   enable = true;
+      #   settings = {
+      #     bigclock = "en";
+      #     box_title = "Hello, User...";
+      #     clock = "%c";
+      #   };
+      # };
+      defaultSession = "niri-session";
     };
 
     libinput = {
@@ -293,7 +301,6 @@
       };
     };
     blueman.enable = true;
-    flatpak.enable = true;
   };
 
   # Open ports in the firewall.

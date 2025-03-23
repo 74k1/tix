@@ -152,7 +152,7 @@ cursor-style = block
 # The opacity level (opposite of transparency) of the background. A value of
 # 1 is fully opaque and a value of 0 is fully transparent. A value less than 0
 # or greater than 1 will be clamped to the nearest valid value.
-background-opacity = 0.8
+background-opacity = 0.9
 
 # Shell integration features to enable if shell integration itself is enabled.
 # The format of this is a list of features to enable separated by commas. If

@@ -119,6 +119,11 @@ in
           hostname = "taki.moe";
           sshOpts = [ "-p" "2202" ];
         };
+        cyberia = {
+          # hostname = "example.com";
+          hostname = "255.255.255.255";
+          # sshOpts = [ "-p" "2202" ];
+        };
       };
   };
 }

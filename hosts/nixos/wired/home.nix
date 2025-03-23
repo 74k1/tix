@@ -14,6 +14,7 @@
       hyprland
       niri
       cliphist
+      fastfetch
       # i3wm
       # bspwm
       #colors

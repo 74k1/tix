@@ -11,10 +11,6 @@
       search.engines = {
         "bing".metaData.hidden = true;
         "ebay".metaData.hidden = true;
-        "Perplexity" = {
-          urls = [{ template = "https://www.perplexity.ai/search?focus=internet&q={searchTerms}"; }];
-          definedAliases = [ ":p" "@perplexity" "@pp" ];
-        };
         "google" = {
           urls = [{ template = "https://www.google.com/search?q={searchTerms}"; }];
           icon = "https://icons.duckduckgo.com/ip3/google.com.ico";
@@ -24,6 +20,11 @@
           urls = [{ template = "https://duckduckgo.com/?t=h_&q={searchTerms}&ia=web"; }];
           icon = "https://icons.duckduckgo.com/ip3/duckduckgo.com.ico";
           definedAliases = [ ":g" "@google" ];
+        };
+        "Perplexity" = {
+          urls = [{ template = "https://www.perplexity.ai/search?focus=internet&q={searchTerms}"; }];
+          icon = "https://icons.duckduckgo.com/ip3/perplexity.ai.ico";
+          definedAliases = [ ":p" "@perplexity @pp" ];
         };
         "Brave Search" = {
           urls = [{ template = "https://search.brave.com/search?q={searchTerms}&source=web"; }];
