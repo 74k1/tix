@@ -185,10 +185,10 @@
 
         gaps = 8;
         struts = {
-          left = 10;
-          right = 10;
+          left = 2;
+          right = 2;
           top = 2;
-          bottom = 10;
+          bottom = 2;
         };
 
         tab-indicator = {
@@ -245,7 +245,7 @@
         windowRules = [
           {
             geometry-corner-radius = let
-              radius = 5.0;
+              radius = 10.0;
             in {
               bottom-left = radius;
               bottom-right = radius;
@@ -315,6 +315,10 @@
               {
                 app-id = "zen-.*$";
                 title = "^Picture-in-Picture$";
+              }
+              {
+                app-id = "zen-.*$";
+                title = ".*Bitwarden Password Manager.*";
               }
               {title = "^Picture in picture$";}
               {title = "^Discord Popout$";}
