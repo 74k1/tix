@@ -26,10 +26,16 @@
             <td>General purpose usage.</td>
         </tr>
         <tr>
+            <td><a href="hosts/nixos/wired"><img alt="desktop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
+            <td>psyche</td>
+            <td>Main Desktop (the same one)<br><sub>i9-13900k<br>RX 7900 XT</sub></td>
+            <td>General purpose usage. (Windows WSL)</td>
+        </tr>
+        <tr>
             <td><a href="hosts/nixos/cyberia"><img alt="laptop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
             <td>cyberia</td>
-            <td>Minisforum V3</td>
-            <td>General purpose usage. - mobile</td>
+            <td>Minisforum V3<br><sub>Ryzen 7 8840U</sub></td>
+            <td>General purpose usage. - for transport</td>
         </tr>
         <tr>
             <td><a href="hosts/nixos/eiri"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
@@ -40,8 +46,20 @@
         <tr>
             <td><a href="hosts/nixos/knights"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
             <td>knights</td>
-            <td>VPS<br><sub><a href="https://alphavps.com/">from AlphaVPS</a></sub></td>
-            <td>Just for fun.</td>
+            <td>VPS<br><sub><a href="https://hetzner.cloud/">from Hetzner</a> ❤️</sub></td>
+            <td>Proxy / Just for fun.</td>
+        </tr>
+        <tr>
+            <td><a href="hosts/nixos/duvet"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
+            <td>duvet</td>
+            <td>VPS<br><sub><a href="https://hetzner.cloud/">from Hetzner</a> ❤️</sub></td>
+            <td>Static Website Hosting</td>
+        </tr>
+        <tr>
+            <td><a href="hosts/nixos/octo"><img alt="raspberry-pi" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
+            <td>octo</td>
+            <td>Raspberry Pi</td>
+            <td>3D Printer Firmware (moonraker & klipper)</td>
         </tr>
     </table>
 </div>
@@ -59,15 +77,21 @@
 </div>
 <div>
     <h2>Packages</h2>
-    <p>
-    \<packages from this repo\>
-    </p>
+    <ul>
+        <li><a href="pkgs/duvolbr.nix">duvolbr</a></li>
+        <li><a href="pkgs/berkeley-otf.nix">berkeley-otf</a></li>
+    </ul>
 </div>
 <div>
     <h2>Special Thanks to</h2>
     <h3><a href="https://github.com/reo101">reo101</a></h3>
     <a href="#"><img alt="clueless" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a>
-    <p>for helping a ton with nix :)</p>
+    <p>for being the one that introduced me to nix and helping a ton :)</p>
+    <h3><a href="https://github.com/linuxmobile/">linuxmobile</a></h3>
+    <h4><a href="https://github.com/linuxmobile/kaku">Niri config</a></h4>
+    <p>
+        Served as a great reference point.
+    </p>
     <h3><a href="https://gitlab.com/Nmoleo">Nmoleo</a></h3>
     <h4><a href="https://gitlab.com/Nmoleo/i3-volume-brightness-indicator">i3 + dunst indicators</a></h4>
     <p>
