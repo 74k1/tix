@@ -62,6 +62,7 @@
     interactiveShellInit = /* fish */ ''
       atuin init fish | source
       zoxide init --cmd z fish | source
+      COMPLETE=fish jj | source
     '';
   };
 }
