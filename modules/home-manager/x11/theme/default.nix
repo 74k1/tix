@@ -21,21 +21,23 @@ in {
       enable = true;
       
       platformTheme = "gtk";
-      style = {
-        name = "Ukiyo";
-        package = cfg.package;
-      };
+      # style = {
+      #   name = "Ukiyo";
+      #   package = cfg.package;
+      # };
     };
 
     gtk = {
       enable = true;
-      theme = {
-        package = cfg.package;
-        name = "Ukiyo";
-      };
+      # theme = {
+      #   package = cfg.package;
+      #   name = "Ukiyo";
+      # };
       iconTheme = {
-        package = pkgs.papirus-icon-theme;
-        name = "Papirus";
+        package = pkgs.pantheon.elementary-icon-theme;
+        name = "Elementary";
+        # package = pkgs.papirus-icon-theme;
+        # name = "Papirus";
       };
       cursorTheme = {
         package = cfg.package;
