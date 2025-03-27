@@ -151,6 +151,7 @@
     ascii-draw
 
     gnome-keyring
+    paper-plane
 
     # akira-unstable
     vala
