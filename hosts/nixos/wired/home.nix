@@ -184,6 +184,8 @@
     newsflash # rss
     hieroglyphic # find latex symbols
 
+    snapshot
+
     zoom-us
     onlyoffice-bin
     libreoffice-qt
