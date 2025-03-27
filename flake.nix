@@ -98,9 +98,9 @@
     nix-colors = {
       url = "github:misterio77/nix-colors";
     };
-    #rix101 = {
-    #  url = "github:reo101/rix101";
-    #};
+    rix101 = {
+     url = "github:reo101/rix101";
+    };
     ukiyo = {
       url = "github:74k1/ukiyo";
     };
