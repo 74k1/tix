@@ -31,10 +31,10 @@
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC0pG+xpBOghFWXY7eQHOxyGuWzh2NrcLp7e9Kpgjooq duvet";
       # The path to the master identity used for decryption. See the option's description for more information.
       masterIdentities = [
-        # ../../../secrets/yubikey-1-on-person.pub
-        "${inputs.self}/secrets/yubikey-1-on-person.pub"
-        # ../../../secrets/yubikey-2-at-home.pub
-        "${inputs.self}/secrets/yubikey-2-at-home.pub"
+        # ../../../secrets/identities/yubikey-1-on-person.pub
+        "${inputs.self}/secrets/identities/yubikey-1-on-person.pub"
+        # ../../../secrets/identities/yubikey-2-at-home.pub
+        "${inputs.self}/secrets/identities/yubikey-2-at-home.pub"
       ];
       storageMode = "local";
       # Choose a dir to store the rekeyed secrets for this host.
@@ -129,7 +129,7 @@
     crowdsec-firewall-bouncer = {
       settings = {
         api.server = {
-          # SECRET
+          # SECRET / TODO
           api_key = "00000000";
         };
       };
@@ -214,7 +214,7 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "mail@example.com";
+    defaults.email = "mail@example.com"; # TODO
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,

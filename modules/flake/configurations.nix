@@ -96,32 +96,32 @@ in
         eiri = {
           # should change this to 10.0.0.1 someday, when i have wg on cyberia
           # but how do I deploy from wired
-          hostname = "255.255.255.255";
+          hostname = "255.255.255.255"; # TODO
         };
         knights = {
           # hostname = "example.com";
-          hostname = "255.255.255.255";
+          hostname = "255.255.255.255"; # TODO
           sshOpts = [ "-p" "2202" ];
         };
         morpheus = {
           # temporarily
-          hostname = "192.168.1.61";
+          hostname = "192.168.1.61"; # TODO
           # important, weak device
           remoteBuild = false;
         };
         octo = {
           # temporarily
-          hostname = "255.255.255.255";
+          hostname = "255.255.255.255"; # TODO
           # important, weak device
           remoteBuild = false;
         };
         duvet = {
-          hostname = "taki.moe";
+          hostname = "taki.moe"; # TODO
           sshOpts = [ "-p" "2202" ];
         };
         cyberia = {
           # hostname = "example.com";
-          hostname = "255.255.255.255";
+          hostname = "255.255.255.255"; # TODO
           # sshOpts = [ "-p" "2202" ];
         };
       };

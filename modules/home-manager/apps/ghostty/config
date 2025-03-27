@@ -114,6 +114,7 @@ foreground = #eff0eb
 # 
 # For definitions on all the codes [see this cheat
 # sheet](https://www.ditig.com/256-colors-cheat-sheet).
+# TODO
 palette = 0=#000000
 palette = 1=#ff5487
 palette = 2=#54ff80

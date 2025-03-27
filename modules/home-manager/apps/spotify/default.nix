@@ -14,6 +14,7 @@ in
     enable = true;
     theme = lib.mkForce spicePkgs.themes.text;
     colorScheme = "custom";
+    # TODO
     customColorScheme = {
       accent             = "5665FB";
       accent-active      = "6D7CFF";

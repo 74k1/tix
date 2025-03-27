@@ -14,7 +14,7 @@
     #   inherit (config.services.nextcloud.package.packages.apps) contacts calendar onlyoffice;
     # };
     extraAppsEnable = true;
-    hostName = "files.example.com";
+    hostName = "files.example.com"; # TODO
     home = "/mnt/btrfs_pool/nextcloud_data";
     configureRedis = true;
     autoUpdateApps.enable = true;

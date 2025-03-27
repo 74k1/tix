@@ -32,10 +32,10 @@
     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFJp2WfgRJJHY6FF48vdSr2ZsTcvJqYTrewLNNeEB0Ps knights";
     # The path to the master identity used for decryption. See the option's description for more information.
     masterIdentities = [
-      # ../../../secrets/yubikey-1-on-person.pub
-      "${inputs.self}/secrets/yubikey-1-on-person.pub"
-      # ../../../secrets/yubikey-2-at-home.pub
-      "${inputs.self}/secrets/yubikey-2-at-home.pub"
+      # ../../../secrets/identities/yubikey-1-on-person.pub
+      "${inputs.self}/secrets/identities/yubikey-1-on-person.pub"
+      # ../../../secrets/identities/yubikey-2-at-home.pub
+      "${inputs.self}/secrets/identities/yubikey-2-at-home.pub"
     ];
     storageMode = "local";
     # Choose a dir to store the rekeyed secrets for this host.
@@ -61,7 +61,7 @@
           {
             publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
             allowedIPs = [ "10.100.0.1" ];
-            endpoint = "example.com:51820";
+            endpoint = "example.com:51820"; # TODO
             persistentKeepalive = 25;
           }
         ];
@@ -180,33 +180,33 @@
       '';
 
       virtualHosts = {
-        "it.74k1.sh" = {
+        "it.74k1.sh" = { # TODO
           addSSL = true;
           enableACME = true;
           locations."/" = {
             proxyPass = "http://10.100.0.1:80"; # local nginx
           };
         };
-        "send.74k1.sh" = {
+        "send.74k1.sh" = { # TODO
           addSSL = true;
           enableACME = true;
           locations."/" = {
             proxyPass = "http://10.100.0.1:1444"; # local nginx
           };
         };
-        "umami.74k1.sh" = {
+        "umami.74k1.sh" = { # TODO
           addSSL = true;
           enableACME = true;
           locations."/" = {
             proxyPass = "http://10.100.0.1:3034";
           };
         };
-        "example.com" = {
+        "example.com" = { # TODO
           addSSL = true;
           enableACME = true;
           root = "/var/www/example.com/";
         };
-        "vw.example.com" = {
+        "vw.example.com" = { # TODO
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -214,7 +214,7 @@
             proxyWebsockets = true;
           };
         };
-        "td.example.com" = {
+        "td.example.com" = { # TODO
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -224,7 +224,7 @@
             '';
           };
         };
-        "kb.example.com" = {
+        "kb.example.com" = { # TODO
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -237,21 +237,21 @@
             # '';
           };
         };
-        # "mc.example.com" = {
+        # "mc.example.com" = { # TODO
         #   enableACME = true;
         #   forceSSL = true;
         #   locations."/" = {
         #     proxyPass = "http://10.100.0.1:8123";
         #   };
         # };
-        # "ls.example.com" = {
+        # "ls.example.com" = { # TODO
         #   enableACME = true;
         #   forceSSL = true;
         #   locations."/" = {
         #     proxyPass = "http://10.100.0.1:5544";
         #   };
         # };
-        "git.example.com" = {
+        "git.example.com" = { # TODO
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -268,14 +268,14 @@
             '';
           };
         };
-        "news.example.com" = {
+        "news.example.com" = { # TODO
           enableACME = true;
           forceSSL = true;
           locations."/" = {
             proxyPass = "http://10.100.0.1:8084";
           };
         };
-        "files.example.com" = {
+        "files.example.com" = { # TODO
           enableACME = true;
           forceSSL = true;
           locations = {
@@ -294,7 +294,7 @@
             # };
           };
         };
-        "immich.example.com" = {
+        "immich.example.com" = { # TODO
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -324,7 +324,7 @@
         #     proxyPass = "http://10.100.0.1:5678"
         #   };
         # };
-        "links.example.com" = {
+        "links.example.com" = { # TODO
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -336,7 +336,7 @@
             '';
           };
         };
-        "forever.example.com" = {
+        "forever.example.com" = { # TODO
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -366,7 +366,7 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "mail@example.com";
+    defaults.email = "mail@example.com"; # TODO
   };
 
   # Open ports in the firewall.

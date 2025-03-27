@@ -18,11 +18,11 @@
           ENABLE_REVERSE_PROXY_AUTHENTICATION = true;
         };
         server = {
-          DOMAIN = "git.example.com";
-          ROOT_URL = "https://git.example.com/";
+          DOMAIN = "git.example.com"; # TODO
+          ROOT_URL = "https://git.example.com/"; # TODO
           SSH_PORT = 2277;
           START_SSH_SERVER = true;
-          SSH_DOMAIN = "git.example.com";
+          SSH_DOMAIN = "git.example.com"; # TODO
           SSH_SERVER_USE_PROXY_PROTOCOL = true;
         };
         actions = {
@@ -38,7 +38,7 @@
     #   instances.default = {
     #     enable = true;
     #     name = "monolith";
-    #     url = "https://git.example.com";
+    #     url = "https://git.example.com"; # TODO
     #     #tokenFile = "/tmp/forgejo-runner-token";
     #     tokenFile = config.age.secrets."forgejo_runner_token".path;
     #     labels = [

@@ -100,6 +100,11 @@
     };
     rix101 = {
      url = "github:reo101/rix101";
+     # NOTE: to reduce duplication of transitive inputs
+     inputs.nixpkgs.follows = "nixpkgs";
+     inputs.flake-parts.follows = "flake-parts";
+     inputs.agenix.follows = "agenix";
+     inputs.agenix-rekey.follows = "agenix-rekey";
     };
     ukiyo = {
       url = "github:74k1/ukiyo";
@@ -147,6 +152,7 @@
         ./modules/flake/agenix.nix
         ./modules/flake/topology.nix
         ./modules/flake/nixpkgs.nix
+        inputs.rix101.flakeModules.agenix
       ];
 
       debug = true;

@@ -11,6 +11,7 @@ if wezterm.config_builder then
 end
 
 -- font
+-- TODO
 config.font = wezterm.font_with_fallback {
   "TX02 Nerd Font",
   -- "BerkeleyMono Nerd Font Mono",

@@ -3,7 +3,6 @@
   arion = import ./arion;
   atuin = import ./daemons/atuin;
   audiobookshelf = import ./daemons/audiobookshelf;
-  authelia = import ./daemons/authelia;
   commafeed = import ./daemons/commafeed;
   couchdb = import ./daemons/couchdb;
   crowdsec = import ./daemons/crowdsec;

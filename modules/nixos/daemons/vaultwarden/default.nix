@@ -16,7 +16,7 @@
     config = {
       ROCKET_ADDRESS = "0.0.0.0";
       ROCKET_PORT = "8222";
-      DOMAIN = "https://vw.example.com/";
+      DOMAIN = "https://vw.example.com/"; # TODO
       SIGNUPS_ALLOWED = false;
       SIGNUPS_VERIFY = true;
       SENDS_ALLOWED = true;

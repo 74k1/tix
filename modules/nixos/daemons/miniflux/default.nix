@@ -13,7 +13,7 @@
     adminCredentialsFile = config.age.secrets."miniflux_admin".path;
     config = {
       PORT = 8084;
-      BASE_URL = "https://news.example.com/";
+      BASE_URL = "https://news.example.com/"; # TODO
     };
   };
 }

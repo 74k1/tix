@@ -16,7 +16,7 @@ in
         isNormalUser = true;
         description = "taki";
         extraGroups = [ "wheel" "networkmanager" "plex" "user-with-access-to-virtualbox" ];
-        openssh.authorizedKeys.keys = [
+        openssh.authorizedKeys.keys = [ # TODO
           "ssh-ed25519 blabla xyz@xyz" # GPG
           "ssh-rsa blabla xyz@xyz"
         ];

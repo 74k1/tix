@@ -22,7 +22,7 @@ in
   services.kanboard = {
     enable = true;
     package = kanboardWithTheme;
-    domain = "kb.example.com";
+    domain = "kb.example.com"; # TODO
     dataDir = "/mnt/btrfs_pool/kanboard";
     nginx = { };
   };

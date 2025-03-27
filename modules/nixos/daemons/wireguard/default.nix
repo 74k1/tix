@@ -33,7 +33,7 @@
         # privateKeyFile = "/home/taki/wg_private_key_secrets";
         privateKeyFile = config.age.secrets."wireguard_private_key".path;
 
-        peers = [
+        peers = [ # TODO
           { # knights / proxy
             publicKey = "dVVhzsUPOT4ln5v4agYw/MxhIb8frEp74oSEIIadgH0=";
             allowedIPs = [
@@ -62,12 +62,6 @@
             publicKey = "qL6QmOPbBx6Ej7HzNE/HwRo4vPts7EbTfIr/QMBIcyw=";
             allowedIPs = [
               "10.100.0.5/32"
-            ];
-          }
-          { # uhh
-            publicKey = "qTjY9GxMetYXNOVPaWqWDLblP3yPqrMS0WHiUUQ7GQw=";
-            allowedIPs = [
-              "10.100.0.6/32"
             ];
           }
         ];

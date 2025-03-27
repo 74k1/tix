@@ -14,7 +14,7 @@ inputs
     enable = true;
     nginx = {
       enable = true;
-      domain = "it.74k1.sh";
+      domain = "it.74k1.sh"; # TODO
       # forceSSL = false;
       # enableACME = false;
     };

@@ -1,5 +1,6 @@
 { config, lib, pkgs, ... }:
 {
+  # TODO: REMOVE
   services.couchdb = {
     enable = true;
     adminUser = "broaden5289";

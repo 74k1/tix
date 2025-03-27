@@ -46,7 +46,7 @@
       ratio-limit-enabled = true;
       rename-partial-files = true;
       rpc-bind-address = "0.0.0.0";
-      rpc-password = "00000000";
+      rpc-password = "00000000"; # TODO
       rpc-port = 9091;
       rpc-username = "taki";
       rpc-whitelist = "127.0.0.1,192.168.*.*";

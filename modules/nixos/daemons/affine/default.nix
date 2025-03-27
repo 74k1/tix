@@ -44,7 +44,7 @@
             REDIS_SERVER_HOST="redis";
             DATABASE_URL="postgres://affine:affine@affine-postgres:5432/affine";
             NODE_ENV="production";
-            MAILER_SENDER="mail@example.com";
+            MAILER_SENDER="mail@example.com"; # TODO
             AFFINE_SERVER_HOST="forever.example.com";
             AFFINE_SERVER_PORT="";
             AFFINE_SERVER_HTTPS="true";

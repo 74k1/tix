@@ -9,7 +9,7 @@
   services = {
     vikunja = {
       enable = true;
-      frontendHostname = "td.example.com";
+      frontendHostname = "td.example.com"; # TODO
       frontendScheme = "https";
 
       # doesnt exist v
@@ -25,12 +25,11 @@
 
         # mailer = {
         #   enabled = true;
-        #   host = "example.com";
-        #   port = "587";
+        #   host = "example.com"; # TODO
+        #   port = "587"; # TODO
         #   authtype = "plain";
-        #   username = "mail@example.com";
-        #   password = "pass"; # TODO; once secret management is working
-        # do they have file pass?
+        #   username = "mail@example.com"; # TODO
+        #   password = "pass"; # TODO
         # };
       };
     };
