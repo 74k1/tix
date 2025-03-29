@@ -68,9 +68,9 @@
       binds = with config.lib.niri.actions; {
         # Multimedia
         "XF86AudioPlay".action = spawn "${pkgs.playerctl}/bin/playerctl" "play-pause";
-        "XF86AudioPause".action = spawn "${pkgs.playerctl}/bin/playerctl" "pause";
-        "XF86AudioNext".action = spawn "${pkgs.playerctl}/bin/playerctl" "next_track";
-        "XF86AudioPrev".action = spawn "${pkgs.playerctl}/bin/playerctl" "prev_track";
+        "XF86AudioPause".action = spawn "${pkgs.playerctl}/bin/playerctl" "play-pause";
+        "XF86AudioNext".action = spawn "${pkgs.duvolbr}/bin/duvolbr" "next_track";
+        "XF86AudioPrev".action = spawn "${pkgs.duvolbr}/bin/duvolbr" "prev_track";
 
         "XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
 
