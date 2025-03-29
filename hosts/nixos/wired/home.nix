@@ -100,6 +100,7 @@
     # clipit
     wired
     zellij
+    zed-editor
     #zoxide
 
     # gui stuff
