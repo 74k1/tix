@@ -300,6 +300,18 @@
           }
           {
             matches = [
+              {title = "^wired$";}
+            ];
+            open-floating = true;
+            open-focused = false;
+            default-floating-position = {
+              relative-to = "top-right";
+              x = 320;
+              y = 16;
+            };
+          }
+          {
+            matches = [
               {
                 app-id = "firefox$";
                 title = "^Picture-in-Picture$";
