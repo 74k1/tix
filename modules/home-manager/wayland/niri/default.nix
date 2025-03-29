@@ -293,14 +293,8 @@
           }
           {
             matches = [
-              {app-id = "^(zen|firefox|chromium-browser|chrome-.*|zen-.*)$";}
-              {app-id = "^(xdg-desktop-portal-gtk)$";}
-            ];
-            # scroll-factor = 0.1;
-          }
-          {
-            matches = [
-              {app-id = "^(zen|firefox|chromium-browser|edge|chrome-.*|zen-.*)$";}
+              {app-id = "^(zen|zen-.*|firefox|chromium-browser|edge|chrome-.*)$";}
+              {app-id = "^discord$";}
             ];
             open-maximized = true;
           }
