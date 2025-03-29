@@ -182,6 +182,7 @@
 
     # shortwave # radio
     goodvibes
+    plexamp
     newsflash # rss
     hieroglyphic # find latex symbols
 
