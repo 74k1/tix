@@ -20,7 +20,8 @@
       #colors
       git
       jujutsu
-      firefox
+      # firefox
+      zen
       nvim
       picom
       polybar
@@ -85,6 +86,10 @@
     bat
     eza
     feh viu
+    loupe
+    seahorse
+    gnome-calculator
+    
     pulsemixer
     qmk
     ripgrep
@@ -133,7 +138,7 @@
 
     # rustdesk
 
-    nemo
+    nautilus
     nextcloud-client
     fractal
     google-chrome
@@ -145,8 +150,11 @@
     # spotify
     #spotify-tray
     # pkgs.master.spotify-player
+    feishin
     spotify-player
     discord
+    # legcord
+    # vesktop
 
     mpv
     ascii-draw
@@ -181,7 +189,7 @@
 
     telegram-desktop
 
-    inputs.zen-browser.packages."${system}".twilight
+    # inputs.zen-browser.packages."${system}".twilight
 
     # shortwave # radio
     goodvibes
@@ -228,6 +236,8 @@
   home.sessionVariables = {
     SHELL = "${pkgs.zsh}/bin/zsh";
     EDITOR = "nvim";
+    MANPAGER = "nvim +Man!";
+    MANWIDTH = "999";
   };
 
   # set Wall

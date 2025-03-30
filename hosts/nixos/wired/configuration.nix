@@ -25,6 +25,7 @@
     steam
     pcscd
     firefox
+    bash
   ];
 
   # Bootloader.

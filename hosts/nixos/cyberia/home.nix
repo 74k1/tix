@@ -116,7 +116,7 @@
     zui
     brimcap
 
-    nemo
+    nautilus
     fractal
     google-chrome
     qbittorrent
