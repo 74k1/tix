@@ -4,6 +4,7 @@
   cliphist = import ./wayland/cliphist;
   colors = import ./x11/colors;
   firefox = import ./apps/firefox;
+  zen = import ./apps/zen;
   fish = import ./shell/fish;
   ghostty = import ./apps/ghostty;
   jujutsu = import ./shell/jujutsu;
