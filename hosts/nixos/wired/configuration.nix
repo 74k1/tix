@@ -39,6 +39,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  networking.firewall.checkReversePath = "loose";
+
   # HYPRLAND
   programs.hyprland = {
     enable = true;
