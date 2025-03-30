@@ -150,19 +150,21 @@
 
     mpv
     ascii-draw
+    ouch
 
     gnome-keyring
     paper-plane
 
     # akira-unstable
     vala
-    pantheon.elementary-gtk-theme
-    pantheon.elementary-icon-theme
+    # pantheon.elementary-gtk-theme
+    # pantheon.elementary-icon-theme
 
     # polybar
     # ly
     # evolution
     protonvpn-cli_2
+    protonvpn-gui
     # plasticity
     # cura
     # curaengine_stable
