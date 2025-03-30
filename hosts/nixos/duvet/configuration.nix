@@ -158,16 +158,16 @@
             '';
           };
         };
-        # "wall.74k1.sh" = {
-        #   addSSL = true;
-        #   enableACME = true;
-        #   root = "/var/www/wall.74k1.sh/";
-        #   locations."/".index = "index.php";
-        #   locations."~ \\.php$".extraConfig = ''
-        #     fastcgi_pass unix:${config.services.phpfpm.pools.mypool.socket};
-        #     fastcgi_index index.php;
-        #   '';
-        # };
+        "wall.74k1.sh" = {
+          addSSL = true;
+          enableACME = true;
+          root = "/var/www/wall.74k1.sh/";
+          locations."/".index = "index.php";
+          locations."~ \\.php$".extraConfig = ''
+            fastcgi_pass unix:${config.services.phpfpm.pools.mypool.socket};
+            fastcgi_index index.php;
+          '';
+        };
         "74k1.sh" = {
           addSSL = true;
           enableACME = true;
@@ -177,7 +177,7 @@
           addSSL = true;
           enableACME = true;
           root = "/var/www/taki.moe/";
-          # locations."/".index = "index.php";
+          locations."/".index = "index.php index.html index.txt";
           locations."~ \\.php$".extraConfig = ''
             fastcgi_pass unix:${config.services.phpfpm.pools.mypool.socket};
             fastcgi_index index.php;

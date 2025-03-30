@@ -197,20 +197,31 @@
       '';
       
       virtualHosts = {
-        "eiri.74k1.sh" = {
+        "eiri.${allSecrets.global.domain1}" = {
           addSSL = true;
-          enableACME = true;
+          # enableACME = true;
+          useACMEHost = "eiri.${allSecrets.global.domain1}";
           locations."/" = {
             proxyPass = "http://127.0.0.1";
           };
         };
-        # "transmission.eiri.74k1.sh" = {
-        #   addSSL = true;
-        #   enableACME = true;
-        #   locations."/" = {
-        #     proxyPass = "http://127.0.0.1:9091";
-        #   };
-        # };
+        "transmission.eiri.${allSecrets.global.domain1}" = {
+          addSSL = true;
+          # enableACME = true;
+          useACMEHost = "eiri.${allSecrets.global.domain1}";
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:9091";
+            # proxyWebsockets = true;
+          };
+        };
+        "graylog.eiri.${allSecrets.global.domain1}" = {
+          addSSL = true;
+          useACMEHost = "eiri.${allSecrets.global.domain1}";
+          locations."/" = {
+            proxyPass = "http://255.255.255.255:9000";
+            proxyWebsockets = true;
+          };
+        };
       };
     };
   };
@@ -239,14 +250,17 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "${allSecrets.global.mail.acme}";
+    defaults = {
+      email = "${allSecrets.global.mail.acme}";
+      group = "nginx";
+    };
     certs = let 
       inherit (allSecrets.global) domain1;
     in {
       "eiri.${domain1}" = {
         domain = "eiri.${domain1}";
         dnsProvider = "namecheap";
-        dnsPropagationCheck = true;
+        dnsPropagationCheck = false;
         environmentFile = config.age.secrets."namecheap_api_secrets".path;
         # credentialFiles = {
         #   "NAMECHEAP_API_KEY_FILE" = ;
