@@ -3,10 +3,10 @@
   outputs,
   config,
   pkgs,
+  allSecrets,
   ...
 }: {
   imports = [
-    ./slskd.nix
     ../vpnconfinement
   ];
 
@@ -28,6 +28,12 @@
     environmentFile = config.age.secrets."slskd_env".path;
     domain = null;
     settings = {
+      web.authentication.api_keys = {
+        "tubifarry" = {
+          key = "${allSecrets.per_service.slskd.api_key}";
+          cidr = "0.0.0.0/0,::/0";
+        };
+      };
       soulseek = {
         diagnostic_level = "Info";
         # listen_port = 50300; # has to be dynamic. to whatever i get
@@ -54,24 +60,4 @@
     enable = true;
     vpnnamespace = "prsl";
   };
-
-  # systemd.services.slskd-proton-port-forward = {
-  #   description = "ProtonVPN Port Forwarding for Slskd";
-  #   after = ["network-online.target" "proton.service" "slskd.service"];
-  #   requires = ["proton.service" "slskd.service"];
-  #   wantedBy = ["multi-user.target"];
-  #
-  #   vpnconfinement = {
-  #     enable = true;
-  #     vpnnamespace = "proton";
-  #   };
-  #
-  #   script = ''
-  #     while true; do
-  #       ${pkgs.libnatpmp}/bin/natpmpc -g 10.2.0.1 -a 50300 0 tcp 60
-  #       ${pkgs.libnatpmp}/bin/natpmpc -g 10.2.0.1 -a 50300 0 udp 60
-  #       sleep 45
-  #     done
-  #   '';
-  # };
 }

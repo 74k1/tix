@@ -1,5 +1,12 @@
-{ config, lib, pkgs, allSecrets, ...}:
+{ inputs, outputs, config, lib, pkgs, allSecrets, ...}:
 {
+  age.secrets."outline_forgejo_oidc_secret" = {
+    rekeyFile = "${inputs.self}/secrets/outline_forgejo_oidc_secret.age";
+    # mode = "770";
+    # owner = "nextcloud";
+    # group = "nextcloud";
+  };
+
   services.outline = let
     inherit (allSecrets.global) domain0;
   in {
@@ -12,7 +19,7 @@
     };
     oidcAuthentication = {
       clientId = "354e1b80-d919-4596-ac13-0f42aa8a93a6";
-      clientSecretFile = "/var/lib/outline/forgejo"; # TODO
+      clientSecretFile = config.age.secrets."outline_forgejo_oidc_secret".path;
       displayName = "Forgejo";
       authUrl = "https://git.${domain0}/login/oauth/authorize";
       tokenUrl = "https://git.${domain0}/login/oauth/access_token";
