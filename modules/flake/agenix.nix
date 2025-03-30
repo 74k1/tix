@@ -9,7 +9,6 @@
     agenix-rekey.nodes = {
       inherit (self.nixosConfigurations)
         knights
-        duvet
         eiri;
     };
   };
