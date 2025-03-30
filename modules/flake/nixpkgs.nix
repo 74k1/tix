@@ -28,6 +28,10 @@
               } else {
               }))
         ])
+        # NOTE: `tixpkgs` -> `pkgs.tix.*`
+        (_: _: {
+          tix = inputs.tixpkgs.packages.${system};
+        })
       ];
       config = {
         allowUnfree = true;
