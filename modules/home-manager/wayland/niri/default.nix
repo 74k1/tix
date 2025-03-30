@@ -26,13 +26,20 @@
   ];
 
   home.packages = with pkgs; [
+    xdg-desktop-portal
     xdg-desktop-portal-gtk
     xdg-desktop-portal-gnome
+    nautilus
     gnome-keyring
     wofi
     cliphist
     wl-clipboard-rs
     xwayland-satellite
+  ];
+
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gnome
+    pkgs.xdg-desktop-portal-gtk
   ];
 
   programs.niri = let
@@ -63,7 +70,7 @@
         (makeCommand "${pkgs.xwayland-satellite}/bin/xwayland-satellite")
       ];
       clipboard.disable-primary = true;
-      # hotkey-overlay.skip-at-startup = true;
+      hotkey-overlay.skip-at-startup = false;
       # screenshot-path = "~/%Y%m%d%H%M%S_Screenshot.png";
       binds = with config.lib.niri.actions; {
         # Multimedia
@@ -86,21 +93,27 @@
         "Mod+R" = { repeat = false; action = spawn "${pkgs.wofi}/bin/wofi" "--show" "drun"; };
         "Mod+Space" = { repeat = false; action = spawn "${pkgs.wofi}/bin/wofi" "--show" "drun"; };
 
-        "Mod+V" = { repeat = false; action = spawn "${pkgs.cliphist}/bin/cliphist" "list" "|" "${pkgs.wofi}/bin/wofi" "-dmenu" "|" "${pkgs.cliphist}/bin/cliphist" "decode" "|" "${pkgs.wl-clipboard-rs}/bin/wl-copy"; };
+        "Mod+V" = { repeat = false; action = spawn "sh" "-c" "${pkgs.cliphist}/bin/cliphist list | ${pkgs.wofi}/bin/wofi -dmenu | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard-rs}/bin/wl-copy"; };
 
-        "Print" = { repeat = false; action = spawn "${pkgs.sway-contrib.grimshot}/bin/grimshot" "--notify" "--cursor" "copy" "area"; };
-        "Mod+Shift+S" = { repeat = false; action = spawn "${pkgs.sway-contrib.grimshot}/bin/grimshot" "--notify" "--cursor" "copy" "area"; };
+        "Print" = { repeat = false; action = spawn "${pkgs.wayfreeze}/bin/wayfreeze" "--after-freeze-cmd" "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area; ${pkgs.killall}/bin/killall wayfreeze"; };
+        "Mod+Shift+S" = { repeat = false; action = spawn "${pkgs.wayfreeze}/bin/wayfreeze" "--after-freeze-cmd" "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area; ${pkgs.killall}/bin/killall wayfreeze"; };
 
         "Mod+E" = { repeat = false; action = spawn "${pkgs.nemo}/bin/nemo"; };
         "Mod+N" = { repeat = false; action = spawn "${pkgs.nemo}/bin/nemo"; };
 
-        "Ctrl+Alt+L" = { repeat = false; action = spawn "sh -c pgrep hyprlock || hyprlock"; };
+        "Ctrl+Alt+L" = { repeat = false; action = spawn "sh" "-c" "pgrep hyprlock || ${pkgs.hyprlock}/bin/hyprlock"; };
 
         "Mod+C" = { repeat = false; action = close-window; };
         "Mod+S".action = switch-preset-column-width;
         "Mod+F".action = maximize-column;
-        # "Mod+Shift+F".action = fullscreen-window;
+        "Mod+Shift+F".action = fullscreen-window;
         "Mod+W".action = toggle-column-tabbed-display;
+
+        # "Mod+Minus".action = set-column-width "-10%";
+        # "Mod+Equal".action = set-column-width "+10%";
+
+        # "Mod+Shift+Minus".action = set-column-height "-10%";
+        # "Mod+Shift+Equal".action = set-column-height "+10%";
 
         "Mod+Comma".action = consume-window-into-column;
         "Mod+Period".action = expel-window-from-column;
@@ -126,6 +139,11 @@
         "Mod+Shift+Down".action = move-column-to-workspace-down;
         "Mod+Shift+Up".action = move-column-to-workspace-up;
         "Mod+Shift+Right".action = move-column-right-or-to-monitor-right;
+
+        "Mod+WheelScrollLeft".action = focus-column-left;
+        "Mod+WheelScrollDown".action = focus-workspace-down;
+        "Mod+WheelScrollUp".action = focus-workspace-up;
+        "Mod+WheelScrollRight".action = focus-column-right;
         
         "Mod+1".action.focus-workspace = 1;
         "Mod+2".action.focus-workspace = 2;
