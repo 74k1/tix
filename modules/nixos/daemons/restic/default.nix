@@ -14,7 +14,7 @@
       initialize = true;
       passwordFile = config.age.secrets."restic_password".path;
       paths = [
-        "/home/taki/minecraft/world"
+        "/home/taki/minecraft"
       ];
       repository = "/home/taki/minecraft_backup";
       timerConfig = {
