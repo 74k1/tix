@@ -186,14 +186,14 @@
           addSSL = true;
           enableACME = true;
           locations."/" = {
-            proxyPass = "http://10.100.0.1:80"; # local nginx
+            proxyPass = "http://10.100.0.1:80"; # nginx based on url
           };
         };
         "send.74k1.sh" = {
           addSSL = true;
           enableACME = true;
           locations."/" = {
-            proxyPass = "http://10.100.0.1:1444"; # local nginx
+            proxyPass = "http://10.100.0.1:1444";
           };
         };
         "umami.74k1.sh" = {
@@ -230,7 +230,7 @@
           enableACME = true;
           forceSSL = true;
           locations."/" = {
-            proxyPass = "http://10.100.0.1:80"; # local nginx
+            proxyPass = "http://10.100.0.1:80"; # nginx based on url
             # extraConfig = ''
             #   proxy_set_header Host $host;
             #   proxy_set_header X-Real-IP $remote_addr;
