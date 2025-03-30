@@ -6,8 +6,6 @@
     zoxide
   ];
 
-  # age.secrets.test_secret.file = secrets/secret_test.age;
-  
   programs = {
     zoxide = {
       enable = true;
@@ -38,6 +36,7 @@
       enable = true;
 
       enableCompletion = true;
+      enableVteIntegration = true;
 
       shellAliases = {
         ":q" = "exit";
@@ -57,6 +56,7 @@
         tree = "${pkgs.eza}/bin/eza --tree --icons";
         jo = "${pkgs.joshuto}/bin/joshuto";
         # scrot = "${pkgs.shotgun}/bin/shotgun $(${pkgs.slop}/bin/slop -l -c 0.3,0.4,0.6,0.4 -f '-i %i -g %g') - | xclip -t 'image/png' -selection clipboard";
+        ycr = "youcannotrebuild";
       };
 
       # history = {
@@ -70,7 +70,7 @@
       initExtra = ''
         export ATUIN_NOBIND="true"
         eval "$(${pkgs.atuin}/bin/atuin init bash)"
-        # bindkey '^r' _atuin_search_widget
+        bindkey '^r' _atuin_search_widget
         # eval "$(${pkgs.zoxide}/bin/zoxide init --cmd y bash)"
         
         # eva reference :^)
@@ -102,22 +102,38 @@
           exit_code=$?
           case "$exit_code" in
             # regular exit
-         	  0)
-         	    ;;
-         	  # output contains current directory
-         	  101)
-         	    JOSHUTO_CWD=$(cat "$OUTPUT_FILE")
-         	    cd "$JOSHUTO_CWD"
-         	    ;;
-         	  # output selected files
-         	  102)
-         	    ;;
-         	  *)
-         	    echo "Exit code: $exit_code"
-         	    ;;
-         	esac
+            0)
+              ;;
+            # output contains current directory
+            101)
+              JOSHUTO_CWD=$(cat "$OUTPUT_FILE")
+              cd "$JOSHUTO_CWD"
+              ;;
+            # output selected files
+            102)
+              ;;
+            *)
+              echo "Exit code: $exit_code"
+              ;;
+          esac
         }
+
+        function fish_complete() {
+          local cmd="$1"
+          shift
+          fish -c 
+        }
+
+        function _fish_completion() {
+          local IFS=$'\n'
+          local COMP_WORDS_ESCAPED
+          COMP_WORDS_ESCAPED=$(printf "%q " "''${COMP_WORDS[@]}")
+          COMPREPLY=($(fish_complete "''${COMP_WORDS[0]}" ''${COMP_WORDS_ESCAPED}))
+        }
+
+        complete -F _fish_completion -o default -o bashdefault $(compgen -c)
       '';
+
 
       # plugins = [
       #   {

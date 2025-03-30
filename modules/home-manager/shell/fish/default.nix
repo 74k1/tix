@@ -35,7 +35,7 @@
       ":q" = "exit";
       cat = "${pkgs.bat}/bin/bat";
       cp = "cp -iv";
-      fetch = "${pkgs.neofetch}/bin/neofetch";
+      fetch = "${pkgs.fastfetch}/bin/fastfetch";
       la = "${pkgs.eza}/bin/eza -a --icons=auto";
       ll = "${pkgs.eza}/bin/eza -l --icons=auto";
       ls = "${pkgs.eza}/bin/eza --icons=auto";
