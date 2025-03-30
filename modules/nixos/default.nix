@@ -3,11 +3,13 @@
   arion = import ./arion;
   atuin = import ./daemons/atuin;
   audiobookshelf = import ./daemons/audiobookshelf;
+  bash = import ./shell/bash;
   commafeed = import ./daemons/commafeed;
   couchdb = import ./daemons/couchdb;
   crowdsec = import ./daemons/crowdsec;
   crowdsec-bouncer = import ./daemons/crowdsec-bouncer;
   docmost = import ./daemons/docmost;
+  navidrome = import ./daemons/navidrome;
   fail2ban = import ./daemons/fail2ban;
   filestash = import ./daemons/filestash;
   firefox = import ./apps/firefox;
