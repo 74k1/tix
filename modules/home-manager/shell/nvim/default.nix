@@ -4,8 +4,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "74k1";
       repo = "tsukiyo.nvim";
-      rev = "814860e55aa8f68293be33b19d54a2cebf3c80e9";
-      hash = "sha256-l0JF3rim5XacdFp/ywtHaXCxvb/MH49jkaPHrdBojcs=";
+      rev = "69169daf4ecd8a4932c4bf87a5292cf00dcee914";
+      hash = "sha256-rH3wAgoTTTF3NdPhHgQpwDw+7vbbl7BSw12LtctJsoY=";
     };
   };
   nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -13,19 +13,19 @@
     src = pkgs.fetchFromGitHub {
       owner = "reo101";
       repo = "nix-update.nvim";
-      rev = "fcb5a3c6806fc205fcd978213926566c003b7d27";
-      hash = "sha256-7aUoe5k0imn8TYEwmMaT8nmy3EK/MBtz/uwxmx4KGMQ=";
+      rev = "6d21b62b08ae483798855d5bf5cb7b78b78e3bad";
+      hash = "sha256-Ld3Tmkc3k8jSY40z+9Em8M1rDSVz7lnll60KMJb22JQ=";
     };
   };
-  let-it-snow-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "let-it-snow-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "marcussimonsen";
-      repo = "let-it-snow.nvim";
-      rev = "823511ad1b0d36e44f9c5e2418892e7438f23a41";
-      hash = "sha256-9fDgVzzrLBoITdIFMva4EpopG+IV1Y5imw9j3gBPVzk=";
-    };
-  };
+  # let-it-snow-nvim = pkgs.vimUtils.buildVimPlugin {
+  #   name = "let-it-snow-nvim";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "marcussimonsen";
+  #     repo = "let-it-snow.nvim";
+  #     rev = "823511ad1b0d36e44f9c5e2418892e7438f23a41";
+  #     hash = "sha256-9fDgVzzrLBoITdIFMva4EpopG+IV1Y5imw9j3gBPVzk=";
+  #   };
+  # };
   hmts-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "hmts-nvim";
     src = pkgs.fetchFromGitHub {
@@ -44,15 +44,15 @@
   #     sha256 = "sha256-6nFzUchDQIvaTOv4lZ10q66m/ntU3dgVnlfBRodW+0Y=";
   #   };
   # };
-  indentmini-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "indentmini-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "nvimdev";
-      repo = "indentmini.nvim";
-      rev = "59c2be5387e3a3308bb43f07e7e39fde0628bd4d";
-      hash = "sha256-RtNPlILvlEyIFfDK8NTq8LPZR5vIl6uBxeE3vftUS6g=";
-    };
-  };
+  # indentmini-nvim = pkgs.vimUtils.buildVimPlugin {
+  #   name = "indentmini-nvim";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "nvimdev";
+  #     repo = "indentmini.nvim";
+  #     rev = "59c2be5387e3a3308bb43f07e7e39fde0628bd4d";
+  #     hash = "sha256-RtNPlILvlEyIFfDK8NTq8LPZR5vIl6uBxeE3vftUS6g=";
+  #   };
+  # };
 in {
   imports = [];
 
@@ -157,6 +157,37 @@ in {
           '';
       }
       {
+        plugin = mini-indentscope;
+        type = "lua";
+        config =
+          /*
+          lua
+          */
+          ''
+          require("mini.indentscope").setup({
+            draw = {
+              delay = 0,
+              animation = require("mini.indentscope").gen_animation.none()
+            },
+            options = {
+              try_as_border = true
+            },
+            symbol = "│"
+          })
+          '';
+      }
+      {
+        plugin = mini-fuzzy;
+        type = "lua";
+        config =
+          /*
+          lua
+          */
+          ''
+          require("mini.fuzzy").setup()
+          '';
+      }
+      {
         plugin = mini-diff;
         type = "lua";
         config =
@@ -172,17 +203,17 @@ in {
         type = "lua";
         config = builtins.readFile ./cfg/TSconfig.lua;
       }
-      {
-        plugin = let-it-snow-nvim;
-        type = "lua";
-        config =
-          /*
-          lua
-          */
-          ''
-            require('let-it-snow').setup({delay = 50})
-          '';
-      }
+      # {
+      #   plugin = let-it-snow-nvim;
+      #   type = "lua";
+      #   config =
+      #     /*
+      #     lua
+      #     */
+      #     ''
+      #       require('let-it-snow').setup({delay = 50})
+      #     '';
+      # }
       # {
       #   plugin = copilot-cmp;
       #   type = "lua";
@@ -213,11 +244,11 @@ in {
         type = "lua";
         config = builtins.readFile ./cfg/fidget.lua;
       }
-      {
-        plugin = indentmini-nvim;
-        type = "lua";
-        config = builtins.readFile ./cfg/indentmini.lua;
-      }
+      # {
+      #   plugin = indentmini-nvim;
+      #   type = "lua";
+      #   config = builtins.readFile ./cfg/indentmini.lua;
+      # }
       {
         plugin = oil-nvim;
         type = "lua";
