@@ -70,8 +70,8 @@ in
         ", Print, exec, ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area"
 
         # apps?
-        "$mod, e, exec, ${pkgs.nemo}/bin/nemo"
-        "$mod, n, exec, ${pkgs.nemo}/bin/nemo"
+        "$mod, e, exec, ${pkgs.nautilus}/bin/nautilus"
+        "$mod, n, exec, ${pkgs.nautilus}/bin/nautilus"
         "$mod, w, exec, ${pkgs.brave}/bin/brave"
 
         # multimedia

@@ -42,6 +42,11 @@
     pkgs.xdg-desktop-portal-gtk
   ];
 
+  services.swww = {
+    enable = true;
+    package = pkgs.swww;
+  };
+
   programs.niri = let
     makeCommand = command: {
       command = [command];
@@ -98,8 +103,8 @@
         "Print" = { repeat = false; action = spawn "${pkgs.wayfreeze}/bin/wayfreeze" "--after-freeze-cmd" "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area; ${pkgs.killall}/bin/killall wayfreeze"; };
         "Mod+Shift+S" = { repeat = false; action = spawn "${pkgs.wayfreeze}/bin/wayfreeze" "--after-freeze-cmd" "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area; ${pkgs.killall}/bin/killall wayfreeze"; };
 
-        "Mod+E" = { repeat = false; action = spawn "${pkgs.nemo}/bin/nemo"; };
-        "Mod+N" = { repeat = false; action = spawn "${pkgs.nemo}/bin/nemo"; };
+        "Mod+E" = { repeat = false; action = spawn "${pkgs.nautilus}/bin/nautilus"; };
+        "Mod+N" = { repeat = false; action = spawn "${pkgs.nautilus}/bin/nautilus"; };
 
         "Ctrl+Alt+L" = { repeat = false; action = spawn "sh" "-c" "pgrep hyprlock || ${pkgs.hyprlock}/bin/hyprlock"; };
 

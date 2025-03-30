@@ -44,7 +44,7 @@
 
           # Apps
           "Super Return" = "spawn ${pkgs.ghostty}/bin/ghostty";
-          "Super N" = "spawn ${pkgs.nemo}/bin/nemo";
+          "Super N" = "spawn ${pkgs.nautilus}/bin/nautilus";
           "Super W" = "spawn ${inputs.zen-browser.packages."${pkgs.system}".default}/bin/zen";
 
           # Multimedia
