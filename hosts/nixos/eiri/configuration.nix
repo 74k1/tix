@@ -64,6 +64,7 @@
     # atuin
     outline
     plex
+    navidrome 
     # send
     servarr
     taki
@@ -131,7 +132,7 @@
     btop
     docker-compose
     fastfetch
-    jdk17
+    jdk21
   ];
 
   # Services
