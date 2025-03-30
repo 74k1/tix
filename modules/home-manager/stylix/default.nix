@@ -1,7 +1,12 @@
-{ inputs, config, lib, pkgs, ... }:
-let
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   cfg = config.theme.ukiyo;
-  berkeley-otf = pkgs.callPackage "${inputs.self}/pkgs/berkeley-otf.nix" { inherit pkgs; };
+  berkeley-otf = pkgs.callPackage "${inputs.self}/pkgs/berkeley-otf.nix" {inherit pkgs;};
 in {
   options = {
     theme.ukiyo = {
@@ -11,35 +16,41 @@ in {
       };
     };
   };
-  
+
   config = {
     stylix = {
       enable = true;
-      # image = "${inputs.self}/modules/home-manager/stylix/wall.png";
-      image = ./wall.png;
+      polarity = "dark";
+      # image = ./wall.png;
+      image = pkgs.fetchurl {
+        url = "https://upload.wikimedia.org/wikipedia/commons/0/07/Johan_Christian_Dahl_-_View_of_Dresden_by_Moonlight_-_Google_Art_Project.jpg";
+        name = "wallpaper.jpg";
+        hash = "sha256-MjBzldNqNQa1aPoxUPyimovl+YSA4m74Dx7MIsswxtU=";
+      };
       cursor = {
         size = 16;
         package = cfg.package;
         name = "Ukiyo";
       };
       base16Scheme = {
-        base00 = "08040C";
-        base01 = "403B45";
-        base02 = "5F5A65";
-        base03 = "76707C";
-        base04 = "8D8893";
-        base05 = "A09BA6";
-        base06 = "BEBAC2";
-        base07 = "F6F6F6";
-        base08 = "FF2465";
-        base09 = "FFB066";
-        base0A = "FFE16E";
-        base0B = "22EF92";
-        base0C = "46DAF8";
-        base0D = "5767FF";
-        base0E = "B366FF";
-        base0F = "EB52FF";
+        base00 = "#06040D";
+        base01 = "#0B0814";
+        base02 = "#211B36";
+        base03 = "#292242";
+        base04 = "#D2D2E0";
+        base05 = "#E1E1ED";
+        base06 = "#C8C3D9";
+        base07 = "#D8D1E6";
+        base08 = "#FF5487";
+        base09 = "#FFB066";
+        base0A = "#FFE375";
+        base0B = "#54FF80";
+        base0C = "#816BFF";
+        base0D = "#816BFF";
+        base0E = "#4CCEFE";
+        base0F = "#EB6AFF";
       };
+
       fonts = {
         # serif = {
         #   package = pkgs.dejavu_fonts;
@@ -61,31 +72,31 @@ in {
           name = "Twemoji";
         };
       };
-      autoEnable = true; # false;
+
+      autoEnable = true;
+
       targets = {
         spicetify.enable = false;
         firefox.profileNames = [ "taki" ];
+        tmux.enable = false;
+        gnome.enable = true;
+        gtk = {
+          enable = true;
+          extraCss = /* css */ ''
+            // Remove rounded corners
+            window.background { border-radius: 0; }
+          '';
+        };
+        neovim = {
+          enable = false;
+          transparentBackground = {
+            main = true;
+            signColumn = true;
+          };
+        };
+        yazi.enable = false;
+        zathura.enable = false;
       };
-      # target = {
-      #   tmux.enable = false;
-      #   gnome.enable = true;
-      #   gtk = {
-      #     enable = true;
-      #     extraCss = ''
-      #       // Remove rounded corners
-      #       window.background { border-radius: 0; }
-      #     '';
-      #   };
-      #   neovim = {
-      #     enable = false;
-      #     transparentBackground = {
-      #       main = true;
-      #       signColumn = true;
-      #     };
-      #   };
-      #   yazi.enable = false;
-      #   zathura.enable = false;
-      # };
     };
   };
 }
