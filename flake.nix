@@ -99,12 +99,12 @@
       url = "github:misterio77/nix-colors";
     };
     rix101 = {
-     url = "github:reo101/rix101";
-     # NOTE: to reduce duplication of transitive inputs
-     inputs.nixpkgs.follows = "nixpkgs";
-     inputs.flake-parts.follows = "flake-parts";
-     inputs.agenix.follows = "agenix";
-     inputs.agenix-rekey.follows = "agenix-rekey";
+      url = "github:reo101/rix101";
+      # NOTE: to reduce duplication of transitive inputs
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.agenix.follows = "agenix";
+      inputs.agenix-rekey.follows = "agenix-rekey";
     };
     ukiyo = {
       url = "github:74k1/ukiyo";
@@ -118,6 +118,12 @@
     vpnconfinement = {
       url = "github:Maroka-chan/VPN-Confinement";
       # url = "github:74k1/VPN-Confinement";
+    };
+    ouro = {
+      url = "git+file:///home/taki/dev/ouro";
+      # url = "github:reo101/ouro";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
