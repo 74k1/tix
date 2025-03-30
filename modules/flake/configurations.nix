@@ -1,42 +1,64 @@
-{ lib, config, self, inputs, withSystem, ... }:
-
-let
+{
+  lib,
+  config,
+  self,
+  inputs,
+  withSystem,
+  allSecrets,
+  ...
+}: let
+  # TODO: document why (ask pavel)
+  lib = config._module.args.lib;
   outputs = self;
 
-  mkNixosHost = hostname: { system, home-manager ? true }: lib.nixosSystem {
-    inherit system;
-    # the `perSystem` function gives you access to the shit inside the `perSystem` blocks
-    pkgs = withSystem system ({ pkgs, ... }: pkgs);
-    modules = [
-      # Main config
-      "${inputs.self}/hosts/nixos/${hostname}/configuration.nix"
-      # nix-topology
-      inputs.nix-topology.nixosModules.default
-    ] ++ lib.optionals home-manager [
-      # Home Manager
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          # Use same `pkgs` as the NixOS above
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          users.taki = import "${inputs.self}/hosts/nixos/${hostname}/home.nix";
-          extraSpecialArgs = {
-            inherit inputs outputs;
-          };
-          backupFileExtension = "backup";
-        };
-      }
-    ];
-    specialArgs = {
-      inherit inputs outputs;
-    };
-  };
+  allSecrets =
+    lib.rageImportEncrypted ../../secrets/secrets.nix.age;
 
-  mkDeployNode = { hostname, system }: {
+  mkNixosHost = hostname: {
+    system,
+    home-manager ? true,
+  }:
+    lib.nixosSystem {
+      inherit system;
+      # the `perSystem` function gives you access to the shit inside the `perSystem` blocks
+      pkgs = withSystem system ({pkgs, ...}: pkgs);
+      modules =
+        [
+          # Main config
+          "${inputs.self}/hosts/nixos/${hostname}/configuration.nix"
+          # nix-topology
+          inputs.nix-topology.nixosModules.default
+        ]
+        ++ lib.optionals home-manager [
+          # Home Manager
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              # Use same `pkgs` as the NixOS above
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.taki = import "${inputs.self}/hosts/nixos/${hostname}/home.nix";
+              extraSpecialArgs = {
+                inherit inputs outputs;
+              };
+              backupFileExtension = "backup";
+            };
+          }
+        ];
+      specialArgs = {
+        inherit inputs outputs;
+        inherit allSecrets;
+        inherit lib;
+      };
+    };
+
+  mkDeployNode = {
+    hostname,
+    system,
+  }: {
     # NOTE: to be overridden
     hostname = null;
-    sshOpts = [ "-p" "22" ];
+    sshOpts = ["-p" "22"];
     sshUser = "taki";
     user = "root";
     interactiveSudo = true;
@@ -48,10 +70,10 @@ let
       path = inputs.deploy-rs.lib.${system}.activate.nixos self.nixosConfigurations.${hostname};
     };
   };
-in
-{
+in {
   flake = {
-    nixosConfigurations = lib.flip lib.pipe
+    nixosConfigurations =
+      lib.flip lib.pipe
       [
         (builtins.mapAttrs mkNixosHost)
       ]
@@ -83,45 +105,39 @@ in
         };
       };
 
-    deploy.nodes = lib.flip lib.pipe
+    deploy.nodes =
+      lib.flip lib.pipe
       [
         (builtins.mapAttrs
           (hostname: settings:
             mkDeployNode {
               inherit hostname;
               inherit (self.nixosConfigurations.${hostname}.pkgs) system;
-            } // settings))
+            }
+            // settings))
       ]
       {
         eiri = {
           # should change this to 10.0.0.1 someday, when i have wg on cyberia
           # but how do I deploy from wired
-          hostname = "255.255.255.255"; # TODO
+          hostname = "${allSecrets.per_host.eiri.int_ip}";
         };
         knights = {
-          # hostname = "example.com";
-          hostname = "255.255.255.255"; # TODO
-          sshOpts = [ "-p" "2202" ];
-        };
-        morpheus = {
-          # temporarily
-          hostname = "192.168.1.61"; # TODO
-          # important, weak device
-          remoteBuild = false;
+          hostname = "${allSecrets.per_host.knights.pub_ip}";
+          sshOpts = ["-p" "2202"];
         };
         octo = {
-          # temporarily
-          hostname = "255.255.255.255"; # TODO
+          # temporarily ?
+          hostname = "${allSecrets.per_host.octo.int_ip}";
           # important, weak device
           remoteBuild = false;
         };
         duvet = {
-          hostname = "taki.moe"; # TODO
-          sshOpts = [ "-p" "2202" ];
+          hostname = "${allSecrets.per_host.duvet.pub_ip}";
+          sshOpts = ["-p" "2202"];
         };
         cyberia = {
-          # hostname = "example.com";
-          hostname = "255.255.255.255"; # TODO
+          hostname = "${allSecrets.per_host.cyberia.int_ip}";
           # sshOpts = [ "-p" "2202" ];
         };
       };

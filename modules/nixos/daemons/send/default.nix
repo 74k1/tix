@@ -1,4 +1,4 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
 {
   # imports = [
   #   "${inputs.nixpkgs-master}/nixos/modules/services/web-servers/send.nix"
@@ -9,7 +9,7 @@
     host = "0.0.0.0";
     port = 1444;
     environment = {
-      "BASE_URL" = "https://send.74k1.sh/"; # TODO
+      "BASE_URL" = "https://send.${allSecrets.global.domain1}/";
       "MAX_FILE_SIZE" = "10737418240"; # 10GB
       "MAX_EXPIRE_SECONDS" = 60 * 60 * 24 * 7; # 7 days
       "DEFAULT_EXPIRE_SECONDS" = 60 * 60 * 24 * 1; # 1 day

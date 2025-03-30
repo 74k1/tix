@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 {
   nix = {
-    package = pkgs.nixVersions.stable;
+    package = inputs.rix101.packages.${pkgs.hostPlatform.system}.nix-enraged;
 
     # Enable flakes, the new `nix` commands and better support for flakes in it
     extraOptions = ''

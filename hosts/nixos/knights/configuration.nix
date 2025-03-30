@@ -1,4 +1,4 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
 {
   age.secrets."knights_wireguard_private_key" = {
     rekeyFile = "${inputs.self}/secrets/knights_wireguard_private_key.age";
@@ -61,7 +61,7 @@
           {
             publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
             allowedIPs = [ "10.100.0.1" ];
-            endpoint = "example.com:51820"; # TODO
+            endpoint = "${allSecrets.global.pub_ip}:51820";
             persistentKeepalive = 25;
           }
         ];
@@ -179,34 +179,36 @@
         }
       '';
 
-      virtualHosts = {
-        "it.74k1.sh" = { # TODO
+      virtualHosts = let
+        inherit (allSecrets.global) domain0;
+      in {
+        "it.74k1.sh" = {
           addSSL = true;
           enableACME = true;
           locations."/" = {
             proxyPass = "http://10.100.0.1:80"; # local nginx
           };
         };
-        "send.74k1.sh" = { # TODO
+        "send.74k1.sh" = {
           addSSL = true;
           enableACME = true;
           locations."/" = {
             proxyPass = "http://10.100.0.1:1444"; # local nginx
           };
         };
-        "umami.74k1.sh" = { # TODO
+        "umami.74k1.sh" = {
           addSSL = true;
           enableACME = true;
           locations."/" = {
             proxyPass = "http://10.100.0.1:3034";
           };
         };
-        "example.com" = { # TODO
+        "${domain0}" = {
           addSSL = true;
           enableACME = true;
           root = "/var/www/example.com/";
         };
-        "vw.example.com" = { # TODO
+        "vw.${domain0}" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -214,7 +216,7 @@
             proxyWebsockets = true;
           };
         };
-        "td.example.com" = { # TODO
+        "td.${domain0}" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -224,7 +226,7 @@
             '';
           };
         };
-        "kb.example.com" = { # TODO
+        "kb.${domain0}" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -237,21 +239,21 @@
             # '';
           };
         };
-        # "mc.example.com" = { # TODO
+        # "mc.${domain0}" = {
         #   enableACME = true;
         #   forceSSL = true;
         #   locations."/" = {
         #     proxyPass = "http://10.100.0.1:8123";
         #   };
         # };
-        # "ls.example.com" = { # TODO
+        # "ls.${domain0}" = {
         #   enableACME = true;
         #   forceSSL = true;
         #   locations."/" = {
         #     proxyPass = "http://10.100.0.1:5544";
         #   };
         # };
-        "git.example.com" = { # TODO
+        "git.${domain0}" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -268,14 +270,14 @@
             '';
           };
         };
-        "news.example.com" = { # TODO
+        "news.${domain0}" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
             proxyPass = "http://10.100.0.1:8084";
           };
         };
-        "files.example.com" = { # TODO
+        "files.${domain0}" = {
           enableACME = true;
           forceSSL = true;
           locations = {
@@ -294,7 +296,7 @@
             # };
           };
         };
-        "immich.example.com" = { # TODO
+        "immich.${domain0}" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -317,14 +319,14 @@
             '';
           };
         };
-        # "n8n.example.com" = {
+        # "n8n.${domain0}" = {
         #   enableACME = true;
         #   forceSSL = true;
         #   locations."/" = {
         #     proxyPass = "http://10.100.0.1:5678"
         #   };
         # };
-        "links.example.com" = { # TODO
+        "links.${domain0}" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -336,7 +338,7 @@
             '';
           };
         };
-        "forever.example.com" = { # TODO
+        "forever.${domain0}" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -348,7 +350,7 @@
             '';
           };
         };
-        # "firefoxsync.example.com" = {
+        # "firefoxsync.${domain0}" = {
         #   enableACME = true;
         #   forceSSL = true;
         #   locations."/" = {
@@ -366,7 +368,7 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "mail@example.com"; # TODO
+    defaults.email = "${allSecrets.global.mail.acme}";
   };
 
   # Open ports in the firewall.

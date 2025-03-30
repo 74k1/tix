@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, outputs, ... }:
+{ config, pkgs, inputs, outputs, allSecrets, ... }:
 {
   age.secrets."nextcloud_admin" = {
     rekeyFile = "${inputs.self}/secrets/nextcloud_admin.age";
@@ -14,7 +14,7 @@
     #   inherit (config.services.nextcloud.package.packages.apps) contacts calendar onlyoffice;
     # };
     extraAppsEnable = true;
-    hostName = "files.example.com"; # TODO
+    hostName = "files.${allSecrets.global.domain0}";
     home = "/mnt/btrfs_pool/nextcloud_data";
     configureRedis = true;
     autoUpdateApps.enable = true;

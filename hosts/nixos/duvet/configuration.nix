@@ -1,4 +1,4 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
 {
   # See [NixOS on Hetzner Cloud Wiki](https://wiki.nixos.org/wiki/Install_NixOS_on_Hetzner_Cloud)
 
@@ -105,8 +105,7 @@
     crowdsec-firewall-bouncer = {
       settings = {
         api.server = {
-          # SECRET / TODO
-          api_key = "00000000";
+          api_key = "${allSecrets.per_host.duvet.crowdsec.api_key}";
         };
       };
     };
@@ -190,7 +189,7 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "mail@example.com"; # TODO
+    defaults.email = "${allSecrets.global.mail.acme}";
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,

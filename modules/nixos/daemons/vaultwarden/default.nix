@@ -1,4 +1,4 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
 {
   age.secrets."vaultwarden_secret" = {
     rekeyFile = "${inputs.self}/secrets/vaultwarden_secret.age";
@@ -16,7 +16,7 @@
     config = {
       ROCKET_ADDRESS = "0.0.0.0";
       ROCKET_PORT = "8222";
-      DOMAIN = "https://vw.example.com/"; # TODO
+      DOMAIN = "https://vw.${allSecrets.global.domain0}/";
       SIGNUPS_ALLOWED = false;
       SIGNUPS_VERIFY = true;
       SENDS_ALLOWED = true;

@@ -1,4 +1,4 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
 {
   age.secrets."forgejo_runner_token" = {
     rekeyFile = "${inputs.self}/secrets/forgejo_runer_token.age";
@@ -18,11 +18,11 @@
           ENABLE_REVERSE_PROXY_AUTHENTICATION = true;
         };
         server = {
-          DOMAIN = "git.example.com"; # TODO
-          ROOT_URL = "https://git.example.com/"; # TODO
+          DOMAIN = "git.${allSecrets.global.domain0}";
+          ROOT_URL = "https://git.${allSecrets.global.domain0}/";
           SSH_PORT = 2277;
           START_SSH_SERVER = true;
-          SSH_DOMAIN = "git.example.com"; # TODO
+          SSH_DOMAIN = "git.${allSecrets.global.domain0}";
           SSH_SERVER_USE_PROXY_PROTOCOL = true;
         };
         actions = {
@@ -38,7 +38,7 @@
     #   instances.default = {
     #     enable = true;
     #     name = "monolith";
-    #     url = "https://git.example.com"; # TODO
+    #     url = "https://git.${allSecrets.global.domain0}";
     #     #tokenFile = "/tmp/forgejo-runner-token";
     #     tokenFile = config.age.secrets."forgejo_runner_token".path;
     #     labels = [

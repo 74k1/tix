@@ -4,6 +4,7 @@
   pkgs,
   inputs,
   outputs,
+  allSecrets,
   ...
 }: {
   # send logs to 255.255.255.255:1515 :)
@@ -15,8 +16,8 @@
         http_bind_address = 0.0.0.0:9000
       '';
       elasticsearchHosts = [ "http://127.0.0.1:9200" ];
-      passwordSecret = "00000000"; # pwgen -N 1 -s 96 # TODO
-      rootPasswordSha2 = "00000000"; # TODO
+      passwordSecret = "${allSecrets.per_service.graylog.passwordSecret}"; # pwgen -N 1 -s 96
+      rootPasswordSha2 = "${allSecrets.per_service.graylog.rootPasswordSha2}";
     };
     mongodb = {
       enable = true;

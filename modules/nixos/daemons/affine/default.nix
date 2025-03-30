@@ -1,4 +1,4 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
 {
   age.secrets."affine_secret" = {
     rekeyFile = "${inputs.self}/secrets/affine_secret.age";
@@ -44,8 +44,8 @@
             REDIS_SERVER_HOST="redis";
             DATABASE_URL="postgres://affine:affine@affine-postgres:5432/affine";
             NODE_ENV="production";
-            MAILER_SENDER="mail@example.com"; # TODO
-            AFFINE_SERVER_HOST="forever.example.com";
+            MAILER_SENDER="${allSecrets.global.mail.sender.username}";
+            AFFINE_SERVER_HOST="forever.${allSecrets.global.domain0}";
             AFFINE_SERVER_PORT="";
             AFFINE_SERVER_HTTPS="true";
             # AFFINE_ADMIN_EMAIL=${AFFINE_ADMIN_EMAIL};

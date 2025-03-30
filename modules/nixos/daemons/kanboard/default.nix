@@ -1,4 +1,4 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
 let
   themeRevision = pkgs.fetchFromGitHub {
     owner = "greyaz";
@@ -22,7 +22,7 @@ in
   services.kanboard = {
     enable = true;
     package = kanboardWithTheme;
-    domain = "kb.example.com"; # TODO
+    domain = "kb.${allSecrets.global.domain0}";
     dataDir = "/mnt/btrfs_pool/kanboard";
     nginx = { };
   };

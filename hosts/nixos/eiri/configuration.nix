@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, ... }:
+{ inputs, outputs, lib, config, pkgs, allSecrets, ... }:
 {
   age.secrets = {
     # "cifs_secret" = {
@@ -221,7 +221,7 @@
       options = [ "defaults" "noatime" "compress=zstd" "autodefrag" ];
     };
     "/mnt/koi" = {
-      device = "255.255.255.255:/volume1/backup"; # TODO
+      device = "${allSecrets.per_host.koi.int_ip}:/volume1/backup"; # TODO
       fsType = "nfs";
       options = [
         "rw"
@@ -237,11 +237,13 @@
   };
 
   security.acme = {
-    acceptTerms = true; # TODO
-    defaults.email = "mail@example.com";
-    certs = {
-      "eiri.74k1.sh" = {
-        domain = "eiri.74k1.sh";
+    acceptTerms = true;
+    defaults.email = "${allSecrets.global.mail.acme}";
+    certs = let 
+      inherit (allSecrets.global) domain1;
+    in {
+      "eiri.${domain1}" = {
+        domain = "eiri.${domain1}";
         dnsProvider = "namecheap";
         dnsPropagationCheck = true;
         environmentFile = config.age.secrets."namecheap_api_secrets".path;
@@ -250,7 +252,7 @@
         #   "NAMECHEAP_API_USER_FILE" = ;
         # };
         extraDomainNames = [
-          "*.eiri.74k1.sh"
+          "*.eiri.${domain1}"
         ];
         webroot = null;
       };

@@ -3,6 +3,7 @@
 , config
 , lib
 , pkgs
+, allSecrets
 , ... }:
 {
   age.secrets."docmost_env_secret" = {
@@ -37,7 +38,7 @@
             config.age.secrets."docmost_env_secret".path
           ];
           environment = {
-            APP_URL = "https://forever.example.com"; # TODO
+            APP_URL = "https://forever.${allSecrets.global.domain0}";
             JWT_TOKEN_EXPIRES_IN = "30d";
             MAIL_DRIVER = "smtp";
             DATABASE_URL = "postgresql://docmost:docmost@docmost-db:5432/docmost?schema=public";

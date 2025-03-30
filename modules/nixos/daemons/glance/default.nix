@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, allSecrets, ... }:
 {
   # Glance (https://github.com/glanceapp/glance)
   services.glance = {
@@ -26,8 +26,8 @@
                   title = "Services";
                   sites = [
                     {
-                      title = "taki.moe";
-                      url = "https://taki.moe/"; # TODO
+                      title = "${allSecrets.global.domain2}";
+                      url = "https://${allSecrets.global.domain2}/";
                     }
                   ];
                 }

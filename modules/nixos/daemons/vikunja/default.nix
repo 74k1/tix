@@ -1,4 +1,4 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
 {
   age.secrets."vikunja_secret" = {
     rekeyFile = "${inputs.self}/secrets/vikunja_secret.age";
@@ -9,7 +9,7 @@
   services = {
     vikunja = {
       enable = true;
-      frontendHostname = "td.example.com"; # TODO
+      frontendHostname = "td.${allSecrets.global.domain0}";
       frontendScheme = "https";
 
       # doesnt exist v
@@ -25,11 +25,11 @@
 
         # mailer = {
         #   enabled = true;
-        #   host = "example.com"; # TODO
-        #   port = "587"; # TODO
+        #   host = "${allSecrets.global.mail.sender.host}";
+        #   port = "${allSecrets.global.mail.sender.port}";
         #   authtype = "plain";
-        #   username = "mail@example.com"; # TODO
-        #   password = "pass"; # TODO
+        #   username = "${allSecrets.global.mail.sender.username}";
+        #   password = "${allSecrets.global.mail.sender.password}";
         # };
       };
     };

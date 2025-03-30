@@ -5,6 +5,7 @@
   lib,
   pkgs,
   # self,
+  allSecrets,
   ...
 }: {
   imports = [
@@ -46,7 +47,7 @@
       ratio-limit-enabled = true;
       rename-partial-files = true;
       rpc-bind-address = "0.0.0.0";
-      rpc-password = "00000000"; # TODO
+      rpc-password = "${allSecrets.per_service.transmission.rpc-password}";
       rpc-port = 9091;
       rpc-username = "taki";
       rpc-whitelist = "127.0.0.1,192.168.*.*";
@@ -57,9 +58,5 @@
   systemd.services.transmission.vpnconfinement = {
     enable = true;
     vpnnamespace = "prtr";
-    # vlnr = {
-    #   enable = true;
-    #   service = "transmission";
-    # };
   };
 }

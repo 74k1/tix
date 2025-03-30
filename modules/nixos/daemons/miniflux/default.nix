@@ -1,4 +1,4 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
 {
   age.secrets."miniflux_admin" = {
     rekeyFile = "${inputs.self}/secrets/miniflux_admin.age";
@@ -13,7 +13,7 @@
     adminCredentialsFile = config.age.secrets."miniflux_admin".path;
     config = {
       PORT = 8084;
-      BASE_URL = "https://news.example.com/"; # TODO
+      BASE_URL = "https://news.${allSecrets.global.domain0}/";
     };
   };
 }
