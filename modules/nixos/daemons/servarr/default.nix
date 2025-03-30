@@ -1,4 +1,6 @@
 {
+  inputs,
+  outputs,
   config,
   lib,
   pkgs,
@@ -15,20 +17,40 @@ in {
 
   services = {
     # Indexer
-    prowlarr.enable = true;
+    prowlarr = {
+      enable = true;
+      settings.update.automatically = true;
+    };
 
     # Music
-    lidarr.enable = true;
+    lidarr = {
+      enable = true;
+      package = pkgs.tix.lidarr; # wow
+    };
 
     # Movies
-    radarr.enable = true;
-    radarr-alt.enable = true;
-    radarr-alp.enable = true;
+    radarr = {
+      enable = true;
+      settings.update.automatically = true;
+    };
+    radarr-alt = {
+      enable = true;
+    };
+    radarr-alp = {
+      enable = true;
+    };
 
     # TV
-    sonarr.enable = true;
-    sonarr-alt.enable = true;
-    sonarr-alp.enable = true;
+    sonarr = {
+      enable = true;
+      settings.update.automatically = true;
+    };
+    sonarr-alt = {
+      enable = true;
+    };
+    sonarr-alp = {
+      enable = true;
+    };
   };
 
   users.users = {
