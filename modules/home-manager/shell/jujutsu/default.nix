@@ -27,13 +27,13 @@
       core = {
         fsmonitor = "watchman";
         watchman = {
-          register_snapshot_trigger = true;
+          register-snapshot-trigger = true;
         };
       };
       ui = {
         color = "always";
         show-cryptographic-signatures = true;
-        # pager = "nvim";
+        pager = "delta";
         editor = "nvim";
         diff-editor = [
           "nvim"
@@ -41,14 +41,17 @@
           "DiffEditor $left $right $output"
         ];
       };
-      templates = {
-        log_node = ''
-          coalesce(
-            if(current_working_copy, "●"),
-            if(immutable, "⊗", "○"),
-          )
-        '';
+      aliases = {
+        l = [ "log" "--no-pager" ];
       };
+      # templates = {
+      #   log_node = ''
+      #     coalesce(
+      #       if(current_working_copy, "●"),
+      #       if(immutable, "⊗", "○"),
+      #     )
+      #   '';
+      # };
     };
   };
 }
