@@ -176,13 +176,13 @@
         border = {
           enable = true;
           width = 1;
-          active = { color = "#5767FF"; };
+          active = { color = "#6C69FF"; };
           inactive = { color = "#5F5A65"; };
         };
         focus-ring = {
           enable = false;
           width = 1;
-          active = { color = "#5767FF"; };
+          active = { color = "#6C69FF"; };
           inactive = { color = "#5F5A65"; };
         };
         shadow = {

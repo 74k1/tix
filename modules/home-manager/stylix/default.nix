@@ -45,10 +45,10 @@ in {
         base09 = "#FFB066";
         base0A = "#FFE375";
         base0B = "#54FF80";
-        base0C = "#816BFF";
-        base0D = "#816BFF";
+        base0C = "#5C9CFF";
+        base0D = "#6C69FF";
         base0E = "#4CCEFE";
-        base0F = "#EB6AFF";
+        base0F = "#DA70FF";
       };
 
       fonts = {
@@ -56,12 +56,12 @@ in {
         #   package = pkgs.dejavu_fonts;
         #   name = "DejaVu Serif";
         # };
-        #
+
         # sansSerif = {
         #   package = pkgs.dejavu_fonts;
         #   name = "DejaVu Sans";
         # };
-        #
+
         monospace = {
           package = berkeley-otf;
           name = "TX02 Nerd Font";
