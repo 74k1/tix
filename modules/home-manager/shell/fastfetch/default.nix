@@ -20,7 +20,6 @@
       };
       modules = [
         "break"
-        "break"
         "title"
         "separator"
         {
