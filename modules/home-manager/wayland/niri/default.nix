@@ -34,6 +34,10 @@ in {
       pkgs.xdg-desktop-portal-gnome
       pkgs.xdg-desktop-portal-gtk
     ];
+    config.common = {
+      default = [ "wlr" ];
+      "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+    };
   };
 
   services.swww = {
@@ -383,6 +387,7 @@ in {
           };
           scale = 1;
           variable-refresh-rate = false;
+          focus-at-startup = true;
         };
         "HDMI-A-1" = {
           enable = true;
