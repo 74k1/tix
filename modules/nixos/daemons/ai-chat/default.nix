@@ -13,6 +13,12 @@
     # group = "nextcloud";
   };
 
+  disabledModules = [ "services/misc/open-webui.nix" ];
+
+  imports = [
+    "${inputs.nixpkgs-master}/nixos/modules/services/misc/open-webui.nix"
+  ];
+
   services.open-webui = {
     enable = true;
     host = "0.0.0.0";
