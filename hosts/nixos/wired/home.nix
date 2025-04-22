@@ -89,6 +89,7 @@
     loupe
     seahorse
     gnome-calculator
+    just
     
     pulsemixer
     qmk
@@ -153,7 +154,7 @@
     spotify
     spotify-tray
     # pkgs.master.spotify-player
-    # feishin
+    feishin
     # spotify-player
     discord
     # legcord
