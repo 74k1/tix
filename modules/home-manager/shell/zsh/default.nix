@@ -21,8 +21,6 @@
     defaultKeymap = "emacs";
     dotDir = ".config/zsh";
 
-    initExtraFirst = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-
     shellAliases = {
       ":q" = "exit";
       ":E" = "${config.programs.neovim.finalPackage}/bin/nvim +E";
@@ -64,7 +62,8 @@
     };
 
     # ${builtins.readFile ./cfg/functions.zsh}
-    initExtra = /* sh */ ''
+    initContent = lib.mkBefore /* sh */ '' 
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       source ~/.config/zsh/.p10k.zsh
       export XDG_RUNTIME_DIR=/run/user/$(id -u)
 

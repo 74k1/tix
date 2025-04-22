@@ -8,7 +8,7 @@
     enableSshSupport = true;
   };
   
-  programs.zsh.initExtra = let
+  programs.zsh.initContent = let
     gpgconf = lib.getExe' pkgs.gnupg "gpgconf";
     gpg-connect-agent = lib.getExe' pkgs.gnupg "gpg-connect-agent";
     tty = lib.getExe' pkgs.toybox "tty";

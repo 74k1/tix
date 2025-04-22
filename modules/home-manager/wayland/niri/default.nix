@@ -413,7 +413,7 @@ in {
           enable = true;
           # max-scroll-amount = "2";
         };
-        warp-mouse-to-focus = true;
+        warp-mouse-to-focus.enable = true;
         keyboard = {
           repeat-delay = 200;
           repeat-rate = 50;

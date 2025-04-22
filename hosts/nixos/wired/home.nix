@@ -4,7 +4,7 @@
   imports = builtins.concatLists [
     # ext
     [
-      inputs.stylix.homeManagerModules.stylix
+      inputs.stylix.homeModules.stylix
       #inputs.nix-colors.homeManagerModules.default
     ]
     
