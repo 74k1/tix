@@ -32,6 +32,7 @@
   paperless = import ./daemons/paperless;
   pcscd = import ./daemons/pcscd;
   plex = import ./daemons/plex;
+  pocket-id = import ./daemons/pocket-id;
   quadlet = import ./quadlet;
   restic = import ./daemons/restic;
   rustdesk-server = import ./daemons/rustdesk-server;

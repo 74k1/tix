@@ -31,9 +31,8 @@
 
     # Most important
     restic
-    # kanidm-server
-    # kanidm-client
     vaultwarden
+    pocket-id
 
     # Mid importance
     graylog
