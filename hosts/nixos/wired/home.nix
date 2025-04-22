@@ -42,7 +42,7 @@
       easyeffects
       # ironbar
       waybar
-      walker
+      sherlock
       hyprlock
       kanshi
       anyrun

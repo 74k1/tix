@@ -26,6 +26,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # -- TESTS / FIXES
+    nixpkgs-openwebui-fix = {
+      url = "github:drupol/nixpkgs/push-runvvntkkosm";
+    };
     nixpkgs-iynaix-orca = {
       url = "github:iynaix/nixpkgs/fix-orca-slicer";
     };
@@ -87,6 +90,15 @@
     #   url = "github:hercules-ci/arion";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    sherlock = {
+      # url = "github:74k1/sherlock/feat/runAsService";
+      url = "git+file:///home/taki/dev/sherlock";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        home-manager.follows = "home-manager";
+      };
+    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";

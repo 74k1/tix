@@ -433,6 +433,21 @@
         "type": "github"
       }
     },
+    "crane_3": {
+      "locked": {
+        "lastModified": 1742394900,
+        "narHash": "sha256-vVOAp9ahvnU+fQoKd4SEXB2JG2wbENkpqcwlkIXgUC0=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "70947c1908108c0c551ddfd73d4f750ff2ea67cd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "crowdsec": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -3581,6 +3596,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-openwebui-fix": {
+      "locked": {
+        "lastModified": 1754470113,
+        "narHash": "sha256-m7m4JAWyiGzQMAYNDCW9Diyp6i43hT/54qqSueJzFOk=",
+        "owner": "drupol",
+        "repo": "nixpkgs",
+        "rev": "62ce87cfcbac120a3adbda1fc1666d12250e8838",
+        "type": "github"
+      },
+      "original": {
+        "owner": "drupol",
+        "ref": "push-runvvntkkosm",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1754028485,
@@ -4490,11 +4521,13 @@
         "nixpkgs-iynaix-orca": "nixpkgs-iynaix-orca",
         "nixpkgs-local": "nixpkgs-local",
         "nixpkgs-master": "nixpkgs-master",
+        "nixpkgs-openwebui-fix": "nixpkgs-openwebui-fix",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "ouro": "ouro",
         "quadlet": "quadlet",
         "raspberry-pi-nix": "raspberry-pi-nix",
         "rix101": "rix101",
+        "sherlock": "sherlock",
         "spicetify-nix": "spicetify-nix_2",
         "stylix": "stylix_2",
         "the-argus-emptty": "the-argus-emptty",
@@ -4703,6 +4736,27 @@
         "type": "github"
       }
     },
+    "rust-overlay_4": {
+      "inputs": {
+        "nixpkgs": [
+          "sherlock",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1743215516,
+        "narHash": "sha256-52qbrkG65U1hyrQWltgHTgH4nm0SJL+9TWv2UDCEPNI=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "524463199fdee49338006b049bc376b965a2cfed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
     "scss-reset": {
       "flake": false,
       "locked": {
@@ -4717,6 +4771,33 @@
         "owner": "andreymatin",
         "repo": "scss-reset",
         "type": "github"
+      }
+    },
+    "sherlock": {
+      "inputs": {
+        "crane": "crane_3",
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay_4"
+      },
+      "locked": {
+        "lastModified": 1754602241,
+        "narHash": "sha256-CZPh8IfkG/fqOykDyYyD03AAWIfVBsZtRnEgWLhLiQM=",
+        "rev": "f5f258e2adb52013e4aba45e8c3b01b453221a03",
+        "revCount": 1646,
+        "type": "git",
+        "url": "file:///home/taki/dev/sherlock"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/taki/dev/sherlock"
       }
     },
     "slimlock": {

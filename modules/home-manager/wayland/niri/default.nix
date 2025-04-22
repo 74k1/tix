@@ -96,7 +96,10 @@ in {
         "Mod+Return" = { repeat = false; action = spawn "${pkgs.ghostty}/bin/ghostty"; };
 
         "Mod+R" = { repeat = false; action = spawn "${lib.getExe pkgs.fuzzel}"; };
-        "Mod+Space" = { repeat = false; action = spawn "${lib.getExe pkgs.fuzzel}"; };
+        # "Mod+Space" = { repeat = false; action = spawn "${lib.getExe pkgs.fuzzel}"; };
+
+        # "Mod+R" = { repeat = false; action = spawn "${lib.getExe pkgs.fuzzel}"; };
+        "Mod+Space" = { repeat = false; action = spawn "${lib.getExe inputs.sherlock.packages.${pkgs.system}.default}"; };
 
         # "Mod+V" = { repeat = false; action = spawn "sh" "-c" "${pkgs.cliphist}/bin/cliphist list | ${pkgs.wofi}/bin/wofi -dmenu | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard-rs}/bin/wl-copy"; };
 
