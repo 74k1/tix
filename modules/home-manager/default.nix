@@ -17,7 +17,7 @@
   dunst = import ./wayland/dunst;
   i3wm = import ./x11/i3wm;
   niri = import ./wayland/niri;
-  nvim = import ./shell/nvim;
+  neovim = import ./shell/neovim;
   picom = import ./x11/picom;
   polybar = import ./apps/polybar;
   river = import ./wayland/river;

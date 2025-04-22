@@ -21,7 +21,7 @@
       git
       jujutsu
       firefox
-      nvim
+      neovim
       picom
       polybar
       #rofi

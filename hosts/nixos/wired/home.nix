@@ -21,7 +21,7 @@
       jujutsu
       # firefox
       zen
-      nvim
+      neovim
       picom
       polybar
       #rofi

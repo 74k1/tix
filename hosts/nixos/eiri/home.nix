@@ -5,7 +5,7 @@
     # int
     (with outputs.homeManagerModules; [
       git
-      nvim
+      neovim
       starship
       # bash
       zsh

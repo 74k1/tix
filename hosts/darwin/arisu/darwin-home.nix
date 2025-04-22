@@ -2,7 +2,7 @@
 
 {
   imports = with outputs.homeManagerModules; [
-    nvim
+    neovim
     git
     jujutsu
     zsh

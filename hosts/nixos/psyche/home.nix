@@ -15,7 +15,7 @@
       # bspwm
       #colors
       git
-      nvim
+      neovim
       # picom
       # polybar
       #rofi

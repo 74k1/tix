@@ -3,7 +3,7 @@
   imports = builtins.concatLists [
     (with outputs.homeManagerModules; [
       git
-      nvim
+      neovim
       zsh
     ])
   ];
