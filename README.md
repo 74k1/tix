@@ -57,20 +57,8 @@
         <tr>
             <td><a href="hosts/nixos/wired"><img alt="desktop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
             <td>wired</td>
-            <td>Main Desktop<br><sub>i9-13900k<br>RX 7900 XT</sub></td>
+            <td>GPD Pocket 4<br><sub>AMD Ryzen AI 9 HX 370</sub></td>
             <td>General purpose usage.</td>
-        </tr>
-        <tr>
-            <td><a href="hosts/nixos/wired"><img alt="desktop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
-            <td>psyche</td>
-            <td>Main Desktop (the same one)<br><sub>i9-13900k<br>RX 7900 XT</sub></td>
-            <td>General purpose usage. (Windows WSL)</td>
-        </tr>
-        <tr>
-            <td><a href="hosts/nixos/cyberia"><img alt="laptop" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
-            <td>cyberia</td>
-            <td>Minisforum V3<br><sub>Ryzen 7 8840U</sub></td>
-            <td>General purpose usage. - for transport</td>
         </tr>
         <tr>
             <td><a href="hosts/nixos/eiri"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
