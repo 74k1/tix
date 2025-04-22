@@ -32,6 +32,9 @@
           ENABLED = true;
           DEFAULT_ACTIONS_URL = "github";
         };
+        ui = {
+          SHOW_USER_EMAIL = false;
+        };
       };
     };
     openssh.settings.AcceptEnv = "GIT_PROTOCOL";
