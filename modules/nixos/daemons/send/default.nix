@@ -1,9 +1,5 @@
 { inputs, outputs, config, lib, pkgs, allSecrets, ... }:
 {
-  # imports = [
-  #   "${inputs.nixpkgs-master}/nixos/modules/services/web-servers/send.nix"
-  # ];
-
   services.send = {
     enable = true;
     host = "0.0.0.0";
