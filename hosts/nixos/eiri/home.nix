@@ -43,7 +43,7 @@
     defaultCacheTtl = 86400;
     maxCacheTtl = 86400;
     enableZshIntegration = true;
-    pinentryPackage = pkgs.pinentry-curses;
+    pinentry.package = pkgs.pinentry-curses;
     enableSshSupport = true;
   };
 

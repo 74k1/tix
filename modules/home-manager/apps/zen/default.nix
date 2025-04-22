@@ -28,7 +28,7 @@
           icon = "https://kagi.com/favicon.ico";
           definedAliases = [ ":k" "@kagi" ];
         };
-        "DuckDuckGo" = {
+        "ddg" = {
           urls = [{ template = "https://duckduckgo.com/?t=h_&q={searchTerms}&ia=web"; }];
           icon = "https://icons.duckduckgo.com/ip3/duckduckgo.com.ico";
           definedAliases = [ ":d" "@ddg" "@duckduckgo" ];

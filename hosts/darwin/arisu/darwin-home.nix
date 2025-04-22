@@ -47,7 +47,7 @@
     defaultCacheTtl = 86400;
     maxCacheTtl = 86400;
     enableZshIntegration = true;
-    pinentryPackage = pkgs.pinentry_mac;
+    pinentry.package = pkgs.pinentry_mac;
     enableSshSupport = true;
   };
 

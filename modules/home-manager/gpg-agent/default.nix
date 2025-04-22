@@ -4,7 +4,7 @@
     enable = true;
     defaultCacheTtl = 86400;
     maxCacheTtl = 86400;
-    pinentryPackage = pkgs.pinentry-gnome3; # pinentry-mac for aarch64-darwin
+    pinentry.package = pkgs.pinentry-gnome3; # pinentry-mac for aarch64-darwin
     enableSshSupport = true;
   };
   
