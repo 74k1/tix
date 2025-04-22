@@ -26,9 +26,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # -- TESTS / FIXES
-    diogotcorreira-umami = {
-      url = "github:diogotcorreia/nixpkgs/umami-init";
-    };
     nixpkgs-akotro-it-tools = {
       url = "github:akotro/nixpkgs/add-it-tools-service";
     };
@@ -66,6 +63,10 @@
     };
     quadlet = {
       url = "github:SEIAROTg/quadlet-nix";
+    };
+    apple-emoji = {
+      url = "github:samuelngs/apple-emoji-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     quickshell = {
       url = "github:quickshell-mirror/quickshell";
