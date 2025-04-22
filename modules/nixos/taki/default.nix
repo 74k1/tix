@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, ... }:
+{ inputs, outputs, lib, config, pkgs, allSecrets, ... }:
 let
   berkeley-otf = pkgs.callPackage "${inputs.self}/pkgs/berkeley-otf.nix" { inherit pkgs; };
 in
@@ -16,10 +16,7 @@ in
         isNormalUser = true;
         description = "taki";
         extraGroups = [ "wheel" "networkmanager" "plex" "user-with-access-to-virtualbox" ];
-        openssh.authorizedKeys.keys = [ # TODO
-          "ssh-ed25519 blabla xyz@xyz" # GPG
-          "ssh-rsa blabla xyz@xyz"
-        ];
+        openssh.authorizedKeys.keys = allSecrets.per_service.openssh.authorizedKeys.keys;
         shell = pkgs.zsh;
       };
     }
