@@ -77,8 +77,8 @@ in
         # multimedia
         ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
         ", XF86AudioPause, exec, ${pkgs.playerctl}/bin/playerctl pause"
-        ", XF86AudioNext, exec, ${pkgs.duvolbr}/bin/duvolbr next_track"
-        ", XF86AudioPrev, exec, ${pkgs.duvolbr}/bin/duvolbr prev_track"
+        ", XF86AudioNext, exec, ${pkgs.tix.duvolbr}/bin/duvolbr next_track"
+        ", XF86AudioPrev, exec, ${pkgs.tix.duvolbr}/bin/duvolbr prev_track"
         
         # window focus
         "$mod, h, movefocus, l"

@@ -45,15 +45,15 @@ in
       #"XF86AudioPrev" = "${pkgs.playerctl}/bin/playerctl previous";
 
       # pactl & playerctl # with script
-      "XF86AudioRaiseVolume" = "${pkgs.duvolbr}/bin/duvolbr vol_up";
-      "XF86AudioLowerVolume" = "${pkgs.duvolbr}/bin/duvolbr vol_down";
-      "XF86AudioMute" = "${pkgs.duvolbr}/bin/duvolbr vol_mute";
-      #"XF86MonBrightnessUp" = "${pkgs.duvolbr}/bin/duvolbr bri_up";
-      #"XF86MonBrightnessDown" = "${pkgs.duvolbr} bri_down";
-      #"XF86AudioPlay" = "${pkgs.duvolbr}/bin/duvbolbr play_pause";
-      #"XF86AudioPause" = "${pkgs.duvolbr}/bin/duvolbr play_pause";
-      "XF86AudioNext" = "${pkgs.duvolbr}/bin/duvolbr next_track";
-      "XF86AudioPrev" = "${pkgs.duvolbr}/bin/duvolbr prev_track";
+      "XF86AudioRaiseVolume" = "${pkgs.tix.duvolbr}/bin/duvolbr vol_up";
+      "XF86AudioLowerVolume" = "${pkgs.tix.duvolbr}/bin/duvolbr vol_down";
+      "XF86AudioMute" = "${pkgs.tix.duvolbr}/bin/duvolbr vol_mute";
+      #"XF86MonBrightnessUp" = "${pkgs.tix.duvolbr}/bin/duvolbr bri_up";
+      #"XF86MonBrightnessDown" = "${pkgs.tix.duvolbr} bri_down";
+      #"XF86AudioPlay" = "${pkgs.tix.duvolbr}/bin/duvbolbr play_pause";
+      #"XF86AudioPause" = "${pkgs.tix.duvolbr}/bin/duvolbr play_pause";
+      "XF86AudioNext" = "${pkgs.tix.duvolbr}/bin/duvolbr next_track";
+      "XF86AudioPrev" = "${pkgs.tix.duvolbr}/bin/duvolbr prev_track";
     };
   };
 }

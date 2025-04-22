@@ -48,9 +48,6 @@
 
   # nixpkgs = {
     # overlays = [
-    #   (final: prev: {
-    #     duvolbr = outputs.packages.${pkgs.hostPlatform.system}.duvolbr;
-    #   })
     #   inputs.wired-notify.overlays.default
     # ];
     # config = {
@@ -75,7 +72,7 @@
     papirus-icon-theme
     
     # my own scriptiboo
-    duvolbr
+    pkgs.tix.duvolbr
     inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-nerd-otf
 
     # uhhh clipboard

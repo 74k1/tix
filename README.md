@@ -103,9 +103,9 @@
 </div>
 <div>
     <h2>Packages</h2>
-    <ul>
-        <li><a href="pkgs/duvolbr.nix">duvolbr</a></li>
-    </ul>
+    <p>
+    All of my own Packages are under [tixpkgs](https://github.com/74k1/tixpkgs). Feel free to snoop around and submit PRs / Issues. Contributions are always welcome. :)
+    </p>
 </div>
 <div>
     <h2>Special Thanks to</h2>
@@ -120,14 +120,8 @@
     <h3><a href="https://gitlab.com/Nmoleo">Nmoleo</a></h3>
     <h4><a href="https://gitlab.com/Nmoleo/i3-volume-brightness-indicator">i3 + dunst indicators</a></h4>
     <p>
-        I've somewhat rewritten it. (see <a href="modules/home-manager/i3wm/duvolbr.nix">this file</a>)
-        It now uses nix functions :) no more pactl/playerctl/libnotify package dependencies.
-        Make sure you have something of the following tho:
-        <ul>
-            <li>i3</li>
-            <li>dunst</li>
-            <li>pipewire with pulseaudio (or directly pulseaudio) enabled</li>
-        </ul>
+        I've somewhat rewritten it. (see <a href="https://github.com/74k1/tixpkgs/blob/main/pkgs/du/duvolbr.nix">this file</a>)
+        It's now compatible with nix without pactl/playerctl/libnotify package dependencies. :)
     </p>
     <h4><a href="https://gitlab.com/Nmoleo/polybar_playerctl">polybar & playerctl</a></h4>
 </div>

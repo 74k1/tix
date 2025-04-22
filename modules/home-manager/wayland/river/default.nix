@@ -50,8 +50,8 @@
           # Multimedia
           "XF86AudioPlay" = "spawn ${pkgs.playerctl}/bin/playerctl play-pause";
           "XF86AudioPause" = "spawn ${pkgs.playerctl}/bin/playerctl pause";
-          "XF86AudioNext" = "spawn ${pkgs.duvolbr}/bin/duvolbr next_track";
-          "XF86AudioPrev" = "spawn ${pkgs.duvolbr}/bin/duvolbr prev_track";
+          "XF86AudioNext" = "spawn ${pkgs.tix.duvolbr}/bin/duvolbr next_track";
+          "XF86AudioPrev" = "spawn ${pkgs.tix.duvolbr}/bin/duvolbr prev_track";
 
           # Scrot
           "Print" = "spawn ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area";

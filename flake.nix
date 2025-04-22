@@ -159,7 +159,6 @@
       imports = [
         ./modules/flake/configurations.nix
         ./modules/flake/devshells.nix
-        ./modules/flake/packages.nix
         ./modules/flake/modules.nix
         ./modules/flake/agenix.nix
         ./modules/flake/topology.nix

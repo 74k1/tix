@@ -81,8 +81,8 @@
         # Multimedia
         "XF86AudioPlay".action = spawn "${pkgs.playerctl}/bin/playerctl" "play-pause";
         "XF86AudioPause".action = spawn "${pkgs.playerctl}/bin/playerctl" "play-pause";
-        "XF86AudioNext".action = spawn "${pkgs.duvolbr}/bin/duvolbr" "next_track";
-        "XF86AudioPrev".action = spawn "${pkgs.duvolbr}/bin/duvolbr" "prev_track";
+        "XF86AudioNext".action = spawn "${pkgs.tix.duvolbr}/bin/duvolbr" "next_track";
+        "XF86AudioPrev".action = spawn "${pkgs.tix.duvolbr}/bin/duvolbr" "prev_track";
 
         "XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
 

@@ -92,15 +92,15 @@ in {
         #"XF86AudioPrev" = "exec --no-startup-id ${pkgs.playerctl}/bin/playerctl previous";
 
         # pactl & playerctl # with script
-        "XF86AudioRaiseVolume" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr vol_up";
-        "XF86AudioLowerVolume" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr vol_down";
-        "XF86AudioMute" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr vol_mute";
-        #"XF86MonBrightnessUp" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr bri_up";
-        #"XF86MonBrightnessDown" = "exec --no-startup-id ${pkgs.duvolbr} bri_down";
-        "XF86AudioPlay" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvbolbr play_pause";
-        "XF86AudioPause" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr play_pause";
-        "XF86AudioNext" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr next_track";
-        "XF86AudioPrev" = "exec --no-startup-id ${pkgs.duvolbr}/bin/duvolbr prev_track";
+        "XF86AudioRaiseVolume" = "exec --no-startup-id ${pkgs.tix.duvolbr}/bin/duvolbr vol_up";
+        "XF86AudioLowerVolume" = "exec --no-startup-id ${pkgs.tix.duvolbr}/bin/duvolbr vol_down";
+        "XF86AudioMute" = "exec --no-startup-id ${pkgs.tix.duvolbr}/bin/duvolbr vol_mute";
+        #"XF86MonBrightnessUp" = "exec --no-startup-id ${pkgs.tix.duvolbr}/bin/duvolbr bri_up";
+        #"XF86MonBrightnessDown" = "exec --no-startup-id ${pkgs.tix.duvolbr} bri_down";
+        "XF86AudioPlay" = "exec --no-startup-id ${pkgs.tix.duvolbr}/bin/duvbolbr play_pause";
+        "XF86AudioPause" = "exec --no-startup-id ${pkgs.tix.duvolbr}/bin/duvolbr play_pause";
+        "XF86AudioNext" = "exec --no-startup-id ${pkgs.tix.duvolbr}/bin/duvolbr next_track";
+        "XF86AudioPrev" = "exec --no-startup-id ${pkgs.tix.duvolbr}/bin/duvolbr prev_track";
 
         # Focus
         "${mod}+j" = "focus down";
