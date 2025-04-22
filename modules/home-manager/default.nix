@@ -23,6 +23,7 @@
   niri = import ./wayland/niri;
   picom = import ./x11/picom;
   polybar = import ./apps/polybar;
+  qutebrowser = import ./apps/qutebrowser;
   river = import ./wayland/river;
   rofi = import ./apps/rofi;
   spotify = import ./apps/spotify;
