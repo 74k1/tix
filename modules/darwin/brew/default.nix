@@ -1,6 +1,4 @@
 { lib, pkgs, config, ... }:
-
-with lib;
 {
   # Requires Homebrew to be installed
   system.activationScripts.preUserActivation.text = ''
@@ -24,28 +22,56 @@ with lib;
       lockfiles = false; # Don't save lockfile (since running from anywhere)
     };
     taps = [
-      "homebrew/core"
-      "homebrew/cask"
-      "homebrew/cask-fonts"
-      "homebrew/services"
+      # "LizardByte/homebrew"
       # "cmacrae/formulae"
       # "FelixKratz/formulae"
     ];
     brews = [
-      # "libusb"
-      # "sketchybar" # polybar mac
-      # "switchaudio-osx"
+      # "sunshine"
+      "fd"
+      "ffmpegthumbnailer"
+      "jq"
+      "poppler"
+      "python@3.10"
+      "syncthing"
+      "unar"
+      "yazi"
+      "zoxide"
     ];
     casks = [
-      # "android-platform-tools"
-      "steam"
-      "font-fira-code-nerd-font"
-      "karabiner-elements"
-      "bitwarden"
-      "caffeine"
-      "mullvadvpn"
+      # "docker"
+      "alt-tab"
+      # "bitwarden"
+      "parsec"
+      "zen"
+      "ghostty"
+      # "github"
+      # "slack"
+      # "hiddenbar"
+      # "insomnia"
+      # "kap"
       "keka"
       "kekaexternalhelper"
+      "maccy"
+      # "notunes"
+      # "obsidian"
+      # "raycast"
+      "shottr"
+      "stats"
+      # "windows-app"
+      # "powershell"
+      "zed"
+      "rustdesk"
+      # "yazi"
+      # "jq"
+      # "ffmpegthumbnailer"
+      # "unar"
+      # "jq"
+      # "poppler"
+      # "fd"
+      # "ripgrep"
+      # "fzf"
+      # "zoxide"
     ];
     extraConfig = ''
       cask_args appdir: "~/Applications"
