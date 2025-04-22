@@ -26,9 +26,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # -- TESTS / FIXES
-    nixpkgs-openwebui-fix = {
-      url = "github:drupol/nixpkgs/push-runvvntkkosm";
-    };
     nixpkgs-iynaix-orca = {
       url = "github:iynaix/nixpkgs/fix-orca-slicer";
     };

@@ -3596,22 +3596,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-openwebui-fix": {
-      "locked": {
-        "lastModified": 1754470113,
-        "narHash": "sha256-m7m4JAWyiGzQMAYNDCW9Diyp6i43hT/54qqSueJzFOk=",
-        "owner": "drupol",
-        "repo": "nixpkgs",
-        "rev": "62ce87cfcbac120a3adbda1fc1666d12250e8838",
-        "type": "github"
-      },
-      "original": {
-        "owner": "drupol",
-        "ref": "push-runvvntkkosm",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1754028485,
@@ -4521,7 +4505,6 @@
         "nixpkgs-iynaix-orca": "nixpkgs-iynaix-orca",
         "nixpkgs-local": "nixpkgs-local",
         "nixpkgs-master": "nixpkgs-master",
-        "nixpkgs-openwebui-fix": "nixpkgs-openwebui-fix",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "ouro": "ouro",
         "quadlet": "quadlet",

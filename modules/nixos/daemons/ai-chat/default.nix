@@ -19,17 +19,19 @@
     port = 3335;
     package = pkgs.master.open-webui;
     environment = {
-      ANONYMIZED_TELEMETRY = "False";
-      DO_NOT_TRACK = "True";
-      SCARF_NO_ANALYTICS = "True";
       TRANSFORMERS_CACHE = "${config.services.open-webui.stateDir}/cache";
-      OLLAMA_API_BASE_URL = "http://127.0.0.1:11434";
+      STATIC_DIR = "${config.services.open-webui.stateDir}/static";
+      DATA_DIR = "${config.services.open-webui.stateDir}/data";
+      HF_HOME = "${config.services.open-webui.stateDir}/hf_home";
+      SENTENCE_TRANSFORMERS_HOME = "${config.services.open-webui.stateDir}/transformers_home";
+
+      OLLAMA_API_BASE_URL = lib.mkIf config.services.ollama.enable "http://127.0.0.1:11434";
     };
     openFirewall = true;
   };
 
   services.ollama = {
-    enable = true;
+    enable = false;
     host = "127.0.0.1";
     port = 11434;
     acceleration = "cuda";
