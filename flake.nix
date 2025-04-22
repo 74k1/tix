@@ -18,17 +18,14 @@
       # url = "git+file:///home/taki/dev/tixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nixpkgs-local = {
-    #   url = "git+file:///home/taki/dev/nixpkgs";
-    # };
+    nixpkgs-local = {
+      url = "git+file:///home/taki/dev/nixpkgs";
+    };
     unfree-fonts = {
       url = "git+ssh://git@github.com/74k1/unfree-fonts-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # -- TESTS / FIXES
-    jvanbruegge-linkwarden = {
-      url = "github:jvanbruegge/nixpkgs/linkwarden";
-    };
     diogotcorreira-umami = {
       url = "github:diogotcorreia/nixpkgs/umami-init";
     };
@@ -37,6 +34,14 @@
     };
     jf-uu-overseerr = {
       url = "github:jf-uu/nixpkgs/overseerr";
+    };
+    the-argus-emptty = {
+      url = "github:the-argus/nixpkgs/emptty/module";
+    };
+    genix7000 = {
+      url = "github:Pandapip1/genix7000plymouth";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     # --
     flake-parts = {
@@ -61,6 +66,10 @@
     };
     quadlet = {
       url = "github:SEIAROTg/quadlet-nix";
+    };
+    quickshell = {
+      url = "github:quickshell-mirror/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     musnix = {
       url = "github:musnix/musnix";
