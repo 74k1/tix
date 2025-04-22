@@ -14,8 +14,8 @@
       url = "github:NixOS/nixpkgs/master";
     };
     tixpkgs = {
-      url = "github:74k1/tixpkgs/main";
-      # url = "git+file:///home/taki/dev/tixpkgs";
+      # url = "github:74k1/tixpkgs/main";
+      url = "git+file:///home/taki/dev/tixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-local = {
