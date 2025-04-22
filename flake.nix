@@ -26,14 +26,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # -- TESTS / FIXES
-    nixpkgs-iynaix-orca = {
-      url = "github:iynaix/nixpkgs/fix-orca-slicer";
-    };
     nixpkgs-akotro-it-tools = {
       url = "github:akotro/nixpkgs/add-it-tools-service";
-    };
-    jf-uu-overseerr = {
-      url = "github:jf-uu/nixpkgs/overseerr";
     };
     the-argus-emptty = {
       url = "github:the-argus/nixpkgs/emptty/module";
@@ -49,7 +43,8 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      # url = "github:nix-community/home-manager/master";
+      url = "git+file:///home/taki/dev/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
@@ -88,12 +83,14 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     sherlock = {
-      # url = "github:74k1/sherlock/feat/runAsService";
-      url = "git+file:///home/taki/dev/sherlock";
+      # url = "github:skxxtz/sherlock";
+      url = "github:skxxtz/sherlock/unstable/release-v1.0.0";
+      # url = "github:74k1/sherlock/feat/nix";
+      # url = "git+file:///home/taki/dev/sherlock";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        home-manager.follows = "home-manager";
+        # flake-parts.follows = "flake-parts";
+        # home-manager.follows = "home-manager";
       };
     };
     agenix = {
@@ -178,8 +175,8 @@
       # url = "github:74k1/VPN-Confinement";
     };
     ouro = {
-      # url = "git+file:///home/taki/dev/ouro";
-      url = "github:reo101/ouro";
+      url = "git+file:///home/taki/dev/ouro";
+      # url = "github:reo101/ouro";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
