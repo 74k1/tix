@@ -17,6 +17,7 @@
   glance = import ./daemons/glance;
   graylog = import ./daemons/graylog;
   immich = import ./daemons/immich;
+  karakeep = import ./daemons/karakeep;
   it-tools = import ./daemons/it-tools;
   kanidm-client = import ./daemons/kanidm-client;
   kanidm-server = import ./daemons/kanidm-server;
