@@ -201,6 +201,7 @@
     plasticity
 
     # FIXME: https://github.com/NixOS/nixpkgs/issues/429433
+    pkgs.iynaix-orca.orca-slicer
     # orca-slicer
     zathura
 

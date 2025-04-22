@@ -27,7 +27,7 @@
     # vm-test
     locale
     nix
-    # steam
+    steam
     pcscd
     firefox
     bash
@@ -38,7 +38,7 @@
   # Bootloader.
   boot = {
     # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-    kernelPackages = pkgs.linuxKernel.packages.linux_6_15;
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_16;
     # kernelPackages = pkgs.linuxKernel.packages.linux_testing;
     kernelParams = [
       "quiet"
@@ -360,6 +360,7 @@
   };
 
   programs.dconf.enable = true;
+  programs.gpaste.enable = true;
   
   # udev stuff for qmk
   services.udev.packages = [
