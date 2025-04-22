@@ -156,6 +156,8 @@
     qbittorrent
     spotify
     spotify-tray
+    tidal-hifi
+    tidal-dl
     # pkgs.master.spotify-player
     feishin
     # spotify-player
