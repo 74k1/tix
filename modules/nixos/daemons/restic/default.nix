@@ -9,7 +9,49 @@
     rekeyFile = "${inputs.self}/secrets/restic_password.age";
   };
 
-  services.restic.backups = {
+  services.restic.backups = let
+    eiri_data = [
+      "/var/lib/acme"
+
+      "/var/lib/bitwarden_rs"
+      "/var/lib/vaultwarden.bak"
+
+      "/var/lib/pocket-id"
+
+      "/var/lib/nextcloud"
+      "/mnt/btrfs_pool/nextcloud_data"
+
+      "/var/lib/forgejo"
+      "/var/lib/gitea"
+
+      "/var/lib/paperless"
+      "/mnt/btrfs_pool/paperless"
+
+      "/var/lib/karakeep"
+      "/mnt/btrfs_pool/karakeep"
+
+      "/var/lib/n8n"
+
+      "/var/lib/lego"
+
+      "/var/lib/plex"
+      "/var/lib/plexpy"
+      "/var/lib/overseerr"
+
+      "/var/lib/vikunja"
+
+      "/var/lib/open-webui"
+      "/var/lib/litellm"
+
+      "/var/lib/immich"
+      "/mnt/btrfs_pool/immich_media"
+
+      "/mnt/btrfs_pool/syncthing_data"
+
+      "/mnt/btrfs_pool/docmost_storage"
+      "/var/lib/docmost"
+    ];
+  in {
     "mc" = {
       initialize = true;
       passwordFile = config.age.secrets."restic_password".path;
@@ -28,25 +70,7 @@
     "local" = {
       initialize = true;
       passwordFile = config.age.secrets."restic_password".path;
-      paths = [
-        "/var/lib/bitwarden_rs"
-        "/var/lib/vaultwarden.bak"
-
-        "/var/lib/nextcloud"
-        "/mnt/btrfs_pool/nextcloud_data"
-
-        "/var/lib/forgejo"
-        "/var/lib/gitea"
-
-        "/var/lib/vikunja"
-
-        "/mnt/btrfs_pool/immich_media"
-
-        "/mnt/btrfs_pool/syncthing_data"
-
-        "/mnt/btrfs_pool/docmost_storage"
-        "/var/lib/docmost"
-      ];
+      paths = eiri_data;
       repository = "/mnt/btrfs_pool/restic_backup";
       timerConfig = {
         OnCalendar = "daily";
@@ -62,25 +86,7 @@
     "external" = {
       initialize = true;
       passwordFile = config.age.secrets."restic_password".path;
-      paths = [
-        "/var/lib/bitwarden_rs"
-        "/var/lib/vaultwarden.bak"
-
-        "/var/lib/nextcloud"
-        "/mnt/btrfs_pool/nextcloud_data"
-
-        "/var/lib/forgejo"
-        "/var/lib/gitea"
-
-        "/var/lib/vikunja"
-
-        "/mnt/btrfs_pool/immich_media"
-
-        "/mnt/btrfs_pool/syncthing_data"
-
-        "/mnt/btrfs_pool/docmost_storage"
-        "/var/lib/docmost"
-      ];
+      paths = eiri_data;
       repository = "/mnt/koi/";
       timerConfig = {
         OnCalendar = "daily";
