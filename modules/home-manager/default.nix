@@ -14,6 +14,7 @@
   git = import ./shell/git;
   gpg-agent = import ./gpg-agent;
   hyprland = import ./wayland/hyprland;
+  hyprlock = import ./wayland/hyprlock;
   i3wm = import ./x11/i3wm;
   ironbar = import ./wayland/ironbar;
   jujutsu = import ./shell/jujutsu;
