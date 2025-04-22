@@ -15,7 +15,7 @@
       background = lib.mkForce [
         {
           monitor = "";
-          path = lib.mkForce "~/docs/nextcloud/I. Personal/III. Resources/Images/Wallpaper/DSC03843.高画質.png";
+          path = lib.mkForce "~/docs/nextcloud/I. Personal/III. Resources/Images/Wallpaper/n55_pafu/high res/DSC03843.高画質.png";
           blur_passes = 2;
           # blur_size = 15;
           noise = "0.2";
