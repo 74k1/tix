@@ -117,27 +117,14 @@ in {
         wired = {
           system = "x86_64-linux";
         };
-        cyberia = {
-          system = "x86_64-linux";
-        };
         eiri = {
           system = "x86_64-linux";
         };
         knights = {
           system = "x86_64-linux";
         };
-        morpheus = {
-          system = "aarch64-linux";
-        };
-        psyche = {
-          system = "x86_64-linux";
-          # home-manager = false;
-        };
         duvet = {
           system = "x86_64-linux";
-        };
-        octo = {
-          system = "aarch64-linux";
         };
       };
 
