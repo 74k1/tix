@@ -15,17 +15,16 @@
         <li><strong>Window Manager</strong> • <a href="https://github.com/YaLTeR/niri/">Niri</a> Scrollable WM!</li>
         <li><strong>Shell</strong> • <a href="https://github.com/fish-shell/fish-shell">fish</a> The user-friendly command line shell</li>
         <li><strong>Terminal</strong> • <a href="https://github.com/ghostty-org/ghostty">Ghostty</a> a fast, feature-rich terminal emulator</li>
-        <li><strong>Notify Daemon</strong> • <a href="https://github.com/Toqozz/wired-notify">wired</a> lightweight notification daemon</li>
-        <li><strong>Panel</strong> • <a href="https://github.com/Alexays/Waybar">Waybar</a> Highly customizable Wayland bar.</li>
+        <li><strong>Notification Daemon & Panel</strong> • <a href="https://github.com/elkowar/eww">eww</a> Highly customizable widgets.</li>
         <li><strong>Launcher</strong> • <a href="https://hg.sr.ht/~scoopta/wofi">Wofi</a> Rofi but for Wayland</li>
         <li><strong>File Manager</strong> • <a href="https://github.com/sxyazi/yazi">Yazi</a> Fast terminal file manager.</li>
         <li><strong>Editor of Choice</strong> • <a href="https://github.com/neovim/neovim">Neovim</a> ❤️</li>
-        <li><strong>GTK Theme</strong> • <a href="https://github.com/74k1/tsukiyo.gtk">Tsukiyo.gtk</a> My own GTK Theme!</li>
+        <!-- <li><strong>GTK Theme</strong> • <a href="https://github.com/74k1/tsukiyo.gtk">Tsukiyo.gtk</a> My own GTK Theme!</li> -->
     </ul>
 </div>
 
 
-| # Screenshots                     |                                   |
+| <h2> Screenshots </h2>            |                                   |
 | :-------------------------------: | :-------------------------------: |
 | <img src="/.github/assets/1.png"> | <img src="/.github/assets/2.png"> |
 | <img src="/.github/assets/3.png"> | <img src="/.github/assets/4.png"> |
@@ -67,7 +66,13 @@
             <td><a href="hosts/nixos/eiri"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
             <td>eiri</td>
             <td>Custom Server<br><sub>Ryzen 9 3900x<br>GTX 1080ti</sub></td>
-            <td>Just for fun.</td>
+            <td>Just for fun. Homelab stuff :)</td>
+        </tr>
+        <tr>
+            <td><a href="hosts/nixos/eiri"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
+            <td>arisu</td>
+            <td>MacBook as a Server<br><sub>M3 Max</sub></td>
+            <td>Just for fun. Homelab stuff :)</td>
         </tr>
         <tr>
             <td><a href="hosts/nixos/knights"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
@@ -81,47 +86,47 @@
             <td>VPS<br><sub><a href="https://hetzner.cloud/">from Hetzner</a> ❤️</sub></td>
             <td>Static Website Hosting</td>
         </tr>
-        <tr>
-            <td><a href="hosts/nixos/octo"><img alt="raspberry-pi" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
-            <td>octo</td>
-            <td>Raspberry Pi</td>
-            <td>3D Printer Firmware (moonraker & klipper)</td>
-        </tr>
     </table>
 </div>
-<div>
-    <h2>Programs</h2>
-    <p>
-    bla bla
-    </p>
-</div>
-<div>
-    <h2>Struct</h2>
-    <p>
-    \<insert how to do awesome struct here\>
-    </p>
-</div>
+
+## Programs I'm using
+
+- xyz
+
+## Flake Structure
+
+```
+xyz
+```
+
 <div>
     <h2>Packages</h2>
     <p>
-    All of my own Packages are under [tixpkgs](https://github.com/74k1/tixpkgs). Feel free to snoop around and submit PRs / Issues. Contributions are always welcome. :)
+    All of my own Packages are under <a href="https://github.com/74k1/tixpkgs">tixpkgs</a>. Feel free to snoop around and submit PRs / Issues. Contributions are always welcome. :)
     </p>
 </div>
 <div>
     <h2>Special Thanks to</h2>
-    <h3><a href="https://github.com/reo101">reo101</a></h3>
-    <a href="#"><img alt="clueless" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a>
-    <p>for being the one that introduced me to nix and helping a ton :)</p>
-    <h3><a href="https://github.com/linuxmobile/">linuxmobile</a></h3>
-    <h4><a href="https://github.com/linuxmobile/kaku">Niri config</a></h4>
-    <p>
-        Served as a great reference point.
-    </p>
-    <h3><a href="https://gitlab.com/Nmoleo">Nmoleo</a></h3>
-    <h4><a href="https://gitlab.com/Nmoleo/i3-volume-brightness-indicator">i3 + dunst indicators</a></h4>
-    <p>
-        I've somewhat rewritten it. (see <a href="https://github.com/74k1/tixpkgs/blob/main/pkgs/du/duvolbr.nix">this file</a>)
-        It's now compatible with nix without pactl/playerctl/libnotify package dependencies. :)
-    </p>
-    <h4><a href="https://gitlab.com/Nmoleo/polybar_playerctl">polybar & playerctl</a></h4>
+    <table>
+        <tr>
+            <th>Credit</th>
+            <th>Reason</th>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/reo101">reo101</a> <img alt="clueless" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></td>
+            <td>for being the one that introduced me to nix and helping a ton :)</td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/linuxmobile/">linuxmobile</a></td>
+            <td>Their <a href="https://github.com/linuxmobile/kaku">Niri config</a> served as a great reference point.</td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/HirschBerge">HirschBerge</a></td>
+            <td>For the insightful <a href="https://github.com/elkowar/eww">eww</a> implementation in Nix.</td>
+        </tr>
+        <tr>
+            <td><a href="https://gitlab.com/Nmoleo">Nmoleo</a></td>
+            <td>Rewrote / packaged his <a href="https://gitlab.com/Nmoleo/i3-volume-brightness-indicator">i3 + dunst indicators</a> script for Nix in <a href="https://github.com/74k1/tixpkgs">tixpkgs</a>.</td>
+        </tr>
+    </table>
 </div>
