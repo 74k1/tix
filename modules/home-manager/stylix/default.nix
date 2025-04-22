@@ -6,6 +6,19 @@
   ...
 }: let
   cfg = config.theme.ukiyo;
+  icon = {
+    name = "Colloid-Dark";
+
+    package = (pkgs.colloid-icon-theme.overrideAttrs (old: {
+      preInstall = old.preInstall or "" + ''
+        echo "[categories@2x/22]" >> ./src/index.theme
+        echo "Size=22" >> ./src/index.theme
+        echo "Scale=2" >> ./src/index.theme
+        echo "Context=Categories" >> ./src/index.theme
+        echo "Type=Fixed" >> ./src/index.theme
+      '';
+    }));
+  };
 in {
   options = {
     theme.ukiyo = {
@@ -29,6 +42,11 @@ in {
         size = 16;
         package = cfg.package;
         name = "Ukiyo";
+      };
+      iconTheme = {
+        enable = true;
+        dark = icon.name;
+        package = icon.package;
       };
       base16Scheme = {
         base00 = "#07060B";
