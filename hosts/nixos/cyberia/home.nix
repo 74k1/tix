@@ -75,7 +75,7 @@
     
     # my own scriptiboo
     duvolbr
-    berkeley-otf
+    inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-nerd-otf
 
     # term
     bat bat-extras.batman

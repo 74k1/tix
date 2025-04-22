@@ -105,7 +105,6 @@
     <h2>Packages</h2>
     <ul>
         <li><a href="pkgs/duvolbr.nix">duvolbr</a></li>
-        <li><a href="pkgs/berkeley-otf.nix">berkeley-otf</a></li>
     </ul>
 </div>
 <div>

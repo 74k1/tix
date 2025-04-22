@@ -50,7 +50,6 @@
     # overlays = [
     #   (final: prev: {
     #     duvolbr = outputs.packages.${pkgs.hostPlatform.system}.duvolbr;
-    #     berkeley-otf = outputs.packages.${pkgs.hostPlatform.system}.berkeley-otf;
     #   })
     #   inputs.wired-notify.overlays.default
     # ];
@@ -77,7 +76,7 @@
     
     # my own scriptiboo
     duvolbr
-    berkeley-otf 
+    inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-nerd-otf
 
     # uhhh clipboard
     wl-clipboard-rs

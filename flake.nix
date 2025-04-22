@@ -13,6 +13,10 @@
       url = "github:74k1/tixpkgs/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    unfree-fonts = {
+      url = "git+ssh://git@github.com/74k1/unfree-fonts-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # TESTS
     jvanbruegge-linkwarden = {
       url = "github:jvanbruegge/nixpkgs/linkwarden";

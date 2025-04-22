@@ -1,7 +1,4 @@
 { inputs, outputs, lib, config, pkgs, allSecrets, ... }:
-let
-  berkeley-otf = pkgs.callPackage "${inputs.self}/pkgs/berkeley-otf.nix" { inherit pkgs; };
-in
 {
   options = {
     taki.gui = {
@@ -44,8 +41,8 @@ in
           nerd-fonts.mplus
           nerd-fonts.lilex
           nerd-fonts.zed-mono
-
-          berkeley-otf
+          
+          inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-nerd-otf
         ];
       };
     })

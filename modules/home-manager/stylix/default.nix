@@ -6,7 +6,6 @@
   ...
 }: let
   cfg = config.theme.ukiyo;
-  berkeley-otf = pkgs.callPackage "${inputs.self}/pkgs/berkeley-otf.nix" {inherit pkgs;};
 in {
   options = {
     theme.ukiyo = {
@@ -63,7 +62,7 @@ in {
         # };
 
         monospace = {
-          package = berkeley-otf;
+          package = inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-nerd-otf;
           name = "TX02 Nerd Font";
         };
 
