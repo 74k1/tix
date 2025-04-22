@@ -124,8 +124,7 @@
     crowdsec-firewall-bouncer = {
       settings = {
         api.server = {
-          # SECRET
-          api_key = "00000000";
+          api_key = "${allSecrets.per_host.kngihts.crowdsec.api_key}";
         };
       };
     };
@@ -206,7 +205,7 @@
         "${domain0}" = {
           addSSL = true;
           enableACME = true;
-          root = "/var/www/example.com/";
+          root = "/var/www/${domain0}/";
         };
         "vw.${domain0}" = {
           enableACME = true;

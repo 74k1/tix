@@ -4,6 +4,7 @@
   pkgs,
   inputs,
   outputs,
+  allSecrets,
   ...
 }: {
   age.secrets."paperless_pass" = {
@@ -14,7 +15,7 @@
   };
   services.paperless = {
     enable = true;
-    address = "255.255.255.255";
+    address = "${allSecrets.per_host.eiri.int_ip}";
     passwordFile = config.age.secrets."paperless_pass".path;
     consumptionDirIsPublic = true;
     consumptionDir = "/mnt/btrfs_pool/paperless/consumption";

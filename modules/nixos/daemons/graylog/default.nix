@@ -7,7 +7,7 @@
   allSecrets,
   ...
 }: {
-  # send logs to 255.255.255.255:1515 :)
+  # send logs to ${allSecrets.per_host.eiri.int_ip}:1515 :)
   services = {
     graylog = {
       enable = true;

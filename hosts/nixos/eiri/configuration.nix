@@ -218,7 +218,7 @@
           addSSL = true;
           useACMEHost = "eiri.${allSecrets.global.domain1}";
           locations."/" = {
-            proxyPass = "http://255.255.255.255:9000";
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:9000";
             proxyWebsockets = true;
           };
         };

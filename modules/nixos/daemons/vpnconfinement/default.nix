@@ -3,6 +3,7 @@
   outputs,
   config,
   pkgs,
+  allSecrets,
   ...
 }: {
   imports = [
@@ -60,7 +61,7 @@
           enable = true;
           # rpc_file = ./yee.age ; # file path with ENV vars perhaps
           RPC_USER="taki";
-          RPC_PASS="00000000";
+          RPC_PASS="${allSecrets.per_service.transmission.rpc-password}";
         };
       };
     };
