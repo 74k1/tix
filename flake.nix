@@ -26,6 +26,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # -- TESTS / FIXES
+    nixpkgs-iynaix-orca = {
+      url = "github:iynaix/nixpkgs/fix-orca-slicer";
+    };
     nixpkgs-akotro-it-tools = {
       url = "github:akotro/nixpkgs/add-it-tools-service";
     };
