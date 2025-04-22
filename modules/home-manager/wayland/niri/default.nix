@@ -6,20 +6,6 @@
   outputs,
   ...
 }:
-# let
-#   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-#     ${pkgs.waybar}/bin/waybar &
-#     hyprctl setcursor Ukiyo 16 &
-#     systemctl --user start plasma-polkit-agent &
-#     ${pkgs.wl-clipboard-rs}/bin/wl-copy --watch cliphist store &
-#     '';
-#     #tempfile=$(${pkgs.coreutils}/bin/mktemp) &
-#     #${pkgs.curl}/bin/curl https://wall.74k1.sh/ --output $tempfile &
-#     #${pkgs.swww}/bin/swww init &
-#     #sleep 1
-#     #${pkgs.swww}/bin/swww img $tempfile &
-#     # ${./wallpaper.png} &
-# in
 {
   imports = [
     inputs.niri.homeModules.niri
@@ -69,9 +55,8 @@
       };
       spawn-at-startup = [
         (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
-        (makeCommand "${pkgs.waybar}/bin/waybar")
         (makeCommand "${pkgs.wl-clipboard-rs}/bin/wl-copy --watch cliphist store")
-        (makeCommand "${pkgs.wired}/bin/wired")
+        (makeCommand "${lib.getExe pkgs.swaynotificationcenter}")
         (makeCommand "${pkgs.xwayland-satellite}/bin/xwayland-satellite")
       ];
       clipboard.disable-primary = true;
@@ -95,9 +80,13 @@
         # Bindings
         "Mod+Return" = { repeat = false; action = spawn "${pkgs.ghostty}/bin/ghostty"; };
 
-        "Mod+R" = { repeat = false; action = spawn "${pkgs.wofi}/bin/wofi" "--show" "drun"; };
-        "Mod+Space" = { repeat = false; action = spawn "${pkgs.wofi}/bin/wofi" "--show" "drun"; };
+        "Mod+R" = { repeat = false; action = spawn "${lib.getExe pkgs.anyrun}"; };
+        "Mod+Space" = { repeat = false; action = spawn "${lib.getExe pkgs.anyrun}"; };
+        # "Mod+V" = { repeat = false; action = spawn "${lib.getExe pkgs.anyrun}"; };
 
+        # "Mod+R" = { repeat = false; action = spawn "${pkgs.wofi}/bin/wofi" "--show" "drun"; };
+        # "Mod+Space" = { repeat = false; action = spawn "${pkgs.wofi}/bin/wofi" "--show" "drun"; };
+        #
         "Mod+V" = { repeat = false; action = spawn "sh" "-c" "${pkgs.cliphist}/bin/cliphist list | ${pkgs.wofi}/bin/wofi -dmenu | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard-rs}/bin/wl-copy"; };
 
         "Print" = { repeat = false; action = spawn "${pkgs.wayfreeze}/bin/wayfreeze" "--after-freeze-cmd" "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area; ${pkgs.killall}/bin/killall wayfreeze"; };
@@ -360,12 +349,16 @@
         ];
       in windowRules ++ floatingRules;
       workspaces = {
-        "main" = {
-          open-on-output = "DP-1";
-        };
-        "left" = {
-          open-on-output = "DP-2";
-        };
+        "01" = { open-on-output = "DP-1"; name = "一"; };
+        "02" = { open-on-output = "DP-1"; name = "二"; };
+        "03" = { open-on-output = "DP-1"; name = "三"; };
+        "04" = { open-on-output = "DP-1"; name = "四"; };
+        "05" = { open-on-output = "DP-1"; name = "五"; };
+        "06" = { open-on-output = "DP-2"; name = "六"; };
+        "07" = { open-on-output = "DP-2"; name = "七"; };
+        "08" = { open-on-output = "DP-2"; name = "八"; };
+        "09" = { open-on-output = "DP-2"; name = "九"; };
+        "10" = { open-on-output = "DP-2"; name = "十"; };
       };
       outputs = {
         "DP-1" = {
