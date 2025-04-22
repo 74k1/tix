@@ -17,12 +17,14 @@
   programs.fish = {
     enable = true;
     generateCompletions = true;
+
     plugins = [
       { name = "pure"; src = pkgs.fishPlugins.pure.src; }
       { name = "bass"; src = pkgs.fishPlugins.bass.src; }
       { name = "puffer"; src = pkgs.fishPlugins.puffer.src; }
       { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
     ];
+
     functions = {
       fish_command_not_found.body = ''
         echo "Command $argv[1] not found!"
@@ -30,6 +32,7 @@
         echo "nix run nixpkgs#$argv[1] -- $argv[2..]"
       '';
     };
+    
     shellAliases = {
       ":E" = "${config.programs.neovim.finalPackage}/bin/nvim +E";
       ":q" = "exit";
@@ -59,6 +62,7 @@
       "today" = "date '+%Y-%m-%d' | tr -d '\n'";
       today-1 = "date -d yesterday '+%Y-%m-%d' | tr -d '\n'";
     };
+
     interactiveShellInit = /* fish */ ''
       atuin init fish | source
       zoxide init --cmd z fish | source
