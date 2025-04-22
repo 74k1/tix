@@ -8,11 +8,28 @@
         host = "0.0.0.0";
         port = 8808;
       };
+      theme = {
+        # HSL
+        background-color = "252 29 3";
+        primary-color = "249 100 71";
+        positive-color = "135 100 73";
+        negative-color = "342 100 70";
+        contrast-multiplier = 1.1;
+        disable-picker = true;
+      };
       pages = [
         {
           name = "Home";
           slug = "home"; # the url at the end: /home
           columns = [
+            {
+              size = "small";
+              widgets = [
+                {
+                  type = "calendar";
+                }
+              ];
+            }
             {
               size = "full";
               widgets = [
@@ -26,17 +43,18 @@
                   title = "Services";
                   sites = [
                     {
+                      title = "${allSecrets.global.domain01}";
+                      url = "https://${allSecrets.global.domain01}/";
+                    }
+                    {
                       title = "${allSecrets.global.domain02}";
                       url = "https://${allSecrets.global.domain02}/";
                     }
                   ];
                 }
                 {
-                  type = "calendar";
-                }
-                {
-                  location = "Gossau, St. Gallen, Switzerland";
                   type = "weather";
+                  location = "Gossau, St. Gallen, Switzerland";
                 }
               ];
             }
