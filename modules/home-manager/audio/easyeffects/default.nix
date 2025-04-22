@@ -13,19 +13,19 @@
           blocklist = [
           ];
           "plugins_order" = [
-            "deepfilternet#0"
+            # "deepfilternet#0"
             "rnnoise#0"
             "stereo_tools#0"
             "equalizer#0"
           ];
-          "deepfilternet#0" = {
-            attenuation-limit = 100.0;
-            max-df-processing-threshold = 20.0;
-            max-erb-processing-threshold = 30.0;
-            min-processing-buffer = 0;
-            min-processing-threshold = -14.999999999999982;
-            post-filter-beta = 0.02;
-          };
+          # "deepfilternet#0" = {
+          #   attenuation-limit = 75.0;
+          #   max-df-processing-threshold = 20.0;
+          #   max-erb-processing-threshold = 20.0;
+          #   min-processing-buffer = 0;
+          #   min-processing-threshold = -14.999999999999982;
+          #   post-filter-beta = 0.05;
+          # };
           "rnnoise#0" = {
             bypass = false;
             enable-vad = true;
