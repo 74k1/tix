@@ -6,11 +6,11 @@
     <a href="LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=ca9ee6&colorA=313244&colorB=cba6f7"/></a>
     <br>
     <p>TODO: preview<p>
-    <a href="#octocat--hi-there-thanks-for-dropping-by">
-        <picture>
-            <img alt="preview" align="right" width="400px" src="/.github/assets/preview.png">
-        </picture>
-    </a>
+    <!-- <a href="#octocat--hi-there-thanks-for-dropping-by"> -->
+    <!--     <picture> -->
+    <!--         <img alt="preview" align="right" width="400px" src="/.github/assets/preview.png"> -->
+    <!--     </picture> -->
+    <!-- </a> -->
     <ul>
         <li><strong>Window Manager</strong> • <a href="https://github.com/YaLTeR/niri/">Niri</a> Scrollable WM!</li>
         <li><strong>Shell</strong> • <a href="https://github.com/fish-shell/fish-shell">fish</a> The user-friendly command line shell</li>
