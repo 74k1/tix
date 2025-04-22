@@ -3,6 +3,7 @@
   bash = import ./shell/bash;
   bspwm = import ./x11/bspwm;
   cliphist = import ./wayland/cliphist;
+  copyq = import ./wayland/copyq;
   colors = import ./x11/colors;
   dunst = import ./wayland/dunst;
   easyeffects = import ./audio/easyeffects;
