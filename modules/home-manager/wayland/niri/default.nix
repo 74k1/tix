@@ -124,7 +124,7 @@ in {
         "Mod+Comma".action = consume-window-into-column;
         "Mod+Period".action = expel-window-from-column;
         "Mod+Tab".action = switch-focus-between-floating-and-tiling;
-        "Mod+Shift+Space".action = toggle-window-floating;
+        "Mod+Alt+Space".action = toggle-window-floating;
 
         # workspace
         "Mod+H".action = focus-column-or-monitor-left;
