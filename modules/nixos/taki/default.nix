@@ -28,6 +28,7 @@
         fontDir.enable = true;
         #enableGhostsriptFonts = true;
         packages = with pkgs; [
+          helvetica-neue-lt-std
           cantarell-fonts
           hack-font
           inter

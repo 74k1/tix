@@ -102,7 +102,8 @@
     btop
     
     pulsemixer
-    # qmk
+    qmk
+    vial
     deploy-rs
     ripgrep
     # scc
