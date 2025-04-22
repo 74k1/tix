@@ -12,7 +12,7 @@
   #   # owner = "nextcloud";
   #   # group = "nextcloud";
   # };
-  services.rsyslogd = {
+  services.rsyslogd = { # TODO
     enable = true;
   };
   services.vector = {
