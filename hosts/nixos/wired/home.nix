@@ -181,6 +181,7 @@
     cider-2
     # pkgs.master.spotify-player
     feishin
+    aonsoku
     # spotify-player
     discord-ptb
     # legcord
