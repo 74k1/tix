@@ -161,7 +161,7 @@
     # spotify-player
     discord
     # legcord
-    # vesktop
+    vesktop
 
     mpv
     ascii-draw

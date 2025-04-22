@@ -12,7 +12,7 @@
     inputs.nixos-generators.nixosModules.all-formats
 
     inputs.yeetmouse.nixosModules.default
-    # inputs.musnix.nixosModules.musnix
+    inputs.musnix.nixosModules.musnix
 
     ../../../modules/syncthing.nix
 
@@ -29,6 +29,18 @@
     bash
     kanidm-client
   ];
+
+  boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "systemd.show_status=auto"
+      "video=DP-1:2560x1440@165"
+      "video=HDMI-A-1:1920x1080@60,rotate=90"
+    ];
+    plymouth.enable = true;
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -98,6 +110,13 @@
     };
   };
 
+  # systemd.user.services = {
+  #   xdg-desktop-portal.after = [ "xdg-desktop-autostart.target" ];
+  #   xdg-desktop-portal-gtk.after = [ "xdg-desktop-autostart.target" ];
+  #   xdg-desktop-portal-gnome.after = [ "xdg-desktop-autostart.target" ];
+  #   niri-flake-polkit.after = [ "xdg-desktop-autostart.target" ];
+  # };
+
   # Disable xorg Screensaver
   environment.extraInit = ''
     xset s off -dpms
@@ -119,13 +138,6 @@
     #   # driversi686Linux.amdvlk
     # ];
   };
-
-  boot.kernelParams = [
-    "quiet"
-    "splash"
-    "video=DP-1:2560x1440@165"
-    "video=DP-2:1920x1080@165"
-  ];
 
   # Enable CUPS to print documents.
   services.printing = {
@@ -218,7 +230,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
      ntfs3g
-     git wget curl tmux
+     git wget curl tmux jq
      shpool
      pavucontrol
      nvidia-vaapi-driver

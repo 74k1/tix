@@ -237,6 +237,7 @@
         #   enableACME = true;
         #   locations."/" = {
         #     proxyPass = "http://10.100.0.1:1444";
+        #     proxyWebsockets = true;
         #   };
         # };
         "umami.74k1.sh" = {
