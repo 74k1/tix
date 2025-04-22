@@ -29,15 +29,20 @@
     inputs.vpnconfinement.nixosModules.default
     inputs.nixos-generators.nixosModules.all-formats
 
+    # Most important
     restic
+    kanidm-server
+    kanidm-client
+    vaultwarden
 
-    scrutiny
-
-    crowdsec
+    # Mid importance
     graylog
 
+    # everything else
+    crowdsec
+    scrutiny
+
     # n8n
-    vaultwarden
     audiobookshelf
     paperless
     # commafeed
@@ -186,58 +191,58 @@
       '';
       
       virtualHosts = {
-        "eiri.${allSecrets.global.domain1}" = {
+        "eiri.${allSecrets.global.domain01}" = {
           addSSL = true;
           # enableACME = true;
-          useACMEHost = "eiri.${allSecrets.global.domain1}";
+          useACMEHost = "eiri.${allSecrets.global.domain01}";
           locations."/" = {
             proxyPass = "http://${allSecrets.per_host.eiri.int_ip}";
           };
         };
-        "transmission.eiri.${allSecrets.global.domain1}" = {
+        "transmission.eiri.${allSecrets.global.domain01}" = {
           addSSL = true;
           # enableACME = true;
-          useACMEHost = "eiri.${allSecrets.global.domain1}";
+          useACMEHost = "eiri.${allSecrets.global.domain01}";
           locations."/" = {
             proxyPass = "http://${config.vpnNamespaces.prtr.namespaceAddress}:9091";
             # proxyWebsockets = true;
           };
         };
-        "rd.eiri.${allSecrets.global.domain1}" = {
+        "rd.eiri.${allSecrets.global.domain01}" = {
           addSSL = true;
-          useACMEHost = "eiri.${allSecrets.global.domain1}";
+          useACMEHost = "eiri.${allSecrets.global.domain01}";
           locations."/" = {
             proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:21116";
             proxyWebsockets = true;
           };
         };
-        "graylog.eiri.${allSecrets.global.domain1}" = {
+        "graylog.eiri.${allSecrets.global.domain01}" = {
           addSSL = true;
-          useACMEHost = "eiri.${allSecrets.global.domain1}";
+          useACMEHost = "eiri.${allSecrets.global.domain01}";
           locations."/" = {
             proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:9000";
             proxyWebsockets = true;
           };
         };
-        "chat.eiri.${allSecrets.global.domain1}" = {
+        "chat.eiri.${allSecrets.global.domain01}" = {
           addSSL = true;
-          useACMEHost = "eiri.${allSecrets.global.domain1}";
+          useACMEHost = "eiri.${allSecrets.global.domain01}";
           locations."/" = {
             proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:3335";
             proxyWebsockets = true;
           };
         };
-        "litellm.eiri.${allSecrets.global.domain1}" = {
+        "litellm.eiri.${allSecrets.global.domain01}" = {
           addSSL = true;
-          useACMEHost = "eiri.${allSecrets.global.domain1}";
+          useACMEHost = "eiri.${allSecrets.global.domain01}";
           locations."/" = {
             proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:3336";
             proxyWebsockets = true;
           };
         };
-        "overseerr.eiri.${allSecrets.global.domain1}" = {
+        "overseerr.eiri.${allSecrets.global.domain01}" = {
           addSSL = true;
-          useACMEHost = "eiri.${allSecrets.global.domain1}";
+          useACMEHost = "eiri.${allSecrets.global.domain01}";
           locations."/" = {
             proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:5055";
             proxyWebsockets = true;
@@ -276,10 +281,10 @@
       group = "nginx";
     };
     certs = let 
-      inherit (allSecrets.global) domain1;
+      inherit (allSecrets.global) domain01;
     in {
-      "eiri.${domain1}" = {
-        domain = "eiri.${domain1}";
+      "eiri.${domain01}" = {
+        domain = "eiri.${domain01}";
         dnsProvider = "namecheap";
         dnsPropagationCheck = false;
         environmentFile = config.age.secrets."namecheap_api_secrets".path;
@@ -288,7 +293,7 @@
         #   "NAMECHEAP_API_USER_FILE" = ;
         # };
         extraDomainNames = [
-          "*.eiri.${domain1}"
+          "*.eiri.${domain01}"
         ];
         webroot = null;
       };

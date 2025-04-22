@@ -47,6 +47,7 @@ in {
     };
   in {
     enable = true;
+    package = pkgs.master.niri;
     # config = /* kdl */ {
     # };
     settings = {
@@ -70,7 +71,7 @@ in {
       ];
       clipboard.disable-primary = true;
       hotkey-overlay.skip-at-startup = false;
-      # screenshot-path = "~/%Y%m%d%H%M%S_Screenshot.png";
+      screenshot-path = "~/%Y%m%d%H%M%S_Screenshot.png";
       binds = with config.lib.niri.actions; {
         # Multimedia
         "XF86AudioPlay".action = spawn "${pkgs.playerctl}/bin/playerctl" "play-pause";
@@ -98,8 +99,8 @@ in {
         #
         "Mod+V" = { repeat = false; action = spawn "sh" "-c" "${pkgs.cliphist}/bin/cliphist list | ${pkgs.wofi}/bin/wofi -dmenu | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard-rs}/bin/wl-copy"; };
 
-        "Print" = { repeat = false; action = spawn "${pkgs.wayfreeze}/bin/wayfreeze" "--after-freeze-cmd" "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area; ${pkgs.killall}/bin/killall wayfreeze"; };
-        "Mod+Shift+S" = { repeat = false; action = spawn "${pkgs.wayfreeze}/bin/wayfreeze" "--after-freeze-cmd" "${pkgs.sway-contrib.grimshot}/bin/grimshot --notify --cursor copy area; ${pkgs.killall}/bin/killall wayfreeze"; };
+        "Print" = { repeat = false; action = screenshot; };
+        "Mod+Shift+S" = { repeat = false; action = screenshot; };
 
         "Mod+E" = { repeat = false; action = spawn "${pkgs.nautilus}/bin/nautilus"; };
         "Mod+N" = { repeat = false; action = spawn "${pkgs.nautilus}/bin/nautilus"; };

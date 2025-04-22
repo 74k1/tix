@@ -15,7 +15,7 @@ inputs
     enable = true;
     nginx = {
       enable = true;
-      domain = "it.${allSecrets.global.domain1}";
+      domain = "it.${allSecrets.global.domain01}";
       # forceSSL = false;
       # enableACME = false;
     };

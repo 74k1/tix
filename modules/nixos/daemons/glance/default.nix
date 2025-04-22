@@ -26,8 +26,8 @@
                   title = "Services";
                   sites = [
                     {
-                      title = "${allSecrets.global.domain2}";
-                      url = "https://${allSecrets.global.domain2}/";
+                      title = "${allSecrets.global.domain02}";
+                      url = "https://${allSecrets.global.domain02}/";
                     }
                   ];
                 }

@@ -9,7 +9,7 @@
     host = "0.0.0.0";
     port = 1444;
     environment = {
-      "BASE_URL" = "https://send.${allSecrets.global.domain1}/";
+      "BASE_URL" = "https://send.${allSecrets.global.domain01}/";
       "MAX_FILE_SIZE" = "10737418240"; # 10GB
       "MAX_EXPIRE_SECONDS" = 60 * 60 * 24 * 7; # 7 days
       "DEFAULT_EXPIRE_SECONDS" = 60 * 60 * 24 * 1; # 1 day

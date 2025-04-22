@@ -1,7 +1,12 @@
 { inputs, outputs, config, lib, pkgs, allSecrets, ... }:
 {
-  age.secrets."knights_wireguard_private_key" = {
-    rekeyFile = "${inputs.self}/secrets/knights_wireguard_private_key.age";
+  age.secrets = {
+    "knights_wireguard_private_key" = {
+      rekeyFile = "${inputs.self}/secrets/knights_wireguard_private_key.age";
+    };
+    "namecheap_api_secrets" = {
+      rekeyFile = "${inputs.self}/secrets/namecheap_api_secrets.age";
+    };
   };
   
   imports = with outputs.nixosModules; [ 
@@ -91,6 +96,16 @@
     git wget curl tmux
     fastfetch
   ];
+
+  users.users."cert_sync" = {
+    isNormalUser = true;
+    description = "only used for syncing certs";
+    shell = pkgs.bashInteractive;
+    extraGroups = [ "nginx" ];
+    openssh.authorizedKeys.keys = [
+      allSecrets.per_host.eiri.ssh_pub
+    ];
+  };
 
   services = {
     # fail2ban = {
@@ -198,7 +213,7 @@
       '';
 
       virtualHosts = let
-        inherit (allSecrets.global) domain0;
+        inherit (allSecrets.global) domain00 domain0;
       in {
         "it.74k1.sh" = {
           addSSL = true;
@@ -219,6 +234,37 @@
           enableACME = true;
           locations."/" = {
             proxyPass = "http://10.100.0.1:3034";
+          };
+        };
+        "${domain00}" = {
+          # addSSL = true;
+          forceSSL = true;
+          enableACME = true;
+          root = "/var/www/${domain00}/";
+        };
+        "auth.${domain00}" = {
+          # enableACME = true;
+          # useACMEHost = "auth.${domain00}";
+          forceSSL = true;
+          sslCertificate = "/var/lib/acme/auth.${domain00}/fullchain.pem";
+          sslCertificateKey = "/var/lib/acme/auth.${domain00}/key.pem";
+          sslTrustedCertificate = "/var/lib/acme/auth.${domain00}/chain.pem";
+          locations."/" = {
+            proxyPass = "https://10.100.0.1:8443";
+            # proxyWebsockets = true;
+            # recommendedProxySettings = true;
+            extraConfig = ''
+              proxy_ssl_name auth.${domain00};
+              # proxy_ssl_verify on;
+              # proxy_ssl_trusted_certificate /var/lib/acme/auth.${domain00}/fullchain.pem;
+              proxy_ssl_server_name on;
+              proxy_ssl_session_reuse off;
+
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded_Proto $scheme;
+            '';
           };
         };
         "${domain0}" = {
@@ -363,7 +409,7 @@
         #     '';
         #   };
         # };
-        "chatai.${allSecrets.global.domain1}" = {
+        "chatai.${allSecrets.global.domain01}" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
@@ -377,7 +423,25 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "${allSecrets.global.mail.acme}";
+    defaults = {
+      email = "${allSecrets.global.mail.acme}";
+      group = "nginx";
+    };
+    # certs = let 
+    #   inherit (allSecrets.global) domain00;
+    # in {
+    #   "auth.${domain00}" = {
+    #     domain = "auth.${domain00}";
+    #     dnsProvider = "namecheap";
+    #     dnsPropagationCheck = false;
+    #     environmentFile = config.age.secrets."namecheap_api_secrets".path;
+    #     # credentialFiles = {
+    #     #   "NAMECHEAP_API_KEY_FILE" = ;
+    #     #   "NAMECHEAP_API_USER_FILE" = ;
+    #     # };
+    #     webroot = null;
+    #   };
+    # };
   };
 
   # Open ports in the firewall.

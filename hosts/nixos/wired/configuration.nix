@@ -26,6 +26,7 @@
     pcscd
     firefox
     bash
+    kanidm-client
   ];
 
   # Bootloader.
@@ -43,40 +44,17 @@
   networking.firewall.checkReversePath = "loose";
 
   # HYPRLAND
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-    xwayland.enable = true;
-  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  #   xwayland.enable = true;
+  # };
 
   environment.sessionVariables = {
     # If cursor becomes invisible
     # WLR_NO_HARDWARE_CURSORS = "1";
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "0";
-  };
-
-
-  # TODO / FIXME: Fix services starting before niri-session
-  systemd.user.services.xdg-desktop-portal = {
-    after = [ "xdg-desktop-autostart.target" ];
-  };
-
-  systemd.user.services.xdg-desktop-portal-gtk = {
-    after = [ "xdg-desktop-autostart.target" ];
-  };
-
-  systemd.user.services.xdg-desktop-portal-gnome = {
-    after = [ "xdg-desktop-autostart.target" ];
-  };
-
-  systemd.user.services.niri-flake-polkit = {
-    after = [ "xdg-desktop-autostart.target" ];
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   # Enable the X11 windowing system.

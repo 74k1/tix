@@ -20,6 +20,8 @@
   immich = import ./daemons/immich;
   it-tools = import ./daemons/it-tools;
   kanboard = import ./daemons/kanboard;
+  kanidm-client = import ./daemons/kanidm-client;
+  kanidm-server = import ./daemons/kanidm-server;
   librechat = import ./daemons/librechat;
   linkwarden = import ./daemons/linkwarden;
   locale = import ./locale;
