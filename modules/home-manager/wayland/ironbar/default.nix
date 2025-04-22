@@ -103,35 +103,35 @@ in {
             }
             # fi
           ];
-          center = [
-            {
-              type = "focused";
-              show_icon = false;
-              show_title = true;
-              icon_size = 16;
-              # truncate = {
-                # mode = "end";
-                # max_length = 50;
-              # };
-            }
-            {
-              type = "music";
-              player_type = "mpris";
-              format = "// PLY: {title} / {artist}";
-              # truncate = {
-              #   mode = "end";
-              #   max_length = 20;
-              # };
-              show_status_icon = false;
-              icons = {
-                play = "";
-                pause = "󰏥";
-                prev = "󰙣";
-                next = "󰙡";
-                volume = "󰕾";
-              };
-            }
-          ];
+          # center = [
+          #   {
+          #     type = "focused";
+          #     show_icon = false;
+          #     show_title = true;
+          #     icon_size = 16;
+          #     # truncate = {
+          #       # mode = "end";
+          #       # max_length = 50;
+          #     # };
+          #   }
+          #   {
+          #     type = "music";
+          #     player_type = "mpris";
+          #     format = "// PLY: {title} / {artist}";
+          #     # truncate = {
+          #     #   mode = "end";
+          #     #   max_length = 20;
+          #     # };
+          #     show_status_icon = false;
+          #     icons = {
+          #       play = "";
+          #       pause = "󰏥";
+          #       prev = "󰙣";
+          #       next = "󰙡";
+          #       volume = "󰕾";
+          #     };
+          #   }
+          # ];
           end = [
             {
               bar = [
