@@ -2,7 +2,7 @@ require("img-clip").setup({
   default = {
     -- file and directory options
     dir_path = function ()
-      return vim.fn.expand("%:t:r") .. "/_assets" ---@type string | fun(): string
+      return "/_assets/" .. vim.fn.expand("%:t:r") ---@type string | fun(): string
     end,
     extension = "png", ---@type string | fun(): string
     file_name = "%Y-%m-%d-%H-%M-%S", ---@type string | fun(): string

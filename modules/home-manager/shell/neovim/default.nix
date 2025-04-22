@@ -73,6 +73,9 @@ in {
         lua vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>")
         lua vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>")
 
+        " img-clip (paste image)
+        lua vim.keymap.set("n", "<leader>p", "<cmd>PasteImage<CR>")
+
         lua vim.opt.iskeyword:append("-")
         lua vim.opt.iskeyword:remove(":")
         
