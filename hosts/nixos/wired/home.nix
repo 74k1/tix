@@ -11,7 +11,7 @@
     
     # int
     (with outputs.homeManagerModules; [
-      hyprland
+      # hyprland
       niri
       cliphist
       fastfetch
@@ -35,7 +35,10 @@
       #wall
       wezterm
       ghostty
-      wired
+      # wired
+      # eww
+      ironbar
+      anyrun
       xdg
       xorg
       zsh
@@ -132,7 +135,7 @@
 
     r2modman
 
-    # rustdesk
+    rustdesk
 
     nautilus
     nextcloud-client
@@ -143,11 +146,11 @@
     obsidian
     simple-scan
     qbittorrent
-    # spotify
-    #spotify-tray
+    spotify
+    spotify-tray
     # pkgs.master.spotify-player
     feishin
-    spotify-player
+    # spotify-player
     discord
     # legcord
     # vesktop
@@ -159,6 +162,8 @@
     gnome-keyring
     paper-plane
 
+    session-desktop
+
     # akira-unstable
     vala
     # pantheon.elementary-gtk-theme
@@ -167,9 +172,8 @@
     # polybar
     # ly
     # evolution
-    protonvpn-cli_2
     protonvpn-gui
-    # plasticity
+    plasticity
     # cura
     # curaengine_stable
 
