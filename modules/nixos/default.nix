@@ -1,11 +1,10 @@
 {
-  arion = import ./arion;
-  quadlet = import ./quadlet;
-  atuin = import ./daemons/atuin;
+  ai-chat = import ./daemons/ai-chat;
   anubis = import ./daemons/anubis;
+  arion = import ./arion;
+  atuin = import ./daemons/atuin;
   audiobookshelf = import ./daemons/audiobookshelf;
   bash = import ./shell/bash;
-  ai-chat = import ./daemons/ai-chat;
   commafeed = import ./daemons/commafeed;
   couchdb = import ./daemons/couchdb;
   crowdsec = import ./daemons/crowdsec;
@@ -19,11 +18,9 @@
   graylog = import ./daemons/graylog;
   immich = import ./daemons/immich;
   it-tools = import ./daemons/it-tools;
-  kanboard = import ./daemons/kanboard;
   kanidm-client = import ./daemons/kanidm-client;
   kanidm-server = import ./daemons/kanidm-server;
   librechat = import ./daemons/librechat;
-  linkwarden = import ./daemons/linkwarden;
   locale = import ./locale;
   ly = import ./daemons/ly;
   miniflux = import ./daemons/miniflux;
@@ -36,6 +33,7 @@
   paperless = import ./daemons/paperless;
   pcscd = import ./daemons/pcscd;
   plex = import ./daemons/plex;
+  quadlet = import ./quadlet;
   restic = import ./daemons/restic;
   rustdesk-server = import ./daemons/rustdesk-server;
   scrutiny = import ./daemons/scrutiny;
@@ -51,7 +49,6 @@
   umami = import ./daemons/umami;
   vaultwarden = import ./daemons/vaultwarden;
   vector = import ./daemons/vector;
-  vikunja = import ./daemons/vikunja;
   vm-test = import ./vm-test;
   vpnconfinement = import ./daemons/vpnconfinement;
   wireguard = import ./daemons/wireguard;
