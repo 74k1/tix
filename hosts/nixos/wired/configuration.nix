@@ -83,6 +83,18 @@
     binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
+  fonts = {
+    enableDefaultPackages = true;
+    fontconfig = {
+      antialias = true;
+      cache32Bit = true;
+      hinting = {
+        enable = true;
+        autohint = true;
+      };
+    };
+  };
+
   networking.hostName = "wired"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
