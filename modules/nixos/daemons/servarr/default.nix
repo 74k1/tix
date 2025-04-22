@@ -33,10 +33,10 @@ in {
     };
 
     # Music
-    # lidarr = {
-    #   enable = true;
-    #   package = pkgs.tix.lidarr;
-    # };
+    lidarr = {
+      enable = true;
+      package = pkgs.tix.lidarr;
+    };
 
     # Movies
     radarr = {
