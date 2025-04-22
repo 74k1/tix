@@ -25,7 +25,7 @@
     inputs.agenix.nixosModules.default
     inputs.agenix-rekey.nixosModules.default
 
-    inputs.arion.nixosModules.arion
+    # inputs.quadlet.nixosModules.quadlet
     inputs.vpnconfinement.nixosModules.default
     inputs.nixos-generators.nixosModules.all-formats
 
@@ -42,16 +42,15 @@
     paperless
     # commafeed
     miniflux
-    affine
-    docmost
-    arion
+    # arion
+    quadlet
     # couchdb
     # fail2ban
     forgejo
     immich
     locale
     
-    # ollama
+    ai-chat
     # librechat
 
     glance
@@ -62,7 +61,6 @@
     nvidia
     syncthing
     # atuin
-    outline
     plex
     navidrome 
     # send
@@ -150,16 +148,6 @@
       };
     };
 
-    # librechat = {
-    #   enable = true;
-    #   # port = 3080;
-    #   # environmentFile = config.age.secrets."librechat_env_secret".path;
-    #   user = "librechat";
-    #   group = "librechat";
-    #   mongodbDatabase = "librechat";
-    #   stateDir = "/var/lib/librechat";
-    # };
-
     nginx = {
       enable = true;
       recommendedGzipSettings = true;
@@ -228,6 +216,30 @@
           useACMEHost = "eiri.${allSecrets.global.domain1}";
           locations."/" = {
             proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:9000";
+            proxyWebsockets = true;
+          };
+        };
+        "chat.eiri.${allSecrets.global.domain1}" = {
+          addSSL = true;
+          useACMEHost = "eiri.${allSecrets.global.domain1}";
+          locations."/" = {
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:3335";
+            proxyWebsockets = true;
+          };
+        };
+        "litellm.eiri.${allSecrets.global.domain1}" = {
+          addSSL = true;
+          useACMEHost = "eiri.${allSecrets.global.domain1}";
+          locations."/" = {
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:3336";
+            proxyWebsockets = true;
+          };
+        };
+        "overseerr.eiri.${allSecrets.global.domain1}" = {
+          addSSL = true;
+          useACMEHost = "eiri.${allSecrets.global.domain1}";
+          locations."/" = {
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:5055";
             proxyWebsockets = true;
           };
         };

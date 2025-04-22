@@ -63,6 +63,7 @@
       atuin init fish | source
       zoxide init --cmd z fish | source
       COMPLETE=fish jj | source
+      ${if config.programs.eww.enable then "eww shell-completions --shell fish | source" else ""}
     '';
   };
 }

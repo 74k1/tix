@@ -16,14 +16,17 @@
         service = {
           DISABLE_REGISTRATION = true;
           ENABLE_REVERSE_PROXY_AUTHENTICATION = true;
+          ENABLE_BASIC_AUTHENTICATION = false;
         };
         server = {
           DOMAIN = "git.${allSecrets.global.domain0}";
           ROOT_URL = "https://git.${allSecrets.global.domain0}/";
-          SSH_PORT = 2277;
+          SSH_PORT = 22;
           START_SSH_SERVER = true;
           SSH_DOMAIN = "git.${allSecrets.global.domain0}";
           SSH_SERVER_USE_PROXY_PROTOCOL = true;
+          BUILTIN_SSH_SERVER_USER = "forge";
+          SSH_LISTEN_PORT = 2277;
         };
         actions = {
           ENABLED = true;

@@ -41,8 +41,12 @@
     casks = [
       # "docker"
       "alt-tab"
+      "affinity-photo"
+      "affinity-designer"
+      "affinity-publisher"
       # "bitwarden"
       "parsec"
+      "orion"
       "zen"
       "ghostty"
       # "github"

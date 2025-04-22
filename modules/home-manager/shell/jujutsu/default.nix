@@ -36,9 +36,9 @@
         pager = "delta";
         editor = "nvim";
         diff-editor = [
-          "nvim"
-          "-c"
-          "DiffEditor $left $right $output"
+          "${lib.getExe pkgs.delta}"
+          # "-c"
+          # "DiffEditor $left $right $output"
         ];
       };
       aliases = {

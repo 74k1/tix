@@ -4,7 +4,6 @@
   imports = builtins.concatLists [
     # ext
     [
-      inputs.wired-notify.homeManagerModules.default
       inputs.stylix.homeManagerModules.stylix
       #inputs.nix-colors.homeManagerModules.default
     ]
@@ -46,9 +45,6 @@
   ];
 
   # nixpkgs = {
-  #   overlays = [
-  #     inputs.wired-notify.overlays.default
-  #   ];
   #   config = {
   #     allowUnfree = true;
   #     permittedInsecurePackages = [
@@ -72,7 +68,7 @@
     
     # my own scriptiboo
     pkgs.tix.duvolbr
-    inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-nerd-otf
+    # inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-otf
 
     # term
     bat bat-extras.batman

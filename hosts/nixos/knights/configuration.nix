@@ -15,6 +15,8 @@
     crowdsec-bouncer
     vector
 
+    anubis
+
     locale
     nix
     taki
@@ -124,8 +126,25 @@
     crowdsec-firewall-bouncer = {
       settings = {
         api.server = {
-          api_key = "${allSecrets.per_host.kngihts.crowdsec.api_key}";
+          api_key = "${allSecrets.per_host.knights.crowdsec.api_key}";
         };
+      };
+    };
+
+    anubis.instances = {
+      forgejo.settings = {
+        TARGET = "http://10.100.0.1:3000";
+        BIND = ":60001";
+        BIND_NETWORK = "tcp";
+        # METRICS_BIND = "0.0.0.0:20023";
+        # METRICS_BIND_NETWORK = "tcp";
+      };
+      chatai.settings = {
+        TARGET = "http://10.100.0.1:3335";
+        BIND = ":60002";
+        BIND_NETWORK = "tcp";
+        # METRICS_BIND = "0.0.0.0:20023";
+        # METRICS_BIND_NETWORK = "tcp";
       };
     };
 
@@ -167,14 +186,14 @@
       
       # Configure SSH forwarding for Forgejo
       streamConfig = ''
-        upstream git_ssh {
-          server 10.100.0.1:2277;  # Forward to Forgejo's SSH port (2277)
+        upstream git-ssh {
+          server 10.100.0.1:2277;
         }
-        
+
         server {
-          listen 22;  # Listen on standard SSH port
-          proxy_protocol on;  # Enable PROXY protocol as required by Forgejo
-          proxy_pass git_ssh;
+          listen 22;
+          proxy_protocol on;
+          proxy_pass git-ssh;
         }
       '';
 
@@ -188,13 +207,13 @@
             proxyPass = "http://10.100.0.1:80"; # nginx based on url
           };
         };
-        "send.74k1.sh" = {
-          addSSL = true;
-          enableACME = true;
-          locations."/" = {
-            proxyPass = "http://10.100.0.1:1444";
-          };
-        };
+        # "send.74k1.sh" = {
+        #   addSSL = true;
+        #   enableACME = true;
+        #   locations."/" = {
+        #     proxyPass = "http://10.100.0.1:1444";
+        #   };
+        # };
         "umami.74k1.sh" = {
           addSSL = true;
           enableACME = true;
@@ -256,16 +275,11 @@
           enableACME = true;
           forceSSL = true;
           locations."/" = {
-            proxyPass = "http://10.100.0.1:3000";
+            proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.forgejo.settings.BIND}";
+            recommendedProxySettings = true;
+            proxyWebsockets = true;
             extraConfig = ''
               client_max_body_size 0;
-              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header X-Real-IP $remote_addr;
-              proxy_http_version 1.1;
-              proxy_set_header Connection "";
-              proxy_buffering off;
-              proxy_read_timeout 36000s;
-              proxy_redirect off;
             '';
           };
         };
@@ -337,18 +351,6 @@
             '';
           };
         };
-        "forever.${domain0}" = {
-          enableACME = true;
-          forceSSL = true;
-          locations."/" = {
-            proxyPass = "http://10.100.0.1:3033";
-            extraConfig = ''
-              proxy_http_version 1.1;
-              proxy_set_header Upgrade $http_upgrade;
-              proxy_set_header Connection "upgrade";
-            '';
-          };
-        };
         # "firefoxsync.${domain0}" = {
         #   enableACME = true;
         #   forceSSL = true;
@@ -361,6 +363,14 @@
         #     '';
         #   };
         # };
+        "chatai.${allSecrets.global.domain1}" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.chatai.settings.BIND}";
+            proxyWebsockets = true;
+          };
+        };
       };
     };
   };

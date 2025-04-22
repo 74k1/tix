@@ -1,7 +1,6 @@
 { config, lib, pkgs, inputs, outputs, ... }:
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-    ${pkgs.waybar}/bin/waybar &
     hyprctl setcursor Ukiyo 16 &
     systemctl --user start plasma-polkit-agent &
     ${pkgs.wl-clipboard-rs}/bin/wl-copy --watch cliphist store &

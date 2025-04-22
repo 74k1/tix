@@ -13,7 +13,7 @@ end
 -- font
 -- TODO
 config.font = wezterm.font_with_fallback {
-  "TX02 Nerd Font",
+  "TX-02",
   -- "BerkeleyMono Nerd Font Mono",
   -- "Berkeley Mono",
   "FiraCode Nerd Font Mono",

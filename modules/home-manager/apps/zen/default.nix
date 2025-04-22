@@ -8,6 +8,7 @@
     enable = true;
     profiles.taki = {
       name = "taki";
+      search.default = "Kagi";
       search.force = true;
       search.engines = {
         "bing".metaData.hidden = true;
@@ -17,15 +18,20 @@
           icon = "https://icons.duckduckgo.com/ip3/google.com.ico";
           definedAliases = [ ":g" "@google" ];
         };
-        "ddg" = {
-          urls = [{ template = "https://duckduckgo.com/?t=h_&q={searchTerms}&ia=web"; }];
-          icon = "https://icons.duckduckgo.com/ip3/duckduckgo.com.ico";
-          definedAliases = [ ":g" "@google" ];
-        };
         "Perplexity" = {
           urls = [{ template = "https://www.perplexity.ai/search?focus=internet&q={searchTerms}"; }];
           icon = "https://icons.duckduckgo.com/ip3/perplexity.ai.ico";
-          definedAliases = [ ":p" "@perplexity @pp" ];
+          definedAliases = [ ":p" "@pp" "@perplexity" ];
+        };
+        "Kagi" = {
+          urls = [{ template = "https://kagi.com/search?q={searchTerms}"; }];
+          icon = "https://kagi.com/favicon.ico";
+          definedAliases = [ ":k" "@kagi" ];
+        };
+        "DuckDuckGo" = {
+          urls = [{ template = "https://duckduckgo.com/?t=h_&q={searchTerms}&ia=web"; }];
+          icon = "https://icons.duckduckgo.com/ip3/duckduckgo.com.ico";
+          definedAliases = [ ":d" "@ddg" "@duckduckgo" ];
         };
         "Brave Search" = {
           urls = [{ template = "https://search.brave.com/search?q={searchTerms}&source=web"; }];
@@ -35,7 +41,17 @@
         "MyNixOS" = {
           urls = [{ template = "https://mynixos.com/search?q={searchTerms}"; }];
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ ":n" "@mynixos" ];
+          definedAliases = [ ":mn" "@mynixos" ];
+        };
+        "Nixplorer" = {
+          urls = [{ template = "https://nixplorer.com/search?q={searchTerms}"; }];
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = [ ":np" "@nixplorer" ];
+        };
+        "NixOS Wiki" = {
+          urls = [{template = "https://wiki.nixos.org/w/index.php?search={searchTerms}";}];
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = ["@nw"];
         };
       };
       # userChrome == FF Interface

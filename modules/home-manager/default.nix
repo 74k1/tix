@@ -12,6 +12,8 @@
   git = import ./shell/git;
   gpg-agent = import ./gpg-agent;
   hyprland = import ./wayland/hyprland;
+  eww = import ./wayland/eww;
+  dunst = import ./wayland/dunst;
   i3wm = import ./x11/i3wm;
   niri = import ./wayland/niri;
   nvim = import ./shell/nvim;
@@ -26,7 +28,8 @@
   sxhkd = import ./x11/sxhkd;
   theme = import ./x11/theme;
   wall = import ./x11/wall;
-  waybar = import ./wayland/waybar;
+  ironbar = import ./wayland/ironbar;
+  anyrun = import ./wayland/anyrun;
   wezterm = import ./apps/wezterm;
   wired = import ./apps/wired;
   xdg = import ./x11/xdg;

@@ -1,11 +1,11 @@
 {pkgs, ...}: let
-  tsukiyo-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "tsukiyo-nvim";
+  yueye-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "yueye-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "74k1";
-      repo = "tsukiyo.nvim";
-      rev = "69169daf4ecd8a4932c4bf87a5292cf00dcee914";
-      hash = "sha256-rH3wAgoTTTF3NdPhHgQpwDw+7vbbl7BSw12LtctJsoY=";
+      repo = "yueye.nvim";
+      rev = "4c4b63a18daf1efc69244f60af5b8a2ce9ea67bb";
+      hash = "sha256-9OO2kUI9lZeTEk2am+nw8CCBL7t3F2J+WItLMKEEMKY=";
     };
   };
   nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -47,6 +47,7 @@ in {
       pkgs.rust-analyzer # Rust Language Server
       pkgs.vscode-langservers-extracted # HTML, CSS, JSON, ESLINT Language Server
       # pkgs.superhtml # HTML Language Server
+      pkgs.tinymist # Typst Language Server
       pkgs.emmet-ls # Emmet Language Server (cool snippets)
       pkgs.imagemagick # for image.nvim
       pkgs.curl # for image.nvim remote images
@@ -96,6 +97,8 @@ in {
       comment-nvim
       nvzone-typr
       # hmts-nvim
+      oxocarbon-nvim
+      typst-preview-nvim
       luasnip
       nvim-tree-lua
       parinfer-rust
@@ -107,9 +110,9 @@ in {
       vim-nix
       vim-shellcheck
       {
-        plugin = tsukiyo-nvim;
+        plugin = yueye-nvim;
         type = "lua";
-        config = builtins.readFile ./cfg/tsukiyo.lua;
+        config = builtins.readFile ./cfg/yueye.lua;
       }
       {
         plugin = mini-ai;
@@ -179,6 +182,11 @@ in {
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
         config = builtins.readFile ./cfg/TSconfig.lua;
+      }
+      {
+        plugin = lualine-nvim;
+        type = "lua";
+        config = builtins.readFile ./cfg/lualine.lua; 
       }
       # {
       #   plugin = let-it-snow-nvim;

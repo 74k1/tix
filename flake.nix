@@ -11,13 +11,17 @@
     };
     tixpkgs = {
       url = "github:74k1/tixpkgs/main";
+      # url = "git+file:///home/taki/dev/tixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixpkgs-local = {
+      url = "git+file:///home/taki/dev/nixpkgs";
     };
     unfree-fonts = {
       url = "git+ssh://git@github.com/74k1/unfree-fonts-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # TESTS
+    # TESTS / FIXES
     jvanbruegge-linkwarden = {
       url = "github:jvanbruegge/nixpkgs/linkwarden";
     };
@@ -27,7 +31,9 @@
     nixpkgs-akotro-it-tools = {
       url = "github:akotro/nixpkgs/add-it-tools-service";
     };
-    #
+    jf-uu-overseerr = {
+      url = "github:jf-uu/nixpkgs/overseerr";
+    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -40,6 +46,9 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quadlet = {
+      url = "github:SEIAROTg/quadlet-nix";
+    };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
       # NOTE: not overriding since NixOS-WSL is flaky (relies on stable)
@@ -48,10 +57,10 @@
     raspberry-pi-nix = {
       url = "github:nix-community/raspberry-pi-nix";
     };
-    arion = {
-      url = "github:hercules-ci/arion";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # arion = {
+    #   url = "github:hercules-ci/arion";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -116,8 +125,14 @@
     ChessSet = {
       url = "github:74k1/ChessSet";
     };
-    wired-notify = {
-      url = "github:Toqozz/wired-notify";
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ironbar = {
+      url = "github:JakeStanger/ironbar";
+      # url = "git+file:///home/taki/dev/ironbar";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     vpnconfinement = {
       url = "github:Maroka-chan/VPN-Confinement";

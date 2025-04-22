@@ -15,7 +15,6 @@ in {
       };
     };
   };
-
   config = {
     stylix = {
       enable = true;
@@ -32,70 +31,64 @@ in {
         name = "Ukiyo";
       };
       base16Scheme = {
-        base00 = "#06040D";
-        base01 = "#0B0814";
-        base02 = "#211B36";
-        base03 = "#292242";
-        base04 = "#D2D2E0";
-        base05 = "#E1E1ED";
-        base06 = "#C8C3D9";
-        base07 = "#D8D1E6";
+        base00 = "#07060B";
+        base01 = "#1C1B28";
+        base02 = "#323246";
+        base03 = "#4C4B69";
+        base04 = "#72708E";
+        base05 = "#938FA8";
+        base06 = "#BFBDCA";
+        base07 = "#EBE9F1";
         base08 = "#FF5487";
-        base09 = "#FFB066";
+        base09 = "#54FF80";
         base0A = "#FFE375";
-        base0B = "#54FF80";
-        base0C = "#5C9CFF";
-        base0D = "#6C69FF";
-        base0E = "#4CCEFE";
-        base0F = "#DA70FF";
+        base0B = "#6682FF";
+        base0C = "#F76DE2";
+        base0D = "#4CCEFE";
+        base0E = "#816BFF";
+        base0F = "#4CBF67";
       };
-
       fonts = {
         # serif = {
         #   package = pkgs.dejavu_fonts;
         #   name = "DejaVu Serif";
         # };
-
         # sansSerif = {
         #   package = pkgs.dejavu_fonts;
         #   name = "DejaVu Sans";
         # };
-
         monospace = {
-          package = inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-nerd-otf;
-          name = "TX02 Nerd Font";
+          package = inputs.unfree-fonts.packages.x86_64-linux.supply-mono;
+          name = "PP Supply Mono";
         };
-
         emoji = {
           package = pkgs.twitter-color-emoji;
           name = "Twemoji";
         };
       };
-
       autoEnable = true;
-
-      targets = {
-        spicetify.enable = false;
-        firefox.profileNames = [ "taki" ];
-        tmux.enable = false;
-        gnome.enable = true;
-        gtk = {
-          enable = true;
-          extraCss = /* css */ ''
-            // Remove rounded corners
-            window.background { border-radius: 0; }
-          '';
-        };
-        neovim = {
-          enable = false;
-          transparentBackground = {
-            main = true;
-            signColumn = true;
-          };
-        };
-        yazi.enable = false;
-        zathura.enable = false;
-      };
+      # targets = {
+      #   spicetify.enable = false;
+      #   firefox.profileNames = [ "taki" ];
+      #   tmux.enable = false;
+      #   gnome.enable = true;
+      #   gtk = {
+      #     enable = true;
+      #     extraCss = /* css */ ''
+      #       // Remove rounded corners
+      #       window.background { border-radius: 0; }
+      #     '';
+      #   };
+      #   neovim = {
+      #     enable = false;
+      #     transparentBackground = {
+      #       main = true;
+      #       signColumn = true;
+      #     };
+      #   };
+      #   yazi.enable = false;
+      #   zathura.enable = false;
+      # };
     };
   };
 }

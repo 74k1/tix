@@ -4,7 +4,6 @@
   imports = builtins.concatLists [
     # ext
     [
-      inputs.wired-notify.homeManagerModules.default
       inputs.stylix.homeManagerModules.stylix
       #inputs.nix-colors.homeManagerModules.default
     ]
@@ -50,9 +49,6 @@
   
 
   # nixpkgs = {
-    # overlays = [
-    #   inputs.wired-notify.overlays.default
-    # ];
     # config = {
       # allowUnfree = true;
       # permittedInsecurePackages = [
@@ -76,7 +72,12 @@
     
     # my own scriptiboo
     pkgs.tix.duvolbr
-    inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-nerd-otf
+    # inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-otf
+    inputs.unfree-fonts.packages.x86_64-linux.suisse-intl-mono
+    inputs.unfree-fonts.packages.x86_64-linux.supply-mono
+    inputs.unfree-fonts.packages.x86_64-linux.supply-sans
+    fragment-mono
+    ibm-plex
 
     # uhhh clipboard
     wl-clipboard-rs
@@ -106,6 +107,9 @@
     zellij
     zed-editor
     #zoxide
+    typst
+    moonlight-qt
+    parsec-bin
 
     # gui stuff
     # brave
@@ -149,7 +153,7 @@
     spotify
     spotify-tray
     # pkgs.master.spotify-player
-    feishin
+    # feishin
     # spotify-player
     discord
     # legcord

@@ -5,8 +5,13 @@
   inputs,
   outputs,
   ...
-}:
-{
+}: let
+  wallpaper_image = pkgs.fetchurl {
+    url = "https://upload.wikimedia.org/wikipedia/commons/0/07/Johan_Christian_Dahl_-_View_of_Dresden_by_Moonlight_-_Google_Art_Project.jpg";
+    name = "wallpaper.jpg";
+    hash = "sha256-MjBzldNqNQa1aPoxUPyimovl+YSA4m74Dx7MIsswxtU=";
+  };
+in {
   imports = [
     inputs.niri.homeModules.niri
   ];
@@ -18,15 +23,18 @@
     nautilus
     gnome-keyring
     wofi
-    cliphist
+    # cliphist
     wl-clipboard-rs
     xwayland-satellite
   ];
 
-  xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-gnome
-    pkgs.xdg-desktop-portal-gtk
-  ];
+  xdg.portal = {
+    # wlr.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 
   services.swww = {
     enable = true;
@@ -55,7 +63,8 @@
       };
       spawn-at-startup = [
         (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
-        (makeCommand "${pkgs.wl-clipboard-rs}/bin/wl-copy --watch cliphist store")
+        # (makeCommand "${pkgs.wl-clipboard-rs}/bin/wl-copy --watch cliphist store")
+        (makeCommand "${lib.getExe pkgs.swww} img ${wallpaper_image}")
         (makeCommand "${lib.getExe pkgs.swaynotificationcenter}")
         (makeCommand "${pkgs.xwayland-satellite}/bin/xwayland-satellite")
       ];

@@ -2,6 +2,7 @@
 {
   nix = {
     package = inputs.rix101.packages.${pkgs.hostPlatform.system}.nix-enraged;
+    # package = pkgs.nixVersions.stable;
 
     # Enable flakes, the new `nix` commands and better support for flakes in it
     extraOptions = ''

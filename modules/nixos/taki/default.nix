@@ -30,6 +30,7 @@
           jetbrains-mono
           liberation_ttf
           monaspace
+          fragment-mono
           noto-fonts
           noto-fonts-extra
           ubuntu_font_family
@@ -45,7 +46,8 @@
           nerd-fonts.lilex
           nerd-fonts.zed-mono
           
-          inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-nerd-otf
+          # inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-otf
+          inputs.unfree-fonts.packages.x86_64-linux.suisse-intl-mono
         ];
       };
     })
