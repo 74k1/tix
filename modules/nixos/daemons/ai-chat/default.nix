@@ -17,6 +17,7 @@
     enable = true;
     host = "0.0.0.0";
     port = 3335;
+    package = pkgs.master.open-webui;
     environment = {
       ANONYMIZED_TELEMETRY = "False";
       DO_NOT_TRACK = "True";
