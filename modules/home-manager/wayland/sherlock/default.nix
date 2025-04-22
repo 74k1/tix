@@ -1,60 +1,59 @@
 { inputs, outputs, config, lib, pkgs, ... }: {
 
-  imports = [
-    inputs.sherlock.homeManagerModules.default
-  ];
-
+  # disabledModules = [ "programs/sherlock.nix" ];
+  #
+  # imports = [
+  #   inputs.sherlock.homeManagerModules.default
+  # ];
+  #
   programs.sherlock = {
     enable = true;
-    
+
     # for faster startup times
-    runAsService = true;
+    systemd.enable = true;
 
-    settings = {
-      # config.json / config.toml
-      # use nix syntax
-      config = {};
+    package = inputs.sherlock.packages.${pkgs.system}.default;
 
-      # fallback.json
-      # A list of launchers
-      launchers = [
-        {
-          name = "Calculator";
-          type = "calculation";
-          args = {
-              capabilities = [
-                  "calc.math"
-                  "calc.units"
-              ];
-          };
-          priority = 1;
-        }
-        {
-          name = "App Launcher";
-          type = "app_launcher";
-          args = {};
-          priority = 2;
-          home = "Home";
-        }
-      ];
+    # config.json / config.toml
+    settings = {};
 
-      # sherlock_alias.json
-      # use nix syntax
-      aliases = {
-        vesktop = { name = "Discord"; };
-      };
+    # sherlock_alias.json
+    # aliases = {
+    #   vesktop = { name = "Discord"; };
+    # };
 
-      # main.css
-      style = /* css */ ''
-        * {
-          font-family: "PP Supply Mono";
-        }
-      '';
+    # sherlockignore
+    # ignore = ''
+    #   Avahi*
+    # '';
 
-      # sherlockignore
-      # ignore = ''
-      #   Avahi*
-      # '';
-    };
+    # fallback.json
+    launchers = [
+      {
+        name = "Calculator";
+        type = "calculation";
+        args = {
+          capabilities = [
+            "calc.math"
+            "calc.units"
+          ];
+        };
+        priority = 1;
+      }
+      {
+        name = "App Launcher";
+        type = "app_launcher";
+        args = {};
+        priority = 2;
+        home = "Home";
+      }
+    ];
+
+    # main.css
+    style = /* css */ ''
+      * {
+        font-family: "PP Supply Mono";
+      }
+    '';
   };
 }
