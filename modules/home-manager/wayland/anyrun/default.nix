@@ -29,18 +29,22 @@
         inputs.anyrun.packages.${pkgs.system}.applications
         inputs.anyrun.packages.${pkgs.system}.rink
         inputs.anyrun.packages.${pkgs.system}.stdin
-        # ./some_plugin.so
+
+        # File Indexing
         # "${inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins}/lib/kidex"
-        inputs.anyrun-nixos-options.packages.${pkgs.system}.default
+
+        # NixOS options
+        # Make sure to enable the config at the bottom too
+        # inputs.anyrun-nixos-options.packages.${pkgs.system}.default
       ];
     };
 
     extraCss = /* css */ ''
       /* GTK Vars */
-      @define-color bg-color #313244;
-      @define-color fg-color #cdd6f4;
-      @define-color primary-color #89b4fa;
-      @define-color secondary-color #cba6f7;
+      @define-color bg-color #1C1B28;
+      @define-color fg-color #EBE9F1;
+      @define-color primary-color #816BFF;
+      @define-color secondary-color #50E074;
       @define-color border-color @primary-color;
       @define-color selected-bg-color @primary-color;
       @define-color selected-fg-color @bg-color;
@@ -117,21 +121,24 @@
       /* } */
     '';
 
-    extraConfigFiles."nixos-options.ron".text = let
-        #               ↓ home-manager refers to the nixos configuration as osConfig
-        nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
-        # or alternatively if you wish to read any other documentation options, such as home-manager
-        # get the docs-json package from the home-manager flake
-        hm-options = inputs.home-manager.packages.${pkgs.system}.docs-json + "/share/doc/home-manager/options.json";
-        options = builtins.toJSON {
-          ":nix" = [nixos-options];
-          ":hm" = [hm-options];
-          ":mn" = [nixos-options hm-options];
-        };
-    in /* ron */ ''
-    Config(
-        options: ${options},
-      )
-    '';
+    # NixOS options config
+    # extraConfigFiles."nixos-options.ron".text = let
+    #     #               ↓ home-manager refers to the nixos configuration as osConfig
+    #     nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
+    #     # or alternatively if you wish to read any other documentation options, such as home-manager
+    #     # get the docs-json package from the home-manager flake
+    #     hm-options = inputs.home-manager.packages.${pkgs.system}.docs-json + "/share/doc/home-manager/options.json";
+    #     options = builtins.toJSON {
+    #       ":nix" = [nixos-options];
+    #       ":hm" = [hm-options];
+    #       ":mn" = [nixos-options hm-options];
+    #     };
+    # in /* ron */ ''
+    # Config(
+    #     options: ${options},
+    #     min_score: 0,
+    #     max_entries: Some(10)
+    #   )
+    # '';
   };
 }

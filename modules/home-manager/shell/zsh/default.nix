@@ -8,8 +8,6 @@
       zoxide
       fzf
     ];
-
-    # file.".config/.p10k.zsh".source = ./cfg/p10k.zsh;
   };
 
   # zsh
@@ -19,7 +17,7 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
 
     shellAliases = {
       ":q" = "exit";
@@ -63,9 +61,8 @@
 
     # ${builtins.readFile ./cfg/functions.zsh}
     initContent = lib.mkBefore /* sh */ '' 
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      # source ~/.config/zsh/.p10k.zsh
-      export XDG_RUNTIME_DIR=/run/user/$(id -u)
+      # source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+      # export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
       # Atuin
       # export ATUIN_NOBIND="true"

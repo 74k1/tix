@@ -95,6 +95,7 @@ require("lspconfig").rust_analyzer.setup({
     }
   }
 })
+
 require("lspconfig").tinymist.setup({
   settings = {
     formatterMode = "typstyle",

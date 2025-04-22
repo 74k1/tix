@@ -12,9 +12,6 @@
     hash = "sha256-MjBzldNqNQa1aPoxUPyimovl+YSA4m74Dx7MIsswxtU=";
   };
 in {
-  # BIG REMINDER
-  # ADD XDG STUFF
-
   imports = [
     inputs.niri.homeModules.niri
   ];
