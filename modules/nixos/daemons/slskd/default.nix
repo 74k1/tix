@@ -31,6 +31,7 @@
       web.authentication.api_keys = {
         "tubifarry" = {
           key = "${allSecrets.per_service.slskd.api_key}";
+          role = "readwrite";
           cidr = "0.0.0.0/0,::/0";
         };
       };
