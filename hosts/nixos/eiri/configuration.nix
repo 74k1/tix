@@ -42,7 +42,7 @@
     crowdsec
     scrutiny
 
-    # n8n
+    n8n
     audiobookshelf
     paperless
     # commafeed
@@ -57,6 +57,7 @@
     
     ai-chat
     # librechat
+    karakeep
 
     glance
     it-tools
@@ -133,7 +134,8 @@
     btop
     docker-compose
     fastfetch
-    jdk21
+    # jdk21
+    jdk17
   ];
 
   # Services
@@ -245,6 +247,22 @@
             proxyWebsockets = true;
           };
         };
+        "karakeep.eiri.${allSecrets.global.domain01}" = {
+          addSSL = true;
+          useACMEHost = "eiri.${allSecrets.global.domain01}";
+          locations."/" = {
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:3400";
+            proxyWebsockets = true;
+          };
+        };
+        "n8n.eiri.${allSecrets.global.domain01}" = {
+          addSSL = true;
+          useACMEHost = "eiri.${allSecrets.global.domain01}";
+          locations."/" = {
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:5678";
+            proxyWebsockets = true;
+          };
+        };
       };
     };
   };
@@ -266,7 +284,7 @@
         "x-systemd.idle-timeout=3600" # disconnect after 60 minutes
         "noauto" # auto mount on use
         "nofail"
-        "_netdev"
+        "_netdev" # wait for network
       ];
     };
   };
