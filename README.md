@@ -104,6 +104,6 @@ All of my own Packages are under <a href="https://github.com/74k1/tixpkgs">tixpk
 
 | Credit | Reason |
 | ---: | --- |
-| [reo101](https://github.com/reo101) ![clueless](https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png) | for being **the one and only** that introduced me to nix and helping me out a ton. :) |
+| [reo101](https://github.com/reo101) <img src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" height="16px" width="16px"/> | for being **the one and only** that introduced me to nix and helping me out a ton. :) |
 | [linuxmobile](https://github.com/linuxmobile/) | Their [Niri config](https://github.com/linuxmobile/kaku) served as a great reference point. |
 | [Nmoleo](https://gitlab.com/Nmoleo) | Rewrote / packaged their [i3 + dunst indicators](https://gitlab.com/Nmoleo/i3-volume-brightness-indicator) script for Nix in [tixpkgs](https://github.com/74k1/tixpkgs). |
