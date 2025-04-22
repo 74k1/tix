@@ -20,11 +20,11 @@
   };
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "ch";
-    variant = "";
-  };
+  # services.xserver.xkb = {
+  #   layout = "ch";
+  #   variant = "";
+  # };
 
   # Configure console keymap
-  console.keyMap = "sg";
+  # console.keyMap = "sg";
 }

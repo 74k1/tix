@@ -91,6 +91,8 @@
     seahorse
     gnome-calculator
     just
+    comma
+    btop
     
     pulsemixer
     qmk
@@ -143,7 +145,8 @@
 
     rustdesk
 
-    ocenaudio
+    # TEMP
+    # ocenaudio
 
     nautilus
     nextcloud-client

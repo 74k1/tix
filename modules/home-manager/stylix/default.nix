@@ -7,9 +7,10 @@
 }: let
   cfg = config.theme.ukiyo;
   icon = {
+    # name = "bloom-dark";
+    # package = pkgs.deepin.deepin-icon-theme.overrideAttrs (_: {dontWrapQtApps = true;});
     name = "Colloid-Dark";
-
-    package = (pkgs.colloid-icon-theme.overrideAttrs (old: {
+    package = pkgs.colloid-icon-theme.overrideAttrs (old: {
       preInstall = old.preInstall or "" + ''
         echo "[categories@2x/22]" >> ./src/index.theme
         echo "Size=22" >> ./src/index.theme
@@ -17,7 +18,7 @@
         echo "Context=Categories" >> ./src/index.theme
         echo "Type=Fixed" >> ./src/index.theme
       '';
-    }));
+    });
   };
 in {
   options = {
@@ -40,8 +41,10 @@ in {
       };
       cursor = {
         size = 16;
-        package = cfg.package;
-        name = "Ukiyo";
+        package = pkgs.openzone-cursors;
+        name = "Open Zone Black";
+        # package = cfg.package;
+        # name = "Ukiyo";
       };
       iconTheme = {
         enable = true;

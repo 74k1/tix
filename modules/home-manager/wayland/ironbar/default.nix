@@ -19,11 +19,11 @@ in {
     enable = true;
     systemd = true;
     config = {
-      ironvar_defaults = {
-        # see https://github.com/JakeStanger/ironbar/wiki/ironvars
-      };
-      monitors = {
-        DP-1 = {
+      # ironvar_defaults = {
+      #   # see https://github.com/JakeStanger/ironbar/wiki/ironvars
+      # };
+      # monitors = {
+      #   eDP-1 = {
           popup_gap = 0;
           # autohide = 500;
           # start_hidden = true;
@@ -244,10 +244,10 @@ in {
             # fi
             # TODO: if laptop / on batt
             # (lib.mkIf false
-            #   {
-            #     type = "upower";
-            #     format = "{percentage}% / {state}% / {time_remaining}";
-            #   }
+            {
+              type = "upower";
+              format = "{percentage}% / {state}% / {time_remaining}";
+            }
             # )
             # fi
             # {
@@ -270,8 +270,8 @@ in {
             #   name = "NixOS";
             # }
           ];
-        };
-      };
+      #   };
+      # };
     };
     style =
       /*

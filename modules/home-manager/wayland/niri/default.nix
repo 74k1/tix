@@ -350,38 +350,59 @@ in {
           }
         ];
       in windowRules ++ floatingRules;
-      workspaces = {
-        "01" = { open-on-output = "DP-1"; name = "一"; };
-        "02" = { open-on-output = "DP-1"; name = "二"; };
-        "03" = { open-on-output = "DP-1"; name = "三"; };
-        "04" = { open-on-output = "DP-1"; name = "四"; };
-        "05" = { open-on-output = "DP-1"; name = "五"; };
-        "06" = { open-on-output = "DP-2"; name = "六"; };
-        "07" = { open-on-output = "DP-2"; name = "七"; };
-        "08" = { open-on-output = "DP-2"; name = "八"; };
-        "09" = { open-on-output = "DP-2"; name = "九"; };
-        "10" = { open-on-output = "DP-2"; name = "十"; };
-      };
+      # workspaces = {
+      #   "01" = { open-on-output = "DP-1"; name = "一"; };
+      #   "02" = { open-on-output = "DP-1"; name = "二"; };
+      #   "03" = { open-on-output = "DP-1"; name = "三"; };
+      #   "04" = { open-on-output = "DP-1"; name = "四"; };
+      #   "05" = { open-on-output = "DP-1"; name = "五"; };
+      #   "06" = { open-on-output = "DP-2"; name = "六"; };
+      #   "07" = { open-on-output = "DP-2"; name = "七"; };
+      #   "08" = { open-on-output = "DP-2"; name = "八"; };
+      #   "09" = { open-on-output = "DP-2"; name = "九"; };
+      #   "10" = { open-on-output = "DP-2"; name = "十"; };
+      # };
       outputs = {
-        "DP-1" = {
+        # Internal Monitor
+        "eDP-1" = {
           enable = true;
           mode = {
-            height = 1440;
-            width = 2560;
+            height = 2560;
+            width = 1600;
+            # refresh = 144.0;
+          };
+          position = {
+            x = 0;
+            y = 0;
+          };
+          scale = 1.5;
+          transform.rotation = 270;
+          variable-refresh-rate = false;
+          focus-at-startup = false;
+        };
+        "DP-8" = {
+          enable = true;
+          mode = {
+            height = 2560;
+            width = 1440;
+            # refresh = 240.0;
+            # refresh = 144.0;
           };
           position = {
             x = 0;
             y = 0;
           };
           scale = 1;
+          # transform.rotation = 270;
           variable-refresh-rate = false;
           focus-at-startup = true;
         };
-        "HDMI-A-1" = {
+        "DP-6" = {
           enable = true;
           mode = {
             height = 1080;
             width = 1920;
+            # refresh = 60.0;
           };
           position = {
             x = -1080;

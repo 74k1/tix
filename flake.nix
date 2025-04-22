@@ -21,7 +21,7 @@
       url = "git+ssh://git@github.com/74k1/unfree-fonts-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # TESTS / FIXES
+    # -- TESTS / FIXES
     jvanbruegge-linkwarden = {
       url = "github:jvanbruegge/nixpkgs/linkwarden";
     };
@@ -34,12 +34,21 @@
     jf-uu-overseerr = {
       url = "github:jf-uu/nixpkgs/overseerr";
     };
+    # --
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    disko = {
+      url = "github:nix-community/disko/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-anywhere = {
+      url = "github:nix-community/nixos-anywhere/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
@@ -147,8 +156,8 @@
       # url = "github:74k1/VPN-Confinement";
     };
     ouro = {
-      url = "git+file:///home/taki/dev/ouro";
-      # url = "github:reo101/ouro";
+      # url = "git+file:///home/taki/dev/ouro";
+      url = "github:reo101/ouro";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };

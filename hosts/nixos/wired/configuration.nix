@@ -5,6 +5,7 @@
   imports = with outputs.nixosModules; [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./disko.nix
     # ({options, lib, ...}: lib.mkIf (options ? virtualisation.memorySize) {
     #   users.users.taki.password = "foo";
     # })
@@ -20,35 +21,42 @@
     substituters
 
     # ly
-    vm-test
+    taki
+    # vm-test
     locale
     nix
-    steam
+    # steam
     pcscd
     firefox
     bash
     # kanidm-client
   ];
 
+
   # Bootloader.
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_14;
+    # kernelPackages = pkgs.linuxKernel.packages.linux_testing;
     kernelParams = [
       "quiet"
       "splash"
       "systemd.show_status=auto"
-      "video=DP-1:2560x1440@165"
-      "video=HDMI-A-1:1920x1080@60,rotate=90"
+      "fbcon=rotate:1"
+      "eDP-1:1600x2560@144,rotate=90"
     ];
     plymouth.enable = true;
     loader = {
       efi.canTouchEfiVariables = true;
-      efi.efiSysMountPoint = "/boot/efi";
+      efi.efiSysMountPoint = "/boot";
       # systemd-boot.enable = true;
       limine = {
         enable = true;
-        style.wallpapers = [ ];
-        style.interface.branding = "Hello B00t!";
+        style = {
+          wallpapers = [ ];
+          interface.branding = "Welcome to NixOS!";
+          graphicalTerminal.font.scale = "9x16";
+        };
       };
     };
     binfmt.emulatedSystems = [ "aarch64-linux" ];
@@ -68,6 +76,8 @@
   #   package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   #   xwayland.enable = true;
   # };
+
+  taki.gui.enable = true;
 
   # XDG
   xdg.portal = {
@@ -98,8 +108,10 @@
       enable = true;
       package = pkgs.greetd.tuigreet;
       settings = {
+        terminal.vt = 1;
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd niri-session";
+          user = "taki";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd ${lib.getExe' pkgs.niri "niri-session"}";
         };
       };
     };
@@ -108,9 +120,10 @@
       enable = true;
 
       # greeter
-      screenSection = ''
-        Option "metamodes" "DP-2: 2560x1440_165 +0+0, DP-0: 2560x1440_165 +2560+0"
-      '';
+      # TEMP
+      # screenSection = ''
+      #   Option "metamodes" "DP-2: 2560x1440_165 +0+0, DP-0: 2560x1440_165 +2560+0"
+      # '';
     };
 
     displayManager = {
@@ -174,6 +187,9 @@
       BrowseProtocols all
     '';
   };
+
+  # TEMP
+  services.openssh.enable = true;
 
   services.avahi = {
     enable = true;
@@ -259,18 +275,19 @@
   # udev stuff for qmk
   services.udev.packages = [
     pkgs.qmk-udev-rules
+    pkgs.game-devices-udev-rules
   ];
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.taki = {
-    isNormalUser = true;
-    description = "taki";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
-  };
+  # users.users.taki = {
+  #   isNormalUser = true;
+  #   description = "taki";
+  #   extraGroups = [ "networkmanager" "wheel" ];
+  #   shell = pkgs.zsh;
+  # };
 
   programs.zsh = {
     enable = true;
@@ -333,6 +350,7 @@
         };
       };
     };
+    uinput.enable = true;
     yeetmouse = {
       enable = true;
       sensitivity = 0.8;
@@ -406,5 +424,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }
