@@ -42,7 +42,7 @@ in {
     extraPackages = [
       pkgs.ripgrep # For Telescope live-grep
       pkgs.bash-language-server # Bash :-)
-      pkgs.nixd # Nix Language Server
+      pkgs.nil # Nix Language Server
       pkgs.alejandra # Nix Formatter
       pkgs.rust-analyzer # Rust Language Server
       pkgs.vscode-langservers-extracted # HTML, CSS, JSON, ESLINT Language Server
