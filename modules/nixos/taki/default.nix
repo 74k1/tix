@@ -31,7 +31,10 @@
           liberation_ttf
           monaspace
           noto-fonts
+          noto-fonts-extra
           ubuntu_font_family
+          ubuntu-sans
+          ubuntu-sans-mono
           nerd-fonts.fira-code
           nerd-fonts.droid-sans-mono
           nerd-fonts.jetbrains-mono
