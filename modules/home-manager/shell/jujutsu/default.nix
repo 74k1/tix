@@ -17,18 +17,15 @@
         push = "origin";
         # private-commits = "description(glob:'wip:*')";
         auto-local-bookmark = true;
-        push-bookmark-prefix = "74k1/";
       };
       signing = {
         backend = "gpg";
         behavior = "own";
         key = "46F3422F63A313697EAB83D51CF155F76F213503";
       };
-      core = {
-        fsmonitor = "watchman";
-        watchman = {
-          register-snapshot-trigger = true;
-        };
+      fsmonitor = {
+        backend = "watchman";
+        watchman.register-snapshot-trigger = true;
       };
       ui = {
         color = "always";
@@ -44,14 +41,15 @@
       aliases = {
         l = [ "log" "--no-pager" ];
       };
-      # templates = {
-      #   log_node = ''
-      #     coalesce(
-      #       if(current_working_copy, "●"),
-      #       if(immutable, "⊗", "○"),
-      #     )
-      #   '';
-      # };
+      templates = {
+        # log_node = ''
+        #   coalesce(
+        #     if(current_working_copy, "●"),
+        #     if(immutable, "⊗", "○"),
+        #   )
+        # '';
+        git_push_bookmark = ''"74k1/" ++ change_id.short()'';
+      };
     };
   };
 }
