@@ -38,6 +38,7 @@
       # eww
       easyeffects
       ironbar
+      kanshi
       anyrun
       xdg
       xorg

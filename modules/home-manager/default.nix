@@ -1,23 +1,25 @@
 {
+  anyrun = import ./wayland/anyrun;
   bash = import ./shell/bash;
   bspwm = import ./x11/bspwm;
   cliphist = import ./wayland/cliphist;
   colors = import ./x11/colors;
-  firefox = import ./apps/firefox;
+  dunst = import ./wayland/dunst;
   easyeffects = import ./audio/easyeffects;
-  zen = import ./apps/zen;
+  eww = import ./wayland/eww;
+  fastfetch = import ./shell/fastfetch;
+  firefox = import ./apps/firefox;
   fish = import ./shell/fish;
   ghostty = import ./apps/ghostty;
-  jujutsu = import ./shell/jujutsu;
-  fastfetch = import ./shell/fastfetch;
   git = import ./shell/git;
   gpg-agent = import ./gpg-agent;
   hyprland = import ./wayland/hyprland;
-  eww = import ./wayland/eww;
-  dunst = import ./wayland/dunst;
   i3wm = import ./x11/i3wm;
-  niri = import ./wayland/niri;
+  ironbar = import ./wayland/ironbar;
+  jujutsu = import ./shell/jujutsu;
+  kanshi = import ./wayland/kanshi;
   neovim = import ./shell/neovim;
+  niri = import ./wayland/niri;
   picom = import ./x11/picom;
   polybar = import ./apps/polybar;
   river = import ./wayland/river;
@@ -29,12 +31,11 @@
   sxhkd = import ./x11/sxhkd;
   theme = import ./x11/theme;
   wall = import ./x11/wall;
-  ironbar = import ./wayland/ironbar;
-  anyrun = import ./wayland/anyrun;
   wezterm = import ./apps/wezterm;
   wired = import ./apps/wired;
   xdg = import ./x11/xdg;
   xorg = import ./x11/xorg;
   yazi = import ./shell/yazi;
+  zen = import ./apps/zen;
   zsh = import ./shell/zsh;
 }

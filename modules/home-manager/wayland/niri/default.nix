@@ -362,53 +362,53 @@ in {
       #   "09" = { open-on-output = "DP-2"; name = "九"; };
       #   "10" = { open-on-output = "DP-2"; name = "十"; };
       # };
-      outputs = {
-        # Internal Monitor
-        "eDP-1" = {
-          enable = true;
-          mode = {
-            height = 2560;
-            width = 1600;
-            # refresh = 144.0;
-          };
-          position = {
-            x = 0;
-            y = 0;
-          };
-          scale = 1.5;
-          transform.rotation = 270;
-          variable-refresh-rate = false;
-          focus-at-startup = false;
-        };
-        "DP-6" = {
-          enable = true;
-          mode = {
-            height = 2560;
-            width = 1440;
-          };
-          position = {
-            x = 0;
-            y = 0;
-          };
-          scale = 1;
-          variable-refresh-rate = false;
-          focus-at-startup = true;
-        };
-        "DP-7" = {
-          enable = true;
-          mode = {
-            height = 1080;
-            width = 1920;
-          };
-          position = {
-            x = -1080;
-            y = 0;
-          };
-          scale = 1;
-          transform.rotation = 90;
-          variable-refresh-rate = false;
-        };
-      };
+      # outputs = {
+      #   # Internal Monitor
+      #   "eDP-1" = {
+      #     enable = true;
+      #     mode = {
+      #       height = 2560;
+      #       width = 1600;
+      #       # refresh = 144.0;
+      #     };
+      #     position = {
+      #       x = 0;
+      #       y = 0;
+      #     };
+      #     scale = 1.75;
+      #     transform.rotation = 270;
+      #     variable-refresh-rate = false;
+      #     focus-at-startup = false;
+      #   };
+      #   "DP-6" = {
+      #     enable = true;
+      #     mode = {
+      #       height = 2560;
+      #       width = 1440;
+      #     };
+      #     position = {
+      #       x = 0;
+      #       y = 0;
+      #     };
+      #     scale = 1;
+      #     variable-refresh-rate = false;
+      #     focus-at-startup = true;
+      #   };
+      #   "DP-7" = {
+      #     enable = true;
+      #     mode = {
+      #       height = 1080;
+      #       width = 1920;
+      #     };
+      #     position = {
+      #       x = -1080;
+      #       y = 0;
+      #     };
+      #     scale = 1;
+      #     transform.rotation = 90;
+      #     variable-refresh-rate = false;
+      #   };
+      # };
       cursor =  {
         theme = "Ukiyo";
         size = 24;
@@ -434,16 +434,20 @@ in {
           # scroll-factor = 1.0;
           # scroll-method = "on-button-down";
         };
+        touch = {
+          enable = true;
+        };
         touchpad = {
-          click-method = "button-areas";
+          enable = true;
+          # click-method = "button-areas";
           dwt = true;
           dwtp = true;
-          natural-scroll = true;
+          natural-scroll = false;
           scroll-method = "two-finger";
           tap = true;
           tap-button-map = "left-right-middle";
-          middle-emulation = true;
-          accel-profile = "adaptive";
+          # accel-profile = "adaptive";
+          accel-profile = "flat";
           # scroll-factor = 0.2;
         };
       };
