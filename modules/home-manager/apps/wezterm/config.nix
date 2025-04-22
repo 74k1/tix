@@ -13,7 +13,8 @@ end
 -- font
 -- TODO
 config.font = wezterm.font_with_fallback {
-  "TX-02",
+  "PP Supply Mono",
+  -- "TX-02",
   -- "BerkeleyMono Nerd Font Mono",
   -- "Berkeley Mono",
   "FiraCode Nerd Font Mono",
@@ -22,10 +23,10 @@ config.font = wezterm.font_with_fallback {
 }
 
 -- temp fix. (NixOS/nixpkgs/issues/336069)
-config.front_end = "WebGpu"
+-- config.front_end = "WebGpu"
 
 -- wayland
-config.enable_wayland = false
+config.enable_wayland = true
 
 -- font options
 config.harfbuzz_features = {
