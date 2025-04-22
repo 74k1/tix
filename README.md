@@ -37,7 +37,14 @@
 <div>
     <h2>About</h2>
     <p>
-    My very own nix config that I use on a daily basis. It's always in a continuing circle of improvements. Expect changes.
+    My very own nix config that I use on a daily basis.
+    <br>
+    It's always in a continuing circle of improvements. Expect radical changes.
+    <br>
+    Every single config is set for <ins>my</ins> own preference and is therefore heavily opinionated.
+    If you should find issues in my current config, feel free to contact me or create an <a href="https://github.com/74k1/tix/issues">Issue</a> directly. Mistakes are only be helpful.
+    <br>
+    If you found this repository helpful, I'd very much appreciate a star! ⭐ And if you're using some snippets in your own config, I'd also appreciate some credits, but it's nothing mandatory ofcourse. :)
     </p>
     <h3>Hosts</h3>
     <table>
@@ -107,6 +114,6 @@ All of my own Packages are under <a href="https://github.com/74k1/tixpkgs">tixpk
 
 | Credit | Reason |
 | ---: | --- |
-| [reo101](https://github.com/reo101) <img src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" height="16px" width="16px"/> | for being **the one and only** that introduced me to nix and helping me out a ton. :) |
+| <img src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" height="16px" width="16px"/> [reo101](https://github.com/reo101) | for being **the one and only** that introduced me to nix and helping me out a ton. :) |
 | [linuxmobile](https://github.com/linuxmobile/) | Their [Niri config](https://github.com/linuxmobile/kaku) served as a great reference point. |
 | [Nmoleo](https://gitlab.com/Nmoleo) | Rewrote / packaged their [i3 + dunst indicators](https://gitlab.com/Nmoleo/i3-volume-brightness-indicator) script for Nix in [tixpkgs](https://github.com/74k1/tixpkgs). |
