@@ -1,6 +1,6 @@
 <div align="center">
     <img src="/.github/assets/NixOS.png" width="300px"/>
-    <h1><samp>(t)aki's n(ix) flake </samp>❄️</h1>
+    <h1><samp>(t)im's n(ix) flake </samp>❄️</h1>
     <a href="#"><img src="https://img.shields.io/github/repo-size/74k1/tix?color=fab387&labelColor=303446&style=for-the-badge"></img></a>
     <a href="https://github.com/74k1/tix/stargazers"><img src="https://img.shields.io/github/stars/74k1/tix?color=fab387&labelColor=303446&style=for-the-badge"></img></a>
     <a href="LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=ca9ee6&colorA=313244&colorB=cba6f7"/></a>
@@ -90,7 +90,23 @@
 ## Flake Structure
 
 ```
-xyz
+/
+├ hosts/
+│ ├ darwin/
+│ ╰ nixos/
+├ modules/
+│ ├ darwin/
+│ ├ flake/
+│ ├ home-manager/
+│ ╰ nixos/
+├ secrets/
+│ ├ rekeyed/
+│ │ ╰ {hosts}/
+│ ╰ *.age
+├ flake.nix
+├ flake.lock
+├ README.md
+╰ LICENSE
 ```
 
 ## Packages
@@ -104,5 +120,5 @@ All of my own Packages are under <a href="https://github.com/74k1/tixpkgs">tixpk
 | ---: | --- |
 | <img src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" height="16px" width="16px"/> [reo101](https://github.com/reo101) | for being **the one and only** that introduced me to nix and helping me out a ton. :) |
 | [linuxmobile](https://github.com/linuxmobile/) | Their [Niri config](https://github.com/linuxmobile/kaku) served as a great reference point. |
-| [pabloagn](https://github.com/pabloagn/) | Their [overall vibe in the config](https://github.com/pabloagn/rhodium/) served as an amazing reference point. |
+| [pabloagn](https://github.com/pabloagn/) | Their [overall vibe in the config](https://github.com/pabloagn/rhodium/) inspired me a lot. |
 | [Nmoleo](https://gitlab.com/Nmoleo) | Rewrote / packaged their [i3 + dunst indicators](https://gitlab.com/Nmoleo/i3-volume-brightness-indicator) script for Nix in [tixpkgs](https://github.com/74k1/tixpkgs). |
