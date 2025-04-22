@@ -13,8 +13,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "reo101";
       repo = "nix-update.nvim";
-      rev = "6d21b62b08ae483798855d5bf5cb7b78b78e3bad";
-      hash = "sha256-Ld3Tmkc3k8jSY40z+9Em8M1rDSVz7lnll60KMJb22JQ=";
+      rev = "5a45a664875660422faa278c28f636888e15707a";
+      hash = "sha256-l83H5o6228J6dLB3RHZAz80Cdw7bAF1Kizr+C/9cZOo=";
     };
   };
   # hmts-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -78,7 +78,7 @@ in {
 
         lua vim.opt.iskeyword:append("-")
         lua vim.opt.iskeyword:remove(":")
-        
+
         " rest
         " Autocommands for vim-table-mode
         "augroup TableModeSetup
@@ -147,16 +147,16 @@ in {
           lua
           */
           ''
-          require("mini.indentscope").setup({
-            draw = {
-              delay = 0,
-              animation = require("mini.indentscope").gen_animation.none()
-            },
-            options = {
-              try_as_border = true
-            },
-            symbol = "│"
-          })
+            require("mini.indentscope").setup({
+              draw = {
+                delay = 0,
+                animation = require("mini.indentscope").gen_animation.none()
+              },
+              options = {
+                try_as_border = true
+              },
+              symbol = "│"
+            })
           '';
       }
       {
@@ -167,7 +167,7 @@ in {
           lua
           */
           ''
-          require("mini.fuzzy").setup()
+            require("mini.fuzzy").setup()
           '';
       }
       {
@@ -189,7 +189,7 @@ in {
       {
         plugin = lualine-nvim;
         type = "lua";
-        config = builtins.readFile ./cfg/lualine.lua; 
+        config = builtins.readFile ./cfg/lualine.lua;
       }
       # {
       #   plugin = let-it-snow-nvim;
