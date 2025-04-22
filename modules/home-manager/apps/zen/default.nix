@@ -49,7 +49,15 @@
       '';
       # userContent == web-pages and internal pages like about:newtab & about:home
       userContent = /* css */ ''
-
+        @media (-moz-bool-pref: "zen.view.compact") {
+          #tabbrowser-tabpanels:not([zen-split-view]) {
+            --zen-webview-border-radius: 0 0 0 0;
+            --zen-element-separation: 0;
+          }
+          & .browserSidebarContainer {
+            margin-left: 0 !important;
+          }
+        }
       '';
       settings = {
         # USER CONF
