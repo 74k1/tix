@@ -14,10 +14,10 @@
     <ul>
         <li><strong>Window Manager</strong> • <a href="https://github.com/YaLTeR/niri/">Niri</a> Scrollable WM!</li>
         <li><strong>Shell</strong> • <a href="https://github.com/fish-shell/fish-shell">fish</a> The user-friendly command line shell</li>
-        <li><strong>Terminal</strong> • <a href="https://github.com/ghostty-org/ghostty">Ghostty</a> a fast, feature-rich terminal emulator</li>
-        <li><strong>Notification Daemon & Panel</strong> • <a href="https://github.com/elkowar/eww">eww</a> Highly customizable widgets.</li>
-        <li><strong>Launcher</strong> • <a href="https://hg.sr.ht/~scoopta/wofi">Wofi</a> Rofi but for Wayland</li>
-        <li><strong>File Manager</strong> • <a href="https://github.com/sxyazi/yazi">Yazi</a> Fast terminal file manager.</li>
+        <li><strong>Terminal</strong> • <a href="https://github.com/ghostty-org/ghostty">Ghostty</a> a fast, feature-rich and _native_ terminal emulator</li>
+        <li><strong>Notification Daemon & Panel</strong> • <a href="https://github.com/ErikReider/SwayNotificationCenter">SwayNC</a> A simple GTK based notification daemon.</li>
+        <li><strong>Launcher</strong> • <a href="https://github.com/anyrun-org/anyrun">Anyrun</a> A wayland native, highly customizable runner.</li>
+        <li><strong>TUI File Manager</strong> • <a href="https://github.com/sxyazi/yazi">Yazi</a> Fast terminal file manager.</li>
         <li><strong>Editor of Choice</strong> • <a href="https://github.com/neovim/neovim">Neovim</a> ❤️</li>
         <!-- <li><strong>GTK Theme</strong> • <a href="https://github.com/74k1/tsukiyo.gtk">Tsukiyo.gtk</a> My own GTK Theme!</li> -->
     </ul>
