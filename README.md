@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://gist.github.com/user-attachments/assets/1734fbcb-3ab6-40de-9b6f-4a51093a8fb1.png" width="300px"/>
+    <img src="/.github/assets/NixOS.png" width="300px"/>
     <h1><samp>(t)aki's n(ix) flake </samp>❄️</h1>
     <a href="#"><img src="https://img.shields.io/github/repo-size/74k1/tix?color=fab387&labelColor=303446&style=for-the-badge"></img></a>
     <a href="https://github.com/74k1/tix/stargazers"><img src="https://img.shields.io/github/stars/74k1/tix?color=fab387&labelColor=303446&style=for-the-badge"></img></a>
