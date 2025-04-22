@@ -7,16 +7,17 @@
     group = "nextcloud";
   };
 
-  services.redis = {
-    enable = true;
-  };
+  # services.redis.servers.nextcloud = {
+  #   enable = true;
+  #   user = "nextcloud";
+  # };
 
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud31;
-    # extraApps = {
-    #   inherit (config.services.nextcloud.package.packages.apps) contacts calendar onlyoffice;
-    # };
+    extraApps = {
+      inherit (config.services.nextcloud.package.packages.apps) unroundedcorners onlyoffice;
+    };
     extraAppsEnable = true;
     hostName = "files.${allSecrets.global.domain0}";
     home = "/mnt/btrfs_pool/nextcloud_data";
@@ -67,6 +68,10 @@
       maintenance_window_start = "12";
       preview_ffmpeg_path = "${pkgs.ffmpeg-headless}/bin/ffmpeg";
       reduce_to_languages = [ "en" ];
+      # redis = {
+      #   host = config.services.redis.servers.nextcloud.unixSocket;
+      #   port = 0;
+      # };
     };
   };
 
