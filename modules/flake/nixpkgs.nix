@@ -11,28 +11,6 @@
         # Pseudo-overlay to add our own packages everywhere
         (_: _: self.packages.${system})
       ];
-    in import inputs.nixpkgs {
-      inherit system;
-      overlays = overlays ++ [
-        # NOTE: `nixpkgs-stable` -> `pkgs.stable.*`
-        # NOTE: `nixpkgs-master` -> `pkgs.master.*`
-        # NOTE: `nixpkgs` -> `pkgs.*` 
-        (_: _: lib.pipe inputs [
-          (lib.concatMapAttrs
-            (name: input:
-              if lib.hasPrefix "nixpkgs-" name then {
-                ${lib.removePrefix "nixpkgs-" name} = import input {
-                  inherit system;
-                  inherit overlays;
-                };
-              } else {
-              }))
-        ])
-        # NOTE: `tixpkgs` -> `pkgs.tix.*`
-        (_: _: {
-          tix = inputs.tixpkgs.packages.${system};
-        })
-      ];
       config = {
         allowUnfree = true;
         # hack, might work, forgor
@@ -46,6 +24,29 @@
           "dotnet-sdk-wrapped-6.0.428"
         ];
       };
+    in import inputs.nixpkgs {
+      inherit system;
+      overlays = overlays ++ [
+        # NOTE: `nixpkgs-stable` -> `pkgs.stable.*`
+        # NOTE: `nixpkgs-master` -> `pkgs.master.*`
+        # NOTE: `nixpkgs` -> `pkgs.*` 
+        (_: _: lib.pipe inputs [
+          (lib.concatMapAttrs
+            (name: input:
+              lib.optionalAttrs (lib.hasPrefix "nixpkgs-" name) {
+                ${lib.removePrefix "nixpkgs-" name} = import input {
+                  inherit system;
+                  inherit overlays;
+                  inherit config;
+                };
+              }))
+        ])
+        # NOTE: `tixpkgs` -> `pkgs.tix.*`
+        (_: _: {
+          tix = inputs.tixpkgs.packages.${system};
+        })
+      ];
+      inherit config;
     };
   };
 }

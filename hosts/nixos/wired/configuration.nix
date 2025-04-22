@@ -143,6 +143,16 @@
       mouse.accelProfile = "flat";
       touchpad.accelProfile = "flat"; 
     };
+
+    fprintd = { # fingerprint
+      enable = true;
+      # tod.enable = true;
+      # tod.driver = pkgs.xyz;
+      # https://wiki.nixos.org/wiki/Fingerprint_scanner
+      package = pkgs."24.11".fprintd.override {
+        libfprint = pkgs."24.11".libfprint-focaltech-2808-a658;
+      };
+    };
   };
 
   # systemd.user.services = {

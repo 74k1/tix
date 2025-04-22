@@ -3,7 +3,11 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
+    # NOTE: update every 6 months
     nixpkgs-stable = {
+      url = "github:NixOS/nixpkgs/nixos-25.05";
+    };
+    "nixpkgs-24.11" = {
       url = "github:NixOS/nixpkgs/nixos-24.11";
     };
     nixpkgs-master = {
@@ -14,9 +18,9 @@
       # url = "git+file:///home/taki/dev/tixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-local = {
-      url = "git+file:///home/taki/dev/nixpkgs";
-    };
+    # nixpkgs-local = {
+    #   url = "git+file:///home/taki/dev/nixpkgs";
+    # };
     unfree-fonts = {
       url = "git+ssh://git@github.com/74k1/unfree-fonts-nix";
       inputs.nixpkgs.follows = "nixpkgs";
