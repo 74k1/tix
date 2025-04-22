@@ -12,7 +12,9 @@
     (with outputs.homeManagerModules; [
       # hyprland
       niri
-      cliphist
+      swaync
+      # cliphist
+      copyq
       fastfetch
       # i3wm
       # bspwm
@@ -21,6 +23,7 @@
       jujutsu
       # firefox
       zen
+      qutebrowser
       neovim
       picom
       polybar
@@ -35,13 +38,15 @@
       wezterm
       ghostty
       # wired
-      # eww
       easyeffects
-      ironbar
+      # ironbar
+      waybar
+      walker
+      hyprlock
       kanshi
       anyrun
       xdg
-      xorg
+      # xorg # .xinitrc file
       zsh
       fish 
       yazi
@@ -96,9 +101,10 @@
     btop
     
     pulsemixer
-    qmk
+    # qmk
+    deploy-rs
     ripgrep
-    scc
+    # scc
     starship
     tealdeer
     joshuto
@@ -157,11 +163,12 @@
     keepassxc
     obsidian
     simple-scan
-    qbittorrent
+    aria2
     spotify
     spotify-tray
     tidal-hifi
     tidal-dl
+    # TEMP
     cider-2
     # pkgs.master.spotify-player
     feishin
@@ -169,6 +176,8 @@
     discord
     # legcord
     vesktop
+
+    davinci-resolve
 
     mpv
     ascii-draw
@@ -180,7 +189,7 @@
     session-desktop
 
     # akira-unstable
-    vala
+    # vala
     # pantheon.elementary-gtk-theme
     # pantheon.elementary-icon-theme
 
@@ -189,16 +198,12 @@
     # evolution
     protonvpn-gui
     plasticity
-    # cura
-    # curaengine_stable
 
-    # inputs.orca-fix.outputs.legacyPackages.x86_64-linux.orca-slicer
-    # pkgs.master.orca-slicer
-    orca-slicer
-    # prusa-slicer
+    # FIXME: https://github.com/NixOS/nixpkgs/issues/429433
+    # orca-slicer
     zathura
 
-    prismlauncher
+    # prismlauncher
     jdk17
     libGLU
 
@@ -214,9 +219,8 @@
 
     snapshot
 
-    zoom-us
+    # zoom-us
     onlyoffice-bin
-    libreoffice-qt
 
     wireshark
 

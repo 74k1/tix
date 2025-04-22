@@ -13,19 +13,8 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  # fileSystems."/" =
-  #   { device = "/dev/disk/by-uuid/385f5a5a-4d48-4721-baeb-aa0761229972";
-  #     fsType = "btrfs";
-  #     options = [ "subvol=@" ];
-  #   };
-  #
-  # fileSystems."/boot" =
-  #   { device = "/dev/disk/by-uuid/11C2-BDFC";
-  #     fsType = "vfat";
-  #     options = [ "fmask=0077" "dmask=0077" ];
-  #   };
-  #
-  # swapDevices = [ ];
+  # GPD Pocket 4
+
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

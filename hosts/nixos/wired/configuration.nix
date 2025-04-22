@@ -15,6 +15,8 @@
     inputs.yeetmouse.nixosModules.default
     inputs.musnix.nixosModules.musnix
 
+    inputs.genix7000.nixosModules.genix7000
+
     ../../../modules/syncthing.nix
 
     # cachix
@@ -36,16 +38,35 @@
   # Bootloader.
   boot = {
     # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-    kernelPackages = pkgs.linuxKernel.packages.linux_6_14;
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_15;
     # kernelPackages = pkgs.linuxKernel.packages.linux_testing;
     kernelParams = [
       "quiet"
       "splash"
       "systemd.show_status=auto"
+
+      # GPD Pocket 4
       "fbcon=rotate:1"
-      "eDP-1:1600x2560@144,rotate=90"
+      "eDP-1:panel_orientation=right_side_up"
+
+      # amd CPU
+      "amd_pstate=active"
     ];
-    plymouth.enable = true;
+    plymouth = {
+      enable = true;
+      theme = "nixos-bgrt";
+      themePackages = [ pkgs.nixos-bgrt-plymouth ];
+      # genix7000 = {
+      #   enable = true;
+      #   frameRate = 30;
+      #   animation = ''
+      #   time: {
+      #     lambdaThickness = builtins.floor (if time <= 1 then 20 + time * 10 else 20 + (2 - time) * 10);
+      #     rotation = builtins.floor (if time <= 1 then time * 180 else (2 - time) * 180);
+      #   };
+      #   '';
+      # };
+    };
     loader = {
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot";
@@ -88,12 +109,19 @@
       pkgs.xdg-desktop-portal-gtk
       # pkgs.xdg-desktop-portal-wlr
     ];
+    configPackages = [
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+    ];
     config.common = {
-      default = [ "wlr" ];
+      default = [ "gnome" "gtk" ];
+      "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
       "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
       "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
     };
   };
+
+  services.gvfs.enable = true;
 
   environment.sessionVariables = {
     # If cursor becomes invisible
@@ -104,20 +132,21 @@
 
   # Enable the X11 windowing system.
   services = {
+    fstrim.enable = true; # M.2 SSD
     greetd = {
       enable = true;
-      package = pkgs.greetd.tuigreet;
+      package = pkgs.greetd.greetd;
       settings = {
-        terminal.vt = 1;
+        # terminal.vt = 1;
         default_session = {
           user = "taki";
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd ${lib.getExe' pkgs.niri "niri-session"}";
+          command = "${lib.getExe' pkgs.niri "niri-session"}";
         };
       };
     };
     
     xserver = {
-      enable = true;
+      enable = true; # XWayland support
 
       # greeter
       # TEMP
@@ -127,15 +156,49 @@
     };
 
     displayManager = {
+      # enable = true;
       # ly = {
       #   enable = true;
       #   settings = {
-      #     bigclock = "en";
-      #     box_title = "Hello, User...";
-      #     clock = "%c";
+      #     allow_empty_password = false;
+      #     # animation = "colormix";
+      #     animation = "gameoflife";
+      #     asterisk = "•";
+      #     auth_fails = 10;
+      #     # bigclock = "en";
+      #     # box_title = "Hello World!";
+      #     # clock = "%c";
+      #     # bg = "0x0007060B";
+      #     # border_fg = "0x00323246";
+      #     # fg = "0x00EBE9F1";
+      #     # clear_password = true;
+      #     # gameoflife_fg = "0x0007060B";
+      #     # hide_borders = true;
+      #     numlock = true;
+      #     vi_mode = true;
+      #     vi_default_mode = "normal";
+      #     # vi_default_mode = "insert";
       #   };
       # };
       defaultSession = "niri-session";
+#       sessionPackages = [
+#         (pkgs.stdenv.mkDerivation {
+#           name = "niri-session";
+#           buildCommand = /* sh */ ''
+#           mkdir -p $out/share/wayland-sessions
+#           cat > $out/share/wayland-sessions/niri.desktop <<EOF
+# [Desktop Entry]
+# Name=Niri Session
+# Comment=Niri Wayland Compositor
+# Exec=${lib.getExe' pkgs.niri "niri-session"}
+# Type=Application
+# DesktopNames=niri
+# EOF
+#           '';
+#           passthru.providedSessions = [ "niri" ];
+#         })
+      #   pkgs.niri
+      # ];
     };
 
     libinput = {
@@ -179,21 +242,24 @@
   '';
 
   # Enable AMD GPU
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "modesetting" "amdgpu" ];
   boot = {
     kernelModules = [ "amdgpu" ];
     initrd.kernelModules = [ "amdgpu" ];
   };
-  hardware.graphics = {
-    enable = true;
-    # extraPackages = with pkgs; [ 
-    #   rocm-opencl-icd
-    #   rocm-opencl-runtime
-    #   # rocmPackages.clr.icd
-    #   # amdvlk
-    #   # driversi686Linux.amdvlk
-    # ];
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = [
+        pkgs.rocmPackages.clr.icd
+        pkgs.amdvlk
+      ];
+    };
+    amdgpu.initrd.enable = true;
   };
+  systemd.packages = [ pkgs.lact ];
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   # Enable CUPS to print documents.
   services.printing = {
@@ -286,6 +352,8 @@
     };
   };
 
+  services.power-profiles-daemon.enable = true;
+
   services.dbus = {
     enable = true;
     packages = [ pkgs.dconf pkgs.gcr ];
@@ -331,29 +399,29 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     ntfs3g
-     git wget curl tmux jq
-     shpool
-     pavucontrol
-     nvidia-vaapi-driver
-     egl-wayland
-     kitty
-     fastfetch
-     brscan4
-     simple-scan
-     nurl
-     # flatpak
-     # gnome.gnome-software
-     #alttab
-     #dconf
-     #xorg.xkill xclip xdotool xorg.xinit
-     #xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
+    lact
+    ntfs3g
+    git wget curl tmux jq
+    shpool
+    pavucontrol
+    nvidia-vaapi-driver
+    egl-wayland
+    fastfetch
+    brscan4
+    simple-scan
+    nurl
+    # flatpak
+    # gnome.gnome-software
+    #alttab
+    #dconf
+    #xorg.xkill xclip xdotool xorg.xinit
+    #xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
   ];
 
-  virtualisation.virtualbox.host = {
-    enable = true;
-    enableExtensionPack = true;
-  };
+  # virtualisation.virtualbox.host = {
+  #   enable = true;
+  #   enableExtensionPack = true;
+  # };
 
   hardware = {
     bluetooth = {
