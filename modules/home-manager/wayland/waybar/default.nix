@@ -64,7 +64,24 @@
       # "timezone" = "Europe/Zurich";
       format = "[ {:%d, %H:%M} ]";
       format-alt = "[ {:%Y-%m-%d, %H:%M:%S} ]";
-      tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+      tooltip-format = "<tt><small>{calendar}</small></tt>";
+      calendar = {
+        mode = "month";
+        mode-mon-col = 3;
+        weeks-pos = "left";
+        format = {
+          months = "<span><b>{}</b></span>";
+          weeks = "<span color='#ffcc66'><b>{}</b></span>";
+          weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+          days = "<span color='#ecc6d9'><b>{}</b></span>";
+          today = "<span color='#ff6699'><b><u>{}</u></b></span>";
+        };
+      };
+      actions = {
+        on-click-right = "mode";
+        on-scroll-up = "shift_up";
+        on-scroll-down = "shift_down";
+      };
     };
 
     "cpu" = {
@@ -219,6 +236,18 @@
       };
     };
 
+    "power-profiles-daemon" = {
+      format = "{icon}";
+      tooltip-format = "Power profile: {profile}\nDriver: {driver}";
+      tooltip = true;
+      format-icons = {
+        default = "";
+        performance = "";
+        balanced = "";
+        power-saver = "";
+      };
+    };
+
     "battery" = {
       states = {
         good = 88;
@@ -226,11 +255,12 @@
         critical = 15;
       };
       format = "BAT {capacity}% {icon}";
-      format-charging = "BAT  {capacity}% {icon}";
+      # format-charging = "BAT  {capacity}% {icon}";
       # format = "{capacity}% {icon}";
       # format-charging = "{capacity}% {icon}";
+
       full-at = 89;
-      tooltip-format = "{power}w {timeTo}";
+      tooltip-format = "{power}w {timeTo} {}";
       format-time = "{H}h {M}m left";
       format-icons = [
         # ""
@@ -318,6 +348,7 @@ in {
           "custom/net"
           "custom/swaync"
           "wireplumber"
+          "power-profiles-daemon"
           "battery"
         ];
 
@@ -352,7 +383,8 @@ in {
       #custom-power-reboot,
       #custom-net,
       #custom-swaync,
-      #custom-tray-btn {
+      #custom-tray-btn,
+      #power-profiles-daemon {
         font-family: "PP Supply Mono", "Material Symbols Sharp";
         font-weight: 600;
       }
