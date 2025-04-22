@@ -158,6 +158,7 @@
     spotify-tray
     tidal-hifi
     tidal-dl
+    cider-2
     # pkgs.master.spotify-player
     feishin
     # spotify-player
