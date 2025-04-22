@@ -102,6 +102,7 @@
     btop
 
     # beekeeper-studio
+    pkgs.tix.outerbase-studio-desktop
     
     pulsemixer
     qmk
