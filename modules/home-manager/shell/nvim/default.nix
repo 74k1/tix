@@ -17,40 +17,13 @@
       hash = "sha256-Ld3Tmkc3k8jSY40z+9Em8M1rDSVz7lnll60KMJb22JQ=";
     };
   };
-  # let-it-snow-nvim = pkgs.vimUtils.buildVimPlugin {
-  #   name = "let-it-snow-nvim";
+  # hmts-nvim = pkgs.vimUtils.buildVimPlugin {
+  #   name = "hmts-nvim";
   #   src = pkgs.fetchFromGitHub {
-  #     owner = "marcussimonsen";
-  #     repo = "let-it-snow.nvim";
-  #     rev = "823511ad1b0d36e44f9c5e2418892e7438f23a41";
-  #     hash = "sha256-9fDgVzzrLBoITdIFMva4EpopG+IV1Y5imw9j3gBPVzk=";
-  #   };
-  # };
-  hmts-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "hmts-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "calops";
-      repo = "hmts.nvim";
-      rev = "v1.2.5";
-      hash = "sha256-V5dwIJdxBulFVKk1iSlf4H5NRz1UH7uYQeMvwtgkpIs=";
-    };
-  };
-  # image-nvim = pkgs.vimUtils.buildVimPlugin {
-  #   name = "image-nvim";
-  #   src = pkgs.fetchFromGitHub {
-  #     owner = "3rd";
-  #     repo = "image.nvim";
-  #     rev = "2a618c86d9f8fd9f7895d12b55ec2f31fd14fa05";
-  #     sha256 = "sha256-6nFzUchDQIvaTOv4lZ10q66m/ntU3dgVnlfBRodW+0Y=";
-  #   };
-  # };
-  # indentmini-nvim = pkgs.vimUtils.buildVimPlugin {
-  #   name = "indentmini-nvim";
-  #   src = pkgs.fetchFromGitHub {
-  #     owner = "nvimdev";
-  #     repo = "indentmini.nvim";
-  #     rev = "59c2be5387e3a3308bb43f07e7e39fde0628bd4d";
-  #     hash = "sha256-RtNPlILvlEyIFfDK8NTq8LPZR5vIl6uBxeE3vftUS6g=";
+  #     owner = "calops";
+  #     repo = "hmts.nvim";
+  #     rev = "v1.2.5";
+  #     hash = "sha256-V5dwIJdxBulFVKk1iSlf4H5NRz1UH7uYQeMvwtgkpIs=";
   #   };
   # };
 in {
@@ -99,6 +72,9 @@ in {
         lua vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>")
         lua vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>")
 
+        lua vim.opt.iskeyword:append("-")
+        lua vim.opt.iskeyword:remove(":")
+        
         " rest
         " Autocommands for vim-table-mode
         "augroup TableModeSetup
@@ -119,9 +95,10 @@ in {
       cmp_luasnip
       comment-nvim
       nvzone-typr
-      hmts-nvim
+      # hmts-nvim
       luasnip
       nvim-tree-lua
+      parinfer-rust
       telescope-nvim
       venn-nvim
       vim-dadbod
