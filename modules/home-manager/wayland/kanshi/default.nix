@@ -16,7 +16,7 @@
         output = {
           adaptiveSync = false;
           criteria = "eDP-1";
-          mode = "2560x1600@144.000";
+          mode = "1600x2560@144";
           scale = 1.75;
           transform = "270";
         };
@@ -24,7 +24,10 @@
       {
         profile = {
           name = "undocked";
-          exec = [ "${lib.getExe pkgs.swww} restore" ];
+          exec = [
+            "${lib.getExe pkgs.swww} restore"
+            "${lib.getExe pkgs.ironbar} reload"
+          ];
           outputs = [
             {
               criteria = "eDP-1";
@@ -36,7 +39,10 @@
       {
         profile = {
           name = "docked_home";
-          exec = [ "${lib.getExe pkgs.swww} restore" ];
+          exec = [
+            "${lib.getExe pkgs.swww} restore"
+            "${lib.getExe pkgs.ironbar} reload"
+          ];
           outputs = [
             {
               criteria = "eDP-1";
