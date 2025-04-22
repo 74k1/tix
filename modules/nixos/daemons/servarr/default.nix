@@ -24,8 +24,6 @@ in {
     overseerr = {
       enable = true;
       package = inputs.jf-uu-overseerr.outputs.legacyPackages.x86_64-linux.overseerr;
-      user = "taki";
-      group = "users";
     };
 
     # Indexer
