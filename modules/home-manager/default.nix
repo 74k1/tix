@@ -10,6 +10,7 @@
   fastfetch = import ./shell/fastfetch;
   firefox = import ./apps/firefox;
   fish = import ./shell/fish;
+  fuzzel = import ./wayland/fuzzel;
   ghostty = import ./apps/ghostty;
   git = import ./shell/git;
   gpg-agent = import ./gpg-agent;

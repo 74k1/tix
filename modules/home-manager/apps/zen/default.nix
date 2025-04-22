@@ -80,6 +80,7 @@
         "browser.download.panel.shown" = true;
         "media.videocontrols.picture-in-picture.enabled" = false;
         "sidebar.revamp" = true;
+        "browser.tabs.insertAfterCurrent" = true;
 
         # Check SMOOTHFOX below
         # "general.smoothScroll.currentVelocityWeighting" = 0;

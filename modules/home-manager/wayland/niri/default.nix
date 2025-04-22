@@ -95,13 +95,9 @@ in {
         # Bindings
         "Mod+Return" = { repeat = false; action = spawn "${pkgs.ghostty}/bin/ghostty"; };
 
-        "Mod+R" = { repeat = false; action = spawn "${lib.getExe pkgs.walker}" "--modules" "applications,calc"; };
-        "Mod+Space" = { repeat = false; action = spawn "${lib.getExe pkgs.walker}" "--modules" "applications,calc"; };
-        # "Mod+V" = { repeat = false; action = spawn "${lib.getExe pkgs.anyrun}"; };
+        "Mod+R" = { repeat = false; action = spawn "${lib.getExe pkgs.fuzzel}"; };
+        "Mod+Space" = { repeat = false; action = spawn "${lib.getExe pkgs.fuzzel}"; };
 
-        # "Mod+R" = { repeat = false; action = spawn "${pkgs.wofi}/bin/wofi" "--show" "drun"; };
-        # "Mod+Space" = { repeat = false; action = spawn "${pkgs.wofi}/bin/wofi" "--show" "drun"; };
-        #
         # "Mod+V" = { repeat = false; action = spawn "sh" "-c" "${pkgs.cliphist}/bin/cliphist list | ${pkgs.wofi}/bin/wofi -dmenu | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard-rs}/bin/wl-copy"; };
 
         "Print" = { repeat = false; action = screenshot; };
@@ -128,6 +124,7 @@ in {
         "Mod+Comma".action = consume-window-into-column;
         "Mod+Period".action = expel-window-from-column;
         "Mod+Tab".action = switch-focus-between-floating-and-tiling;
+        "Mod+Shift+Space".action = toggle-window-floating;
 
         # workspace
         "Mod+H".action = focus-column-or-monitor-left;
@@ -181,14 +178,14 @@ in {
         border = {
           enable = true;
           width = 1;
-          active = { color = "#6C69FF"; };
-          inactive = { color = "#5F5A65"; };
+          active = { color = "#816BFF"; };
+          inactive = { color = "#1C1B28"; };
         };
         focus-ring = {
           enable = false;
           width = 1;
-          active = { color = "#6C69FF"; };
-          inactive = { color = "#5F5A65"; };
+          active = { color = "#816BFF"; };
+          inactive = { color = "#1C1B28"; };
         };
         shadow = {
           enable = true;

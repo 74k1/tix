@@ -16,6 +16,7 @@
       # cliphist
       copyq
       fastfetch
+      fuzzel
       # i3wm
       # bspwm
       #colors
@@ -124,7 +125,7 @@
 
     # gui stuff
     # brave
-    osu-lazer-bin
+    # osu-lazer-bin
     #inputs.zen-browser.packages."${system}".zen-browser
     # inputs.tixpkgs.packages."${system}".lumen
     # (inputs.zen-browser.packages."${system}".default.overrideAttrs (oldAttrs: {
