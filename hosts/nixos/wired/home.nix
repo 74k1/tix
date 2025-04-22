@@ -57,12 +57,12 @@
   
 
   # nixpkgs = {
-    # config = {
-      # allowUnfree = true;
-      # permittedInsecurePackages = [
-      #   "electron-25.9.0"
-      # ];
-    # };
+  #   config = {
+  #     allowUnfree = true;
+  #     permittedInsecurePackages = [
+  #       "beekeeper-studio-5.2.12"
+  #     ];
+  #   };
   # };
 
   home = {
@@ -100,6 +100,8 @@
     just
     comma
     btop
+
+    # beekeeper-studio
     
     pulsemixer
     qmk
@@ -110,6 +112,9 @@
     starship
     tealdeer
     joshuto
+
+    firefox
+    plex-desktop
 
     blueman
 
@@ -168,6 +173,7 @@
     aria2
     spotify
     spotify-tray
+    youtube-music
     tidal-hifi
     tidal-dl
     # TEMP
@@ -175,9 +181,9 @@
     # pkgs.master.spotify-player
     feishin
     # spotify-player
-    discord
+    discord-ptb
     # legcord
-    vesktop
+    # vesktop
 
     davinci-resolve
 
@@ -201,9 +207,7 @@
     protonvpn-gui
     plasticity
 
-    # FIXME: https://github.com/NixOS/nixpkgs/issues/429433
-    pkgs.iynaix-orca.orca-slicer
-    # orca-slicer
+    orca-slicer
     zathura
 
     # prismlauncher

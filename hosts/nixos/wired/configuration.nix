@@ -88,6 +88,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  programs.nm-applet.enable = true;
 
   networking.firewall.checkReversePath = "loose";
 
@@ -362,11 +363,22 @@
   programs.dconf.enable = true;
   programs.gpaste.enable = true;
   
-  # udev stuff for qmk
-  services.udev.packages = [
-    pkgs.qmk-udev-rules
-    pkgs.game-devices-udev-rules
-  ];
+  # udev stuff
+  services.udev = {
+    packages = [
+      pkgs.qmk-udev-rules
+      pkgs.game-devices-udev-rules
+    ];
+
+    # extraHwdb = ''
+    #   evdev:name:*:*
+    #     XKBLAYOUT=ch
+    #     XKBVARIANT=de
+    #
+    #   evdev:name:HAILUCK CO.,LTD USB KEYBOARD:*
+    #     XKBLAYOUT=us
+    # ''; 
+  };
 
   hardware.keyboard.qmk.enable = true;
 
@@ -421,10 +433,18 @@
     #xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
   ];
 
-  # virtualisation.virtualbox.host = {
-  #   enable = true;
-  #   enableExtensionPack = true;
-  # };
+  virtualisation = {
+    libvirtd.enable = true;
+    # virtualbox.host = {
+    #   enable = true;
+    #   enableExtensionPack = true;
+    #
+    #   enableKvm = true;
+    #   addNetworkInterface = false;
+    # };
+  };
+
+  programs.virt-manager.enable = true;
 
   hardware = {
     bluetooth = {
