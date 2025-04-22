@@ -82,10 +82,10 @@ in {
           package = inputs.unfree-fonts.packages.x86_64-linux.supply-mono;
           name = "PP Supply Mono";
         };
-        emoji = {
-          package = pkgs.twitter-color-emoji;
-          name = "Twemoji";
-        };
+        # emoji = {
+        #   package = pkgs.twitter-color-emoji;
+        #   name = "Twemoji";
+        # };
       };
       autoEnable = true;
       # targets = {
