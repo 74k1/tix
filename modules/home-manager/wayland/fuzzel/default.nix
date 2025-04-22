@@ -16,6 +16,7 @@
       main = {
         font = lib.mkForce "PP Supply Mono";
         use-bold = true;
+        dpi-aware = "no";
         show-actions = true;
         terminal = "${lib.getExe pkgs.ghostty} -e";
         layer = "overlay";
