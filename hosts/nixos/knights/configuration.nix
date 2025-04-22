@@ -248,46 +248,42 @@
           };
         };
         "${domain00}" = {
-          forceSSL = true;
-          enableACME = true;
+          addSSL = true;
+          useACMEHost = "${allSecrets.global.domain00}";
+          # enableACME = true;
           root = "/var/www/${domain00}/";
         };
         "auth.${domain00}" = {
+          addSSL = true;
+          useACMEHost = "${allSecrets.global.domain00}";
           # enableACME = true;
-          # useACMEHost = "auth.${domain00}";
-          forceSSL = true;
-          sslCertificate = "/var/lib/acme/auth.${domain00}/fullchain.pem";
-          sslCertificateKey = "/var/lib/acme/auth.${domain00}/key.pem";
-          sslTrustedCertificate = "/var/lib/acme/auth.${domain00}/chain.pem";
           locations."/" = {
-            proxyPass = "https://10.100.0.1:8443";
+            proxyPass = "http://10.100.0.1:1411";
             # proxyWebsockets = true;
             # recommendedProxySettings = true;
             extraConfig = ''
-              proxy_ssl_name auth.${domain00};
-              # proxy_ssl_verify on;
-              # proxy_ssl_trusted_certificate /var/lib/acme/auth.${domain00}/fullchain.pem;
-              proxy_ssl_server_name on;
-              proxy_ssl_session_reuse off;
+              # proxy_set_header Host $host;
+              # proxy_set_header X-Real-IP $remote_addr;
+              # proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              # proxy_set_header X-Forwarded-Proto $scheme;
 
-              proxy_set_header Host $host;
-              proxy_set_header X-Real-IP $remote_addr;
-              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header X-Forwarded-Proto $scheme;
+              proxy_busy_buffers_size   512k;
+              proxy_buffers   4 512k;
+              proxy_buffer_size   256k;
             '';
           };
         };
         # "vw.${domain00}" = {
-        #   forceSSL = true;
-        #   enableACME = true;
+        #   addSSL = true;
+        #   useACMEHost = "${allSecrets.global.domain00}";
         #   locations."/" = {
         #     proxyPass = "http://10.100.0.1:8222";
         #     proxyWebsockets = true;
         #   };
         # };
         # "git.${domain00}" = {
-        #   forceSSL = true;
-        #   enableACME = true;
+        #   addSSL = true;
+        #   useACMEHost = "${allSecrets.global.domain00}";
         #   locations."/" = {
         #     proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.forgejo.settings.BIND}";
         #     recommendedProxySettings = true;
@@ -298,15 +294,16 @@
         #   };
         # };
         # "news.${domain00}" = {
-        #   forceSSL = true;
-        #   enableACME = true;
+        #   addSSL = true;
+        #   useACMEHost = "${allSecrets.global.domain00}";
         #   locations."/" = {
         #     proxyPass = "http://10.100.0.1:8084";
         #   };
         # };
+        # Opencloud!
         # "files.${domain00}" = {
-        #   forceSSL = true;
-        #   enableACME = true;
+        #   addSSL = true;
+        #   useACMEHost = "${allSecrets.global.domain00}";
         #   locations = {
         #     "/" = {
         #       proxyPass = "http://10.100.0.1:80";
@@ -323,9 +320,10 @@
         #     # };
         #   };
         # };
+        # change mum n sister
         # "immich.${domain00}" = {
-        #   forceSSL = true;
-        #   enableACME = true;
+        #   addSSL = true;
+        #   useACMEHost = "${allSecrets.global.domain00}";
         #   locations."/" = {
         #     proxyPass = "http://10.100.0.1:3001";
         #     # see https://immich.app/docs/administration/reverse-proxy/
@@ -346,9 +344,10 @@
         #     '';
         #   };
         # };
+        # should perhaps run on chatai.74k1.sh as well
         # "chat.${domain00}" = {
-        #   enableACME = true;
         #   addSSL = true;
+        #   useACMEHost = "${allSecrets.global.domain00}";
         #   locations."/" = {
         #     proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.chat.settings.BIND}";
         #     proxyWebsockets = true;
@@ -443,16 +442,38 @@
             proxyWebsockets = true;
           };
         };
+        # catch-all for domain00
+        "*.${allSecrets.global.domain00}" = {
+          forceSSL = true;
+          useACMEHost = "${allSecrets.global.domain00}";
+          locations."/" = {
+            return = "444"; # Close connection without response
+          };
+        };
       };
     };
   };
 
+
   security.acme = {
     acceptTerms = true;
-    preliminarySelfsigned = false;
     defaults = {
       email = "${allSecrets.global.mail.acme}";
       group = "nginx";
+    };
+    certs = let 
+      inherit (allSecrets.global) domain00;
+    in {
+      "${domain00}" = {
+        domain = "${domain00}";
+        dnsProvider = "namecheap";
+        dnsPropagationCheck = true;
+        environmentFile = config.age.secrets."namecheap_api_secrets".path;
+        extraDomainNames = [
+          "*.${domain00}"
+        ];
+        webroot = null;
+      };
     };
   };
 
