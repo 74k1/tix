@@ -3,11 +3,10 @@
   bash = import ./shell/bash;
   bspwm = import ./x11/bspwm;
   cliphist = import ./wayland/cliphist;
-  copyq = import ./wayland/copyq;
   colors = import ./x11/colors;
+  copyq = import ./wayland/copyq;
   dunst = import ./wayland/dunst;
   easyeffects = import ./audio/easyeffects;
-  eww = import ./wayland/eww;
   fastfetch = import ./shell/fastfetch;
   firefox = import ./apps/firefox;
   fish = import ./shell/fish;
@@ -15,7 +14,6 @@
   git = import ./shell/git;
   gpg-agent = import ./gpg-agent;
   hyprland = import ./wayland/hyprland;
-  swaync = import ./wayland/swaync;
   hyprlock = import ./wayland/hyprlock;
   i3wm = import ./x11/i3wm;
   ironbar = import ./wayland/ironbar;
@@ -31,9 +29,12 @@
   ssh-agent = import ./shell/ssh-agent;
   starship = import ./shell/starship;
   style = import ./stylix;
+  swaync = import ./wayland/swaync;
   sxhkd = import ./x11/sxhkd;
   theme = import ./x11/theme;
+  walker = import ./wayland/walker;
   wall = import ./x11/wall;
+  waybar = import ./wayland/waybar;
   wezterm = import ./apps/wezterm;
   wired = import ./apps/wired;
   xdg = import ./x11/xdg;
