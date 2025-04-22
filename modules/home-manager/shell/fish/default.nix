@@ -46,7 +46,7 @@
       cd = "z";
       #j = "z";
       tree = "${pkgs.eza}/bin/eza --tree --icons=auto";
-      youcannotrebuild = "sudo nixos-rebuild switch --flake ~/tix";
+      youcannotrebuild = "${lib.getExe pkgs.nh} os switch ~/tix";
       ycr = "youcannotrebuild";
       nfu = "nix flake update";
       nb = "nix build";
