@@ -30,6 +30,7 @@
     # kanidm-client
   ];
 
+  # Bootloader.
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     kernelParams = [
@@ -40,13 +41,18 @@
       "video=HDMI-A-1:1920x1080@60,rotate=90"
     ];
     plymouth.enable = true;
+    loader = {
+      efi.canTouchEfiVariables = true;
+      efi.efiSysMountPoint = "/boot/efi";
+      # systemd-boot.enable = true;
+      limine = {
+        enable = true;
+        style.wallpapers = [ ];
+        style.interface.branding = "Hello B00t!";
+      };
+    };
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.hostName = "wired"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
