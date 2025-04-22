@@ -66,13 +66,13 @@
             <td><a href="hosts/nixos/eiri"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
             <td>eiri</td>
             <td>Custom Server<br><sub>Ryzen 9 3900x<br>GTX 1080ti</sub></td>
-            <td>Just for fun. Homelab stuff :)</td>
+            <td>Just for fun. Homelab stuff. :)</td>
         </tr>
         <tr>
             <td><a href="hosts/nixos/eiri"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
             <td>arisu</td>
             <td>MacBook as a Server<br><sub>M3 Max</sub></td>
-            <td>Just for fun. Homelab stuff :)</td>
+            <td>Just for fun & when I need apps, that aren't on Linux. :)</td>
         </tr>
         <tr>
             <td><a href="hosts/nixos/knights"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
@@ -89,44 +89,21 @@
     </table>
 </div>
 
-## Programs I'm using
-
-- xyz
-
 ## Flake Structure
 
 ```
 xyz
 ```
 
-<div>
-    <h2>Packages</h2>
-    <p>
-    All of my own Packages are under <a href="https://github.com/74k1/tixpkgs">tixpkgs</a>. Feel free to snoop around and submit PRs / Issues. Contributions are always welcome. :)
-    </p>
-</div>
-<div>
-    <h2>Special Thanks to</h2>
-    <table>
-        <tr>
-            <th>Credit</th>
-            <th>Reason</th>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/reo101">reo101</a> <img alt="clueless" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></td>
-            <td>for being the one that introduced me to nix and helping a ton :)</td>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/linuxmobile/">linuxmobile</a></td>
-            <td>Their <a href="https://github.com/linuxmobile/kaku">Niri config</a> served as a great reference point.</td>
-        </tr>
-        <tr>
-            <td><a href="https://github.com/HirschBerge">HirschBerge</a></td>
-            <td>For the insightful <a href="https://github.com/elkowar/eww">eww</a> implementation in Nix.</td>
-        </tr>
-        <tr>
-            <td><a href="https://gitlab.com/Nmoleo">Nmoleo</a></td>
-            <td>Rewrote / packaged his <a href="https://gitlab.com/Nmoleo/i3-volume-brightness-indicator">i3 + dunst indicators</a> script for Nix in <a href="https://github.com/74k1/tixpkgs">tixpkgs</a>.</td>
-        </tr>
-    </table>
-</div>
+## Packages
+
+All of my own Packages are under <a href="https://github.com/74k1/tixpkgs">tixpkgs</a>. Feel free to snoop around and submit PRs / Issues. Contributions are always welcome. :)
+
+
+## Special Thanks to
+
+| Credit | Reason |
+| ---: | --- |
+| [reo101](https://github.com/reo101) ![clueless](https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png) | for being **the one and only** that introduced me to nix and helping me out a ton. :) |
+| [linuxmobile](https://github.com/linuxmobile/) | Their [Niri config](https://github.com/linuxmobile/kaku) served as a great reference point. |
+| [Nmoleo](https://gitlab.com/Nmoleo) | Rewrote / packaged their [i3 + dunst indicators](https://gitlab.com/Nmoleo/i3-volume-brightness-indicator) script for Nix in [tixpkgs](https://github.com/74k1/tixpkgs). |
