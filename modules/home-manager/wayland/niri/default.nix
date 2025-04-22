@@ -222,7 +222,7 @@ in {
           hide-when-single-tab = true;
           place-within-column = true;
           position = "left";
-          corner-radius = 20.0;
+          corner-radius = 0.0;
           gap = -9.0;
           gaps-between-tabs = 10.0;
           width = 4.0;
@@ -272,7 +272,7 @@ in {
         windowRules = [
           {
             geometry-corner-radius = let
-              radius = 10.0;
+              radius = 0.0;
             in {
               bottom-left = radius;
               bottom-right = radius;
