@@ -72,6 +72,7 @@
     slskd
     vikunja
     kanboard
+    rustdesk-server
     # linkwarden
     # filestash
     # youtrack
@@ -202,7 +203,7 @@
           # enableACME = true;
           useACMEHost = "eiri.${allSecrets.global.domain1}";
           locations."/" = {
-            proxyPass = "http://127.0.0.1";
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}";
           };
         };
         "transmission.eiri.${allSecrets.global.domain1}" = {
@@ -210,8 +211,16 @@
           # enableACME = true;
           useACMEHost = "eiri.${allSecrets.global.domain1}";
           locations."/" = {
-            proxyPass = "http://127.0.0.1:9091";
+            proxyPass = "http://${config.vpnNamespaces.prtr.namespaceAddress}:9091";
             # proxyWebsockets = true;
+          };
+        };
+        "rd.eiri.${allSecrets.global.domain1}" = {
+          addSSL = true;
+          useACMEHost = "eiri.${allSecrets.global.domain1}";
+          locations."/" = {
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:21116";
+            proxyWebsockets = true;
           };
         };
         "graylog.eiri.${allSecrets.global.domain1}" = {

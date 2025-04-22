@@ -15,6 +15,7 @@
   firefox = import ./apps/firefox;
   firefox-syncserver = import ./daemons/firefox-syncserver;
   forgejo = import ./daemons/forgejo;
+  rustdesk-server = import ./daemons/rustdesk-server;
   glance = import ./daemons/glance;
   graylog = import ./daemons/graylog;
   immich = import ./daemons/immich;
