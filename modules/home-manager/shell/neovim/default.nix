@@ -210,11 +210,6 @@ in {
       #   config = builtins.readFile ./cfg/copilot-lua.lua;
       # }
       {
-        plugin = markview-nvim;
-        type = "lua";
-        config = builtins.readFile ./cfg/markview.lua;
-      }
-      {
         plugin = nvim-lspconfig;
         type = "lua";
         config = builtins.readFile ./cfg/lspconfig.lua;
