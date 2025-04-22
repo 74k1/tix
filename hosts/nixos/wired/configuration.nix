@@ -161,6 +161,8 @@
     xserver = {
       enable = true; # XWayland support
 
+      # layout = "us";
+
       # greeter
       # TEMP
       # screenSection = ''
@@ -222,12 +224,17 @@
 
     fprintd = { # fingerprint
       enable = true;
-      # tod.enable = true;
-      # tod.driver = pkgs.xyz;
+      # tod = {
+      #   enable = true;
+      #   driver = pkgs.tix.libfprint-focaltech-gpd;
+      # };
       # https://wiki.nixos.org/wiki/Fingerprint_scanner
-      package = pkgs."24.11".fprintd.override {
-        libfprint = pkgs."24.11".libfprint-focaltech-2808-a658;
-      };
+      # package = pkgs."24.11".fprintd.override {
+      #   libfprint = pkgs.tix.libfprint-focaltech-gpd;
+      # };
+      package = (pkgs."24.11".fprintd.override {
+        libfprint = pkgs.tix.libfprint-focaltech-gpd;
+      });
     };
 
     fwupd = {
