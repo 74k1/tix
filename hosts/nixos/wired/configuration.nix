@@ -170,14 +170,55 @@
   services = {
     pipewire = {
       enable = true;
+      audio.enable = true;
       alsa.enable = true;
+      alsa.support32Bit = true;
       pulse.enable = true;
+      wireplumber.enable = true;
       wireplumber.extraConfig = {
-        "monitor.bluez.properties" = {
-          "bluez5.enable-sbc-xq" = true;
-          "bluez5.enable-msbc" = true;
-          "bluez5.enable-hw-volume" = true;
-          "bluez5.roles" = [ "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
+        "51-audio-priority" = {
+          "monitor.alsa.rules" = [
+            # {
+            #   matches = [
+            #     { "node.name" = "alsa_output.usb-MOTU_M4_M4MA01A3Q6-00.HiFi__Line1__sink"; }
+            #     { "node.name" = "alsa_output.usb-MOTU_M4_M4MA01A3Q6-00.HiFi__Line2__sink"; }
+            #     { "node.name" = "bluez_output.A8_F5_E1_CD_2D_00.1"; }
+            #   ];
+            #   actions = {
+            #     update-props = {
+            #       "priority.driver" = 1010;
+            #       "priority.session" = 1010;
+            #     };
+            #   };
+            # }
+            {
+              matches = [
+                { "node.name" = "easyeffects_sink"; }
+              ];
+              actions.update-props = {
+                "priority.driver" = 10;
+                "priority.session" = 10;
+              };
+            }
+            {
+              matches = [
+                { "node.name" = "~alsa_output.*"; }
+              ];
+              actions = {
+                update-props = {
+                  "device.profile.switch-on-connect" = false;
+                };
+              };
+            }
+          ];
+        };
+        "52-bluetooth-properties" = {
+          "monitor.bluez.properties" = {
+            "bluez5.enable-sbc-xq" = true;
+            "bluez5.enable-msbc" = true;
+            "bluez5.enable-hw-volume" = true;
+            "bluez5.roles" = [ "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
+          };
         };
       };
       # If you want to use JACK applications, uncomment this

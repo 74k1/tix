@@ -9,6 +9,7 @@
   ib-cpu = pkgs.writeScriptBin "ib-cpu" (builtins.readFile ./scripts/ib-cpu.sh);
   ib-mem = pkgs.writeScriptBin "ib-mem" (builtins.readFile ./scripts/ib-mem.sh);
   ib-vol = pkgs.writeScriptBin "ib-vol" (builtins.readFile ./scripts/ib-vol.sh);
+  get-set-vol = pkgs.writeScriptBin "get-set-vol" (builtins.readFile ./scripts/get-set-vol.sh);
 in {
   imports = [
     inputs.ironbar.homeManagerModules.default
@@ -17,10 +18,7 @@ in {
   programs.ironbar = {
     enable = true;
     systemd = true;
-    config = let
-      power-mgmt = {
-      };
-    in {
+    config = {
       ironvar_defaults = {
         # see https://github.com/JakeStanger/ironbar/wiki/ironvars
       };
@@ -94,14 +92,14 @@ in {
               type = "script";
               cmd = lib.getExe ib-cpu;
               mode = "poll";
-              interval = 5000;
+              interval = 2500;
             }
             {
               # MEM
               type = "script";
               cmd = lib.getExe ib-mem;
               mode = "poll";
-              interval = 5000;
+              interval = 2500;
             }
             # fi
           ];
@@ -136,20 +134,68 @@ in {
           ];
           end = [
             {
-              # TODO: Format as bars? [||||||||]
-              type = "volume";
-              # format = "{icon} {percentage}% {{${lib.getExe ib-vol}}}";
-              format = "{icon} {percentage}%";
-              max_volume = 100;
-              icons = {
-                volume_high = "󰕾";
-                volume_medium = "󰖀";
-                volume_low = "󰕿";
-                muted = "󰝟";
-              };
+              bar = [
+                {
+                  label = "{{100:${lib.getExe ib-vol}}}";
+                  name = "vol-btn";
+                  on_click = "popup:toggle";
+                  on_mouse_enter = "popup:toggle";
+                  on_mouse_exit = "popup:toggle";
+                  type = "button";
+                }
+              ];
+              class = "vol-menu";
+              tooltip = "dev/{{5000:uptime}}";
+              type = "custom";
               on_scroll_up = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+";
               on_scroll_down = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-";
               on_click_middle = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+              popup = [
+                {
+                  orientation = "v";
+                  type = "box";
+                  widgets = [
+                    {
+                      label = "Volume Menu";
+                      name = "header";
+                      type = "label";
+                    }
+                    {
+                      type = "box";
+                      name = "idk";
+                      orientation = "v";
+                      widgets = [
+                        {
+                          type = "slider";
+                          length = 100;
+                          step = 5;
+                          min = 0;
+                          max = 100;
+                          show_label = true;
+                          orientation = "h";
+                          # on_change  = "${lib.getExe get-set-vol} $${0%.*}";
+                          value = "200:${lib.getExe get-set-vol}";
+                        }
+                        # {
+                        #   type = "label";
+                        #   class = "data";
+                        #   label = "#data1";
+                        # }
+                        # {
+                        #   type = "label";
+                        #   class = "data";
+                        #   label = "#data2";
+                        # }
+                      ];
+                    }
+                    {
+                      label = "Current Device: {{uptime}}";
+                      name = "curr-dev";
+                      type = "label";
+                    }
+                  ];
+                }
+              ];
             }
             # TODO: if main monitor / landscape
             {
@@ -177,22 +223,23 @@ in {
               ];
             }
             {
-              type = "notifications";
-              show_count = true;
-              icons.closed_none = "󰂜";
-              icons.closed_some = "󰂜";
-              icons.closed_dnd = "󰪓";
-              icons.open_none = "󰂚";
-              icons.open_some = "󰂚";
-              icons.open_dnd = "󰂠";
-            }
-            {
               type = "clipboard";
+              name = "clipboard";
               max_items = 50;
               truncate = {
                 mode = "end";
                 length = 50;
               };
+            }
+            {
+              type = "notifications";
+              show_count = true;
+              # icons.closed_none = "󰂜";
+              # icons.closed_some = "󰂜";
+              # icons.closed_dnd = "󰪓";
+              # icons.open_none = "󰂚";
+              # icons.open_some = "󰂚";
+              # icons.open_dnd = "󰂠";
             }
             # fi
             # TODO: if laptop / on batt
@@ -203,10 +250,10 @@ in {
             #   }
             # )
             # fi
-            {
-              type = "network_manager";
-              icon_size = 14;
-            }
+            # {
+            #   type = "network_manager";
+            #   icon_size = 16;
+            # }
             # TODO: if laptop / on batt
             # (lib.mkIf false
             #   {

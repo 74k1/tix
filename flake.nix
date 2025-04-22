@@ -133,6 +133,10 @@
       url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    anyrun-nixos-options = {
+      url = "github:n3oney/anyrun-nixos-options";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ironbar = {
       url = "github:JakeStanger/ironbar";
       # url = "git+file:///home/taki/dev/ironbar";
