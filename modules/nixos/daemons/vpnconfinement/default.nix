@@ -60,8 +60,8 @@
         transmission = {
           enable = true;
           # rpc_file = ./yee.age ; # file path with ENV vars perhaps
-          RPC_USER="taki";
-          RPC_PASS="${allSecrets.per_service.transmission.rpc-password}";
+          RPC_USER = "taki";
+          RPC_PASS = "${allSecrets.per_service.transmission.rpc-password}";
         };
       };
     };

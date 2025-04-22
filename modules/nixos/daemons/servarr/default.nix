@@ -8,10 +8,13 @@
 }: let
   cfg_sonarr = config.services.sonarr;
 in {
-  disabledModules = [ "services/misc/servarr/prowlarr.nix" ];
+  disabledModules = [
+    "services/misc/servarr/prowlarr.nix"
+    "services/misc/overseerr.nix"
+  ];
 
   imports = [
-    "${inputs.jf-uu-overseerr}/nixos/modules/services/misc/overseerr.nix"
+    "${inputs.nixpkgs-master}/nixos/modules/services/misc/overseerr.nix"
     "${inputs.nixpkgs-master}/nixos/modules/services/misc/servarr/prowlarr.nix"
     ./radarr-alt.nix
     ./sonarr-alt.nix
@@ -23,7 +26,7 @@ in {
     # Request
     overseerr = {
       enable = true;
-      package = inputs.jf-uu-overseerr.outputs.legacyPackages.x86_64-linux.overseerr;
+      package = pkgs.master.overseerr;
     };
 
     # Indexer
