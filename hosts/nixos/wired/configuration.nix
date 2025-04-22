@@ -69,6 +69,22 @@
   #   xwayland.enable = true;
   # };
 
+  # XDG
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+      # pkgs.xdg-desktop-portal-wlr
+    ];
+    config.common = {
+      default = [ "wlr" ];
+      "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+      "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
+    };
+  };
+
   environment.sessionVariables = {
     # If cursor becomes invisible
     # WLR_NO_HARDWARE_CURSORS = "1";

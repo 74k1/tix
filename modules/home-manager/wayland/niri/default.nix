@@ -12,14 +12,14 @@
     hash = "sha256-MjBzldNqNQa1aPoxUPyimovl+YSA4m74Dx7MIsswxtU=";
   };
 in {
+  # BIG REMINDER
+  # ADD XDG STUFF
+
   imports = [
     inputs.niri.homeModules.niri
   ];
 
   home.packages = with pkgs; [
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-gnome
     nautilus
     gnome-keyring
     wofi
@@ -27,18 +27,6 @@ in {
     wl-clipboard-rs
     xwayland-satellite
   ];
-
-  xdg.portal = {
-    # wlr.enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gnome
-      pkgs.xdg-desktop-portal-gtk
-    ];
-    config.common = {
-      default = [ "wlr" ];
-      "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
-    };
-  };
 
   services.swww = {
     enable = true;
