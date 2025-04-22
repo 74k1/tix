@@ -31,8 +31,8 @@
 
     # Most important
     restic
-    kanidm-server
-    kanidm-client
+    # kanidm-server
+    # kanidm-client
     vaultwarden
 
     # Mid importance

@@ -27,7 +27,7 @@
     pcscd
     firefox
     bash
-    kanidm-client
+    # kanidm-client
   ];
 
   boot = {
