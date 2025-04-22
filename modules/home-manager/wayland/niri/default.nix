@@ -384,7 +384,7 @@ in {
           scale = 1;
           variable-refresh-rate = false;
         };
-        "DP-2" = {
+        "HDMI-A-1" = {
           enable = true;
           mode = {
             height = 1080;

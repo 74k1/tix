@@ -49,6 +49,10 @@
     quadlet = {
       url = "github:SEIAROTg/quadlet-nix";
     };
+    musnix = {
+      url = "github:musnix/musnix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
       # NOTE: not overriding since NixOS-WSL is flaky (relies on stable)

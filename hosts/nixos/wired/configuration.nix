@@ -12,6 +12,7 @@
     inputs.nixos-generators.nixosModules.all-formats
 
     inputs.yeetmouse.nixosModules.default
+    # inputs.musnix.nixosModules.musnix
 
     ../../../modules/syncthing.nix
 
@@ -148,6 +149,12 @@
   # Enable sound with pipewire.
   # sound.enable = true;
   security.rtkit.enable = true;
+  # RT Music with the help of musnix
+  # musnix = {
+  #   enable = true;
+  #   kernel.realtime = true;
+  # };
+
   services = {
     pipewire = {
       enable = true;

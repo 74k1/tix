@@ -1,5 +1,12 @@
-{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
 {
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  allSecrets,
+  ...
+}: {
   age.secrets = {
     "knights_wireguard_private_key" = {
       rekeyFile = "${inputs.self}/secrets/knights_wireguard_private_key.age";
@@ -8,11 +15,11 @@
       rekeyFile = "${inputs.self}/secrets/namecheap_api_secrets.age";
     };
   };
-  
-  imports = with outputs.nixosModules; [ 
+
+  imports = with outputs.nixosModules; [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    
+
     inputs.agenix.nixosModules.default
     inputs.agenix-rekey.nixosModules.default
 
@@ -25,7 +32,7 @@
     locale
     nix
     taki
-];
+  ];
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -56,18 +63,18 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedUDPPorts = [ 80 443 2202 2277 51820 ];
-      allowedTCPPorts = [ 80 443 2202 2277 51820 22 ];  # Added port 22 for Forgejo SSH
+      allowedUDPPorts = [80 443 2202 2277 51820];
+      allowedTCPPorts = [80 443 2202 2277 51820 22]; # Added port 22 for Forgejo SSH
     };
     wireguard.interfaces = {
       wg0 = {
-        ips = [ "10.100.0.2/24" ];
+        ips = ["10.100.0.2/24"];
         listenPort = 51820;
         privateKeyFile = config.age.secrets."knights_wireguard_private_key".path;
         peers = [
           {
             publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
-            allowedIPs = [ "10.100.0.1" ];
+            allowedIPs = ["10.100.0.1"];
             endpoint = "${allSecrets.global.pub_ip}:51820";
             persistentKeepalive = 25;
           }
@@ -87,13 +94,16 @@
   };
 
   programs.zsh.enable = true;
-  
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     btop
     ouch
-    git wget curl tmux
+    git
+    wget
+    curl
+    tmux
     fastfetch
   ];
 
@@ -101,7 +111,7 @@
     isNormalUser = true;
     description = "only used for syncing certs";
     shell = pkgs.bashInteractive;
-    extraGroups = [ "nginx" ];
+    extraGroups = ["nginx"];
     openssh.authorizedKeys.keys = [
       allSecrets.per_host.eiri.ssh_pub
     ];
@@ -130,7 +140,7 @@
 
     openssh = {
       enable = true;
-      ports = [ 2202 ];
+      ports = [2202];
       settings = {
         PermitRootLogin = "no";
         PasswordAuthentication = false;
@@ -154,7 +164,7 @@
         # METRICS_BIND = "0.0.0.0:20023";
         # METRICS_BIND_NETWORK = "tcp";
       };
-      chatai.settings = {
+      chat.settings = {
         TARGET = "http://10.100.0.1:3335";
         BIND = ":60002";
         BIND_NETWORK = "tcp";
@@ -198,7 +208,7 @@
         access_log /var/log/nginx/access.log;
         error_log /var/log/nginx/error.log;
       '';
-      
+
       # Configure SSH forwarding for Forgejo
       streamConfig = ''
         upstream git-ssh {
@@ -237,7 +247,6 @@
           };
         };
         "${domain00}" = {
-          # addSSL = true;
           forceSSL = true;
           enableACME = true;
           root = "/var/www/${domain00}/";
@@ -263,10 +272,87 @@
               proxy_set_header Host $host;
               proxy_set_header X-Real-IP $remote_addr;
               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header X-Forwarded_Proto $scheme;
+              proxy_set_header X-Forwarded-Proto $scheme;
             '';
           };
         };
+        # "vw.${domain00}" = {
+        #   forceSSL = true;
+        #   enableACME = true;
+        #   locations."/" = {
+        #     proxyPass = "http://10.100.0.1:8222";
+        #     proxyWebsockets = true;
+        #   };
+        # };
+        # "git.${domain00}" = {
+        #   forceSSL = true;
+        #   enableACME = true;
+        #   locations."/" = {
+        #     proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.forgejo.settings.BIND}";
+        #     recommendedProxySettings = true;
+        #     proxyWebsockets = true;
+        #     extraConfig = ''
+        #       client_max_body_size 0;
+        #     '';
+        #   };
+        # };
+        # "news.${domain00}" = {
+        #   forceSSL = true;
+        #   enableACME = true;
+        #   locations."/" = {
+        #     proxyPass = "http://10.100.0.1:8084";
+        #   };
+        # };
+        # "files.${domain00}" = {
+        #   forceSSL = true;
+        #   enableACME = true;
+        #   locations = {
+        #     "/" = {
+        #       proxyPass = "http://10.100.0.1:80";
+        #       extraConfig = ''
+        #         client_max_body_size 100G;
+        #         client_body_buffer_size 400M;
+        #       '';
+        #     };
+        #     # "/.well-known/carddav" = {
+        #     #   return = "301 $scheme://$host$remote.php/dav";
+        #     # };
+        #     # "/.well-known/caldav" = {
+        #     #   return = "301 $scheme://$host$remote.php/dav";
+        #     # };
+        #   };
+        # };
+        # "immich.${domain00}" = {
+        #   forceSSL = true;
+        #   enableACME = true;
+        #   locations."/" = {
+        #     proxyPass = "http://10.100.0.1:3001";
+        #     # see https://immich.app/docs/administration/reverse-proxy/
+        #     extraConfig = ''
+        #       client_max_body_size 50G;
+        #       proxy_set_header Host $host;
+        #       proxy_set_header X-Real-IP $remote_addr;
+        #       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        #       proxy_set_header X-Forwarded-Proto $scheme;
+        #
+        #       proxy_http_version 1.1;
+        #       proxy_set_header Upgrade $http_upgrade;
+        #       proxy_set_header Connection "upgrade";
+        #
+        #       proxy_read_timeout 43200s;
+        #       proxy_send_timeout 43200s;
+        #       send_timeout 43200s;
+        #     '';
+        #   };
+        # };
+        # "chat.${domain00}" = {
+        #   enableACME = true;
+        #   addSSL = true;
+        #   locations."/" = {
+        #     proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.chat.settings.BIND}";
+        #     proxyWebsockets = true;
+        #   };
+        # };
         "${domain0}" = {
           addSSL = true;
           enableACME = true;
@@ -413,7 +499,7 @@
           enableACME = true;
           forceSSL = true;
           locations."/" = {
-            proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.chatai.settings.BIND}";
+            proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.chat.settings.BIND}";
             proxyWebsockets = true;
           };
         };
@@ -423,25 +509,11 @@
 
   security.acme = {
     acceptTerms = true;
+    preliminarySelfsigned = false;
     defaults = {
       email = "${allSecrets.global.mail.acme}";
       group = "nginx";
     };
-    # certs = let 
-    #   inherit (allSecrets.global) domain00;
-    # in {
-    #   "auth.${domain00}" = {
-    #     domain = "auth.${domain00}";
-    #     dnsProvider = "namecheap";
-    #     dnsPropagationCheck = false;
-    #     environmentFile = config.age.secrets."namecheap_api_secrets".path;
-    #     # credentialFiles = {
-    #     #   "NAMECHEAP_API_KEY_FILE" = ;
-    #     #   "NAMECHEAP_API_USER_FILE" = ;
-    #     # };
-    #     webroot = null;
-    #   };
-    # };
   };
 
   # Open ports in the firewall.
