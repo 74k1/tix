@@ -15,7 +15,7 @@
           isNormalUser = true;
           description = "taki";
           extraGroups = [ "wheel" "networkmanager" "plex" "user-with-access-to-virtualbox" ];
-          # openssh.authorizedKeys.keys = allSecrets.per_service.openssh.authorizedKeys.keys;
+          openssh.authorizedKeys.keys = allSecrets.per_service.openssh.authorizedKeys.keys;
           shell = pkgs.zsh;
           initialHashedPassword = "$6$TbBYnHu9RRCkuV6.$q7aBn/LLC2doT6MKoFY9yV8j9qzNz45UWmaMgCsGCKrb0pf7kpPmcBzrc7puOmoJT5B5Cz/guST2.WFgs2FKo1";
         };
