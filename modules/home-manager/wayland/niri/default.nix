@@ -47,7 +47,7 @@ in {
     };
   in {
     enable = true;
-    package = pkgs.master.niri;
+    package = pkgs.niri;
     # config = /* kdl */ {
     # };
     settings = {
