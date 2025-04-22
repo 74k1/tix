@@ -11,5 +11,6 @@
         knights
         eiri;
     };
+    agenix-rekey.homeConfigurations = {};
   };
 }
