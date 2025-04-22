@@ -435,6 +435,7 @@
 
   virtualisation = {
     libvirtd.enable = true;
+    # waydroid.enable = true;
     # virtualbox.host = {
     #   enable = true;
     #   enableExtensionPack = true;
