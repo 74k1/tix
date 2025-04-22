@@ -35,8 +35,8 @@
           liberation_ttf
           monaspace
           fragment-mono
-          noto-fonts
-          noto-fonts-extra
+          # noto-fonts
+          # noto-fonts-extra
           ubuntu_font_family
           ubuntu-sans
           ubuntu-sans-mono
@@ -51,6 +51,7 @@
           
           # inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-otf
           inputs.unfree-fonts.packages.x86_64-linux.suisse-intl-mono
+          inputs.apple-emoji.packages.x86_64-linux.apple-emoji-linux
         ];
       };
     })
