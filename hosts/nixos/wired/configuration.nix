@@ -135,7 +135,7 @@
     fstrim.enable = true; # M.2 SSD
     greetd = {
       enable = true;
-      package = pkgs.greetd.greetd;
+      package = pkgs.greetd;
       settings = {
         # terminal.vt = 1;
         default_session = {
