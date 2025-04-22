@@ -36,6 +36,7 @@
       ghostty
       # wired
       # eww
+      easyeffects
       ironbar
       anyrun
       xdg
@@ -141,6 +142,8 @@
     r2modman
 
     rustdesk
+
+    ocenaudio
 
     nautilus
     nextcloud-client
