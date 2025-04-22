@@ -380,29 +380,25 @@ in {
           variable-refresh-rate = false;
           focus-at-startup = false;
         };
-        "DP-8" = {
+        "DP-6" = {
           enable = true;
           mode = {
             height = 2560;
             width = 1440;
-            # refresh = 240.0;
-            # refresh = 144.0;
           };
           position = {
             x = 0;
             y = 0;
           };
           scale = 1;
-          # transform.rotation = 270;
           variable-refresh-rate = false;
           focus-at-startup = true;
         };
-        "DP-6" = {
+        "DP-7" = {
           enable = true;
           mode = {
             height = 1080;
             width = 1920;
-            # refresh = 60.0;
           };
           position = {
             x = -1080;

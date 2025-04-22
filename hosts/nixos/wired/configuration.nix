@@ -153,6 +153,17 @@
         libfprint = pkgs."24.11".libfprint-focaltech-2808-a658;
       };
     };
+
+    fwupd = {
+      enable = true;
+    };
+
+    hardware.bolt.enable = true;
+  };
+
+  systemd.services.fprintd = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "simple";
   };
 
   # systemd.user.services = {
