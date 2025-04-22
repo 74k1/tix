@@ -6,10 +6,10 @@
   pkgs,
   ...
 }: {
-  imports = [
-    "${inputs.diogotcorreira-umami}/nixos/modules/services/web-apps/umami.nix"
-    # "${inputs.diogotcorreira-umami}/pkgs/by-name/um/umami/package.nix"
-  ];
+  # imports = [
+  #   "${inputs.nixpkgs-master}/nixos/modules/services/web-apps/umami.nix"
+  #   # "${inputs.diogotcorreira-umami}/pkgs/by-name/um/umami/package.nix"
+  # ];
 
   age.secrets."umami_secret" = {
     rekeyFile = "${inputs.self}/secrets/umami_secret.age";
@@ -21,7 +21,7 @@
 
   services.umami = {
     enable = true;
-    package = inputs.diogotcorreira-umami.legacyPackages.${pkgs.hostPlatform.system}.umami;
+    package = pkgs.umami;
     settings = {
       APP_SECRET_FILE = config.age.secrets."umami_secret".path;
       TRACKER_SCRIPT_NAME = ["umami.js"];
