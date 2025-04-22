@@ -22,7 +22,7 @@ in {
   home.packages = with pkgs; [
     nautilus
     gnome-keyring
-    wofi
+    # wofi
     # cliphist
     wl-clipboard-rs
     xwayland-satellite
@@ -31,6 +31,22 @@ in {
   services.swww = {
     enable = true;
     package = pkgs.swww;
+  };
+
+  # separate swww instance for niri backdrop :)
+  systemd.user.services.swww-backdrop = {
+    Install.WantedBy = [ config.wayland.systemd.target ];
+    Unit = {
+      ConditionEnvironment = "WAYLAND_DISPLAY";
+      Description = "swww-daemon-backdrop";
+      After = [ config.wayland.systemd.target ];
+      PartOf = [ config.wayland.systemd.target ];
+    };
+    Service = {
+      ExecStart = "${lib.getExe' config.services.swww.package "swww-daemon"} --namespace backdrop";
+      Restart = "always";
+      RestartSec = 10;
+    };
   };
 
   programs.niri = let
@@ -58,7 +74,7 @@ in {
         (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
         # (makeCommand "${pkgs.wl-clipboard-rs}/bin/wl-copy --watch cliphist store")
         (makeCommand "${lib.getExe pkgs.swww} img ${wallpaper_image}")
-        (makeCommand "${lib.getExe pkgs.swaynotificationcenter}")
+        # (makeCommand "${lib.getExe pkgs.swaynotificationcenter}")
         (makeCommand "${pkgs.xwayland-satellite}/bin/xwayland-satellite")
       ];
       clipboard.disable-primary = true;
@@ -82,14 +98,14 @@ in {
         # Bindings
         "Mod+Return" = { repeat = false; action = spawn "${pkgs.ghostty}/bin/ghostty"; };
 
-        "Mod+R" = { repeat = false; action = spawn "${lib.getExe pkgs.anyrun}"; };
-        "Mod+Space" = { repeat = false; action = spawn "${lib.getExe pkgs.anyrun}"; };
+        "Mod+R" = { repeat = false; action = spawn "${lib.getExe pkgs.walker}" "--modules" "applications,calc"; };
+        "Mod+Space" = { repeat = false; action = spawn "${lib.getExe pkgs.walker}" "--modules" "applications,calc"; };
         # "Mod+V" = { repeat = false; action = spawn "${lib.getExe pkgs.anyrun}"; };
 
         # "Mod+R" = { repeat = false; action = spawn "${pkgs.wofi}/bin/wofi" "--show" "drun"; };
         # "Mod+Space" = { repeat = false; action = spawn "${pkgs.wofi}/bin/wofi" "--show" "drun"; };
         #
-        "Mod+V" = { repeat = false; action = spawn "sh" "-c" "${pkgs.cliphist}/bin/cliphist list | ${pkgs.wofi}/bin/wofi -dmenu | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard-rs}/bin/wl-copy"; };
+        # "Mod+V" = { repeat = false; action = spawn "sh" "-c" "${pkgs.cliphist}/bin/cliphist list | ${pkgs.wofi}/bin/wofi -dmenu | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard-rs}/bin/wl-copy"; };
 
         "Print" = { repeat = false; action = screenshot; };
         "Mod+Shift+S" = { repeat = false; action = screenshot; };
@@ -200,11 +216,12 @@ in {
         default-column-width.proportion = 0.5;
 
         gaps = 8;
+
         struts = {
-          left = 2;
-          right = 2;
-          top = 2;
-          bottom = 2;
+          left = 1;
+          right = 1;
+          top = 1;
+          bottom = 1;
         };
 
         tab-indicator = {
@@ -218,6 +235,13 @@ in {
           length.total-proportion = 0.1;
         };
       };
+      layer-rules = [
+        {
+          # namespaced swww-daemon layer is named `swww-daemonbackdrop`
+          matches = [ { namespace = "^swww-daemonbackdrop$"; } ];
+          place-within-backdrop = true;
+        }
+      ];
       prefer-no-csd = true;
       window-rules = let 
         mkMatchRule = {
@@ -454,5 +478,4 @@ in {
       };
     };
   };
-
 }
