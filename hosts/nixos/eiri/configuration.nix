@@ -73,10 +73,7 @@
     taki
     transmission
     slskd
-    vikunja
-    kanboard
     rustdesk-server
-    # linkwarden
     # filestash
     # youtrack
     vm-test

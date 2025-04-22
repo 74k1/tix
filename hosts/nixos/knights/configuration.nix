@@ -367,43 +367,6 @@
             proxyWebsockets = true;
           };
         };
-        "td.${domain0}" = {
-          enableACME = true;
-          forceSSL = true;
-          locations."/" = {
-            proxyPass = "http://10.100.0.1:3456";
-            extraConfig = ''
-              client_max_body_size 20M;
-            '';
-          };
-        };
-        "kb.${domain0}" = {
-          enableACME = true;
-          forceSSL = true;
-          locations."/" = {
-            proxyPass = "http://10.100.0.1:80"; # nginx based on url
-            # extraConfig = ''
-            #   proxy_set_header Host $host;
-            #   proxy_set_header X-Real-IP $remote_addr;
-            #   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            #   proxy_set_header X-Forwarded-Proto $scheme;
-            # '';
-          };
-        };
-        # "mc.${domain0}" = {
-        #   enableACME = true;
-        #   forceSSL = true;
-        #   locations."/" = {
-        #     proxyPass = "http://10.100.0.1:8123";
-        #   };
-        # };
-        # "ls.${domain0}" = {
-        #   enableACME = true;
-        #   forceSSL = true;
-        #   locations."/" = {
-        #     proxyPass = "http://10.100.0.1:5544";
-        #   };
-        # };
         "git.${domain0}" = {
           enableACME = true;
           forceSSL = true;
@@ -470,30 +433,6 @@
         #   forceSSL = true;
         #   locations."/" = {
         #     proxyPass = "http://10.100.0.1:5678"
-        #   };
-        # };
-        "links.${domain0}" = {
-          enableACME = true;
-          forceSSL = true;
-          locations."/" = {
-            proxyPass = "http://10.100.0.1:3030";
-            extraConfig = ''
-              proxy_http_version 1.1;
-              proxy_set_header Upgrade $http_upgrade;
-              proxy_set_header Connection "upgrade";
-            '';
-          };
-        };
-        # "firefoxsync.${domain0}" = {
-        #   enableACME = true;
-        #   forceSSL = true;
-        #   locations."/" = {
-        #     proxyPass = "http://10.100.0.1:<port>";
-        #     extraConfig = ''
-        #       proxy_http_version 1.1;
-        #       proxy_set_header Upgrade $http_upgrade;
-        #       proxy_set_header Connection "upgrade";
-        #     '';
         #   };
         # };
         "chatai.${allSecrets.global.domain01}" = {
