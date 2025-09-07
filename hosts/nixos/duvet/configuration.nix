@@ -10,7 +10,6 @@
       # inputs.agenix-rekey.nixosModules.default
 
       # fail2ban
-      crowdsec-bouncer
       # vector
 
       locale
@@ -99,14 +98,6 @@
         "pm.min_spare_servers" = 1;
         "pm.max_spare_servers" = 3;
         "pm.max_requests" = 500;
-      };
-    };
-
-    crowdsec-firewall-bouncer = {
-      settings = {
-        api.server = {
-          api_key = "${allSecrets.per_host.duvet.crowdsec.api_key}";
-        };
       };
     };
 

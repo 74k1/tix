@@ -204,7 +204,6 @@
     # pantheon.elementary-icon-theme
 
     # polybar
-    # ly
     # evolution
     protonvpn-gui
     plasticity

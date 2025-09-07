@@ -11,11 +11,6 @@
     "namecheap_api_secrets" = {
       rekeyFile = "${inputs.self}/secrets/namecheap_api_secrets.age";
     };
-
-    # "librechat_env_secret" = {
-    #   rekeyFile = "${inputs.self}/secrets/librechat_env_secret.age";
-    #   mode = "770";
-    # };
   };
   
   imports = with outputs.nixosModules; [
@@ -38,24 +33,19 @@
     graylog
 
     # everything else
-    crowdsec
     scrutiny
 
     n8n
     audiobookshelf
     paperless
-    # commafeed
     miniflux
-    # arion
     quadlet
-    # couchdb
     # fail2ban
     forgejo
     immich
     locale
     
     ai-chat
-    # librechat
     karakeep
 
     glance
@@ -74,7 +64,6 @@
     transmission
     slskd
     rustdesk-server
-    # filestash
     # youtrack
     vm-test
     wireguard

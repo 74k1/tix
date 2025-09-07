@@ -78,10 +78,6 @@
     raspberry-pi-nix = {
       url = "github:nix-community/raspberry-pi-nix";
     };
-    # arion = {
-    #   url = "github:hercules-ci/arion";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     sherlock = {
       # url = "github:skxxtz/sherlock";
       url = "github:skxxtz/sherlock/unstable/release-v1.0.0";
@@ -106,10 +102,6 @@
     };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    crowdsec = {
-      url = "git+https://codeberg.org/kampka/nix-flake-crowdsec.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     firefox-addons = {
@@ -182,9 +174,6 @@
     };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
-    };
-    filestash-nix = {
-      url = "github:MatthewCroughan/filestash-nix";
     };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";

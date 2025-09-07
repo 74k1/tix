@@ -24,7 +24,6 @@
     inputs.agenix-rekey.nixosModules.default
 
     # fail2ban
-    crowdsec-bouncer
     vector
 
     anubis
@@ -145,14 +144,6 @@
         PermitRootLogin = "no";
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
-      };
-    };
-
-    crowdsec-firewall-bouncer = {
-      settings = {
-        api.server = {
-          api_key = "${allSecrets.per_host.knights.crowdsec.api_key}";
-        };
       };
     };
 

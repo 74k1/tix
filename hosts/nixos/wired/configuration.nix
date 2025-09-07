@@ -22,7 +22,6 @@
     # cachix
     substituters
 
-    # ly
     taki
     # vm-test
     locale
@@ -347,15 +346,6 @@
       pkgs.qmk-udev-rules
       pkgs.game-devices-udev-rules
     ];
-
-    # extraHwdb = ''
-    #   evdev:name:*:*
-    #     XKBLAYOUT=ch
-    #     XKBVARIANT=de
-    #
-    #   evdev:name:HAILUCK CO.,LTD USB KEYBOARD:*
-    #     XKBLAYOUT=us
-    # ''; 
   };
 
   hardware.keyboard.qmk.enable = true;

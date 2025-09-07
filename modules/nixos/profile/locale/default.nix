@@ -25,6 +25,15 @@
   #   variant = "";
   # };
 
+  services.udev.extraHwdb = ''
+    evdev:name:*:*
+      XKBLAYOUT=ch
+      XKBVARIANT=de
+    
+    evdev:name:HAILUCK CO.,LTD USB KEYBOARD:*
+      XKBLAYOUT=us
+  '';
+
   # Configure console keymap
   # console.keyMap = "sg";
 }
