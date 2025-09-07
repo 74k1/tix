@@ -149,11 +149,12 @@
     greetd = {
       enable = true;
       package = pkgs.greetd;
+      # useTextGreeter = true;
       settings = {
         # terminal.vt = 1;
         default_session = {
           user = "taki";
-          command = "${lib.getExe' pkgs.niri "niri-session"}";
+          command = "${lib.getExe' pkgs.greetd "agreety"} --cmd ${lib.getExe' pkgs.niri "niri-session"}";
         };
       };
     };
@@ -171,49 +172,7 @@
     };
 
     displayManager = {
-      # enable = true;
-      # ly = {
-      #   enable = true;
-      #   settings = {
-      #     allow_empty_password = false;
-      #     # animation = "colormix";
-      #     animation = "gameoflife";
-      #     asterisk = "•";
-      #     auth_fails = 10;
-      #     # bigclock = "en";
-      #     # box_title = "Hello World!";
-      #     # clock = "%c";
-      #     # bg = "0x0007060B";
-      #     # border_fg = "0x00323246";
-      #     # fg = "0x00EBE9F1";
-      #     # clear_password = true;
-      #     # gameoflife_fg = "0x0007060B";
-      #     # hide_borders = true;
-      #     numlock = true;
-      #     vi_mode = true;
-      #     vi_default_mode = "normal";
-      #     # vi_default_mode = "insert";
-      #   };
-      # };
       defaultSession = "niri-session";
-#       sessionPackages = [
-#         (pkgs.stdenv.mkDerivation {
-#           name = "niri-session";
-#           buildCommand = /* sh */ ''
-#           mkdir -p $out/share/wayland-sessions
-#           cat > $out/share/wayland-sessions/niri.desktop <<EOF
-# [Desktop Entry]
-# Name=Niri Session
-# Comment=Niri Wayland Compositor
-# Exec=${lib.getExe' pkgs.niri "niri-session"}
-# Type=Application
-# DesktopNames=niri
-# EOF
-#           '';
-#           passthru.providedSessions = [ "niri" ];
-#         })
-      #   pkgs.niri
-      # ];
     };
 
     libinput = {
