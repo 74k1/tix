@@ -1,4 +1,12 @@
-{ inputs, outputs, config, lib, pkgs, ... }: {
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
 
   # disabledModules = [ "programs/sherlock.nix" ];
   #
@@ -15,7 +23,7 @@
     package = inputs.sherlock.packages.${pkgs.system}.default;
 
     # config.json / config.toml
-    settings = {};
+    settings = { };
 
     # sherlock_alias.json
     # aliases = {
@@ -43,17 +51,18 @@
       {
         name = "App Launcher";
         type = "app_launcher";
-        args = {};
+        args = { };
         priority = 2;
         home = "Home";
       }
     ];
 
     # main.css
-    style = /* css */ ''
-      * {
-        font-family: "PP Supply Mono";
-      }
-    '';
+    style = # css
+      ''
+        * {
+          font-family: "PP Supply Mono";
+        }
+      '';
   };
 }

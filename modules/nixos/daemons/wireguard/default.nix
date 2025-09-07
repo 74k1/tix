@@ -1,4 +1,11 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   age.secrets."wireguard_private_key" = {
     rekeyFile = "${inputs.self}/secrets/wireguard_private_key.age";
@@ -33,32 +40,38 @@
         # privateKeyFile = "/home/taki/wg_private_key_secrets";
         privateKeyFile = config.age.secrets."wireguard_private_key".path;
 
-        peers = [ # TODO
-          { # knights / proxy
+        peers = [
+          # TODO
+          {
+            # knights / proxy
             publicKey = "dVVhzsUPOT4ln5v4agYw/MxhIb8frEp74oSEIIadgH0=";
             allowedIPs = [
               "10.100.0.2/32"
             ];
           }
-          { # cyberia
+          {
+            # cyberia
             publicKey = "eR6y0rHuhb+qhBaZWWigQnjHjZ1m4oRJzYVPrv3CgBM=";
             allowedIPs = [
               "10.100.0.10/32"
             ];
           }
-          { # MAGI
+          {
+            # MAGI
             publicKey = "JOf290ilGAOw2msc6aQsE+oSjvLA1g9Cvw6RvmsTJj4=";
             allowedIPs = [
               "10.100.0.3/32"
             ];
           }
-          { # NERV
+          {
+            # NERV
             publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
             allowedIPs = [
               "10.100.0.4/32"
             ];
           }
-          { # EVA
+          {
+            # EVA
             publicKey = "qL6QmOPbBx6Ej7HzNE/HwRo4vPts7EbTfIr/QMBIcyw=";
             allowedIPs = [
               "10.100.0.5/32"

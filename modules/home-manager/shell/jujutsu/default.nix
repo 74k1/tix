@@ -4,7 +4,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   programs.jujutsu = {
     enable = true;
     settings = {
@@ -39,7 +40,10 @@
         ];
       };
       aliases = {
-        l = [ "log" "--no-pager" ];
+        l = [
+          "log"
+          "--no-pager"
+        ];
       };
       templates = {
         # log_node = ''

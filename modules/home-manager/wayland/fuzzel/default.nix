@@ -5,7 +5,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   home.packages = [
     pkgs.libqalculate
   ];

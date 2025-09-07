@@ -3,7 +3,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   # home.packages = with pkgs; [
   #   atuin
   #   zoxide

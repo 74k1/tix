@@ -1,4 +1,12 @@
-{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  allSecrets,
+  ...
+}:
 {
   services.send = {
     enable = true;

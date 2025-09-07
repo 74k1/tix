@@ -1,4 +1,11 @@
-{ inputs, outputs, lib, pkgs, config, ... }:
+{
+  inputs,
+  outputs,
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   imports = builtins.concatLists [
     (with outputs.homeManagerModules; [

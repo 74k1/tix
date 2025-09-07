@@ -1,4 +1,10 @@
-{ config, inputs, pkgs, self, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  self,
+  ...
+}:
 {
   programs.steam = {
     enable = true;

@@ -1,11 +1,12 @@
 {
-inputs
-, outputs
-, config
-, lib
-, pkgs
-, allSecrets
-, ... }:
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  allSecrets,
+  ...
+}:
 {
   imports = [
     "${inputs.nixpkgs-akotro-it-tools}/nixos/modules/services/web-apps/it-tools.nix"

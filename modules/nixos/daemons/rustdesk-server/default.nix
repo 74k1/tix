@@ -6,7 +6,8 @@
   outputs,
   allSecrets,
   ...
-}: {
+}:
+{
   services.rustdesk-server = {
     enable = true;
     relay = {
@@ -14,7 +15,10 @@
     };
     signal = {
       enable = true;
-      relayHosts = ["${allSecrets.per_host.eiri.int_ip}" "rd.eiri.74k1.sh"];
+      relayHosts = [
+        "${allSecrets.per_host.eiri.int_ip}"
+        "rd.eiri.74k1.sh"
+      ];
     };
   };
 }

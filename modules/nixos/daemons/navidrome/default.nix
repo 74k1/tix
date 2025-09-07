@@ -1,4 +1,12 @@
-{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  allSecrets,
+  ...
+}:
 {
   # age.secrets."miniflux_admin" = {
   #   rekeyFile = "${inputs.self}/secrets/miniflux_admin.age";

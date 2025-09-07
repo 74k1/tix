@@ -5,7 +5,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   # imports = [
   #   "${inputs.nixpkgs-master}/nixos/modules/services/web-apps/umami.nix"
   #   # "${inputs.diogotcorreira-umami}/pkgs/by-name/um/umami/package.nix"
@@ -24,7 +25,7 @@
     package = pkgs.umami;
     settings = {
       APP_SECRET_FILE = config.age.secrets."umami_secret".path;
-      TRACKER_SCRIPT_NAME = ["umami.js"];
+      TRACKER_SCRIPT_NAME = [ "umami.js" ];
       DISABLE_TELEMETRY = true;
       HOSTNAME = "0.0.0.0";
       PORT = 3034;

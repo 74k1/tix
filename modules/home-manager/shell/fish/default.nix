@@ -5,7 +5,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   home = {
     packages = with pkgs; [
       atuin
@@ -19,10 +20,22 @@
     generateCompletions = true;
 
     plugins = [
-      { name = "pure"; src = pkgs.fishPlugins.pure.src; }
-      { name = "bass"; src = pkgs.fishPlugins.bass.src; }
-      { name = "puffer"; src = pkgs.fishPlugins.puffer.src; }
-      { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
+      {
+        name = "pure";
+        src = pkgs.fishPlugins.pure.src;
+      }
+      {
+        name = "bass";
+        src = pkgs.fishPlugins.bass.src;
+      }
+      {
+        name = "puffer";
+        src = pkgs.fishPlugins.puffer.src;
+      }
+      {
+        name = "autopair";
+        src = pkgs.fishPlugins.autopair.src;
+      }
     ];
 
     functions = {
@@ -32,7 +45,7 @@
         echo "nix run nixpkgs#$argv[1] -- $argv[2..]"
       '';
     };
-    
+
     shellAliases = {
       ":E" = "${config.programs.neovim.finalPackage}/bin/nvim +E";
       ":q" = "exit";
@@ -63,11 +76,12 @@
       today-1 = "date -d yesterday '+%Y-%m-%d' | tr -d '\n'";
     };
 
-    interactiveShellInit = /* fish */ ''
-      atuin init fish | source
-      zoxide init --cmd z fish | source
-      COMPLETE=fish jj | source
-      ${if config.programs.eww.enable then "eww shell-completions --shell fish | source" else ""}
-    '';
+    interactiveShellInit = # fish
+      ''
+        atuin init fish | source
+        zoxide init --cmd z fish | source
+        COMPLETE=fish jj | source
+        ${if config.programs.eww.enable then "eww shell-completions --shell fish | source" else ""}
+      '';
   };
 }

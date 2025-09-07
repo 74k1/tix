@@ -1,4 +1,12 @@
-{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  allSecrets,
+  ...
+}:
 {
   age.secrets."vaultwarden_secret" = {
     rekeyFile = "${inputs.self}/secrets/vaultwarden_secret.age";

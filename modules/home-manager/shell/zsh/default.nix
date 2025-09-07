@@ -1,4 +1,11 @@
-{ inputs, outputs, lib, pkgs, config, ... }:
+{
+  inputs,
+  outputs,
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
   home = {
@@ -60,23 +67,25 @@
     };
 
     # ${builtins.readFile ./cfg/functions.zsh}
-    initContent = lib.mkBefore /* sh */ '' 
-      # source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      # export XDG_RUNTIME_DIR=/run/user/$(id -u)
+    initContent =
+      lib.mkBefore # sh
+        ''
+          # source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+          # export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
-      # Atuin
-      # export ATUIN_NOBIND="true"
-      # eval "$(${pkgs.atuin}/bin/atuin init zsh)"
-      # bindkey '^r' _atuin_search_widget
+          # Atuin
+          # export ATUIN_NOBIND="true"
+          # eval "$(${pkgs.atuin}/bin/atuin init zsh)"
+          # bindkey '^r' _atuin_search_widget
 
-      # Zoxide
-      # eval "$(${pkgs.zoxide}/bin/zoxide init --cmd z zsh)"
+          # Zoxide
+          # eval "$(${pkgs.zoxide}/bin/zoxide init --cmd z zsh)"
 
-      if [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]
-      then
-          exec ${pkgs.fish}/bin/fish -l
-      fi
-    '';
+          if [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]
+          then
+              exec ${pkgs.fish}/bin/fish -l
+          fi
+        '';
   };
 
   programs.direnv = {

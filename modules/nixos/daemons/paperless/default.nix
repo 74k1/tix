@@ -6,7 +6,8 @@
   outputs,
   allSecrets,
   ...
-}: {
+}:
+{
   age.secrets."paperless_pass" = {
     rekeyFile = "${inputs.self}/secrets/paperless_pass.age";
     # mode = "770";

@@ -3,7 +3,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   services.easyeffects = {
     enable = true;
     preset = "mic-filter";
@@ -57,66 +58,68 @@
             stereo-base = 0.0;
             stereo-phase = 0.0;
           };
-          "equalizer#0" = let
-            eq-cfg = {
-              band0 = {
-                frequency = 30.0;
-                gain = 0.0;
-                mode = "RLC (BT)";
-                mute = false;
-                q = 0.7162904212787583;
-                slope = "x1";
-                solo = false;
-                type = "Hi-shelf";
-                width = 4.0;
+          "equalizer#0" =
+            let
+              eq-cfg = {
+                band0 = {
+                  frequency = 30.0;
+                  gain = 0.0;
+                  mode = "RLC (BT)";
+                  mute = false;
+                  q = 0.7162904212787583;
+                  slope = "x1";
+                  solo = false;
+                  type = "Hi-shelf";
+                  width = 4.0;
+                };
+                band1 = {
+                  frequency = 166.0;
+                  gain = 4.0;
+                  mode = "RLC (BT)";
+                  mute = false;
+                  q = 0.72;
+                  slope = "x1";
+                  solo = false;
+                  type = "Bell";
+                  width = 4.0;
+                };
+                band2 = {
+                  frequency = 850.0;
+                  gain = -2.0;
+                  mode = "RLC (BT)";
+                  mute = false;
+                  q = 0.72;
+                  slope = "x1";
+                  solo = false;
+                  type = "Bell";
+                  width = 4.0;
+                };
+                band3 = {
+                  frequency = 5000.0;
+                  gain = 3.5;
+                  mode = "RLC (BT)";
+                  mute = false;
+                  q = 0.72;
+                  slope = "x1";
+                  solo = false;
+                  type = "Bell";
+                  width = 4.0;
+                };
               };
-              band1 = {
-                frequency = 166.0;
-                gain = 4.0;
-                mode = "RLC (BT)";
-                mute = false;
-                q = 0.72;
-                slope = "x1";
-                solo = false;
-                type = "Bell";
-                width = 4.0;
-              };
-              band2 = {
-                frequency = 850.0;
-                gain = -2.0;
-                mode = "RLC (BT)";
-                mute = false;
-                q = 0.72;
-                slope = "x1";
-                solo = false;
-                type = "Bell";
-                width = 4.0;
-              };
-              band3 = {
-                frequency = 5000.0;
-                gain = 3.5;
-                mode = "RLC (BT)";
-                mute = false;
-                q = 0.72;
-                slope = "x1";
-                solo = false;
-                type = "Bell";
-                width = 4.0;
-              };
+            in
+            {
+              balance = 0.0;
+              bypass = false;
+              input-gain = 0.0;
+              left = eq-cfg;
+              right = eq-cfg;
+              mode = "IIR";
+              num-bands = 4;
+              output-gain = 9.0;
+              pitch-left = 0.0;
+              pitch-right = 0.0;
+              split-channels = false;
             };
-          in {
-            balance = 0.0;
-            bypass = false;
-            input-gain = 0.0;
-            left = eq-cfg;
-            right = eq-cfg;
-            mode = "IIR";
-            num-bands = 4;
-            output-gain = 9.0;
-            pitch-left = 0.0;
-            pitch-right = 0.0;
-            split-channels = false;
-          };
         };
       };
     };

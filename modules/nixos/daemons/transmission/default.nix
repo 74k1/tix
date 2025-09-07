@@ -7,7 +7,8 @@
   # self,
   allSecrets,
   ...
-}: {
+}:
+{
   imports = [
     ../vpnconfinement
   ];

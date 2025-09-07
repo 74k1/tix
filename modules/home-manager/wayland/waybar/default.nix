@@ -5,7 +5,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   modules = {
     "group/power" = {
       orientation = "inherit";
@@ -204,9 +205,7 @@
             pkgs.swaynotificationcenter
           ];
           text =
-            /*
-            sh
-            */
+            # sh
             ''
               #!/usr/bin/env bash
 
@@ -298,7 +297,8 @@
       ];
     };
   };
-in {
+in
+{
   home.packages = [
     pkgs.material-symbols
     pkgs.material-icons
@@ -308,315 +308,311 @@ in {
     enable = true;
     systemd.enable = true;
     settings = {
-      smallBar =
-        {
-          height = 32;
-          spacing = 8;
-          position = "top";
-          layer = "top";
-          margin-left = 8;
-          margin-right = 8;
-          margin-top = 8;
+      smallBar = {
+        height = 32;
+        spacing = 8;
+        position = "top";
+        layer = "top";
+        margin-left = 8;
+        margin-right = 8;
+        margin-top = 8;
 
-          output = [
-            "DP-7"
-          ];
+        output = [
+          "DP-7"
+        ];
 
-          modules-left = [
-            "group/power"
-          ];
+        modules-left = [
+          "group/power"
+        ];
 
-          modules-center = [
-            "clock"
-          ];
+        modules-center = [
+          "clock"
+        ];
 
-          modules-right = [
-            "battery"
-          ];
-        }
-        // modules;
+        modules-right = [
+          "battery"
+        ];
+      }
+      // modules;
 
-      mainBar =
-        {
-          height = 32;
-          spacing = 8;
-          position = "top";
-          layer = "top";
-          margin-left = 8;
-          margin-right = 8;
-          margin-top = 8;
+      mainBar = {
+        height = 32;
+        spacing = 8;
+        position = "top";
+        layer = "top";
+        margin-left = 8;
+        margin-right = 8;
+        margin-top = 8;
 
-          output = [
-            "DP-6"
-            "eDP-1"
-          ];
+        output = [
+          "DP-6"
+          "eDP-1"
+        ];
 
-          modules-left = [
-            "group/power"
-            "cpu"
-            "custom/mem"
-          ];
+        modules-left = [
+          "group/power"
+          "cpu"
+          "custom/mem"
+        ];
 
-          modules-center = [
-            "clock"
-          ];
+        modules-center = [
+          "clock"
+        ];
 
-          modules-right = [
-            "group/interactibles"
-            "custom/net"
-            "custom/swaync"
-            "wireplumber"
-            "power-profiles-daemon"
-            "battery"
-          ];
-        }
-        // modules;
+        modules-right = [
+          "group/interactibles"
+          "custom/net"
+          "custom/swaync"
+          "wireplumber"
+          "power-profiles-daemon"
+          "battery"
+        ];
+      }
+      // modules;
     };
     style =
       lib.mkForce
-      /*
-      css
-      */
-      ''
-        /* @define-color fg0 #EBE9F1; */
-        @define-color fg0 #938FA8;
-        @define-color bg0 #07060B;
-        /* @define-color bg1 #1C1B28; */
-        @define-color bg1 #07060B;
-        @define-color bg2 #323246;
-        @define-color bg3 #4C4B69;
-        @define-color accent #816BFF;
-        @define-color cyan #4CCEFE;
-        @define-color green #50E074;
-        @define-color red #FF5487;
-        @define-color yellow #FFE375;
+        # css
+        ''
+          /* @define-color fg0 #EBE9F1; */
+          @define-color fg0 #938FA8;
+          @define-color bg0 #07060B;
+          /* @define-color bg1 #1C1B28; */
+          @define-color bg1 #07060B;
+          @define-color bg2 #323246;
+          @define-color bg3 #4C4B69;
+          @define-color accent #816BFF;
+          @define-color cyan #4CCEFE;
+          @define-color green #50E074;
+          @define-color red #FF5487;
+          @define-color yellow #FFE375;
 
-        * {
-          border: none;
-          border-radius: 0px;
-          font-family: "PP Supply Mono", "JetBrainsMono NF Regular", "JetBrains Mono";
-          font-size: 16px;
-          min-height: 32px;
-        }
+          * {
+            border: none;
+            border-radius: 0px;
+            font-family: "PP Supply Mono", "JetBrainsMono NF Regular", "JetBrains Mono";
+            font-size: 16px;
+            min-height: 32px;
+          }
 
-        #custom-power-icon,
-        #custom-power-lock,
-        #custom-power-logout,
-        #custom-power-off,
-        #custom-power-reboot,
-        #custom-net,
-        #custom-swaync,
-        #custom-tray-btn,
-        #power-profiles-daemon {
-          font-family: "PP Supply Mono", "Material Symbols Sharp";
-          font-weight: 600;
-        }
+          #custom-power-icon,
+          #custom-power-lock,
+          #custom-power-logout,
+          #custom-power-off,
+          #custom-power-reboot,
+          #custom-net,
+          #custom-swaync,
+          #custom-tray-btn,
+          #power-profiles-daemon {
+            font-family: "PP Supply Mono", "Material Symbols Sharp";
+            font-weight: 600;
+          }
 
-        window#waybar {
-          background-color: @bg0;
-          color: @fg0;
-          transition-property: background-color;
-        }
+          window#waybar {
+            background-color: @bg0;
+            color: @fg0;
+            transition-property: background-color;
+          }
 
-        window#waybar.hidden {
-          opacity: 0.2;
-        }
+          window#waybar.hidden {
+            opacity: 0.2;
+          }
 
-        #clock,
-        #battery,
-        #cpu,
-        #memory,
-        #disk,
-        #temperature,
-        #backlight,
-        #network,
-        #pulseaudio,
-        #mpris,
-        #wireplumber,
-        #tags,
-        #taskbar,
-        #tray,
-        #mode,
-        #idle_inhibitor,
-        #custom-tray-btn,
-        #custom-mem,
-        #custom-swaync,
-        #custom-power-icon,
-        #custom-power-lock,
-        #custom-power-logout,
-        #custom-power-off,
-        #custom-power-reboot,
-        #mpd {
-            padding: 0 8px;
+          #clock,
+          #battery,
+          #cpu,
+          #memory,
+          #disk,
+          #temperature,
+          #backlight,
+          #network,
+          #pulseaudio,
+          #mpris,
+          #wireplumber,
+          #tags,
+          #taskbar,
+          #tray,
+          #mode,
+          #idle_inhibitor,
+          #custom-tray-btn,
+          #custom-mem,
+          #custom-swaync,
+          #custom-power-icon,
+          #custom-power-lock,
+          #custom-power-logout,
+          #custom-power-off,
+          #custom-power-reboot,
+          #mpd {
+              padding: 0 8px;
+              background-color: @bg1;
+              color: @fg0;
+          }
+
+          #clock {
+              background-color: @bg1;
+              color: @fg0;
+          }
+
+          #battery {
+              background-color: @bg1;
+              color: @fg0;
+          }
+
+          #battery.charging, #battery.plugged {
+              color: @green;
+              background-color: @bg1;
+              /* border: 1px solid #FFFFFF; */
+          }
+
+          @keyframes blink {
+              to {
+                  background-color: @bg1;
+                  color: @fg0;
+              }
+          }
+
+          #battery.critical:not(.charging) {
+            background-color: @bg1;
+            color: @red;
+            animation-name: blink;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+          }
+
+          label:focus {
+            background-color: @bg0;
+          }
+
+          #cpu {
             background-color: @bg1;
             color: @fg0;
-        }
+          }
 
-        #clock {
+          #memory {
             background-color: @bg1;
             color: @fg0;
-        }
+          }
 
-        #battery {
+          #disk {
             background-color: @bg1;
             color: @fg0;
-        }
+          }
 
-        #battery.charging, #battery.plugged {
-            color: @green;
+          #backlight {
             background-color: @bg1;
-            /* border: 1px solid #FFFFFF; */
-        }
+            color: @fg0;
+          }
 
-        @keyframes blink {
-            to {
-                background-color: @bg1;
-                color: @fg0;
-            }
-        }
+          #network {
+            background-color: @bg1;
+            color: @fg0;
+          }
 
-        #battery.critical:not(.charging) {
-          background-color: @bg1;
-          color: @red;
-          animation-name: blink;
-          animation-duration: 0.5s;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
-        }
+          #network.disconnected {
+            background-color: @bg1;
+            color: @red;
+          }
 
-        label:focus {
-          background-color: @bg0;
-        }
+          #pulseaudio {
+            background-color: @bg1;
+            color: @fg0;
+          }
 
-        #cpu {
-          background-color: @bg1;
-          color: @fg0;
-        }
+          #pulseaudio.muted {
+            background-color: @bg1;
+            color: @red;
+          }
 
-        #memory {
-          background-color: @bg1;
-          color: @fg0;
-        }
+          #mpris {
+            background-color: @bg1;
+            color: @fg0;
+          }
 
-        #disk {
-          background-color: @bg1;
-          color: @fg0;
-        }
+          #mpris.spotify {
+            background-color: @bg1;
+            color: @fg0;
+          }
 
-        #backlight {
-          background-color: @bg1;
-          color: @fg0;
-        }
+          #mpris.vlc {
+            background-color: @bg1;
+            color: @fg0;
+          }
 
-        #network {
-          background-color: @bg1;
-          color: @fg0;
-        }
+          #mpris.brave {
+            background-color: @bg1;
+            color: @fg0;
+          }
 
-        #network.disconnected {
-          background-color: @bg1;
-          color: @red;
-        }
+          #custom-power{
+            background-color: @bg1;
+            color: @fg0;
+          }
 
-        #pulseaudio {
-          background-color: @bg1;
-          color: @fg0;
-        }
+          #tags{
+            background-color: @bg1;
+            color: @fg0;
+          }
 
-        #pulseaudio.muted {
-          background-color: @bg1;
-          color: @red;
-        }
+          #tags button.occupied {
+            background-color: @bg1;
+            color: @fg0;
+          }
 
-        #mpris {
-          background-color: @bg1;
-          color: @fg0;
-        }
+          #tags button.focused {
+            background-color: @bg2;
+            color: @fg0;
+          }
 
-        #mpris.spotify {
-          background-color: @bg1;
-          color: @fg0;
-        }
-
-        #mpris.vlc {
-          background-color: @bg1;
-          color: @fg0;
-        }
-
-        #mpris.brave {
-          background-color: @bg1;
-          color: @fg0;
-        }
-
-        #custom-power{
-          background-color: @bg1;
-          color: @fg0;
-        }
-
-        #tags{
-          background-color: @bg1;
-          color: @fg0;
-        }
-
-        #tags button.occupied {
-          background-color: @bg1;
-          color: @fg0;
-        }
-
-        #tags button.focused {
-          background-color: @bg2;
-          color: @fg0;
-        }
-
-        #tags button.urgent{
-          background-color: @bg1;
-          color: @red;
-        }
+          #tags button.urgent{
+            background-color: @bg1;
+            color: @red;
+          }
 
 
-        #temperature {
-          background-color: @bg1;
-          color: @fg0;
-        }
+          #temperature {
+            background-color: @bg1;
+            color: @fg0;
+          }
 
-        #temperature.critical {
-          background-color: @bg1;
-          color: @red;
-        }
+          #temperature.critical {
+            background-color: @bg1;
+            color: @red;
+          }
 
-        #tray {
-          background-color: @bg1;
-          color: @fg0;
-        }
+          #tray {
+            background-color: @bg1;
+            color: @fg0;
+          }
 
-        #tray > .passive {
-            -gtk-icon-effect: dim;
-          background-color: @bg0;
-          color: @fg0;
-        }
+          #tray > .passive {
+              -gtk-icon-effect: dim;
+            background-color: @bg0;
+            color: @fg0;
+          }
 
-        #tray > .needs-attention {
-            -gtk-icon-effect: highlight;
-          background-color: @bg2;
-          color: @fg0;
-        }
+          #tray > .needs-attention {
+              -gtk-icon-effect: highlight;
+            background-color: @bg2;
+            color: @fg0;
+          }
 
-        #language {
-          background-color: @bg1;
-          color: @fg0;
-          min-width: 16px;
-        }
+          #language {
+            background-color: @bg1;
+            color: @fg0;
+            min-width: 16px;
+          }
 
-        #keyboard-state {
-          background-color: @bg1;
-          color: @fg0;
-          min-width: 16px;
-        }
+          #keyboard-state {
+            background-color: @bg1;
+            color: @fg0;
+            min-width: 16px;
+          }
 
-        #keyboard-state > label.locked {
-            background: rgba(0, 0, 0, 0.2);
-        }
-      '';
+          #keyboard-state > label.locked {
+              background: rgba(0, 0, 0, 0.2);
+          }
+        '';
   };
 }

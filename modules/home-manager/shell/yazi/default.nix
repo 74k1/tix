@@ -1,4 +1,11 @@
-{ inputs, outputs, lib, pkgs, config, ... }:
+{
+  inputs,
+  outputs,
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
   home = {
@@ -37,8 +44,14 @@
     # https://yazi-rs.github.io/docs/configuration/keymap
     keymap = {
       input.prepend_keymap = [
-        { run = "close"; on = [ "<c-q>" ]; }
-        { run = "close --submit"; on = [ "<enter>" ]; }
+        {
+          run = "close";
+          on = [ "<c-q>" ];
+        }
+        {
+          run = "close --submit";
+          on = [ "<enter>" ];
+        }
         # { run = "escape"; on = [ "<esc>" ]; }
         # { run = "backspace"; on = [ "<backspace>" ]; }
       ];

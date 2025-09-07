@@ -1,4 +1,10 @@
-{ config, lib, pkgs, allSecrets, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  allSecrets,
+  ...
+}:
 {
   # Glance (https://github.com/glanceapp/glance)
   services.glance = {

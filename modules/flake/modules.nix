@@ -1,4 +1,11 @@
-{ lib, config, self, inputs, withSystem, ... }:
+{
+  lib,
+  config,
+  self,
+  inputs,
+  withSystem,
+  ...
+}:
 
 {
   flake = {

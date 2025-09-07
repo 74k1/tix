@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   # PLEX
   hardware.graphics = {
@@ -18,7 +23,7 @@
       package = pkgs.master.plex;
       dataDir = "/var/lib/plex";
     };
-    
+
     tautulli.enable = true;
   };
 }

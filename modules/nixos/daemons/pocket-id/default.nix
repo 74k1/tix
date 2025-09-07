@@ -6,7 +6,8 @@
   pkgs,
   allSecrets,
   ...
-}: {
+}:
+{
   age.secrets."pocketid_env" = {
     rekeyFile = "${inputs.self}/secrets/pocketid_env.age";
   };

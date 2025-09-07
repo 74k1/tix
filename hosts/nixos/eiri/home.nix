@@ -1,4 +1,11 @@
-{ inputs, outputs, lib, pkgs, config, ... }:
+{
+  inputs,
+  outputs,
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
   imports = builtins.concatLists [
@@ -26,9 +33,11 @@
   home.packages = with pkgs; [
     # term
     #zoxide
-    bat bat-extras.batman
+    bat
+    bat-extras.batman
     eza
-    feh viu
+    feh
+    viu
     yazi
     # joshuto
     ripgrep
@@ -37,7 +46,7 @@
     tealdeer
     zellij
   ];
-  
+
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 86400;

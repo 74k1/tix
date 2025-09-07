@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # Set your time zone.
@@ -29,7 +34,7 @@
     evdev:name:*:*
       XKBLAYOUT=ch
       XKBVARIANT=de
-    
+
     evdev:name:HAILUCK CO.,LTD USB KEYBOARD:*
       XKBLAYOUT=us
   '';

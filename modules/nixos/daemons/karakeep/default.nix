@@ -1,11 +1,12 @@
 {
-inputs
-, outputs
-, config
-, lib
-, pkgs
-, allSecrets
-, ... }:
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  allSecrets,
+  ...
+}:
 {
   age.secrets."karakeep_secret" = {
     rekeyFile = "${inputs.self}/secrets/karakeep_secret.age";

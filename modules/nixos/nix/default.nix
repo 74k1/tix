@@ -1,4 +1,10 @@
-{ inputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   nix = {
     # package = inputs.rix101.packages.${pkgs.hostPlatform.system}.nix-enraged;
@@ -10,7 +16,10 @@
     '';
 
     settings = {
-      trusted-users = [ "root" "taki" ];
+      trusted-users = [
+        "root"
+        "taki"
+      ];
       # cores = 4;
       # max-jobs = 1;
     };

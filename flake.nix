@@ -170,33 +170,46 @@
     };
   };
 
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, flake-parts-lib, ... }: {
-      systems = [
-        "aarch64-linux"
-        "x86_64-linux"
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+      { withSystem, flake-parts-lib, ... }:
+      {
+        systems = [
+          "aarch64-linux"
+          "x86_64-linux"
+          "aarch64-darwin"
+          "x86_64-darwin"
+        ];
 
-      imports = [
-        ./modules/flake/configurations.nix
-        ./modules/flake/devshells.nix
-        ./modules/flake/modules.nix
-        ./modules/flake/agenix.nix
-        ./modules/flake/topology.nix
-        ./modules/flake/nixpkgs.nix
-        inputs.rix101.flakeModules.agenix
-      ];
+        imports = [
+          ./modules/flake/configurations.nix
+          ./modules/flake/devshells.nix
+          ./modules/flake/modules.nix
+          ./modules/flake/agenix.nix
+          ./modules/flake/topology.nix
+          ./modules/flake/nixpkgs.nix
+          inputs.rix101.flakeModules.agenix
+        ];
 
-      debug = true;
+        debug = true;
 
-      perSystem = { self, lib, pkgs, system, inputs', ... }: {
-        # Stuff with auto-inserted ${system}, like `packages` and `devShells`
-      };
+        perSystem =
+          {
+            self,
+            lib,
+            pkgs,
+            system,
+            inputs',
+            ...
+          }:
+          {
+            # Stuff with auto-inserted ${system}, like `packages` and `devShells`
+          };
 
-      flake = {
-        # Stuff that gets directly exported, like `nixosConfigurations`
-      };
-    });
+        flake = {
+          # Stuff that gets directly exported, like `nixosConfigurations`
+        };
+      }
+    );
 }

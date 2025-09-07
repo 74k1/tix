@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.theme.ukiyo;
   icon = {
     # name = "bloom-dark";
@@ -20,7 +21,8 @@
       '';
     });
   };
-in {
+in
+{
   options = {
     theme.ukiyo = {
       package = lib.mkOption {

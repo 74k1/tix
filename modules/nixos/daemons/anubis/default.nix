@@ -1,4 +1,11 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   services.anubis.defaultOptions.settings = {
     DIFFICULTY = 4;

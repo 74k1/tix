@@ -1,11 +1,18 @@
-{ inputs, outputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  outputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = with outputs.darwinModules; [
     brew
     # aerospace
   ];
-  
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -57,7 +64,7 @@
   # nix.package = pkgs.nix;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
-  programs.zsh.enable = true;  # default shell on catalina
+  programs.zsh.enable = true; # default shell on catalina
   programs.fish.enable = true;
 
   # GPG as Agent
@@ -78,7 +85,7 @@
       finder = {
         AppleShowAllExtensions = true;
         CreateDesktop = false;
-        FXPreferredViewStyle = "Nlsv"; # icnv Icon view, Nlsv list view, clmv column view, Flwv gallery view
+        FXPreferredViewStyle = "Nlsv"; # icnv Icon view, Nlsv list view, clmv column view, Flwv gallery view
         FXRemoveOldTrashItems = true;
         NewWindowTarget = "Home";
         ShowPathbar = true;
@@ -133,7 +140,7 @@
       };
     };
   };
-  
+
   ids.gids.nixbld = 350;
 
   # Used for backwards compatibility, please read the changelog before changing.

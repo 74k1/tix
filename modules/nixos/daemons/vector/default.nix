@@ -5,14 +5,16 @@
   inputs,
   outputs,
   ...
-}: {
+}:
+{
   # age.secrets."paperless_pass" = {
   #   rekeyFile = "${inputs.self}/secrets/paperless_pass.age";
   #   # mode = "770";
   #   # owner = "nextcloud";
   #   # group = "nextcloud";
   # };
-  services.rsyslogd = { # TODO
+  services.rsyslogd = {
+    # TODO
     enable = true;
   };
   services.vector = {

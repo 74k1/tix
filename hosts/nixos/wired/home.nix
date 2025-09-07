@@ -1,4 +1,11 @@
-{ inputs, outputs, lib, pkgs, config, ... }:
+{
+  inputs,
+  outputs,
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
   imports = builtins.concatLists [
@@ -7,7 +14,7 @@
       inputs.stylix.homeModules.stylix
       #inputs.nix-colors.homeManagerModules.default
     ]
-    
+
     # int
     (with outputs.homeManagerModules; [
       niri
@@ -41,12 +48,11 @@
       kanshi
       xdg
       zsh
-      fish 
+      fish
       yazi
       gpg-agent
     ])
   ];
-  
 
   # nixpkgs = {
   #   config = {
@@ -69,7 +75,7 @@
   home.packages = with pkgs; [
     # theme
     papirus-icon-theme
-    
+
     # my own scriptiboo
     pkgs.tix.duvolbr
     # inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-otf
@@ -81,11 +87,12 @@
 
     # uhhh clipboard
     wl-clipboard-rs
-    
+
     # term
     bat
     eza
-    feh viu
+    feh
+    viu
     loupe
     seahorse
     gnome-calculator
@@ -95,7 +102,7 @@
 
     # beekeeper-studio
     pkgs.tix.outerbase-studio-desktop
-    
+
     pulsemixer
     qmk
     vial
@@ -145,7 +152,7 @@
     zui
     brimcap
     # pcmanfm
-  
+
     vscode
 
     r2modman
@@ -234,7 +241,7 @@
     restic
     # firefox
   ];
-  
+
   # evolution stuff
   #services.gnome3.evolution-data-server.enable = true;
 
@@ -244,7 +251,7 @@
   theme.ukiyo = {
     package = inputs.ukiyo.packages.x86_64-linux.default;
   };
-  
+
   home.sessionVariables = {
     SHELL = "${pkgs.zsh}/bin/zsh";
     EDITOR = "nvim";

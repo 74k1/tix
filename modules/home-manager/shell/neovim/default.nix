@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   yueye-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "yueye-nvim";
     src = pkgs.fetchFromGitHub {
@@ -26,8 +27,9 @@
   #     hash = "sha256-V5dwIJdxBulFVKk1iSlf4H5NRz1UH7uYQeMvwtgkpIs=";
   #   };
   # };
-in {
-  imports = [];
+in
+{
+  imports = [ ];
 
   programs.neovim = {
     enable = true;
@@ -54,9 +56,7 @@ in {
       # pkgs.nodejs # for copilot-lua
     ];
     extraConfig =
-      /*
-      vim
-      */
+      # vim
       ''
         set shiftwidth=2 softtabstop=2 expandtab
         set number relativenumber
@@ -121,9 +121,7 @@ in {
         plugin = mini-ai;
         type = "lua";
         config =
-          /*
-          lua
-          */
+          # lua
           ''
             require("mini.ai").setup()
           '';
@@ -132,9 +130,7 @@ in {
         plugin = mini-map;
         type = "lua";
         config =
-          /*
-          lua
-          */
+          # lua
           ''
             require("mini.map").setup()
           '';
@@ -143,9 +139,7 @@ in {
         plugin = mini-indentscope;
         type = "lua";
         config =
-          /*
-          lua
-          */
+          # lua
           ''
             require("mini.indentscope").setup({
               draw = {
@@ -163,9 +157,7 @@ in {
         plugin = mini-fuzzy;
         type = "lua";
         config =
-          /*
-          lua
-          */
+          # lua
           ''
             require("mini.fuzzy").setup()
           '';
@@ -174,9 +166,7 @@ in {
         plugin = mini-diff;
         type = "lua";
         config =
-          /*
-          lua
-          */
+          # lua
           ''
             require("mini.diff").setup()
           '';

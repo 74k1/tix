@@ -1,7 +1,9 @@
-{ inputs
-, config
-, pkgs
-, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 {
   programs.firefox = {
     enable = true;
@@ -12,44 +14,61 @@
         "bing".metaData.hidden = true;
         "ebay".metaData.hidden = true;
         "google" = {
-          urls = [{ template = "https://www.google.com/search?q={searchTerms}"; }];
+          urls = [ { template = "https://www.google.com/search?q={searchTerms}"; } ];
           icon = "https://icons.duckduckgo.com/ip3/google.com.ico";
-          definedAliases = [ ":g" "@google" ];
+          definedAliases = [
+            ":g"
+            "@google"
+          ];
         };
         "ddg" = {
-          urls = [{ template = "https://duckduckgo.com/?t=h_&q={searchTerms}&ia=web"; }];
+          urls = [ { template = "https://duckduckgo.com/?t=h_&q={searchTerms}&ia=web"; } ];
           icon = "https://icons.duckduckgo.com/ip3/duckduckgo.com.ico";
-          definedAliases = [ ":g" "@google" ];
+          definedAliases = [
+            ":g"
+            "@google"
+          ];
         };
         "Perplexity" = {
-          urls = [{ template = "https://www.perplexity.ai/search?focus=internet&q={searchTerms}"; }];
+          urls = [ { template = "https://www.perplexity.ai/search?focus=internet&q={searchTerms}"; } ];
           icon = "https://icons.duckduckgo.com/ip3/perplexity.ai.ico";
-          definedAliases = [ ":p" "@perplexity @pp" ];
+          definedAliases = [
+            ":p"
+            "@perplexity @pp"
+          ];
         };
         "Brave Search" = {
-          urls = [{ template = "https://search.brave.com/search?q={searchTerms}&source=web"; }];
+          urls = [ { template = "https://search.brave.com/search?q={searchTerms}&source=web"; } ];
           icon = "https://icons.duckduckgo.com/ip3/search.brave.com.ico";
-          definedAliases = [ ":b" "@brave" ];
+          definedAliases = [
+            ":b"
+            "@brave"
+          ];
         };
         "MyNixOS" = {
-          urls = [{ template = "https://mynixos.com/search?q={searchTerms}"; }];
+          urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ ":n" "@mynixos" ];
+          definedAliases = [
+            ":n"
+            "@mynixos"
+          ];
         };
       };
       # userChrome == FF Interface
-      userChrome = /* css */ ''
-        .toolbarbutton-icon[src^="page-icon:https://github.com"]{
-          filter: invert(1) !important;
-        }
-        .tab-icon-image[src*="github.com"] {
-          filter: invert(1) !important;
-        }
-      '';
+      userChrome = # css
+        ''
+          .toolbarbutton-icon[src^="page-icon:https://github.com"]{
+            filter: invert(1) !important;
+          }
+          .tab-icon-image[src*="github.com"] {
+            filter: invert(1) !important;
+          }
+        '';
       # userContent == web-pages and internal pages like about:newtab & about:home
-      userContent = /* css */ ''
+      userContent = # css
+        ''
 
-      '';
+        '';
       settings = {
         # USER CONF
         "browser.download.panel.shown" = true;
@@ -61,7 +80,7 @@
         # "general.smoothScroll.mouseWheel.durationMaxMS" = 250;
         # "general.smoothScroll.stopDecelerationWeighting" = 0.82;
         # "mousewheel.min_line_scroll_amount" = 25;
-        
+
         # Main Config is based on BetterFox @
         # https://github.com/yokoffing/Betterfox
         ################# FAST FOX #################
@@ -105,10 +124,8 @@
         # Tracking Protection
         "browser.contentblocking.category" = "strict";
         "privacy.trackingprotection.emailtracking.enabled" = true;
-        "urlclassifier.trackingSkipURLs" =
-          "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com";
-        "urlclassifier.features.socialtracking.skipURLs" =
-          "*.instagram.com, *.twitter.com, *.twimg.com";
+        "urlclassifier.trackingSkipURLs" = "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com";
+        "urlclassifier.features.socialtracking.skipURLs" = "*.instagram.com, *.twitter.com, *.twimg.com";
         "privacy.query_stripping.strip_list" =
           "__hsfp __hssc __hstc __s _hsenc _openstat dclid fbclid gbraid gclid hsCtaTracking igshid mc_eid ml_subscriber ml_subscriber_hash msclkid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id rb_clickid s_cid twclid vero_conv vero_id wbraid wickedid yclid";
         "browser.uitour.enabled" = false;
@@ -245,10 +262,8 @@
         "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "browser.shell.checkDefaultBrowser" = false;
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" =
-          false;
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" =
-          false;
+        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "browser.preferences.moreFromMozilla" = false;
         "browser.tabs.tabmanager.enabled" = false;
         "browser.aboutwelcome.enabled" = false;
@@ -307,7 +322,6 @@
         "general.smoothScroll.stopDecelerationWeighting" = "1";
         "mousewheel.default.delta_multiplier_y" = 300;
 
-
         ################# OVERRIDES #################
         "browser.startup.homepage" = "";
         # Enable HTTPS-Only Mode
@@ -328,8 +342,7 @@
         "experiments.supported" = false;
         "network.allow-experiments" = false;
         # Disable Pocket Integration
-        "browser.newtabpage.activity-stream.section.highlights.includePocket" =
-          false;
+        "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
         "extensions.pocket.api" = "";
         "extensions.pocket.oAuthConsumerKey" = "";
         "extensions.pocket.showHome" = false;

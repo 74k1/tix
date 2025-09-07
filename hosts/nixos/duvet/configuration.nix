@@ -1,21 +1,29 @@
-{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  allSecrets,
+  ...
+}:
 {
   # See [NixOS on Hetzner Cloud Wiki](https://wiki.nixos.org/wiki/Install_NixOS_on_Hetzner_Cloud)
 
-  imports = with outputs.nixosModules; [ 
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  imports = with outputs.nixosModules; [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
 
-      # inputs.agenix.nixosModules.default
-      # inputs.agenix-rekey.nixosModules.default
+    # inputs.agenix.nixosModules.default
+    # inputs.agenix-rekey.nixosModules.default
 
-      # fail2ban
-      # vector
+    # fail2ban
+    # vector
 
-      locale
-      nix
-      taki
-    ];
+    locale
+    nix
+    taki
+  ];
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -28,30 +36,44 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedUDPPorts = [ 80 443 2202 ];
-      allowedTCPPorts = [ 80 443 2202 ];
+      allowedUDPPorts = [
+        80
+        443
+        2202
+      ];
+      allowedTCPPorts = [
+        80
+        443
+        2202
+      ];
     };
   };
 
   programs.zsh.enable = true;
-  
+
   environment.systemPackages = with pkgs; [
     btop
-    git wget curl tmux unzip zip
+    git
+    wget
+    curl
+    tmux
+    unzip
+    zip
     fastfetch
   ];
 
   users.users.root.hashedPassword = "!"; # Disable root login
 
-  system.activationScripts.buildBlog = /* bash */ ''
-    echo "Deploying pre-built blog..."
-    ${pkgs.coreutils}/bin/rm -rf /var/www/blog
-    ${pkgs.coreutils}/bin/install -d -m 0755 -o taki -g users /var/www/blog
-    ${pkgs.coreutils}/bin/cp -r ${inputs.blog.packages.x86_64-linux.website}/* /var/www/blog/
-    ${pkgs.coreutils}/bin/chmod -R 0755 /var/www/blog
-    ${pkgs.coreutils}/bin/chown -R taki:users /var/www/blog
-    echo "Finished deploying blog."
-  '';
+  system.activationScripts.buildBlog = # bash
+    ''
+      echo "Deploying pre-built blog..."
+      ${pkgs.coreutils}/bin/rm -rf /var/www/blog
+      ${pkgs.coreutils}/bin/install -d -m 0755 -o taki -g users /var/www/blog
+      ${pkgs.coreutils}/bin/cp -r ${inputs.blog.packages.x86_64-linux.website}/* /var/www/blog/
+      ${pkgs.coreutils}/bin/chmod -R 0755 /var/www/blog
+      ${pkgs.coreutils}/bin/chown -R taki:users /var/www/blog
+      echo "Finished deploying blog."
+    '';
 
   systemd.tmpfiles.rules = [
     "d /var/www/blog 0755 taki users -"
@@ -202,4 +224,3 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
-

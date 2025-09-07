@@ -1,4 +1,11 @@
-{ inputs, outputs, lib, pkgs, config, ... }:
+{
+  inputs,
+  outputs,
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
   imports = with outputs.homeManagerModules; [
@@ -30,13 +37,15 @@
   # };
 
   # install macos applications to the user env if targetplatform is darwin
-  home.file."Applications/home-manager".source = let
-  apps = pkgs.buildEnv {
-    name = "home-manager-applications";
-    paths = config.home.packages;
-    pathsToLink = "/Applications";
-  };
-  in lib.mkIf pkgs.stdenv.targetPlatform.isDarwin "${apps}/Applications";
+  home.file."Applications/home-manager".source =
+    let
+      apps = pkgs.buildEnv {
+        name = "home-manager-applications";
+        paths = config.home.packages;
+        pathsToLink = "/Applications";
+      };
+    in
+    lib.mkIf pkgs.stdenv.targetPlatform.isDarwin "${apps}/Applications";
 
   disabledModules = [
     "target/darwin/linkapps.nix"

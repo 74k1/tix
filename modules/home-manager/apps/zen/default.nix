@@ -1,7 +1,9 @@
-{ inputs
-, config
-, pkgs
-, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [ inputs.zen-browser.homeModules.twilight ];
   programs.zen-browser = {
@@ -14,97 +16,122 @@
         "bing".metaData.hidden = true;
         "ebay".metaData.hidden = true;
         "google" = {
-          urls = [{ template = "https://www.google.com/search?q={searchTerms}"; }];
+          urls = [ { template = "https://www.google.com/search?q={searchTerms}"; } ];
           icon = "https://icons.duckduckgo.com/ip3/google.com.ico";
-          definedAliases = [ ":g" "@google" ];
+          definedAliases = [
+            ":g"
+            "@google"
+          ];
         };
         "Perplexity" = {
-          urls = [{ template = "https://www.perplexity.ai/search?focus=internet&q={searchTerms}"; }];
+          urls = [ { template = "https://www.perplexity.ai/search?focus=internet&q={searchTerms}"; } ];
           icon = "https://icons.duckduckgo.com/ip3/perplexity.ai.ico";
-          definedAliases = [ ":p" "@pp" "@perplexity" ];
+          definedAliases = [
+            ":p"
+            "@pp"
+            "@perplexity"
+          ];
         };
         "Kagi" = {
-          urls = [{ template = "https://kagi.com/search?q={searchTerms}"; }];
+          urls = [ { template = "https://kagi.com/search?q={searchTerms}"; } ];
           icon = "https://kagi.com/favicon.ico";
-          definedAliases = [ ":k" "@kagi" ];
+          definedAliases = [
+            ":k"
+            "@kagi"
+          ];
         };
         "ddg" = {
-          urls = [{ template = "https://duckduckgo.com/?t=h_&q={searchTerms}&ia=web"; }];
+          urls = [ { template = "https://duckduckgo.com/?t=h_&q={searchTerms}&ia=web"; } ];
           icon = "https://icons.duckduckgo.com/ip3/duckduckgo.com.ico";
-          definedAliases = [ ":d" "@ddg" "@duckduckgo" ];
+          definedAliases = [
+            ":d"
+            "@ddg"
+            "@duckduckgo"
+          ];
         };
         "Brave Search" = {
-          urls = [{ template = "https://search.brave.com/search?q={searchTerms}&source=web"; }];
+          urls = [ { template = "https://search.brave.com/search?q={searchTerms}&source=web"; } ];
           icon = "https://icons.duckduckgo.com/ip3/search.brave.com.ico";
-          definedAliases = [ ":b" "@brave" ];
+          definedAliases = [
+            ":b"
+            "@brave"
+          ];
         };
         "MyNixOS" = {
-          urls = [{ template = "https://mynixos.com/search?q={searchTerms}"; }];
+          urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ ":mn" "@mynixos" ];
+          definedAliases = [
+            ":mn"
+            "@mynixos"
+          ];
         };
         "Nixplorer" = {
-          urls = [{ template = "https://nixplorer.com/search?q={searchTerms}"; }];
+          urls = [ { template = "https://nixplorer.com/search?q={searchTerms}"; } ];
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ ":np" "@nixplorer" ];
+          definedAliases = [
+            ":np"
+            "@nixplorer"
+          ];
         };
         "NixOS Wiki" = {
-          urls = [{template = "https://wiki.nixos.org/w/index.php?search={searchTerms}";}];
+          urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = ["@nw"];
+          definedAliases = [ "@nw" ];
         };
       };
       # userChrome == FF Interface
-      userChrome = /* css */ ''
-        .toolbarbutton-icon[src^="page-icon:https://github.com"]{
-          filter: invert(1) !important;
-        }
-        .tab-icon-image[src*="github.com"] {
-          filter: invert(1) !important;
-        }
+      userChrome = # css
+        ''
+          .toolbarbutton-icon[src^="page-icon:https://github.com"]{
+            filter: invert(1) !important;
+          }
+          .tab-icon-image[src*="github.com"] {
+            filter: invert(1) !important;
+          }
 
-        /**
-         * Dynamic Horizontal Tabs Toolbar (with animations)
-         * sidebar.verticalTabs: false (with native horizontal tabs)
-         */
-        #main-window #TabsToolbar > .toolbar-items {
-          overflow: hidden;
-          transition: height 0.3s 0.3s !important;
-        }
-        /* Default state: Set initial height to enable animation */
-        #main-window #TabsToolbar > .toolbar-items { height: 3em !important; }
-        #main-window[uidensity="touch"] #TabsToolbar > .toolbar-items { height: 3.35em !important; }
-        #main-window[uidensity="compact"] #TabsToolbar > .toolbar-items { height: 2.7em !important; }
-        /* Hidden state: Hide native tabs strip */
-        #main-window[titlepreface*="​"] #TabsToolbar > .toolbar-items { height: 0 !important; }
-        /* Hidden state: Fix z-index of active pinned tabs */
-        #main-window[titlepreface*="​"] #tabbrowser-tabs { z-index: 0 !important; }
-        /* Hidden state: Hide window buttons in tabs-toolbar */
-        #main-window[titlepreface*="​"] #TabsToolbar .titlebar-spacer,
-        #main-window[titlepreface*="​"] #TabsToolbar .titlebar-buttonbox-container {
-          display: none !important;
-        }
-        /* [Optional] Uncomment block below to show window buttons in nav-bar (maybe, I didn't test it on non-linux-i3wm env) */
-        /* #main-window[titlepreface*="XXX"] #nav-bar > .titlebar-buttonbox-container,
-        #main-window[titlepreface*="XXX"] #nav-bar > .titlebar-buttonbox-container > .titlebar-buttonbox {
-          display: flex !important;
-        } */
-        /* [Optional] Uncomment one of the line below if you need space near window buttons */
-        /* #main-window[titlepreface*="XXX"] #nav-bar > .titlebar-spacer[type="pre-tabs"] { display: flex !important; } */
-        /* #main-window[titlepreface*="XXX"] #nav-bar > .titlebar-spacer[type="post-tabs"] { display: flex !important; } */
-      '';
+          /**
+           * Dynamic Horizontal Tabs Toolbar (with animations)
+           * sidebar.verticalTabs: false (with native horizontal tabs)
+           */
+          #main-window #TabsToolbar > .toolbar-items {
+            overflow: hidden;
+            transition: height 0.3s 0.3s !important;
+          }
+          /* Default state: Set initial height to enable animation */
+          #main-window #TabsToolbar > .toolbar-items { height: 3em !important; }
+          #main-window[uidensity="touch"] #TabsToolbar > .toolbar-items { height: 3.35em !important; }
+          #main-window[uidensity="compact"] #TabsToolbar > .toolbar-items { height: 2.7em !important; }
+          /* Hidden state: Hide native tabs strip */
+          #main-window[titlepreface*="​"] #TabsToolbar > .toolbar-items { height: 0 !important; }
+          /* Hidden state: Fix z-index of active pinned tabs */
+          #main-window[titlepreface*="​"] #tabbrowser-tabs { z-index: 0 !important; }
+          /* Hidden state: Hide window buttons in tabs-toolbar */
+          #main-window[titlepreface*="​"] #TabsToolbar .titlebar-spacer,
+          #main-window[titlepreface*="​"] #TabsToolbar .titlebar-buttonbox-container {
+            display: none !important;
+          }
+          /* [Optional] Uncomment block below to show window buttons in nav-bar (maybe, I didn't test it on non-linux-i3wm env) */
+          /* #main-window[titlepreface*="XXX"] #nav-bar > .titlebar-buttonbox-container,
+          #main-window[titlepreface*="XXX"] #nav-bar > .titlebar-buttonbox-container > .titlebar-buttonbox {
+            display: flex !important;
+          } */
+          /* [Optional] Uncomment one of the line below if you need space near window buttons */
+          /* #main-window[titlepreface*="XXX"] #nav-bar > .titlebar-spacer[type="pre-tabs"] { display: flex !important; } */
+          /* #main-window[titlepreface*="XXX"] #nav-bar > .titlebar-spacer[type="post-tabs"] { display: flex !important; } */
+        '';
       # userContent == web-pages and internal pages like about:newtab & about:home
-      userContent = /* css */ ''
-        @media (-moz-bool-pref: "zen.view.compact") {
-          #tabbrowser-tabpanels:not([zen-split-view]) {
-            --zen-webview-border-radius: 0 0 0 0;
-            --zen-element-separation: 0;
+      userContent = # css
+        ''
+          @media (-moz-bool-pref: "zen.view.compact") {
+            #tabbrowser-tabpanels:not([zen-split-view]) {
+              --zen-webview-border-radius: 0 0 0 0;
+              --zen-element-separation: 0;
+            }
+            & .browserSidebarContainer {
+              margin-left: 0 !important;
+            }
           }
-          & .browserSidebarContainer {
-            margin-left: 0 !important;
-          }
-        }
-      '';
+        '';
       settings = {
         # USER CONF
         "browser.download.panel.shown" = true;
@@ -117,7 +144,7 @@
         # "general.smoothScroll.mouseWheel.durationMaxMS" = 250;
         # "general.smoothScroll.stopDecelerationWeighting" = 0.82;
         # "mousewheel.min_line_scroll_amount" = 25;
-        
+
         # Main Config is based on BetterFox @
         # https://github.com/yokoffing/Betterfox
         ################# FAST FOX #################
@@ -161,10 +188,8 @@
         # Tracking Protection
         "browser.contentblocking.category" = "strict";
         "privacy.trackingprotection.emailtracking.enabled" = true;
-        "urlclassifier.trackingSkipURLs" =
-          "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com";
-        "urlclassifier.features.socialtracking.skipURLs" =
-          "*.instagram.com, *.twitter.com, *.twimg.com";
+        "urlclassifier.trackingSkipURLs" = "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com";
+        "urlclassifier.features.socialtracking.skipURLs" = "*.instagram.com, *.twitter.com, *.twimg.com";
         "privacy.query_stripping.strip_list" =
           "__hsfp __hssc __hstc __s _hsenc _openstat dclid fbclid gbraid gclid hsCtaTracking igshid mc_eid ml_subscriber ml_subscriber_hash msclkid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id rb_clickid s_cid twclid vero_conv vero_id wbraid wickedid yclid";
         "browser.uitour.enabled" = false;
@@ -301,10 +326,8 @@
         "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "browser.shell.checkDefaultBrowser" = false;
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" =
-          false;
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" =
-          false;
+        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "browser.preferences.moreFromMozilla" = false;
         "browser.tabs.tabmanager.enabled" = false;
         "browser.aboutwelcome.enabled" = false;
@@ -363,7 +386,6 @@
         "general.smoothScroll.stopDecelerationWeighting" = "1";
         "mousewheel.default.delta_multiplier_y" = 300;
 
-
         ################# OVERRIDES #################
         "browser.startup.homepage" = "";
         # Enable HTTPS-Only Mode
@@ -384,8 +406,7 @@
         "experiments.supported" = false;
         "network.allow-experiments" = false;
         # Disable Pocket Integration
-        "browser.newtabpage.activity-stream.section.highlights.includePocket" =
-          false;
+        "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
         "extensions.pocket.api" = "";
         "extensions.pocket.oAuthConsumerKey" = "";
         "extensions.pocket.showHome" = false;

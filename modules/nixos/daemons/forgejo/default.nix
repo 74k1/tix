@@ -1,4 +1,12 @@
-{ inputs, outputs, config, lib, pkgs, allSecrets, ... }:
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  allSecrets,
+  ...
+}:
 {
   age.secrets."forgejo_runner_token" = {
     rekeyFile = "${inputs.self}/secrets/forgejo_runner_token.age";

@@ -48,32 +48,37 @@
       nr = "nix run";
       nd = "nix develop";
     };
-    shellInit = /* bash */ ''
-      export ATUIN_NOBIND="true"
-      eval "$(${pkgs.atuin}/bin/atuin init bash)"
-      bindkey '^r' _atuin_search_widget
+    shellInit = # bash
+      ''
+        export ATUIN_NOBIND="true"
+        eval "$(${pkgs.atuin}/bin/atuin init bash)"
+        bindkey '^r' _atuin_search_widget
 
 
-      youcannotrebuild () {
-        ${
-          let
-            inherit (lib.strings)
-              hasInfix;
-            inherit (pkgs.hostPlatform)
-              isx86_64 isAarch64
-              isLinux isDarwin;
-          in
-          if isx86_64 && isLinux then
-            "sudo --validate && sudo nixos-rebuild"
-          else if isDarwin then
-            "darwin-rebuild"
-          else if isAarch64 then
-            "nix-on-droid"
-          else
-            "home-manager" # what is this? plain home-manager, works on every system? ye, like wsl, not darwin, not nixos, not android :holeymoley: havent used yes on such a system but in theory all home mnanager modules would work on it aha. alr alr :hm:
-        } --flake ~/tix ''$''\{1:-switch''\} "''$''\{@:2''\}" |& nix run nixpkgs#nix-output-monitor
-      }
-    '';
+        youcannotrebuild () {
+          ${
+            let
+              inherit (lib.strings)
+                hasInfix
+                ;
+              inherit (pkgs.hostPlatform)
+                isx86_64
+                isAarch64
+                isLinux
+                isDarwin
+                ;
+            in
+            if isx86_64 && isLinux then
+              "sudo --validate && sudo nixos-rebuild"
+            else if isDarwin then
+              "darwin-rebuild"
+            else if isAarch64 then
+              "nix-on-droid"
+            else
+              "home-manager" # what is this? plain home-manager, works on every system? ye, like wsl, not darwin, not nixos, not android :holeymoley: havent used yes on such a system but in theory all home mnanager modules would work on it aha. alr alr :hm:
+          } --flake ~/tix ''$''\{1:-switch''\} "''$''\{@:2''\}" |& nix run nixpkgs#nix-output-monitor
+        }
+      '';
     blesh.enable = true;
   };
 }

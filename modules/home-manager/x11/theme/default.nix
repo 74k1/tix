@@ -1,8 +1,15 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.theme.ukiyo;
-in {
+in
+{
   options = {
     theme.ukiyo = {
       package = lib.mkOption {
@@ -16,10 +23,10 @@ in {
     home.packages = [
       cfg.package
     ];
-    
+
     qt = {
       enable = true;
-      
+
       platformTheme = "gtk";
       # style = {
       #   name = "Ukiyo";

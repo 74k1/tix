@@ -1,4 +1,11 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     inputs.quadlet.nixosModules.quadlet
@@ -11,7 +18,10 @@
   virtualisation.quadlet = {
     networks."podman-bridge".networkConfig = {
       driver = "bridge";
-      dns = [ "9.9.9.9" "149.112.112.112" ];
+      dns = [
+        "9.9.9.9"
+        "149.112.112.112"
+      ];
     };
     # pods.servarr = {};
   };

@@ -5,7 +5,8 @@
   pkgs,
   allSecrets,
   ...
-}: {
+}:
+{
   imports = [
     ../vpnconfinement
   ];

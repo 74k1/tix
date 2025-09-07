@@ -1,4 +1,5 @@
-{inputs, ...}: {
+{ inputs, ... }:
+{
   imports = [
     inputs.disko.nixosModules.disko
   ];
@@ -21,7 +22,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = ["umask=0077"];
+                mountOptions = [ "umask=0077" ];
               };
             };
             root = {
@@ -29,7 +30,7 @@
               name = "root";
               content = {
                 type = "btrfs";
-                extraArgs = ["-f"]; # Override existing partition
+                extraArgs = [ "-f" ]; # Override existing partition
                 subvolumes = {
                   # Subvolume name is different from mountpoint
                   "/rootfs" = {
@@ -38,7 +39,7 @@
                   # Mountpoints inferred from subvolume name
                   "/home" = {
                     mountpoint = "/home";
-                    mountOptions = ["compress=zstd"];
+                    mountOptions = [ "compress=zstd" ];
                   };
                   "/nix" = {
                     mountpoint = "/nix";

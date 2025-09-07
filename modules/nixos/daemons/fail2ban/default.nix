@@ -1,7 +1,12 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   # Fail2Ban
-  services.fail2ban =  {
+  services.fail2ban = {
     enable = true;
     maxretry = 3;
     bantime = "30m";

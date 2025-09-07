@@ -5,7 +5,8 @@
   pkgs,
   allSecrets,
   ...
-}: {
+}:
+{
   imports = [
     inputs.ouro.nixosModules.default
   ];
@@ -20,7 +21,7 @@
     name = "prtr.conf";
   };
 
-  vpnNamespaces = { 
+  vpnNamespaces = {
     prsl = {
       enable = true;
       wireguardConfigFile = config.age.secrets."proton_slskd".path;

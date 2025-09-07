@@ -6,7 +6,8 @@
   outputs,
   allSecrets,
   ...
-}: {
+}:
+{
   # send logs to ${allSecrets.per_host.eiri.int_ip}:1515 :)
   services = {
     graylog = {

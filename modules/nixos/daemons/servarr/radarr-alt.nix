@@ -1,10 +1,16 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
 
 let
   cfg = config.services.radarr-alt;
-in {
+in
+{
   options = {
     services.radarr-alt = {
       enable = mkEnableOption "Radarr-alt, a UsetNet/BitTorrent movie downloader";

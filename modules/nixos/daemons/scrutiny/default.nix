@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   services.scrutiny = {
     enable = true;
     settings = {
@@ -15,11 +16,26 @@
     collector = {
       enable = true;
       settings.devices = [
-        { device = "/dev/nvme0n1"; type = "nvme"; }
-        { device = "/dev/sda"; type = "scsi"; }
-        { device = "/dev/sdb"; type = "scsi"; }
-        { device = "/dev/sdc"; type = "scsi"; }
-        { device = "/dev/sdd"; type = "scsi"; }
+        {
+          device = "/dev/nvme0n1";
+          type = "nvme";
+        }
+        {
+          device = "/dev/sda";
+          type = "scsi";
+        }
+        {
+          device = "/dev/sdb";
+          type = "scsi";
+        }
+        {
+          device = "/dev/sdc";
+          type = "scsi";
+        }
+        {
+          device = "/dev/sdd";
+          type = "scsi";
+        }
       ];
     };
   };

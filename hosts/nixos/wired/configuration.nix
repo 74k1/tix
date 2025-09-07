@@ -1,4 +1,11 @@
-{ inputs, outputs, lib, config, pkgs, ... }:
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   disabledModules = [ "services/networking/syncthing.nix" ];
 
@@ -32,7 +39,6 @@
     bash
     # kanidm-client
   ];
-
 
   # Bootloader.
   boot = {
@@ -119,7 +125,10 @@
       pkgs.xdg-desktop-portal-gtk
     ];
     config.common = {
-      default = [ "gnome" "gtk" ];
+      default = [
+        "gnome"
+        "gtk"
+      ];
       "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
       "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
       "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
@@ -150,7 +159,7 @@
         };
       };
     };
-    
+
     xserver = {
       enable = true; # XWayland support
 
@@ -170,10 +179,11 @@
     libinput = {
       enable = true;
       mouse.accelProfile = "flat";
-      touchpad.accelProfile = "flat"; 
+      touchpad.accelProfile = "flat";
     };
 
-    fprintd = { # fingerprint
+    fprintd = {
+      # fingerprint
       enable = true;
       # tod = {
       #   enable = true;
@@ -183,9 +193,11 @@
       # package = pkgs."24.11".fprintd.override {
       #   libfprint = pkgs.tix.libfprint-focaltech-gpd;
       # };
-      package = (pkgs."24.11".fprintd.override {
-        libfprint = pkgs.tix.libfprint-focaltech-gpd;
-      });
+      package = (
+        pkgs."24.11".fprintd.override {
+          libfprint = pkgs.tix.libfprint-focaltech-gpd;
+        }
+      );
     };
 
     fwupd = {
@@ -213,7 +225,10 @@
   '';
 
   # Enable AMD GPU
-  services.xserver.videoDrivers = [ "modesetting" "amdgpu" ];
+  services.xserver.videoDrivers = [
+    "modesetting"
+    "amdgpu"
+  ];
   boot = {
     kernelModules = [ "amdgpu" ];
     initrd.kernelModules = [ "amdgpu" ];
@@ -230,7 +245,7 @@
     amdgpu.initrd.enable = true;
   };
   systemd.packages = [ pkgs.lact ];
-  systemd.services.lactd.wantedBy = ["multi-user.target"];
+  systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 
   # Enable CUPS to print documents.
   services.printing = {
@@ -314,7 +329,10 @@
             "bluez5.enable-msbc" = true;
             "bluez5.enable-hw-volume" = true;
             # "bluez5.roles" = [ "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
-            "bluez5.roles" = [ "a2dp_sink" "a2dp_source" ];
+            "bluez5.roles" = [
+              "a2dp_sink"
+              "a2dp_source"
+            ];
           };
         };
       };
@@ -327,12 +345,15 @@
 
   services.dbus = {
     enable = true;
-    packages = [ pkgs.dconf pkgs.gcr ];
+    packages = [
+      pkgs.dconf
+      pkgs.gcr
+    ];
   };
 
   programs.dconf.enable = true;
   programs.gpaste.enable = true;
-  
+
   # udev stuff
   services.udev = {
     packages = [
@@ -377,7 +398,11 @@
   environment.systemPackages = with pkgs; [
     lact
     ntfs3g
-    git wget curl tmux jq
+    git
+    wget
+    curl
+    tmux
+    jq
     shpool
     pavucontrol
     nvidia-vaapi-driver

@@ -1,7 +1,12 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
-  imports = [];
+  imports = [ ];
 
   programs.starship = {
     enable = false;

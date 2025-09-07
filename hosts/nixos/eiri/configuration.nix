@@ -1,4 +1,12 @@
-{ inputs, outputs, lib, config, pkgs, allSecrets, ... }:
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  allSecrets,
+  ...
+}:
 {
   age.secrets = {
     # "cifs_secret" = {
@@ -12,7 +20,7 @@
       rekeyFile = "${inputs.self}/secrets/namecheap_api_secrets.age";
     };
   };
-  
+
   imports = with outputs.nixosModules; [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -44,7 +52,7 @@
     forgejo
     immich
     locale
-    
+
     ai-chat
     karakeep
 
@@ -57,7 +65,7 @@
     syncthing
     # atuin
     plex
-    navidrome 
+    navidrome
     # send
     servarr
     taki
@@ -176,7 +184,7 @@
         access_log /var/log/nginx/access.log;
         error_log /var/log/nginx/error.log;
       '';
-      
+
       virtualHosts = {
         "eiri.${allSecrets.global.domain01}" = {
           addSSL = true;
@@ -259,7 +267,12 @@
     "/mnt/btrfs_pool" = {
       device = "UUID=9ce8e79d-aa13-4f76-981f-c438eb821669";
       fsType = "btrfs";
-      options = [ "defaults" "noatime" "compress=zstd" "autodefrag" ];
+      options = [
+        "defaults"
+        "noatime"
+        "compress=zstd"
+        "autodefrag"
+      ];
     };
     "/mnt/koi" = {
       device = "${allSecrets.per_host.koi.int_ip}:/volume1/backup"; # TODO
@@ -283,24 +296,26 @@
       email = "${allSecrets.global.mail.acme}";
       group = "nginx";
     };
-    certs = let 
-      inherit (allSecrets.global) domain01;
-    in {
-      "eiri.${domain01}" = {
-        domain = "eiri.${domain01}";
-        dnsProvider = "namecheap";
-        dnsPropagationCheck = false;
-        environmentFile = config.age.secrets."namecheap_api_secrets".path;
-        # credentialFiles = {
-        #   "NAMECHEAP_API_KEY_FILE" = ;
-        #   "NAMECHEAP_API_USER_FILE" = ;
-        # };
-        extraDomainNames = [
-          "*.eiri.${domain01}"
-        ];
-        webroot = null;
+    certs =
+      let
+        inherit (allSecrets.global) domain01;
+      in
+      {
+        "eiri.${domain01}" = {
+          domain = "eiri.${domain01}";
+          dnsProvider = "namecheap";
+          dnsPropagationCheck = false;
+          environmentFile = config.age.secrets."namecheap_api_secrets".path;
+          # credentialFiles = {
+          #   "NAMECHEAP_API_KEY_FILE" = ;
+          #   "NAMECHEAP_API_USER_FILE" = ;
+          # };
+          extraDomainNames = [
+            "*.eiri.${domain01}"
+          ];
+          webroot = null;
+        };
       };
-    };
   };
 
   # Open ports in the firewall.

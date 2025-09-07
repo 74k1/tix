@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # NVIDIA
@@ -19,7 +24,7 @@
     # libva
     libva
     libva-utils
-    
+
     # vaapi
     nvidia-vaapi-driver
   ];

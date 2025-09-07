@@ -5,7 +5,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   services.kanshi = {
     enable = true;
     # no process seems to start with niri-session.target.

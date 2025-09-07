@@ -1,4 +1,11 @@
-{ inputs, outputs, config, lib, pkgs, ...}:
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.hyprlock = {
     enable = true;

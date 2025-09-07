@@ -1,5 +1,10 @@
 # lets all love lain
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   services.wired = {
     enable = true;

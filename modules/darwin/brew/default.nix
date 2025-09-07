@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   # Requires Homebrew to be installed
   system.activationScripts.preUserActivation.text = ''

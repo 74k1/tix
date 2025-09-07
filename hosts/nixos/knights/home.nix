@@ -1,4 +1,11 @@
-{ inputs, outputs, lib, pkgs, config, ... }:
+{
+  inputs,
+  outputs,
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   imports = builtins.concatLists [
     (with outputs.homeManagerModules; [
@@ -20,7 +27,8 @@
   home.packages = with pkgs; [
     bat
     eza
-    feh viu
+    feh
+    viu
     ripgrep
     scc
     tealdeer

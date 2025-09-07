@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -25,7 +30,7 @@
         enable = true;
       };
     };
-    
+
     # blesh (https://github.com/nix-community/home-manager/pull/3238)
     # programs.blesh = {
     #   enable = true;
@@ -72,16 +77,20 @@
         eval "$(${pkgs.atuin}/bin/atuin init bash)"
         bindkey '^r' _atuin_search_widget
         # eval "$(${pkgs.zoxide}/bin/zoxide init --cmd y bash)"
-        
+
         # eva reference :^)
         youcannotrebuild () {
           ${
             let
               inherit (lib.strings)
-                hasInfix;
+                hasInfix
+                ;
               inherit (pkgs.hostPlatform)
-                isx86_64 isAarch64
-                isLinux isDarwin;
+                isx86_64
+                isAarch64
+                isLinux
+                isDarwin
+                ;
             in
             if isx86_64 && isLinux then
               "sudo --validate && sudo nixos-rebuild"
@@ -133,7 +142,6 @@
 
         complete -F _fish_completion -o default -o bashdefault $(compgen -c)
       '';
-
 
       # plugins = [
       #   {

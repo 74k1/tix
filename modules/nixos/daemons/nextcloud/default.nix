@@ -1,4 +1,11 @@
-{ config, pkgs, inputs, outputs, allSecrets, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  outputs,
+  allSecrets,
+  ...
+}:
 {
   age.secrets."nextcloud_admin" = {
     rekeyFile = "${inputs.self}/secrets/nextcloud_admin.age";

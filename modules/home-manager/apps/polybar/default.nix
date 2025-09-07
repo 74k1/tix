@@ -1,10 +1,18 @@
-{ inputs, outputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
 let
   cfg = config.services.polybar;
-in {
+in
+{
   config = {
     home.packages = with pkgs; [
       # polybar
@@ -13,7 +21,7 @@ in {
       #material-symbols
       #font-awesome
     ];
-    
+
     services.polybar = {
       enable = true;
       package = pkgs.polybar.override {

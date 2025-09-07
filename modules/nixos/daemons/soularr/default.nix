@@ -5,7 +5,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     "${inputs.tixpkgs}/modules/nixos/misc/soularr.nix"
   ];
@@ -22,7 +23,11 @@
         downloadDir = "/var/lib/slskd/downloads";
       };
       search = {
-        allowedFiletypes = ["flac" "mp3" "wav"];
+        allowedFiletypes = [
+          "flac"
+          "mp3"
+          "wav"
+        ];
         numberOfAlbumsToGrab = 20;
       };
     };
