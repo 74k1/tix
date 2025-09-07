@@ -20,7 +20,6 @@ in {
     nautilus
     gnome-keyring
     # wofi
-    # cliphist
     wl-clipboard-rs
     xwayland-satellite
   ];
@@ -69,7 +68,6 @@ in {
       };
       spawn-at-startup = [
         (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
-        # (makeCommand "${pkgs.wl-clipboard-rs}/bin/wl-copy --watch cliphist store")
         (makeCommand "${lib.getExe pkgs.swww} img ${wallpaper_image}")
         # (makeCommand "${lib.getExe pkgs.swaynotificationcenter}")
         (makeCommand "${pkgs.xwayland-satellite}/bin/xwayland-satellite")

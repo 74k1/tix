@@ -125,10 +125,6 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      # url = "github:hyprwm/Hyprland";
-    };
     stylix = {
       url = "github:danth/stylix";
     };
@@ -148,19 +144,6 @@
     };
     ChessSet = {
       url = "github:74k1/ChessSet";
-    };
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    anyrun-nixos-options = {
-      url = "github:n3oney/anyrun-nixos-options";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    ironbar = {
-      url = "github:JakeStanger/ironbar";
-      # url = "git+file:///home/taki/dev/ironbar";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     vpnconfinement = {
       url = "github:Maroka-chan/VPN-Confinement";

@@ -10,15 +10,11 @@
     
     # int
     (with outputs.homeManagerModules; [
-      # hyprland
       niri
       swaync
-      # cliphist
       copyq
       fastfetch
       fuzzel
-      # i3wm
-      # bspwm
       #colors
       git
       jujutsu
@@ -26,13 +22,12 @@
       zen
       qutebrowser
       neovim
-      picom
+      # picom
       polybar
       #rofi
       #wofi
       # spotify
       starship
-      # sxhkd
       #theme
       style
       #wall
@@ -40,14 +35,11 @@
       ghostty
       # wired
       easyeffects
-      # ironbar
       waybar
       sherlock
       hyprlock
       kanshi
-      anyrun
       xdg
-      # xorg # .xinitrc file
       zsh
       fish 
       yazi
