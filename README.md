@@ -69,7 +69,7 @@
         <tr>
             <td><a href="hosts/nixos/eiri"><img alt="server" src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" style="height: 1em"></img></a></td>
             <td>arisu</td>
-            <td>MacBook as a Server<br><sub>M3 Max</sub></td>
+            <td>MacBook as a Server (MaaS)<br><sub>M3 Max</sub></td>
             <td>Just for fun & when I need apps, that aren't on Linux. :)</td>
         </tr>
         <tr>
