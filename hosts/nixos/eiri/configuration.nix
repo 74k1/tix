@@ -75,6 +75,8 @@
     locale
 
     ai-chat
+    hermes
+    # zeroclaw
     karakeep
 
     # glance
