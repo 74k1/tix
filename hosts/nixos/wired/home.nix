@@ -33,7 +33,7 @@
       waterfox
       neovim
       # picom
-      polybar
+      # polybar
       #rofi
       #wofi
       # spotify
@@ -83,7 +83,7 @@
     papirus-icon-theme
 
     # my own scriptiboo
-    pkgs.tix.duvolbr
+    # pkgs.tix.duvolbr
     # pkgs.tix-unfree.berkeley-nolig-otf
     pkgs.tix-unfree.suisse-intl-mono
     pkgs.tix-unfree.supply-mono
@@ -111,7 +111,9 @@
     # beekeeper-studio
     pkgs.tix.outerbase-studio-desktop
 
-    pkgs.tix.waterfox
+    # pkgs.tix.waterfox
+
+    pkgs.master.graphite
 
     # planify
 
@@ -157,7 +159,7 @@
 
     # gui stuff
     # brave
-    # osu-lazer-bin
+    pkgs.master.osu-lazer-bin
     #inputs.zen-browser.packages."${system}".zen-browser
     # inputs.tixpkgs.packages."${system}".lumen
     # (inputs.zen-browser.packages."${system}".default.overrideAttrs (oldAttrs: {
@@ -203,7 +205,8 @@
     # youtube-music
     # tidal-hifi
     # tidal-dl
-    cider-2
+    pkgs.tix-unfree.cider
+    # cider-2
     # feishin
     # aonsoku
     spotify-player
@@ -215,7 +218,7 @@
     rawtherapee
     darktable
     # legcord
-    # vesktop
+    vesktop
 
     davinci-resolve
 
