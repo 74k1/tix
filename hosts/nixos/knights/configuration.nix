@@ -460,6 +460,18 @@
             # http3 = true;
             # quic = true;
           };
+          "bookmark.${domain00}" = {
+            addSSL = true;
+            useACMEHost = "${allSecrets.global.domain00}";
+            locations."/" = {
+              proxyPass = "http://10.100.0.1:3400";
+              recommendedProxySettings = true;
+              proxyWebsockets = true;
+              extraConfig = ''
+                client_max_body_size 0;
+              '';
+            };
+          };
           # notify active users
           # "immich.${domain00}" = {
           #   addSSL = true;
