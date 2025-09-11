@@ -318,7 +318,8 @@ in
         margin-top = 8;
 
         output = [
-          "DP-7"
+          "ASUSTek COMPUTER INC - MQ16AHE - DP-6"
+          "ASUSTek COMPUTER INC - MQ16AHE - DP-7"
         ];
 
         modules-left = [
@@ -345,7 +346,8 @@ in
         margin-top = 8;
 
         output = [
-          "DP-6"
+          "PNP(AOC) - AG276QZD2 - DP-6"
+          "PNP(AOC) - AG276QZD2 - DP-7"
           "eDP-1"
         ];
 
