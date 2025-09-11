@@ -35,6 +35,7 @@
     # Most important
     restic
     vaultwarden
+    bumpkin
     pocket-id
     tinyauth
     outline
@@ -46,7 +47,6 @@
     prometheus
     loki
     alloy
-
 
     multi-scrobbler
 
@@ -73,7 +73,6 @@
     karakeep
 
     # glance
-    # it-tools
     nextcloud
     opencloud
     umami
@@ -133,6 +132,11 @@
   };
 
   programs.zsh.enable = true;
+
+  nix.settings = {
+    cores = 4;
+    max-jobs = 1;
+  };
 
   environment.systemPackages = with pkgs; [
     git

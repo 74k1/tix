@@ -7,6 +7,7 @@
   baikal = import ./daemons/baikal;
   bash = import ./programs/bash;
   booklore = import ./daemons/booklore;
+  bumpkin = import ./daemons/bumpkin;
   fail2ban = import ./daemons/fail2ban;
   firefox = import ./programs/firefox;
   forgejo = import ./daemons/forgejo;
