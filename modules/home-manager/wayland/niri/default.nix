@@ -463,9 +463,26 @@
               {
                 matches = [
                   { app-id = "^(zen|zen-.*|firefox|chromium-browser|edge|chrome-.*)$"; }
-                  { app-id = "^discord$"; }
                 ];
                 open-maximized = true;
+              }
+              # --- per-app monitor pinning ---
+              # left (portrait) monitor: chat, music, comms
+              {
+                matches = [ { app-id = "^discord$"; } ];
+                open-maximized = true;
+                open-on-output = "Audio Processing Technology  Ltd CX158 0x00000002";
+              }
+              {
+                matches = [ { app-id = "^[Ss]potify$"; } ];
+                open-maximized = true;
+                open-on-output = "Audio Processing Technology  Ltd CX158 0x00000002";
+              }
+              # right (main) monitor: browsers, primary work
+              {
+                matches = [ { app-id = "^waterfox$"; } ];
+                open-maximized = true;
+                open-on-output = "PNP(AOC) AG276QZD2 2OMQ8JA002044";
               }
               {
                 matches = [
@@ -479,15 +496,28 @@
                   y = 16;
                 };
               }
+              # steam: all windows float non-intrusively by default (notifications, friend popups, etc.)
+              {
+                matches = [
+                  { app-id = "^(steam|steamwebhelper)$"; }
+                ];
+                open-floating = true;
+                open-focused = false;
+                default-floating-position = {
+                  relative-to = "top-right";
+                  x = 16;
+                  y = 16;
+                };
+              }
+              # steam main library window — override back to tiling (the only window titled just "Steam")
               {
                 matches = [
                   {
                     app-id = "^(steam|steamwebhelper)$";
-                    title = "^notificationtoasts_.*";
+                    title = "^Steam$";
                   }
                 ];
-                open-floating = true;
-                open-focused = false;
+                open-floating = false;
               }
               {
                 matches = [
@@ -513,6 +543,7 @@
                   relative-to = "top-right";
                 };
               }
+
             ];
           in
           windowRules ++ floatingRules;
