@@ -5,8 +5,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "74k1";
       repo = "yueye.nvim";
-      rev = "4c4b63a18daf1efc69244f60af5b8a2ce9ea67bb";
-      hash = "sha256-9OO2kUI9lZeTEk2am+nw8CCBL7t3F2J+WItLMKEEMKY=";
+      rev = "d119d632a4ad1318b46627efa556a485b2a2326f";
+      hash = "sha256-QFFbjj2NUB4/e1jxJDuQJX5DTbKyh4MtjbnKrLMvVGs=";
     };
   };
   nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
