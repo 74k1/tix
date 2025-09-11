@@ -70,11 +70,11 @@
           text = ''
             cmd[update:60000] date +"%H:%M"
           '';
-          font_size = 96;
-          font_family = "NType 82 Regular";
+          font_size = 144;
+          font_family = "Poltawski Nowy Regular";
           color = "rgba(235, 233, 241, 0.6)";
 
-          position = "0%, 5%";
+          position = "0%, 10%";
 
           halign = "center";
           valign = "center";
@@ -84,7 +84,7 @@
           text = ''
             cmd[update:60000] date +"%A, %d %b %Y"
           '';
-          font_size = 32;
+          font_size = 48;
           font_family = "PP Supply Mono";
           color = "rgba(235, 233, 241, 0.2)";
 
