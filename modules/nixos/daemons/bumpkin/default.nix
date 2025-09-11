@@ -22,16 +22,12 @@
   services.bumpkin = {
     enable = true;
 
-    maintainers = [ "_74k1" ];
+    maintainers = [
+      "_74k1"
+    ];
 
     packageSets = [
-      {
-        repo = "github:74k1/tixpkgs";
-        noBuild = [
-          "waterfox"
-          "waterfox-unwrapped"
-        ];
-      }
+      { repo = "github:74k1/tixpkgs"; }
     ];
 
     actions = {
