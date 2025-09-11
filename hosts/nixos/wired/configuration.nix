@@ -17,7 +17,7 @@
 
     inputs.nixos-generators.nixosModules.all-formats
 
-    # inputs.yeetmouse.nixosModules.default
+    inputs.yeetmouse.nixosModules.default
     inputs.musnix.nixosModules.musnix
 
     # inputs.genix7000.nixosModules.genix7000
@@ -521,20 +521,20 @@
       };
     };
     uinput.enable = true;
-    # yeetmouse = {
-    #   enable = true;
-    #   sensitivity = 0.8;
-    #   outputCap = 0.0;
-    #   inputCap = 0.0;
-    #   offset = 0.0;
-    #   preScale = 1.0;
-    #   mode.jump = {
-    #     acceleration = 1.56;
-    #     midpoint = 7.0;
-    #     smoothness = 1.0;
-    #     useSmoothing = true;
-    #   };
-    # };
+    yeetmouse = {
+      enable = true;
+      sensitivity = 0.8;
+      outputCap = 0.0;
+      inputCap = 0.0;
+      offset = 0.0;
+      preScale = 1.0;
+      mode.jump = {
+        acceleration = 1.56;
+        midpoint = 7.0;
+        smoothness = 1.0;
+        useSmoothing = true;
+      };
+    };
     sane = {
       enable = true;
       # brscan4.enable = true;
