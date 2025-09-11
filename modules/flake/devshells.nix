@@ -24,9 +24,10 @@
         default = pkgs.mkShellNoCC {
           # buildInputs = [ ];
           shellHook = ''
+            unset NIX_CONFIG
             export PATH="${
               inputs'.rix101.packages.nix-enraged.override {
-                nix' = pkgs.lixPackageSets.stable.lix;
+                nix' = pkgs.lixPackageSets.lix_2_94.lix;
               }
             }/bin:$PATH"
           '';

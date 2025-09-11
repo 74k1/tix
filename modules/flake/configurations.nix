@@ -39,7 +39,7 @@ let
             useUserPackages = true;
             users.taki = import "${inputs.self}/hosts/nixos/${hostname}/home.nix";
             extraSpecialArgs = {
-              inherit inputs outputs;
+              inherit inputs outputs allSecrets;
             };
             backupFileExtension = "backup";
           };
@@ -75,7 +75,7 @@ let
             useUserPackages = true;
             users.taki = import "${inputs.self}/hosts/darwin/${hostname}/darwin-home.nix";
             extraSpecialArgs = {
-              inherit inputs outputs;
+              inherit inputs outputs allSecrets;
             };
             backupFileExtension = "backup";
           };
