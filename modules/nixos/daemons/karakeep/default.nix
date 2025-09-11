@@ -17,7 +17,8 @@
 
   services = {
     karakeep = {
-      enable = true;
+      # i use meilisearch :)
+      enable = false;
       extraEnvironment = {
         # NEXTAUTH_URL = "karakeep.eiri.${allSecrets.global.domain01}";
         PORT = "3400";
