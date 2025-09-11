@@ -25,7 +25,7 @@
       SESSION_DURATION = 60;
       EMAILS_VERIFIED = true;
       ALLOW_OWN_ACCOUNT_EDIT = true;
-      ALLOW_USER_SIGNUPS = false;
+      ALLOW_USER_SIGNUPS = "disabled";
       DISABLE_ANIMATIONS = false;
       ACCENT_COLOR = "#816BFF";
       EMAIL_LOGIN_NOTIFICATION_ENABLED = true;
