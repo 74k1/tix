@@ -79,6 +79,9 @@ in
         lua vim.opt.iskeyword:append("-")
         lua vim.opt.iskeyword:remove(":")
 
+        " i hate terminal escape
+        lua vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>")
+
         " rest
         " Autocommands for vim-table-mode
         "augroup TableModeSetup
