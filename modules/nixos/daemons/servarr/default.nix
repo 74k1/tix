@@ -4,11 +4,9 @@
   config,
   lib,
   pkgs,
+  allSecrets,
   ...
 }:
-let
-  cfg_sonarr = config.services.sonarr;
-in
 {
   disabledModules = [
     "services/misc/servarr/prowlarr.nix"
@@ -170,6 +168,52 @@ in
             };
           };
         };
+        # https://github.com/Dictionarry-Hub/profilarr
+        "profilarr" = {
+          autoStart = true;
+          serviceConfig = {
+            RestartSec = "10";
+            Restart = "always";
+          };
+          containerConfig = {
+            image = "ghcr.io/dictionarry-hub/profilarr:latest";
+            name = "profilarr";
+            publishPorts = [ "6868:6868" ];
+            networks = [ "podman" ];
+            volumes = [
+              "/var/lib/profilarr:/config"
+            ];
+            environments = {
+              PUID = "1000";
+              PGID = "1000";
+              UMASK = "022";
+              TZ = "Europe/Zurich";
+              ORIGIN = "https://profilarr.i.${allSecrets.global.domain03}";
+              PARSER_HOST = "profilarr-parser";
+              PARSER_PORT = "5000";
+            };
+          };
+        };
+        # Sidecar for custom format / quality profile testing; reachable only
+        # from the podman network (no published port).
+        "profilarr-parser" = {
+          autoStart = true;
+          serviceConfig = {
+            RestartSec = "10";
+            Restart = "always";
+          };
+          containerConfig = {
+            image = "ghcr.io/dictionarry-hub/profilarr-parser:latest";
+            name = "profilarr-parser";
+            networks = [ "podman" ];
+          };
+        };
       };
     };
+
+  # Config dir for the profilarr container, matching its PUID/PGID
+  # (numeric IDs to match the container's PUID/PGID contract).
+  systemd.tmpfiles.rules = [
+    "d /var/lib/profilarr 0755 1000 1000 -"
+  ];
 }

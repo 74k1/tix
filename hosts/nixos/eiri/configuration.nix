@@ -280,6 +280,14 @@
             proxyWebsockets = true;
           };
         };
+        "profilarr.i.${allSecrets.global.domain03}" = {
+          addSSL = true;
+          useACMEHost = "i.${allSecrets.global.domain03}";
+          locations."/" = {
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:6868";
+            proxyWebsockets = true;
+          };
+        };
         "grafana.i.${allSecrets.global.domain03}" = {
           addSSL = true;
           useACMEHost = "i.${allSecrets.global.domain03}";
