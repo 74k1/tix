@@ -24,6 +24,8 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
+  i18n.inputMethod.package = pkgs.kdePackages.fcitx5-with-addons;
+
   # Configure keymap in X11
   # services.xserver.xkb = {
   #   layout = "ch";
