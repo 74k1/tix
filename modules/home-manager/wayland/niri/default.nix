@@ -48,10 +48,27 @@
     in
     {
       enable = true;
-      package = pkgs.niri;
+      # package = pkgs.niri;
+      package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable.overrideAttrs (oldAttrs: let
+          src = pkgs.fetchFromGitHub {
+            owner = "niri-wm";
+            repo = "niri";
+            rev = "4a7e443b6c816e4f673f6e25cc0a5aa37697d667";
+            hash = "sha256-ZiGGjRL2H67GcL6BvZV99khW++aHpJ2NA4n71qZiJ9A=";
+          };
+        in {
+          inherit src;
+          cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+            inherit src;
+            hash = "sha256-Fv3uClwuuAAGTQ7ujuAQW7xCoYFCw4q9QC08Z7Q7Hdk=";
+          };
+        });
       # config = /* kdl */ {
       # };
       settings = {
+        includes = lib.mkAfter [
+          (./blur.kdl)
+        ];
         environment = {
           # CLUTTER_BACKEND = "wayland";
           DISPLAY = ":0";
@@ -79,16 +96,18 @@
           # Multimedia
           "XF86AudioPlay".action = spawn "${pkgs.playerctl}/bin/playerctl" "play-pause";
           "XF86AudioPause".action = spawn "${pkgs.playerctl}/bin/playerctl" "play-pause";
-          "XF86AudioNext".action = spawn "${pkgs.tix.duvolbr}/bin/duvolbr" "next_track";
-          "XF86AudioPrev".action = spawn "${pkgs.tix.duvolbr}/bin/duvolbr" "prev_track";
+          # "XF86AudioNext".action = spawn "${pkgs.tix.duvolbr}/bin/duvolbr" "next_track";
+          # "XF86AudioPrev".action = spawn "${pkgs.tix.duvolbr}/bin/duvolbr" "prev_track";
+          "XF86AudioNext".action = spawn "${pkgs.playerctl}/bin/playerctl" "next";
+          "XF86AudioPrev".action = spawn "${pkgs.playerctl}/bin/playerctl" "previous";
 
           "XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
 
           "XF86AudioRaiseVolume".action = spawn "wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "5%+";
           "XF86AudioLowerVolume".action = spawn "wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "5%-";
 
-          "XF86MonBrightnessUp".action = spawn "${pkgs.brillo}/bin/brillo" "-q" "-u" "300000" "-A" "5";
-          "XF86MonBrightnessDown".action = spawn "${pkgs.brillo}/bin/brillo" "-q" "-u" "300000" "-U" "5";
+          # "XF86MonBrightnessUp".action = spawn "${pkgs.brillo}/bin/brillo" "-q" "-u" "300000" "-A" "5";
+          # "XF86MonBrightnessDown".action = spawn "${pkgs.brillo}/bin/brillo" "-q" "-u" "300000" "-U" "5";
 
           # Bindings
           "Mod+Return" = {
@@ -144,6 +163,7 @@
             repeat = false;
             action = close-window;
           };
+
           "Mod+S".action = switch-preset-column-width;
           "Mod+F".action = maximize-column;
           "Mod+Shift+F".action = fullscreen-window;
@@ -159,6 +179,21 @@
           "Mod+Period".action = expel-window-from-column;
           "Mod+Tab".action = switch-focus-between-floating-and-tiling;
           "Mod+Alt+Space".action = toggle-window-floating;
+
+          # Screensharing "Dynamic"
+          "Mod+P" = {
+            repeat = false;
+            action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action set-dynamic-cast-window --id $(${lib.getExe config.programs.niri.package} msg --json pick-window | ${lib.getExe pkgs.jq} .id)";
+            # action = spawn "sh" "-c" "${niri} msg action set-dynamic-cast-window --id $(${niri} msg --json list-windows | ${jq} '.[] | select(.is_active) | .id' | head -1)";
+          };
+          "Mod+Shift+P" = {
+            repeat = false;
+            action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action clear-dynamic-cast-target";
+          };
+          "Mod+Ctrl+P" = {
+            repeat = false;
+            action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action set-dynamic-cast-monitor";
+          };
 
           # workspace
           "Mod+H".action = focus-column-or-monitor-left;
@@ -375,6 +410,7 @@
                 matches = [ { app-id = "app.drey.PaperPlane"; } ];
                 block-out-from = "screencast";
               }
+              
               {
                 matches = [
                   { app-id = "^(zen|zen-.*|firefox|chromium-browser|edge|chrome-.*)$"; }
@@ -397,16 +433,16 @@
               {
                 matches = [
                   {
-                    app-id = "firefox$";
-                    title = "^Picture-in-Picture$";
+                    app-id = "^firefox$";
+                    title = "^Picture-in-Picture.*$";
                   }
                   {
-                    app-id = "zen-.*$";
-                    title = "^Picture-in-Picture$";
+                    app-id = "^zen-.*$";
+                    title = "^Picture-in-Picture.*$";
                   }
                   {
-                    app-id = "zen-.*$";
-                    title = ".*Bitwarden Password Manager.*";
+                    app-id = "^zen-.*$";
+                    title = "^Extension.*(Bitwarden).*";
                   }
                   { title = "^Picture in picture$"; }
                   { title = "^Discord Popout$"; }
@@ -520,9 +556,10 @@
             scroll-method = "two-finger";
             tap = true;
             tap-button-map = "left-right-middle";
-            # accel-profile = "adaptive";
-            accel-profile = "flat";
-            # scroll-factor = 0.2;
+            accel-profile = "adaptive";
+            accel-speed = 0.3; # from -1 to 1
+            # accel-profile = "flat";
+            scroll-factor = 0.4; # from 0 to 1
           };
         };
       };

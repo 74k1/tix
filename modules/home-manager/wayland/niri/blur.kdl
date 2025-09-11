@@ -1,0 +1,15 @@
+layer-rule {
+  match namespace="^waybar$"
+  background-effect {
+    blur true
+    xray false
+  }
+}
+
+window-rule {
+    // match app-id="^ghostty$"
+    background-effect {
+        blur true
+        xray false
+    }
+}
