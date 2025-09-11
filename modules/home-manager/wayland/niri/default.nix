@@ -6,13 +6,6 @@
   outputs,
   ...
 }:
-let
-  wallpaper_image = pkgs.fetchurl {
-    url = "https://upload.wikimedia.org/wikipedia/commons/0/07/Johan_Christian_Dahl_-_View_of_Dresden_by_Moonlight_-_Google_Art_Project.jpg";
-    name = "wallpaper.jpg";
-    hash = "sha256-MjBzldNqNQa1aPoxUPyimovl+YSA4m74Dx7MIsswxtU=";
-  };
-in
 {
   imports = [
     inputs.niri.homeModules.niri
@@ -72,9 +65,10 @@ in
         };
         spawn-at-startup = [
           (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
-          (makeCommand "${lib.getExe pkgs.swww} img ${wallpaper_image}")
           # (makeCommand "${lib.getExe pkgs.swaynotificationcenter}")
           (makeCommand "${pkgs.xwayland-satellite}/bin/xwayland-satellite")
+          (makeCommand "${lib.getExe pkgs.swww} img ~/docs/nextcloud/I.\ Personal/III.\ Resources/Images/Wallpaper/n55_pafu/high\ res/DSC03843.高画質.png")
+          (makeCommand "${lib.getExe pkgs.swww} img ~/docs/nextcloud/I.\ Personal/III.\ Resources/Images/Wallpaper/n55_pafu/high\ res/DSC03843.高画質.blurred2x_edited.png --namespace backdrop")
         ];
         clipboard.disable-primary = true;
         hotkey-overlay.skip-at-startup = false;
