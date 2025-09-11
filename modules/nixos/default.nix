@@ -39,6 +39,7 @@
   quadlet = import ./quadlet;
   restic = import ./daemons/restic;
   rsshub = import ./daemons/rsshub;
+  rybbit = import ./daemons/rybbit;
   scrutiny = import ./daemons/scrutiny;
   send = import ./daemons/send;
   servarr = import ./daemons/servarr;
@@ -50,7 +51,6 @@
   taki = import ./profile/taki;
   tinyauth = import ./daemons/tinyauth;
   transmission = import ./daemons/transmission;
-  umami = import ./daemons/umami;
   vaultwarden = import ./daemons/vaultwarden;
   vector = import ./daemons/vector;
   vm-test = import ./vm-test;
