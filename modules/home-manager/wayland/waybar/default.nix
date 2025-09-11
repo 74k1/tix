@@ -130,6 +130,7 @@ let
       modules = [
         "custom/tray-btn"
         "tray"
+        "custom/color-picker"
       ];
     };
 
@@ -145,6 +146,12 @@ let
     "tray" = {
       icon-size = 16;
       spacing = 16;
+    };
+
+    "custom/color-picker" = {
+      format = " ⛶";
+      tooltip = false;
+      on-click = "${lib.getExe pkgs.hyprpicker} -abl";
     };
 
     "custom/net" = {
