@@ -36,6 +36,40 @@
     # kanidm-client
   ];
 
+  # specialisation = {
+  #   amd-egpu.configuration = {
+  #     system.nixos.tags = [ "amd-egpu" ];
+  #
+  #     # blacklist iGPU modules
+  #     boot.blacklistedKernelModules = [ "amdgpu" "radeon" ];
+  #
+  #     boot.kernelModules = [ "amdgpu" ];
+  #
+  #     boot.kernelParams = [
+  #       "radeon.si_support=0"
+  #       "radeon.cik_support=0"
+  #       "amdgpu.si_support=1"
+  #       "amdgpu.cik_support=1"
+  #     ];
+  #
+  #     services.xserver.videoDrivers = [ "amdgpu" ];
+  #
+  #     hardware.graphics = {
+  #       enable = true;
+  #       enable32Bit = true;
+  #       extraPackages = with pkgs; [
+  #         rocmPackages.clr.icd
+  #       ];
+  #     };
+  #
+  #
+  #     environment.sessionVariables = {
+  #       WLR_DRM_DEVICES="/dev/dri/by-path/pci-0000:65:00.0-card";
+  #       MESA_VK_DEVICE_SELECT="65:00.0";
+  #     };
+  #   };
+  # };
+
   # Bootloader.
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_zen;
@@ -55,7 +89,7 @@
     ];
     plymouth = {
       enable = true;
-      theme = "dna";
+      theme = "deus_ex";
       themePackages = [ 
         # pkgs.nixos-bgrt-plymouth
         pkgs.adi1090x-plymouth-themes
@@ -69,15 +103,18 @@
     loader = {
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot";
-      # systemd-boot.enable = true;
-      limine = {
+      systemd-boot = {
         enable = true;
-        style = {
-          wallpapers = [ ];
-          interface.branding = "Welcome to NixOS!";
-          graphicalTerminal.font.scale = "9x16";
-        };
+        configurationLimit = 2;
       };
+      # limine = {
+      #   enable = true;
+      #   style = {
+      #     wallpapers = [ ];
+      #     interface.branding = "Welcome to NixOS!";
+      #     graphicalTerminal.font.scale = "9x16";
+      #   };
+      # };
     };
     binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
@@ -144,6 +181,7 @@
     NIXOS_OZONE_WL = "0";
     MOZ_ENABLE_WAYLAND = "1";
     QT_WAYLAND_DISABLE_DECORATION = "1";
+    WLR_RENDER_CURSOR = "1";
   };
 
   # Enable the X11 windowing system.
@@ -246,7 +284,6 @@
       enable32Bit = true;
       extraPackages = [
         pkgs.rocmPackages.clr.icd
-        pkgs.amdvlk
       ];
     };
     amdgpu.initrd.enable = true;
