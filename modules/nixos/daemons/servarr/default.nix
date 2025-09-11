@@ -12,6 +12,7 @@ in
 {
   disabledModules = [
     "services/misc/servarr/prowlarr.nix"
+    "services/misc/overseerr.nix"
   ];
 
   imports = [
@@ -25,9 +26,9 @@ in
 
   services = {
     # Request
-    overseerr = {
+    seerr = {
       enable = true;
-      package = pkgs.master.overseerr;
+      package = pkgs.seerr;
     };
 
     # Indexer

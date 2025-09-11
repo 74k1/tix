@@ -265,7 +265,14 @@
             proxyWebsockets = true;
           };
         };
-
+        "seerr.i.${allSecrets.global.domain03}" = {
+          addSSL = true;
+          useACMEHost = "i.${allSecrets.global.domain03}";
+          locations."/" = {
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:5055";
+            proxyWebsockets = true;
+          };
+        };
         "grafana.i.${allSecrets.global.domain03}" = {
           addSSL = true;
           useACMEHost = "i.${allSecrets.global.domain03}";

@@ -39,6 +39,7 @@
         "/var/lib/plex"
         "/var/lib/plexpy"
         "/var/lib/overseerr"
+        "/var/lib/seerr"
 
         "/var/lib/vikunja"
 
