@@ -43,10 +43,10 @@ in
       };
       cursor = {
         size = 16;
-        package = pkgs.openzone-cursors;
-        name = "Open Zone Black";
-        # package = cfg.package;
-        # name = "Ukiyo";
+        # package = pkgs.openzone-cursors;
+        # name = "Open Zone Black";
+        package = cfg.package;
+        name = "Ukiyo";
       };
       icons = {
         enable = true;
