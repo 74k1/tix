@@ -27,7 +27,7 @@
   style = import ./stylix;
   swaync = import ./wayland/swaync;
   theme = import ./x11/theme;
-  vicinae = import ./services/vicinae;
+  walker = import ./wayland/walker;
   wall = import ./x11/wall;
   waybar = import ./wayland/waybar;
   wezterm = import ./apps/wezterm;

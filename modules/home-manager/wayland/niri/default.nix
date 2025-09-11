@@ -59,16 +59,18 @@
           GTK_USE_PORTAL = "1";
           MOZ_ENABLE_WAYLAND = "1";
           NIXOS_OZONE_WL = "1";
-          # QT_QPA_PLATFORM = "wayland;xcb";
           QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
           # SDL_VIDEODRIVER = "wayland";
+          QT_STYLE_OVERRIDE = lib.mkForce "";
+          QT_QPA_PLATFORM = "wayland;xcb";
+          GTK_THEME = "adw-gtk3-dark";
         };
         spawn-at-startup = [
           (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
           # (makeCommand "${lib.getExe pkgs.swaynotificationcenter}")
           (makeCommand "${pkgs.xwayland-satellite}/bin/xwayland-satellite")
-          (makeCommand "${lib.getExe pkgs.swww} img ~/docs/nextcloud/I.\ Personal/III.\ Resources/Images/Wallpaper/n55_pafu/high\ res/DSC03843.高画質.png")
-          (makeCommand "${lib.getExe pkgs.swww} img ~/docs/nextcloud/I.\ Personal/III.\ Resources/Images/Wallpaper/n55_pafu/high\ res/DSC03843.高画質.blurred2x_edited.png --namespace backdrop")
+          (makeCommand "${lib.getExe pkgs.swww} img ~/docs/opencloud/Personal/I.\ Personal/III.\ Resources/Images/Wallpaper/n55_pafu/high\ res/DSC03843.高画質.png")
+          (makeCommand "${lib.getExe pkgs.swww} img ~/docs/opencloud/Personal/I.\ Personal/III.\ Resources/Images/Wallpaper/n55_pafu/high\ res/DSC03843.高画質.blurred2x_edited.png --namespace backdrop")
         ];
         clipboard.disable-primary = true;
         hotkey-overlay.skip-at-startup = false;
@@ -91,32 +93,33 @@
           # Bindings
           "Mod+Return" = {
             repeat = false;
-            action = spawn "${pkgs.ghostty}/bin/ghostty";
+            action = spawn "${lib.getExe pkgs.ghostty}";
           };
 
           "Mod+R" = {
             repeat = false;
-            action = spawn "${lib.getExe pkgs.fuzzel}";
+            # action = spawn "${lib.getExe pkgs.fuzzel}";
+            action = spawn "${lib.getExe pkgs.walker}";
           };
-          # "Mod+Space" = { repeat = false; action = spawn "${lib.getExe pkgs.fuzzel}"; };
 
-          # "Mod+R" = { repeat = false; action = spawn "${lib.getExe pkgs.fuzzel}"; };
           "Mod+Space" = {
             repeat = false;
-            action = spawn "${lib.getExe inputs.sherlock.packages.${pkgs.system}.default}";
-            # action = spawn "${lib.getExe inputs.vicinae.packages.${pkgs.system}.default}" "toggle";
+            action = spawn "${lib.getExe pkgs.walker}";
           };
 
-          # "Mod+V" = { repeat = false; action = spawn "sh" "-c" "${pkgs.cliphist}/bin/cliphist list | ${pkgs.wofi}/bin/wofi -dmenu | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard-rs}/bin/wl-copy"; };
+          "Mod+V" = {
+            repeat = false;
+            action = spawn "${lib.getExe pkgs.walker}" "-m" "clipboard";
+          };
 
           "Print" = {
             repeat = false;
-            action.screenshot = [];
+            action.screenshot = [ ];
           };
 
           "Mod+Shift+S" = {
             repeat = false;
-            action.screenshot = [];
+            action.screenshot = [ ];
           };
 
           "Mod+E" = {

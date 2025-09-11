@@ -19,9 +19,10 @@
     (with outputs.homeManagerModules; [
       niri
       swaync
-      copyq
+      # copyq
       fastfetch
       fuzzel
+      walker
       #colors
       git
       jujutsu
@@ -51,7 +52,6 @@
       fish
       yazi
       gpg-agent
-      vicinae
     ])
   ];
 
@@ -106,7 +106,9 @@
     # beekeeper-studio
     pkgs.tix.outerbase-studio-desktop
 
-    planify
+    pkgs.tix.waterfox
+
+    # planify
 
     pulsemixer
     gnome-solanum
@@ -115,10 +117,10 @@
     pkgs.stable.gaphor
     qalculate-gtk
     libqalculate
-    deploy-rs
+    # deploy-rs
     ripgrep
     # scc
-    starship
+    # starship
     tealdeer
     joshuto
 
@@ -127,12 +129,12 @@
 
     blueman
 
-    wezterm
-    ghostty
+    # wezterm
+    pkgs.master.ghostty
     bitwarden-desktop
     # clipit
     universal-android-debloater
-    wired
+    # wired
     zellij
     # pkgs.master.zed-editor
     #zoxide
@@ -168,15 +170,15 @@
     brimcap
     # pcmanfm
 
-    vscode
+    # vscode
 
-    r2modman
+    # r2modman
 
-    rustdesk
+    # rustdesk
 
     nautilus
     opencloud-desktop
-    nextcloud-client
+    # nextcloud-client
     fractal
     # element-desktop
     fluffychat
@@ -186,12 +188,11 @@
     obsidian
     simple-scan
     aria2
-    spot
     spotify
-    spotify-tray
-    youtube-music
-    tidal-hifi
-    tidal-dl
+    # spotify-tray
+    # youtube-music
+    # tidal-hifi
+    # tidal-dl
     # cider-2
     # feishin
     # aonsoku
@@ -226,8 +227,8 @@
     zathura
 
     # prismlauncher
-    jdk17
-    libGLU
+    # jdk17
+    # libGLU
 
     telegram-desktop
 
@@ -236,7 +237,7 @@
     # shortwave # radio
     goodvibes
     plexamp
-    newsflash # rss
+    # newsflash # rss
     hieroglyphic # find latex symbols
 
     snapshot

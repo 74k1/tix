@@ -65,6 +65,11 @@
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    elephant.url = "github:abenz1267/elephant";
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
       # NOTE: not overriding since NixOS-WSL is flaky (relies on stable)
@@ -83,9 +88,6 @@
         # flake-parts.follows = "flake-parts";
         # home-manager.follows = "home-manager";
       };
-    };
-    vicinae = {
-      url = "github:vicinaehq/vicinae";
     };
     agenix = {
       url = "github:ryantm/agenix";

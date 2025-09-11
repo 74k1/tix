@@ -84,12 +84,22 @@ in
           package = pkgs.tix-unfree.supply-mono;
           name = "PP Supply Mono";
         };
-        # emoji = {
-        #   package = pkgs.twitter-color-emoji;
-        #   name = "Twemoji";
-        # };
+        emoji = {
+          # package = pkgs.twitter-color-emoji;
+          # name = "Twemoji";
+          package = inputs.apple-emoji.packages.x86_64-linux.apple-emoji-linux;
+          name = "Apple Color Emoji";
+        };
       };
       autoEnable = true;
+      targets = {
+        gtk = {
+          extraCss = /* css */ ''
+            // Remove rounded corners
+            window.background { border-radius: 0; }
+          '';
+        };
+      };
       # targets = {
       #   spicetify.enable = false;
       #   firefox.profileNames = [ "taki" ];
