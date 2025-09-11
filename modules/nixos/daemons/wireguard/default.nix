@@ -10,13 +10,10 @@
   age.secrets."wireguard_private_key" = {
     rekeyFile = "${inputs.self}/secrets/wireguard_private_key.age";
     # mode = "770";
-    # owner = "nextcloud";
-    # group = "nextcloud";
+    # owner = "xyz";
+    # group = "xyz";
   };
 
-  # if internet problems occur, check ip route lol
-  # sudo ip route del default dev wg0
-  # ^ this should do the trick.
   networking = {
     nat = {
       enable = true;
@@ -41,40 +38,18 @@
         privateKeyFile = config.age.secrets."wireguard_private_key".path;
 
         peers = [
-          # TODO
           {
-            # knights / proxy
+            # knights
             publicKey = "dVVhzsUPOT4ln5v4agYw/MxhIb8frEp74oSEIIadgH0=";
             allowedIPs = [
               "10.100.0.2/32"
             ];
           }
           {
-            # cyberia
-            publicKey = "eR6y0rHuhb+qhBaZWWigQnjHjZ1m4oRJzYVPrv3CgBM=";
-            allowedIPs = [
-              "10.100.0.10/32"
-            ];
-          }
-          {
-            # MAGI
-            publicKey = "JOf290ilGAOw2msc6aQsE+oSjvLA1g9Cvw6RvmsTJj4=";
+            # duvet
+            publicKey = "PTH6K+9jQgVfa7zB9CYoCC8abQ6kM2ioWElycyN0Ky4=";
             allowedIPs = [
               "10.100.0.3/32"
-            ];
-          }
-          {
-            # NERV
-            publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
-            allowedIPs = [
-              "10.100.0.4/32"
-            ];
-          }
-          {
-            # EVA
-            publicKey = "qL6QmOPbBx6Ej7HzNE/HwRo4vPts7EbTfIr/QMBIcyw=";
-            allowedIPs = [
-              "10.100.0.5/32"
             ];
           }
         ];

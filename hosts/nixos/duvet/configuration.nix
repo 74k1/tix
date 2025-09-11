@@ -10,15 +10,21 @@
 {
   # See [NixOS on Hetzner Cloud Wiki](https://wiki.nixos.org/wiki/Install_NixOS_on_Hetzner_Cloud)
 
+  age.secrets = {
+    "duvet_wireguard_private_key" = {
+      rekeyFile = "${inputs.self}/secrets/duvet_wireguard_private_key.age";
+    };
+  };
+
   imports = with outputs.nixosModules; [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
-    # inputs.agenix.nixosModules.default
-    # inputs.agenix-rekey.nixosModules.default
+    inputs.agenix.nixosModules.default
+    inputs.agenix-rekey.nixosModules.default
 
     # fail2ban
-    # vector
+    vector
 
     locale
     nix
@@ -31,6 +37,22 @@
 
   documentation.nixos.enable = false;
 
+  age.rekey = {
+    # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
+    # use strictly `ssh-keyscan <remote ip>` from host
+    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC0pG+xpBOghFWXY7eQHOxyGuWzh2NrcLp7e9Kpgjooq duvet";
+    # The path to the master identity used for decryption. See the option's description for more information.
+    masterIdentities = [
+      "${inputs.self}/secrets/identities/yubikey-1-on-person.pub"
+      "${inputs.self}/secrets/identities/yubikey-2-at-home.pub"
+    ];
+    storageMode = "local";
+    # Choose a dir to store the rekeyed secrets for this host.
+    # This cannot be shared with other hosts. Please refer to this path
+    # from your flake's root directory and not by a direct path literal like ./secrets
+    localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
+  };
+
   networking = {
     hostName = "duvet"; # Define your hostname.
     networkmanager.enable = true;
@@ -40,12 +62,30 @@
         80
         443
         2202
+        51820
       ];
       allowedTCPPorts = [
         80
         443
         2202
+        51820
       ];
+    };
+    wireguard.interfaces = {
+      wg0 = {
+        ips = [ "10.100.0.3/24" ];
+        listenPort = 51820;
+        privateKeyFile = config.age.secrets."duvet_wireguard_private_key".path;
+        peers = [
+          {
+            # wg server
+            publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
+            allowedIPs = [ "10.100.0.1" ];
+            endpoint = "${allSecrets.global.pub_ip}:51820";
+            persistentKeepalive = 25;
+          }
+        ];
+      };
     };
   };
 
@@ -129,36 +169,35 @@
       recommendedOptimisation = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
+      commonHttpConfig = ''
+        log_format graylog_json escape=json '{ "nginx_timestamp": "$time_iso8601", '
+          '"remote_addr": "$remote_addr", '
+          '"connection": "$connection", '
+          '"connection_requests": $connection_requests, '
+          '"pipe": "$pipe", '
+          '"body_bytes_sent": $body_bytes_sent, '
+          '"request_length": $request_length, '
+          '"request_time": $request_time, '
+          '"response_status": $status, '
+          '"request": "$request", '
+          '"request_method": "$request_method", '
+          '"host": "$host", '
+          '"upstream_cache_status": "$upstream_cache_status", '
+          '"upstream_addr": "$upstream_addr", '
+          '"http_x_forwarded_for": "$http_x_forwarded_for", '
+          '"http_referrer": "$http_referer", '
+          '"http_user_agent": "$http_user_agent", '
+          '"http_version": "$server_protocol", '
+          '"remote_user": "$remote_user", '
+          '"http_x_forwarded_proto": "$http_x_forwarded_proto", '
+          '"upstream_response_time": "$upstream_response_time", '
+          '"nginx_access": true }';
 
-      # commonHttpConfig = ''
-      #   log_format graylog_json escape=json '{ "nginx_timestamp": "$time_iso8601", '
-      #     '"remote_addr": "$remote_addr", '
-      #     '"connection": "$connection", '
-      #     '"connection_requests": $connection_requests, '
-      #     '"pipe": "$pipe", '
-      #     '"body_bytes_sent": $body_bytes_sent, '
-      #     '"request_length": $request_length, '
-      #     '"request_time": $request_time, '
-      #     '"response_status": $status, '
-      #     '"request": "$request", '
-      #     '"request_method": "$request_method", '
-      #     '"host": "$host", '
-      #     '"upstream_cache_status": "$upstream_cache_status", '
-      #     '"upstream_addr": "$upstream_addr", '
-      #     '"http_x_forwarded_for": "$http_x_forwarded_for", '
-      #     '"http_referrer": "$http_referer", '
-      #     '"http_user_agent": "$http_user_agent", '
-      #     '"http_version": "$server_protocol", '
-      #     '"remote_user": "$remote_user", '
-      #     '"http_x_forwarded_proto": "$http_x_forwarded_proto", '
-      #     '"upstream_response_time": "$upstream_response_time", '
-      #     '"nginx_access": true }';
-      #
-      #   access_log syslog:server=127.0.0.1:9000 graylog_json;
-      #
-      #   access_log /var/log/nginx/access.log;
-      #   error_log /var/log/nginx/error.log;
-      # '';
+        access_log syslog:server=127.0.0.1:9000 graylog_json;
+
+        access_log /var/log/nginx/access.log;
+        error_log /var/log/nginx/error.log;
+      '';
 
       virtualHosts = {
         "ip.74k1.sh" = {
