@@ -16,8 +16,8 @@
     #   # group = "";
     # };
 
-    "namecheap_api_secrets" = {
-      rekeyFile = "${inputs.self}/secrets/namecheap_api_secrets.age";
+    "hetzner_nixos_api_secrets" = {
+      rekeyFile = "${inputs.self}/secrets/hetzner_nixos_api_secrets.age";
     };
   };
 
@@ -244,108 +244,59 @@
       '';
 
       virtualHosts = {
-        "eiri.${allSecrets.global.domain01}" = {
+        "i.${allSecrets.global.domain03}" = {
           addSSL = true;
           # enableACME = true;
-          useACMEHost = "eiri.${allSecrets.global.domain01}";
+          useACMEHost = "i.${allSecrets.global.domain03}";
           locations."/" = {
             proxyPass = "http://${allSecrets.per_host.eiri.int_ip}";
           };
         };
-        "transmission.eiri.${allSecrets.global.domain01}" = {
+        "transmission.i.${allSecrets.global.domain03}" = {
           addSSL = true;
           # enableACME = true;
-          useACMEHost = "eiri.${allSecrets.global.domain01}";
+          useACMEHost = "i.${allSecrets.global.domain03}";
           locations."/" = {
             # proxyPass = "http://${config.vpnNamespaces.prtr.namespaceAddress}:9091";
             proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:9091";
-            # proxyWebsockets = true;
-          };
-        };
-        # "baikal.eiri.${allSecrets.global.domain01}" = {
-        #   addSSL = true;
-        #   # enableACME = true;
-        #   useACMEHost = "eiri.${allSecrets.global.domain01}";
-        # };
-        # "booklore.eiri.${allSecrets.global.domain01}" = {
-        #   addSSL = true;
-        #   extraConfig = ''
-        #     client_max_body_size 1000M;
-        #   '';
-        #   locations = {
-        #     "/" = {
-        #       proxyPass = "http://localhost:8888";
-        #       proxyWebsockets = true;
-        #     };
-        #
-        #     "/api/" = {
-        #       proxyPass = "http://localhost:8889";
-        #       recommendedProxySettings = lib.mkDefault true;
-        #       extraConfig = ''
-        #         proxy_set_header X-Forwarded-Port $server_port;
-        #         proxy_buffer_size 128k;
-        #         proxy_buffers 4 256k;
-        #         proxy_busy_buffers_size 256k;
-        #       '';
-        #     };
-        #
-        #     "/ws" = {
-        #       proxyPass = "http://localhost:8889/ws";
-        #       recommendedProxySettings = lib.mkDefault true;
-        #       proxyWebsockets = true;
-        #     };
-        #   };
-        #   # enableACME = true;
-        #   useACMEHost = "eiri.${allSecrets.global.domain01}";
-        # };
-        "rd.eiri.${allSecrets.global.domain01}" = {
-          addSSL = true;
-          useACMEHost = "eiri.${allSecrets.global.domain01}";
-          locations."/" = {
-            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:21116";
             proxyWebsockets = true;
           };
         };
-        "graylog.eiri.${allSecrets.global.domain01}" = {
+        "overseerr.i.${allSecrets.global.domain03}" = {
           addSSL = true;
-          useACMEHost = "eiri.${allSecrets.global.domain01}";
-          locations."/" = {
-            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:9000";
-            proxyWebsockets = true;
-          };
-        };
-        "chat.eiri.${allSecrets.global.domain01}" = {
-          addSSL = true;
-          useACMEHost = "eiri.${allSecrets.global.domain01}";
-          locations."/" = {
-            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:3335";
-            proxyWebsockets = true;
-          };
-        };
-        "overseerr.eiri.${allSecrets.global.domain01}" = {
-          addSSL = true;
-          useACMEHost = "eiri.${allSecrets.global.domain01}";
+          useACMEHost = "i.${allSecrets.global.domain03}";
           locations."/" = {
             proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:5055";
             proxyWebsockets = true;
           };
         };
-        "karakeep.eiri.${allSecrets.global.domain01}" = {
+
+        "grafana.i.${allSecrets.global.domain03}" = {
           addSSL = true;
-          useACMEHost = "eiri.${allSecrets.global.domain01}";
+          useACMEHost = "i.${allSecrets.global.domain03}";
           locations."/" = {
-            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:3400";
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:3100";
             proxyWebsockets = true;
           };
         };
-        "n8n.eiri.${allSecrets.global.domain01}" = {
+
+        "prometheus.i.${allSecrets.global.domain03}" = {
           addSSL = true;
-          useACMEHost = "eiri.${allSecrets.global.domain01}";
+          useACMEHost = "i.${allSecrets.global.domain03}";
           locations."/" = {
-            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:5678";
-            proxyWebsockets = true;
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:${toString config.services.prometheus.port}";
+            # proxyWebsockets = true;
           };
         };
+
+        # "n8n.i.${allSecrets.global.domain03}" = {
+        #   addSSL = true;
+        #   useACMEHost = "i.${allSecrets.global.domain03}";
+        #   locations."/" = {
+        #     proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:5678";
+        #     proxyWebsockets = true;
+        #   };
+        # };
       };
     };
   };
@@ -378,29 +329,24 @@
   security.acme = {
     acceptTerms = true;
     defaults = {
+      # dnsResolver = "9.9.9.9:53";
       email = "${allSecrets.global.mail.acme}";
       group = "nginx";
     };
-    certs =
-      let
-        inherit (allSecrets.global) domain01;
-      in
-      {
-        "eiri.${domain01}" = {
-          domain = "eiri.${domain01}";
-          dnsProvider = "namecheap";
-          dnsPropagationCheck = false;
-          environmentFile = config.age.secrets."namecheap_api_secrets".path;
-          # credentialFiles = {
-          #   "NAMECHEAP_API_KEY_FILE" = ;
-          #   "NAMECHEAP_API_USER_FILE" = ;
-          # };
-          extraDomainNames = [
-            "*.eiri.${domain01}"
-          ];
-          webroot = null;
-        };
+    certs = {
+      "i.${allSecrets.global.domain03}" = {
+        domain = "i.${allSecrets.global.domain03}";
+        dnsProvider = "hetzner";
+
+        dnsPropagationCheck = false;
+
+        # HETZNER_API_TOKEN
+        # HETZNER_POLLING_INTERVAL
+        environmentFile = config.age.secrets."hetzner_nixos_api_secrets".path;
+        extraDomainNames = [ "*.i.${allSecrets.global.domain03}" ];
+        webroot = null;
       };
+    };
   };
 
   # Open ports in the firewall.
@@ -416,5 +362,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }

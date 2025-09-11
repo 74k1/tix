@@ -10,6 +10,6 @@
 {
   services.baikal = {
     enable = true;
-    virtualHost = "baikal.eiri.${allSecrets.global.domain01}";
+    virtualHost = "baikal.i.${allSecrets.global.domain03}";
   };
 }

@@ -530,7 +530,7 @@
           #     proxyPass = "http://10.100.0.1:5678"
           #   };
           # };
-          "chatai.${allSecrets.global.domain01}" = {
+          "chatai.${allSecrets.global.domain03}" = {
             enableACME = true;
             forceSSL = true;
             locations."/" = {

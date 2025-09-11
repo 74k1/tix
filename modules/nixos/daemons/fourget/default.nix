@@ -24,8 +24,8 @@
 
     nginx = {
       enable = true;
-      hostName = "6get.eiri.${allSecrets.global.domain01}";
-      useACMEHost = "eiri.${allSecrets.global.domain01}";
+      hostName = "forget.i.${allSecrets.global.domain03}";
+      useACMEHost = "i.${allSecrets.global.domain03}";
       forceSSL = true;
       # openFirewall = true;
     };

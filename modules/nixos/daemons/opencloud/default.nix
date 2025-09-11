@@ -31,7 +31,7 @@
         tls = false;
         auto_provision_accounts = true;
         oidc = {
-          issuer = "https://auth.${allSecrets.global.domain00}";
+          issuer = allSecrets.per_service.pocket-id.issuer_url;
           rewrite_well_known = true;
         };
         role_assignment = {
@@ -46,8 +46,8 @@
           "'self'"
           "blob:"
           "https://files.${allSecrets.global.domain00}/"
-          "https://auth.${allSecrets.global.domain00}/"
-          "https://auth.${allSecrets.global.domain00}/.well-known/openid-configuration"
+          allSecrets.per_service.pocket-id.issuer_url
+          allSecrets.per_service.pocket-id.oidc_discovery_url
           "https://raw.githubusercontent.com/opencloud-eu/awesome-apps/"
           "https://update.opencloud.eu/"
         ];
@@ -57,8 +57,8 @@
         frame-src = [
           "'self'"
           "blob:"
-          "https://files.${allSecrets.global.domain00}/"
-          "https://auth.${allSecrets.global.domain00}/"
+          allSecrets.per_service.pocket-id.issuer_url
+          allSecrets.per_service.pocket-id.oidc_discovery_url
           "https://embed.diagrams.net/"
         ];
         img-src = [
@@ -78,7 +78,7 @@
           "'unsafe-inline'"
           "'unsafe-eval'"
           "https://files.${allSecrets.global.domain00}/"
-          "https://auth.${allSecrets.global.domain00}/"
+          allSecrets.per_service.pocket-id.issuer_url
         ];
         style-src = [
           "'self'"

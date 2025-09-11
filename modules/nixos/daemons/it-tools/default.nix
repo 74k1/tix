@@ -16,7 +16,7 @@
     enable = true;
     nginx = {
       enable = true;
-      domain = "it.${allSecrets.global.domain01}";
+      domain = "it.${allSecrets.global.domain03}";
       # forceSSL = false;
       # enableACME = false;
     };

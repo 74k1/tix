@@ -20,7 +20,7 @@
       # i use meilisearch :)
       enable = false;
       extraEnvironment = {
-        # NEXTAUTH_URL = "karakeep.eiri.${allSecrets.global.domain01}";
+        # NEXTAUTH_URL = "karakeep.i.${allSecrets.global.domain03}";
         PORT = "3400";
         DISABLE_NEW_RELEASE_CHECK = "false";
         DISABLE_SIGNUPS = "true";
