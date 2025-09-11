@@ -51,7 +51,7 @@
           inputs.tixpkgs-unfree.packages.x86_64-linux.lettera-mono
           inputs.tixpkgs-unfree.packages.x86_64-linux.playfair-display
           inputs.tixpkgs-unfree.packages.x86_64-linux.poltawski-nowy
-          inputs.apple-emoji.packages.x86_64-linux.apple-emoji-linux
+          inputs.tixpkgs-unfree.packages.x86_64-linux.apple-emoji
           inputs.tixpkgs-unfree.packages.x86_64-linux.new-york
           inputs.tixpkgs-unfree.packages.x86_64-linux.sf-compact
           inputs.tixpkgs-unfree.packages.x86_64-linux.sf-mono
