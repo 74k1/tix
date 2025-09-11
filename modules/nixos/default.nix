@@ -21,6 +21,7 @@
   nextcloud = import ./daemons/nextcloud;
   nix = import ./nix;
   nvidia = import ./nvidia;
+  opencloud = import ./daemons/opencloud;
   openssh = import ./daemons/openssh;
   outline = import ./daemons/outline;
   paperless = import ./daemons/paperless;

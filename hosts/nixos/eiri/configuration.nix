@@ -65,6 +65,7 @@
     # glance
     it-tools
     nextcloud
+    opencloud
     umami
     nix
     nvidia

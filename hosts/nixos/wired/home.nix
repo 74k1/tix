@@ -175,6 +175,7 @@
     rustdesk
 
     nautilus
+    opencloud-desktop
     nextcloud-client
     fractal
     google-chrome

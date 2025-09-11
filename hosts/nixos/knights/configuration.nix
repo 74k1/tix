@@ -178,10 +178,10 @@
 
     nginx = {
       enable = true;
-      recommendedGzipSettings = true;
-      recommendedOptimisation = true;
-      recommendedProxySettings = true;
-      recommendedTlsSettings = true;
+      # recommendedGzipSettings = true;
+      # recommendedOptimisation = true;
+      # recommendedProxySettings = true;
+      # recommendedTlsSettings = true;
       commonHttpConfig = ''
         log_format graylog_json escape=json '{ "nginx_timestamp": "$time_iso8601", '
           '"remote_addr": "$remote_addr", '
@@ -319,26 +319,49 @@
           #   };
           # };
           # Opencloud!
-          # "files.${domain00}" = {
-          #   addSSL = true;
-          #   useACMEHost = "${allSecrets.global.domain00}";
-          #   locations = {
-          #     "/" = {
-          #       proxyPass = "http://10.100.0.1:80";
-          #       extraConfig = ''
-          #         client_max_body_size 100G;
-          #         client_body_buffer_size 400M;
-          #       '';
-          #     };
-          #     # "/.well-known/carddav" = {
-          #     #   return = "301 $scheme://$host$remote.php/dav";
-          #     # };
-          #     # "/.well-known/caldav" = {
-          #     #   return = "301 $scheme://$host$remote.php/dav";
-          #     # };
-          #   };
-          # };
-          # change mum n sister
+          "files.${domain00}" = {
+            forceSSL = true;
+            useACMEHost = "${allSecrets.global.domain00}";
+            # http2 = false;
+            extraConfig = /* nginx */ ''
+              # Increase max upload size (required for Tus — without this, uploads over 1 MB fail)
+              client_max_body_size 100G;
+              client_body_buffer_size 400M;
+
+              # Disable buffering
+              proxy_buffering off;
+              proxy_request_buffering off;
+
+              # Extend timeouts for long connections
+              # proxy_read_timeout 3600s;
+              # proxy_send_timeout 3600s;
+              # keepalive_timeout 3600s;
+
+              # Extend timeouts for long connections
+              proxy_read_timeout 3600s;
+              proxy_send_timeout 3600s;
+              keepalive_requests 100000;
+              keepalive_timeout 5m;
+              http2_max_concurrent_streams 512;
+
+              # Prevent nginx from trying other upstreams
+              proxy_next_upstream off;
+            '';
+            locations."/" = {
+              proxyPass = "http://10.100.0.1:9200";
+              proxyWebsockets = true;
+              extraConfig = /* nginx */ ''
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+
+              '';
+            };
+            # http3 = true;
+            # quic = true;
+          };
+          # notify active users
           # "immich.${domain00}" = {
           #   addSSL = true;
           #   useACMEHost = "${allSecrets.global.domain00}";
