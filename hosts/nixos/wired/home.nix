@@ -22,7 +22,7 @@
       # copyq
       fastfetch
       fuzzel
-      walker
+      # walker
       #colors
       git
       jujutsu
@@ -79,17 +79,20 @@
   home.packages = with pkgs; [
     # inputs.hythera-waterfox.outputs.legacyPackages.${system}.waterfox
 
+    uutils-coreutils-noprefix
+
     # theme
     papirus-icon-theme
 
     # my own scriptiboo
-    # pkgs.tix.duvolbr
     # pkgs.tix-unfree.berkeley-nolig-otf
     pkgs.tix-unfree.suisse-intl-mono
     pkgs.tix-unfree.supply-mono
     pkgs.tix-unfree.supply-sans
     fragment-mono
     ibm-plex
+
+    pkgs.tix.arcbrush
 
     # uhhh clipboard
     wl-clipboard-rs
@@ -109,6 +112,9 @@
 
     nh
 
+    pixieditor
+    pi-coding-agent
+
     # beekeeper-studio
     pkgs.tix.outerbase-studio-desktop
 
@@ -119,6 +125,7 @@
     # planify
 
     pulsemixer
+    gh
     gnome-solanum
     inkscape
     qmk
@@ -150,7 +157,7 @@
     # wired
     zellij
     pkgs.zed-editor
-    opencode
+    pkgs.master.opencode
     #zoxide
     typst
     moonlight-qt
@@ -267,7 +274,7 @@
     # zoom-us
     onlyoffice-desktopeditors
 
-    wireshark
+    # wireshark
 
     # fonts
     #material-symbols
@@ -308,5 +315,25 @@
   # enable wezterm transparency
   programs.wezterm = {
     transparency = true;
+  };
+
+  systemd.user.services.grant-camera-portal = {
+    Unit = {
+      Description = "Pre-authorize camera portal for unsandboxed apps";
+      After = [ "xdg-permission-store.service" ];
+      Requires = [ "xdg-permission-store.service" ];
+    };
+    Service = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart =
+        let
+          busctl = "${pkgs.dbus}/bin/busctl";
+        in
+        "${busctl} --user call org.freedesktop.impl.portal.PermissionStore /org/freedesktop/impl/portal/PermissionStore org.freedesktop.impl.portal.PermissionStore SetPermission sbssas devices true camera '' 1 yes";
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
   };
 }

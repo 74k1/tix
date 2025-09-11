@@ -242,7 +242,7 @@
 
     fprintd = {
       # fingerprint
-      enable = true;
+      enable = false;
       # tod = {
       #   enable = true;
       #   driver = pkgs.tix.libfprint-focaltech-gpd;
