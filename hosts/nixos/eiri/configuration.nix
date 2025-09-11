@@ -47,7 +47,7 @@
     scrutiny
 
     # baikal
-    booklore
+    # booklore
     rsshub 
 
     n8n
@@ -247,37 +247,37 @@
         #   # enableACME = true;
         #   useACMEHost = "eiri.${allSecrets.global.domain01}";
         # };
-        "booklore.eiri.${allSecrets.global.domain01}" = {
-          addSSL = true;
-          extraConfig = ''
-            client_max_body_size 1000M;
-          '';
-          locations = {
-            "/" = {
-              proxyPass = "http://localhost:8888";
-              proxyWebsockets = true;
-            };
-
-            "/api/" = {
-              proxyPass = "http://localhost:8889";
-              recommendedProxySettings = lib.mkDefault true;
-              extraConfig = ''
-                proxy_set_header X-Forwarded-Port $server_port;
-                proxy_buffer_size 128k;
-                proxy_buffers 4 256k;
-                proxy_busy_buffers_size 256k;
-              '';
-            };
-
-            "/ws" = {
-              proxyPass = "http://localhost:8889/ws";
-              recommendedProxySettings = lib.mkDefault true;
-              proxyWebsockets = true;
-            };
-          };
-          # enableACME = true;
-          useACMEHost = "eiri.${allSecrets.global.domain01}";
-        };
+        # "booklore.eiri.${allSecrets.global.domain01}" = {
+        #   addSSL = true;
+        #   extraConfig = ''
+        #     client_max_body_size 1000M;
+        #   '';
+        #   locations = {
+        #     "/" = {
+        #       proxyPass = "http://localhost:8888";
+        #       proxyWebsockets = true;
+        #     };
+        #
+        #     "/api/" = {
+        #       proxyPass = "http://localhost:8889";
+        #       recommendedProxySettings = lib.mkDefault true;
+        #       extraConfig = ''
+        #         proxy_set_header X-Forwarded-Port $server_port;
+        #         proxy_buffer_size 128k;
+        #         proxy_buffers 4 256k;
+        #         proxy_busy_buffers_size 256k;
+        #       '';
+        #     };
+        #
+        #     "/ws" = {
+        #       proxyPass = "http://localhost:8889/ws";
+        #       recommendedProxySettings = lib.mkDefault true;
+        #       proxyWebsockets = true;
+        #     };
+        #   };
+        #   # enableACME = true;
+        #   useACMEHost = "eiri.${allSecrets.global.domain01}";
+        # };
         "rd.eiri.${allSecrets.global.domain01}" = {
           addSSL = true;
           useACMEHost = "eiri.${allSecrets.global.domain01}";
