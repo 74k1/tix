@@ -43,6 +43,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+    aurora = {
+      url = "git+ssh://forge@git.yukume.com/74k1/aurora.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    vesper = {
+      url = "git+ssh://forge@git.yukume.com/74k1/vesper.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # --- TESTS / FIXES
     hythera-waterfox = {
       url = "github:hythera/nixpkgs/pkgs/waterfox/init";

@@ -3,7 +3,6 @@
   lib,
   pkgs,
   inputs,
-  outputs,
   ...
 }:
 {
@@ -14,7 +13,6 @@
   home.packages = with pkgs; [
     nautilus
     gnome-keyring
-    # wofi
     wl-clipboard-rs
     xwayland-satellite
     inputs.ukiyo.packages.x86_64-linux.default
@@ -50,20 +48,7 @@
     {
       enable = true;
       # package = pkgs.niri;
-      package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable.overrideAttrs (oldAttrs: let
-          src = pkgs.fetchFromGitHub {
-            owner = "niri-wm";
-            repo = "niri";
-            rev = "0ca60209c54997624f1e1249f78e0437d8da1969";
-            hash = "sha256-686V3zTE19k0UT588Qffk89PLtTKRdwdFHAxUq4syYw=";
-          };
-        in {
-          inherit src;
-          cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
-            inherit src;
-            hash = "sha256-soJYT6TavlyqtVqMD70QYDZ+8swn6TVXsFHadJxaxWo=";
-          };
-        });
+      package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
       # config = /* kdl */ {
       # };
       settings = {
@@ -97,8 +82,6 @@
           # Multimedia
           "XF86AudioPlay".action = spawn "${lib.getExe pkgs.playerctl}" "play-pause";
           "XF86AudioPause".action = spawn "${lib.getExe pkgs.playerctl}" "play-pause";
-          # "XF86AudioNext".action = spawn "${pkgs.tix.duvolbr}/bin/duvolbr" "next_track";
-          # "XF86AudioPrev".action = spawn "${pkgs.tix.duvolbr}/bin/duvolbr" "prev_track";
           "XF86AudioNext".action = spawn "${lib.getExe pkgs.playerctl}" "next";
           "XF86AudioPrev".action = spawn "${lib.getExe pkgs.playerctl}" "previous";
 
@@ -119,13 +102,14 @@
           "Mod+R" = {
             repeat = false;
             # action = spawn "${lib.getExe pkgs.fuzzel}";
-            action = spawn "${lib.getExe pkgs.walker}";
+            # action = spawn "${lib.getExe pkgs.walker}";
+            # action = spawn "${lib.getExe inputs.sherlock-gpui.packages.${pkgs.stdenv.hostPlatform.system}.default}";
+            action = spawn "${lib.getExe pkgs.master.ghostty}" "--title=aurora-run" "--window-width=64" "--window-height=16" "-e" "aurora" "--icons" "--run";
           };
 
           "Mod+Space" = {
             repeat = false;
-            action = spawn "${lib.getExe inputs.sherlock-gpui.packages.${pkgs.stdenv.hostPlatform.system}.default}";
-            # action = spawn "${lib.getExe pkgs.walker}";
+            action = spawn "${lib.getExe pkgs.master.ghostty}" "--title=aurora-run" "--window-width=64" "--window-height=16" "-e" "aurora" "--icons" "--run";
           };
 
           "Mod+V" = {
@@ -164,12 +148,12 @@
             # action = spawn "sh" "-c" "${niri} msg action set-dynamic-cast-window --id $(${niri} msg --json list-windows | ${jq} '.[] | select(.is_active) | .id' | head -1)";
           };
 
-          "Mod+Shift+P" = {
+          "Mod+Ctrl+P" = {
             repeat = false;
             action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action clear-dynamic-cast-target";
           };
 
-          "Mod+Ctrl+P" = {
+          "Mod+Shift+P" = {
             repeat = false;
             action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action set-dynamic-cast-monitor";
           };
@@ -426,7 +410,12 @@
                 matches = [ { app-id = "app.drey.PaperPlane"; } ];
                 block-out-from = "screencast";
               }
-              
+              {
+                matches = [
+                  { title = "^aurora-run$"; }
+                ];
+                open-floating = true;
+              }              
               {
                 matches = [
                   { app-id = "^(zen|zen-.*|firefox|chromium-browser|edge|chrome-.*)$"; }

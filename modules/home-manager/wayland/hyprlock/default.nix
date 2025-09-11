@@ -22,7 +22,7 @@
       background = lib.mkForce [
         {
           monitor = "";
-          path = lib.mkForce "/home/taki/docs/opencloud/Personal/I. Personal/III. Resources/Images/Wallpaper/2026/03/toeru.png";
+          path = lib.mkForce "/home/taki/docs/opencloud/Personal/I. Personal/III. Resources/Images/Wallpaper/2026/04/toeru.png";
           blur_passes = 2;
           # blur_size = 15;
           noise = "0.2";

@@ -94,6 +94,9 @@
 
     pkgs.tix.arcbrush
 
+    inputs.aurora.outputs.packages.x86_64-linux.default
+    inputs.vesper.outputs.packages.x86_64-linux.default
+
     # uhhh clipboard
     wl-clipboard-rs
 
