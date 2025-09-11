@@ -55,9 +55,6 @@
       # config = /* kdl */ {
       # };
       settings = {
-        includes = lib.mkAfter [
-          (./blur.kdl)
-        ];
         environment = {
           # CLUTTER_BACKEND = "wayland";
           # SDL_VIDEODRIVER = "wayland";
@@ -348,6 +345,13 @@
             matches = [ { namespace = "^awww-daemonbackdrop$"; } ];
             place-within-backdrop = true;
           }
+          {
+            matches = [ { namespace = "^waybar$"; } ];
+            background-effect = {
+              blur = true;
+              xray = false;
+            };
+          }
         ];
         prefer-no-csd = true;
         window-rules =
@@ -537,6 +541,13 @@
                   x = 32;
                   y = 32;
                   relative-to = "top-right";
+                };
+              }
+              {
+                # blur every window (no match), mirroring the old blur.kdl window-rule
+                background-effect = {
+                  blur = true;
+                  xray = false;
                 };
               }
 

@@ -158,6 +158,9 @@
 
   taki.gui.enable = true;
 
+  # niri session for greetd (not auto-registered by its HM module)
+  services.displayManager.sessionPackages = [ pkgs.niri ];
+
   # XDG
   xdg.portal = {
     enable = true;
@@ -204,13 +207,10 @@
     fstrim.enable = true; # M.2 SSD
     greetd = {
       enable = true;
-      # package = pkgs.greetd.tuigreet;
-      # useTextGreeter = true;
       settings = {
-        # terminal.vt = 1;
         default_session = {
-          user = "taki";
-          command = "${pkgs.greetd}/bin/agreety --cmd ${lib.getExe' pkgs.niri "niri-session"}";
+          user = "greeter";
+          command = "${lib.getExe pkgs.tuigreet} --time --remember --remember-session --asterisks";
         };
       };
     };
@@ -421,6 +421,14 @@
           };
         };
       };
+      extraConfig.pipewire."92-quantum" = {
+        "context.properties" = {
+          "default.clock.min-quantum" = 32;
+          "default.clock.max-quantum" = 8192;
+          "default.clock.quantum" = 2048;
+        };
+      };
+
       # If you want to use JACK applications, uncomment this
       #jack.enable = true;
     };
