@@ -7,19 +7,19 @@
 }:
 
 let
-  spicePkgs = inputs.spicetify-nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in
 {
   # import the flake's module
   imports = [
-    inputs.spicetify-nix.homeManagerModules
+    inputs.spicetify-nix.homeManagerModules.default
   ];
 
   # configure spicetify :)
   programs.spicetify = {
     enable = true;
     theme = lib.mkForce spicePkgs.themes.text;
-    colorScheme = "custom";
+    colorScheme = lib.mkForce "custom";
     # TODO
     customColorScheme = {
       accent = "5665FB";
