@@ -22,6 +22,7 @@
   nix = import ./nix;
   nvidia = import ./nvidia;
   openssh = import ./daemons/openssh;
+  outline = import ./daemons/outline;
   paperless = import ./daemons/paperless;
   pcscd = import ./daemons/pcscd;
   pds = import ./daemons/pds;

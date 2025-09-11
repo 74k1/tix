@@ -36,6 +36,7 @@
     restic
     vaultwarden
     pocket-id
+    outline
     # pds
 
     # Mid importance
