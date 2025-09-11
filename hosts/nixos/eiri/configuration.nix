@@ -47,6 +47,9 @@
     loki
     alloy
 
+
+    multi-scrobbler
+
     fourget
 
     # everything else

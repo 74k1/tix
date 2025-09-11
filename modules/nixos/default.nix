@@ -20,6 +20,7 @@
   loki = import ./daemons/loki;
   memos = import ./daemons/memos;
   miniflux = import ./daemons/miniflux;
+  multi-scrobbler = import ./daemons/multi-scrobbler;
   murmur = import ./daemons/murmur;
   n8n = import ./daemons/n8n;
   navidrome = import ./daemons/navidrome;

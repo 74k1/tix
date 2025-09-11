@@ -314,6 +314,40 @@
           #     proxyWebsockets = true;
           #   };
           # };
+          "scrobble.${domain01}" = {
+            addSSL = true;
+            enableACME = true;
+            locations."= /tinyauth" = {
+              proxyPass = "https://auth.${domain01}/api/auth/nginx";
+              extraConfig = /* nginx */ ''
+                internal;
+                proxy_pass_request_body off;
+                proxy_set_header Content-Length "";
+                proxy_set_header x-forwarded-proto $scheme;
+                proxy_set_header x-forwarded-host $http_host;
+                proxy_set_header x-forwarded-uri $request_uri;
+              '';
+            };
+            locations."/" = {
+              proxyPass = "http://10.100.0.1:9078";
+              recommendedProxySettings = true;
+              extraConfig = /* nginx */ ''
+                auth_request /tinyauth;
+                error_page 401 = @tinyauth_login;
+                error_page 403 = @tinyauth_unauthorized;
+              '';
+            };
+            extraConfig = ''
+              location @tinyauth_login {
+                return 302 https://auth.${domain01}/login?redirect_uri=$scheme://$http_host$request_uri;
+              }
+
+              location @tinyauth_unauthorized {
+                return 302 https://auth.${domain01}/unauthorized?username=unavailable;
+              }
+            '';
+          };
+
           "auth.${domain01}" = {
             addSSL = true;
             enableACME = true;
