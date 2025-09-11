@@ -276,17 +276,14 @@
       ];
     };
     "/mnt/koi" = {
-      device = "${allSecrets.per_host.koi.int_ip}:/volume1/backup"; # TODO
+      device = "${allSecrets.per_host.koi.int_ip}:/volume1/backup";
       fsType = "nfs";
       options = [
         "rw"
         "noatime"
         "nfsvers=4.1"
-        "x-systemd.automount" # auto mount on use
-        "x-systemd.idle-timeout=3600" # disconnect after 60 minutes
-        "noauto" # auto mount on use
         "nofail"
-        "_netdev" # wait for network
+        "_netdev"
       ];
     };
   };
