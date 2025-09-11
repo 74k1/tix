@@ -38,8 +38,8 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     home-manager = {
-      # url = "github:nix-community/home-manager/master";
-      url = "git+file:///home/taki/dev/home-manager";
+      url = "github:nix-community/home-manager/master";
+      # url = "git+file:///home/taki/dev/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
@@ -112,8 +112,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     yeetmouse = {
-      # url = "github:AndyFilter/YeetMouse/driver/experimental?dir=nix";
-      url = "github:kitten/YeetMouse/@kitten/feat/update-nix-module-options?dir=nix";
+      url = "github:AndyFilter/YeetMouse/driver/experimental?dir=nix";
+      # url = "github:kitten/YeetMouse/@kitten/feat/update-nix-module-options?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
