@@ -18,7 +18,7 @@
           adaptiveSync = false;
           criteria = "eDP-1";
           mode = "1600x2560@144";
-          scale = 1.75;
+          scale = 2.0;
           transform = "270";
         };
       }
@@ -39,6 +39,15 @@
           position = "0,0";
           scale = 1.0;
           transform = "90";
+        };
+      }
+      {
+        output = {
+          adaptiveSync = false;
+          criteria = "PNP(AOC) 16T3E 1THQCHA000622";
+          mode = "1920x1080@75";
+          position = "-2560,0";
+          scale = 1.0;
         };
       }
       {
@@ -89,13 +98,8 @@
               status = "enable";
             }
             {
-              adaptiveSync = false;
-              criteria = "ASUSTek COMPUTER INC MQ16AHE S8LMTF100577";
-              mode = "1920x1080@60.000";
-              position = "-1080,0";
-              scale = 1.0;
+              criteria = "PNP(AOC) 16T3E 1THQCHA000622";
               status = "enable";
-              transform = "normal";
             }
           ];
         };
