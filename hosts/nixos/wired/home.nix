@@ -46,6 +46,7 @@
       waybar
       sherlock
       hyprlock
+      # ashell
       # kanshi
       xdg
       zsh
@@ -136,7 +137,7 @@
     universal-android-debloater
     # wired
     zellij
-    # pkgs.master.zed-editor
+    pkgs.zed-editor
     opencode
     #zoxide
     typst
@@ -184,7 +185,7 @@
     nautilus
     opencloud-desktop
     # nextcloud-client
-    fractal
+    # fractal
     # element-desktop
     fluffychat
     google-chrome
@@ -198,7 +199,7 @@
     # youtube-music
     # tidal-hifi
     # tidal-dl
-    # cider-2
+    cider-2
     # feishin
     # aonsoku
     spotify-player
