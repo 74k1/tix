@@ -21,17 +21,17 @@
 
   services.fourget = {
     enable = true;
+    hostname = "forget.i.${allSecrets.global.domain03}";
 
     nginx = {
-      enable = true;
-      hostName = "forget.i.${allSecrets.global.domain03}";
+      serverName = "forget.i.${allSecrets.global.domain03}";
       useACMEHost = "i.${allSecrets.global.domain03}";
       forceSSL = true;
       # openFirewall = true;
     };
 
     settings = {
-      SERVER_NAME = "Example 4get";
+      SERVER_NAME = "4get";
       SERVER_LONG_DESCRIPTION = "Private search instance";
       # ALT_ADDRESSES = [ "https://search-alt.example.com" ];
     };
