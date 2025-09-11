@@ -185,7 +185,7 @@
       userContent = # css
         ''
           @-moz-document url-prefix("") {
-            * {
+            *, *::before, *::after {
               border-radius: 0px !important;
               box-shadow: none !important;
             }
