@@ -70,6 +70,7 @@ in
         set shiftwidth=2 softtabstop=2 expandtab
         set number relativenumber
         set clipboard=unnamedplus
+        set termguicolors
 
         lua vim.g.mapleader = " "
 
