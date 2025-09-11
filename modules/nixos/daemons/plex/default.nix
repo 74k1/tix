@@ -7,11 +7,13 @@
 let
   plexFixed = pkgs.master.plex.override {
     plexRaw = pkgs.master.plexRaw.overrideAttrs (old: rec {
-      version = "1.43.1.10561-69cc2fd8d";
+
+
+      version = "1.43.1.10611-1e34174b1";
 
       src = pkgs.fetchurl {
         url = "https://downloads.plex.tv/plex-media-server-new/${version}/debian/plexmediaserver_${version}_amd64.deb";
-        sha256 = "sha256-o2oZ2pz4opdPd8/gzq8E4oaC0NxqDw3RFcgInJdBGIs=";
+        hash = "sha256-pr1+VSObX0sBl/AddeG/+2dIbNdc+EtnvCzy4nTXVn8=";
       };
     });
   };
