@@ -3226,11 +3226,11 @@
         "zls-overlay": "zls-overlay"
       },
       "locked": {
-        "lastModified": 1775398118,
-        "narHash": "sha256-iCeZK+raKU6h6i8TJjhvHUlwIRI+4gLbs3Xuq4Q+/bs=",
+        "lastModified": 1775856037,
+        "narHash": "sha256-/kPeSJ7l7V4xvxEXnybhukumv3tDeC54GV8WLbknfTw=",
         "owner": "reo101",
         "repo": "rix101",
-        "rev": "cde0e9da29ebdf0837f7d1916a6d6a262b372a22",
+        "rev": "90c0d21b016bf816906a60cfb1068e34ba826335",
         "type": "github"
       },
       "original": {
