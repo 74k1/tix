@@ -29,6 +29,8 @@
       # firefox
       zen
       qutebrowser
+
+      waterfox
       neovim
       # picom
       polybar
@@ -75,6 +77,8 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    # inputs.hythera-waterfox.outputs.legacyPackages.${system}.waterfox
+
     # theme
     papirus-icon-theme
 

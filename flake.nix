@@ -18,6 +18,7 @@
       # url = "git+file:///home/taki/dev/tixpkgs";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
         # quadlet.follows = "quadlet";
       };
     };
@@ -34,6 +35,9 @@
     };
     the-argus-emptty = {
       url = "github:the-argus/nixpkgs/emptty/module";
+    };
+    hythera-waterfox = {
+      url = "github:hythera/nixpkgs/pkgs/waterfox/init";
     };
     # --
     flake-parts = {
@@ -168,7 +172,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     affinity-nix = {
-      url = "github:mrshmllow/affinity-nix";
+      url = "github:mrshmllow/affinity-nix/push-orwvsztwlunu";
       inputs.nixpkgs.follows = "nixpkgs";
       # url = "github:74k1/affinity-nix/patch";
     };

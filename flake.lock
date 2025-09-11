@@ -30,18 +30,20 @@
         "nixpkgs-wine": "nixpkgs-wine",
         "on-linux": "on-linux",
         "plugin-loader": "plugin-loader",
-        "treefmt-nix": "treefmt-nix"
+        "treefmt-nix": "treefmt-nix",
+        "wine": "wine"
       },
       "locked": {
-        "lastModified": 1772265981,
-        "narHash": "sha256-JoXciqQCwHdIvENurNwgc6jH1e/d5xcjn9ybYNe+YQI=",
+        "lastModified": 1772265951,
+        "narHash": "sha256-gtnCLLQ1B1e8TGexWfF1DWGF5Z8uptUGULvSJWbzjd4=",
         "owner": "mrshmllow",
         "repo": "affinity-nix",
-        "rev": "cd7bed5b72ceeb50b862c550cc16c6f1b11a2d84",
+        "rev": "cf48eac21b116d26f60b536e617393fe79d0b4da",
         "type": "github"
       },
       "original": {
         "owner": "mrshmllow",
+        "ref": "push-orwvsztwlunu",
         "repo": "affinity-nix",
         "type": "github"
       }
@@ -1310,11 +1312,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772985285,
-        "narHash": "sha256-wEEmvfqJcl9J0wyMgMrj1TixOgInBW/6tLPhWGoZE3s=",
+        "lastModified": 1773810247,
+        "narHash": "sha256-6Vz1Thy/1s7z+Rq5OfkWOBAdV4eD+OrvDs10yH6xJzQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5be5d8245cbc7bc0c09fbb5f38f23f223c543f85",
+        "rev": "d47357a4c806d18a3e853ad2699eaec3c01622e7",
         "type": "github"
       },
       "original": {
@@ -1342,6 +1344,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "hythera-waterfox": {
+      "locked": {
+        "lastModified": 1771964427,
+        "narHash": "sha256-KlcJWQdbw0r3O/EXIH/L6fYa/7k06b2RoPg3klu6Jtk=",
+        "owner": "hythera",
+        "repo": "nixpkgs",
+        "rev": "09c331c3041ffdc00a5f2c218429bc1332cbf34c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hythera",
+        "ref": "pkgs/waterfox/init",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
@@ -2331,11 +2349,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1772999613,
-        "narHash": "sha256-y0Srqjl0xbLUDKnoFl1u+dckvWGV6VHquMu71Mw+2WY=",
+        "lastModified": 1773518610,
+        "narHash": "sha256-RZ34ZV44uFXtUnjRkBj2h6F2KkqBnUBTkOyJmuXwlWY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6a7aef30796dcabe330f1f1061324fcf6fade2c8",
+        "rev": "45f9641a45a5148c06cccb76acd03d0b1a586c0f",
         "type": "github"
       },
       "original": {
@@ -3141,6 +3159,7 @@
         "firefox-addons": "firefox-addons",
         "flake-parts": "flake-parts_3",
         "home-manager": "home-manager_2",
+        "hythera-waterfox": "hythera-waterfox",
         "musnix": "musnix",
         "niri": "niri",
         "nix-colors": "nix-colors",
@@ -3952,16 +3971,19 @@
     "tixpkgs": {
       "inputs": {
         "flake-parts": "flake-parts_8",
+        "home-manager": [
+          "home-manager"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1773336318,
-        "narHash": "sha256-FvLCi3zpIzJAhnyB85xltJ3xmTnhSL7FabEa+FIdiBE=",
+        "lastModified": 1773842804,
+        "narHash": "sha256-k7fMIakpoeNF9yQtmFtNZdnM0/sXYxlQRTes1j2o0qg=",
         "owner": "74k1",
         "repo": "tixpkgs",
-        "rev": "612595ceb5eb04fb34275a1aeb117bddbad5bf8e",
+        "rev": "5dfa1eb65473cda92696aa7b2c56fa1c0ea9f0e3",
         "type": "github"
       },
       "original": {
@@ -4238,6 +4260,25 @@
         "owner": "rasmus-kirk",
         "repo": "website-builder",
         "type": "github"
+      }
+    },
+    "wine": {
+      "flake": false,
+      "locked": {
+        "host": "gitlab.winehq.org",
+        "lastModified": 1771620632,
+        "narHash": "sha256-Ma1lLS84aN7KCT3bOdAslDv2Cd/pUwPkKsW+KMlTnXk=",
+        "owner": "wine",
+        "repo": "wine",
+        "rev": "222c976140d1b66c71769296f856f6523782b6c9",
+        "type": "gitlab"
+      },
+      "original": {
+        "host": "gitlab.winehq.org",
+        "owner": "wine",
+        "ref": "wine-11.3",
+        "repo": "wine",
+        "type": "gitlab"
       }
     },
     "wired": {

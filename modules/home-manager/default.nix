@@ -29,6 +29,7 @@
   theme = import ./x11/theme;
   walker = import ./wayland/walker;
   wall = import ./x11/wall;
+  waterfox = import ./apps/waterfox;
   waybar = import ./wayland/waybar;
   wezterm = import ./apps/wezterm;
   wired = import ./apps/wired;
