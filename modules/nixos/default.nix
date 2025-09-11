@@ -18,6 +18,7 @@
   fourget = import ./daemons/fourget;
   glance = import ./daemons/glance;
   grafana = import ./daemons/grafana;
+  hermes = import ./daemons/hermes;
   immich = import ./daemons/immich;
   karakeep = import ./daemons/karakeep;
   locale = import ./profile/locale;
@@ -62,4 +63,5 @@
   vm-test = import ./vm-test;
   vpnconfinement = import ./daemons/vpnconfinement;
   wireguard = import ./daemons/wireguard;
+  zeroclaw = import ./daemons/zeroclaw;
 }

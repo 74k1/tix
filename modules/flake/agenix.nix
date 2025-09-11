@@ -27,6 +27,7 @@
           duvet
           eiri
           knights
+          lain
           ;
       };
       agenix-rekey.homeConfigurations = { };

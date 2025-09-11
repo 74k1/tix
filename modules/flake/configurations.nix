@@ -137,6 +137,12 @@ in
           duvet = {
             system = "x86_64-linux";
           };
+          lain = {
+            system = "aarch64-linux";
+          };
+          arisu = {
+            system = "aarch64-linux";
+          };
         };
 
     darwinConfigurations =
@@ -145,7 +151,7 @@ in
           (builtins.mapAttrs mkNixDarwinHost)
         ]
         {
-          arisu = {
+          chisa = {
             system = "aarch64-darwin";
           };
         };

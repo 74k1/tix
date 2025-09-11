@@ -153,6 +153,32 @@
       inputs.nixpkgs.follows = "nixpkgs";
       # url = "github:74k1/affinity-nix/patch";
     };
+    dgx-spark.url = "github:graham33/nixos-dgx-spark";
+    glm53-flash = {
+      url = "github:MiaAI-Lab/GLM-5.3-Flash-EXL3-2x-DGX-Sparks";
+      flake = false;
+    };
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zeroclaw = {
+      # pinned to v0.8.5 — master's hashes.json is out of sync with its
+      # Cargo.lock, which breaks eval of the package. Re-pin to master once
+      # upstream fixes it. NOTE: keep schema_version = 3 in the instance
+      # settings — without it the config loader runs the legacy migration
+      # and silently drops [channels.*] + [providers.models.*].
+      url = "github:zeroclaw-labs/zeroclaw/v0.8.5";
+      inputs.nixpkgs.follows = "nixpkgs";
+      # upstream's committed lock pins a fenix whose stable toolchain is
+      # below zeroclaw's MSRV — redirect so the toolchain tracks current
+      # stable.
+      inputs.fenix.follows = "fenix";
+    };
   };
 
   outputs =
