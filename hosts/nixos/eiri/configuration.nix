@@ -319,11 +319,12 @@
       device = "${allSecrets.per_host.koi.int_ip}:/volume1/backup";
       fsType = "nfs";
       options = [
-        "rw"
-        "noatime"
-        "nfsvers=4.1"
-        "nofail"
         "_netdev"
+        "nfsvers=4.1"
+        "noatime"
+        "nofail"
+        "rw"
+        "x-systemd.automount"
       ];
     };
   };
