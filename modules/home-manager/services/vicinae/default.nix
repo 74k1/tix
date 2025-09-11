@@ -59,7 +59,7 @@
       popToRootOnClose = true;
       rootSearch.searchFiles = false;
       # theme.name = "yueye-dark";
-      theme = {
+      theme = lib.mkForce {
         iconTheme = "Colloid-Dark";
         name = "yueye-dark";
       };
