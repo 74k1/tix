@@ -32,7 +32,7 @@ in
     };
   };
   config = {
-    gtk.gtk4.theme = config.gtk.theme;
+    gtk.gtk4.theme = lib.mkDefault config.gtk.theme;
     stylix = {
       enable = true;
       overlays.enable = false;
