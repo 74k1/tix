@@ -11,7 +11,6 @@
   forgejo = import ./daemons/forgejo;
   fourget = import ./daemons/fourget;
   glance = import ./daemons/glance;
-  graylog = import ./daemons/graylog;
   immich = import ./daemons/immich;
   it-tools = import ./daemons/it-tools;
   karakeep = import ./daemons/karakeep;
@@ -35,7 +34,6 @@
   quadlet = import ./quadlet;
   restic = import ./daemons/restic;
   rsshub = import ./daemons/rsshub;
-  rustdesk-server = import ./daemons/rustdesk-server;
   scrutiny = import ./daemons/scrutiny;
   send = import ./daemons/send;
   servarr = import ./daemons/servarr;
