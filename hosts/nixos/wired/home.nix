@@ -45,7 +45,7 @@
       waybar
       sherlock
       hyprlock
-      kanshi
+      # kanshi
       xdg
       zsh
       fish
@@ -134,7 +134,7 @@
     universal-android-debloater
     wired
     zellij
-    zed-editor
+    # pkgs.master.zed-editor
     #zoxide
     typst
     moonlight-qt

@@ -350,6 +350,7 @@ in
           "PNP(AOC) - AG276QZD2 - DP-7"
           "PNP(AOC) - 16T3E - DP-2"
           "eDP-1"
+          "DP-2"
         ];
 
         modules-left = [

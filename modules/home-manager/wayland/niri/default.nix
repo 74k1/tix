@@ -243,12 +243,14 @@
             };
           };
           preset-column-widths = [
-            { proportion = 0.25; }
-            { proportion = 0.5; }
-            { proportion = 0.75; }
+            # { proportion = 0.25; }
+            # { proportion = 0.5; }
+            # { proportion = 0.75; }
+            { proportion = 0.34; }
+            { proportion = 0.66; }
             { proportion = 1.0; }
           ];
-          default-column-width.proportion = 0.5;
+          default-column-width.proportion = 0.66;
 
           gaps = 8;
 
@@ -428,53 +430,56 @@
         #   "09" = { open-on-output = "DP-2"; name = "九"; };
         #   "10" = { open-on-output = "DP-2"; name = "十"; };
         # };
-        # outputs = {
-        #   # Internal Monitor
-        #   "eDP-1" = {
-        #     enable = true;
-        #     mode = {
-        #       height = 2560;
-        #       width = 1600;
-        #       # refresh = 144.0;
-        #     };
-        #     position = {
-        #       x = 0;
-        #       y = 0;
-        #     };
-        #     scale = 1.75;
-        #     transform.rotation = 270;
-        #     variable-refresh-rate = false;
-        #     focus-at-startup = false;
-        #   };
-        #   "DP-6" = {
-        #     enable = true;
-        #     mode = {
-        #       height = 2560;
-        #       width = 1440;
-        #     };
-        #     position = {
-        #       x = 0;
-        #       y = 0;
-        #     };
-        #     scale = 1;
-        #     variable-refresh-rate = false;
-        #     focus-at-startup = true;
-        #   };
-        #   "DP-7" = {
-        #     enable = true;
-        #     mode = {
-        #       height = 1080;
-        #       width = 1920;
-        #     };
-        #     position = {
-        #       x = -1080;
-        #       y = 0;
-        #     };
-        #     scale = 1;
-        #     transform.rotation = 90;
-        #     variable-refresh-rate = false;
-        #   };
-        # };
+        outputs = {
+          # Internal Monitor
+          "eDP-1" = {
+            # enable = true;
+            mode = {
+              height = 2560;
+              width = 1600;
+              # refresh = 144.0;
+            };
+            position = {
+              x = 0;
+              y = 0;
+            };
+            scale = 1.75;
+            transform.rotation = 270;
+            variable-refresh-rate = false;
+            focus-at-startup = false;
+          };
+          "PNP(AOC) AG276QZD2 2OMQ8JA002044" = {
+            enable = true;
+            mode = {
+              height = 2560;
+              width = 1440;
+              refresh = 240.0;
+            };
+            # position = {
+            #   x = 0;
+            #   y = 0;
+            # };
+            scale = 1;
+            variable-refresh-rate = false;
+            focus-at-startup = true;
+          };
+          "Audio Processing Technology  Ltd CX158 0x00000002" = {
+            enable = true;
+            mode = {
+              height = 1800;
+              width = 2880;
+              refresh = 50.0;
+              # refresh = 120.0;
+            };
+            position = {
+              x = 0;
+              y = 0;
+            };
+            scale = 1.75;
+            transform.rotation = 90;
+            variable-refresh-rate = false;
+          };
+        };
         cursor = {
           theme = "Ukiyo";
           size = 24;

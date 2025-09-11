@@ -26,9 +26,9 @@
             # inputs'.agenix-rekey.packages.agenix-rekey
             # inputs'.deploy-rs.packages.deploy-rs
             inputs'.rix101.packages.nix-enraged
-            (inputs'.nixpkgs.legacyPackages.nh.override {
-              nix = inputs'.rix101.packages.nix-enraged;
-            })
+            # (inputs'.nixpkgs.legacyPackages.nh.override {
+            #   nix = inputs'.rix101.packages.nix-enraged;
+            # })
             (inputs'.nixos-anywhere.packages.nixos-anywhere.override {
               nix = inputs'.rix101.packages.nix-enraged;
             })

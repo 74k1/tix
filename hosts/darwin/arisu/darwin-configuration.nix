@@ -75,6 +75,7 @@
 
   # system config
   system = {
+    primaryUser = "taki";
     defaults = {
       dock = {
         # autohide = true;
