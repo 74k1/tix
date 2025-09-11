@@ -71,6 +71,7 @@
         #   )
         # '';
         git_push_bookmark = ''"74k1/" ++ change_id.short()'';
+        draft_commit_description = ''builtin_draft_commit_description_with_diff'';
       };
       revsets = {
         bookmark-advance-to = "@-";
