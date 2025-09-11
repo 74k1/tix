@@ -20,9 +20,9 @@
       passwordSecret = "${allSecrets.per_service.graylog.passwordSecret}"; # pwgen -N 1 -s 96
       rootPasswordSha2 = "${allSecrets.per_service.graylog.rootPasswordSha2}";
     };
-    mongodb = {
-      enable = true;
-    };
+    # mongodb = {
+    #   enable = true;
+    # };
     opensearch = {
       enable = true;
       settings = {

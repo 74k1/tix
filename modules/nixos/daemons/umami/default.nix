@@ -22,7 +22,7 @@
 
   services.umami = {
     enable = true;
-    package = pkgs.umami;
+    package = pkgs.master.umami;
     settings = {
       APP_SECRET_FILE = config.age.secrets."umami_secret".path;
       TRACKER_SCRIPT_NAME = [ "umami.js" ];
