@@ -54,7 +54,8 @@
         };
       };
     };
-    openssh.settings.AcceptEnv = "GIT_PROTOCOL";
+    # openssh.settings.AcceptEnv = "GIT_PROTOCOL";
+
     # Runner
     # gitea-actions-runner = {
     #   package = pkgs.forgejo-runner;
