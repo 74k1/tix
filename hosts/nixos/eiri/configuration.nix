@@ -54,7 +54,8 @@
 
     multi-scrobbler
 
-    # fourget
+    fourget
+    degoog
 
     # everything else
     scrutiny

@@ -9,6 +9,7 @@
   booklore = import ./daemons/booklore;
   braindump = import ./daemons/braindump;
   bumpkin = import ./daemons/bumpkin;
+  degoog = import ./daemons/degoog;
   fail2ban = import ./daemons/fail2ban;
   firefox = import ./programs/firefox;
   forgejo = import ./daemons/forgejo;
