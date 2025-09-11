@@ -137,6 +137,8 @@
 
     blueman
 
+    remmina
+
     # wezterm
     pkgs.master.ghostty
     bitwarden-desktop

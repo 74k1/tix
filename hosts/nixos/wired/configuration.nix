@@ -34,8 +34,6 @@
     firefox
     bash
     # kanidm-client
-
-    alloy
   ];
 
   # specialisation = {
