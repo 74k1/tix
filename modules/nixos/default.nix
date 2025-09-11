@@ -10,6 +10,8 @@
   braindump = import ./daemons/braindump;
   bumpkin = import ./daemons/bumpkin;
   degoog = import ./daemons/degoog;
+  dgx-interconnect = import ./dgx-interconnect;
+  glm53-exl3 = import ./daemons/glm53-exl3;
   fail2ban = import ./daemons/fail2ban;
   firefox = import ./programs/firefox;
   forgejo = import ./daemons/forgejo;
