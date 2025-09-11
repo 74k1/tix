@@ -22,7 +22,7 @@
   services.bumpkin = {
     enable = true;
 
-    maintainers = [ "74k1" ]; # TODO: _74k1 once lib.maintainers merged
+    maintainers = [ "_74k1" ];
 
     packageSets = [
       {
