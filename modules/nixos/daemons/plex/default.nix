@@ -2,21 +2,9 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
-let
-  plexFixed = pkgs.master.plex.override {
-    plexRaw = pkgs.master.plexRaw.overrideAttrs (old: rec {
-
-      version = "1.43.2.10687-563d026ea";
-
-      src = pkgs.fetchurl {
-        url = "https://downloads.plex.tv/plex-media-server-new/${version}/debian/plexmediaserver_${version}_amd64.deb";
-        hash = "sha256-dgkj0Uny/d0DnExgYWjxfl2cFsiattlGzb7Guzmtro4=";
-      };
-    });
-  };
-in
 {
   # PLEX
   # hardware.graphics = {
@@ -41,7 +29,7 @@ in
     plex = {
       enable = true;
       # package = pkgs.master.plex;
-      package = plexFixed;
+      package = inputs.tixpkgs-unfree.packages.x86_64-linux.plex-beta;
       dataDir = "/var/lib/plex";
       accelerationDevices = [ "*" ];
     };
