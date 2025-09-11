@@ -87,6 +87,10 @@
     # youtrack
     vm-test
     wireguard
+
+
+    # mcp
+    mcp-outline
   ];
 
   # Bootloader.

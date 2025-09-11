@@ -16,6 +16,7 @@
   it-tools = import ./daemons/it-tools;
   karakeep = import ./daemons/karakeep;
   locale = import ./profile/locale;
+  mcp-outline = import ./daemons/mcp/mcp-outline;
   memos = import ./daemons/memos;
   miniflux = import ./daemons/miniflux;
   n8n = import ./daemons/n8n;
