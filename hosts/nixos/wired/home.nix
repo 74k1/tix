@@ -101,6 +101,8 @@
     comma
     btop
 
+    nh
+
     # beekeeper-studio
     pkgs.tix.outerbase-studio-desktop
 
