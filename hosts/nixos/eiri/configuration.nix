@@ -407,6 +407,16 @@
             recommendedProxySettings = true;
           };
         };
+
+        # # zeroclaw gateway dashboard (loopback-bound; TLS via wildcard cert)
+        # "zeroclaw.i.${allSecrets.global.domain03}" = {
+        #   addSSL = true;
+        #   useACMEHost = "i.${allSecrets.global.domain03}";
+        #   locations."/" = {
+        #     proxyPass = "http://127.0.0.1:42617";
+        #     proxyWebsockets = true;
+        #   };
+        # };
       };
     };
   };

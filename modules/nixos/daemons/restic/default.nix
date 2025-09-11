@@ -54,6 +54,9 @@
         "/mnt/btrfs_pool/outline_data"
 
         "/mnt/btrfs_pool/memos_data"
+
+        # hermes-agent state (moved from lain, 2026-08)
+        "/mnt/btrfs_pool/hermes"
       ];
     in
     {
