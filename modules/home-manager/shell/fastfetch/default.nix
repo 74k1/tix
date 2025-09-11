@@ -16,7 +16,7 @@
     enable = true;
     settings = {
       logo = {
-        source = ./fastfetch_logo;
+        source = ./fastfetch_cat;
         type = "file";
       };
       modules = [
