@@ -31,7 +31,7 @@
     enable = true;
     package = inputs.pjrm-sure.legacyPackages.${pkgs.system}.sure;
     webPort = 3213;
-    assumeSSL = true;
+    forceSSL = true;
     secretKeyBaseFile = config.age.secrets."sure_secret_key".path;
     localDomain = "fin.${allSecrets.global.domain00}";
     environment = {
@@ -66,7 +66,7 @@
     # SMTP_PASSWORD
     # SMTP_AUTHENTICATION
     # SMTP_ENABLE_STARTTLS_AUTO
-    extraEnvFiles = [
+    environmentFiles = [
       config.age.secrets."sure_env".path
     ];
   };
