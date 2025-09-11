@@ -89,11 +89,13 @@
     };
 
     environment = {
+      FRONTEND_CHECK_FOR_UPDATES = "false";
+      START_ADDITIONAL_SERVICES="notifications auth-app";
+
       # = LOG =
       OC_LOG_LEVEL = "info";
       OC_LOG_COLOR = "true";
       # OC_LOG_PRETTY = "true";
-      FRONTEND_CHECK_FOR_UPDATES = "false";
 
       # = TLS & Proxy =
       # INSECURE = "false";
@@ -104,7 +106,6 @@
       PROXY_OIDC_REWRITE_WELLKNOWN = "true";
       PROXY_USER_OIDC_CLAIM = "preferred_username";
       PROXY_USER_CS3_CLAIM = "username";
-      PROXY_AUTOPROVISION_ACCOUNTS = "true";
       PROXY_ROLE_ASSIGNMENT_DRIVER = "oidc";
       WEB_OPTION_ACCOUNT_EDIT_LINK_HREF = "https://auth.${allSecrets.global.domain00}";
 
@@ -114,7 +115,6 @@
 
       # = OIDC =
       OC_OIDC_ISSUER = "https://auth.${allSecrets.global.domain00}";
-      # OC_EXCLUDE_RUN_SERVICES = "idp,idm";
       OC_EXCLUDE_RUN_SERVICES = "idp";
       OC_ADMIN_USER_ID = "";
       SETTINGS_SETUP_DEFAULT_ASSIGNMENTS = "false";
@@ -122,7 +122,6 @@
       GRAPH_USERNAME_MATCH = "none";
 
       # = SMTP =
-      START_ADDITIONAL_SERVICES="notifications";
       SMTP_HOST = allSecrets.global.mail.sender.host;
       SMTP_PORT = allSecrets.global.mail.sender.port;
       SMTP_SENDER = allSecrets.global.mail.sender.username;
@@ -131,6 +130,9 @@
       SMTP_TRANSPORT_ENCRYPTION = "none";
       SMTP_INSECURE = "true";
       SMTP_AUTHENTICATION = "auto";
+
+      # = AUTH APP =
+      PROXY_ENABLE_APP_AUTH = "true";
     };
   };
 

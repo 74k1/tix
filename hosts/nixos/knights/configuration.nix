@@ -203,10 +203,10 @@
 
     nginx = {
       enable = true;
-      # recommendedGzipSettings = true;
-      # recommendedOptimisation = true;
+      recommendedGzipSettings = true;
+      recommendedOptimisation = true;
       # recommendedProxySettings = true;
-      # recommendedTlsSettings = true;
+      recommendedTlsSettings = true;
       commonHttpConfig = ''
         log_format graylog_json escape=json '{ "nginx_timestamp": "$time_iso8601", '
           '"remote_addr": "$remote_addr", '
@@ -275,6 +275,7 @@
             enableACME = true;
             locations."/" = {
               proxyPass = "http://10.100.0.1:3034";
+              recommendedProxySettings = true;
             };
           };
           "${domain00}" = {
@@ -290,7 +291,7 @@
             locations."/" = {
               proxyPass = "http://10.100.0.1:1411";
               # proxyWebsockets = true;
-              # recommendedProxySettings = true;
+              recommendedProxySettings = true;
               extraConfig = ''
                 # proxy_set_header Host $host;
                 # proxy_set_header X-Real-IP $remote_addr;
@@ -442,6 +443,7 @@
             forceSSL = true;
             locations."/" = {
               proxyPass = "http://10.100.0.1:8222";
+              recommendedProxySettings = true;
               proxyWebsockets = true;
             };
           };
@@ -462,6 +464,7 @@
             forceSSL = true;
             locations."/" = {
               proxyPass = "http://10.100.0.1:8084";
+              recommendedProxySettings = true;
             };
           };
           "files.${domain0}" = {
@@ -469,8 +472,10 @@
             forceSSL = true;
             locations = {
               "/" = {
-                proxyPass = "http://10.100.0.1:80";
-                extraConfig = ''
+                proxyPass = "http://10.100.0.1:801";
+                recommendedProxySettings = true;
+                proxyWebsockets = true;
+                extraConfig = /* nginx */ ''
                   client_max_body_size 100G;
                   client_body_buffer_size 400M;
                 '';
@@ -488,8 +493,9 @@
             forceSSL = true;
             locations."/" = {
               proxyPass = "http://10.100.0.1:3001";
+              recommendedProxySettings = true;
               # see https://immich.app/docs/administration/reverse-proxy/
-              extraConfig = ''
+              extraConfig = /* nginx */ ''
                 client_max_body_size 50G;
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
@@ -518,6 +524,7 @@
             forceSSL = true;
             locations."/" = {
               proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.chat.settings.BIND}";
+              recommendedProxySettings = true;
               proxyWebsockets = true;
             };
           };

@@ -19,6 +19,8 @@
   #   user = "nextcloud";
   # };
 
+  services.nginx.virtualHosts."${config.services.nextcloud.hostName}".listen = [ { addr = "0.0.0.0"; port = 801; } ];
+
   services.nextcloud = {
     enable = true;
     package = pkgs.master.nextcloud32;

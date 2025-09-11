@@ -272,6 +272,8 @@
     EDITOR = "nvim";
     MANPAGER = "nvim +Man!";
     MANWIDTH = "999";
+    QT_STYLE_OVERRIDE = lib.mkForce "";
+    QT_QPA_PLATFORM = "wayland";
   };
 
   # set Wall
