@@ -137,6 +137,7 @@
     # wired
     zellij
     # pkgs.master.zed-editor
+    opencode
     #zoxide
     typst
     moonlight-qt
@@ -198,6 +199,12 @@
     # aonsoku
     spotify-player
     discord-ptb
+
+    teamspeak6-client
+
+    rapidraw
+    rawtherapee
+    darktable
     # legcord
     # vesktop
 
@@ -221,6 +228,7 @@
     # polybar
     # evolution
     # protonvpn-gui
+    proton-vpn-cli
     plasticity
 
     orca-slicer

@@ -72,8 +72,8 @@
 
   # Bootloader.
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-    # kernelPackages = pkgs.linuxKernel.packages.linux_6_16;
+    # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
     # kernelPackages = pkgs.linuxKernel.packages.linux_testing;
     kernelParams = [
       "quiet"
@@ -142,6 +142,11 @@
   programs.nm-applet.enable = true;
 
   programs.localsend.enable = true;
+
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+  };
 
   networking.firewall.checkReversePath = "loose";
 
