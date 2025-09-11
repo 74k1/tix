@@ -13,6 +13,7 @@
   hyprlock = import ./wayland/hyprlock;
   jujutsu = import ./shell/jujutsu;
   kanshi = import ./wayland/kanshi;
+  mpv = import ./apps/mpv;
   neovim = import ./shell/neovim;
   niri = import ./wayland/niri;
   picom = import ./x11/picom;
