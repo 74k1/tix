@@ -8,6 +8,7 @@
 {
   environment.systemPackages = [
     pkgs.gamescope
+    pkgs.apple-cursor
   ];
   programs.steam = {
     enable = true;
@@ -16,4 +17,5 @@
       proton-ge-bin
     ];
   };
+  xdg.icons.fallbackCursorThemes = [ "apple_cursor" ];
 }
