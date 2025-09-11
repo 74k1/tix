@@ -42,8 +42,8 @@
         #enableGhostsriptFonts = true;
         packages = with pkgs; [
           # my own super cool fonts
-          # inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-otf
-          inputs.unfree-fonts.packages.x86_64-linux.suisse-intl-mono
+          # inputs.tixpkgs-unfree.packages.x86_64-linux.berkeley-nolig-otf
+          inputs.tixpkgs-unfree.packages.x86_64-linux.suisse-intl-mono
           inputs.apple-emoji.packages.x86_64-linux.apple-emoji-linux
 
           # main fonts
