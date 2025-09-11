@@ -22,7 +22,7 @@
     inputs.yeetmouse.nixosModules.default
     inputs.musnix.nixosModules.musnix
 
-    inputs.genix7000.nixosModules.genix7000
+    # inputs.genix7000.nixosModules.genix7000
 
     ../../../modules/syncthing.nix
 
@@ -59,18 +59,16 @@
     ];
     plymouth = {
       enable = true;
-      theme = "nixos-bgrt";
-      themePackages = [ pkgs.nixos-bgrt-plymouth ];
-      # genix7000 = {
-      #   enable = true;
-      #   frameRate = 30;
-      #   animation = ''
-      #   time: {
-      #     lambdaThickness = builtins.floor (if time <= 1 then 20 + time * 10 else 20 + (2 - time) * 10);
-      #     rotation = builtins.floor (if time <= 1 then time * 180 else (2 - time) * 180);
-      #   };
-      #   '';
-      # };
+      theme = "dna";
+      themePackages = [ 
+        # pkgs.nixos-bgrt-plymouth
+        pkgs.adi1090x-plymouth-themes
+        # (pkgs.adi1090x-plymouth-themes.override {selected_themes = ["dna"];})
+        # (pkgs.adi1090x-plymouth-themes.override {selected_themes = ["deus_ex"];})
+        # (pkgs.adi1090x-plymouth-themes.override {selected_themes = ["hexagon"];})
+        # (pkgs.adi1090x-plymouth-themes.override {selected_themes = ["hexagon_2"];})
+        # (pkgs.adi1090x-plymouth-themes.override {selected_themes = ["cuts_alt"];})
+      ];
     };
     loader = {
       efi.canTouchEfiVariables = true;
@@ -129,7 +127,7 @@
         "gnome"
         "gtk"
       ];
-      "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+      "org.freedesktop.impl.portal.FileChooser" = [ "gnome" ];
       "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
       "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
     };
@@ -142,6 +140,8 @@
     # WLR_NO_HARDWARE_CURSORS = "1";
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "0";
+    MOZ_ENABLE_WAYLAND = "1";
+    QT_WAYLAND_DISABLE_DECORATION = "1";
   };
 
   # Enable the X11 windowing system.
@@ -149,13 +149,13 @@
     fstrim.enable = true; # M.2 SSD
     greetd = {
       enable = true;
-      package = pkgs.greetd;
+      package = pkgs.greetd.tuigreet;
       # useTextGreeter = true;
       settings = {
-        # terminal.vt = 1;
+        terminal.vt = 1;
         default_session = {
           user = "taki";
-          command = "${lib.getExe' pkgs.greetd "agreety"} --cmd ${lib.getExe' pkgs.niri "niri-session"}";
+          command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd ${lib.getExe' pkgs.niri "niri-session"}";
         };
       };
     };
@@ -172,9 +172,14 @@
       # '';
     };
 
-    displayManager = {
-      defaultSession = "niri-session";
-    };
+    # displayManager = {
+    #   enable = true;
+    #   environment = {
+    #     DISPLAY = ":0";
+    #   };
+    #   defaultSession = "niri-session";
+    #   execCmd = "${lib.getExe' pkgs.greetd "tuigreet"} --remember --remember-session --asterisks --time --cmd ${lib.getExe' pkgs.niri "niri-session"}";
+    # };
 
     libinput = {
       enable = true;
