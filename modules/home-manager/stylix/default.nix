@@ -87,7 +87,7 @@ in
         emoji = {
           # package = pkgs.twitter-color-emoji;
           # name = "Twemoji";
-          package = inputs.apple-emoji.packages.x86_64-linux.apple-emoji-linux;
+          package = inputs.tixpkgs-unfree.packages.x86_64-linux.apple-emoji;
           name = "Apple Color Emoji";
         };
       };
