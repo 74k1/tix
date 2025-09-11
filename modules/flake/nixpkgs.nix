@@ -16,6 +16,7 @@
             inputs.nix-topology.overlays.default
 
             (_: _: inputs.tixpkgs.packages.${system})
+            (_: _: inputs.tixpkgs-unfree.packages.${system})
 
             # Pseudo-overlay to add our own packages everywhere
             (_: _: self.packages.${system})
@@ -56,8 +57,12 @@
               ]
             )
             # NOTE: `tixpkgs` -> `pkgs.tix.*`
+            # NOTE: `tixpkgs-unfree` -> `pkgs.tix-unfree.*`
             (_: _: {
               tix = inputs.tixpkgs.packages.${system};
+            })
+            (_: _: {
+              tix-unfree = inputs.tixpkgs-unfree.packages.${system};
             })
           ];
           inherit config;

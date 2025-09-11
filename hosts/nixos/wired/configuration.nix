@@ -202,7 +202,7 @@
       # };
       package = (
         pkgs."24.11".fprintd.override {
-          libfprint = pkgs.tix.libfprint-focaltech-gpd;
+          libfprint = pkgs.tix-unfree.libfprint-focaltech;
         }
       );
     };

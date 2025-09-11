@@ -81,7 +81,7 @@ in
         #   name = "DejaVu Sans";
         # };
         monospace = {
-          package = inputs.unfree-fonts.packages.x86_64-linux.supply-mono;
+          package = pkgs.tix-unfree.supply-mono;
           name = "PP Supply Mono";
         };
         # emoji = {

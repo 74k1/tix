@@ -78,10 +78,10 @@
 
     # my own scriptiboo
     pkgs.tix.duvolbr
-    # inputs.tixpkgs-unfree.packages.x86_64-linux.berkeley-nolig-otf
-    inputs.tixpkgs-unfree.packages.x86_64-linux.suisse-intl-mono
-    inputs.tixpkgs-unfree.packages.x86_64-linux.supply-mono
-    inputs.tixpkgs-unfree.packages.x86_64-linux.supply-sans
+    # pkgs.tix-unfree.berkeley-nolig-otf
+    pkgs.tix-unfree.suisse-intl-mono
+    pkgs.tix-unfree.supply-mono
+    pkgs.tix-unfree.supply-sans
     fragment-mono
     ibm-plex
 
