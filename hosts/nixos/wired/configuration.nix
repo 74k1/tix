@@ -476,7 +476,8 @@
     nvidia-vaapi-driver
     egl-wayland
     fastfetch
-    brscan4
+    # brscan4
+    brscan5
     simple-scan
     nurl
     # flatpak
@@ -500,6 +501,8 @@
   };
 
   programs.virt-manager.enable = true;
+
+  services.saned.enable = true;
 
   hardware = {
     bluetooth = {
@@ -534,9 +537,8 @@
     # };
     sane = {
       enable = true;
-      brscan4 = {
-        enable = true;
-      };
+      # brscan4.enable = true;
+      brscan5.enable = true;
     };
   };
 

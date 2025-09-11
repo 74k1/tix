@@ -178,6 +178,8 @@
     opencloud-desktop
     nextcloud-client
     fractal
+    # element-desktop
+    fluffychat
     google-chrome
     ungoogled-chromium
     keepassxc
