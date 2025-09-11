@@ -22,7 +22,6 @@
   rofi = import ./apps/rofi;
   sherlock = import ./wayland/sherlock;
   spotify = import ./apps/spotify;
-  ssh-agent = import ./shell/ssh-agent;
   starship = import ./shell/starship;
   style = import ./stylix;
   swaync = import ./wayland/swaync;
