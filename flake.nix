@@ -122,14 +122,13 @@
     };
     yeetmouse = {
       url = "github:AndyFilter/YeetMouse?dir=nix";
-      # url = "github:kitten/YeetMouse/@kitten/feat/update-nix-module-options?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
-      url = "github:sodiboo/niri-flake/very-refactor";
+      url = "github:epireyn/niri-flake/very-refactor";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.niri-unstable = {
-        url = "github:YaLTeR/niri/main";
+        url = "github:niri-wm/niri/main";
         flake = false;
       };
     };
@@ -147,13 +146,8 @@
       inputs.agenix.follows = "agenix";
       inputs.agenix-rekey.follows = "agenix-rekey";
     };
-    vpnconfinement = {
-      url = "github:Maroka-chan/VPN-Confinement";
-      # url = "github:74k1/VPN-Confinement";
-    };
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-    };
+    vpnconfinement.url = "github:Maroka-chan/VPN-Confinement";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     affinity-nix = {
       url = "github:mrshmllow/affinity-nix/push-orwvsztwlunu";
       inputs.nixpkgs.follows = "nixpkgs";
