@@ -88,6 +88,8 @@
   ];
 
   # Bootloader.
+  # boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
@@ -142,16 +144,18 @@
     fastfetch
     # jdk21
     jdk17
+
+    libva-utils
+    clinfo
+    radeontop
   ];
 
   # Enable AMD GPU
-  services.xserver.videoDrivers = [
-    "modesetting"
-    "amdgpu"
-    "radeonsi"
-  ];
+  # services.xserver.videoDrivers = [
+  #   "modesetting"
+  # ];
   boot = {
-    kernelModules = [ "amdgpu" ];
+    # kernelModules = [ "amdgpu" ];
     initrd.kernelModules = [ "amdgpu" ];
   };
   hardware = {
@@ -162,10 +166,10 @@
         pkgs.rocmPackages.clr.icd
       ];
     };
-    amdgpu.initrd.enable = true;
+    # amdgpu.initrd.enable = true;
   };
-  systemd.packages = [ pkgs.lact ];
-  systemd.services.lactd.wantedBy = [ "multi-user.target" ];
+  # systemd.packages = [ pkgs.lact ];
+  # systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 
 
   # Services

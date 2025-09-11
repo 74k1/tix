@@ -6,29 +6,36 @@
 }:
 {
   # PLEX
-  hardware.graphics = {
-    enable = true;
-    #driSupport = true;
-    #driSupport32Bit = true;
-    extraPackages = with pkgs; [
-      libva-vdpau-driver
-      libva
-      libva-utils
-      libvdpau-va-gl
-      mesa
-      vulkan-loader
-      # nvidia-vaapi-driver
-    ];
-  };
+  # hardware.graphics = {
+  # enable = true;
+  # driSupport = true;
+  # driSupport32Bit = true;
+  #   extraPackages = with pkgs; [
+  #     libva-vdpau-driver
+  #     libvdpau-va-gl
+  #     # mesa
+  #     vulkan-loader
+  #     # nvidia-vaapi-driver
+  #   ];
+  # };
+
+  # environment.variables = {
+  #   "VDPAU_DRIVER" = "radeonsi";
+  #   "LIBVA_DRIVER_NAME" = "radeonsi";
+  # };
 
   services = {
     plex = {
       enable = true;
-      package = pkgs.plex;
+      package = pkgs.master.plex;
       dataDir = "/var/lib/plex";
+      accelerationDevices = [ "*" ];
     };
-
     # tautulli.enable = true;
+  };
+
+  users.users.plex = {
+    extraGroups = [ "render" "video" ];
   };
 
   # systemd.services.plex.serviceConfig = let
