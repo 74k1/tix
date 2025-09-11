@@ -48,7 +48,7 @@ in
         # package = cfg.package;
         # name = "Ukiyo";
       };
-      iconTheme = {
+      icons = {
         enable = true;
         dark = icon.name;
         package = icon.package;
@@ -93,11 +93,20 @@ in
       };
       autoEnable = true;
       targets = {
+        # gnome.enable = true;
         gtk = {
           extraCss = /* css */ ''
             // Remove rounded corners
             window.background { border-radius: 0; }
           '';
+        };
+        zen-browser.profileNames = [ "taki" ];
+        neovim = {
+          enable = false;
+          transparentBackground = {
+            main = true;
+            signColumn = true;
+          };
         };
       };
       # targets = {
@@ -105,13 +114,6 @@ in
       #   firefox.profileNames = [ "taki" ];
       #   tmux.enable = false;
       #   gnome.enable = true;
-      #   gtk = {
-      #     enable = true;
-      #     extraCss = /* css */ ''
-      #       // Remove rounded corners
-      #       window.background { border-radius: 0; }
-      #     '';
-      #   };
       #   neovim = {
       #     enable = false;
       #     transparentBackground = {
