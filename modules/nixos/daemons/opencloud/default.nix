@@ -16,7 +16,7 @@
 
   services.opencloud = {
     enable = true;
-    package = pkgs.opencloud;
+    package = pkgs.master.opencloud;
     # webPackage = pkgs.opencloud.web;
 
     url = "https://files.${allSecrets.global.domain00}";
