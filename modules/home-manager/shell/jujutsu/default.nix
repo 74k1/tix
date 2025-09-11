@@ -16,8 +16,9 @@
       git = {
         fetch = [ "origin" ];
         push = "origin";
-        # private-commits = "description(glob:'wip:*')";
-        auto-local-bookmark = true;
+      };
+      remotes = {
+        origin.auto-track-bookmarks = "glob:*";
       };
       signing = {
         backend = "gpg";
@@ -29,21 +30,38 @@
         watchman.register-snapshot-trigger = true;
       };
       ui = {
+        default-command = "l";
         color = "always";
         show-cryptographic-signatures = true;
-        pager = "delta";
+        pager = "${lib.getExe pkgs.delta}";
         editor = "nvim";
-        diff-editor = [
-          "${lib.getExe pkgs.delta}"
-          # "-c"
-          # "DiffEditor $left $right $output"
-        ];
+        # diff-editor = [
+        #   "${lib.getExe pkgs.neovim}"
+        #   # "-c"
+        #   # "DiffEditor $left $right $output"
+        # ];
       };
       aliases = {
         l = [
           "log"
           "--no-pager"
         ];
+        ll = [
+          "log"
+          "--revisions"
+          "ancestors(@, 5)"
+        ];
+
+        # mine
+        e = ["edit"];
+        d = ["diff"];
+        la = [ "log" "--revisions" "::" ];
+
+        drag = ["bookmark" "advance"];
+        sync = ["git" "fetch" "--all-remotes"];
+        evolve = ["rebase" "--skip-emptied" "--simplify-parents" "--onto" "trunk()"];
+        pullup = ["evolve" "-b" "stragglers"];
+        touch = ["describe" "--reset-author" "--no-edit"];
       };
       templates = {
         # log_node = ''
@@ -53,6 +71,9 @@
         #   )
         # '';
         git_push_bookmark = ''"74k1/" ++ change_id.short()'';
+      };
+      revsets = {
+        bookmark-advance-to = "@-";
       };
     };
   };
