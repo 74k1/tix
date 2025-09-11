@@ -10,6 +10,21 @@
 <br/>
 <br/>
 <br/>
+<br/>
+
+<div>
+    <h2>About</h2>
+    <p>
+        My very own nix config that I use on a daily basis.
+        <br>
+        It's always in a continuing circle of improvements. Expect radical changes.
+        <br>
+        Every single config is set for <ins>my</ins> own preference and is therefore heavily opinionated.
+        If you should find issues in my current config, feel free to contact me or create an <a href="https://github.com/74k1/tix/issues">Issue</a> directly. Mistakes are only a helpful learning oportunity.
+        <br>
+        If you found this repository helpful, I'd very much appreciate a star! ⭐ And if you're using some snippets in your own config, I'd also appreciate some credits, but it's nothing mandatory ofcourse. :)
+    </p>
+</div>
 
 > [!WARNING]
 > This is _hardcoded_ to my daily workflow. Don't just swap out the usernames, hostnames, and hardware configs and expect it to work.\
@@ -17,9 +32,14 @@
 > 
 > <sub>Psst: My [DMs are open](https://74k1.sh/contact), should you require help. I'm happy to share. :)</sub>
 
-<br/>
+<h2> Screenshots </h2>
+
+| <img src="/.github/assets/1.png"> | <img src="/.github/assets/2.png"> |
+| :-------------------------------: | :-------------------------------: |
+| <img src="/.github/assets/2.png"> | <img src="/.github/assets/1.png"> |
 
 <div>
+    <h2>Details</h2>
     <ul>
         <li><strong>Window Manager</strong> • <a href="https://github.com/YaLTeR/niri/">Niri</a> Scrollable WM!</li>
         <li><strong>Shell</strong> • <a href="https://github.com/fish-shell/fish-shell">fish</a> The user-friendly command line shell</li>
@@ -31,25 +51,7 @@
     </ul>
 </div>
 
-<h2> Screenshots </h2>
-
-| <img src="/.github/assets/1.png"> | <img src="/.github/assets/2.png"> |
-| :-------------------------------: | :-------------------------------: |
-| <img src="/.github/assets/2.png"> | <img src="/.github/assets/1.png"> |
-
-
 <div>
-    <h2>About</h2>
-    <p>
-    My very own nix config that I use on a daily basis.
-    <br>
-    It's always in a continuing circle of improvements. Expect radical changes.
-    <br>
-    Every single config is set for <ins>my</ins> own preference and is therefore heavily opinionated.
-    If you should find issues in my current config, feel free to contact me or create an <a href="https://github.com/74k1/tix/issues">Issue</a> directly. Mistakes are only a helpful learning oportunity.
-    <br>
-    If you found this repository helpful, I'd very much appreciate a star! ⭐ And if you're using some snippets in your own config, I'd also appreciate some credits, but it's nothing mandatory ofcourse. :)
-    </p>
     <h3>Hosts</h3>
     <table>
         <tr>
