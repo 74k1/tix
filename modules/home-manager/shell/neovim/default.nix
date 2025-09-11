@@ -18,6 +18,15 @@ let
       hash = "sha256-l83H5o6228J6dLB3RHZAz80Cdw7bAF1Kizr+C/9cZOo=";
     };
   };
+  vim-log-highlighting = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-log-highlighting";
+    src = pkgs.fetchFromGitHub {
+      owner = "mtdl9";
+      repo = "vim-log-highlighting";
+      rev = "v1.0.0";
+      hash = "sha256-OtPNGa73CLKXJQJgDJNHiGZc7/nQUnZSpZXsBr1KRts=";
+    };
+  };
   # hmts-nvim = pkgs.vimUtils.buildVimPlugin {
   #   name = "hmts-nvim";
   #   src = pkgs.fetchFromGitHub {
@@ -95,6 +104,7 @@ in
     plugins = with pkgs.vimPlugins; [
       # neo-tree-nvim
       # vim-table-mode
+      vim-log-highlighting
       cmp-buffer
       cmp-cmdline
       cmp-emoji
