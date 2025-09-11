@@ -7,8 +7,6 @@
   ...
 }:
 {
-  disabledModules = [ "services/networking/syncthing.nix" ];
-
   imports = with outputs.nixosModules; [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -23,8 +21,6 @@
     inputs.musnix.nixosModules.musnix
 
     # inputs.genix7000.nixosModules.genix7000
-
-    ../../../modules/syncthing.nix
 
     # cachix
     substituters
