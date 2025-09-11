@@ -45,6 +45,7 @@
     scrutiny
 
     baikal
+    rsshub 
 
     n8n
     audiobookshelf

@@ -28,6 +28,7 @@
   pocket-id = import ./daemons/pocket-id;
   quadlet = import ./quadlet;
   restic = import ./daemons/restic;
+  rsshub = import ./daemons/rsshub;
   rustdesk-server = import ./daemons/rustdesk-server;
   scrutiny = import ./daemons/scrutiny;
   send = import ./daemons/send;
