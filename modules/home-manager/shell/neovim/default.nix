@@ -1,12 +1,12 @@
 { pkgs, ... }:
 let
-  yueye-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "yueye-nvim";
+  yueye = pkgs.vimUtils.buildVimPlugin {
+    name = "yueye";
     src = pkgs.fetchFromGitHub {
       owner = "74k1";
       repo = "yueye.nvim";
-      rev = "d119d632a4ad1318b46627efa556a485b2a2326f";
-      hash = "sha256-QFFbjj2NUB4/e1jxJDuQJX5DTbKyh4MtjbnKrLMvVGs=";
+      rev = "36b150daf8db339104f0a21385306282e4b89a57";
+      hash = "sha256-/7kABFSvrk1SX7/c0xXmKPuTKJzjNGmqcSqofdL4hhI=";
     };
   };
   nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -59,7 +59,7 @@ in
       # vim
       ''
         set shiftwidth=2 softtabstop=2 expandtab
-        set number relativenumber
+        "set number relativenumber
         set clipboard=unnamedplus
 
         lua vim.g.mapleader = " "
@@ -102,6 +102,7 @@ in
       cmp_luasnip
       comment-nvim
       nvzone-typr
+      hotpot-nvim
       # hmts-nvim
       oxocarbon-nvim
       typst-preview-nvim
@@ -116,9 +117,20 @@ in
       vim-nix
       vim-shellcheck
       {
-        plugin = yueye-nvim;
+        plugin = yueye;
         type = "lua";
-        config = builtins.readFile ./cfg/yueye.lua;
+        config =
+        # lua
+        ''
+          vim.cmd("colorscheme yueye")
+          vim.opt.fillchars = { eob = " " }
+          vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
+          vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+          vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+          vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+          vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+        '';
       }
       {
         plugin = mini-ai;
