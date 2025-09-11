@@ -17,6 +17,7 @@
     # wofi
     wl-clipboard-rs
     xwayland-satellite
+    inputs.ukiyo.packages.x86_64-linux.default
   ];
 
   services.swww = {
@@ -53,14 +54,14 @@
           src = pkgs.fetchFromGitHub {
             owner = "niri-wm";
             repo = "niri";
-            rev = "17577e7db0e530d56e74ec244a185cdd1b9ad6cc";
-            hash = "sha256-ky0eBF/zoiJTIoLSpV1EmupVCEZMSp9pQIlHOpvDoMU=";
+            rev = "581b5be093b983a9a2911c5f45e6bda2e87fe574";
+            hash = "sha256-KIbF/TPvHu4oH9qQlUNDBAzpMuo8ptek6Wbxrz61SA4=";
           };
         in {
           inherit src;
           cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
             inherit src;
-            hash = "sha256-F6dT3xBWsjN+pGT3D2PvoqiWJpY/Rv8TkEBX1fthzYs=";
+            hash = "sha256-soJYT6TavlyqtVqMD70QYDZ+8swn6TVXsFHadJxaxWo=";
           };
         });
       # config = /* kdl */ {
@@ -310,6 +311,10 @@
             width = 4.0;
             length.total-proportion = 0.1;
           };
+        };
+        animations = {
+          enable = true;
+          slowdown = 0.5;
         };
         layer-rules = [
           {
