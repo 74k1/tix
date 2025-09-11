@@ -109,6 +109,9 @@
     pulsemixer
     qmk
     vial
+    pkgs.stable.gaphor
+    qalculate-gtk
+    libqalculate
     deploy-rs
     ripgrep
     # scc
