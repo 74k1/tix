@@ -318,14 +318,6 @@
             proxyWebsockets = true;
           };
         };
-        "litellm.eiri.${allSecrets.global.domain01}" = {
-          addSSL = true;
-          useACMEHost = "eiri.${allSecrets.global.domain01}";
-          locations."/" = {
-            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:3336";
-            proxyWebsockets = true;
-          };
-        };
         "overseerr.eiri.${allSecrets.global.domain01}" = {
           addSSL = true;
           useACMEHost = "eiri.${allSecrets.global.domain01}";

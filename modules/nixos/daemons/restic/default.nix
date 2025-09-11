@@ -43,7 +43,6 @@
         "/var/lib/vikunja"
 
         "/var/lib/open-webui"
-        "/var/lib/litellm"
 
         "/var/lib/immich"
         "/mnt/btrfs_pool/immich_media"
