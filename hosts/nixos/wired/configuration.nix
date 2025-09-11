@@ -148,6 +148,8 @@
     enableVirtualCamera = true;
   };
 
+  programs.gpu-screen-recorder.enable = true;
+
   networking.firewall.checkReversePath = "loose";
 
   taki.gui.enable = true;
@@ -495,6 +497,8 @@
     #dconf
     #xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
     virtiofsd
+    gpu-screen-recorder-gtk
+    inputs.ukiyo.packages.x86_64-linux.default
   ];
 
   virtualisation = {

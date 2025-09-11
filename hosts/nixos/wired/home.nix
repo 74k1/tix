@@ -119,6 +119,7 @@
 
     pulsemixer
     gnome-solanum
+    inkscape
     qmk
     vial
     pkgs.stable.gaphor
@@ -218,7 +219,7 @@
     rawtherapee
     darktable
     # legcord
-    vesktop
+    # vesktop
 
     davinci-resolve
 
