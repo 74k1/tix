@@ -8,14 +8,14 @@
   ...
 }:
 {
-  age.secrets = {
-    "outline_secret_key" = {
-      rekeyFile = "${inputs.self}/secrets/outline_secret_key.age";
-      # mode = "770";
-      owner = "outline";
-      group = "outline";
-    };
-  };
+  # age.secrets = {
+  #   "outline_secret_key" = {
+  #     rekeyFile = "${inputs.self}/secrets/outline_secret_key.age";
+  #     # mode = "770";
+  #     owner = "outline";
+  #     group = "outline";
+  #   };
+  # };
 
   services.memos = rec {
     enable = true;
