@@ -61,6 +61,7 @@
       rm = "rm -iv";
       cd = "z";
       #j = "z";
+      jjk = "jj drag && jj git push --all";
       tree = "${pkgs.eza}/bin/eza --tree --icons=auto";
       youcannotrebuild = "${lib.getExe pkgs.nh} os switch ~/tix";
       ycr = "youcannotrebuild";
@@ -76,10 +77,15 @@
       today-1 = "date -d yesterday '+%Y-%m-%d' | tr -d '\n'";
     };
 
+    binds = {
+      "ctrl-r".command = "_atuin_search";
+      "up".command = "_atuin_bind_up";
+    };
+
     interactiveShellInit = # fish
       ''
-        atuin init fish | source
-        zoxide init --cmd z fish | source
+        ${lib.getExe pkgs.zoxide} init --cmd z fish | source
+        ${lib.getExe pkgs.atuin} init fish | source
         COMPLETE=fish jj | source
         ${if config.programs.eww.enable then "eww shell-completions --shell fish | source" else ""}
       '';
