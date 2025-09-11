@@ -25,6 +25,7 @@
   starship = import ./shell/starship;
   style = import ./stylix;
   swaync = import ./wayland/swaync;
+  swayosd = import ./wayland/swayosd;
   theme = import ./x11/theme;
   walker = import ./wayland/walker;
   wall = import ./x11/wall;
