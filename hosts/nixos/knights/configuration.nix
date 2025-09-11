@@ -27,7 +27,7 @@
     inputs.agenix.nixosModules.default
     inputs.agenix-rekey.nixosModules.default
 
-    # fail2ban
+    fail2ban
     vector
 
     anubis
@@ -59,6 +59,16 @@
     localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
   };
 
+  services.fail2ban.jails = {
+    sshd.settings = {
+      enabled = true;
+      port = "ssh";
+      filter = "sshd[mode=agressive]";
+      maxretry = 1;
+      bantime = "1h";
+    };
+  };
+
   networking = {
     hostName = "knights"; # Define your hostname.
     networkmanager.enable = true;
@@ -70,15 +80,16 @@
         443
         2202
         2277
+        25565
         51820
       ];
       allowedTCPPorts = [
+        22
         80
         443
         2202
         2277
-        51820
-        22
+        25565
       ]; # Added port 22 for Forgejo SSH
     };
     useNetworkd = true;
