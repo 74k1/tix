@@ -22,6 +22,7 @@
   openssh = import ./daemons/openssh;
   paperless = import ./daemons/paperless;
   pcscd = import ./daemons/pcscd;
+  pds = import ./daemons/pds;
   plex = import ./daemons/plex;
   pocket-id = import ./daemons/pocket-id;
   quadlet = import ./quadlet;

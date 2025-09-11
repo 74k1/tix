@@ -36,6 +36,7 @@
     restic
     vaultwarden
     pocket-id
+    # pds
 
     # Mid importance
     graylog
