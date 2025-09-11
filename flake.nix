@@ -16,7 +16,10 @@
     tixpkgs = {
       url = "github:74k1/tixpkgs/main";
       # url = "git+file:///home/taki/dev/tixpkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        # quadlet.follows = "quadlet";
+      };
     };
     nixpkgs-local = {
       url = "git+file:///home/taki/dev/nixpkgs";
