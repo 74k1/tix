@@ -26,6 +26,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
+    inputs.tixpkgs.nixosModules'.services.mc-gate
+
     inputs.agenix.nixosModules.default
     inputs.agenix-rekey.nixosModules.default
 
@@ -551,6 +553,10 @@
           # };
         };
     };
+
+    mc-gate = {
+      enable = true;
+      config = allSecrets.per_service.mc-gate.config;
     };
   };
 
