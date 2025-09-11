@@ -75,9 +75,9 @@
     };
     sherlock = {
       # url = "github:skxxtz/sherlock";
-      url = "github:skxxtz/sherlock/unstable";
+      # url = "github:skxxtz/sherlock/unstable";
       # url = "github:74k1/sherlock/feat/nix";
-      # url = "git+file:///home/taki/dev/sherlock";
+      url = "git+file:///home/taki/dev/sherlock";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         # flake-parts.follows = "flake-parts";
