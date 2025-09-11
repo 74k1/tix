@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
   # yueye-nvim = pkgs.vimUtils.buildVimPlugin {
   #   name = "yueye-nvim";
@@ -103,6 +103,20 @@ in
         "lua vim.cmd("colorscheme yueye")
       '';
     plugins = with pkgs.vimPlugins; [
+      {
+        plugin = inputs.snqn-nvim.packages.${pkgs.stdenv.hostPlatform.system}.default;
+        type = "lua";
+        config =
+        # lua
+        ''
+          require("snqn").setup({
+            transparent = true,
+          })
+
+          vim.cmd('colorscheme snqn')
+        '';
+      }
+      inputs.snqn-nvim.packages.${pkgs.stdenv.hostPlatform.system}.default
       # neo-tree-nvim
       # vim-table-mode
       vim-log-highlighting
@@ -129,44 +143,44 @@ in
       vim-dadbod-ui
       vim-nix
       vim-shellcheck
-      {
-        plugin = base16-nvim;
-        type = "lua";
-        config = 
-        # lua
-        ''
-          -- All builtin colorschemes can be accessed with |:colorscheme|.
-          vim.cmd('colorscheme base16-colors')
-
-          -- Alternatively, you can provide a table specifying your colors to the setup function.
-          require('base16-colorscheme').setup({
-            base00 = '#07060B',
-            base01 = '#1C1B28',
-            base02 = '#323246',
-            base03 = '#4C4B69',
-            base04 = '#72708E',
-            base05 = '#BFBDCA',
-            base06 = '#EBE9F1',
-            base07 = '#FFFFFF',
-            base08 = '#FF5487',
-            base09 = '#FF9265',
-            base0A = '#FFD772',
-            base0B = '#54FF80',
-            base0C = '#5BD5EA',
-            base0D = '#7089FF',
-            base0E = '#A878F1',
-            base0F = '#CB65E2',
-          })
-
-          -- transparent background?
-          vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
-          vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-          vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-          vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-          vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-          vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-        '';
-      }
+      # {
+      #   plugin = base16-nvim;
+      #   type = "lua";
+      #   config = 
+      #   # lua
+      #   ''
+      #     -- All builtin colorschemes can be accessed with |:colorscheme|.
+      #     vim.cmd('colorscheme base16-colors')
+      #
+      #     -- Alternatively, you can provide a table specifying your colors to the setup function.
+      #     require('base16-colorscheme').setup({
+      #       base00 = '#07060B',
+      #       base01 = '#1C1B28',
+      #       base02 = '#323246',
+      #       base03 = '#4C4B69',
+      #       base04 = '#72708E',
+      #       base05 = '#BFBDCA',
+      #       base06 = '#EBE9F1',
+      #       base07 = '#FFFFFF',
+      #       base08 = '#FF5487',
+      #       base09 = '#FF9265',
+      #       base0A = '#FFD772',
+      #       base0B = '#54FF80',
+      #       base0C = '#5BD5EA',
+      #       base0D = '#7089FF',
+      #       base0E = '#A878F1',
+      #       base0F = '#CB65E2',
+      #     })
+      #
+      #     -- transparent background?
+      #     vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
+      #     vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+      #     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+      #     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      #     vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+      #     vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+      #   '';
+      # }
       # {
       #   plugin = yueye-nvim;
       #   type = "lua";
