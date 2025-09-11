@@ -62,14 +62,14 @@ in
         base05 = "#EBE9F1";
         base06 = "#FFFFFF";
         base07 = "#BFBDCA";
-        base08 = "#59F1DA";
-        base09 = "#FFE375";
+        base08 = "#FF5487";
+        base09 = "#FFD772";
         base0A = "#54FF80";
-        base0B = "#A871F5";
+        base0B = "#59F1DA";
         base0C = "#5DB8FA";
         base0D = "#7089FF";
-        base0E = "#EF64D1";
-        base0F = "#FF5487";
+        base0E = "#A871F5";
+        base0F = "#EF64D1";
       };
       fonts = {
         # serif = {
