@@ -4177,11 +4177,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1746566486,
-        "narHash": "sha256-rl9u7XuuQtsKafeYbw9zBGi2Juoraedt5e6fUDwijcI=",
+        "lastModified": 1760564412,
+        "narHash": "sha256-TkkUiiWdSn/IhSmvI/yg3MRAloUg3W48JTXhkdxepmI=",
         "ref": "refs/heads/main",
-        "rev": "c2defa418c151db64170ed78d7c8f7b48a7d5ed1",
-        "revCount": 8,
+        "rev": "bc95a732ae1d02293dd33f35f7abc6698a600795",
+        "revCount": 10,
         "type": "git",
         "url": "ssh://git@github.com/74k1/tixpkgs-unfree"
       },
