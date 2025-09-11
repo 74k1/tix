@@ -18,6 +18,7 @@
     inputs.nixos-generators.nixosModules.all-formats
 
     inputs.yeetmouse.nixosModules.default
+    inputs.tixpkgs.nixosModules'.services.brscan-skey
     inputs.musnix.nixosModules.musnix
 
     # inputs.genix7000.nixosModules.genix7000
@@ -467,6 +468,12 @@
   # Evolution shenanigans
   #programs.dconf.enable = true;
   services.gnome.evolution-data-server.enable = true;
+  services.protonmail-bridge = {
+    enable = true;
+    path = with pkgs; [
+      gnome-keyring
+    ];
+  };
 
   # nix = {
   #   # Enable the newest nix version
@@ -481,33 +488,34 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    lact
-    ntfs3g
-    git
-    wget
-    curl
-    nix-plugins
-    tmux
-    jq
-    shpool
-    pavucontrol
-    egl-wayland
-    libva
-    libva-utils
-    ffmpeg-full
-    fastfetch
     # brscan4
-    brscan5
-    simple-scan
-    nurl
     # flatpak
     # gnome.gnome-software
     #alttab
     #dconf
     #xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
-    virtiofsd
+    brscan5
+    curl
+    egl-wayland
+    fastfetch
+    ffmpeg-full
+    git
     gpu-screen-recorder-gtk
     inputs.ukiyo.packages.x86_64-linux.default
+    jq
+    lact
+    libva
+    libva-utils
+    nix-plugins
+    ntfs3g
+    nurl
+    pavucontrol
+    protonmail-bridge
+    shpool
+    simple-scan
+    tmux
+    virtiofsd
+    wget
   ];
 
   virtualisation = {
@@ -576,6 +584,8 @@
       brscan5.enable = true;
     };
   };
+
+  services.brscan-skey.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -35,7 +35,7 @@
       # polybar
       #rofi
       #wofi
-      # spotify
+      spotify
       starship
       #theme
       style
@@ -151,6 +151,7 @@
     blueman
 
     remmina
+    parsec-bin
 
     mumble
 
@@ -164,7 +165,8 @@
     pkgs.master.opencode
     #zoxide
     typst
-    moonlight-qt
+    # moonlight-qt
+    pkgs.tix.moonlight-qt-fork
     parsec-bin
     gradia
     scrcpy
@@ -173,6 +175,11 @@
     cameractrls
     cameractrls-gtk4
 
+    krita
+
+    reaper
+    reaper-sws-extension
+    reaper-reapack-extension
     renoise
 
     mission-center
@@ -184,11 +191,7 @@
     # gui stuff
     # brave
     pkgs.master.osu-lazer-bin
-    #inputs.zen-browser.packages."${system}".zen-browser
     # inputs.tixpkgs.packages."${system}".lumen
-    # (inputs.zen-browser.packages."${system}".default.overrideAttrs (oldAttrs: {
-    #   meta = {};
-    # }))
     inputs.affinity-nix.packages.${pkgs.stdenv.hostPlatform.system}.v3
     thunderbird
 
@@ -215,7 +218,7 @@
     obsidian
     simple-scan
     aria2
-    spotify
+    # spotify (replaced by spicetify-nix module)
     # spotify-tray
     # youtube-music
     # tidal-hifi
@@ -248,8 +251,6 @@
     gnome-clocks
     # paper-plane
 
-    session-desktop
-
     # akira-unstable
     # vala
     # pantheon.elementary-gtk-theme
@@ -270,9 +271,8 @@
 
     telegram-desktop
 
-    # inputs.zen-browser.packages."${system}".twilight
+    pkgs.master.shortwave
 
-    pkgs.master.shortwave # radio
     goodvibes
     plexamp
     # newsflash # rss
@@ -313,6 +313,7 @@
     MANWIDTH = "999";
     QT_STYLE_OVERRIDE = lib.mkForce "";
     QT_QPA_PLATFORM = "wayland";
+    XDG_DATA_DIRS = "$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}";
   };
 
   # set Wall
