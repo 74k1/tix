@@ -58,6 +58,17 @@
         };
       };
 
+      listenbrainz = {
+        id = "brainz_client";
+        name = "brainz_client";
+        configureAs = "client";
+        data = {
+          token = "[[TIX_BRAINZ_TOKEN]]";
+          url = "https://api.listenbrainz.org";
+          username = "[[TIX_BRAINZ_USER]]";
+        };
+      };
+
       # Sources
       spotify = {
         id = "spotify";
