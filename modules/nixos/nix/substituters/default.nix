@@ -25,10 +25,6 @@
           public-key = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
         }
         {
-          substituter = "https://cache.garnix.io";
-          public-key = "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=";
-        }
-        {
           substituter = "https://tixpkgs.cachix.org";
           public-key = "tixpkgs.cachix.org-1:Q52x6PMD7ZuTC7oRihwp5lP9YaEaYtrfxYkwzEpjSRI=";
         }
