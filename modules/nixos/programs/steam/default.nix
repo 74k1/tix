@@ -6,6 +6,9 @@
   ...
 }:
 {
+  environment.systemPackages = [
+    pkgs.gamescope
+  ];
   programs.steam = {
     enable = true;
     extraCompatPackages = with pkgs; [
