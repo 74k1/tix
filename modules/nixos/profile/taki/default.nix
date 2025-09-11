@@ -44,7 +44,14 @@
           # my own super cool fonts
           # inputs.tixpkgs-unfree.packages.x86_64-linux.berkeley-nolig-otf
           inputs.tixpkgs-unfree.packages.x86_64-linux.suisse-intl-mono
+          inputs.tixpkgs-unfree.packages.x86_64-linux.blinkMacSystemFont
+          inputs.tixpkgs-unfree.packages.x86_64-linux.ntype82-otf
+          inputs.tixpkgs-unfree.packages.x86_64-linux.lettera-mono
           inputs.apple-emoji.packages.x86_64-linux.apple-emoji-linux
+          inputs.tixpkgs-unfree.packages.x86_64-linux.new-york
+          inputs.tixpkgs-unfree.packages.x86_64-linux.sf-compact
+          inputs.tixpkgs-unfree.packages.x86_64-linux.sf-mono
+          inputs.tixpkgs-unfree.packages.x86_64-linux.sf-pro
 
           # main fonts
           corefonts
@@ -96,10 +103,11 @@
           fragment-mono
           # noto-fonts
           # noto-fonts-extra
-          nerd-fonts.noto
           nerd-fonts.hack
-          nerd-fonts.tinos
           nerd-fonts.lilex
+          nerd-fonts.monaspace
+          nerd-fonts.noto
+          nerd-fonts.tinos
           nerd-fonts.zed-mono
         ];
       };
