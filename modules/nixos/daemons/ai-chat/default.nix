@@ -24,7 +24,7 @@
     enable = true;
     host = "0.0.0.0";
     port = 3335;
-    package = pkgs.master.open-webui;
+    package = pkgs.stable.open-webui;
     environment = {
       HOME = "${config.services.open-webui.stateDir}";
       TRANSFORMERS_CACHE = "${config.services.open-webui.stateDir}/cache";
