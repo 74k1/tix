@@ -99,6 +99,7 @@
     eza
     feh
     viu
+    viddy
     loupe
     seahorse
     gnome-calculator
@@ -138,6 +139,8 @@
     blueman
 
     remmina
+
+    mumble
 
     # wezterm
     pkgs.master.ghostty
