@@ -3274,16 +3274,17 @@
         "rust-overlay": "rust-overlay_4"
       },
       "locked": {
-        "dirtyRev": "d5bfeccd47b3c59b739abaecafa815b8c998728b-dirty",
-        "dirtyShortRev": "d5bfecc-dirty",
-        "lastModified": 1780712220,
-        "narHash": "sha256-1HoO36Y2H+8S44sUokCJR8u9IOaSYcBFBYfsaIy5bu8=",
-        "type": "git",
-        "url": "file:///home/taki/dev/sherlock-gpui"
+        "lastModified": 1781098199,
+        "narHash": "sha256-Gy4yMn5jP5WITaysGpxvWVKSer2H+A6rfbGKSjDNZXg=",
+        "owner": "skxxtz",
+        "repo": "sherlock-gpui",
+        "rev": "549e70a9e48628d521c649bdb8a4d4aa85a1c437",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/taki/dev/sherlock-gpui"
+        "owner": "skxxtz",
+        "repo": "sherlock-gpui",
+        "type": "github"
       }
     },
     "slimlock": {
