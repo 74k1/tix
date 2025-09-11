@@ -117,7 +117,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     yeetmouse = {
-      url = "github:AndyFilter/YeetMouse/driver/experimental?dir=nix";
+      url = "github:AndyFilter/YeetMouse?dir=nix";
       # url = "github:kitten/YeetMouse/@kitten/feat/update-nix-module-options?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
