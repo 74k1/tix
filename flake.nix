@@ -38,25 +38,15 @@
     ukiyo = {
       url = "github:74k1/ukiyo";
     };
-    ChessSet = {
-      url = "github:74k1/ChessSet";
-    };
     ouro = {
       url = "github:reo101/ouro";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
     # --- TESTS / FIXES
-    nixpkgs-akotro-it-tools = {
-      url = "github:akotro/nixpkgs/add-it-tools-service";
-    };
-    the-argus-emptty = {
-      url = "github:the-argus/nixpkgs/emptty/module";
-    };
     hythera-waterfox = {
       url = "github:hythera/nixpkgs/pkgs/waterfox/init";
     };
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     # --- HIGH IMPORTANCE ---
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -72,14 +62,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # ---
-    tangled = {
-      url = "git+https://tangled.org/@tangled.org/core";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixos-anywhere = {
-      url = "github:nix-community/nixos-anywhere/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -98,19 +80,8 @@
       url = "github:abenz1267/walker";
       inputs.elephant.follows = "elephant";
     };
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
-      # NOTE: not overriding since NixOS-WSL is flaky (relies on stable)
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-    raspberry-pi-nix = {
-      url = "github:nix-community/raspberry-pi-nix";
-    };
     sherlock-gpui = {
       url = "github:skxxtz/sherlock-gpui";
-      # inputs = {
-      #   nixpkgs.follows = "nixpkgs";
-      # };
     };
     agenix = {
       url = "github:ryantm/agenix";
@@ -180,7 +151,7 @@
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } (
-      { withSystem, flake-parts-lib, ... }:
+      { ... }:
       {
         systems = [
           "aarch64-linux"
@@ -202,14 +173,7 @@
         debug = true;
 
         perSystem =
-          {
-            self,
-            lib,
-            pkgs,
-            system,
-            inputs',
-            ...
-          }:
+          { ... }:
           {
             # Stuff with auto-inserted ${system}, like `packages` and `devShells`
           };

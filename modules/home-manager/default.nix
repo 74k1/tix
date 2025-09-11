@@ -2,7 +2,6 @@
   bash = import ./shell/bash;
   colors = import ./x11/colors;
   copyq = import ./wayland/copyq;
-  dunst = import ./wayland/dunst;
   easyeffects = import ./services/easyeffects;
   fastfetch = import ./shell/fastfetch;
   firefox = import ./apps/firefox;

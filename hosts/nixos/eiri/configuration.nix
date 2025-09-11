@@ -50,7 +50,7 @@
 
     multi-scrobbler
 
-    fourget
+    # fourget
 
     # everything else
     scrutiny
@@ -96,13 +96,15 @@
   ];
 
   # Bootloader.
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-  boot.kernel.sysctl = {
-    "fs.inotify.max_user_instances" = 512;
-    "fs.inotify.max_user_watches" = 1048576;
+  boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
+    kernel.sysctl = {
+      "fs.inotify.max_user_instances" = 512;
+      "fs.inotify.max_user_watches" = 1048576;
+    };
   };
 
   systemd.services.NetworkManager-wait-online.enable = false;
@@ -214,6 +216,7 @@
 
     nginx = {
       enable = true;
+      package = pkgs.master.nginxMainline;
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
       recommendedProxySettings = true;

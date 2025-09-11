@@ -22,19 +22,19 @@
     plugins = [
       {
         name = "pure";
-        src = pkgs.fishPlugins.pure.src;
+        inherit (pkgs.fishPlugins.pure) src;
       }
       {
         name = "bass";
-        src = pkgs.fishPlugins.bass.src;
+        inherit (pkgs.fishPlugins.bass) src;
       }
       {
         name = "puffer";
-        src = pkgs.fishPlugins.puffer.src;
+        inherit (pkgs.fishPlugins.puffer) src;
       }
       {
         name = "autopair";
-        src = pkgs.fishPlugins.autopair.src;
+        inherit (pkgs.fishPlugins.autopair) src;
       }
     ];
 

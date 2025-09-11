@@ -68,16 +68,18 @@ in
       allowedTCPPorts = [ 8989 ];
     };
 
-    users.users = mkIf (cfg.user == "sonarr-alp") {
-      sonarr-alp = {
-        group = cfg.group;
-        home = cfg.dataDir;
-        uid = 278;
+    users = {
+      users = mkIf (cfg.user == "sonarr-alp") {
+        sonarr-alp = {
+          group = cfg.group;
+          home = cfg.dataDir;
+          uid = 278;
+        };
       };
-    };
 
-    users.groups = mkIf (cfg.group == "sonarr-alp") {
-      sonarr-alp.gid = 278;
+      groups = mkIf (cfg.group == "sonarr-alp") {
+        sonarr-alp.gid = 278;
+      };
     };
   };
 }

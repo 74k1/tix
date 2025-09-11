@@ -32,8 +32,10 @@ in
     };
   };
   config = {
+    gtk.gtk4.theme = config.gtk.theme;
     stylix = {
       enable = true;
+      overlays.enable = false;
       polarity = "dark";
       # image = ./wall.png;
       image = pkgs.fetchurl {
@@ -45,13 +47,13 @@ in
         size = 16;
         # package = pkgs.openzone-cursors;
         # name = "Open Zone Black";
-        package = cfg.package;
+        inherit (cfg) package;
         name = "Ukiyo";
       };
       icons = {
         enable = true;
         dark = icon.name;
-        package = icon.package;
+        inherit (icon) package;
       };
       base16Scheme = {
         base00 = "#07060B";

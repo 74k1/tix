@@ -48,6 +48,8 @@ in
     vimAlias = true;
     vimdiffAlias = true;
     defaultEditor = true;
+    withRuby = true;
+    withPython3 = true;
     extraLuaPackages = ps: [
       ps.magick # for image.nvim
     ];
@@ -97,14 +99,14 @@ in
         plugin = inputs.snqn-nvim.packages.${pkgs.stdenv.hostPlatform.system}.default;
         type = "lua";
         config =
-        # lua
-        ''
-          require("snqn").setup({
-            transparent = true,
-          })
+          # lua
+          ''
+            require("snqn").setup({
+              transparent = true,
+            })
 
-          vim.cmd('colorscheme snqn')
-        '';
+            vim.cmd('colorscheme snqn')
+          '';
       }
       # neo-tree-nvim
       # vim-table-mode
@@ -239,16 +241,16 @@ in
       {
         plugin = fidget-nvim;
         type = "lua";
-        config = 
+        config =
           # lua
           ''
-          require("fidget").setup({
-            progress = {
-              display = {
-                progress_style = "FidgetProgress"
+            require("fidget").setup({
+              progress = {
+                display = {
+                  progress_style = "FidgetProgress"
+                }
               }
-            }
-          })
+            })
           '';
       }
       {
@@ -277,9 +279,9 @@ in
         config = 
           # lua
           ''
-          require("colorizer").setup({
-            mode = 'foreground';
-          })
+            require("colorizer").setup({
+              mode = 'foreground';
+            })
           '';
       }
       {

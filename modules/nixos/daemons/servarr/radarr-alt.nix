@@ -67,16 +67,18 @@ in
       allowedTCPPorts = [ 7879 ];
     };
 
-    users.users = mkIf (cfg.user == "radarr-alt") {
-      radarr-alt = {
-        group = cfg.group;
-        home = cfg.dataDir;
-        uid = 277;
+    users = {
+      users = mkIf (cfg.user == "radarr-alt") {
+        radarr-alt = {
+          group = cfg.group;
+          home = cfg.dataDir;
+          uid = 277;
+        };
       };
-    };
 
-    users.groups = mkIf (cfg.group == "radarr-alt") {
-      radarr-alt.gid = 277;
+      groups = mkIf (cfg.group == "radarr-alt") {
+        radarr-alt.gid = 277;
+      };
     };
   };
 }

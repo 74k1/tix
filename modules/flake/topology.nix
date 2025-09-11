@@ -26,7 +26,7 @@
       };
 
       topology = {
-        nixosConfigurations = self.nixosConfigurations;
+        inherit (self) nixosConfigurations;
         modules = [
           {
           }

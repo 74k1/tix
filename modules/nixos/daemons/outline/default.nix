@@ -37,6 +37,7 @@
 
   services.outline = {
     enable = true;
+    package = pkgs.master.outline;
     publicUrl = "https://wiki.${allSecrets.global.domain00}";
     port = 3303;
     forceHttps = false;
@@ -55,26 +56,31 @@
     concurrency = 1; # for under 1000 users..
     maximumImportSize = 5120000;
 
-    smtp = {
-      host = allSecrets.global.mail.sender.host;
-      port = lib.strings.toInt allSecrets.global.mail.sender.port;
-      username = allSecrets.global.mail.sender.username;
-      passwordFile = config.age.secrets."outline_smtp_password".path;
-      replyEmail = allSecrets.global.mail.sender.username;
-      fromEmail = allSecrets.global.mail.sender.username;
-      secure = false;
-    };
+    smtp = 
+      let
+        inherit (allSecrets.global.mail.sender) host username;
+      in
+      {
+        inherit host username;
+        port = lib.strings.toInt allSecrets.global.mail.sender.port;
+        passwordFile = config.age.secrets."outline_smtp_password".path;
+        replyEmail = username;
+        fromEmail = username;
+        secure = false;
+      };
 
-    oidcAuthentication = {
-      authUrl = allSecrets.global.oidc.authUrl;
-      tokenUrl = allSecrets.global.oidc.tokenUrl;
-      userinfoUrl = allSecrets.global.oidc.userinfoUrl;
-      clientId = "outline";
-      clientSecretFile = config.age.secrets."outline_oidc_client_secret".path;
-      scopes = [ "openid" "email" "profile" ];
-      usernameClaim = "preferred_username";
-      displayName = "Pocket ID";
-    };
+    oidcAuthentication = 
+      let 
+        inherit (allSecrets.global.oidc) authUrl tokenUrl userinfoUrl;
+      in 
+      {
+        inherit authUrl tokenUrl userinfoUrl;
+        clientId = "outline";
+        clientSecretFile = config.age.secrets."outline_oidc_client_secret".path;
+        scopes = [ "openid" "email" "profile" ];
+        usernameClaim = "preferred_username";
+        displayName = "Pocket ID";
+      };
   };
 
   # NOTE: for debug purposes

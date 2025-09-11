@@ -12,11 +12,10 @@ in
 {
   disabledModules = [
     "services/misc/servarr/prowlarr.nix"
-    "services/misc/overseerr.nix"
   ];
 
   imports = [
-    "${inputs.nixpkgs-master}/nixos/modules/services/misc/overseerr.nix"
+    # TODO(2026-08-12): Remove nixpkgs-master imports once these modules land in nixos-unstable
     "${inputs.nixpkgs-master}/nixos/modules/services/misc/servarr/prowlarr.nix"
     ./radarr-alt.nix
     ./sonarr-alt.nix

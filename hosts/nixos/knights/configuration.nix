@@ -45,8 +45,11 @@
   ];
 
   # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    loader.grub.enable = true;
+    loader.grub.device = "/dev/sda";
+  };
 
   documentation.nixos.enable = false;
 
@@ -272,6 +275,7 @@
 
     nginx = {
       enable = true;
+      package = pkgs.master.nginxMainline;
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
       # recommendedProxySettings = true;
@@ -314,6 +318,21 @@
           #     proxyWebsockets = true;
           #   };
           # };
+          "auth.${domain01}" = {
+            addSSL = true;
+            enableACME = true;
+            locations."/" = {
+              proxyPass = "http://10.100.0.1:3030";
+              # proxyWebsockets = true;
+              # recommendedProxySettings = true;
+              extraConfig = /* nginx */ ''
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+              '';
+            };
+          };
           "scrobble.${domain01}" = {
             addSSL = true;
             enableACME = true;
@@ -346,22 +365,6 @@
                 return 302 https://auth.${domain01}/unauthorized?username=unavailable;
               }
             '';
-          };
-
-          "auth.${domain01}" = {
-            addSSL = true;
-            enableACME = true;
-            locations."/" = {
-              proxyPass = "http://10.100.0.1:3030";
-              # proxyWebsockets = true;
-              # recommendedProxySettings = true;
-              extraConfig = /* nginx */ ''
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_set_header X-Forwarded-Proto $scheme;
-              '';
-            };
           };
           "umami.${domain01}" = {
             addSSL = true;
@@ -642,7 +645,7 @@
 
     mc-gate = {
       enable = true;
-      config = allSecrets.per_service.mc-gate.config;
+      inherit (allSecrets.per_service.mc-gate) config;
     };
   };
 

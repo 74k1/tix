@@ -173,16 +173,7 @@
     # (inputs.zen-browser.packages."${system}".default.overrideAttrs (oldAttrs: {
     #   meta = {};
     # }))
-    inputs.affinity-nix.packages."${system}".v3
-    # (inputs.affinity-nix.packages."${system}".photo.overrideAttrs (oldAttrs: {
-    #   meta = {};
-    # }))
-    # (inputs.affinity-nix.packages."${system}".designer.overrideAttrs (oldAttrs: {
-    #   meta = {};
-    # }))
-    # (inputs.affinity-nix.packages."${system}".publisher.overrideAttrs (oldAttrs: {
-    #   meta = {};
-    # }))
+    inputs.affinity-nix.packages.${pkgs.stdenv.hostPlatform.system}.v3
     thunderbird
 
     # tixpkgs

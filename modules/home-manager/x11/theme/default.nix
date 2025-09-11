@@ -47,7 +47,7 @@ in
         # name = "Papirus";
       };
       cursorTheme = {
-        package = cfg.package;
+        inherit (cfg) package;
         name = "Ukiyo";
         #size = 16;
       };

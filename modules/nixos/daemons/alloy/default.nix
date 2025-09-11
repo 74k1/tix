@@ -3,38 +3,36 @@ let
   alloyHost = if config.networking.hostName == "eiri" then "127.0.0.1" else "10.100.0.1";
 in
 {
-  security.auditd.enable = true;
-
-  security.audit = {
-    enable = true;
-    backlogLimit = 8192;
-    failureMode = "printk";
-    rules = [
-      "-a always,exit -F arch=b64 -S execve -F euid=0 -k root-commands"
-      "-a always,exit -F arch=b32 -S execve -F euid=0 -k root-commands"
-      "-w /etc/sudoers -p wa -k sudo-config"
-      "-w /etc/sudoers.d/ -p wa -k sudo-config"
-    ];
+  security = {
+    auditd.enable = true;
+    audit = {
+      enable = true;
+      backlogLimit = 8192;
+      failureMode = "printk";
+      rules = [
+        "-a always,exit -F arch=b64 -S execve -F euid=0 -k root-commands"
+        "-a always,exit -F arch=b32 -S execve -F euid=0 -k root-commands"
+        "-w /etc/sudoers -p wa -k sudo-config"
+        "-w /etc/sudoers.d/ -p wa -k sudo-config"
+      ];
+    };
+    pam.services.sudo.ttyAudit = {
+      enable = true;
+      enablePattern = "root";
+      openOnly = true;
+    };
+    pam.services.su.ttyAudit = {
+      enable = true;
+      enablePattern = "root";
+    };
+    sudo.extraConfig = ''
+      Defaults log_output
+      Defaults log_input
+      Defaults syslog=authpriv
+      Defaults intercept
+      Defaults intercept_verify
+    '';
   };
-
-  security.pam.services.sudo.ttyAudit = {
-    enable = true;
-    enablePattern = "root";
-    openOnly = true;
-  };
-
-  security.pam.services.su.ttyAudit = {
-    enable = true;
-    enablePattern = "root";
-  };
-
-  security.sudo.extraConfig = ''
-    Defaults log_output
-    Defaults log_input
-    Defaults syslog=authpriv
-    Defaults intercept
-    Defaults intercept_verify
-  '';
 
   services.alloy = {
     enable = true;

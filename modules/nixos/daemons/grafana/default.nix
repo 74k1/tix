@@ -46,8 +46,7 @@
           client_id = "grafana";
           client_secret = allSecrets.per_service.pocket-id.clients.grafana.secret;
           scopes = "openid email profile grafana_role";
-          auth_url = allSecrets.per_service.pocket-id.auth_url;
-          token_url = allSecrets.per_service.pocket-id.token_url;
+          inherit (allSecrets.per_service.pocket-id) auth_url token_url;
           api_url = allSecrets.per_service.pocket-id.userinfo_url;
           use_pkce = true;
           allow_assign_grafana_admin = true;

@@ -9,7 +9,7 @@
 }:
 {
   age.secrets."tinyauth_env" = {
-    rekeyFile = "${inputs.self}/secrets/tinyauth_env";
+    rekeyFile = "${inputs.self}/secrets/tinyauth_env.age";
     # mode = "770";
     # owner = "syncthing";
     # group = "syncthing";
@@ -19,7 +19,6 @@
     enable = true;
     package = pkgs.master.tinyauth;
 
-
     # TINYAUTH_OAUTH_PROVIDERS_POCKETID_CLIENTID
     # TINYAUTH_OAUTH_PROVIDERS_POCKETID_CLIENTSECRET
     environmentFile = config.age.secrets."tinyauth_env".path;
@@ -28,7 +27,7 @@
       APPURL = "https://auth.${allSecrets.global.domain01}";
       SERVER_PORT = 3030;
       SERVER_ADDRESS = "0.0.0.0";
-      # OAUTH_AUTOREDIRECT = "pocketid";
+      OAUTH_AUTOREDIRECT = "pocketid";
 
       OAUTH_PROVIDERS_POCKETID_AUTHURL = allSecrets.global.oidc.authUrl;
       OAUTH_PROVIDERS_POCKETID_TOKENURL = allSecrets.global.oidc.tokenUrl;

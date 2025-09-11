@@ -82,10 +82,7 @@
         youcannotrebuild () {
           ${
             let
-              inherit (lib.strings)
-                hasInfix
-                ;
-              inherit (pkgs.hostPlatform)
+              inherit (pkgs.stdenv.hostPlatform)
                 isx86_64
                 isAarch64
                 isLinux

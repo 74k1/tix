@@ -8,7 +8,7 @@
   ...
 }:
 let
-  lib = config._module.args.lib;
+  inherit (config._module.args) lib;
   outputs = self;
 
   allSecrets = lib.rageImportEncrypted ../../secrets/secrets.nix.age;
@@ -159,7 +159,7 @@ in
               hostname: settings:
               mkDeployNode {
                 inherit hostname;
-                inherit (self."${configType}Configurations".${hostname}.pkgs) system;
+                system = self."${configType}Configurations".${hostname}.pkgs.stdenv.hostPlatform.system;
                 inherit configType;
               }
               // settings
@@ -169,8 +169,6 @@ in
         {
           nixos = {
             eiri = {
-              # should change this to 10.0.0.1 someday, when i have wg on cyberia
-              # but how do I deploy from wired
               hostname = "${allSecrets.per_host.eiri.int_ip}";
             };
             knights = {
@@ -186,10 +184,6 @@ in
                 "-p"
                 "2202"
               ];
-            };
-            cyberia = {
-              hostname = "${allSecrets.per_host.cyberia.int_ip}";
-              # sshOpts = [ "-p" "2202" ];
             };
           };
           darwin = {

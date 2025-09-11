@@ -34,7 +34,6 @@
       SMTP_PORT = allSecrets.global.mail.sender.port;
       SMTP_FROM = allSecrets.global.mail.sender.username;
       SMTP_USER = allSecrets.global.mail.sender.username;
-      SMTP_PASSWORD = allSecrets.global.mail.sender.password;
       SMTP_TLS = "starttls";
       # SMTP_SKIP_CERT_VERIFY = "";
 

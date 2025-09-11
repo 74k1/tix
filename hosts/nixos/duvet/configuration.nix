@@ -35,9 +35,11 @@
     taki
   ];
 
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    loader.grub.enable = true;
+    loader.grub.device = "/dev/sda";
+  };
 
   documentation.nixos.enable = false;
 
@@ -203,6 +205,7 @@
 
     nginx = {
       enable = true;
+      package = pkgs.master.nginxMainline;
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
       recommendedProxySettings = true;
@@ -213,7 +216,7 @@
       '';
 
       virtualHosts = {
-        "ip.74k1.sh" = {
+        "ip.${allSecrets.global.domain01}" = {
           addSSL = true;
           enableACME = true;
           locations."/" = {
@@ -223,20 +226,21 @@
             '';
           };
         };
-        "wall.74k1.sh" = {
+        "wall.${allSecrets.global.domain01}" = {
           addSSL = true;
           enableACME = true;
-          root = "/var/www/wall.74k1.sh/";
+          root = "/var/www/wall.${allSecrets.global.domain01}/";
           locations."/".index = "index.php";
           locations."~ \\.php$".extraConfig = ''
             fastcgi_pass unix:${config.services.phpfpm.pools.mypool.socket};
             fastcgi_index index.php;
           '';
         };
-        "74k1.sh" = {
+        "${allSecrets.global.domain01}" = {
           addSSL = true;
           enableACME = true;
           root = "/var/www/blog/";
+          locations."/".tryFiles = "$uri $uri/ =404";
         };
         "taki.moe" = {
           addSSL = true;
