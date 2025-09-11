@@ -187,7 +187,10 @@
       wireguardPeers = [
         {
           PublicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
-          AllowedIPs = [ "10.100.0.1/32" ];
+          AllowedIPs = [
+            "10.100.0.1/32"
+            "192.168.1.70/32"
+          ];
           Endpoint = "${allSecrets.global.pub_ip}:51820";
           PersistentKeepalive = 60;
         }
@@ -475,6 +478,11 @@
           "chat.${domain00}" = {
             addSSL = true;
             useACMEHost = "${allSecrets.global.domain00}";
+            extraConfig = /* nginx */ ''
+              ssl_conf_command Options -KTLS;
+              proxy_buffering off;
+              proxy_cache off;
+            '';
             locations."/" = {
               proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.chat.settings.BIND}";
               recommendedProxySettings = true;
