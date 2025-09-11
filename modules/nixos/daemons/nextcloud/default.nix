@@ -21,7 +21,7 @@
 
   services.nextcloud = {
     enable = true;
-    package = pkgs.master.nextcloud31;
+    package = pkgs.master.nextcloud32;
     extraApps = {
       inherit (config.services.nextcloud.package.packages.apps) unroundedcorners onlyoffice;
     };
