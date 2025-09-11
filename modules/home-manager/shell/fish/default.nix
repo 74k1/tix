@@ -55,14 +55,15 @@
       la = "${pkgs.eza}/bin/eza -a --icons=auto";
       ll = "${pkgs.eza}/bin/eza -l --icons=auto";
       ls = "${pkgs.eza}/bin/eza --icons=auto";
-      mv = "mv -iv";
+      tree = "${pkgs.eza}/bin/eza --tree --icons=auto";
       nano = "${config.programs.neovim.finalPackage}/bin/nvim";
       nv = "${config.programs.neovim.finalPackage}/bin/nvim";
       v = "${config.programs.neovim.finalPackage}/bin/nvim";
+      mv = "mv -iv";
       rm = "rm -iv";
       cd = "z";
+      watch = lib.getExe pkgs.viddy;
       jjk = "jj drag && jj git push --all";
-      tree = "${pkgs.eza}/bin/eza --tree --icons=auto";
       youcannotrebuild = "${lib.getExe pkgs.nh} os switch ~/tix";
       ycr = "youcannotrebuild";
       nfu = "nix flake update";
