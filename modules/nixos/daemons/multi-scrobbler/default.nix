@@ -48,10 +48,22 @@
         };
       };
 
+      tealfm = {
+        name = "tealfm_client";
+        configureAs = "client";
+        data = {
+          identifier = "[[TIX_TEALFM_ID]]";
+          appPassword = "[[TIX_TEALFM_APP_PASS]]";
+        };
+      };
+
       # Sources
       spotify = {
         name = "spotify";
-        clients = [ "lastfm_client" ];
+        clients = [
+          "lastfm_client"
+          "tealfm_client"
+        ];
         data = {
           clientId = "[[TIX_SPOTIFY_CLIENT_ID]]";
           clientSecret = "[[TIX_SPOTIFY_CLIENT_SECRET]]";
@@ -62,7 +74,10 @@
 
       plex = {
         name = "plex";
-        clients = [ "lastfm_client" ];
+        clients = [
+          "lastfm_client"
+          "tealfm_client"
+        ];
         data = {
           url = "http://192.168.1.100:32400";
           token = "[[TIX_PLEX_TOKEN]]";
