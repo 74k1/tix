@@ -1,0 +1,30 @@
+--- a/lua/fyler/finder.lua	2026-09-06 14:25:13.298829035 +0200
++++ b/lua/fyler/finder.lua	2026-09-06 14:53:56.531020999 +0200
+@@ -605,16 +605,18 @@
+   if not util.window_is_valid(self.win_id) then return end
+ 
+   if self.opts.kind == 'replace' then
+-    local alt_buf = vim.api.nvim_win_call(self.win_id, function() return vim.fn.bufnr('#') end)
+-    if vim.api.nvim_buf_is_valid(alt_buf) then
+-      vim.api.nvim_win_set_buf(self.win_id, alt_buf)
+-    else
+-      local scratch = vim.api.nvim_create_buf(false, true)
+-      vim.bo[scratch].bufhidden = 'wipe'
+-      vim.api.nvim_win_set_buf(self.win_id, scratch)
+-    end
++    local win = vim.api.nvim_win_get_buf(0) == self.buf_id and 0
++      or vim.api.nvim_win_get_buf(self.win_id) == self.buf_id and self.win_id
++
++    if win then
++      local alt_buf = vim.api.nvim_win_call(win, function() return vim.fn.bufnr('#') end)
++      if not vim.api.nvim_buf_is_valid(alt_buf) then
++        alt_buf = vim.api.nvim_create_buf(false, true)
++        vim.bo[alt_buf].bufhidden = 'wipe'
++      end
+ 
+-    pcall(vim.api.nvim_buf_delete, self.buf_id, { force = true })
++      vim.api.nvim_win_set_buf(win, alt_buf)
++    end
+   else
+     pcall(vim.api.nvim_win_close, self.win_id, true)
+     pcall(vim.api.nvim_win_call, self.win_id, function()

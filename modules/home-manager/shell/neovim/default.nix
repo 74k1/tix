@@ -27,6 +27,10 @@ let
       hash = "sha256-OtPNGa73CLKXJQJgDJNHiGZc7/nQUnZSpZXsBr1KRts=";
     };
   };
+
+  fyler-nvim = pkgs.vimPlugins.fyler-nvim.overrideAttrs (old: {
+    patches = (old.patches or [ ]) ++ [ ./patches/fyler-nvim/fix-replace-kind-close.patch ];
+  });
   # hmts-nvim = pkgs.vimUtils.buildVimPlugin {
   #   name = "hmts-nvim";
   #   src = pkgs.fetchFromGitHub {
