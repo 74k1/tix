@@ -42,6 +42,8 @@
     memos
     # pds
 
+    braindump
+
     # mid importance
     grafana
     prometheus
@@ -320,6 +322,14 @@
           # '';
         };
 
+        "journal.i.${allSecrets.global.domain03}" = {
+          addSSL = true;
+          useACMEHost = "i.${allSecrets.global.domain03}";
+          locations."/" = {
+            proxyPass = "http://10.100.0.1:8677";
+            recommendedProxySettings = true;
+          };
+        };
       };
     };
   };

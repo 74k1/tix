@@ -42,8 +42,8 @@
     };
 
     git = {
-      userName = "74k2";
-      userEmail = "git.74k2.t@betsumei.com";
+      userName = allSecrets.global.bot.git.user.name;
+      userEmail = allSecrets.global.bot.git.user.email;
     };
 
     forgeTokenFile = config.age.secrets."bumpkin_forge_token".path;

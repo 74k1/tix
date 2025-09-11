@@ -2,6 +2,7 @@
   config,
   inputs,
   pkgs,
+  allSecrets,
   ...
 }:
 {
@@ -10,13 +11,13 @@
       enable = true;
       settings = {
         user = {
-          name = "74k1";
-          email = "git.t@betsumei.com";
+          name = allSecrets.global.me.git.user.name;
+          email = allSecrets.global.me.git.user.email;
         };
         core.editor = "nvim";
       };
       signing = {
-        key = "46F3422F63A313697EAB83D51CF155F76F213503";
+        key = allSecrets.global.gpg.key;
         signByDefault = true;
       };
     };

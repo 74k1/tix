@@ -312,16 +312,36 @@
         "url": "ssh://git@github.com/74k1/blog.git"
       }
     },
+    "braindump": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781433043,
+        "narHash": "sha256-4xh8/AJcjUoUNVkaMSpJAuFUVNyjEEejpCmk+7soWGU=",
+        "ref": "refs/heads/main",
+        "rev": "a5eceb63d7753e096ca3ba3adb01f262c9fc46f5",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://forge@git.yukume.com/74k1/braindump.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://forge@git.yukume.com/74k1/braindump.git"
+      }
+    },
     "bumpkin": {
       "inputs": {
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1780956277,
-        "narHash": "sha256-RncSd9vwkO/XEY1VF6CVr+zamkivjacdVCC8deP6SnM=",
+        "lastModified": 1781249486,
+        "narHash": "sha256-67EVZgJZ2zaEzrR4kInidFfLq53dwxIG9CqAYAeKEEQ=",
         "ref": "refs/heads/main",
-        "rev": "519e0ec49e4b8f729525b8f3c067c0d3eabc1682",
-        "revCount": 24,
+        "rev": "3aa420648d9ada3054b3f7cdbd578a7def3e8a5e",
+        "revCount": 4,
         "type": "git",
         "url": "ssh://forge@git.yukume.com/74k1/bumpkin.git"
       },
@@ -2353,11 +2373,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1780850787,
-        "narHash": "sha256-9rbwb1jnTOwmTjdQmU10BiO47ZXQ/mB59PcEsHbMy+I=",
+        "lastModified": 1781441106,
+        "narHash": "sha256-KHol0EYkfAcF75WYfh17XiMM3bCUoAUPEoc1fMVGi1w=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1b5aa5d6089b71fbe93a1aea61e791b97332c1ca",
+        "rev": "5d2d514680cddef009e12d14b956f51f0176e0c9",
         "type": "github"
       },
       "original": {
@@ -3133,6 +3153,7 @@
         "agenix-rekey": "agenix-rekey",
         "aurora": "aurora",
         "blog": "blog",
+        "braindump": "braindump",
         "bumpkin": "bumpkin",
         "deploy-rs": "deploy-rs",
         "disko": "disko",
@@ -3792,11 +3813,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780860981,
-        "narHash": "sha256-Wh0btDJ2yvbJ5lLjL60L7PyPZomicEb1dLCHfjWDBzo=",
+        "lastModified": 1781217967,
+        "narHash": "sha256-EuoOZjXg1/Y6GppGJyI9DtTyjZiCqxaLNwgW30JSlII=",
         "owner": "74k1",
         "repo": "tixpkgs",
-        "rev": "4cd692252e6abfa3b9ebe4e23abf370be0fc8d7e",
+        "rev": "eef47ad5d0389181a5e00492ee4a6db03aa00adc",
         "type": "github"
       },
       "original": {
@@ -3814,11 +3835,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780860875,
-        "narHash": "sha256-IaFtJJd5sqPEMHV6t2pHVspssKvbN32TiNHLRR/vB2w=",
+        "lastModified": 1781426523,
+        "narHash": "sha256-ocyQ0/Pl/TnbDkjFHKywPJV4ZjGvX+uINkjCKevAM3g=",
         "ref": "refs/heads/main",
-        "rev": "17fbd4a4d66da9ba2af5a3f30967d782af669ce8",
-        "revCount": 27,
+        "rev": "434c1645cc1a436479763f0a605b5ec3c860673e",
+        "revCount": 28,
         "type": "git",
         "url": "ssh://forge@git.yukume.com/74k1/tixpkgs-unfree.git"
       },

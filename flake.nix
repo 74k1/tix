@@ -54,6 +54,10 @@
       url = "git+ssh://forge@git.yukume.com/74k1/vesper.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    braindump = {
+      url = "git+ssh://forge@git.yukume.com/74k1/braindump.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # --- TESTS / FIXES
     hythera-waterfox = {
       url = "github:hythera/nixpkgs/pkgs/waterfox/init";
