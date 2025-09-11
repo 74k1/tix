@@ -53,7 +53,7 @@
 
     # baikal
     # booklore
-    rsshub 
+    rsshub
 
     n8n
     audiobookshelf
@@ -95,7 +95,6 @@
   ];
 
   # Bootloader.
-  # boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -151,6 +150,12 @@
     fastfetch
     # jdk21
     jdk17
+
+    inotify-tools
+    # unixtools.netstat
+    ffmpeg
+    wireguard-tools
+    ouch
 
     libva-utils
     clinfo
