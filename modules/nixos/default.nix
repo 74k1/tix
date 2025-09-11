@@ -18,7 +18,6 @@
   karakeep = import ./daemons/karakeep;
   locale = import ./profile/locale;
   loki = import ./daemons/loki;
-  mcp-outline = import ./daemons/mcp/mcp-outline;
   memos = import ./daemons/memos;
   miniflux = import ./daemons/miniflux;
   n8n = import ./daemons/n8n;
