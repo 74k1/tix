@@ -8,7 +8,7 @@
   # Fail2Ban
   services.fail2ban = {
     enable = true;
-    maxretry = 3;
+    maxretry = 2;
     bantime = "30m";
     bantime-increment = {
       enable = true;
