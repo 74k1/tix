@@ -24,7 +24,7 @@
     enable = true;
     host = "0.0.0.0";
     port = 3335;
-    package = pkgs.stable.open-webui;
+    package = pkgs.master.open-webui;
     environment = {
       HOME = "${config.services.open-webui.stateDir}";
       TRANSFORMERS_CACHE = "${config.services.open-webui.stateDir}/cache";
@@ -32,6 +32,7 @@
       DATA_DIR = "${config.services.open-webui.stateDir}/data";
       HF_HOME = "${config.services.open-webui.stateDir}/hf_home";
       SENTENCE_TRANSFORMERS_HOME = "${config.services.open-webui.stateDir}/transformers_home";
+      CHAT_STREAM_RESPONSE_CHUNK_MAX_BUFFER_SIZE = "20971520";
 
       OLLAMA_API_BASE_URL = lib.mkIf config.services.ollama.enable "http://127.0.0.1:11434";
     };

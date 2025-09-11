@@ -20,7 +20,7 @@
   services = {
     plex = {
       enable = true;
-      package = pkgs.master.plex;
+      package = pkgs.plex;
       dataDir = "/var/lib/plex";
     };
 
