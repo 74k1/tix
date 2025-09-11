@@ -5,9 +5,10 @@
     };
     # NOTE: update every 6 months
     nixpkgs-stable = {
-      url = "github:NixOS/nixpkgs/nixos-25.05";
+      url = "github:NixOS/nixpkgs/nixos-25.11";
     };
     "nixpkgs-24.11" = {
+      # fprintd
       url = "github:NixOS/nixpkgs/nixos-24.11";
     };
     nixpkgs-master = {
@@ -15,11 +16,9 @@
     };
     tixpkgs = {
       url = "github:74k1/tixpkgs/main";
-      # url = "git+file:///home/taki/dev/tixpkgs";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
-        # quadlet.follows = "quadlet";
       };
     };
     nixpkgs-local = {
@@ -29,7 +28,25 @@
       url = "git+ssh://forge@git.yukume.com/74k1/tixpkgs-unfree.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # -- TESTS / FIXES
+    # --- my own flakes
+    blog = {
+      url = "git+ssh://git@github.com/74k1/blog.git";
+    };
+    snqn-nvim = {
+      url = "github:snqn/nvim";
+    };
+    ukiyo = {
+      url = "github:74k1/ukiyo";
+    };
+    ChessSet = {
+      url = "github:74k1/ChessSet";
+    };
+    ouro = {
+      url = "github:reo101/ouro";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
+    # --- TESTS / FIXES
     nixpkgs-akotro-it-tools = {
       url = "github:akotro/nixpkgs/add-it-tools-service";
     };
@@ -39,7 +56,7 @@
     hythera-waterfox = {
       url = "github:hythera/nixpkgs/pkgs/waterfox/init";
     };
-    # --
+    # ---
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -64,15 +81,13 @@
     quadlet = {
       url = "github:SEIAROTg/quadlet-nix";
     };
-    # apple-emoji = {
-    #   url = "github:samuelngs/apple-emoji-ttf/jjjjjjj";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     musnix = {
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    elephant.url = "github:abenz1267/elephant";
+    elephant = {
+      url = "github:abenz1267/elephant";
+    };
     walker = {
       url = "github:abenz1267/walker";
       inputs.elephant.follows = "elephant";
@@ -85,34 +100,21 @@
     raspberry-pi-nix = {
       url = "github:nix-community/raspberry-pi-nix";
     };
-    sherlock = {
-      # url = "github:skxxtz/sherlock";
-      # url = "github:skxxtz/sherlock/unstable";
-      # url = "github:74k1/sherlock/feat/nix";
-      url = "git+file:///home/taki/dev/sherlock";
+    sherlock-gpui = {
+      url = "github:skxxtz/sherlock-gpui";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        # flake-parts.follows = "flake-parts";
-        # home-manager.follows = "home-manager";
       };
     };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.darwin.follows = "";
     };
     agenix-rekey = {
       url = "github:oddlama/agenix-rekey";
     };
-    blog = {
-      url = "git+ssh://git@github.com/74k1/blog.git";
-    };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-topology = {
@@ -129,7 +131,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
-      # url = "github:sodiboo/niri-flake";
       url = "github:sodiboo/niri-flake/very-refactor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -147,21 +148,9 @@
       inputs.agenix.follows = "agenix";
       inputs.agenix-rekey.follows = "agenix-rekey";
     };
-    ukiyo = {
-      url = "github:74k1/ukiyo";
-    };
-    ChessSet = {
-      url = "github:74k1/ChessSet";
-    };
     vpnconfinement = {
       url = "github:Maroka-chan/VPN-Confinement";
       # url = "github:74k1/VPN-Confinement";
-    };
-    ouro = {
-      # url = "git+file:///home/taki/dev/ouro";
-      url = "github:reo101/ouro";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
     };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
