@@ -1,14 +1,14 @@
 { pkgs, ... }:
 let
-  yueye = pkgs.vimUtils.buildVimPlugin {
-    name = "yueye";
-    src = pkgs.fetchFromGitHub {
-      owner = "74k1";
-      repo = "yueye.nvim";
-      rev = "36b150daf8db339104f0a21385306282e4b89a57";
-      hash = "sha256-/7kABFSvrk1SX7/c0xXmKPuTKJzjNGmqcSqofdL4hhI=";
-    };
-  };
+  # yueye-nvim = pkgs.vimUtils.buildVimPlugin {
+  #   name = "yueye-nvim";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "74k1";
+  #     repo = "yueye.nvim";
+  #     rev = "48c1f7db1f8b5b52c3bf458a94ecc6adcc8061b3";
+  #     hash = "sha256-6U9JD9G+4WicTdOIq5J8lc0DDH2jZf5h87m3EPswn5w=";
+  #   };
+  # };
   nix-update-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "nix-update-nvim";
     src = pkgs.fetchFromGitHub {
@@ -59,7 +59,7 @@ in
       # vim
       ''
         set shiftwidth=2 softtabstop=2 expandtab
-        "set number relativenumber
+        set number relativenumber
         set clipboard=unnamedplus
 
         lua vim.g.mapleader = " "
@@ -79,7 +79,7 @@ in
         lua vim.opt.iskeyword:append("-")
         lua vim.opt.iskeyword:remove(":")
 
-        " i hate terminal escape
+        " terminal escape
         lua vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>")
 
         " rest
@@ -90,6 +90,7 @@ in
         "  autocmd BufEnter * if &ft != 'markdown' | TableModeDisable | endif
         "augroup END
         " lua require'./plg/markdown_headings.lua'.init()
+        "lua vim.cmd("colorscheme yueye")
       '';
     plugins = with pkgs.vimPlugins; [
       # neo-tree-nvim
@@ -117,13 +118,35 @@ in
       vim-nix
       vim-shellcheck
       {
-        plugin = yueye;
+        plugin = base16-nvim;
         type = "lua";
-        config =
+        config = 
         # lua
         ''
-          vim.cmd("colorscheme yueye")
-          vim.opt.fillchars = { eob = " " }
+          -- All builtin colorschemes can be accessed with |:colorscheme|.
+          vim.cmd('colorscheme base16-colors')
+
+          -- Alternatively, you can provide a table specifying your colors to the setup function.
+          require('base16-colorscheme').setup({
+            base00 = '#07060B',
+            base01 = '#1C1B28',
+            base02 = '#323246',
+            base03 = '#4C4B69',
+            base04 = '#72708E',
+            base05 = '#EBE9F1',
+            base06 = '#FFFFFF',
+            base07 = '#BFBDCA',
+            base08 = '#FF5487',
+            base09 = '#FFD772',
+            base0A = '#54FF80',
+            base0B = '#59F1DA',
+            base0C = '#5DB8FA',
+            base0D = '#7089FF',
+            base0E = '#A871F5',
+            base0F = '#EF64D1',
+          })
+
+          -- transparent background?
           vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
           vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
           vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -132,6 +155,22 @@ in
           vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
         '';
       }
+      # {
+      #   plugin = yueye-nvim;
+      #   type = "lua";
+      #   config =
+      #   # lua
+      #   ''
+      #     vim.cmd("colorscheme yueye")
+      #     -- vim.opt.fillchars = { eob = " " }
+      #     -- vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
+      #     -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+      #     -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+      #     -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      #     -- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+      #     -- vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+      #   '';
+      # }
       {
         plugin = mini-ai;
         type = "lua";
@@ -190,11 +229,6 @@ in
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
         config = builtins.readFile ./cfg/TSconfig.lua;
-      }
-      {
-        plugin = lualine-nvim;
-        type = "lua";
-        config = builtins.readFile ./cfg/lualine.lua;
       }
       # {
       #   plugin = let-it-snow-nvim;
