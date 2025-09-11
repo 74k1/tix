@@ -23,6 +23,7 @@
           isNormalUser = true;
           description = "taki";
           extraGroups = [
+            "audio"
             "networkmanager"
             "plex"
             "user-with-access-to-virtualbox"
