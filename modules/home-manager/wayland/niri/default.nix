@@ -353,17 +353,17 @@ in
                 ];
 
                 border = {
-                  active.color = "#f38ba8";
-                  inactive.color = "#7d0d2d";
+                  active.color = "#FF5487";
+                  inactive.color = "#8F002B";
                 };
 
                 shadow = {
-                  color = "#7d0d2d70";
+                  color = "#8F002B70";
                 };
 
                 tab-indicator = {
-                  active.color = "#f38ba8";
-                  inactive.color = "#7d0d2d";
+                  active.color = "#FF5487";
+                  inactive.color = "#8F002B";
                 };
               }
               {
