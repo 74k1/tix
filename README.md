@@ -11,9 +11,20 @@
     <!--     <img alt="preview" align="right" width="400px" src="/.github/assets/preview.png"> -->
     <!-- </picture> -->
 </div>
-<br>
-<br>
-<br>
+
+<br/>
+<br/>
+<br/>
+
+> [!WARNING]
+> This is hardcoded to my daily workflow.
+> Don't just swap out the usernames, hostnames,
+> and hardware configs and expect it to work.
+>
+> Use it as a reference, not a template.
+
+<br/>
+
 <div>
     <ul>
         <li><strong>Window Manager</strong> • <a href="https://github.com/YaLTeR/niri/">Niri</a> Scrollable WM!</li>
@@ -21,9 +32,8 @@
         <li><strong>Terminal</strong> • <a href="https://github.com/ghostty-org/ghostty">Ghostty</a> a fast, feature-rich and _native_ terminal emulator</li>
         <li><strong>Notification Daemon & Panel</strong> • <a href="https://github.com/ErikReider/SwayNotificationCenter">SwayNC</a> A simple GTK based notification daemon.</li>
         <li><strong>Launcher</strong> • <a href="https://github.com/Skxxtz/sherlock">Sherlock</a> A versatile application/command launcher for wayland.</li>
-        <li><strong>TUI File Manager</strong> • <a href="https://github.com/sxyazi/yazi">Yazi</a> Fast terminal file manager.</li>
         <li><strong>Editor of Choice</strong> • <a href="https://github.com/neovim/neovim">Neovim</a> ❤️</li>
-        <li><strong>overall Theme</strong> • <a href="https://github.com/74k1/yueye">YuèYè 月夜</a> My very own Theme!</li>
+        <li><strong>Overall Theme</strong> • <a href="https://github.com/74k1/yueye">YuèYè</a> My very own Theme!</li>
     </ul>
 </div>
 
