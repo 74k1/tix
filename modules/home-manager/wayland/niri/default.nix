@@ -469,16 +469,16 @@
           "Audio Processing Technology  Ltd CX158 0x00000002" = {
             enable = true;
             mode = {
-              height = 1800;
-              width = 2880;
-              refresh = 50.0;
+              height = 1600;
+              width = 2560;
+              refresh = 119.998;
               # refresh = 120.0;
             };
             position = {
               x = 0;
               y = 0;
             };
-            scale = 1.75;
+            scale = 1.5;
             transform.rotation = 90;
             variable-refresh-rate = false;
           };
