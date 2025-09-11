@@ -69,7 +69,10 @@ in
   };
 
   users.users = {
-    # lidarr.extraGroups = ["plex" "transmission"];
+    lidarr.extraGroups = [
+      "plex"
+      "transmission"
+    ];
     radarr.extraGroups = [
       "plex"
       "transmission"
