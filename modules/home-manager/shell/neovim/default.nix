@@ -14,8 +14,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "reo101";
       repo = "nix-update.nvim";
-      rev = "5a45a664875660422faa278c28f636888e15707a";
-      hash = "sha256-l83H5o6228J6dLB3RHZAz80Cdw7bAF1Kizr+C/9cZOo=";
+      rev = "d9224e2c5f5a44cbab6d017211a88fdf9674063b";
+      hash = "sha256-li3febSwIFL6JZPUFdm3pmRFu2TUv7h3NmyjvrJR5QE=";
     };
   };
   vim-log-highlighting = pkgs.vimUtils.buildVimPlugin {
@@ -43,6 +43,7 @@ in
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
+    # package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
@@ -62,7 +63,6 @@ in
       pkgs.emmet-ls # Emmet Language Server (cool snippets)
       pkgs.imagemagick # for image.nvim
       pkgs.curl # for image.nvim remote images
-      # pkgs.nodejs # for copilot-lua
     ];
     extraConfig =
       # vim
@@ -91,16 +91,6 @@ in
 
         " terminal escape
         lua vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>")
-
-        " rest
-        " Autocommands for vim-table-mode
-        "augroup TableModeSetup
-        "  autocmd!
-        "  autocmd FileType markdown TableModeEnable
-        "  autocmd BufEnter * if &ft != 'markdown' | TableModeDisable | endif
-        "augroup END
-        " lua require'./plg/markdown_headings.lua'.init()
-        "lua vim.cmd("colorscheme yueye")
       '';
     plugins = with pkgs.vimPlugins; [
       {
@@ -116,7 +106,6 @@ in
           vim.cmd('colorscheme snqn')
         '';
       }
-      inputs.snqn-nvim.packages.${pkgs.stdenv.hostPlatform.system}.default
       # neo-tree-nvim
       # vim-table-mode
       vim-log-highlighting
@@ -143,60 +132,6 @@ in
       vim-dadbod-ui
       vim-nix
       vim-shellcheck
-      # {
-      #   plugin = base16-nvim;
-      #   type = "lua";
-      #   config = 
-      #   # lua
-      #   ''
-      #     -- All builtin colorschemes can be accessed with |:colorscheme|.
-      #     vim.cmd('colorscheme base16-colors')
-      #
-      #     -- Alternatively, you can provide a table specifying your colors to the setup function.
-      #     require('base16-colorscheme').setup({
-      #       base00 = '#07060B',
-      #       base01 = '#1C1B28',
-      #       base02 = '#323246',
-      #       base03 = '#4C4B69',
-      #       base04 = '#72708E',
-      #       base05 = '#BFBDCA',
-      #       base06 = '#EBE9F1',
-      #       base07 = '#FFFFFF',
-      #       base08 = '#FF5487',
-      #       base09 = '#FF9265',
-      #       base0A = '#FFD772',
-      #       base0B = '#54FF80',
-      #       base0C = '#5BD5EA',
-      #       base0D = '#7089FF',
-      #       base0E = '#A878F1',
-      #       base0F = '#CB65E2',
-      #     })
-      #
-      #     -- transparent background?
-      #     vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
-      #     vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-      #     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      #     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-      #     vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-      #     vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-      #   '';
-      # }
-      # {
-      #   plugin = yueye-nvim;
-      #   type = "lua";
-      #   config =
-      #   # lua
-      #   ''
-      #     vim.cmd("colorscheme yueye")
-      #     -- vim.opt.fillchars = { eob = " " }
-      #     -- vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
-      #     -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-      #     -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      #     -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-      #     -- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-      #     -- vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-      #   '';
-      # }
       {
         plugin = mini-ai;
         type = "lua";
@@ -252,6 +187,25 @@ in
           '';
       }
       {
+        plugin = nix-update-nvim;
+        type = "lua";
+        config =
+          # lua
+          ''
+            local nix_update = require("nix-update")
+
+            local opt = {}
+
+            nix_update.setup(opt)
+
+            vim.api.nvim_create_user_command(
+              "NixUpdate",
+              nix_update.prefetch_fetch,
+              {}
+            )
+          '';
+      }
+      {
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
         config = builtins.readFile ./cfg/TSconfig.lua;
@@ -266,16 +220,6 @@ in
       #     ''
       #       require('let-it-snow').setup({delay = 50})
       #     '';
-      # }
-      # {
-      #   plugin = copilot-cmp;
-      #   type = "lua";
-      #   config = builtins.readFile ./cfg/copilot-cmp.lua;
-      # }
-      # {
-      #   plugin = copilot-lua;
-      #   type = "lua";
-      #   config = builtins.readFile ./cfg/copilot-lua.lua;
       # }
       {
         plugin = tiny-inline-diagnostic-nvim;
@@ -295,28 +239,23 @@ in
       {
         plugin = fidget-nvim;
         type = "lua";
-        config = builtins.readFile ./cfg/fidget.lua;
+        config = 
+          # lua
+          ''
+          require("fidget").setup({
+            progress = {
+              display = {
+                progress_style = "FidgetProgress"
+              }
+            }
+          })
+          '';
       }
-      # {
-      #   plugin = indentmini-nvim;
-      #   type = "lua";
-      #   config = builtins.readFile ./cfg/indentmini.lua;
-      # }
       {
         plugin = oil-nvim;
         type = "lua";
         config = builtins.readFile ./cfg/oil.lua;
       }
-      {
-        plugin = nix-update-nvim;
-        type = "lua";
-        config = builtins.readFile ./cfg/nix-update.lua;
-      }
-      # {
-      #   plugin = clipboard-image-nvim;
-      #   type = "lua";
-      #   config = builtins.readFile ./cfg/clipboard-image.lua;
-      # }
       {
         plugin = img-clip-nvim;
         type = "lua";
@@ -335,7 +274,18 @@ in
       {
         plugin = nvim-colorizer-lua;
         type = "lua";
-        config = builtins.readFile ./cfg/colorizer.lua;
+        config = 
+          # lua
+          ''
+          require("colorizer").setup({
+            mode = 'foreground';
+          })
+          '';
+      }
+      {
+        plugin = alpha-nvim;
+        type = "lua";
+        config = builtins.readFile ./cfg/alpha.lua;
       }
     ];
   };
