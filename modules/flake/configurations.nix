@@ -187,11 +187,11 @@ in
             };
           };
           darwin = {
-            arisu = {
-              hostname = "${allSecrets.per_host.arisu.int_ip}";
-              remoteBuild = true;
-              user = "taki";
-            };
+            # hostname = {
+            #   hostname = "255.255.255.255";
+            #   remoteBuild = true;
+            #   user = "taki";
+            # };
           };
         };
   };
