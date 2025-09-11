@@ -102,7 +102,6 @@ in
             window.background { border-radius: 0; }
           '';
         };
-        zen-browser.profileNames = [ "taki" ];
         neovim = {
           enable = false;
           transparentBackground = {

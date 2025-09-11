@@ -34,6 +34,5 @@
   wired = import ./apps/wired;
   xdg = import ./x11/xdg;
   yazi = import ./shell/yazi;
-  zen = import ./apps/zen;
   zsh = import ./shell/zsh;
 }

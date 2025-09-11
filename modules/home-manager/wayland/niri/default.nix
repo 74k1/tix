@@ -462,7 +462,7 @@
               }
               {
                 matches = [
-                  { app-id = "^(zen|zen-.*|firefox|chromium-browser|edge|chrome-.*)$"; }
+                  { app-id = "^(firefox|chromium-browser|edge|chrome-.*)$"; }
                 ];
                 open-maximized = true;
               }
@@ -526,11 +526,7 @@
                     title = "^Picture-in-Picture.*$";
                   }
                   {
-                    app-id = "^zen-.*$";
-                    title = "^Picture-in-Picture.*$";
-                  }
-                  {
-                    app-id = "^zen-.*$";
+                    app-id = "^waterfox-.*$";
                     title = "^Extension.*(Bitwarden).*";
                   }
                   { title = "^Picture in picture$"; }

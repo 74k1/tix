@@ -27,7 +27,6 @@
       git
       jujutsu
       # firefox
-      zen
       qutebrowser
 
       waterfox
