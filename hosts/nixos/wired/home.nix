@@ -107,6 +107,7 @@
     planify
 
     pulsemixer
+    gnome-solanum
     qmk
     vial
     pkgs.stable.gaphor
@@ -126,7 +127,9 @@
 
     wezterm
     ghostty
+    bitwarden-desktop
     # clipit
+    universal-android-debloater
     wired
     zellij
     zed-editor
@@ -134,6 +137,7 @@
     typst
     moonlight-qt
     parsec-bin
+    gradia
 
     # gui stuff
     # brave
@@ -143,6 +147,7 @@
     # (inputs.zen-browser.packages."${system}".default.overrideAttrs (oldAttrs: {
     #   meta = {};
     # }))
+    inputs.affinity-nix.packages."${system}".v3
     # (inputs.affinity-nix.packages."${system}".photo.overrideAttrs (oldAttrs: {
     #   meta = {};
     # }))
@@ -199,6 +204,7 @@
     ouch
 
     gnome-keyring
+    gnome-clocks
     # paper-plane
 
     session-desktop
@@ -233,7 +239,7 @@
     snapshot
 
     # zoom-us
-    onlyoffice-bin
+    onlyoffice-desktopeditors
 
     wireshark
 

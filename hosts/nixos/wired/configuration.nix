@@ -86,6 +86,9 @@
 
       # amd CPU
       "amd_pstate=active"
+
+      # # custom edid
+      # "drm.edid_firmware=DP-2:edid/custom1.bin"
     ];
     plymouth = {
       enable = true;
@@ -287,6 +290,18 @@
       ];
     };
     amdgpu.initrd.enable = true;
+
+    # display.edid = {
+    #   enable = true;
+    #   packages = [
+    #     (pkgs.runCommand "edid-custom" {} ''
+    #       mkdir -p "$out/lib/firmware/edid"
+    #       base64 -d > "$out/lib/firmware/edid/custom1.bin" << 'EOF'
+    #       AP///////wAAAAAAAAAAAAAAAQSgIBIABgAAAAAAAAAAAAAAAADRwNHF0crRzwEBAQEBAQEBlEOAkHI4KECAyDUA4A4RAAAcMUSAoHA4J0AwIDUA4A4RAAAa1TqAoHA4IkAwIDUA4A4RAAAaeT+AoHA4JEAwIDUA4A4RAAAaAJM=
+    #       EOF
+    #     '')
+    #   ];
+    # };
   };
   systemd.packages = [ pkgs.lact ];
   systemd.services.lactd.wantedBy = [ "multi-user.target" ];
@@ -303,6 +318,13 @@
       CreateIPPPrinterQueues All
       BrowseProtocols all
     '';
+  };
+
+  services.gnome = {
+    gnome-keyring.enable = true;
+    gnome-online-accounts.enable = true;
+    gnome-settings-daemon.enable = true;
+    sushi.enable = true;
   };
 
   # TEMP
@@ -466,6 +488,7 @@
     #alttab
     #dconf
     #xfce.xfce4-pulseaudio-plugin xfce.xfce4-whiskermenu-plugin xfce.xfce4-netload-plugin xfce.xfce4-genmon-plugin
+    virtiofsd
   ];
 
   virtualisation = {
