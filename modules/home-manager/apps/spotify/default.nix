@@ -17,7 +17,7 @@ in
 
   # configure spicetify :)
   programs.spicetify = {
-    enable = true;
+    enable = false;
     theme = lib.mkForce spicePkgs.themes.text;
     colorScheme = lib.mkForce "custom";
     # TODO
