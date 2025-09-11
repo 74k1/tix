@@ -63,6 +63,33 @@
         pullup = ["evolve" "-b" "stragglers"];
         touch = ["describe" "--reset-author" "--no-edit"];
       };
+      revset-aliases = {
+        stragglers = "(visible_heads() & mine()) ~ trunk()";
+        bases = "master | main";
+        "closest_bookmark(to)" = "heads(::to & bookmarks())";
+        "closest_pushable(to)" = "heads(::to & mutable() & ~description(exact:\"\") & (~empty() | merges()))";
+        "downstream(x,y)" = "(x::y) & y";
+        branches = "downstream(trunk(), bookmarks()) & mine()";
+        branchesandheads = "branches | (heads(trunk()::) & mine())";
+        currbranch = "latest(branches::@- & branches)";
+        nextbranch = "roots(@:: & branchesandheads)";
+      };
+
+      template-aliases = {
+        "format_timestamp(ts)" = ''
+          if(
+            ts.after("2 weeks ago"),
+            ts.ago(),
+            ts.format("%b %d, %Y %H:%M")
+          )
+        '';
+        is_stray = ''
+          !immutable &&
+          !hidden &&
+          !self.contained_in("trunk()::") &&
+          !(remote_bookmarks.len() > 0 && !has_matching_local_remote)
+        '';
+      };
       templates = {
         # log_node = ''
         #   coalesce(
