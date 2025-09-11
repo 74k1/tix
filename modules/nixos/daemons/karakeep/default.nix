@@ -27,7 +27,6 @@
       enable = true;
       meilisearch = {
         enable = true;
-        experimental_dumpless_upgrade = true;
       };
       extraEnvironment = {
         # https://docs.karakeep.app/configuration/environment-variables
@@ -75,5 +74,10 @@
       # OAUTH_CLIENT_SECRET
       environmentFile = config.age.secrets."karakeep_env".path;
     };
+  };
+
+  systemd.services.karakeep-workers.serviceConfig = {
+    Restart = "on-failure";
+    RestartSec = "15s";
   };
 }
