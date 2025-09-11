@@ -89,6 +89,8 @@
     rybbit
     nix
 
+    trek
+
     # nvidia
 
     syncthing
@@ -312,6 +314,37 @@
         #     proxyWebsockets = true;
         #   };
         # };
+
+        "trek.i.${allSecrets.global.domain03}" = {
+          addSSL = true;
+          useACMEHost = "i.${allSecrets.global.domain03}";
+          # TREK hard requirement: backup restore ZIPs / video uploads go up to
+          # 500 MB, nginx default is 1 MB. Server-level so /, /ws and /mcp all get it.
+          extraConfig = ''
+            client_max_body_size 500m;
+          '';
+          locations."/ws" = {
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:3320";
+            proxyWebsockets = true;
+            # keep realtime-sync WebSockets alive (24h) instead of nginx's 60s default
+            extraConfig = ''
+              proxy_read_timeout 86400;
+            '';
+          };
+          locations."/mcp" = {
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:3320";
+            # SSE: stream tool results instead of buffering; Mcp-Session-Id passes
+            # through by default, buffering is the only thing left to fix here
+            extraConfig = ''
+              proxy_buffering off;
+              proxy_read_timeout 3600s;
+            '';
+          };
+          locations."/" = {
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:3320";
+            proxyWebsockets = true;
+          };
+        };
 
         "scrobble.i.${allSecrets.global.domain03}" = {
           addSSL = true;

@@ -60,6 +60,7 @@
   taki = import ./profile/taki;
   tinyauth = import ./daemons/tinyauth;
   transmission = import ./daemons/transmission;
+  trek = import ./daemons/trek;
   vaultwarden = import ./daemons/vaultwarden;
   vector = import ./daemons/vector;
   vm-test = import ./vm-test;
