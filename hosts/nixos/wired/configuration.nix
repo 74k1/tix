@@ -146,6 +146,9 @@
   programs.obs-studio = {
     enable = true;
     enableVirtualCamera = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-vaapi
+    ];
   };
 
   programs.gpu-screen-recorder.enable = true;
@@ -192,6 +195,7 @@
     MOZ_ENABLE_WAYLAND = "1";
     QT_WAYLAND_DISABLE_DECORATION = "1";
     WLR_RENDER_CURSOR = "1";
+    LIBVA_DRIVER_NAME = "radeonsi";
   };
 
   # Enable the X11 windowing system.
@@ -298,7 +302,10 @@
         pkgs.rocmPackages.clr.icd
       ];
     };
-    amdgpu.initrd.enable = true;
+    amdgpu = {
+      initrd.enable = true;
+      opencl.enable = true;
+    };
 
     # display.edid = {
     #   enable = true;
@@ -484,8 +491,10 @@
     jq
     shpool
     pavucontrol
-    nvidia-vaapi-driver
     egl-wayland
+    libva
+    libva-utils
+    ffmpeg-full
     fastfetch
     # brscan4
     brscan5
@@ -502,7 +511,20 @@
   ];
 
   virtualisation = {
-    libvirtd.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu.verbatimConfig = ''
+        namespaces = []
+        cgroup_device_acl = [
+          "/dev/null", "/dev/full", "/dev/zero",
+          "/dev/random", "/dev/urandom",
+          "/dev/ptmx", "/dev/kvm",
+          "/dev/rtc", "/dev/hpet",
+          "/dev/dri/renderD128",
+          "/dev/dri/card1",
+        ]
+      '';
+    };
     # waydroid.enable = true;
     # virtualbox.host = {
     #   enable = true;
