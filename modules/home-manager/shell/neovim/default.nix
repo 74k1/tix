@@ -105,6 +105,7 @@ in
       # neo-tree-nvim
       # vim-table-mode
       vim-log-highlighting
+      # hmts-nvim
       cmp-buffer
       cmp-cmdline
       cmp-emoji
@@ -112,15 +113,15 @@ in
       cmp-path
       cmp_luasnip
       comment-nvim
-      nvzone-typr
       hotpot-nvim
-      # hmts-nvim
-      oxocarbon-nvim
-      typst-preview-nvim
       luasnip
       nvim-tree-lua
+      nvzone-typr
+      oxocarbon-nvim
       parinfer-rust
+      plenary-nvim
       telescope-nvim
+      typst-preview-nvim
       venn-nvim
       vim-dadbod
       vim-dadbod-completion
