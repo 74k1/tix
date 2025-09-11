@@ -56,7 +56,7 @@
     ai-chat
     karakeep
 
-    glance
+    # glance
     it-tools
     nextcloud
     umami
