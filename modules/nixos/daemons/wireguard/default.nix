@@ -9,9 +9,9 @@
 {
   age.secrets."wireguard_private_key" = {
     rekeyFile = "${inputs.self}/secrets/wireguard_private_key.age";
-    # mode = "770";
-    # owner = "xyz";
-    # group = "xyz";
+    mode = "640";
+    owner = "systemd-network";
+    group = "systemd-network";
   };
 
   networking = {
@@ -21,39 +21,54 @@
       internalInterfaces = [ "wg0" ];
     };
     firewall.allowedUDPPorts = [ 51820 ];
-    wireguard.interfaces = {
-      wg0 = {
-        ips = [ "10.100.0.1/24" ];
-        listenPort = 51820;
+    useNetworkd = true;
+  };
 
-        postSetup = ''
-          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o enp0s31f6 -j MASQUERADE
-        '';
+  systemd.network = {
+    enable = true;
 
-        postShutdown = ''
-          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o enp0s31f6 -j MASQUERADE
-        '';
+    networks."50-wg0" = {
+      matchConfig.Name = "wg0";
+      address = [ "10.100.0.1/24" ];
+      networkConfig.IPv4Forwarding = true;
+      networkConfig.IPv6Forwarding = true;
+    };
 
-        # privateKeyFile = "/home/taki/wg_private_key_secrets";
-        privateKeyFile = config.age.secrets."wireguard_private_key".path;
-
-        peers = [
-          {
-            # knights
-            publicKey = "dVVhzsUPOT4ln5v4agYw/MxhIb8frEp74oSEIIadgH0=";
-            allowedIPs = [
-              "10.100.0.2/32"
-            ];
-          }
-          {
-            # duvet
-            publicKey = "PTH6K+9jQgVfa7zB9CYoCC8abQ6kM2ioWElycyN0Ky4=";
-            allowedIPs = [
-              "10.100.0.3/32"
-            ];
-          }
-        ];
+    netdevs."50-wg0" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "wg0";
       };
+
+      wireguardConfig = {
+        ListenPort = 51820;
+
+        PrivateKeyFile = config.age.secrets."wireguard_private_key".path;
+
+        # Automatically create routes for everything in AllowedIPs
+        RouteTable = "main";
+
+        # FirewallMark marks all packets send and received by wg0 with the number 42
+        # to define policy rules on these packets
+        FirewallMark = 42;
+      };
+
+      wireguardPeers = [
+        {
+          # knights
+          PublicKey = "dVVhzsUPOT4ln5v4agYw/MxhIb8frEp74oSEIIadgH0=";
+          AllowedIPs = [
+            "10.100.0.2/32"
+          ];
+        }
+        {
+          # duvet
+          PublicKey = "p37Qi3vKbl9bnDJC/S1I6ezz2CizSYHDBREnjns5wCQ=";
+          AllowedIPs = [
+            "10.100.0.3/32"
+          ];
+        }
+      ];
     };
   };
 }

@@ -13,6 +13,9 @@
   age.secrets = {
     "duvet_wireguard_private_key" = {
       rekeyFile = "${inputs.self}/secrets/duvet_wireguard_private_key.age";
+      mode = "640";
+      owner = "systemd-network";
+      group = "systemd-network";
     };
   };
 
@@ -58,6 +61,7 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
+      checkReversePath = "loose";
       allowedUDPPorts = [
         80
         443
@@ -71,21 +75,44 @@
         51820
       ];
     };
-    wireguard.interfaces = {
-      wg0 = {
-        ips = [ "10.100.0.3/24" ];
-        listenPort = 51820;
-        privateKeyFile = config.age.secrets."duvet_wireguard_private_key".path;
-        peers = [
-          {
-            # wg server
-            publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
-            allowedIPs = [ "10.100.0.1" ];
-            endpoint = "${allSecrets.global.pub_ip}:51820";
-            persistentKeepalive = 25;
-          }
-        ];
+    useNetworkd = true;
+  };
+
+  systemd.network = {
+    enable = true;
+
+    networks."50-wg0" = {
+      matchConfig.Name = "wg0";
+      address = [ "10.100.0.3/32" ];
+    };
+
+    netdevs."50-wg0" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "wg0";
       };
+
+      wireguardConfig = {
+        ListenPort = 51820;
+
+        PrivateKeyFile = config.age.secrets."duvet_wireguard_private_key".path;
+
+        # Automatically create routes for everything in AllowedIPs
+        RouteTable = "main";
+
+        # FirewallMark marks all packets send and received by wg0 with the number 42
+        # to define policy rules on these packets
+        FirewallMark = 42;
+      };
+
+      wireguardPeers = [
+        {
+          PublicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
+          AllowedIPs = [ "10.100.0.1/32" ];
+          Endpoint = "${allSecrets.global.pub_ip}:51820";
+          PersistentKeepalive = 60;
+        }
+      ];
     };
   };
 
