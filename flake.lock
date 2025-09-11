@@ -3970,11 +3970,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774389908,
-        "narHash": "sha256-fgreUqgz42fHiz3qDDeoUFU//0azHMKvRdRm1tU/uNM=",
+        "lastModified": 1775932976,
+        "narHash": "sha256-EKqRe+ig0MP73RLWey5Q5SFj85ZioIR4mfqU58v++0s=",
         "owner": "74k1",
         "repo": "tixpkgs",
-        "rev": "c17f7699c07b135d126fc223bc8e0838f9208f4c",
+        "rev": "efce08be47c688089db55d3554c5a8d7ad27722c",
         "type": "github"
       },
       "original": {
