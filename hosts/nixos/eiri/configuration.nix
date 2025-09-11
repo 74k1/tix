@@ -277,14 +277,15 @@
           };
         };
 
-        # "n8n.i.${allSecrets.global.domain03}" = {
-        #   addSSL = true;
-        #   useACMEHost = "i.${allSecrets.global.domain03}";
-        #   locations."/" = {
-        #     proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:5678";
-        #     proxyWebsockets = true;
-        #   };
-        # };
+        "n8n.i.${allSecrets.global.domain03}" = {
+          addSSL = true;
+          useACMEHost = "i.${allSecrets.global.domain03}";
+          locations."/" = {
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:5678";
+            proxyWebsockets = true;
+          };
+        };
+
         "scrobble.i.${allSecrets.global.domain03}" = {
           addSSL = true;
           useACMEHost = "i.${allSecrets.global.domain03}";
