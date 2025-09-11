@@ -58,9 +58,9 @@
       mv = "mv -iv";
       nano = "${config.programs.neovim.finalPackage}/bin/nvim";
       nv = "${config.programs.neovim.finalPackage}/bin/nvim";
+      v = "${config.programs.neovim.finalPackage}/bin/nvim";
       rm = "rm -iv";
       cd = "z";
-      #j = "z";
       jjk = "jj drag && jj git push --all";
       tree = "${pkgs.eza}/bin/eza --tree --icons=auto";
       youcannotrebuild = "${lib.getExe pkgs.nh} os switch ~/tix";
