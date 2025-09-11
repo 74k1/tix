@@ -3,6 +3,7 @@
   anubis = import ./daemons/anubis;
   atuin = import ./daemons/atuin;
   audiobookshelf = import ./daemons/audiobookshelf;
+  baikal = import ./daemons/baikal;
   bash = import ./programs/bash;
   fail2ban = import ./daemons/fail2ban;
   firefox = import ./programs/firefox;

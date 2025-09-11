@@ -44,6 +44,8 @@
     # everything else
     scrutiny
 
+    baikal
+
     n8n
     audiobookshelf
     paperless
@@ -203,6 +205,11 @@
             proxyPass = "http://${config.vpnNamespaces.prtr.namespaceAddress}:9091";
             # proxyWebsockets = true;
           };
+        };
+        "baikal.eiri.${allSecrets.global.domain01}" = {
+          addSSL = true;
+          # enableACME = true;
+          useACMEHost = "eiri.${allSecrets.global.domain01}";
         };
         "rd.eiri.${allSecrets.global.domain01}" = {
           addSSL = true;
