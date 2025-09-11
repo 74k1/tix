@@ -62,6 +62,9 @@
     hythera-waterfox = {
       url = "github:hythera/nixpkgs/pkgs/waterfox/init";
     };
+    pjrm-sure = {
+      url = "github:pjrm/nixpkgs/nixossure";
+    };
     # --- HIGH IMPORTANCE ---
     flake-parts = {
       url = "github:hercules-ci/flake-parts";

@@ -48,6 +48,7 @@
   soularr = import ./daemons/soularr;
   steam = import ./programs/steam;
   substituters = import ./nix/substituters;
+  sure = import ./daemons/sure;
   syncthing = import ./daemons/syncthing;
   taki = import ./profile/taki;
   tinyauth = import ./daemons/tinyauth;

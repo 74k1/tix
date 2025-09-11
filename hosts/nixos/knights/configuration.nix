@@ -396,12 +396,11 @@
               '';
             };
           };
-          "notes.${domain00}" = {
+          "fin.${domain00}" = {
             addSSL = true;
             useACMEHost = "${allSecrets.global.domain00}";
             locations."/" = {
-              # proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.docmost.settings.BIND}";
-              proxyPass = "http://10.100.0.1:5230";
+              proxyPass = "http://10.100.0.1:3213";
               recommendedProxySettings = true;
               proxyWebsockets = true;
               extraConfig = ''

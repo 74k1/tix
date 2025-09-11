@@ -35,6 +35,7 @@
     # Most important
     restic
     vaultwarden
+    sure
     bumpkin
     pocket-id
     tinyauth
@@ -287,6 +288,15 @@
             proxyWebsockets = true;
           };
         };
+
+        # "sure.i.${allSecrets.global.domain03}" = {
+        #   addSSL = true;
+        #   useACMEHost = "i.${allSecrets.global.domain03}";
+        #   locations."/" = {
+        #     proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:3213";
+        #     proxyWebsockets = true;
+        #   };
+        # };
 
         "scrobble.i.${allSecrets.global.domain03}" = {
           addSSL = true;
