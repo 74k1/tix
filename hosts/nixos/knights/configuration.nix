@@ -199,7 +199,6 @@
         METRICS_BIND = ":20024";
         METRICS_BIND_NETWORK = "tcp";
       };
-      };
     };
 
     nginx = {
