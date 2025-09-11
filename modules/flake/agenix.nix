@@ -24,8 +24,9 @@
     {
       agenix-rekey.nodes = {
         inherit (self.nixosConfigurations)
-          knights
+          duvet
           eiri
+          knights
           ;
       };
       agenix-rekey.homeConfigurations = { };
