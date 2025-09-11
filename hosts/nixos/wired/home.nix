@@ -161,6 +161,8 @@
 
     mission-center
 
+    gnome-font-viewer
+
     ptouch-print
 
     # gui stuff
@@ -199,7 +201,7 @@
     # nextcloud-client
     # fractal
     # element-desktop
-    fluffychat
+    # fluffychat
     google-chrome
     ungoogled-chromium
     keepassxc
@@ -218,6 +220,8 @@
     # spotify-player
     # (ncspot.override { withCover = true; })
     discord-ptb
+
+    meow
 
     teamspeak6-client
 
