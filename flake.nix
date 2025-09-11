@@ -32,11 +32,6 @@
     the-argus-emptty = {
       url = "github:the-argus/nixpkgs/emptty/module";
     };
-    genix7000 = {
-      url = "github:Pandapip1/genix7000plymouth";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
     # --
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -80,7 +75,7 @@
     };
     sherlock = {
       # url = "github:skxxtz/sherlock";
-      url = "github:skxxtz/sherlock/unstable/release-v1.0.0";
+      url = "github:skxxtz/sherlock/unstable";
       # url = "github:74k1/sherlock/feat/nix";
       # url = "git+file:///home/taki/dev/sherlock";
       inputs = {

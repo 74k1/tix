@@ -1365,51 +1365,6 @@
         "type": "github"
       }
     },
-    "genix7000": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "genix7000": "genix7000_2",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1751490458,
-        "narHash": "sha256-NcZzOPH68fBfu2VBGl7/FhLQ2HQHfoFhst/Po0flpVA=",
-        "owner": "Pandapip1",
-        "repo": "genix7000plymouth",
-        "rev": "b2c7a55e89030d3af07eedb9bd374187f29309d0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Pandapip1",
-        "repo": "genix7000plymouth",
-        "type": "github"
-      }
-    },
-    "genix7000_2": {
-      "inputs": {
-        "nixpkgs": [
-          "genix7000",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1724364245,
-        "narHash": "sha256-yh7k9o6OrQD4S9FquFGbA+K0kkxtQrAg985wfJ5dns8=",
-        "owner": "cab404",
-        "repo": "genix7000",
-        "rev": "6d7cccf18a72f13abda97ef675f25c40d415dc39",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cab404",
-        "repo": "genix7000",
-        "type": "github"
-      }
-    },
     "git-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -3471,7 +3426,6 @@
         "disko": "disko",
         "firefox-addons": "firefox-addons",
         "flake-parts": "flake-parts_3",
-        "genix7000": "genix7000",
         "home-manager": "home-manager_2",
         "musnix": "musnix",
         "niri": "niri",
@@ -3731,16 +3685,16 @@
         "rust-overlay": "rust-overlay_4"
       },
       "locked": {
-        "lastModified": 1755179096,
-        "narHash": "sha256-bzSXn1uyvnjmz0J6WGBvDFQ4ao83BV3F5ZvitIBDqng=",
+        "lastModified": 1757261927,
+        "narHash": "sha256-PoCKKUeB8ZBQtL2M0ZbweTUrR+K1Eb+FGn+9KbbOi9k=",
         "owner": "skxxtz",
         "repo": "sherlock",
-        "rev": "c0cb3c5bfdbccff8cd1b05f1ae424726b32b60e2",
+        "rev": "adddeddf0b4d4474973e6f8cf9450cea242c55fe",
         "type": "github"
       },
       "original": {
         "owner": "skxxtz",
-        "ref": "unstable/release-v1.0.0",
+        "ref": "unstable",
         "repo": "sherlock",
         "type": "github"
       }
@@ -4287,11 +4241,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757240827,
-        "narHash": "sha256-Hp85Lkf2X37krMBi0QpdkkBN6roi4kYmAc49+Omruo0=",
+        "lastModified": 1757540914,
+        "narHash": "sha256-jS2eoNR+wVx0Pzt21tlgO83xc+4arBTC2DDo5DeosIE=",
         "owner": "74k1",
         "repo": "tixpkgs",
-        "rev": "0561fc292f8bc51e92ca34506ac5d0f297c198e9",
+        "rev": "3f15d4f24c62f49a51970dc5cfdb407ef5bc13f8",
         "type": "github"
       },
       "original": {
