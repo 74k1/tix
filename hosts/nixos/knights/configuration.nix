@@ -44,6 +44,8 @@
     taki
   ];
 
+  nix.gc.automatic = true;
+
   # Use the GRUB 2 boot loader.
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_zen;

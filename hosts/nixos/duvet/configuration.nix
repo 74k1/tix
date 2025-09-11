@@ -35,6 +35,8 @@
     taki
   ];
 
+  nix.gc.automatic = true;
+
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     loader.grub.enable = true;
