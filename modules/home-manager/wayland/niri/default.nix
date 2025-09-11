@@ -111,11 +111,12 @@
 
           "Print" = {
             repeat = false;
-            action = screenshot;
+            action.screenshot = [];
           };
+
           "Mod+Shift+S" = {
             repeat = false;
-            action = screenshot;
+            action.screenshot = [];
           };
 
           "Mod+E" = {
