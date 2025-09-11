@@ -32,6 +32,9 @@
             (inputs'.nixpkgs.legacyPackages.nixos-rebuild.override {
               nix = inputs'.rix101.packages.nix-enraged;
             })
+            (inputs'.nixpkgs.legacyPackages.nixos-rebuild-ng.override {
+              nix = inputs'.rix101.packages.nix-enraged;
+            })
           ];
         };
         # with-macchina = pkgs.mkShell {
