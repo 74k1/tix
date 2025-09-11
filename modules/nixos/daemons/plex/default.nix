@@ -8,7 +8,6 @@ let
   plexFixed = pkgs.master.plex.override {
     plexRaw = pkgs.master.plexRaw.overrideAttrs (old: rec {
 
-
       version = "1.43.2.10687-563d026ea";
 
       src = pkgs.fetchurl {
@@ -50,7 +49,10 @@ in
   };
 
   users.users.plex = {
-    extraGroups = [ "render" "video" ];
+    extraGroups = [
+      "render"
+      "video"
+    ];
   };
 
   # systemd.services.plex.serviceConfig = let

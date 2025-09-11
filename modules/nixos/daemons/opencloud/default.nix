@@ -4,6 +4,7 @@
   inputs,
   outputs,
   allSecrets,
+  lib,
   ...
 }:
 {
@@ -16,7 +17,7 @@
 
   services.opencloud = {
     enable = true;
-    package = pkgs.master.opencloud;
+    package = pkgs.opencloud;
     # webPackage = pkgs.opencloud.web;
 
     url = "https://files.${allSecrets.global.domain00}";
@@ -31,7 +32,7 @@
         tls = false;
         auto_provision_accounts = true;
         oidc = {
-          issuer = allSecrets.per_service.pocket-id.issuer_url;
+          issuer = allSecrets.global.oidc.issuerUrl;
           rewrite_well_known = true;
         };
         role_assignment = {
@@ -46,19 +47,19 @@
           "'self'"
           "blob:"
           "https://files.${allSecrets.global.domain00}/"
-          allSecrets.per_service.pocket-id.issuer_url
-          allSecrets.per_service.pocket-id.oidc_discovery_url
+          allSecrets.global.oidc.issuerUrl
+          allSecrets.global.oidc.discoveryUrl
           "https://raw.githubusercontent.com/opencloud-eu/awesome-apps/"
           "https://update.opencloud.eu/"
         ];
         default-src = [ "'none'" ];
-        font-src = [ "'self'"];
+        font-src = [ "'self'" ];
         frame-ancestors = [ "'self'" ];
         frame-src = [
           "'self'"
           "blob:"
-          allSecrets.per_service.pocket-id.issuer_url
-          allSecrets.per_service.pocket-id.oidc_discovery_url
+          allSecrets.global.oidc.issuerUrl
+          allSecrets.global.oidc.discoveryUrl
           "https://embed.diagrams.net/"
         ];
         img-src = [
@@ -78,7 +79,7 @@
           "'unsafe-inline'"
           "'unsafe-eval'"
           "https://files.${allSecrets.global.domain00}/"
-          allSecrets.per_service.pocket-id.issuer_url
+          allSecrets.global.oidc.issuerUrl
         ];
         style-src = [
           "'self'"
@@ -90,7 +91,7 @@
 
     environment = {
       FRONTEND_CHECK_FOR_UPDATES = "false";
-      START_ADDITIONAL_SERVICES="notifications auth-app";
+      START_ADDITIONAL_SERVICES = "notifications auth-app";
 
       # = LOG =
       OC_LOG_LEVEL = "info";
@@ -137,4 +138,17 @@
   };
 
   environment.systemPackages = [ pkgs.opencloud ];
+
+  # btrfs compression fix
+  systemd.services.opencloud = lib.mkIf config.services.opencloud.enable {
+    preStart = ''
+      natsDir="${config.services.opencloud.stateDir}/nats"
+      mkdir -p "$natsDir"
+      # Only set NOCOW on empty dirs (chattr +C only works before data exists)
+      if [ -z "$(ls -A "$natsDir" 2>/dev/null)" ]; then
+        chattr +C "$natsDir" 2>/dev/null || true
+      fi
+      chown -R opencloud:opencloud "$natsDir"
+    '';
+  };
 }

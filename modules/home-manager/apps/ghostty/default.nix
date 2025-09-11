@@ -17,7 +17,10 @@
     systemd.enable = true;
     settings = {
       cursor-style = "block";
-      font-family = [ "PP Supply Mono" "Sarasa Gothic SC" ];
+      font-family = [
+        "PP Supply Mono"
+        "Sarasa Gothic SC"
+      ];
       font-size = 14.5;
       background-opacity = 0.9;
       shell-integration-features = "no-sudo,title";

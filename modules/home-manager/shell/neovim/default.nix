@@ -57,7 +57,7 @@ in
       pkgs.ripgrep # For Telescope live-grep
       pkgs.bash-language-server # Bash :-)
       pkgs.nil # Nix Language Server
-      pkgs.nixfmt # Nix Formatter
+      pkgs.nixfmt-rs # Nix Formatter (https://github.com/Mic92/nixfmt-rs)
       pkgs.rust-analyzer # Rust Language Server
       pkgs.vscode-langservers-extracted # HTML, CSS, JSON, ESLINT Language Server
       # pkgs.superhtml # HTML Language Server
@@ -276,7 +276,7 @@ in
       {
         plugin = nvim-colorizer-lua;
         type = "lua";
-        config = 
+        config =
           # lua
           ''
             require("colorizer").setup({

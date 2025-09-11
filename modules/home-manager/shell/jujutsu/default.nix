@@ -53,21 +53,47 @@
         ];
 
         # mine
-        e = ["edit"];
-        d = ["diff"];
-        la = [ "log" "--revisions" "::" ];
+        e = [ "edit" ];
+        d = [ "diff" ];
+        la = [
+          "log"
+          "--revisions"
+          "::"
+        ];
 
-        drag = ["bookmark" "advance"];
-        sync = ["git" "fetch" "--all-remotes"];
-        evolve = ["rebase" "--skip-emptied" "--simplify-parents" "--onto" "trunk()"];
-        pullup = ["evolve" "-b" "stragglers"];
-        touch = ["describe" "--reset-author" "--no-edit"];
+        drag = [
+          "bookmark"
+          "advance"
+        ];
+        sync = [
+          "git"
+          "fetch"
+          "--all-remotes"
+        ];
+        evolve = [
+          "rebase"
+          "--skip-emptied"
+          "--simplify-parents"
+          "--onto"
+          "trunk()"
+        ];
+        pullup = [
+          "evolve"
+          "-b"
+          "stragglers"
+        ];
+        touch = [
+          "describe"
+          "--reset-author"
+          "--no-edit"
+        ];
       };
       revset-aliases = {
         stragglers = "(visible_heads() & mine()) ~ trunk()";
         bases = "master | main";
         "closest_bookmark(to)" = "heads(::to & bookmarks())";
-        "closest_pushable(to)" = "heads(::to & mutable() & ~description(exact:\"\") & (~empty() | merges()))";
+        "closest_pushable(to)" =
+          "heads(::to & mutable() & ~description(exact:\"\") & (~empty() | merges()))";
         "downstream(x,y)" = "(x::y) & y";
         branches = "downstream(trunk(), bookmarks()) & mine()";
         branchesandheads = "branches | (heads(trunk()::) & mine())";
@@ -98,7 +124,7 @@
         #   )
         # '';
         git_push_bookmark = ''"74k1/" ++ change_id.short()'';
-        draft_commit_description = ''builtin_draft_commit_description_with_diff'';
+        draft_commit_description = "builtin_draft_commit_description_with_diff";
       };
       revsets = {
         bookmark-advance-to = "@-";

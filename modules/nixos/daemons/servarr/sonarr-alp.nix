@@ -73,12 +73,12 @@ in
         sonarr-alp = {
           group = cfg.group;
           home = cfg.dataDir;
-          uid = 278;
+          uid = 382;
         };
       };
 
       groups = mkIf (cfg.group == "sonarr-alp") {
-        sonarr-alp.gid = 278;
+        sonarr-alp.gid = 382;
       };
     };
   };

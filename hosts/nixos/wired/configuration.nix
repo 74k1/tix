@@ -93,7 +93,7 @@
     plymouth = {
       enable = true;
       theme = "deus_ex";
-      themePackages = [ 
+      themePackages = [
         # pkgs.nixos-bgrt-plymouth
         pkgs.adi1090x-plymouth-themes
         # (pkgs.adi1090x-plymouth-themes.override {selected_themes = ["dna"];})

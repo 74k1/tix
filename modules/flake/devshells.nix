@@ -17,15 +17,18 @@
       ...
     }:
     {
-      formatter = pkgs.nixfmt;
+      # https://github.com/Mic92/nixfmt-rs
+      formatter = pkgs.nixfmt-rs;
 
       devShells = {
         default = pkgs.mkShellNoCC {
           # buildInputs = [ ];
           shellHook = ''
-          export PATH="${inputs'.rix101.packages.nix-enraged.override {
-            nix' = pkgs.lixPackageSets.stable.lix;
-          }}/bin:$PATH"
+            export PATH="${
+              inputs'.rix101.packages.nix-enraged.override {
+                nix' = pkgs.lixPackageSets.stable.lix;
+              }
+            }/bin:$PATH"
           '';
         };
       };

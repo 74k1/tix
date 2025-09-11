@@ -41,14 +41,17 @@
 
   programs.niri =
     let
+      aurora = inputs.aurora.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      ghostty = pkgs.master.ghostty;
+      niriPkg = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
       makeCommand = command: {
-        command = [ command ];
+        command = if builtins.isList command then command else [ command ];
       };
     in
     {
       enable = true;
       # package = pkgs.niri;
-      package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
+      package = niriPkg;
       # config = /* kdl */ {
       # };
       settings = {
@@ -73,7 +76,14 @@
           (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
           (makeCommand "${lib.getExe pkgs.xwayland-satellite}")
           (makeCommand "${lib.getExe pkgs.master.opencloud}")
-          (makeCommand "${lib.getExe pkgs.awww} restore")
+          (makeCommand [
+            "${lib.getExe pkgs.awww}"
+            "restore"
+          ])
+          (makeCommand [
+            "${lib.getExe aurora}"
+            "clipboard-daemon"
+          ])
         ];
         clipboard.disable-primary = true;
         hotkey-overlay.skip-at-startup = false;
@@ -96,7 +106,7 @@
           # Bindings
           "Mod+Return" = {
             repeat = false;
-            action = spawn "${lib.getExe pkgs.ghostty}";
+            action = spawn "${lib.getExe ghostty}" "+new-window";
           };
 
           "Mod+R" = {
@@ -104,17 +114,33 @@
             # action = spawn "${lib.getExe pkgs.fuzzel}";
             # action = spawn "${lib.getExe pkgs.walker}";
             # action = spawn "${lib.getExe inputs.sherlock-gpui.packages.${pkgs.stdenv.hostPlatform.system}.default}";
-            action = spawn "${lib.getExe pkgs.master.ghostty}" "--title=aurora-run" "--window-width=64" "--window-height=16" "-e" "aurora" "--icons" "--run";
+            action =
+              spawn "${lib.getExe ghostty}" "+new-window" "--title=aurora-run" "-e" "${lib.getExe aurora}"
+                "--icons"
+                "--run";
           };
 
           "Mod+Space" = {
             repeat = false;
-            action = spawn "${lib.getExe pkgs.master.ghostty}" "--title=aurora-run" "--window-width=64" "--window-height=16" "-e" "aurora" "--icons" "--run";
+            action =
+              spawn "${lib.getExe ghostty}" "+new-window" "--title=aurora-run" "-e" "${lib.getExe aurora}"
+                "--icons"
+                "--run";
+          };
+
+          "Mod+Period" = {
+            repeat = false;
+            action =
+              spawn "${lib.getExe ghostty}" "+new-window" "--title=aurora-run" "-e" "${lib.getExe aurora}"
+                "--emoji";
           };
 
           "Mod+V" = {
             repeat = false;
-            action = spawn "${lib.getExe pkgs.walker}" "-m" "clipboard";
+            # action = spawn "${lib.getExe pkgs.walker}" "-m" "clipboard";
+            action =
+              spawn "${lib.getExe ghostty}" "+new-window" "--title=aurora-clip" "-e" "${lib.getExe aurora}"
+                "--clipboard";
           };
 
           "Print" = {
@@ -144,18 +170,24 @@
           # Screensharing "Dynamic"
           "Mod+P" = {
             repeat = false;
-            action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action set-dynamic-cast-window --id $(${lib.getExe config.programs.niri.package} msg --json pick-window | ${lib.getExe pkgs.jq} .id)";
+            action =
+              spawn "sh" "-c"
+                "${lib.getExe config.programs.niri.package} msg action set-dynamic-cast-window --id $(${lib.getExe config.programs.niri.package} msg --json pick-window | ${lib.getExe pkgs.jq} .id)";
             # action = spawn "sh" "-c" "${niri} msg action set-dynamic-cast-window --id $(${niri} msg --json list-windows | ${jq} '.[] | select(.is_active) | .id' | head -1)";
           };
 
           "Mod+Ctrl+P" = {
             repeat = false;
-            action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action clear-dynamic-cast-target";
+            action =
+              spawn "sh" "-c"
+                "${lib.getExe config.programs.niri.package} msg action clear-dynamic-cast-target";
           };
 
           "Mod+Shift+P" = {
             repeat = false;
-            action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action set-dynamic-cast-monitor";
+            action =
+              spawn "sh" "-c"
+                "${lib.getExe config.programs.niri.package} msg action set-dynamic-cast-monitor";
           };
 
           "Mod+Shift+S" = {
@@ -188,7 +220,7 @@
           # "Mod+Shift+Equal".action = set-column-height "+10%";
 
           "Mod+Comma".action = consume-window-into-column;
-          "Mod+Period".action = expel-window-from-column;
+          "Mod+Minus".action = expel-window-from-column;
           "Alt+Tab".action = switch-focus-between-floating-and-tiling;
           "Mod+Alt+Space".action = toggle-window-floating;
 
@@ -415,7 +447,19 @@
                   { title = "^aurora-run$"; }
                 ];
                 open-floating = true;
-              }              
+                open-focused = true;
+                default-column-width.fixed = 720;
+                default-window-height.fixed = 320;
+              }
+              {
+                matches = [
+                  { title = "^aurora-clip$"; }
+                ];
+                open-floating = true;
+                open-focused = true;
+                default-column-width.fixed = 720;
+                default-window-height.fixed = 820;
+              }
               {
                 matches = [
                   { app-id = "^(zen|zen-.*|firefox|chromium-browser|edge|chrome-.*)$"; }
@@ -434,6 +478,16 @@
                   x = 320;
                   y = 16;
                 };
+              }
+              {
+                matches = [
+                  {
+                    app-id = "^(steam|steamwebhelper)$";
+                    title = "^notificationtoasts_.*";
+                  }
+                ];
+                open-floating = true;
+                open-focused = false;
               }
               {
                 matches = [

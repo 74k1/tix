@@ -89,7 +89,6 @@
       logpath = "/var/log/nginx/access.log";
     };
 
-
     nginx-botsearch.settings = {
       enabled = true;
       port = "http,https";
@@ -334,7 +333,7 @@
               recommendedProxySettings = true;
             };
             locations."/" = {
-              proxyPass = "http://10.100.0.1:3034";
+              proxyPass = "http://10.100.0.1:3002";
               recommendedProxySettings = true;
             };
           };
@@ -459,6 +458,15 @@
             };
             # http3 = true;
             # quic = true;
+          };
+          "chat.${domain00}" = {
+            addSSL = true;
+            useACMEHost = "${allSecrets.global.domain00}";
+            locations."/" = {
+              proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.chat.settings.BIND}";
+              recommendedProxySettings = true;
+              proxyWebsockets = true;
+            };
           };
           "bookmark.${domain00}" = {
             addSSL = true;
@@ -591,15 +599,6 @@
           #     proxyPass = "http://10.100.0.1:5678"
           #   };
           # };
-          "chatai.${allSecrets.global.domain03}" = {
-            enableACME = true;
-            forceSSL = true;
-            locations."/" = {
-              proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.chat.settings.BIND}";
-              recommendedProxySettings = true;
-              proxyWebsockets = true;
-            };
-          };
           # catch-all for domain00
           # "*.${allSecrets.global.domain00}" = {
           #   forceSSL = true;

@@ -27,22 +27,28 @@
 
   programs.waterfox = {
     enable = true;
-    package = inputs.hythera-waterfox.outputs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.waterfox.overrideAttrs (oldAttrs: let
-      src = pkgs.fetchFromGitHub {
-        owner = "BrowserWorks";
-        repo = "Waterfox";
-        tag = "6.6.10";
-        hash = "sha256-hYIci/tT8coo+qxngTQjOjGFY+ztSfT1BNVkULdRw3k=";
-        fetchSubmodules = true;
-        preFetch = ''
-          export GIT_CONFIG_COUNT=1
-          export GIT_CONFIG_KEY_0=url.https://github.com/.insteadOf
-          export GIT_CONFIG_VALUE_0=git@github.com:
-        ''; # We can't clone with SSH here
-      };
-    in {
-      inherit src;
-    });
+    package =
+      inputs.hythera-waterfox.outputs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.waterfox.overrideAttrs
+        (
+          oldAttrs:
+          let
+            src = pkgs.fetchFromGitHub {
+              owner = "BrowserWorks";
+              repo = "Waterfox";
+              tag = "6.6.10";
+              hash = "sha256-hYIci/tT8coo+qxngTQjOjGFY+ztSfT1BNVkULdRw3k=";
+              fetchSubmodules = true;
+              preFetch = ''
+                export GIT_CONFIG_COUNT=1
+                export GIT_CONFIG_KEY_0=url.https://github.com/.insteadOf
+                export GIT_CONFIG_VALUE_0=git@github.com:
+              ''; # We can't clone with SSH here
+            };
+          in
+          {
+            inherit src;
+          }
+        );
     profiles.taki = {
       name = "taki";
       search = {
@@ -272,6 +278,9 @@
         # enable word-clicks
         "browser.urlbar.doubleClickSelectsAll" = false;
 
+        # dont paste on middle mouse button
+        "middlemouse.paste" = false;
+
         # disable new sidebar
         "sidebar.revamp" = false;
         "userChrome.hidden.sidebar_header" = true;
@@ -297,7 +306,7 @@
         # disable hardware-keys (?)
         # "media.hardwaremediakeys.enabled" = false;
 
-        # startup and newtab page 
+        # startup and newtab page
         "browser.startup.homepage" = "about:home";
         "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
 
@@ -326,7 +335,7 @@
         "svg.context-properties.content.enabled" = true;
 
         # ------------------------------------------- #
-        # Betterfox 
+        # Betterfox
         # https://github.com/yokoffing/Betterfox
         # ------------------------------------------- #
 

@@ -44,7 +44,11 @@
   };
 
   security.acme.certs."m.${allSecrets.global.domain01}".postRun = ''
-    ${pkgs.acl}/bin/setfacl -m u:${config.services.murmur.user}:rx ${config.security.acme.certs."m.${allSecrets.global.domain01}".directory}
-    ${pkgs.acl}/bin/setfacl -m g:${config.services.murmur.group}:r ${config.security.acme.certs."m.${allSecrets.global.domain01}".directory}/{chain,cert,key}.pem
+    ${pkgs.acl}/bin/setfacl -m u:${config.services.murmur.user}:rx ${
+      config.security.acme.certs."m.${allSecrets.global.domain01}".directory
+    }
+    ${pkgs.acl}/bin/setfacl -m g:${config.services.murmur.group}:r ${
+      config.security.acme.certs."m.${allSecrets.global.domain01}".directory
+    }/{chain,cert,key}.pem
   '';
 }

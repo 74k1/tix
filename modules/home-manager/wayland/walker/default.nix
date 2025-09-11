@@ -39,7 +39,7 @@
           list = "no results";
         };
 
-        keybinds.quick_activate = [];
+        keybinds.quick_activate = [ ];
 
         providers = {
           default = [
@@ -50,14 +50,38 @@
           empty = [ "desktopapplications" ];
           max_results = 48;
           prefixes = [
-            { prefix = "; "; provider = "providerlist"; }
-            { prefix = "> "; provider = "runner"; }
-            { prefix = "/ "; provider = "files"; }
-            { prefix = ". "; provider = "symbols"; }
-            { prefix = "emoji "; provider = "symbols"; }
-            { prefix = "= "; provider = "calc"; }
-            { prefix = "@ "; provider = "websearch"; }
-            { prefix = ": "; provider = "clipboard"; }
+            {
+              prefix = "; ";
+              provider = "providerlist";
+            }
+            {
+              prefix = "> ";
+              provider = "runner";
+            }
+            {
+              prefix = "/ ";
+              provider = "files";
+            }
+            {
+              prefix = ". ";
+              provider = "symbols";
+            }
+            {
+              prefix = "emoji ";
+              provider = "symbols";
+            }
+            {
+              prefix = "= ";
+              provider = "calc";
+            }
+            {
+              prefix = "@ ";
+              provider = "websearch";
+            }
+            {
+              prefix = ": ";
+              provider = "clipboard";
+            }
           ];
 
           clipboard.time_format = "%Y-%m-%d - %H:%M:%S";

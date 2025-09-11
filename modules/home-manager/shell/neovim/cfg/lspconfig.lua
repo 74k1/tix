@@ -69,6 +69,7 @@ vim.lsp.config('nil_ls',{
   settings = {
     ["nil"] = {
       formatting = {
+        -- https://github.com/Mic92/nixfmt-rs
         command = { "nixfmt" },
       },
       nix = {
@@ -81,6 +82,24 @@ vim.lsp.config('nil_ls',{
   },
 })
 vim.lsp.enable('nil_ls')
+
+-- nixfmt: format-on-save for nix files
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = vim.api.nvim_create_augroup("NixFmt", { clear = true }),
+  pattern = "*.nix",
+  callback = function(args)
+    vim.lsp.buf.format({
+      bufnr = args.buf,
+      async = false,
+      timeout_ms = 5000,
+    })
+  end,
+})
+
+-- nixfmt: manual format keybinding
+vim.keymap.set("n", "<leader>fn", function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Format nix file with nixfmt" })
 
 vim.lsp.config('rust_analyzer',{
   on_attach = function(client, bufnr)

@@ -73,12 +73,12 @@ in
         sonarr-alt = {
           group = cfg.group;
           home = cfg.dataDir;
-          uid = 276;
+          uid = 380;
         };
       };
 
       groups = mkIf (cfg.group == "sonarr-alt") {
-        sonarr-alt.gid = 276;
+        sonarr-alt.gid = 380;
       };
     };
   };

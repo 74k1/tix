@@ -7,6 +7,9 @@
   ...
 }:
 let
+  aurora = inputs.aurora.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  ghostty = pkgs.master.ghostty;
+
   modules = {
     "group/power" = {
       orientation = "inherit";
@@ -194,7 +197,8 @@ let
         pkgs.writeShellApplication {
           name = "wb-select-output";
           runtimeInputs = [
-            pkgs.fuzzel
+            aurora
+            ghostty
             pkgs.pulseaudio
           ];
           text = builtins.readFile ./scripts/wb-select-output.sh;

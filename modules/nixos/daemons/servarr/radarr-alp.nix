@@ -72,12 +72,12 @@ in
         radarr-alp = {
           group = cfg.group;
           home = cfg.dataDir;
-          uid = 279;
+          uid = 383;
         };
       };
 
       groups = mkIf (cfg.group == "radarr-alp") {
-        radarr-alp.gid = 279;
+        radarr-alp.gid = 383;
       };
     };
   };

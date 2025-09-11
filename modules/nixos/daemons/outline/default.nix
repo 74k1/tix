@@ -56,7 +56,7 @@
     concurrency = 1; # for under 1000 users..
     maximumImportSize = 5120000;
 
-    smtp = 
+    smtp =
       let
         inherit (allSecrets.global.mail.sender) host username;
       in
@@ -69,15 +69,19 @@
         secure = false;
       };
 
-    oidcAuthentication = 
-      let 
+    oidcAuthentication =
+      let
         inherit (allSecrets.global.oidc) authUrl tokenUrl userinfoUrl;
-      in 
+      in
       {
         inherit authUrl tokenUrl userinfoUrl;
         clientId = "outline";
         clientSecretFile = config.age.secrets."outline_oidc_client_secret".path;
-        scopes = [ "openid" "email" "profile" ];
+        scopes = [
+          "openid"
+          "email"
+          "profile"
+        ];
         usernameClaim = "preferred_username";
         displayName = "Pocket ID";
       };
