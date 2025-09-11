@@ -78,10 +78,10 @@
 
     # my own scriptiboo
     pkgs.tix.duvolbr
-    # inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-otf
-    inputs.unfree-fonts.packages.x86_64-linux.suisse-intl-mono
-    inputs.unfree-fonts.packages.x86_64-linux.supply-mono
-    inputs.unfree-fonts.packages.x86_64-linux.supply-sans
+    # inputs.tixpkgs-unfree.packages.x86_64-linux.berkeley-nolig-otf
+    inputs.tixpkgs-unfree.packages.x86_64-linux.suisse-intl-mono
+    inputs.tixpkgs-unfree.packages.x86_64-linux.supply-mono
+    inputs.tixpkgs-unfree.packages.x86_64-linux.supply-sans
     fragment-mono
     ibm-plex
 
@@ -193,7 +193,7 @@
     ouch
 
     gnome-keyring
-    paper-plane
+    # paper-plane
 
     session-desktop
 
