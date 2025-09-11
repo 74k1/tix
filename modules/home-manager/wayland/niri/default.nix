@@ -53,14 +53,14 @@
           src = pkgs.fetchFromGitHub {
             owner = "niri-wm";
             repo = "niri";
-            rev = "4a7e443b6c816e4f673f6e25cc0a5aa37697d667";
-            hash = "sha256-ZiGGjRL2H67GcL6BvZV99khW++aHpJ2NA4n71qZiJ9A=";
+            rev = "17577e7db0e530d56e74ec244a185cdd1b9ad6cc";
+            hash = "sha256-ky0eBF/zoiJTIoLSpV1EmupVCEZMSp9pQIlHOpvDoMU=";
           };
         in {
           inherit src;
           cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
             inherit src;
-            hash = "sha256-Fv3uClwuuAAGTQ7ujuAQW7xCoYFCw4q9QC08Z7Q7Hdk=";
+            hash = "sha256-F6dT3xBWsjN+pGT3D2PvoqiWJpY/Rv8TkEBX1fthzYs=";
           };
         });
       # config = /* kdl */ {
@@ -71,16 +71,17 @@
         ];
         environment = {
           # CLUTTER_BACKEND = "wayland";
+          # SDL_VIDEODRIVER = "wayland";
           DISPLAY = ":0";
           GDK_BACKEND = "wayland";
+          GTK_IM_MODULE = "simple";
+          GTK_THEME = "adw-gtk3-dark";
           GTK_USE_PORTAL = "1";
           MOZ_ENABLE_WAYLAND = "1";
           NIXOS_OZONE_WL = "1";
-          QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-          # SDL_VIDEODRIVER = "wayland";
-          QT_STYLE_OVERRIDE = lib.mkForce "";
           QT_QPA_PLATFORM = "wayland;xcb";
-          GTK_THEME = "adw-gtk3-dark";
+          QT_STYLE_OVERRIDE = lib.mkForce "";
+          QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
         };
         spawn-at-startup = [
           (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
