@@ -151,6 +151,7 @@
             repeat = false;
             action = spawn "sh" "-c" "pgrep hyprlock || ${lib.getExe pkgs.hyprlock}";
           };
+
           "Mod+Ctrl+Q" = {
             repeat = false;
             action = spawn "sh" "-c" "pgrep hyprlock || ${lib.getExe pkgs.hyprlock}";
@@ -185,11 +186,12 @@
             action = toggle-overview;
           };
 
-          "Mod+C" = {
+          "Mod+Q" = {
             repeat = false;
             action = close-window;
           };
 
+          "Mod+C".action = center-column;
           "Mod+S".action = switch-preset-column-width;
           "Mod+F".action = maximize-column;
           "Mod+Shift+F".action = fullscreen-window;
