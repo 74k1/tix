@@ -79,6 +79,6 @@
           } --flake ~/tix ''$''\{1:-switch''\} "''$''\{@:2''\}" |& nix run nixpkgs#nix-output-monitor
         }
       '';
-    blesh.enable = true;
+    # blesh.enable = true;
   };
 }
