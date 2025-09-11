@@ -1,18 +1,19 @@
-<div align="center">
-    <img src="/.github/assets/tix_colored.png" width="300px"/>
-    <h1><samp>(t)im's n(ix) flake </samp>❄️</h1>
+<div align="right">
+    <img align="left" src="/.github/assets/tix_colored.png" width="300px"/>
+    <br>
+    <h3><samp>(t)im's n(ix) flake </samp>❄️</h3>
     <a href="#"><img src="https://img.shields.io/github/repo-size/74k1/tix?color=cba6f7&labelColor=303446&style=for-the-badge"></img></a>
     <a href="https://github.com/74k1/tix/stargazers"><img src="https://img.shields.io/github/stars/74k1/tix?color=cba6f7&labelColor=303446&style=for-the-badge"></img></a>
     <a href="LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=ca9ee6&colorA=313244&colorB=cba6f7"/></a>
     <br>
     <p>TODO: preview<p>
-    <!-- <a href="#octocat--hi-there-thanks-for-dropping-by"> -->
-    <!--     <picture> -->
-    <!--         <img alt="preview" align="right" width="400px" src="/.github/assets/preview.png"> -->
-    <!--     </picture> -->
-    <!-- </a> -->
-
+    <!-- <picture> -->
+    <!--     <img alt="preview" align="right" width="400px" src="/.github/assets/preview.png"> -->
+    <!-- </picture> -->
 </div>
+<br>
+<br>
+<br>
 <div>
     <ul>
         <li><strong>Window Manager</strong> • <a href="https://github.com/YaLTeR/niri/">Niri</a> Scrollable WM!</li>
