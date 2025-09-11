@@ -37,6 +37,7 @@
     vaultwarden
     pocket-id
     outline
+    memos
     # pds
 
     # Mid importance

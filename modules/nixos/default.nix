@@ -15,6 +15,7 @@
   it-tools = import ./daemons/it-tools;
   karakeep = import ./daemons/karakeep;
   locale = import ./profile/locale;
+  memos = import ./daemons/memos;
   miniflux = import ./daemons/miniflux;
   n8n = import ./daemons/n8n;
   navidrome = import ./daemons/navidrome;
