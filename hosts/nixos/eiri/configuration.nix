@@ -41,7 +41,7 @@
     tinyauth
     outline
     memos
-    # pds
+    pds
 
     braindump
 
@@ -76,6 +76,8 @@
     karakeep
 
     # glance
+
+    protonmail-bridge
     nextcloud
     opencloud
     rybbit

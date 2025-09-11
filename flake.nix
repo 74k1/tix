@@ -14,9 +14,9 @@
     nixpkgs-master = {
       url = "github:NixOS/nixpkgs/master";
     };
-    nixpkgs-local = {
-      url = "git+file:///home/taki/dev/nixpkgs";
-    };
+    # nixpkgs-local = {
+    #   url = "git+file:///home/taki/dev/nixpkgs";
+    # };
     # --- my own flakes
     tixpkgs = {
       url = "github:74k1/tixpkgs/main";
