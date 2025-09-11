@@ -62,14 +62,22 @@ require("lspconfig").bashls.setup({})
 
 require("lspconfig").nil_ls.setup({
   cmd = { "nil" },
+  filetypes = { "nix" },
+  root_dir = root_pattern("flake.nix", ".git"),
+  single_file_support = true,
   settings = {
     ["nil"] = {
       formatting = {
         command = { "nixfmt" },
       },
+      nix = {
+        flake = {
+          autoArchive = true,
+          -- autoEvalInputs = true,
+        },
+      },
     },
   },
-  single_file_support = true,
 })
 
 require("lspconfig").rust_analyzer.setup({

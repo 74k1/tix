@@ -252,6 +252,11 @@ in
       #   config = builtins.readFile ./cfg/copilot-lua.lua;
       # }
       {
+        plugin = tiny-inline-diagnostic-nvim;
+        type = "lua";
+        config = builtins.readFile ./cfg/tiny-inline-diagnostics.lua;
+      }
+      {
         plugin = nvim-lspconfig;
         type = "lua";
         config = builtins.readFile ./cfg/lspconfig.lua;

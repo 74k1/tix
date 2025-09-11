@@ -17,5 +17,38 @@ cmp.setup {
     -- { name = 'copilot' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'emoji' },
+    { name = 'buffer' },
+    {
+      name = 'path',
+      option = {
+        pathMappings = {
+          ['@'] = '${folder}/src',
+          -- ['/'] = '${folder}/src/public/',
+          -- ['~@'] = '${folder}/src',
+          -- ['/images'] = '${folder}/src/images',
+          -- ['/components'] = '${folder}/src/components',
+        },
+      },
+    },
   }),
+  cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  }),
+  cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      {
+        name = 'cmdline',
+        option = {
+          ignore_cmds = { 'Man', '!' }
+        }
+      }
+    })
+  })
 }
