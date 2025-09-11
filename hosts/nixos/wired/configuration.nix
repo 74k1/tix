@@ -240,23 +240,23 @@
       touchpad.accelProfile = "flat";
     };
 
-    fprintd = {
-      # fingerprint
-      enable = false;
-      # tod = {
-      #   enable = true;
-      #   driver = pkgs.tix.libfprint-focaltech-gpd;
-      # };
-      # https://wiki.nixos.org/wiki/Fingerprint_scanner
-      # package = pkgs."24.11".fprintd.override {
-      #   libfprint = pkgs.tix.libfprint-focaltech-gpd;
-      # };
-      package = (
-        pkgs."24.11".fprintd.override {
-          libfprint = pkgs.tix-unfree.libfprint-focaltech;
-        }
-      );
-    };
+    # fprintd = {
+    #   # fingerprint
+    #   enable = true;
+    #   # tod = {
+    #   #   enable = true;
+    #   #   driver = pkgs.tix.libfprint-focaltech-gpd;
+    #   # };
+    #   # https://wiki.nixos.org/wiki/Fingerprint_scanner
+    #   # package = pkgs."24.11".fprintd.override {
+    #   #   libfprint = pkgs.tix.libfprint-focaltech-gpd;
+    #   # };
+    #   package = (
+    #     pkgs."24.11".fprintd.override {
+    #       libfprint = pkgs.tix-unfree.libfprint-focaltech;
+    #     }
+    #   );
+    # };
 
     fwupd = {
       enable = true;

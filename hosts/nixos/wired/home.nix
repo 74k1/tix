@@ -41,6 +41,7 @@
       #theme
       style
       #wall
+      mpv
       wezterm
       ghostty
       # wired
@@ -114,9 +115,11 @@
     btop
 
     nh
+    cachix
 
     pixieditor
     pi-coding-agent
+    claude-code
 
     # beekeeper-studio
     pkgs.tix.outerbase-studio-desktop
@@ -154,7 +157,6 @@
 
     # wezterm
     pkgs.master.ghostty
-    bitwarden-desktop
     # clipit
     universal-android-debloater
     # wired
@@ -166,6 +168,11 @@
     moonlight-qt
     parsec-bin
     gradia
+    scrcpy
+
+    v4l-utils
+    cameractrls
+    cameractrls-gtk4
 
     renoise
 
@@ -201,7 +208,7 @@
     opencloud-desktop
     # nextcloud-client
     # fractal
-    # element-desktop
+    element-desktop
     # fluffychat
     google-chrome
     ungoogled-chromium
