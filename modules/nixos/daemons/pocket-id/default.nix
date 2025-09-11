@@ -14,7 +14,7 @@
 
   services.pocket-id = {
     enable = true;
-    package = pkgs.pocket-id;
+    package = pkgs.master.pocket-id;
     settings = {
       APP_URL = "https://auth.${allSecrets.global.domain00}";
       TRUST_PROXY = true;

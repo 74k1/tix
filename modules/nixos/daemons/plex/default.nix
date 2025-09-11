@@ -29,7 +29,7 @@
     plex = {
       enable = true;
       # package = pkgs.master.plex;
-      package = inputs.tixpkgs-unfree.packages.x86_64-linux.plex-beta;
+      package = pkgs.tix-unfree.plex-beta;
       dataDir = "/var/lib/plex";
       accelerationDevices = [ "*" ];
     };
