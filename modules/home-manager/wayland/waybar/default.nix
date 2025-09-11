@@ -415,7 +415,8 @@ in
           }
 
           window#waybar {
-            background-color: @bg0;
+            /* background-color: @bg0; */
+            background: rgba(7, 6, 11, 0.9);
             color: @fg0;
             transition-property: background-color;
           }
@@ -450,35 +451,29 @@ in
           #custom-power-reboot,
           #mpd {
               padding: 0 8px;
-              background-color: @bg1;
               color: @fg0;
           }
 
           #clock {
-              background-color: @bg1;
               color: @fg0;
           }
 
           #battery {
-              background-color: @bg1;
               color: @fg0;
           }
 
           #battery.charging, #battery.plugged {
               color: @green;
-              background-color: @bg1;
               /* border: 1px solid #FFFFFF; */
           }
 
           @keyframes blink {
               to {
-                  background-color: @bg1;
                   color: @fg0;
               }
           }
 
           #battery.critical:not(.charging) {
-            background-color: @bg1;
             color: @red;
             animation-name: blink;
             animation-duration: 0.5s;
@@ -488,81 +483,65 @@ in
           }
 
           label:focus {
-            background-color: @bg0;
           }
 
           #cpu {
-            background-color: @bg1;
             color: @fg0;
           }
 
           #memory {
-            background-color: @bg1;
             color: @fg0;
           }
 
           #disk {
-            background-color: @bg1;
             color: @fg0;
           }
 
           #backlight {
-            background-color: @bg1;
             color: @fg0;
           }
 
           #network {
-            background-color: @bg1;
             color: @fg0;
           }
 
           #network.disconnected {
-            background-color: @bg1;
             color: @red;
           }
 
           #pulseaudio {
-            background-color: @bg1;
             color: @fg0;
           }
 
           #pulseaudio.muted {
-            background-color: @bg1;
             color: @red;
           }
 
           #mpris {
-            background-color: @bg1;
             color: @fg0;
           }
 
           #mpris.spotify {
-            background-color: @bg1;
             color: @fg0;
           }
 
           #mpris.vlc {
-            background-color: @bg1;
             color: @fg0;
           }
 
           #mpris.brave {
-            background-color: @bg1;
             color: @fg0;
           }
 
           #custom-power{
-            background-color: @bg1;
             color: @fg0;
           }
 
           #tags{
-            background-color: @bg1;
             color: @fg0;
           }
 
           #tags button.occupied {
-            background-color: @bg1;
             color: @fg0;
           }
 
@@ -572,29 +551,24 @@ in
           }
 
           #tags button.urgent{
-            background-color: @bg1;
             color: @red;
           }
 
 
           #temperature {
-            background-color: @bg1;
             color: @fg0;
           }
 
           #temperature.critical {
-            background-color: @bg1;
             color: @red;
           }
 
           #tray {
-            background-color: @bg1;
             color: @fg0;
           }
 
           #tray > .passive {
               -gtk-icon-effect: dim;
-            background-color: @bg0;
             color: @fg0;
           }
 
@@ -605,13 +579,11 @@ in
           }
 
           #language {
-            background-color: @bg1;
             color: @fg0;
             min-width: 16px;
           }
 
           #keyboard-state {
-            background-color: @bg1;
             color: @fg0;
             min-width: 16px;
           }
