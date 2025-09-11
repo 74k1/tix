@@ -1,2 +1,6 @@
+.direnv
+result
+result-*
+**/.nixos-test-history
 .DS_Store
-/.direnv
+._*
