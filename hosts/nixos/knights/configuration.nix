@@ -303,13 +303,6 @@
           inherit (allSecrets.global) domain00 domain01 domain0;
         in
         {
-          # "it.${domain01}" = {
-          #   addSSL = true;
-          #   enableACME = true;
-          #   locations."/" = {
-          #     proxyPass = "http://10.100.0.1:80"; # nginx based on url
-          #   };
-          # };
           # "send.${domain01}" = {
           #   addSSL = true;
           #   enableACME = true;

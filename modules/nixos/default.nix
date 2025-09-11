@@ -15,7 +15,6 @@
   glance = import ./daemons/glance;
   grafana = import ./daemons/grafana;
   immich = import ./daemons/immich;
-  it-tools = import ./daemons/it-tools;
   karakeep = import ./daemons/karakeep;
   locale = import ./profile/locale;
   loki = import ./daemons/loki;
