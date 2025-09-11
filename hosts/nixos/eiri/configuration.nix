@@ -44,7 +44,7 @@
     # everything else
     scrutiny
 
-    baikal
+    # baikal
     rsshub 
 
     n8n
@@ -207,7 +207,11 @@
             # proxyWebsockets = true;
           };
         };
-        "baikal.eiri.${allSecrets.global.domain01}" = {
+        # "baikal.eiri.${allSecrets.global.domain01}" = {
+        #   addSSL = true;
+        #   # enableACME = true;
+        #   useACMEHost = "eiri.${allSecrets.global.domain01}";
+        # };
           addSSL = true;
           # enableACME = true;
           useACMEHost = "eiri.${allSecrets.global.domain01}";
