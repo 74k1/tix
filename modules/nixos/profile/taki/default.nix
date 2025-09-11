@@ -69,6 +69,10 @@
           ubuntu-sans
           ubuntu-sans-mono
           libertine
+          sarasa-gothic
+          source-han-sans
+          source-han-mono
+          source-han-serif
 
           # modern font stacks
           # https://github.com/system-fonts/modern-font-stacks
