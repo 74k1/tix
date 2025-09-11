@@ -145,8 +145,8 @@
       # url = "github:74k1/VPN-Confinement";
     };
     ouro = {
-      url = "git+file:///home/taki/dev/ouro";
-      # url = "github:reo101/ouro";
+      # url = "git+file:///home/taki/dev/ouro";
+      url = "github:reo101/ouro";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
