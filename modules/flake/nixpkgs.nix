@@ -61,13 +61,8 @@
             # hack, might work, forgor
             allowUnfreePredicate = _: true;
 
-            # HACK: until https://github.com/NixOS/nixpkgs/issues/360592 is resolved
             permittedInsecurePackages = [
-              "aspnetcore-runtime-6.0.36"
-              "aspnetcore-runtime-wrapped-6.0.36"
-              "dotnet-sdk-6.0.428"
-              "dotnet-sdk-wrapped-6.0.428"
-              "openssl-1.1.1w"
+              "pnpm-9.15.9" # bluesky-pds
             ];
           };
         in
