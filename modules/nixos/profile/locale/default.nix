@@ -25,6 +25,7 @@
   };
 
   i18n.inputMethod.package = pkgs.kdePackages.fcitx5-with-addons;
+  i18n.inputMethod.fcitx5.waylandFrontend = true;
 
   # Configure keymap in X11
   # services.xserver.xkb = {
@@ -32,6 +33,7 @@
   #   variant = "";
   # };
 
+  # TODO udev extraHwdb (hardware level keyboard layouts) doesn't quite work yet
   services.udev.extraHwdb = ''
     evdev:name:*:*
       XKBLAYOUT=ch
