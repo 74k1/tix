@@ -214,7 +214,7 @@ in
             enable = true;
             width = 1;
             active = {
-              color = "#816BFF";
+              color = "#7089FF";
             };
             inactive = {
               color = "#1C1B28";
@@ -224,7 +224,7 @@ in
             enable = false;
             width = 1;
             active = {
-              color = "#816BFF";
+              color = "#7089FF";
             };
             inactive = {
               color = "#1C1B28";
@@ -243,7 +243,7 @@ in
           insert-hint = {
             enable = false;
             display = {
-              color = "rgb(87 103 255 / 50%)";
+              color = "rgb(112 137 255 / 50%)";
             };
           };
           preset-column-widths = [
@@ -304,6 +304,8 @@ in
               baseRule // floatingRule;
 
             openFloatingAppIds = [
+              "^(sherlock)"
+
               "^(pavucontrol)"
               "^(Volume Control)"
               "^(dialog)"
