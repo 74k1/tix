@@ -43,6 +43,7 @@
     memos
     pds
     ntfy
+    yopass
 
     braindump
 

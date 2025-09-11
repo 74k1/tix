@@ -10,9 +10,6 @@
     nixpkgs-master = {
       url = "github:NixOS/nixpkgs/master";
     };
-    # Version index: every nixpkgs revision from one input. NOT an importable
-    # nixpkgs — exposes `tip`/`at`/`version`/`solvePins`, wired as
-    # `pkgs.multiverse.*` in modules/flake/nixpkgs.nix.
     multiverse = {
       url = "github:fzakaria/nixpkgs-multiverse";
     };
@@ -142,7 +139,6 @@
     };
     rix101 = {
       url = "github:reo101/rix101";
-      # NOTE: to reduce duplication of transitive inputs
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
       inputs.agenix.follows = "agenix";

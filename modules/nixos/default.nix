@@ -66,5 +66,6 @@
   vm-test = import ./vm-test;
   vpnconfinement = import ./daemons/vpnconfinement;
   wireguard = import ./daemons/wireguard;
+  yopass = import ./daemons/yopass;
   zeroclaw = import ./daemons/zeroclaw;
 }

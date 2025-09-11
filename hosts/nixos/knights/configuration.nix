@@ -342,6 +342,24 @@
               recommendedProxySettings = true;
             };
           };
+          "send.${domain01}" = {
+            addSSL = true;
+            enableACME = true;
+            locations."/" = {
+              proxyPass = "http://10.100.0.1:1337";
+              recommendedProxySettings = true;
+              proxyWebsockets = true;
+              extraConfig = /* nginx */ ''
+                # Increase max upload size
+                client_max_body_size 100G;
+                client_body_buffer_size 400M;
+
+                # Disable buffering
+                proxy_buffering off;
+                proxy_request_buffering off;
+              '';
+            };
+          };
           "${domain00}" = {
             addSSL = true;
             useACMEHost = "${allSecrets.global.domain00}";
@@ -498,6 +516,24 @@
               proxyWebsockets = true;
               extraConfig = ''
                 client_max_body_size 0;
+              '';
+            };
+          };
+          "send.${domain00}" = {
+            addSSL = true;
+            useACMEHost = "${allSecrets.global.domain00}";
+            locations."/" = {
+              proxyPass = "http://10.100.0.1:1337";
+              recommendedProxySettings = true;
+              proxyWebsockets = true;
+              extraConfig = /* nginx */ ''
+                # Increase max upload size
+                client_max_body_size 100G;
+                client_body_buffer_size 400M;
+
+                # Disable buffering
+                proxy_buffering off;
+                proxy_request_buffering off;
               '';
             };
           };
