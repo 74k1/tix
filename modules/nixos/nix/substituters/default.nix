@@ -36,5 +36,9 @@
           substituter = "https://rix101.cachix.org";
           public-key = "rix101.cachix.org-1:2u9ZGi93zY3hJXQyoHkNBZpJK+GiXQyYf9J5TLzCpFY=";
         }
+        {
+          substituter = "https://sherlock.cachix.org";
+          public-key = "sherlock.cachix.org-1:w6O/gUQB2CRFXKg7NfAAR+FGtotlj0tUi3dscRUKpX0=";
+        }
       ];
 }
