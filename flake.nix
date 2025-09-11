@@ -84,6 +84,9 @@
         # home-manager.follows = "home-manager";
       };
     };
+    vicinae = {
+      url = "github:vicinaehq/vicinae";
+    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";

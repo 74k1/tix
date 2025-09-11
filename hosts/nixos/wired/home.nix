@@ -51,6 +51,7 @@
       fish
       yazi
       gpg-agent
+      vicinae
     ])
   ];
 
@@ -102,6 +103,8 @@
 
     # beekeeper-studio
     pkgs.tix.outerbase-studio-desktop
+
+    planify
 
     pulsemixer
     qmk
@@ -171,17 +174,17 @@
     obsidian
     simple-scan
     aria2
+    spot
     spotify
     spotify-tray
     youtube-music
     tidal-hifi
     tidal-dl
     # TEMP
-    cider-2
-    # pkgs.master.spotify-player
+    # cider-2
     feishin
-    aonsoku
-    # spotify-player
+    # aonsoku
+    spotify-player
     discord-ptb
     # legcord
     # vesktop
