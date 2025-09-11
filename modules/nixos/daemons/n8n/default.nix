@@ -7,9 +7,9 @@
 {
   services.n8n = {
     enable = true;
-    settings = {
-      listen_address = "0.0.0.0";
-      port = 5678;
+    environment = {
+      N8N_LISTEN_ADDRESS = "0.0.0.0";
+      N8N_PORT = 5678;
     };
   };
 

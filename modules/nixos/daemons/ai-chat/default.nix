@@ -55,7 +55,6 @@
       {
         name = "litellm";
         ensureDBOwnership = true;
-
       }
     ];
     ensureDatabases = [ "litellm" ];
@@ -170,7 +169,7 @@
   # services.litellm = {
   #   enable = true;
   #   # package = litellm-1-70-1;
-  #   package = pkgs.local.litellm;
+  #   # package = pkgs.local.litellm;
   #   host = "0.0.0.0";
   #   port = 3336;
   #   # environment = {

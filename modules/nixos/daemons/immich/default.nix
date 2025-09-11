@@ -9,7 +9,7 @@
 {
   services.immich = {
     enable = true;
-    package = pkgs.stable.immich;
+    package = pkgs.immich;
     mediaLocation = "/mnt/btrfs_pool/immich_media/";
     host = "0.0.0.0";
     port = 3001;

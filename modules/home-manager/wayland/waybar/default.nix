@@ -348,6 +348,7 @@ in
         output = [
           "PNP(AOC) - AG276QZD2 - DP-6"
           "PNP(AOC) - AG276QZD2 - DP-7"
+          "PNP(AOC) - 16T3E - DP-2"
           "eDP-1"
         ];
 

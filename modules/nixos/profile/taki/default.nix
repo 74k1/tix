@@ -48,21 +48,49 @@
 
           # main fonts
           corefonts
-          vistafonts
+          vista-fonts
 
           jetbrains-mono
           nerd-fonts.fira-code
           nerd-fonts.droid-sans-mono
           nerd-fonts.jetbrains-mono
-          ubuntu_font_family
+          ubuntu-classic
           ubuntu-sans
           ubuntu-sans-mono
+
+          # modern font stacks
+          # https://github.com/system-fonts/modern-font-stacks
+          texlivePackages.charter
+          roboto
+          roboto-serif
+          roboto-flex
+          roboto-mono
+          ubuntu-sans
+          ubuntu-classic
+          ubuntu-sans-mono
+          cantarell-fonts
+          noto-fonts
+          texlivePackages.oldstyle
+          texlivePackages.gillcm
+          source-sans
+          source-sans-pro
+          montserrat
+          inter
+          texlivePackages.nimbus15
+          texlivePackages.courier
+          texlivePackages.librefranklin
+          quicksand
+          comfortaa
+          smc-manjari
+          texlivePackages.bookman
+          bodoni-moda
+          libre-bodoni
+          smc-chilanka
 
           # others
           helvetica-neue-lt-std
           cantarell-fonts
           hack-font
-          inter
           liberation_ttf
           monaspace
           fragment-mono
@@ -73,7 +101,6 @@
           nerd-fonts.tinos
           nerd-fonts.lilex
           nerd-fonts.zed-mono
-
         ];
       };
     })
