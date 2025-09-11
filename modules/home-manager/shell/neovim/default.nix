@@ -77,8 +77,12 @@ in
         lua vim.g.mapleader = " "
 
         " Oil
-        lua vim.keymap.set("n", "-", "<cmd>Oil<CR>")
-        lua vim.api.nvim_create_user_command("E", "Oil", {})
+        "lua vim.keymap.set("n", "-", "<cmd>Oil<CR>")
+        "lua vim.api.nvim_create_user_command("E", "Oil", {})
+
+        " Fyler
+        lua vim.keymap.set("n", "-", "<cmd>Fyler<CR>")
+        lua vim.api.nvim_create_user_command("E", "Fyler", {})
 
         " Find Files
         lua vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
@@ -253,11 +257,70 @@ in
             })
           '';
       }
+      mini-icons
       {
-        plugin = oil-nvim;
+        plugin = fyler-nvim;
         type = "lua";
-        config = builtins.readFile ./cfg/oil.lua;
+        config = /* lua */ ''
+          require("fyler").setup({
+            integrations = {
+              icon = "mini_icons",
+            },
+            -- '-' no longer moves the root; jumps the cursor to the top-level
+            -- directory that contains the file you're on.
+            mappings = {
+              n = {
+                ["-"] = {
+                  action = function(self)
+                    local M = require("fyler.finder")
+                    local node = M.parse_cursor_line(self)
+                    if not node then return end
+
+                    local pseudo = self.state.pseudo_root_path
+
+                    -- Already on the top-level dir? Then '-' climbs out to the
+                    -- parent directory (changes the root, old behaviour).
+                    if vim.fs.normalize(vim.fs.dirname(node.path)) == vim.fs.normalize(pseudo) then
+                      self:visit({ parent = true })
+                      return
+                    end
+
+                    -- Otherwise step up ONE level: move the cursor to the
+                    -- parent directory of the current node. Root untouched.
+                    local parent_path = vim.fs.normalize(vim.fs.dirname(node.path))
+                    local parent_node
+                    self.state:walk(function(n) parent_node = n end, { target_path = parent_path })
+                    local line = parent_node and parent_node.value and self._id_to_line[parent_node.value]
+                    if line and vim.api.nvim_win_is_valid(self.win_id) then
+                      vim.api.nvim_win_call(self.win_id, function()
+                        vim.fn.winrestview({ lnum = line, col = 0 })
+                      end)
+                    end
+                  end,
+                  desc = "Up one level, then climb out at the top",
+                },
+                -- Ctrl+. toggles hidden items
+                ["<C-.>"] = {
+                  action = "toggle_ui",
+                  args = { "hidden_items" },
+                  desc = "Toggle hidden files",
+                },
+                -- drop the built-in g. (replaced by <C-.>)
+                ["g."] = { disabled = true },
+              },
+            },
+            ui = {
+              -- indent guides on by default
+              indent_guides = true,
+            },
+          })
+        '';
       }
+      # {
+      #   plugin = oil-nvim;
+      #   type = "lua";
+      #   config = builtins.readFile ./cfg/oil.lua;
+      # }
       {
         plugin = img-clip-nvim;
         type = "lua";
