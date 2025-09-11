@@ -421,7 +421,7 @@
             useACMEHost = "${allSecrets.global.domain00}";
             # http2 = false;
             extraConfig = /* nginx */ ''
-              # Increase max upload size (required for Tus — without this, uploads over 1 MB fail)
+              # Increase max upload size
               client_max_body_size 100G;
               client_body_buffer_size 400M;
 
