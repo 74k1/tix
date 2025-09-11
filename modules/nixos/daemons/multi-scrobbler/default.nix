@@ -12,7 +12,6 @@
     inputs.tixpkgs.nixosModules'.services.multi-scrobbler
   ];
 
-
   age.secrets."multi-scrobbler_env" = {
     rekeyFile = "${inputs.self}/secrets/multi-scrobbler_env.age";
     # mode = "770";
@@ -26,7 +25,7 @@
 
     port = 9078;
 
-    baseUrl = "https://scrobble.${allSecrets.global.domain01}";
+    baseUrl = "https://scrobble.i.${allSecrets.global.domain03}";
 
     # see below in [[]]
     environmentFile = config.age.secrets."multi-scrobbler_env".path;
@@ -39,6 +38,7 @@
     configFiles = {
       # Clients
       lastfm = {
+        id = "lastfm_client";
         name = "lastfm_client";
         configureAs = "client";
         data = {
@@ -49,6 +49,7 @@
       };
 
       tealfm = {
+        id = "tealfm_client";
         name = "tealfm_client";
         configureAs = "client";
         data = {
@@ -59,6 +60,7 @@
 
       # Sources
       spotify = {
+        id = "spotify";
         name = "spotify";
         clients = [
           "lastfm_client"
@@ -68,11 +70,12 @@
           clientId = "[[TIX_SPOTIFY_CLIENT_ID]]";
           clientSecret = "[[TIX_SPOTIFY_CLIENT_SECRET]]";
           redirectUri = "${baseUrl}/callback";
-          interval = 60;
+          interval = 30;
         };
       };
 
       plex = {
+        id = "plex";
         name = "plex";
         clients = [
           "lastfm_client"
