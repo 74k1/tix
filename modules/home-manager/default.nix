@@ -17,7 +17,7 @@
   neovim = import ./shell/neovim;
   niri = import ./wayland/niri;
   picom = import ./x11/picom;
-  polybar = import ./apps/polybar;
+  polybar = import ./wayland/polybar;
   qutebrowser = import ./apps/qutebrowser;
   rofi = import ./apps/rofi;
   sherlock = import ./wayland/sherlock;
