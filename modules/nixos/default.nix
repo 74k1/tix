@@ -9,6 +9,7 @@
   fail2ban = import ./daemons/fail2ban;
   firefox = import ./programs/firefox;
   forgejo = import ./daemons/forgejo;
+  fourget = import ./daemons/fourget;
   glance = import ./daemons/glance;
   graylog = import ./daemons/graylog;
   immich = import ./daemons/immich;

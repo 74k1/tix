@@ -40,6 +40,8 @@
     memos
     # pds
 
+    fourget
+
     # Mid importance
     graylog
 
