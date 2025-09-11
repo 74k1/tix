@@ -81,7 +81,9 @@
 
     # glance
 
-    protonmail-bridge
+    hydroxide
+
+    # protonmail-bridge
     nextcloud
     opencloud
     rybbit

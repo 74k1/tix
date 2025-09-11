@@ -19,6 +19,7 @@
   glance = import ./daemons/glance;
   grafana = import ./daemons/grafana;
   hermes = import ./daemons/hermes;
+  hydroxide = import ./daemons/hydroxide;
   immich = import ./daemons/immich;
   karakeep = import ./daemons/karakeep;
   locale = import ./profile/locale;
@@ -42,6 +43,7 @@
   plex = import ./daemons/plex;
   pocket-id = import ./daemons/pocket-id;
   prometheus = import ./daemons/prometheus;
+  protonmail-bridge = import ./daemons/protonmail-bridge;
   quadlet = import ./quadlet;
   restic = import ./daemons/restic;
   rsshub = import ./daemons/rsshub;
