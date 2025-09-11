@@ -22,6 +22,7 @@
     config = {
       PORT = 8084;
       BASE_URL = "https://news.${allSecrets.global.domain0}/";
+      FETCHER_ALLOW_PRIVATE_NETWORKS = 1;
     };
   };
 }
