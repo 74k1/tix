@@ -249,11 +249,12 @@
     #   #   driver = pkgs.tix.libfprint-focaltech-gpd;
     #   # };
     #   # https://wiki.nixos.org/wiki/Fingerprint_scanner
-    #   # package = pkgs."24.11".fprintd.override {
+    #   # (pkgs.multiverse.at "24.11" == the old `nixpkgs-24.11` input)
+    #   # package = (pkgs.multiverse.at "24.11").fprintd.override {
     #   #   libfprint = pkgs.tix.libfprint-focaltech-gpd;
     #   # };
     #   package = (
-    #     pkgs."24.11".fprintd.override {
+    #     (pkgs.multiverse.at "24.11").fprintd.override {
     #       libfprint = pkgs.tix-unfree.libfprint-focaltech;
     #     }
     #   );

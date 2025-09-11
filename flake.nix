@@ -7,12 +7,14 @@
     nixpkgs-stable = {
       url = "github:NixOS/nixpkgs/nixos-26.05";
     };
-    # "nixpkgs-24.11" = {
-    #   # fprintd
-    #   url = "github:NixOS/nixpkgs/nixos-24.11";
-    # };
     nixpkgs-master = {
       url = "github:NixOS/nixpkgs/master";
+    };
+    # Version index: every nixpkgs revision from one input. NOT an importable
+    # nixpkgs — exposes `tip`/`at`/`version`/`solvePins`, wired as
+    # `pkgs.multiverse.*` in modules/flake/nixpkgs.nix.
+    multiverse = {
+      url = "github:fzakaria/nixpkgs-multiverse";
     };
     # nixpkgs-local = {
     #   url = "git+file:///home/taki/dev/nixpkgs";

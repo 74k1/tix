@@ -7,8 +7,8 @@
 }:
 {
   nix = {
-    # package = pkgs.nixVersions.stable;
-    package = pkgs.lixPackageSets.stable.lix;
+    package = pkgs.nixVersions.latest;
+    # package = pkgs.lixPackageSets.stable.lix;
 
     # Enable flakes, the new `nix` commands and better support for flakes in it
     extraOptions = ''

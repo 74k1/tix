@@ -45,18 +45,18 @@
         #enableGhostsriptFonts = true;
         packages = with pkgs; [
           # my own super cool fonts
-          # inputs.tixpkgs-unfree.packages.x86_64-linux.berkeley-nolig-otf
-          inputs.tixpkgs-unfree.packages.x86_64-linux.suisse-intl-mono
-          inputs.tixpkgs-unfree.packages.x86_64-linux.blinkMacSystemFont
-          inputs.tixpkgs-unfree.packages.x86_64-linux.ntype82-otf
-          inputs.tixpkgs-unfree.packages.x86_64-linux.lettera-mono
-          inputs.tixpkgs-unfree.packages.x86_64-linux.playfair-display
-          inputs.tixpkgs-unfree.packages.x86_64-linux.poltawski-nowy
-          inputs.tixpkgs-unfree.packages.x86_64-linux.apple-emoji
-          inputs.tixpkgs-unfree.packages.x86_64-linux.new-york
-          inputs.tixpkgs-unfree.packages.x86_64-linux.sf-compact
-          inputs.tixpkgs-unfree.packages.x86_64-linux.sf-mono
-          inputs.tixpkgs-unfree.packages.x86_64-linux.sf-pro
+          # pkgs.tix-unfree.berkeley-nolig-otf
+          pkgs.tix-unfree.suisse-intl-mono
+          pkgs.tix-unfree.blinkMacSystemFont
+          pkgs.tix-unfree.ntype82-otf
+          pkgs.tix-unfree.lettera-mono
+          pkgs.tix-unfree.playfair-display
+          pkgs.tix-unfree.poltawski-nowy
+          pkgs.tix-unfree.apple-emoji
+          pkgs.tix-unfree.new-york
+          pkgs.tix-unfree.sf-compact
+          pkgs.tix-unfree.sf-mono
+          pkgs.tix-unfree.sf-pro
 
           # main fonts
           corefonts
