@@ -155,21 +155,35 @@
   #   "modesetting"
   # ];
   boot = {
-    # kernelModules = [ "amdgpu" ];
-    initrd.kernelModules = [ "amdgpu" ];
+    kernelParams = [ "i915.enable_guc=3" ];
+    kernelModules = [ "i915" ];
+    initrd.kernelModules = [ "i915" ];
   };
   hardware = {
     graphics = {
       enable = true;
-      enable32Bit = true;
+      # enable32Bit = true;
       extraPackages = [
-        pkgs.rocmPackages.clr.icd
+        pkgs.intel-media-driver
+        pkgs.intel-compute-runtime
+        pkgs.intel-ocl
+        pkgs.vpl-gpu-rt
+        # pkgs.vaapi-intel-hybrid
+        # pkgs.libvdpau-va-gl
+      ];
+      extraPackages32 = [
+        pkgs.driversi686Linux.intel-media-driver
       ];
     };
-    # amdgpu.initrd.enable = true;
+    enableRedistributableFirmware = true;
   };
-  # systemd.packages = [ pkgs.lact ];
-  # systemd.services.lactd.wantedBy = [ "multi-user.target" ];
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+    # VDPAU_DRIVER = "va_gl";
+  };
+
+  services.xserver.videoDrivers = [ "modesetting" ];
 
 
   # Services
