@@ -19,6 +19,7 @@
   locale = import ./profile/locale;
   loki = import ./daemons/loki;
   memos = import ./daemons/memos;
+  murmur = import ./daemons/murmur;
   miniflux = import ./daemons/miniflux;
   n8n = import ./daemons/n8n;
   navidrome = import ./daemons/navidrome;

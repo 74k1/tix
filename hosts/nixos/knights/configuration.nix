@@ -35,6 +35,8 @@
     # vector
     alloy
 
+    murmur
+
     anubis
 
     locale
@@ -103,6 +105,7 @@
         2277
         25565
         51820
+        64738
       ];
       allowedTCPPorts = [
         22
@@ -111,6 +114,7 @@
         2202
         2277
         25565
+        64738
       ];
     };
     useNetworkd = true;
@@ -568,7 +572,7 @@
     };
     certs =
       let
-        inherit (allSecrets.global) domain00;
+        inherit (allSecrets.global) domain00 domain01;
       in
       {
         "${domain00}" = {
@@ -579,6 +583,15 @@
           extraDomainNames = [
             "*.${domain00}"
           ];
+          webroot = null;
+        };
+        "m.${domain01}" = {
+          domain = "m.${domain01}";
+          dnsProvider = "namecheap";
+
+          dnsPropagationCheck = true;
+
+          environmentFile = config.age.secrets."namecheap_api_secrets".path;
           webroot = null;
         };
       };
