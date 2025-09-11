@@ -191,14 +191,24 @@ in
                 "2202"
               ];
             };
-          };
-          darwin = {
-            # hostname = {
+            # lain = {
             #   hostname = "255.255.255.255";
             #   remoteBuild = true;
-            #   user = "taki";
+            #   user = "nixos";
+            # };
+            # arisu = {
+            #   hostname = "255.255.255.255";
+            #   remoteBuild = true;
+            #   user = "nixos";
             # };
           };
+          # darwin = {
+          #   hostname = {
+          #     hostname = "255.255.255.255";
+          #     remoteBuild = true;
+          #     user = "taki";
+          #   };
+          # };
         };
   };
 }
