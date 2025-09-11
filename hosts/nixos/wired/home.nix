@@ -210,7 +210,8 @@
     # cider-2
     # feishin
     # aonsoku
-    spotify-player
+    # spotify-player
+    # (ncspot.override { withCover = true; })
     discord-ptb
 
     teamspeak6-client
@@ -255,7 +256,7 @@
 
     # inputs.zen-browser.packages."${system}".twilight
 
-    # shortwave # radio
+    pkgs.master.shortwave # radio
     goodvibes
     plexamp
     # newsflash # rss

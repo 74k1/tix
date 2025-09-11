@@ -68,6 +68,7 @@
           ubuntu-classic
           ubuntu-sans
           ubuntu-sans-mono
+          libertine
 
           # modern font stacks
           # https://github.com/system-fonts/modern-font-stacks
