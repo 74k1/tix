@@ -37,11 +37,11 @@
           "bing".metaData.hidden = true;
           "ebay".metaData.hidden = true;
           "Mojeek".metaData.hidden = true;
-          "Ecosia".metaData.hidden = true;
+          "ecosia".metaData.hidden = true;
           "Startpage".metaData.hidden = true;
-          "Qwant".metaData.hidden = true;
+          "qwant".metaData.hidden = true;
           "Waterfox Private Search".metaData.hidden = true;
-          "Google" = {
+          "google" = {
             urls = [ { template = "https://www.google.com/search?q={searchTerms}"; } ];
             icon = "https://icons.duckduckgo.com/ip3/google.com.ico";
             definedAliases = [
@@ -66,7 +66,7 @@
               "@kagi"
             ];
           };
-          "DuckDuckGo" = {
+          "ddg" = {
             urls = [ { template = "https://duckduckgo.com/?t=h_&q={searchTerms}&ia=web"; } ];
             icon = "https://icons.duckduckgo.com/ip3/duckduckgo.com.ico";
             definedAliases = [
@@ -141,7 +141,6 @@
             background: transparent !important;
           }
 
-
           /* Core window and toolbars */
           #main-window,
           #navigator-toolbox,
@@ -185,20 +184,23 @@
       # userContent == web-pages and internal pages like about:newtab & about:home
       userContent = # css
         ''
-          @media (-moz-bool-pref: "zen.view.compact") {
-            #tabbrowser-tabpanels:not([zen-split-view]) {
-              --zen-webview-border-radius: 0 0 0 0;
-              --zen-element-separation: 0;
-            }
-            & .browserSidebarContainer {
-              margin-left: 0 !important;
+          @-moz-document url-prefix("") {
+            * {
+              border-radius: 0px !important;
+              box-shadow: none !important;
             }
           }
         '';
       settings = {
+        # ------------------------------------------- #
         # USER CONF
+        # ------------------------------------------- #
+
         "browser.download.panel.shown" = true;
         "media.videocontrols.picture-in-picture.enabled" = false;
+
+        "browser.display.background_color.dark" = "#FFFFFF";
+        "browser.display.document_color_use" = 0;
 
         # disable new sidebar
         "sidebar.revamp" = false;
@@ -242,7 +244,7 @@
         "browser.uidensity" = 0;
 
         # enable transparency
-        "browser.tabs.allow_transparent_browser" = true;
+        "browser.tabs.allow_transparent_browser" = false;
         "userChrome.theme.transparent.menu" = false;
         "userChrome.theme.transparent.panel" = false;
 
@@ -253,14 +255,11 @@
         "layout.css.backdrop-filter.enabled" = true;
         "svg.context-properties.content.enabled" = true;
 
-        # Check SMOOTHFOX below
-        # "general.smoothScroll.currentVelocityWeighting" = 0;
-        # "general.smoothScroll.mouseWheel.durationMaxMS" = 250;
-        # "general.smoothScroll.stopDecelerationWeighting" = 0.82;
-        # "mousewheel.min_line_scroll_amount" = 25;
-
-        # Main Config is based on BetterFox @
+        # ------------------------------------------- #
+        # Betterfox 
         # https://github.com/yokoffing/Betterfox
+        # ------------------------------------------- #
+
         ################# FAST FOX #################
         "nglayout.initialpaint.delay" = 0;
         "nglayout.initialpaint.delay_in_oopif" = 0;
