@@ -68,6 +68,13 @@
             "10.100.0.3/32"
           ];
         }
+        {
+          # navi
+          PublicKey = "k99XVjWZS+k/DYnkBoXEID/kcZ86OOq8JvQJV509pyw=";
+          AllowedIPs = [
+            "10.100.0.4/32"
+          ];
+        }
       ];
     };
   };
