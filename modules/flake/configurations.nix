@@ -180,12 +180,6 @@ in
                 "2202"
               ];
             };
-            octo = {
-              # temporarily ?
-              hostname = "${allSecrets.per_host.octo.int_ip}";
-              # important, weak device
-              remoteBuild = false;
-            };
             duvet = {
               hostname = "${allSecrets.per_host.duvet.pub_ip}";
               sshOpts = [
