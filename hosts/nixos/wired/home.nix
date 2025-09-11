@@ -144,7 +144,11 @@
     parsec-bin
     gradia
 
+    renoise
+
     mission-center
+
+    ptouch-print
 
     # gui stuff
     # brave

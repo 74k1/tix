@@ -72,8 +72,8 @@
 
   # Bootloader.
   boot = {
-    # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-    kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    # kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
     # kernelPackages = pkgs.linuxKernel.packages.linux_testing;
     kernelParams = [
       "quiet"
@@ -276,6 +276,9 @@
     xset s off -dpms
   '';
 
+  # AMD CPU
+  hardware.cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
+
   # Enable AMD GPU
   services.xserver.videoDrivers = [
     "modesetting"
@@ -340,10 +343,10 @@
   # sound.enable = true;
   security.rtkit.enable = true;
   # RT Music with the help of musnix
-  # musnix = {
-  #   enable = true;
-  #   kernel.realtime = true;
-  # };
+  musnix = {
+    enable = true;
+    # kernel.realtime = true;
+  };
 
   security = {
     # sudo.enable = false;
@@ -474,6 +477,7 @@
     git
     wget
     curl
+    nix-plugins
     tmux
     jq
     shpool
