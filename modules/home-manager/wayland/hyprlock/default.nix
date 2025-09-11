@@ -43,20 +43,21 @@
           position = "0, -5%";
           rounding = 0;
 
-          outline_thickness = 1;
+          outline_thickness = 0;
 
           font_color = lib.mkForce "rgba(235, 233, 241, 0.8)";
           outer_color = lib.mkForce "rgba(50, 50, 70, 0)";
           inner_color = lib.mkForce "rgba(7, 6, 11, 0)";
-          check_color = lib.mkForce "rgba(129, 107, 255, 1)";
-          fail_color = lib.mkForce "rgba(255, 84, 135, 1)";
+          check_color = lib.mkForce "rgba(129, 107, 255, 0.2)";
+          fail_color = lib.mkForce "rgba(255, 84, 135, 0.2)";
 
           placeholder_text = "Enter Password";
           hide_input = false;
 
-          dots_spacing = 0.2;
           dots_center = true;
           dots_fade_time = 0;
+          dots_rounding = 0;
+          dots_spacing = 0.4;
 
           shadow_color = lib.mkForce "#07060B";
           shadow_size = 0;
