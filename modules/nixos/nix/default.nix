@@ -7,8 +7,8 @@
 }:
 {
   nix = {
-    # package = inputs.rix101.packages.${pkgs.hostPlatform.system}.nix-enraged;
-    package = pkgs.nixVersions.stable;
+    # package = pkgs.nixVersions.stable;
+    package = pkgs.lixPackageSets.stable.lix;
 
     # Enable flakes, the new `nix` commands and better support for flakes in it
     extraOptions = ''
@@ -20,8 +20,6 @@
         "root"
         "taki"
       ];
-      # cores = 4;
-      # max-jobs = 1;
     };
   };
 }
