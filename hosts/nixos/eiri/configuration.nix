@@ -315,6 +315,16 @@
         #   };
         # };
 
+        "books.i.${allSecrets.global.domain03}" = {
+          addSSL = true;
+          useACMEHost = "i.${allSecrets.global.domain03}";
+          extraConfig = "client_max_body_size 1024M;";
+          locations."/" = {
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:8888";
+            proxyWebsockets = true;
+          };
+        };
+
         "trek.i.${allSecrets.global.domain03}" = {
           addSSL = true;
           useACMEHost = "i.${allSecrets.global.domain03}";
@@ -352,7 +362,7 @@
           # locations."= /tinyauth" = {
           #   proxyPass = "https://auth.${domain01}/api/auth/nginx";
           #   extraConfig = /* nginx */ ''
-          #     internal;
+          #     internal
           #     proxy_pass_request_body off;
           #     proxy_set_header Content-Length "";
           #     proxy_set_header x-forwarded-proto $scheme;
