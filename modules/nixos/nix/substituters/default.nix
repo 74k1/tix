@@ -28,5 +28,9 @@
           substituter = "https://cache.garnix.io";
           public-key = "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=";
         }
+        {
+          substituter = "https://rix101.cachix.org";
+          public-key = "rix101.cachix.org-1:2u9ZGi93zY3hJXQyoHkNBZpJK+GiXQyYf9J5TLzCpFY=";
+        }
       ];
 }
