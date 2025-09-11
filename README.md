@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="/.github/assets/NixOS.png" width="300px"/>
+    <img src="/.github/assets/tix_colored.png" width="300px"/>
     <h1><samp>(t)im's n(ix) flake </samp>❄️</h1>
     <a href="#"><img src="https://img.shields.io/github/repo-size/74k1/tix?color=cba6f7&labelColor=303446&style=for-the-badge"></img></a>
     <a href="https://github.com/74k1/tix/stargazers"><img src="https://img.shields.io/github/stars/74k1/tix?color=cba6f7&labelColor=303446&style=for-the-badge"></img></a>
