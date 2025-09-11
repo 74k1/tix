@@ -1,5 +1,6 @@
 {
   ai-chat = import ./daemons/ai-chat;
+  alloy = import ./daemons/alloy;
   anubis = import ./daemons/anubis;
   atuin = import ./daemons/atuin;
   audiobookshelf = import ./daemons/audiobookshelf;
@@ -11,10 +12,12 @@
   forgejo = import ./daemons/forgejo;
   fourget = import ./daemons/fourget;
   glance = import ./daemons/glance;
+  grafana = import ./daemons/grafana;
   immich = import ./daemons/immich;
   it-tools = import ./daemons/it-tools;
   karakeep = import ./daemons/karakeep;
   locale = import ./profile/locale;
+  loki = import ./daemons/loki;
   mcp-outline = import ./daemons/mcp/mcp-outline;
   memos = import ./daemons/memos;
   miniflux = import ./daemons/miniflux;
@@ -31,6 +34,7 @@
   pds = import ./daemons/pds;
   plex = import ./daemons/plex;
   pocket-id = import ./daemons/pocket-id;
+  prometheus = import ./daemons/prometheus;
   quadlet = import ./quadlet;
   restic = import ./daemons/restic;
   rsshub = import ./daemons/rsshub;

@@ -8,6 +8,8 @@
   ...
 }:
 {
+  # See [NixOS on Hetzner Cloud Wiki](https://wiki.nixos.org/wiki/Install_NixOS_on_Hetzner_Cloud)
+
   age.secrets = {
     "knights_wireguard_private_key" = {
       rekeyFile = "${inputs.self}/secrets/knights_wireguard_private_key.age";
@@ -28,7 +30,8 @@
     inputs.agenix-rekey.nixosModules.default
 
     fail2ban
-    vector
+    # vector
+    alloy
 
     anubis
 
@@ -67,7 +70,23 @@
       maxretry = 1;
       bantime = "1h";
     };
+
+    nginx-stream-ssh-proxy.settings = {
+      enabled = true;
+      filter = "nginx-stream-ssh-proxy";
+      logpath = "/var/log/nginx/error.log";
+      backend = "auto";
+      findtime = "10m";
+      maxretry = 2;
+      bantime = "1h";
+    };
   };
+
+  environment.etc."fail2ban/filter.d/nginx-stream-ssh-proxy.conf".text = ''
+    [Definition]
+    failregex = ^.*connect\(\) failed \(111: Connection refused\) while connecting to upstream, client: <HOST>, server: 0\.0\.0\.0:22, upstream: "10\.100\.0\.1:2277"(?:,.*)?$
+    ignoreregex =
+  '';
 
   networking = {
     hostName = "knights"; # Define your hostname.
@@ -90,7 +109,7 @@
         2202
         2277
         25565
-      ]; # Added port 22 for Forgejo SSH
+      ];
     };
     useNetworkd = true;
   };
@@ -125,7 +144,7 @@
       wireguardPeers = [
         {
           PublicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
-          AllowedIPs = [ "10.100.0.1/32" "192.168.1.70/32" ];
+          AllowedIPs = [ "10.100.0.1/32" ];
           Endpoint = "${allSecrets.global.pub_ip}:51820";
           PersistentKeepalive = 60;
         }
@@ -219,33 +238,8 @@
       # recommendedProxySettings = true;
       recommendedTlsSettings = true;
       commonHttpConfig = ''
-        log_format graylog_json escape=json '{ "nginx_timestamp": "$time_iso8601", '
-          '"remote_addr": "$remote_addr", '
-          '"connection": "$connection", '
-          '"connection_requests": $connection_requests, '
-          '"pipe": "$pipe", '
-          '"body_bytes_sent": $body_bytes_sent, '
-          '"request_length": $request_length, '
-          '"request_time": $request_time, '
-          '"response_status": $status, '
-          '"request": "$request", '
-          '"request_method": "$request_method", '
-          '"host": "$host", '
-          '"upstream_cache_status": "$upstream_cache_status", '
-          '"upstream_addr": "$upstream_addr", '
-          '"http_x_forwarded_for": "$http_x_forwarded_for", '
-          '"http_referrer": "$http_referer", '
-          '"http_user_agent": "$http_user_agent", '
-          '"http_version": "$server_protocol", '
-          '"remote_user": "$remote_user", '
-          '"http_x_forwarded_proto": "$http_x_forwarded_proto", '
-          '"upstream_response_time": "$upstream_response_time", '
-          '"nginx_access": true }';
-
-        access_log syslog:server=127.0.0.1:9000 graylog_json;
-
-        access_log /var/log/nginx/access.log;
-        error_log /var/log/nginx/error.log;
+        access_log syslog:server=127.0.0.1:1514,facility=local6,tag=nginx,severity=info combined;
+        error_log syslog:server=127.0.0.1:1514,facility=local6,tag=nginx error;
       '';
 
       # Configure SSH forwarding for Forgejo
