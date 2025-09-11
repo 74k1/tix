@@ -50,26 +50,28 @@
 
         "/mnt/btrfs_pool/syncthing_data"
 
-        "/mnt/btrfs_pool/docmost_storage"
-        "/var/lib/docmost"
+        "/var/lib/outline"
+        "/mnt/btrfs_pool/outline_data"
+
+        "/mnt/btrfs_pool/memos_data"
       ];
     in
     {
-      "mc" = {
-        initialize = true;
-        passwordFile = config.age.secrets."restic_password".path;
-        paths = [
-          "/home/taki/minecraft"
-        ];
-        repository = "/home/taki/minecraft_backup";
-        timerConfig = {
-          OnCalendar = "hourly";
-          Persistent = true;
-        };
-        pruneOpts = [
-          "--keep-daily 31"
-        ];
-      };
+      # "mc" = {
+      #   initialize = true;
+      #   passwordFile = config.age.secrets."restic_password".path;
+      #   paths = [
+      #     "/home/taki/minecraft"
+      #   ];
+      #   repository = "/home/taki/minecraft_backup";
+      #   timerConfig = {
+      #     OnCalendar = "hourly";
+      #     Persistent = true;
+      #   };
+      #   pruneOpts = [
+      #     "--keep-daily 31"
+      #   ];
+      # };
       "local" = {
         initialize = true;
         passwordFile = config.age.secrets."restic_password".path;
