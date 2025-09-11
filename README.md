@@ -31,8 +31,7 @@
 
 | <img src="/.github/assets/1.png"> | <img src="/.github/assets/2.png"> |
 | :-------------------------------: | :-------------------------------: |
-| <img src="/.github/assets/3.png"> | <img src="/.github/assets/4.png"> |
-| <img src="/.github/assets/5.png"> | <img src="/.github/assets/6.png"> |
+| <img src="/.github/assets/2.png"> | <img src="/.github/assets/1.png"> |
 
 
 <div>
