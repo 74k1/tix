@@ -27,7 +27,22 @@
 
   programs.waterfox = {
     enable = true;
-    package = inputs.hythera-waterfox.outputs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.waterfox;
+    package = inputs.hythera-waterfox.outputs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.waterfox.overrideAttrs (oldAttrs: let
+      src = pkgs.fetchFromGitHub {
+        owner = "BrowserWorks";
+        repo = "Waterfox";
+        tag = "6.6.10";
+        hash = "sha256-hYIci/tT8coo+qxngTQjOjGFY+ztSfT1BNVkULdRw3k=";
+        fetchSubmodules = true;
+        preFetch = ''
+          export GIT_CONFIG_COUNT=1
+          export GIT_CONFIG_KEY_0=url.https://github.com/.insteadOf
+          export GIT_CONFIG_VALUE_0=git@github.com:
+        ''; # We can't clone with SSH here
+      };
+    in {
+      inherit src;
+    });
     profiles.taki = {
       name = "taki";
       search = {
@@ -190,6 +205,58 @@
               box-shadow: none !important;
             }
           }
+
+          @-moz-document url("about:newtab"), url("about:home") {
+            body {
+              margin: 0 !important;
+              min-height: 100vh !important;
+              background: #07060B !important;
+              color: #323246 !important;
+            }
+
+            .outer-wrapper,
+            .outer-wrapper.ds-outer-wrapper-breakpoint-override,
+            main,
+            .top-site-outer,
+            .top-sites-list,
+            .search-wrapper,
+            .logo-and-wordmark,
+            .weather,
+            .personalize-button,
+            .personalize-button-wrapper,
+            .discovery-stream,
+            .body-wrapper,
+            .customize-menu,
+            .homepage-context-menu-button,
+            .topic,
+            .section,
+            .non-collapsible-section,
+            .collapsible-section,
+            .fixed-search,
+            .home-section {
+              display: none !important;
+            }
+
+            body::before {
+              content: "♡   ╱|、 ?\A    (˚ˎ。7\A     |、˜〵\A     じしˍ,)ノ";
+              white-space: pre;
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              display: block;
+              margin: 0;
+              padding: 0;
+              background: transparent !important;
+              color: #323246 !important;
+              font-family: "PP Supply Mono", "Iosevka", "JetBrains Mono", monospace !important;
+              font-size: 2em !important;
+              line-height: 1.2 !important;
+              text-align: left;
+              pointer-events: none;
+              z-index: 2147483647;
+            }
+          }
         '';
       settings = {
         # ------------------------------------------- #
@@ -201,6 +268,9 @@
 
         "browser.display.background_color.dark" = "#FFFFFF";
         "browser.display.document_color_use" = 0;
+
+        # enable word-clicks
+        "browser.urlbar.doubleClickSelectsAll" = false;
 
         # disable new sidebar
         "sidebar.revamp" = false;
