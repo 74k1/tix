@@ -22,9 +22,28 @@ in
       enable = true;
       port = 8000;
       retentionTime = "365d";
-
       extraFlags = [
         "--web.enable-remote-write-receiver"
+      ];
+      scrapeConfigs = [
+        {
+          job_name = "lain";
+          scrape_interval = "5s";
+          static_configs = [
+            {
+              targets = [ "192.168.1.73:8888" ];
+              labels = {
+                instance = "lain";
+              };
+            }
+            {
+              targets = [ "127.0.0.1:42617" ];
+              labels = {
+                instance = "zeroclaw";
+              };
+            }
+          ];
+        }
       ];
     };
   };
