@@ -93,7 +93,7 @@
     ];
     plymouth = {
       enable = true;
-      theme = "deus_ex";
+      theme = "cuts_alt";
       themePackages = [
         # pkgs.nixos-bgrt-plymouth
         pkgs.adi1090x-plymouth-themes

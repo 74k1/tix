@@ -35,7 +35,7 @@
       # polybar
       #rofi
       #wofi
-      spotify
+      # spotify # spicetify-nix
       starship
       #theme
       style
@@ -122,6 +122,7 @@
 
     # beekeeper-studio
     pkgs.tix.outerbase-studio-desktop
+    pkgs.tix.fogpanther
 
     # pkgs.tix.waterfox
 
@@ -147,6 +148,7 @@
 
     firefox
     plex-desktop
+    plezy
 
     blueman
 
@@ -218,14 +220,14 @@
     obsidian
     simple-scan
     aria2
-    # spotify (replaced by spicetify-nix module)
+    spotify # (replaced by spicetify-nix module)
     # spotify-tray
     # youtube-music
     # tidal-hifi
     # tidal-dl
-    pkgs.tix-unfree.cider
+    # pkgs.tix-unfree.cider
     # cider-2
-    # feishin
+    feishin
     # aonsoku
     # spotify-player
     # (ncspot.override { withCover = true; })
@@ -260,13 +262,13 @@
     # evolution
     # protonvpn-gui
     proton-vpn-cli
-    plasticity
+    master.plasticity
 
     orca-slicer
     zathura
 
-    # prismlauncher
-    # jdk17
+    prismlauncher
+    jdk17
     # libGLU
 
     telegram-desktop
@@ -311,6 +313,7 @@
     EDITOR = "nvim";
     MANPAGER = "nvim +Man!";
     MANWIDTH = "999";
+    GDK_BACKEND = "wayland";
     QT_STYLE_OVERRIDE = lib.mkForce "";
     QT_QPA_PLATFORM = "wayland";
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}";
