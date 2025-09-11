@@ -19,8 +19,8 @@
   locale = import ./profile/locale;
   loki = import ./daemons/loki;
   memos = import ./daemons/memos;
-  murmur = import ./daemons/murmur;
   miniflux = import ./daemons/miniflux;
+  murmur = import ./daemons/murmur;
   n8n = import ./daemons/n8n;
   navidrome = import ./daemons/navidrome;
   nextcloud = import ./daemons/nextcloud;
@@ -47,6 +47,7 @@
   substituters = import ./nix/substituters;
   syncthing = import ./daemons/syncthing;
   taki = import ./profile/taki;
+  tinyauth = import ./daemons/tinyauth;
   transmission = import ./daemons/transmission;
   umami = import ./daemons/umami;
   vaultwarden = import ./daemons/vaultwarden;

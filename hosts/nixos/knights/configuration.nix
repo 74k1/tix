@@ -296,17 +296,17 @@
 
       virtualHosts =
         let
-          inherit (allSecrets.global) domain00 domain0;
+          inherit (allSecrets.global) domain00 domain01 domain0;
         in
         {
-          # "it.74k1.sh" = {
+          # "it.${domain01}" = {
           #   addSSL = true;
           #   enableACME = true;
           #   locations."/" = {
           #     proxyPass = "http://10.100.0.1:80"; # nginx based on url
           #   };
           # };
-          # "send.74k1.sh" = {
+          # "send.${domain01}" = {
           #   addSSL = true;
           #   enableACME = true;
           #   locations."/" = {
@@ -314,7 +314,22 @@
           #     proxyWebsockets = true;
           #   };
           # };
-          "umami.74k1.sh" = {
+          "auth.${domain01}" = {
+            addSSL = true;
+            enableACME = true;
+            locations."/" = {
+              proxyPass = "http://10.100.0.1:3030";
+              # proxyWebsockets = true;
+              # recommendedProxySettings = true;
+              extraConfig = /* nginx */ ''
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+              '';
+            };
+          };
+          "umami.${domain01}" = {
             addSSL = true;
             enableACME = true;
             locations."/" = {
@@ -330,7 +345,7 @@
           };
           "auth.${domain00}" = {
             addSSL = true;
-            useACMEHost = "${allSecrets.global.domain00}";
+            useACMEHost = "${domain00}";
             # enableACME = true;
             locations."/" = {
               proxyPass = "http://10.100.0.1:1411";

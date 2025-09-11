@@ -36,6 +36,7 @@
     restic
     vaultwarden
     pocket-id
+    tinyauth
     outline
     memos
     # pds
