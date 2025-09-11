@@ -43,7 +43,7 @@ local lsp_capabilities = vim.tbl_deep_extend(
   }
 )
 
-require("lspconfig").html.setup({
+vim.lsp.config('html', {
   capabilities = lsp_capabilities,
   cmd = { "vscode-html-language-server", "--stdio" },
   init_options = {
@@ -57,13 +57,14 @@ require("lspconfig").html.setup({
     }
   },
 })
+vim.lsp.enable('html')
 
-require("lspconfig").bashls.setup({})
+vim.lsp.config('bashls',{})
+vim.lsp.enable('bashls')
 
-require("lspconfig").nil_ls.setup({
+vim.lsp.config('nil_ls',{
   cmd = { "nil" },
   filetypes = { "nix" },
-  root_dir = root_pattern("flake.nix", ".git"),
   single_file_support = true,
   settings = {
     ["nil"] = {
@@ -79,8 +80,9 @@ require("lspconfig").nil_ls.setup({
     },
   },
 })
+vim.lsp.enable('nil_ls')
 
-require("lspconfig").rust_analyzer.setup({
+vim.lsp.config('rust_analyzer',{
   on_attach = function(client, bufnr)
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
   end,
@@ -103,11 +105,13 @@ require("lspconfig").rust_analyzer.setup({
     }
   }
 })
+vim.lsp.enable('rust_analyzer')
 
-require("lspconfig").tinymist.setup({
+vim.lsp.config('tinymist', {
   settings = {
     formatterMode = "typstyle",
     exportPdf = "onType",
     semanticTokens = "disable"
   }
 })
+vim.lsp.enable('tinymist')
