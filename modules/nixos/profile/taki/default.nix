@@ -41,31 +41,39 @@
         fontDir.enable = true;
         #enableGhostsriptFonts = true;
         packages = with pkgs; [
+          # my own super cool fonts
+          # inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-otf
+          inputs.unfree-fonts.packages.x86_64-linux.suisse-intl-mono
+          inputs.apple-emoji.packages.x86_64-linux.apple-emoji-linux
+
+          # main fonts
+          corefonts
+          vistafonts
+
+          jetbrains-mono
+          nerd-fonts.fira-code
+          nerd-fonts.droid-sans-mono
+          nerd-fonts.jetbrains-mono
+          ubuntu_font_family
+          ubuntu-sans
+          ubuntu-sans-mono
+
+          # others
           helvetica-neue-lt-std
           cantarell-fonts
           hack-font
           inter
-          jetbrains-mono
           liberation_ttf
           monaspace
           fragment-mono
           # noto-fonts
           # noto-fonts-extra
-          ubuntu_font_family
-          ubuntu-sans
-          ubuntu-sans-mono
-          nerd-fonts.fira-code
-          nerd-fonts.droid-sans-mono
-          nerd-fonts.jetbrains-mono
           nerd-fonts.noto
           nerd-fonts.hack
           nerd-fonts.tinos
           nerd-fonts.lilex
           nerd-fonts.zed-mono
 
-          # inputs.unfree-fonts.packages.x86_64-linux.berkeley-nolig-otf
-          inputs.unfree-fonts.packages.x86_64-linux.suisse-intl-mono
-          inputs.apple-emoji.packages.x86_64-linux.apple-emoji-linux
         ];
       };
     })
