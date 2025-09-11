@@ -26,6 +26,7 @@
             "audio"
             "networkmanager"
             "plex"
+            "plugdev"
             "user-with-access-to-virtualbox"
             "video"
             "wheel"
@@ -84,7 +85,7 @@
           ubuntu-sans
           ubuntu-classic
           ubuntu-sans-mono
-          cantarell-fonts
+          # cantarell-fonts
           noto-fonts
           texlivePackages.oldstyle
           texlivePackages.gillcm
@@ -105,7 +106,7 @@
 
           # others
           helvetica-neue-lt-std
-          cantarell-fonts
+          # cantarell-fonts
           hack-font
           liberation_ttf
           monaspace

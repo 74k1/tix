@@ -17,7 +17,7 @@
         core.editor = "nvim";
       };
       signing = {
-        key = allSecrets.global.gpg.key;
+        key = allSecrets.global.me.gpg.key;
         signByDefault = true;
       };
     };
