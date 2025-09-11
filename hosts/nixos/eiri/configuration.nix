@@ -69,7 +69,9 @@
     opencloud
     umami
     nix
-    nvidia
+
+    # nvidia
+
     syncthing
     # atuin
     plex
@@ -141,6 +143,30 @@
     # jdk21
     jdk17
   ];
+
+  # Enable AMD GPU
+  services.xserver.videoDrivers = [
+    "modesetting"
+    "amdgpu"
+    "radeonsi"
+  ];
+  boot = {
+    kernelModules = [ "amdgpu" ];
+    initrd.kernelModules = [ "amdgpu" ];
+  };
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = [
+        pkgs.rocmPackages.clr.icd
+      ];
+    };
+    amdgpu.initrd.enable = true;
+  };
+  systemd.packages = [ pkgs.lact ];
+  systemd.services.lactd.wantedBy = [ "multi-user.target" ];
+
 
   # Services
 

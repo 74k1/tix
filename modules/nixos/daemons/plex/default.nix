@@ -12,8 +12,12 @@
     #driSupport32Bit = true;
     extraPackages = with pkgs; [
       libva-vdpau-driver
+      libva
+      libva-utils
       libvdpau-va-gl
-      nvidia-vaapi-driver
+      mesa
+      vulkan-loader
+      # nvidia-vaapi-driver
     ];
   };
 
