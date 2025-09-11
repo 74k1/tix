@@ -302,7 +302,7 @@
   # set Wall
   #services.wallpaper = {
   #  enable = true;
-  #  setWallCommand = "${pkgs.swww}/bin/swww img $tempfile";
+  #  setWallCommand = "${lib.getExe pkgs.awww} img $tempfile";
   #};
 
   # enable wezterm transparency

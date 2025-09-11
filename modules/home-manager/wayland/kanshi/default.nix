@@ -54,7 +54,7 @@
         profile = {
           name = "undocked";
           exec = [
-            "${lib.getExe pkgs.swww} restore"
+            "${lib.getExe pkgs.awww} restore"
           ];
           outputs = [
             {
@@ -68,7 +68,7 @@
         profile = {
           name = "docked_home";
           exec = [
-            "${lib.getExe pkgs.swww} restore"
+            "${lib.getExe pkgs.awww} restore"
           ];
           outputs = [
             {
@@ -90,7 +90,7 @@
         profile = {
           name = "docked_mobile";
           exec = [
-            "${lib.getExe pkgs.swww} restore"
+            "${lib.getExe pkgs.awww} restore"
           ];
           outputs = [
             {
@@ -107,7 +107,7 @@
       # {
       #   profile = {
       #     name = "docked_work";
-      #     exec = [ "${lib.getExe pkgs.swww} restore" ];
+      #     exec = [ "${lib.getExe pkgs.awww} restore" ];
       #     outputs = [
       #       {
       #         criteria = "eDP-1";

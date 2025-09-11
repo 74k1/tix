@@ -20,22 +20,22 @@
     inputs.ukiyo.packages.x86_64-linux.default
   ];
 
-  services.swww = {
+  services.awww = {
     enable = true;
-    package = pkgs.swww;
+    package = pkgs.awww;
   };
 
-  # separate swww instance for niri backdrop :)
-  systemd.user.services.swww-backdrop = {
+  # separate awww instance for niri backdrop :)
+  systemd.user.services.awww-backdrop = {
     Install.WantedBy = [ config.wayland.systemd.target ];
     Unit = {
       ConditionEnvironment = "WAYLAND_DISPLAY";
-      Description = "swww-daemon-backdrop";
+      Description = "awww-daemon-backdrop";
       After = [ config.wayland.systemd.target ];
       PartOf = [ config.wayland.systemd.target ];
     };
     Service = {
-      ExecStart = "${lib.getExe' config.services.swww.package "swww-daemon"} --namespace backdrop";
+      ExecStart = "${lib.getExe' pkgs.awww "awww-daemon"} --namespace backdrop";
       Restart = "always";
       RestartSec = 10;
     };
@@ -88,8 +88,7 @@
           (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
           # (makeCommand "${lib.getExe pkgs.swaynotificationcenter}")
           (makeCommand "${pkgs.xwayland-satellite}/bin/xwayland-satellite")
-          (makeCommand "${lib.getExe pkgs.swww} img ~/docs/opencloud/Personal/I.\ Personal/III.\ Resources/Images/Wallpaper/n55_pafu/high\ res/DSC03843.高画質.png")
-          (makeCommand "${lib.getExe pkgs.swww} img ~/docs/opencloud/Personal/I.\ Personal/III.\ Resources/Images/Wallpaper/n55_pafu/high\ res/DSC03843.高画質.blurred2x_edited.png --namespace backdrop")
+          (makeCommand "${lib.getExe pkgs.awww} restore")
         ];
         clipboard.disable-primary = true;
         hotkey-overlay.skip-at-startup = false;
@@ -319,8 +318,8 @@
         };
         layer-rules = [
           {
-            # namespaced swww-daemon layer is named `swww-daemonbackdrop`
-            matches = [ { namespace = "^swww-daemonbackdrop$"; } ];
+            # namespaced awww-daemon layer is named `awww-daemonbackdrop`
+            matches = [ { namespace = "^awww-daemonbackdrop$"; } ];
             place-within-backdrop = true;
           }
         ];
