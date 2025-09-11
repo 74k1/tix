@@ -23,10 +23,11 @@
           isNormalUser = true;
           description = "taki";
           extraGroups = [
-            "wheel"
             "networkmanager"
             "plex"
             "user-with-access-to-virtualbox"
+            "video"
+            "wheel"
           ];
           openssh.authorizedKeys.keys = allSecrets.per_service.openssh.authorizedKeys.keys;
           shell = pkgs.zsh;
