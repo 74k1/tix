@@ -23,6 +23,8 @@
         "/var/lib/nextcloud"
         "/mnt/btrfs_pool/nextcloud_data"
 
+        "/mnt/btrfs_pool/opencloud_data"
+
         "/var/lib/forgejo"
         "/var/lib/gitea"
 
@@ -33,8 +35,6 @@
         "/mnt/btrfs_pool/karakeep"
 
         "/var/lib/n8n"
-
-        "/var/lib/lego"
 
         "/var/lib/plex"
         "/var/lib/plexpy"
