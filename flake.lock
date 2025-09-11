@@ -100,11 +100,11 @@
         "vesper": "vesper"
       },
       "locked": {
-        "lastModified": 1778786843,
-        "narHash": "sha256-gjAz9kVFOCeRnvxP7U96bDtFY8b0bTGxnKvIQ66APfM=",
+        "lastModified": 1778845006,
+        "narHash": "sha256-altz8HuEMjzjJA87xoCJdMe2drDcoRSQ24E4MjZNXHQ=",
         "ref": "refs/heads/main",
-        "rev": "982a27ed5cb7db207084c4d037bee575db00a728",
-        "revCount": 6,
+        "rev": "a8a4e82111ff2f6b31028a848dfe1fd45aad519e",
+        "revCount": 7,
         "type": "git",
         "url": "ssh://forge@git.yukume.com/74k1/aurora.git"
       },
@@ -1576,11 +1576,11 @@
     "niri-unstable": {
       "flake": false,
       "locked": {
-        "lastModified": 1778389445,
-        "narHash": "sha256-9NyDMVf8ydUZGTzcPcLMQf0o1B3bte/00UGbuXHNWh8=",
+        "lastModified": 1778858756,
+        "narHash": "sha256-9VvAHNoi2wd0fxLfJOPChZMS7l6rhCtAJmpd59Hv5rw=",
         "owner": "YaLTeR",
         "repo": "niri",
-        "rev": "38191826cb1e5fb9051a7e141fefe4941a2b4bed",
+        "rev": "cd5ac3e5e04bb5a11276d3c755fa25242818e05f",
         "type": "github"
       },
       "original": {
