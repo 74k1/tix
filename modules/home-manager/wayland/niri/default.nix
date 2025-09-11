@@ -86,8 +86,8 @@
         };
         spawn-at-startup = [
           (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
-          # (makeCommand "${lib.getExe pkgs.swaynotificationcenter}")
-          (makeCommand "${pkgs.xwayland-satellite}/bin/xwayland-satellite")
+          (makeCommand "${lib.getExe pkgs.xwayland-satellite}")
+          (makeCommand "${lib.getExe pkgs.master.opencloud}")
           (makeCommand "${lib.getExe pkgs.awww} restore")
         ];
         clipboard.disable-primary = true;
@@ -95,20 +95,20 @@
         screenshot-path = "~/%Y%m%d%H%M%S_Screenshot.png";
         binds = with config.lib.niri.actions; {
           # Multimedia
-          "XF86AudioPlay".action = spawn "${pkgs.playerctl}/bin/playerctl" "play-pause";
-          "XF86AudioPause".action = spawn "${pkgs.playerctl}/bin/playerctl" "play-pause";
+          "XF86AudioPlay".action = spawn "${lib.getExe pkgs.playerctl}" "play-pause";
+          "XF86AudioPause".action = spawn "${lib.getExe pkgs.playerctl}" "play-pause";
           # "XF86AudioNext".action = spawn "${pkgs.tix.duvolbr}/bin/duvolbr" "next_track";
           # "XF86AudioPrev".action = spawn "${pkgs.tix.duvolbr}/bin/duvolbr" "prev_track";
-          "XF86AudioNext".action = spawn "${pkgs.playerctl}/bin/playerctl" "next";
-          "XF86AudioPrev".action = spawn "${pkgs.playerctl}/bin/playerctl" "previous";
+          "XF86AudioNext".action = spawn "${lib.getExe pkgs.playerctl}" "next";
+          "XF86AudioPrev".action = spawn "${lib.getExe pkgs.playerctl}" "previous";
 
           "XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
 
           "XF86AudioRaiseVolume".action = spawn "wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "5%+";
           "XF86AudioLowerVolume".action = spawn "wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "5%-";
 
-          # "XF86MonBrightnessUp".action = spawn "${pkgs.brillo}/bin/brillo" "-q" "-u" "300000" "-A" "5";
-          # "XF86MonBrightnessDown".action = spawn "${pkgs.brillo}/bin/brillo" "-q" "-u" "300000" "-U" "5";
+          # "XF86MonBrightnessUp".action = spawn "${lib.getExe pkgs.brillo}" "-q" "-u" "300000" "-A" "5";
+          # "XF86MonBrightnessDown".action = spawn "${lib.getExe pkgs.brillo}" "-q" "-u" "300000" "-U" "5";
 
           # Bindings
           "Mod+Return" = {
@@ -138,27 +138,51 @@
             action.screenshot = [ ];
           };
 
-          "Mod+Shift+S" = {
-            repeat = false;
-            action.screenshot = [ ];
-          };
-
           "Mod+E" = {
             repeat = false;
-            action = spawn "${pkgs.nautilus}/bin/nautilus";
+            action = spawn "${lib.getExe pkgs.nautilus}";
           };
           "Mod+N" = {
             repeat = false;
-            action = spawn "${pkgs.nautilus}/bin/nautilus";
+            action = spawn "${lib.getExe pkgs.nautilus}";
           };
 
           "Ctrl+Alt+L" = {
             repeat = false;
-            action = spawn "sh" "-c" "pgrep hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+            action = spawn "sh" "-c" "pgrep hyprlock || ${lib.getExe pkgs.hyprlock}";
           };
           "Mod+Ctrl+Q" = {
             repeat = false;
-            action = spawn "sh" "-c" "pgrep hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+            action = spawn "sh" "-c" "pgrep hyprlock || ${lib.getExe pkgs.hyprlock}";
+          };
+
+          # Screensharing "Dynamic"
+          "Mod+P" = {
+            repeat = false;
+            action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action set-dynamic-cast-window --id $(${lib.getExe config.programs.niri.package} msg --json pick-window | ${lib.getExe pkgs.jq} .id)";
+            # action = spawn "sh" "-c" "${niri} msg action set-dynamic-cast-window --id $(${niri} msg --json list-windows | ${jq} '.[] | select(.is_active) | .id' | head -1)";
+          };
+
+          "Mod+Shift+P" = {
+            repeat = false;
+            action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action clear-dynamic-cast-target";
+          };
+
+          "Mod+Ctrl+P" = {
+            repeat = false;
+            action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action set-dynamic-cast-monitor";
+          };
+
+          "Mod+Shift+S" = {
+            repeat = false;
+            action = spawn "sh" "-c" "${lib.getExe pkgs.wayscriber} -a";
+          };
+
+          # Workspace
+
+          "Mod+Tab" = {
+            repeat = false;
+            action = toggle-overview;
           };
 
           "Mod+C" = {
@@ -179,25 +203,9 @@
 
           "Mod+Comma".action = consume-window-into-column;
           "Mod+Period".action = expel-window-from-column;
-          "Mod+Tab".action = switch-focus-between-floating-and-tiling;
+          "Alt+Tab".action = switch-focus-between-floating-and-tiling;
           "Mod+Alt+Space".action = toggle-window-floating;
 
-          # Screensharing "Dynamic"
-          "Mod+P" = {
-            repeat = false;
-            action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action set-dynamic-cast-window --id $(${lib.getExe config.programs.niri.package} msg --json pick-window | ${lib.getExe pkgs.jq} .id)";
-            # action = spawn "sh" "-c" "${niri} msg action set-dynamic-cast-window --id $(${niri} msg --json list-windows | ${jq} '.[] | select(.is_active) | .id' | head -1)";
-          };
-          "Mod+Shift+P" = {
-            repeat = false;
-            action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action clear-dynamic-cast-target";
-          };
-          "Mod+Ctrl+P" = {
-            repeat = false;
-            action = spawn "sh" "-c" "${lib.getExe config.programs.niri.package} msg action set-dynamic-cast-monitor";
-          };
-
-          # workspace
           "Mod+H".action = focus-column-or-monitor-left;
           "Mod+J".action = focus-window-or-workspace-down;
           "Mod+K".action = focus-window-or-workspace-up;
