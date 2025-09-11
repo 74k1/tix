@@ -74,6 +74,7 @@
         id = "spotify";
         name = "spotify";
         clients = [
+          "brainz_client"
           "lastfm_client"
           "tealfm_client"
         ];
@@ -89,6 +90,7 @@
         id = "plex";
         name = "plex";
         clients = [
+          "brainz_client"
           "lastfm_client"
           "tealfm_client"
         ];
