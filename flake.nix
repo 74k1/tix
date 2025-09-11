@@ -5,15 +5,19 @@
     };
     # NOTE: update every 6 months
     nixpkgs-stable = {
-      url = "github:NixOS/nixpkgs/nixos-25.11";
+      url = "github:NixOS/nixpkgs/nixos-26.05";
     };
-    "nixpkgs-24.11" = {
-      # fprintd
-      url = "github:NixOS/nixpkgs/nixos-24.11";
-    };
+    # "nixpkgs-24.11" = {
+    #   # fprintd
+    #   url = "github:NixOS/nixpkgs/nixos-24.11";
+    # };
     nixpkgs-master = {
       url = "github:NixOS/nixpkgs/master";
     };
+    nixpkgs-local = {
+      url = "git+file:///home/taki/dev/nixpkgs";
+    };
+    # --- my own flakes
     tixpkgs = {
       url = "github:74k1/tixpkgs/main";
       inputs = {
@@ -21,14 +25,10 @@
         home-manager.follows = "home-manager";
       };
     };
-    nixpkgs-local = {
-      url = "git+file:///home/taki/dev/nixpkgs";
-    };
     tixpkgs-unfree = {
       url = "git+ssh://forge@git.yukume.com/74k1/tixpkgs-unfree.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # --- my own flakes
     blog = {
       url = "git+ssh://git@github.com/74k1/blog.git";
     };
@@ -37,6 +37,9 @@
     };
     ukiyo = {
       url = "github:74k1/ukiyo";
+    };
+    bumpkin = {
+      url = "git+ssh://forge@git.yukume.com/74k1/bumpkin.git";
     };
     ouro = {
       url = "github:reo101/ouro";
