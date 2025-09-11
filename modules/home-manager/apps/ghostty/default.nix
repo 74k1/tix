@@ -7,6 +7,7 @@
 }:
 let
   ghostty = pkgs.master.ghostty;
+  isLinux = pkgs.stdenv.hostPlatform.isLinux;
 in
 {
   programs.ghostty = {
@@ -16,8 +17,8 @@ in
     enableFishIntegration = true;
     # installBatSyntax = true;
     # installVimSyntax = true;
-    package = ghostty;
-    systemd.enable = true;
+    package = if isLinux then ghostty else null;
+    systemd.enable = lib.mkIf isLinux true;
     settings = {
       cursor-style = "block";
       font-family = [
@@ -44,6 +45,10 @@ in
   # currently create the WantedBy symlink for it here. Create it explicitly so
   # Ghostty is warmed at graphical-session startup and `ghostty +new-window`
   # only has to do IPC.
-  xdg.configFile."systemd/user/graphical-session.target.wants/app-com.mitchellh.ghostty.service".source =
-    "${ghostty}/share/systemd/user/app-com.mitchellh.ghostty.service";
+  xdg.configFile."systemd/user/graphical-session.target.wants/app-com.mitchellh.ghostty.service" =
+    lib.mkIf isLinux
+      {
+        source = "${ghostty}/share/systemd/user/app-com.mitchellh.ghostty.service";
+      };
+
 }

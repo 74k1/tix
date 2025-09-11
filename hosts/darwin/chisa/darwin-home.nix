@@ -1,0 +1,61 @@
+{
+  outputs,
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+
+{
+  imports = with outputs.homeManagerModules; [
+    neovim
+    git
+    jujutsu
+    zsh
+    fish
+    ghostty
+    waterfox
+  ];
+
+  home.file.".homebrew/trust.json".text = builtins.toJSON {
+    trustedtaps = [ "https://github.com/edde746/plezy.git" ];
+  };
+
+  home = {
+    username = lib.mkForce "taki";
+    homeDirectory = lib.mkForce "/Users/taki";
+    stateVersion = "26.05";
+  };
+
+  home.file."Applications/home-manager".source =
+    let
+      apps = pkgs.buildEnv {
+        name = "home-manager-applications";
+        paths = config.home.packages;
+        pathsToLink = [ "/Applications" ];
+      };
+    in
+    lib.mkIf pkgs.stdenv.targetPlatform.isDarwin "${apps}/Applications";
+
+  disabledModules = [
+    "target/darwin/linkapps.nix"
+  ];
+
+  services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 86400;
+    maxCacheTtl = 86400;
+    enableZshIntegration = true;
+    pinentry.package = pkgs.pinentry_mac;
+    enableSshSupport = true;
+  };
+
+  # Set env vars
+  home.sessionVariables = {
+    SHELL = "${pkgs.fish}/bin/fish";
+    EDITOR = "nvim";
+  };
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+}

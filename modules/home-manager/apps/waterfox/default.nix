@@ -2,10 +2,30 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }:
+let
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+in
 {
-  imports = [ inputs.tixpkgs.homeManagerModules'.programs.waterfox ];
+  imports = [
+    # this replicates tixpkgs' programs.waterfox shim (same mkFirefoxModule
+    # wiring, minus its `package != null` assertion — on darwin the browser
+    # comes from the brew cask, so package is null and profiles land in
+    # ~/Library/Application Support/Waterfox instead of ~/.waterfox).
+    (import "${inputs.home-manager}/modules/programs/firefox/mkFirefoxModule.nix" {
+      modulePath = [
+        "programs"
+        "waterfox"
+      ];
+      name = "Waterfox";
+      wrappedPackageName = "waterfox";
+      unwrappedPackageName = "waterfox-unwrapped";
+      platforms.linux.configPath = ".waterfox";
+      platforms.darwin.configPath = "Library/Application Support/Waterfox";
+    })
+  ];
 
   # home.file.".waterfox/taki/chrome/blurredfox".source = pkgs.stdenv.mkDerivation {
   #   name = "blurredfox-patched";
@@ -28,7 +48,11 @@
   programs.waterfox = {
     enable = true;
     package =
-      inputs.hythera-waterfox.outputs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.waterfox;
+      # the hythera build is linux-only; on darwin the cask provides waterfox
+      if isDarwin then
+        null
+      else
+        inputs.hythera-waterfox.outputs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.waterfox;
     profiles.taki = {
       name = "taki";
       search = {

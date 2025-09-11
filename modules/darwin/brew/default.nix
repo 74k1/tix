@@ -26,9 +26,20 @@
       brewfile = true; # Run brew bundle from anywhere
     };
     taps = [
+      # "FelixKratz/formulae"
       # "LizardByte/homebrew"
       # "cmacrae/formulae"
-      # "FelixKratz/formulae"
+      # "homebrew/cask"
+      # "homebrew/cask-fonts"
+      # "homebrew/core"
+      # "homebrew/services"
+      # "hashicorp/tap"
+      # "acsandmann/tap"
+      {
+        name = "edde746/plezy";
+        clone_target = "https://github.com/edde746/plezy.git"; # repo isn't homebrew- prefixed, needs explicit url
+        trusted = true; # homebrew 6 refuses untrusted taps during activation otherwise
+      }
     ];
     brews = [
       # "sunshine"
@@ -36,26 +47,19 @@
       "ffmpegthumbnailer"
       "jq"
       "poppler"
-      "python@3.10"
-      "syncthing"
       "unar"
-      "yazi"
       "zoxide"
     ];
     casks = [
-      # "docker"
+      "waterfox"
+      "plezy" # from plezy tap
       "alt-tab"
-      "affinity-photo"
-      "affinity-designer"
-      "affinity-publisher"
-      # "bitwarden"
-      "parsec"
-      "orion"
-      "zen"
+      "bitwarden"
+      # "affinity-photo"
+      # "affinity-designer"
+      # "affinity-publisher"
       "ghostty"
-      # "github"
-      # "slack"
-      # "hiddenbar"
+      "hiddenbar"
       # "insomnia"
       # "kap"
       "keka"
@@ -63,23 +67,13 @@
       "maccy"
       # "notunes"
       # "obsidian"
-      # "raycast"
+      "raycast"
       "shottr"
       "stats"
       # "windows-app"
       # "powershell"
       "zed"
-      "rustdesk"
-      # "yazi"
-      # "jq"
-      # "ffmpegthumbnailer"
-      # "unar"
-      # "jq"
-      # "poppler"
-      # "fd"
-      # "ripgrep"
-      # "fzf"
-      # "zoxide"
+      # "rustdesk"
     ];
     extraConfig = ''
       cask_args appdir: "~/Applications"
