@@ -7,6 +7,10 @@
   ...
 }:
 {
+  age.secrets."open-terminal_env" = {
+    rekeyFile = "${inputs.self}/secrets/open-terminal_env.age";
+  };
+
   disabledModules = [ "services/misc/open-webui.nix" ];
 
   imports = [
@@ -40,6 +44,38 @@
     models = "/mnt/btrfs_pool/ollama_models";
     environmentVariables = {
       OLLAMA_ORIGINS = "*";
+    };
+  };
+
+  virtualisation.quadlet.containers."open-terminal" = {
+    autoStart = true;
+    serviceConfig = {
+      RestartSec = "10";
+      Restart = "always";
+    };
+    containerConfig = {
+      # 'latest' comes with:
+      # Node.js, gcc, ffmpeg, LaTeX, Docker CLI, data science libs
+      image = "ghcr.io/open-webui/open-terminal:latest";
+      autoUpdate = "registry";
+      publishPorts = [ "3336:8000" ];
+      networks = [ "podman" ];
+      environments = {
+        OPEN_TERMINAL_PACKAGES = "ripgrep vim"; # apt-get NOTE: could be cooler with nix
+        OPEN_TERMINAL_MAX_SESSIONS = "2";
+        OPEN_TERMINAL_ENABLE_TERMINAL = "false"; # interactive terminal
+        OPEN_TERMINAL_EXECUTE_TIMEOUT = "60";
+        OPEN_TERMINAL_CORS_ALLOWED_ORIGINS = "http://10.88.0.1";
+      };
+      environmentFiles = [
+        # OPEN_TERMINAL_API_KEY
+        config.age.secrets."open-terminal_env".path
+      ];
+      # environmentHost = true;
+      # podmanArgs = [ ];
+      volumes = [
+        "/var/lib/open-terminal:/home/user"
+      ];
     };
   };
 }
