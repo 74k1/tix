@@ -70,19 +70,52 @@
     sshd.settings = {
       enabled = true;
       port = "ssh";
+      banaction = "iptables-multiport";
+      bantime = "1h";
       filter = "sshd[mode=agressive]";
       maxretry = 1;
-      bantime = "1h";
+    };
+
+    nginx-bad-request.settings = {
+      enabled = true;
+      port = "http,https";
+      filter = "nginx-bad-request";
+
+      banaction = "iptables-multiport";
+      findtime = 300;
+      logpath = "/var/log/nginx/access.log";
+    };
+
+
+    nginx-botsearch.settings = {
+      enabled = true;
+      port = "http,https";
+      filter = "nginx-botsearch";
+
+      logpath = "/var/log/nginx/access.log";
+      banaction = "iptables-multiport";
+      maxretry = 2;
+      findtime = 300;
+    };
+
+    nginx-http-auth.settings = {
+      enabled = true;
+      port = "http,https";
+      filter = "nginx-http-auth";
+
+      logpath = "/var/log/nginx/error.log";
+      banaction = "iptables-multiport";
     };
 
     nginx-stream-ssh-proxy.settings = {
       enabled = true;
       filter = "nginx-stream-ssh-proxy";
-      logpath = "/var/log/nginx/error.log";
       backend = "auto";
-      findtime = "10m";
-      maxretry = 2;
+      banaction = "iptables-multiport";
       bantime = "1h";
+      findtime = "10m";
+      logpath = "/var/log/nginx/error.log";
+      maxretry = 2;
     };
   };
 
@@ -250,14 +283,14 @@
 
       # Configure SSH forwarding for Forgejo
       streamConfig = ''
-        upstream git-ssh {
+        upstream forge_ssh {
           server 10.100.0.1:2277;
         }
 
         server {
           listen 22;
           proxy_protocol on;
-          proxy_pass git-ssh;
+          proxy_pass forge_ssh;
         }
       '';
 
