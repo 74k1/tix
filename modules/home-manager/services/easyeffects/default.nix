@@ -15,8 +15,8 @@
           ];
           "plugins_order" = [
             # "deepfilternet#0"
-            "rnnoise#0"
             "stereo_tools#0"
+            "rnnoise#0"
             "equalizer#0"
           ];
           # "deepfilternet#0" = {
@@ -49,7 +49,7 @@
             mutel = false;
             muter = false;
             output-gain = 0.0;
-            phasel = true;
+            phasel = false;
             phaser = false;
             sc-level = 1.0;
             side-balance = 0.0;
