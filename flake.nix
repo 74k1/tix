@@ -57,7 +57,7 @@
       url = "github:hythera/nixpkgs/pkgs/waterfox/init";
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    # ---
+    # --- HIGH IMPORTANCE ---
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -69,6 +69,11 @@
     };
     disko = {
       url = "github:nix-community/disko/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # ---
+    tangled = {
+      url = "git+https://tangled.org/@tangled.org/core";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-anywhere = {
@@ -103,9 +108,9 @@
     };
     sherlock-gpui = {
       url = "github:skxxtz/sherlock-gpui";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      # inputs = {
+      #   nixpkgs.follows = "nixpkgs";
+      # };
     };
     agenix = {
       url = "github:ryantm/agenix";
@@ -134,6 +139,10 @@
     niri = {
       url = "github:sodiboo/niri-flake/very-refactor";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.niri-unstable = {
+        url = "github:YaLTeR/niri/main";
+        flake = false;
+      };
     };
     stylix = {
       url = "github:danth/stylix";
