@@ -21,8 +21,8 @@
     nixpkgs-local = {
       url = "git+file:///home/taki/dev/nixpkgs";
     };
-    unfree-fonts = {
-      url = "git+ssh://git@github.com/74k1/unfree-fonts-nix";
+    tixpkgs-unfree = {
+      url = "git+ssh://git@github.com/74k1/tixpkgs-unfree";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # -- TESTS / FIXES
