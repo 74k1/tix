@@ -11,6 +11,9 @@
   age.secrets = {
     "knights_wireguard_private_key" = {
       rekeyFile = "${inputs.self}/secrets/knights_wireguard_private_key.age";
+      mode = "640";
+      owner = "systemd-network";
+      group = "systemd-network";
     };
     "namecheap_api_secrets" = {
       rekeyFile = "${inputs.self}/secrets/namecheap_api_secrets.age";
@@ -61,6 +64,7 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
+      checkReversePath = "loose";
       allowedUDPPorts = [
         80
         443
@@ -77,31 +81,50 @@
         22
       ]; # Added port 22 for Forgejo SSH
     };
-    wireguard.interfaces = {
-      wg0 = {
-        ips = [ "10.100.0.2/24" ];
-        listenPort = 51820;
-        privateKeyFile = config.age.secrets."knights_wireguard_private_key".path;
-        peers = [
-          {
-            publicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
-            allowedIPs = [ "10.100.0.1" ];
-            endpoint = "${allSecrets.global.pub_ip}:51820";
-            persistentKeepalive = 25;
-          }
-        ];
-      };
+    useNetworkd = true;
+  };
+
+  systemd.network = {
+    enable = true;
+
+    networks."50-wg0" = {
+      matchConfig.Name = "wg0";
+      address = [ "10.100.0.2/32" ];
     };
-    # nat = {
-    #   enable = true;
-    #   externalInterface = "ens3";
-    #   internalInterfaces = [ "wg0" ];
-    #   forwardPorts = [
-    #     { destination = "10.100.0.1:25"; sourcePort = 25; } # SMTP
-    #     { destination = "10.100.0.1:143"; sourcePort = 143; } # IMAP
-    #     { destination = "10.100.0.1:110"; sourcePort = 110; } # POP3
-    #   ];
-    # };
+
+    netdevs."50-wg0" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "wg0";
+      };
+
+      wireguardConfig = {
+        ListenPort = 51820;
+
+        PrivateKeyFile = config.age.secrets."knights_wireguard_private_key".path;
+
+        # Automatically create routes for everything in AllowedIPs
+        RouteTable = "main";
+
+        # FirewallMark marks all packets send and received by wg0 with the number 42
+        # to define policy rules on these packets
+        FirewallMark = 42;
+      };
+
+      wireguardPeers = [
+        {
+          PublicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
+          AllowedIPs = [ "10.100.0.1/32" "192.168.1.70/32" ];
+          Endpoint = "${allSecrets.global.pub_ip}:51820";
+          PersistentKeepalive = 60;
+        }
+      ];
+    };
+  };
+
+  systemd.services.systemd-networkd = {
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
   };
 
   programs.zsh.enable = true;
@@ -149,6 +172,8 @@
     #   };
     # };
 
+    resolved.enable = true;
+
     openssh = {
       enable = true;
       ports = [ 2202 ];
@@ -164,15 +189,16 @@
         TARGET = "http://10.100.0.1:3000";
         BIND = ":60001";
         BIND_NETWORK = "tcp";
-        # METRICS_BIND = "0.0.0.0:20023";
-        # METRICS_BIND_NETWORK = "tcp";
+        METRICS_BIND = ":20023";
+        METRICS_BIND_NETWORK = "tcp";
       };
       chat.settings = {
         TARGET = "http://10.100.0.1:3335";
         BIND = ":60002";
         BIND_NETWORK = "tcp";
-        # METRICS_BIND = "0.0.0.0:20023";
-        # METRICS_BIND_NETWORK = "tcp";
+        METRICS_BIND = ":20024";
+        METRICS_BIND_NETWORK = "tcp";
+      };
       };
     };
 
@@ -230,13 +256,13 @@
           inherit (allSecrets.global) domain00 domain0;
         in
         {
-          "it.74k1.sh" = {
-            addSSL = true;
-            enableACME = true;
-            locations."/" = {
-              proxyPass = "http://10.100.0.1:80"; # nginx based on url
-            };
-          };
+          # "it.74k1.sh" = {
+          #   addSSL = true;
+          #   enableACME = true;
+          #   locations."/" = {
+          #     proxyPass = "http://10.100.0.1:80"; # nginx based on url
+          #   };
+          # };
           # "send.74k1.sh" = {
           #   addSSL = true;
           #   enableACME = true;
@@ -484,14 +510,23 @@
             };
           };
           # catch-all for domain00
-          "*.${allSecrets.global.domain00}" = {
-            forceSSL = true;
-            useACMEHost = "${allSecrets.global.domain00}";
-            locations."/" = {
-              return = "444"; # Close connection without response
-            };
-          };
+          # "*.${allSecrets.global.domain00}" = {
+          #   forceSSL = true;
+          #   useACMEHost = "${allSecrets.global.domain00}";
+          #   locations."/" = {
+          #     return = "444"; # Close connection without response
+          #   };
+          # };
+          # catch-all non-dns names :)
+          # "_" = {
+          #   serverName = "";
+          #   default = true;
+          #   extraConfig = ''
+          #     return 302 https://www.youtube.com/watch?v=dQw4w9WgXcQ;
+          #   '';
+          # };
         };
+    };
     };
   };
 

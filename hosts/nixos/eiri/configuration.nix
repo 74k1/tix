@@ -63,7 +63,7 @@
     karakeep
 
     # glance
-    it-tools
+    # it-tools
     nextcloud
     opencloud
     umami
@@ -206,7 +206,8 @@
           # enableACME = true;
           useACMEHost = "eiri.${allSecrets.global.domain01}";
           locations."/" = {
-            proxyPass = "http://${config.vpnNamespaces.prtr.namespaceAddress}:9091";
+            # proxyPass = "http://${config.vpnNamespaces.prtr.namespaceAddress}:9091";
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:9091";
             # proxyWebsockets = true;
           };
         };
