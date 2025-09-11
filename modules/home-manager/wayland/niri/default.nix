@@ -54,8 +54,8 @@
           src = pkgs.fetchFromGitHub {
             owner = "niri-wm";
             repo = "niri";
-            rev = "581b5be093b983a9a2911c5f45e6bda2e87fe574";
-            hash = "sha256-KIbF/TPvHu4oH9qQlUNDBAzpMuo8ptek6Wbxrz61SA4=";
+            rev = "d06dd4b9e60fa07120c217aa095f3ed8caac99f2";
+            hash = "sha256-L/Ldq9G41Mj8WjWTuC+rePvWIx1A/tHdFpLbQmtrMSA=";
           };
         in {
           inherit src;
@@ -125,7 +125,8 @@
 
           "Mod+Space" = {
             repeat = false;
-            action = spawn "${lib.getExe pkgs.walker}";
+            action = spawn "${lib.getExe inputs.sherlock-gpui.packages.${pkgs.stdenv.hostPlatform.system}.default}";
+            # action = spawn "${lib.getExe pkgs.walker}";
           };
 
           "Mod+V" = {
