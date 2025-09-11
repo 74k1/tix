@@ -54,7 +54,7 @@ in
       pkgs.ripgrep # For Telescope live-grep
       pkgs.bash-language-server # Bash :-)
       pkgs.nil # Nix Language Server
-      pkgs.nixfmt-rfc-style # Nix Formatter
+      pkgs.nixfmt # Nix Formatter
       pkgs.rust-analyzer # Rust Language Server
       pkgs.vscode-langservers-extracted # HTML, CSS, JSON, ESLINT Language Server
       # pkgs.superhtml # HTML Language Server
