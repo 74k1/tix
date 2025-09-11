@@ -209,7 +209,6 @@
       # layout = "us";
 
       # greeter
-      # TEMP
       # screenSection = ''
       #   Option "metamodes" "DP-2: 2560x1440_165 +0+0, DP-0: 2560x1440_165 +2560+0"
       # '';
@@ -326,9 +325,6 @@
     gnome-settings-daemon.enable = true;
     sushi.enable = true;
   };
-
-  # TEMP
-  services.openssh.enable = true;
 
   services.avahi = {
     enable = true;

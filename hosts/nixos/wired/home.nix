@@ -139,6 +139,8 @@
     parsec-bin
     gradia
 
+    mission-center
+
     # gui stuff
     # brave
     # osu-lazer-bin
@@ -170,9 +172,6 @@
 
     rustdesk
 
-    # TEMP
-    # ocenaudio
-
     nautilus
     nextcloud-client
     fractal
@@ -188,9 +187,8 @@
     youtube-music
     tidal-hifi
     tidal-dl
-    # TEMP
     # cider-2
-    feishin
+    # feishin
     # aonsoku
     spotify-player
     discord-ptb
@@ -216,7 +214,7 @@
 
     # polybar
     # evolution
-    protonvpn-gui
+    # protonvpn-gui
     plasticity
 
     orca-slicer
