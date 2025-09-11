@@ -6,83 +6,114 @@
 }:
 {
   imports = [ inputs.tixpkgs.homeManagerModules'.programs.waterfox ];
+
+  # home.file.".waterfox/taki/chrome/blurredfox".source = pkgs.stdenv.mkDerivation {
+  #   name = "blurredfox-patched";
+  #
+  #   src = builtins.fetchGit {
+  #     url = "https://github.com/eromatiya/blurredfox";
+  #     rev = "6976b5460f47bd28b4dc53bd093012780e6bfed3";
+  #   };
+  #
+  #   patches = [
+  #     ./blurredfox.patch
+  #   ];
+  #
+  #   installPhase = ''
+  #     mkdir -p $out
+  #     cp -r * $out/
+  #   '';
+  # };
+
   programs.waterfox = {
     enable = true;
     package = inputs.hythera-waterfox.outputs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.waterfox;
     profiles.taki = {
       name = "taki";
-      search.default = "Kagi";
-      search.force = true;
-      search.engines = {
-        "bing".metaData.hidden = true;
-        "ebay".metaData.hidden = true;
-        "google" = {
-          urls = [ { template = "https://www.google.com/search?q={searchTerms}"; } ];
-          icon = "https://icons.duckduckgo.com/ip3/google.com.ico";
-          definedAliases = [
-            ":g"
-            "@google"
-          ];
-        };
-        "Perplexity" = {
-          urls = [ { template = "https://www.perplexity.ai/search?focus=internet&q={searchTerms}"; } ];
-          icon = "https://icons.duckduckgo.com/ip3/perplexity.ai.ico";
-          definedAliases = [
-            ":p"
-            "@pp"
-            "@perplexity"
-          ];
-        };
-        "Kagi" = {
-          urls = [ { template = "https://kagi.com/search?q={searchTerms}"; } ];
-          icon = "https://kagi.com/favicon.ico";
-          definedAliases = [
-            ":k"
-            "@kagi"
-          ];
-        };
-        "ddg" = {
-          urls = [ { template = "https://duckduckgo.com/?t=h_&q={searchTerms}&ia=web"; } ];
-          icon = "https://icons.duckduckgo.com/ip3/duckduckgo.com.ico";
-          definedAliases = [
-            ":d"
-            "@ddg"
-            "@duckduckgo"
-          ];
-        };
-        "Brave Search" = {
-          urls = [ { template = "https://search.brave.com/search?q={searchTerms}&source=web"; } ];
-          icon = "https://icons.duckduckgo.com/ip3/search.brave.com.ico";
-          definedAliases = [
-            ":b"
-            "@brave"
-          ];
-        };
-        "MyNixOS" = {
-          urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
-          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [
-            ":mn"
-            "@mynixos"
-          ];
-        };
-        "Nixplorer" = {
-          urls = [ { template = "https://nixplorer.com/search?q={searchTerms}"; } ];
-          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [
-            ":np"
-            "@nixplorer"
-          ];
-        };
-        "NixOS Wiki" = {
-          urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
-          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ "@nw" ];
+      search = {
+        default = "Kagi";
+        force = true;
+        engines = {
+          "bing".metaData.hidden = true;
+          "ebay".metaData.hidden = true;
+          "Mojeek".metaData.hidden = true;
+          "Ecosia".metaData.hidden = true;
+          "Startpage".metaData.hidden = true;
+          "Qwant".metaData.hidden = true;
+          "Waterfox Private Search".metaData.hidden = true;
+          "Google" = {
+            urls = [ { template = "https://www.google.com/search?q={searchTerms}"; } ];
+            icon = "https://icons.duckduckgo.com/ip3/google.com.ico";
+            definedAliases = [
+              ":g"
+              "@google"
+            ];
+          };
+          "Perplexity" = {
+            urls = [ { template = "https://www.perplexity.ai/search?focus=internet&q={searchTerms}"; } ];
+            icon = "https://icons.duckduckgo.com/ip3/perplexity.ai.ico";
+            definedAliases = [
+              ":p"
+              "@pp"
+              "@perplexity"
+            ];
+          };
+          "Kagi" = {
+            urls = [ { template = "https://kagi.com/search?q={searchTerms}"; } ];
+            icon = "https://kagi.com/favicon.ico";
+            definedAliases = [
+              ":k"
+              "@kagi"
+            ];
+          };
+          "DuckDuckGo" = {
+            urls = [ { template = "https://duckduckgo.com/?t=h_&q={searchTerms}&ia=web"; } ];
+            icon = "https://icons.duckduckgo.com/ip3/duckduckgo.com.ico";
+            definedAliases = [
+              ":d"
+              "@ddg"
+              "@duckduckgo"
+            ];
+          };
+          "Brave Search" = {
+            urls = [ { template = "https://search.brave.com/search?q={searchTerms}&source=web"; } ];
+            icon = "https://icons.duckduckgo.com/ip3/search.brave.com.ico";
+            definedAliases = [
+              ":b"
+              "@brave"
+            ];
+          };
+          "MyNixOS" = {
+            urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [
+              ":mn"
+              "@mynixos"
+            ];
+          };
+          "Nixplorer" = {
+            urls = [ { template = "https://nixplorer.com/search?q={searchTerms}"; } ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [
+              ":n"
+              "@nixplorer"
+            ];
+          };
+          "NixOS Wiki" = {
+            urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [
+              ":nw"
+              "@nixwiki"
+            ];
+          };
         };
       };
       # userChrome == FF Interface
       userChrome = # css
         ''
+          /* @import url('blurredfox/userChrome.css'); */
+
           .toolbarbutton-icon[src^="page-icon:https://github.com"]{
             filter: invert(1) !important;
           }
@@ -90,35 +121,66 @@
             filter: invert(1) !important;
           }
 
-          /**
-           * Dynamic Horizontal Tabs Toolbar (with animations)
-           * sidebar.verticalTabs: false (with native horizontal tabs)
-           */
-          #main-window #TabsToolbar > .toolbar-items {
-            overflow: hidden;
-            transition: height 0.3s 0.3s !important;
+          #TabsToolbar { display: none !important; }
+          #sidebar-box #sidebar-header { display: none !important; }
+
+          splitter {
+            min-width: 1px !important;
+            width: 1px !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
           }
-          /* Default state: Set initial height to enable animation */
-          #main-window #TabsToolbar > .toolbar-items { height: 3em !important; }
-          #main-window[uidensity="touch"] #TabsToolbar > .toolbar-items { height: 3.35em !important; }
-          #main-window[uidensity="compact"] #TabsToolbar > .toolbar-items { height: 2.7em !important; }
-          /* Hidden state: Hide native tabs strip */
-          #main-window[titlepreface*="​"] #TabsToolbar > .toolbar-items { height: 0 !important; }
-          /* Hidden state: Fix z-index of active pinned tabs */
-          #main-window[titlepreface*="​"] #tabbrowser-tabs { z-index: 0 !important; }
-          /* Hidden state: Hide window buttons in tabs-toolbar */
-          #main-window[titlepreface*="​"] #TabsToolbar .titlebar-spacer,
-          #main-window[titlepreface*="​"] #TabsToolbar .titlebar-buttonbox-container {
-            display: none !important;
+
+          .sidebar-splitter {
+            --splitter-width: 1px !important;
+            width: 1px !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            background: transparent !important;
           }
-          /* [Optional] Uncomment block below to show window buttons in nav-bar (maybe, I didn't test it on non-linux-i3wm env) */
-          /* #main-window[titlepreface*="XXX"] #nav-bar > .titlebar-buttonbox-container,
-          #main-window[titlepreface*="XXX"] #nav-bar > .titlebar-buttonbox-container > .titlebar-buttonbox {
-            display: flex !important;
-          } */
-          /* [Optional] Uncomment one of the line below if you need space near window buttons */
-          /* #main-window[titlepreface*="XXX"] #nav-bar > .titlebar-spacer[type="pre-tabs"] { display: flex !important; } */
-          /* #main-window[titlepreface*="XXX"] #nav-bar > .titlebar-spacer[type="post-tabs"] { display: flex !important; } */
+
+
+          /* Core window and toolbars */
+          #main-window,
+          #navigator-toolbox,
+          #nav-bar,
+          #TabsToolbar,
+          #toolbar-menubar,
+          #PersonalToolbar {
+            background-color: rgba(7, 6, 11, 0.9) !important;
+            background-image: none !important;
+            -moz-appearance: none !important;
+          }
+
+          /* Sidebar (where Sidebery lives) */
+          #sidebar-box,
+          #sidebar,
+          #sidebar-header {
+            background-color: rgba(7, 6, 11, 0.9) !important;
+            background-image: none !important;
+            -moz-appearance: none !important;
+          }
+
+          /* URL bar and search bar */
+          #urlbar,
+          #urlbar-background,
+          .urlbar-input-container {
+            background-color: rgba(7, 6, 11, 0.9) !important;
+          }
+
+          /* Tab background (when using native tabs, not Sidebery) */
+          .tabbrowser-tab,
+          .tab-background {
+            background-color: rgba(7, 6, 11, 0.9) !important;
+          }
+
+          /* Context menus / panels */
+          menupopup,
+          panel {
+            background-color: rgba(7, 6, 11, 0.9) !important;
+          }
         '';
       # userContent == web-pages and internal pages like about:newtab & about:home
       userContent = # css
@@ -137,8 +199,59 @@
         # USER CONF
         "browser.download.panel.shown" = true;
         "media.videocontrols.picture-in-picture.enabled" = false;
-        "sidebar.revamp" = true;
-        "browser.tabs.insertAfterCurrent" = true;
+
+        # disable new sidebar
+        "sidebar.revamp" = false;
+        "userChrome.hidden.sidebar_header" = true;
+
+        # default font
+        "font.name.serif.x-western" = "PP Supply Mono";
+        # disable spellcheck
+        "layout.spellcheckDefault" = 0;
+
+        # Show restart button in PanelUI
+        "browser.restart_menu.showpanelmenubtn" = false;
+
+        # Show bookmarks by default
+        "browser.toolbars.bookmarks.visibility" = "always";
+
+        # use Download Dir & save immediately
+        "browser.download.useDownloadDir" = true;
+        "browser.download.always_ask_before_handling_new_types" = false;
+
+        # enable widevine / DRM
+        "media.eme.enabled" = true;
+
+        # disable hardware-keys (?)
+        # "media.hardwaremediakeys.enabled" = false;
+
+        # startup and newtab page 
+        "browser.startup.homepage" = "about:home";
+        "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
+
+        # monospace it all
+        "userChrome.theme.monospace" = true;
+        "userContent.page.monospace" = true;
+
+        # no rounding
+        "userChrome.rounding.square_checklabel" = true;
+        "userChrome.rounding.square_field" = true;
+        "userChrome.rounding.square_tab" = true;
+
+        # normal density
+        "browser.uidensity" = 0;
+
+        # enable transparency
+        "browser.tabs.allow_transparent_browser" = true;
+        "userChrome.theme.transparent.menu" = false;
+        "userChrome.theme.transparent.panel" = false;
+
+        # # blurredfox
+        "layers.acceleration.force-enabled" = true;
+        # "gfx.webrender.all" = true;
+        "gfx.webrender.enabled" = true;
+        "layout.css.backdrop-filter.enabled" = true;
+        "svg.context-properties.content.enabled" = true;
 
         # Check SMOOTHFOX below
         # "general.smoothScroll.currentVelocityWeighting" = 0;
@@ -356,10 +469,10 @@
         "extensions.pocket.enabled" = false;
 
         # Downloads
-        "browser.download.useDownloadDir" = false;
+        # "browser.download.useDownloadDir" = false;
         "browser.download.alwaysOpenPanel" = false;
         "browser.download.manager.addToRecentDocs" = false;
-        "browser.download.always_ask_before_handling_new_types" = true;
+        # "browser.download.always_ask_before_handling_new_types" = true;
 
         # PDF
         "browser.download.open_pdf_attachments_inline" = true;
@@ -388,7 +501,7 @@
         "mousewheel.default.delta_multiplier_y" = 300;
 
         ################# OVERRIDES #################
-        "browser.startup.homepage" = "";
+        # "browser.startup.homepage" = "";
         # Enable HTTPS-Only Mode
         "dom.security.https_only_mode" = true;
         "dom.security.https_only_mode_ever_enabled" = true;
