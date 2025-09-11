@@ -333,4 +333,4 @@ gtk-titlebar = false
 # 
 # This configuration only has an effect if Ghostty was built with
 # libadwaita support.
-gtk-adwaita = true
+# gtk-adwaita = true
