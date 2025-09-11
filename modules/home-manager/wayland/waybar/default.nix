@@ -201,11 +201,63 @@ let
             ghostty
             pkgs.pulseaudio
           ];
-          text = builtins.readFile ./scripts/wb-select-output.sh;
+          text = ''
+              SINK_FILE="$(mktemp)"
+              PICKER="$(mktemp)"
+              trap 'rm -f "$SINK_FILE" "$PICKER"' EXIT
+
+              pactl list sinks | awk -v RS='\n\n' -v FS='\n' '
+                {
+                  id=""; name=""; desc=""
+                  for (i=1;i<=NF;i++) {
+                    if ($i ~ /^Sink #/)          { id=$i; sub(/^Sink #/, "", id) }
+                    if ($i ~ /^\tName: /)        { name=$i; sub(/.*: /,"",name)  }
+                    if ($i ~ /^\tDescription: /) { desc=$i; sub(/.*: /,"",desc) }
+                  }
+                  if (name ~ /easyeffects/ || desc ~ /easyeffects/) next
+                  if (id != "" && name != "" && desc != "") printf "%s|%s\n", desc, id
+                }' > "$SINK_FILE"
+
+              [[ -s "$SINK_FILE" ]] || { echo "No sinks found"; exit 1; }
+
+              cat > "$PICKER" << EOF
+            #!/usr/bin/env bash
+            set -euo pipefail
+            SINK_FILE="\$1"
+            CHOICE="\$(cut -d'|' -f1 "\$SINK_FILE" | ${lib.getExe aurora} --dmenu)" || exit 0
+            [ -z "\$CHOICE" ] && exit 0
+            SINK_ID="\$(grep -F "\$CHOICE" "\$SINK_FILE" | cut -d'|' -f2 | head -1)"
+            [ -z "\$SINK_ID" ] && { echo "Sink not found: \$CHOICE"; sleep 3; exit 1; }
+            ${lib.getExe' pkgs.pulseaudio "pactl"} set-default-sink "\$SINK_ID"
+            for stream in \$(${lib.getExe' pkgs.pulseaudio "pactl"} list short sink-inputs | cut -f1); do
+              ${lib.getExe' pkgs.pulseaudio "pactl"} move-sink-input "\$stream" "\$SINK_ID" 2>/dev/null || true
+            done
+            EOF
+              chmod +x "$PICKER"
+
+              exec ghostty +new-window --title=aurora-run -e "$PICKER" "$SINK_FILE"
+          '';
         }
       );
       on-click-middle = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
       scroll-step = 5.0;
+    };
+
+    "custom/lyrics" = {
+      return-type = "json";
+      format = "{icon} {0}";
+      hide-empty-text = true;
+      format-icons = {
+        playing = "[  ]";
+        paused = "[  ]";
+        lyric = "[  ]";
+        music = "[ 󰝚 ]";
+        no_lyric = "[  ]";
+        getting = "[  ]";
+      };
+      exec-if = "which waybar-lyric";
+      exec = "${lib.getExe pkgs.waybar-lyric} --quiet";
+      on-click = "${lib.getExe pkgs.waybar-lyric} play-pause";
     };
 
     "custom/swaync" = {
@@ -285,7 +337,7 @@ let
       # format-charging = "{capacity}% {icon}";
 
       full-at = 89;
-      tooltip-format = "{power}w {timeTo} {}";
+      tooltip-format = "{power}w {timeTo}";
       format-time = "{H}h {M}m left";
       format-icons = [
         # ""
@@ -313,6 +365,7 @@ in
   home.packages = [
     pkgs.material-symbols
     pkgs.material-icons
+    pkgs.waybar-lyric
   ];
 
   programs.waybar = {
@@ -329,10 +382,8 @@ in
         margin-top = 8;
 
         output = [
-          "ASUSTek COMPUTER INC - MQ16AHE - DP-6"
-          "ASUSTek COMPUTER INC - MQ16AHE - DP-7"
-          "Audio Processing Technology  Ltd - CX158 - DP-7"
-          "Audio Processing Technology  Ltd - CX158 - DP-6"
+          "DP-7"
+          "eDP-1"
         ];
 
         modules-left = [
@@ -359,17 +410,14 @@ in
         margin-top = 8;
 
         output = [
-          "PNP(AOC) - AG276QZD2 - DP-6"
-          "PNP(AOC) - AG276QZD2 - DP-7"
-          "PNP(AOC) - 16T3E - DP-2"
-          "eDP-1"
-          "DP-2"
+          "DP-6"
         ];
 
         modules-left = [
           "group/power"
           "cpu"
           "custom/mem"
+          "custom/lyrics"
         ];
 
         modules-center = [
