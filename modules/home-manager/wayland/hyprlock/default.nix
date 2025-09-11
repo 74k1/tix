@@ -68,21 +68,30 @@
         {
           monitor = "";
           text = ''
-            cmd[update:1000] date +"%A, %B %d @ %H:%M:%S"
+            cmd[update:60000] date +"%H:%M"
           '';
-          font_size = 48;
+          font_size = 96;
+          font_family = "NType 82 Regular";
+          color = "rgba(235, 233, 241, 0.6)";
+
+          position = "0%, 5%";
+
+          halign = "center";
+          valign = "center";
+        }
+        {
+          monitor = "";
+          text = ''
+            cmd[update:60000] date +"%A, %d %b %Y"
+          '';
+          font_size = 32;
           font_family = "PP Supply Mono";
           color = "rgba(235, 233, 241, 0.2)";
 
-          position = "0%, 3%";
+          position = "0%, 0%";
 
-          valign = "center";
           halign = "center";
-
-          # shadow_color = "rgba(5, 7, 5, 0.1)";
-          # shadow_size = 20;
-          # shadow_passes = 2;
-          # shadow_boost = 0.3;
+          valign = "center";
         }
       ];
     };
