@@ -66,7 +66,7 @@
     rsshub
 
     n8n
-    audiobookshelf
+    # audiobookshelf
     paperless
     miniflux
     quadlet
