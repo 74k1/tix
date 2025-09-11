@@ -5,11 +5,6 @@
     <a href="#"><img src="https://img.shields.io/github/repo-size/74k1/tix?color=7089FF&labelColor=323246&style=for-the-badge"></img></a>
     <a href="https://github.com/74k1/tix/stargazers"><img src="https://img.shields.io/github/stars/74k1/tix?color=7089FF&labelColor=323246&style=for-the-badge"></img></a>
     <a href="LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=7089FF&colorA=323246&colorB=7089FF"/></a>
-    <br>
-    <p>TODO: preview<p>
-    <!-- <picture> -->
-    <!--     <img alt="preview" align="right" width="400px" src="/.github/assets/preview.png"> -->
-    <!-- </picture> -->
 </div>
 
 <br/>
@@ -17,11 +12,10 @@
 <br/>
 
 > [!WARNING]
-> This is hardcoded to my daily workflow.
-> Don't just swap out the usernames, hostnames,
-> and hardware configs and expect it to work.
->
-> Use it as a reference, not a template.
+> This is _hardcoded_ to my daily workflow. Don't just swap out the usernames, hostnames, and hardware configs and expect it to work.\
+> Feel free to use it as a reference, not a template. ^-^
+> 
+> <sub>Psst: My [DMs are open](https://74k1.sh/contact), should you require help. I'm happy to share. :)</sub>
 
 <br/>
 
@@ -31,9 +25,9 @@
         <li><strong>Shell</strong> • <a href="https://github.com/fish-shell/fish-shell">fish</a> The user-friendly command line shell</li>
         <li><strong>Terminal</strong> • <a href="https://github.com/ghostty-org/ghostty">Ghostty</a> a fast, feature-rich and _native_ terminal emulator</li>
         <li><strong>Notification Daemon & Panel</strong> • <a href="https://github.com/ErikReider/SwayNotificationCenter">SwayNC</a> A simple GTK based notification daemon.</li>
-        <li><strong>Launcher</strong> • <a href="https://github.com/Skxxtz/sherlock">Sherlock</a> A versatile application/command launcher for wayland.</li>
+        <li><strong>Launcher</strong> • <a href="https://github.com/Skxxtz/sherlock-gpui">Sherlock-gpui</a> A versatile application/command launcher for wayland.</li>
         <li><strong>Editor of Choice</strong> • <a href="https://github.com/neovim/neovim">Neovim</a> ❤️</li>
-        <li><strong>Overall Theme</strong> • <a href="https://github.com/74k1/yueye">YuèYè</a> My very own Theme!</li>
+        <li><strong>Overall Theme</strong> • <a href="https://github.com/snqn">Sine qua non</a> My very own Theme!</li>
     </ul>
 </div>
 
@@ -101,34 +95,34 @@
 
 ```
 /
-├ hosts/
+├ hosts/           # all host-specific configurations
 │ ├ darwin/
 │ ╰ nixos/
 ├ modules/
-│ ├ darwin/
-│ ├ flake/
-│ ├ home-manager/
-│ ╰ nixos/
-├ secrets/
+│ ├ darwin/        # darwin-wide module configurations
+│ ├ flake/         # flake specific configurations
+│ ├ home-manager/  # home-manager wide configurations
+│ ╰ nixos/         # nixos wide configurations
+├ secrets/         # secrets, using agenix-rekey
 │ ├ rekeyed/
 │ │ ╰ {hosts}/
 │ ╰ *.age
 ├ flake.nix
 ├ flake.lock
-├ README.md
+├ README.md        # <- you are here!
 ╰ LICENSE
 ```
 
 ## Packages
 
-All of my own Packages are under <a href="https://github.com/74k1/tixpkgs">tixpkgs</a>. Feel free to snoop around and submit PRs / Issues. Contributions are always welcome. :)
+All of my own Packages & Modules are under <a href="https://github.com/74k1/tixpkgs">tixpkgs</a>. Feel free to snoop around and submit PRs / Issues. Contributions are always welcome. :)
 
 
 ## Special Thanks to
 
 | Credit | Reason |
 | ---: | --- |
+| [Nix & NixOS](https://github.com/NixOS) | being the most goated linux distro. :light_blue_heart: |
 | <img src="https://user-images.githubusercontent.com/49000471/258223152-6c644f95-2fd7-4db3-b266-b387a95f150c.png" height="16px" width="16px"/> [reo101](https://github.com/reo101) | for being **the one and only** that introduced me to nix and helping me out a ton. :) |
-| [linuxmobile](https://github.com/linuxmobile/) | Their [Niri config](https://github.com/linuxmobile/kaku) served as a great reference point. |
 | [pabloagn](https://github.com/pabloagn/) | Their [overall vibe in the config](https://github.com/pabloagn/rhodium/) inspired me a lot. |
-| [Nmoleo](https://gitlab.com/Nmoleo) | Rewrote / packaged their [i3 + dunst indicators](https://gitlab.com/Nmoleo/i3-volume-brightness-indicator) script for Nix in [tixpkgs](https://github.com/74k1/tixpkgs). |
+| [linuxmobile](https://github.com/linuxmobile/) | Their [Niri config](https://github.com/linuxmobile/kaku) served as a great reference point. |
