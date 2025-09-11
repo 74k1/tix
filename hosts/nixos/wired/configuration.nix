@@ -153,13 +153,13 @@
     fstrim.enable = true; # M.2 SSD
     greetd = {
       enable = true;
-      package = pkgs.greetd.tuigreet;
+      # package = pkgs.greetd.tuigreet;
       # useTextGreeter = true;
       settings = {
-        terminal.vt = 1;
+        # terminal.vt = 1;
         default_session = {
           user = "taki";
-          command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd ${lib.getExe' pkgs.niri "niri-session"}";
+          command = "${pkgs.greetd}/bin/agreety --cmd ${lib.getExe' pkgs.niri "niri-session"}";
         };
       };
     };
