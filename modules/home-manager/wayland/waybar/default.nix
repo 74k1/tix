@@ -320,6 +320,8 @@ in
         output = [
           "ASUSTek COMPUTER INC - MQ16AHE - DP-6"
           "ASUSTek COMPUTER INC - MQ16AHE - DP-7"
+          "Audio Processing Technology  Ltd - CX158 - DP-7"
+          "Audio Processing Technology  Ltd - CX158 - DP-6"
         ];
 
         modules-left = [
