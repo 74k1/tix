@@ -25,7 +25,7 @@
       url = "git+file:///home/taki/dev/nixpkgs";
     };
     tixpkgs-unfree = {
-      url = "git+ssh://git@github.com/74k1/tixpkgs-unfree";
+      url = "git+ssh://forge@git.yukume.com/74k1/tixpkgs-unfree.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # -- TESTS / FIXES
@@ -60,10 +60,10 @@
     quadlet = {
       url = "github:SEIAROTg/quadlet-nix";
     };
-    apple-emoji = {
-      url = "github:samuelngs/apple-emoji-linux";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # apple-emoji = {
+    #   url = "github:samuelngs/apple-emoji-ttf/jjjjjjj";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     musnix = {
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
