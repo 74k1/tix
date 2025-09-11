@@ -2,9 +2,9 @@
     <img align="left" src="/.github/assets/tix_colored.png" width="300px"/>
     <br>
     <h3><samp>(t)im's n(ix) flake </samp>❄️</h3>
-    <a href="#"><img src="https://img.shields.io/github/repo-size/74k1/tix?color=cba6f7&labelColor=303446&style=for-the-badge"></img></a>
-    <a href="https://github.com/74k1/tix/stargazers"><img src="https://img.shields.io/github/stars/74k1/tix?color=cba6f7&labelColor=303446&style=for-the-badge"></img></a>
-    <a href="LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=ca9ee6&colorA=313244&colorB=cba6f7"/></a>
+    <a href="#"><img src="https://img.shields.io/github/repo-size/74k1/tix?color=7089FF&labelColor=323246&style=for-the-badge"></img></a>
+    <a href="https://github.com/74k1/tix/stargazers"><img src="https://img.shields.io/github/stars/74k1/tix?color=7089FF&labelColor=323246&style=for-the-badge"></img></a>
+    <a href="LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=7089FF&colorA=323246&colorB=7089FF"/></a>
     <br>
     <p>TODO: preview<p>
     <!-- <picture> -->
