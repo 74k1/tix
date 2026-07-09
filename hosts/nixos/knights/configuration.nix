@@ -408,6 +408,18 @@
               '';
             };
           };
+          "ntfy.${domain00}" = {
+            addSSL = true;
+            useACMEHost = "${allSecrets.global.domain00}";
+            locations."/" = {
+              proxyPass = "http://10.100.0.1:9999";
+              recommendedProxySettings = true;
+              proxyWebsockets = true;
+              extraConfig = ''
+                client_max_body_size 0;
+              '';
+            };
+          };
           # "news.${domain00}" = {
           #   addSSL = true;
           #   useACMEHost = "${allSecrets.global.domain00}";

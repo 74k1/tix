@@ -27,6 +27,7 @@
   navidrome = import ./daemons/navidrome;
   nextcloud = import ./daemons/nextcloud;
   nix = import ./nix;
+  ntfy = import ./daemons/ntfy;
   nvidia = import ./nvidia;
   opencloud = import ./daemons/opencloud;
   openssh = import ./daemons/openssh;

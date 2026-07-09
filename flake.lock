@@ -337,11 +337,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1781525222,
-        "narHash": "sha256-ie/sTKVOLDrUrgAiYZRSP7gUJSmAySF8HolIdFWdbGk=",
+        "lastModified": 1783549821,
+        "narHash": "sha256-BN3FuaaCUr/6l1iP4aT9rl9Vg3u2yPiRj+WhxIjYZcE=",
         "ref": "refs/heads/main",
-        "rev": "84b4ad7319ca819ecabffc4c51170b25280cf1b5",
-        "revCount": 14,
+        "rev": "b57c0a04cb7a616ff9d4a2ed5536faa499ae0ed8",
+        "revCount": 15,
         "type": "git",
         "url": "ssh://forge@git.yukume.com/74k1/bumpkin.git"
       },
@@ -1784,11 +1784,11 @@
     "niri-unstable": {
       "flake": false,
       "locked": {
-        "lastModified": 1783248941,
-        "narHash": "sha256-citgYJbvR1iUKXpiWlFq3NO+fw6hXGL3Qk1ampU7lhA=",
+        "lastModified": 1783522755,
+        "narHash": "sha256-dI0HkX1djETia7cD/Y64h8BNIsSOfTRMzfNum2J6UhE=",
         "owner": "YaLTeR",
         "repo": "niri",
-        "rev": "a30ca7983b2f1fc3ddeb209b3fe18fa78e0dbd25",
+        "rev": "0777769e719b7c9b7c980d4ea66288bfbb4da5b3",
         "type": "github"
       },
       "original": {

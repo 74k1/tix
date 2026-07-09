@@ -42,6 +42,7 @@
     outline
     memos
     pds
+    ntfy
 
     braindump
 
