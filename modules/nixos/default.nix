@@ -6,7 +6,7 @@
   audiobookshelf = import ./daemons/audiobookshelf;
   baikal = import ./daemons/baikal;
   bash = import ./programs/bash;
-  booklore = import ./daemons/booklore;
+  grimmory = import ./daemons/grimmory;
   braindump = import ./daemons/braindump;
   bumpkin = import ./daemons/bumpkin;
   degoog = import ./daemons/degoog;

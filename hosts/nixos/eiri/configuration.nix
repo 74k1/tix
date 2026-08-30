@@ -61,7 +61,7 @@
     scrutiny
 
     # baikal
-    # booklore
+    grimmory
     rsshub
 
     n8n
