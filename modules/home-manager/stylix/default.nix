@@ -7,6 +7,7 @@
 }:
 let
   cfg = config.theme.ukiyo;
+  isLinux = pkgs.stdenv.hostPlatform.isLinux;
   icon = {
     # name = "bloom-dark";
     # package = pkgs.deepin.deepin-icon-theme.overrideAttrs (_: {dontWrapQtApps = true;});
@@ -37,18 +38,25 @@ in
       enable = true;
       overlays.enable = false;
       polarity = "dark";
+      opacity.terminal = 0.9;
+      # darwin has no pointerCursor plumbing; keep stylix's cursor target
+      # from half-defining home.pointerCursor there
+      cursor =
+        if isLinux then
+          {
+            size = 16;
+            # package = pkgs.openzone-cursors;
+            # name = "Open Zone Black";
+            inherit (cfg) package;
+            name = "Ukiyo";
+          }
+        else
+          null;
       # image = ./wall.png;
       image = pkgs.fetchurl {
         url = "https://upload.wikimedia.org/wikipedia/commons/0/07/Johan_Christian_Dahl_-_View_of_Dresden_by_Moonlight_-_Google_Art_Project.jpg";
         name = "wallpaper.jpg";
         hash = "sha256-MjBzldNqNQa1aPoxUPyimovl+YSA4m74Dx7MIsswxtU=";
-      };
-      cursor = {
-        size = 16;
-        # package = pkgs.openzone-cursors;
-        # name = "Open Zone Black";
-        inherit (cfg) package;
-        name = "Ukiyo";
       };
       icons = {
         enable = true;
@@ -82,6 +90,7 @@ in
         #   package = pkgs.dejavu_fonts;
         #   name = "DejaVu Sans";
         # };
+        sizes.terminal = 14.5;
         monospace = {
           package = pkgs.tix-unfree.supply-mono;
           name = "PP Supply Mono";
@@ -95,6 +104,12 @@ in
       };
       autoEnable = true;
       targets = {
+        ghostty.enable = true;
+        # stylix sets home.pointerCursor.gtk/sway.enable unguarded, which
+        # triggers HM's home-cursor logic on darwin where the rest of
+        # pointerCursor never gets defined → eval error. Linux-only.
+        gtk.enable = isLinux;
+        sway.enable = isLinux;
         # gnome.enable = true;
         gtk = {
           extraCss = /* css */ ''

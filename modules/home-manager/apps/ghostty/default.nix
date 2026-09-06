@@ -21,12 +21,12 @@ in
     systemd.enable = lib.mkIf isLinux true;
     settings = {
       cursor-style = "block";
-      font-family = [
+      font-family = lib.mkForce [
         "PP Supply Mono"
         "Sarasa Gothic SC"
       ];
-      font-size = 14.5;
-      background-opacity = 0.9;
+      font-size = lib.mkDefault 14.5;
+      background-opacity = lib.mkDefault 0.9;
       shell-integration-features = "no-sudo,title";
       gtk-single-instance = true;
       quit-after-last-window-closed = false;

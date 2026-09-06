@@ -1,4 +1,5 @@
 {
+  inputs,
   outputs,
   lib,
   pkgs,
@@ -7,19 +8,20 @@
 }:
 
 {
-  imports = with outputs.homeManagerModules; [
-    neovim
-    git
-    jujutsu
-    zsh
-    fish
-    ghostty
-    waterfox
-  ];
-
-  home.file.".homebrew/trust.json".text = builtins.toJSON {
-    trustedtaps = [ "https://github.com/edde746/plezy.git" ];
-  };
+  imports = with outputs.homeManagerModules;
+    [
+      inputs.stylix.homeModules.stylix
+      style
+    ]
+    ++ [
+      neovim
+      git
+      jujutsu
+      zsh
+      fish
+      ghostty
+      waterfox
+    ];
 
   home = {
     username = lib.mkForce "taki";

@@ -74,6 +74,7 @@
       # "powershell"
       "zed"
       # "rustdesk"
+      "localsend"
     ];
     extraConfig = ''
       cask_args appdir: "~/Applications"
