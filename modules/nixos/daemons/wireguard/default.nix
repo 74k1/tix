@@ -75,6 +75,13 @@
             "10.100.0.4/32"
           ];
         }
+        {
+          # chisa
+          PublicKey = "iz6YnBChzVfPfNfuIFvzQORrgk/F2somkkv1pvhu1QM=";
+          AllowedIPs = [
+            "10.100.0.5/32"
+          ];
+        }
       ];
     };
   };
