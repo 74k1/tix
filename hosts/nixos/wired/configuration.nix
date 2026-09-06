@@ -486,7 +486,7 @@
 
   # nix = {
   #   # Enable the newest nix version
-  #   package = inputs.rix101.packages.${pkgs.hostPlatform.system}.nix-enraged;
+  #   package = inputs.nix-enraged.packages.${pkgs.hostPlatform.system}.nix-enraged;
   #
   #   # Enable flakes, the new `nix` commands and better support for flakes in it
   #   extraOptions = ''

@@ -25,7 +25,7 @@
           # buildInputs = [ ];
           shellHook = ''
             unset NIX_CONFIG
-            export PATH="${inputs'.rix101.packages.nix-enraged.override { cacheMode = "stable"; }}/bin:$PATH"
+            export PATH="${inputs'.nix-enraged.packages.nix-enraged.override { cacheMode = "stable"; }}/bin:$PATH"
           '';
         };
       };

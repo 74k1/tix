@@ -144,6 +144,10 @@
       inputs.agenix.follows = "agenix";
       inputs.agenix-rekey.follows = "agenix-rekey";
     };
+    nix-enraged = {
+      url = "github:reo101/nix-enraged";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     vpnconfinement.url = "github:Maroka-chan/VPN-Confinement";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     affinity-nix = {
