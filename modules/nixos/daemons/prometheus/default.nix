@@ -36,12 +36,6 @@ in
                 instance = "lain";
               };
             }
-            {
-              targets = [ "127.0.0.1:42617" ];
-              labels = {
-                instance = "zeroclaw";
-              };
-            }
           ];
         }
       ];
