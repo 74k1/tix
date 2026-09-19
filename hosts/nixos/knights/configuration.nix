@@ -500,6 +500,7 @@
               ssl_conf_command Options -KTLS;
               proxy_buffering off;
               proxy_cache off;
+              proxy_read_timeout 600s;
             '';
             locations."/" = {
               proxyPass = "http://127.0.0.1${toString config.services.anubis.instances.chat.settings.BIND}";

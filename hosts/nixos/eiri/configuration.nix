@@ -328,7 +328,7 @@
           useACMEHost = "i.${allSecrets.global.domain03}";
           extraConfig = "client_max_body_size 1024M;";
           locations."/" = {
-            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:8888";
+            proxyPass = "http://${allSecrets.per_host.eiri.int_ip}:8899";
             proxyWebsockets = true;
           };
         };
