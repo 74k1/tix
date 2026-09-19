@@ -54,9 +54,6 @@
                 linuxPackages_6_17 = prev.linuxPackagesFor final.linux_6_17;
               })
             ] ++ [
-            # Pseudo-overlay to add our own packages everywhere
-            (_: _: self.packages.${system})
-
             # NOTE: `multiverse` -> `pkgs.multiverse.*` — NOT an importable
             # nixpkgs (so it must NOT be named `nixpkgs-*`); version-index
             # API: `tip`/`at`/`version`/`solvePins`. Each distinct revision

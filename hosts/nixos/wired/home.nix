@@ -243,7 +243,13 @@
     # legcord
     # vesktop
 
-    davinci-resolve
+    # nixpkgs-master: Blackmagic re-uploads zips under the same version
+    # string, which repeatedly breaks nixos-unstable's pinned FOD hash.
+    # master carries the fixed hash until it reaches unstable.
+    (import inputs.nixpkgs-master {
+      system = pkgs.stdenv.hostPlatform.system;
+      config.allowUnfree = true;
+    }).davinci-resolve
 
     mpv
     ascii-draw
