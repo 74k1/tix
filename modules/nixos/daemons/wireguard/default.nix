@@ -82,6 +82,20 @@
             "10.100.0.5/32"
           ];
         }
+        {
+          # wired
+          PublicKey = "yZRQrrLszNb6Xen82xq6Oi54O9dVJyOn0dz2WdarlAo=";
+          AllowedIPs = [
+            "10.100.0.6/32"
+          ];
+        }
+        {
+          # opal
+          PublicKey = "Mbiv0AGDR4F/v6zf5tQpXohYibwqm7KUpm1CrZiutg0=";
+          AllowedIPs = [
+            "10.100.0.88/32"
+          ];
+        }
       ];
     };
   };
