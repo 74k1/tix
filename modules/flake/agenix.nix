@@ -28,6 +28,7 @@
           eiri
           knights
           lain
+          wired
           ;
       };
       agenix-rekey.homeConfigurations = { };

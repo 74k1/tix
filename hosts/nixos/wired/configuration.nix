@@ -11,6 +11,9 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./disko.nix
+
+    inputs.agenix.nixosModules.default
+    inputs.agenix-rekey.nixosModules.default
     # ({options, lib, ...}: lib.mkIf (options ? virtualisation.memorySize) {
     #   users.users.taki.password = "foo";
     # })
@@ -160,6 +163,19 @@
 
   # niri session for greetd (not auto-registered by its HM module)
   services.displayManager.sessionPackages = [ pkgs.niri ];
+
+  age.rekey = {
+    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHk2bfmZhGRnbcqslPveGSzQIsro3rplZYbreeYIGfJg root@wired";
+    masterIdentities = [
+      "${inputs.self}/secrets/identities/yubikey-1-on-person.pub"
+      "${inputs.self}/secrets/identities/yubikey-2-at-home.pub"
+    ];
+    storageMode = "local";
+    localStorageDir = "${inputs.self}/secrets/rekeyed/${config.networking.hostName}";
+  };
+
+  # sshd disabled, this is required
+  age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   # XDG
   xdg.portal = {
@@ -362,6 +378,20 @@
   security = {
     # sudo.enable = false;
     sudo-rs.enable = true;
+
+    # Passwordless toggle for the waybar wireguard module (see HM waybar scripts).
+    # The wrapper only accepts up/down for the fixed interface wg0.
+    sudo-rs.extraRules = [
+      {
+        users = [ "taki" ];
+        commands = [
+          {
+            command = "/etc/wireguard/wg-toggle";
+            options = [ "NOPASSWD" ];
+          }
+        ];
+      }
+    ];
   };
 
   services = {
@@ -442,7 +472,7 @@
     enable = true;
     packages = [
       pkgs.dconf
-      pkgs.gcr
+      pkgs.gcr_3
     ];
   };
 
@@ -640,6 +670,75 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # --- wireguard tunnel to eiri (toggle via waybar) ---
+  age.secrets."wireguard_wired_private_key" = {
+    rekeyFile = "${inputs.self}/secrets/wireguard_wired_private_key.age";
+    mode = "640";
+    owner = "systemd-network";
+    group = "systemd-network";
+  };
+
+  # wg0 is managed by systemd-networkd (NetworkManager keeps the physical
+  # links). The netdev exists at boot but is left administratively down —
+  # networkd only applies the .network config once the link comes up, so the
+  # tunnel is inactive until /etc/wireguard/wg-toggle is run.
+  systemd.network = {
+    enable = true;
+    # NM owns the "online" state here; a wait-online on wg0 would hang boot.
+    wait-online.enable = false;
+
+    netdevs."50-wg0" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "wg0";
+      };
+      wireguardConfig = {
+        PrivateKeyFile = config.age.secrets."wireguard_wired_private_key".path;
+        RouteTable = "main";
+      };
+      wireguardPeers = [
+        {
+          # eiri
+          PublicKey = "vnmW4+i/tKuiUx86JGOax3wHl1eAPwZj+/diVkpiZgM=";
+          AllowedIPs = [
+            "10.0.0.1/32"
+            "192.168.1.0/24"
+          ];
+          Endpoint = "178.192.89.107:51820";
+          PersistentKeepalive = 25;
+        }
+      ];
+    };
+
+    networks."50-wg0" = {
+      matchConfig.Name = "wg0";
+      address = [ "10.100.0.6/32" ];
+
+      # networkd must not auto-up the netdev (default is "up"), otherwise the
+      # tunnel dials eiri at boot. "manual" keeps the link admin-down until
+      # networkctl up wg0 — the waybar toggle.
+      # (networkConfig.X goes through a NixOS whitelist check that rejects
+      # ActivationPolicy, so set it via raw extraConfig instead.)
+      extraConfig = ''
+        [Network]
+        ActivationPolicy=manual
+      '';
+    };
+  };
+
+  # Privileged wg0 toggle: root-only helper, callable by taki via sudo NOPASSWD.
+  environment.etc."wireguard/wg-toggle" = {
+    mode = "0555";
+    source = pkgs.writeShellScript "wg-toggle" ''
+      set -euo pipefail
+      case "''${1:-}" in
+        up) networkctl up wg0 ;;
+        down) networkctl down wg0 ;;
+        *) echo "usage: wg-toggle up|down" >&2; exit 1 ;;
+      esac
+    '';
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

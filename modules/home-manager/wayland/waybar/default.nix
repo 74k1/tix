@@ -179,6 +179,36 @@ let
       };
     };
 
+    "custom/wireguard" = {
+      exec = lib.getExe (
+        pkgs.writeShellApplication {
+          name = "wb-wg-status";
+          runtimeInputs = [
+            pkgs.iproute2
+          ];
+          text = builtins.readFile ./scripts/wb-wg-status.sh;
+        }
+      );
+      return-type = "json";
+      format = "{icon}";
+      # Material Symbols: vpn_key (U+E0DA) for both states, styled via CSS
+      tooltip = true;
+      format-icons = {
+        up = "";
+        down = "";
+      };
+      on-click = lib.getExe (
+        pkgs.writeShellApplication {
+          name = "wb-wg-toggle";
+          runtimeInputs = [
+            pkgs.iproute2
+            pkgs.libnotify
+          ];
+          text = builtins.readFile ./scripts/wb-wg-toggle.sh;
+        }
+      );
+    };
+
     "wireplumber" = {
       format = "VOL {volume}% {icon}";
       format-icons = [
@@ -382,7 +412,7 @@ in
         margin-top = 8;
 
         output = [
-          "DP-7"
+          "DP-6"
           "eDP-1"
         ];
 
@@ -410,7 +440,8 @@ in
         margin-top = 8;
 
         output = [
-          "DP-6"
+          "DP-1"
+          "DP-7"
         ];
 
         modules-left = [
@@ -427,6 +458,7 @@ in
         modules-right = [
           "group/interactibles"
           "custom/net"
+          "custom/wireguard"
           "custom/swaync"
           "wireplumber"
           "power-profiles-daemon"
@@ -466,6 +498,7 @@ in
           #custom-power-off,
           #custom-power-reboot,
           #custom-net,
+          #custom-wireguard,
           #custom-swaync,
           #custom-tray-btn,
           #power-profiles-daemon {
@@ -566,6 +599,15 @@ in
 
           #network.disconnected {
             color: @red;
+          }
+
+          #custom-wireguard.up {
+            color: @accent;
+          }
+
+          #custom-wireguard.down {
+            color: @fg0;
+            opacity: 0.35;
           }
 
           #pulseaudio {
