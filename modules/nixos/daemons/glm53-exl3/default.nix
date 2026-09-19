@@ -14,29 +14,27 @@
 # tix.dgx-interconnect. Serve args mirror upstream start.sh defaults:
 #   https://github.com/MiaAI-Lab/GLM-5.3-Flash-EXL3-2x-DGX-Sparks
 #
-# Skipped vs upstream: GLM53_BOOT_SHAPE_WARMUP (post-health JIT warmup).
-# If TP=2 mid-serve JIT stalls show up, add it back as a oneshot.
+# State as of upstream ~1.6.0+ (pin eb0469f→ca85576 era, 2026-09-02..21):
+#   image :exl3-instanttensor (InstantTensor 0.2.0 loader + E2/E3 fat kernels
+#   baked; GHCR build 2026-09-16). Context 850k / util 0.85 / MNBT 7168 per
+#   upstream (E3's ~560 MiB fat-row scratch charges the KV budget — 1M no
+#   longer fits a full-length request on this kit). Mixed prefill = fair v5
+#   (replaces "skip"). APC no-store + indexer rightsize now defaults.
+#   Post-health boot-shape warmup runs as the glm53-exl3-warmup oneshot
+#   (upstream GLM53_BOOT_SHAPE_WARMUP=1 default; replaces the old skip).
+#   DFlash2 drafter pinned to upstream revision dc77ff1c.
 #
 # Runtime-applied patches (mounted from the pinned glm53-flash input, run
-# before `vllm serve`) mirror upstream start.sh's apply-at-start set:
-#   patch_glm_video_placeholders / patch_suppress_stops_in_reasoning /
-#   patch_scheduler_decode_floor / patch_glm5_drafter_group (DFlash2 KV
-#   page-share with MLA — upstream 128da20) / patch_hybrid_prefix_hit
-#   (keep MLA prefix hits vs DFlash2 EAGLE drop — upstream 6f254a3) /
-#   patch_xgrammar_termination (grammar decoding vs spec-decode — 79f10b9) /
-#   patch_kpool_tail_slotmap (K-pool tail slot fix — b5ab809).
-#   overlay/exl3.py is mounted directly over the image's copy (cold-prefill
-#   perf + MNBT=2048 — upstream c9f731f), also immune to image rebuild lag.
-#   patch_spinwait (busy-loop window 16 ms — c190db1).
-#
-#   PENDING — upstream E2 fat-expert prefill kernel (4b8d3c7, PR #77):
-#   their receipts keep MNBT=7168 WITH EXL3_FAT_KERNEL=1, but E2 needs an
-#   image whose exllamav3 extension has exl3_fat_gemm baked in (built at
-#   image build from overlay/exl3_fat_gemm.cu). GHCR :exl3 was still
-#   2026-08-28 (pre-E2) at last check. On the legacy tier, MNBT>2048
-#   regressed (P1 ladder), so MNBT stays 2048 until GHCR ships an E2 image;
-#   then flip EXL3_FAT_KERNEL=1 AND MNBT=7168 in the same switch.
-#   DFlash2 drafter shards across TP (draft_tensor_parallel_size=2 — d29de5d).
+# before `vllm serve`) mirror upstream start.sh's GLM53_OVERLAY_ORDER:
+#   video_placeholders → suppress_stops → scheduler_decode_floor (fair v5) →
+#   glm5_drafter_group (DFlash2 KV page-share) → hybrid_prefix_hit →
+#   apc_per_group_retention → apc_no_store → kv_capacity_log →
+#   tool_choice_none → xgrammar_termination → kpool_tail_slotmap → spinwait →
+#   adaptive_k → dense_fp8 (inert: GLM53_DENSE_FP8 off) →
+#   default_max_new_tokens → indexer_workspace → cache_reset → ablit.
+#   overlay/exl3.py is mounted directly over the image's copy, immune to
+#   image rebuild lag.
+#   DFlash2 drafter shards across TP (draft_tensor_parallel_size=2).
 #   ABLIT refusal-ablation is implemented via the upstream transplant recipe
 #   (byte-exact donor o_proj L15-45) — gated by the ablitEnabled flag below;
 #   artifacts persist in /var/lib/glm53-ablit. Set ablitEnabled=false for
@@ -58,7 +56,9 @@ let
   modelCacheName = "models--Mia-AiLab--GLM-5.3-Flash-EXL3-TR3-4bpw";
   dflashId = "incoai/GLM-5.3-Flash-DFlash2";
   dflashCacheName = "models--incoai--GLM-5.3-Flash-DFlash2";
-  image = "ghcr.io/miaai-lab/glm-5.3-flash-2x-dgx-sparks:exl3";
+  # upstream pins the drafter revision (1.4.0-era .env.example)
+  dflashRevision = "dc77ff1c99eeb2df044ee3d4f0094eb033fee410";
+  image = "ghcr.io/miaai-lab/glm-5.3-flash-2x-dgx-sparks:exl3-instanttensor";
 
   # ABLIT — opt-in refusal-direction ablation (upstream "dealign-oproj-
   # transplant", 6d75590). true = at weight-load, o_proj L15-45 (+ the
@@ -101,26 +101,43 @@ let
     NCCL_IB_MERGE_NICS = "0";
     NCCL_CROSS_NIC = "0";
     NCCL_IGNORE_CPU_AFFINITY = "1";
-    NCCL_DEBUG = "INFO";
+    NCCL_DEBUG = "WARN";
     NCCL_DEBUG_SUBSYS = "INIT,NET";
     HF_HUB_OFFLINE = "1";
     TRANSFORMERS_OFFLINE = "1";
     HF_HOME = "/root/.cache/huggingface";
     VLLM_CACHE_ROOT = "/root/.cache/vllm";
     GLM53_SUPPRESS_STOPS_IN_REASONING = "1";
-    # Mixed-step prefill policy when a peer is already decoding (upstream
-    # issue #6): skip = decode-only steps; N>0 = cap prefill tokens; 0 = off.
-    GLM53_MIXED_PREFILL_CHUNK = "skip";
-    # exl3.py cold-prefill knobs (upstream c9f731f defaults, P0–P2 ladder).
-    # 0 = LinearEXL3 fallback for fat prefill experts; 128 = fused temp
-    # rows/expert (1024 lost the MNBT A/B).
-    EXL3_MOE_ROW_TILE = "0";
-    EXL3_TEMP_ROWS_FUSED = "128";
+    # Mixed-step prefill policy: upstream TP2 default is now fair-share v5
+    # (service-time share, largest step-fitting chunk, decode first) — the
+    # old "skip" default was replaced in 1.4.0 (#186/#188/#194).
+    GLM53_MIXED_PREFILL_CHUNK = "fair";
+    GLM53_FAIR_PREFILL_CHUNK = "256";
+    GLM53_FAIR_PREFILL_SHARE = "0.30";
+    GLM53_FAIR_PREFILL_MAX_INTERVAL_MS = "2000";
+    GLM53_FAIR_PREFILL_MAX_STEP_MS = "2000";
+    GLM53_FAIR_PREFILL_MAX_CHUNKS = "1";
+    # E2 direct fat-expert kernel + E3 grouped fat-expert MoE (upstream
+    # 1.2.0 defaults). Require the instanttensor image (exl3_fat_gemm /
+    # exl3_fat_moe extensions baked in). E3 = +37-45% cold prefill.
+    EXL3_FAT_KERNEL = "1";
+    EXL3_FAT_GROUPED = "1";
+    # E3 row width (upstream: 32 with E3, 256 with E2; 128 was the E1 value)
+    EXL3_TEMP_ROWS_FUSED = "32";
     EXL3_FUSED_MOE = "1";
     DFLASH_TOKENS = "7";
     # SpinCondition reader busy-loop window (upstream c190db1, PR #96).
     # Stock = vLLM's 1 s default; upstream's frozen sweep picked 16 ms.
     GLM53_SPINWAIT_MS = "16";
+    # DFlash skipped-window KV block logging (upstream #94)
+    GLM53_KV_CAPACITY_LOG = "1";
+    # APC no-store gate (upstream 1.4.0 default on, #95)
+    GLM53_APC_NO_STORE = "1";
+    # Sparse-indexer shared-memory right-sizing (upstream 1.2.0 default)
+    GLM53_INDEXER_WORKSPACE = "rightsize";
+    # Omitted-only default max_new_tokens (legacy completion default 16
+    # covered; explicit limits still win — upstream #51)
+    DEFAULT_MAX_NEW_TOKENS = "65536";
     TRITON_CACHE_DIR = "/root/.triton/cache";
     TILELANG_CACHE_DIR = "/root/.tilelang/cache";
     VLLM_EXECUTE_MODEL_TIMEOUT_SECONDS = "1800";
@@ -203,36 +220,43 @@ let
           "--quantization"
           "exl3"
           "--max-model-len"
-          "1000000"
+          # upstream 1.2.0+: 850k — E3's ~560 MiB fat-row scratch charges the
+          # KV budget, so 1M / util 0.87 no longer fits one full-length req.
+          "850000"
           "--gpu-memory-utilization"
-          # 0.90 left ~7 GiB of the unified pool for capture scratch — not
-          # enough: NVRM Out-of-memory storms killed the worker during
-          # graph capture twice (2026-08-29). 0.88 frees ~2.4 GiB while the
-          # KV pool (page-shared with DFlash2) stays ~1.4M tokens ≥ 1M len.
+          # 2026-09-20: rendezvous finally completes and both ranks load, but
+          # v0.21+ CUDA-graph memory profiling reserves ~1.5 GiB up front, and
+          # the KV check hard-fails: 850k needs 13.46 GiB, 0.85 only leaves
+          # 10.27 GiB (est. max len 397824). 0.87 (upstream's 1M util) reaches
+          # only ~12.7; 0.88 reaches ~13.9 — clears 13.46 with ~0.4 GiB slack.
+          # The old 0.88 NVRM-OOM risk is mitigated by the upfront graph
+          # reservation + breakable cudagraph (bounded 1..64 capture sizes).
           "0.88"
           "--max-num-seqs"
           "4"
           "--max-num-batched-tokens"
-          # upstream c9f731f: 2048 after the P0–P2 cold-prefill ladder
-          # (pairs with the mounted overlay/exl3.py). Activation profiling
-          # scales with this, so the KV pool comes out a bit smaller.
-          "2048"
+          # upstream E2/E3 keep 7168 (2026-09-01 one-shot; 100k ~1148 tok/s).
+          # Requires the instanttensor image (exl3_fat_gemm ext) — do NOT
+          # raise without it (3584+ regressed on the legacy tier).
+          "7168"
           "--kv-cache-dtype"
           "fp8"
+          "--load-format"
+          # InstantTensor 0.2.0 fast weight loader (baked into the image)
+          "instanttensor"
           "--speculative-config"
           "$SPEC_CONFIG"
           "--chat-template"
           "/opt/glm53/chat_template.jinja"
           "--limit-mm-per-prompt"
-          ''{"image":4,"video":1}''
-          "--skip-mm-profiling"
-          # capture sizes above max-num-seqs (4) can never run — listing
-          # 8..32 wasted capture memory+time during the exact phase that
-          # NVRM-OOM'd on 2026-08-29. Keep sizes ≤ max-num-seqs.
-          "--cudagraph-capture-sizes"
+          # image cap 4 → 48 upstream (#146/#183), bounded by the per-image
+          # token cap below so a chat video cannot OOM the host
+          ''{"image":48,"video":1}''
+          "--mm-processor-kwargs"
+          ''{"max_image_tokens":2048}''
+          "--mm-processor-cache-gb"
           "1"
-          "2"
-          "4"
+          "--skip-mm-profiling"
         ]
         ++ lib.optionals (!isHead) [ "--headless" ];
 
@@ -250,8 +274,16 @@ let
       # Type=oneshot that means "wait for full completion" (hours on first
       # boot). The wait-for-weights loop lives in the ExecStart script
       # instead, so the unit goes active(running) immediately.
-      after = [ "network-online.target" ];
-      wants = [ "network-online.target" ];
+      # Workers additionally gate on glm53-exl3-wait-head (below): the
+      # head's rank-0 opens its rendezvous store ~2-4 min into ITS boot,
+      # and a worker that starts too early latches its store client onto
+      # a dead store instance forever (the 2026-09-19 deadlock).
+      after =
+        [ "network-online.target" ]
+        ++ lib.optionals (!isHead) [ "glm53-exl3-wait-head.service" ];
+      wants =
+        [ "network-online.target" ]
+        ++ lib.optionals (!isHead) [ "glm53-exl3-wait-head.service" ];
       wantedBy = [ "multi-user.target" ];
 
       unitConfig = {
@@ -326,6 +358,12 @@ print(json.dumps({"method":"dflash","model":sys.argv[1],"num_speculative_tokens"
 
           ${argsArray}
 
+          # NOTE: patch_dense_fp8 is deliberately NOT in the patch chain —
+          # it anchors on the image-baked exl3.py, and our runtime-mounted
+          # (newer) overlay rev makes it SystemExit mid-chain, killing the
+          # whole serve. Only needed for the opt-in GLM53_DENSE_FP8 feature
+          # (off here). Re-add if that feature is ever enabled.
+
           exec ${pkgs.podman}/bin/podman run --rm --name ${containerName} \
             --network host --ipc=host --stop-timeout 60 \
             --device nvidia.com/gpu=all \
@@ -346,6 +384,14 @@ print(json.dumps({"method":"dflash","model":sys.argv[1],"num_speculative_tokens"
             -v ${inputs.glm53-flash}/overlay/patch_xgrammar_termination.py:/opt/glm53/patch_xgrammar_termination.py:ro \
             -v ${inputs.glm53-flash}/overlay/patch_kpool_tail_slotmap.py:/opt/glm53/patch_kpool_tail_slotmap.py:ro \
             -v ${inputs.glm53-flash}/overlay/patch_spinwait.py:/opt/glm53/patch_spinwait.py:ro \
+            -v ${inputs.glm53-flash}/overlay/patch_apc_per_group_retention.py:/opt/glm53/patch_apc_per_group_retention.py:ro \
+            -v ${inputs.glm53-flash}/overlay/patch_apc_no_store.py:/opt/glm53/patch_apc_no_store.py:ro \
+            -v ${inputs.glm53-flash}/overlay/patch_kv_capacity_log.py:/opt/glm53/patch_kv_capacity_log.py:ro \
+            -v ${inputs.glm53-flash}/overlay/patch_tool_choice_none.py:/opt/glm53/patch_tool_choice_none.py:ro \
+            -v ${inputs.glm53-flash}/overlay/patch_adaptive_k.py:/opt/glm53/patch_adaptive_k.py:ro \
+            -v ${inputs.glm53-flash}/overlay/patch_default_max_new_tokens.py:/opt/glm53/patch_default_max_new_tokens.py:ro \
+            -v ${inputs.glm53-flash}/overlay/patch_indexer_workspace.py:/opt/glm53/patch_indexer_workspace.py:ro \
+            -v ${inputs.glm53-flash}/overlay/patch_cache_reset.py:/opt/glm53/patch_cache_reset.py:ro \
             -v ${inputs.glm53-flash}/overlay/exl3.py:/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/quantization/exl3.py:ro \
             -v ${inputs.glm53-flash}/overlay/patch_ablit.py:/opt/glm53/patch_ablit.py:ro \
             -v ${inputs.glm53-flash}/overlay/ablit_runtime.py:/opt/glm53/ablit_runtime.py:ro \
@@ -355,7 +401,7 @@ print(json.dumps({"method":"dflash","model":sys.argv[1],"num_speculative_tokens"
             -e DFLASH_MODEL_DIR="$DFLASH_MODEL_DIR" \
             -e VLLM_HOST_IP=${selfIP} \
             --entrypoint bash ${image} \
-            -c 'python3 /opt/glm53/patch_glm_video_placeholders.py && python3 /opt/glm53/patch_suppress_stops_in_reasoning.py && python3 /opt/glm53/patch_scheduler_decode_floor.py && python3 /opt/glm53/patch_glm5_drafter_group.py && python3 /opt/glm53/patch_hybrid_prefix_hit.py && python3 /opt/glm53/patch_xgrammar_termination.py && python3 /opt/glm53/patch_kpool_tail_slotmap.py && python3 /opt/glm53/patch_spinwait.py && python3 /opt/glm53/patch_ablit.py && exec vllm serve "$@"' vllm \
+            -c 'python3 /opt/glm53/patch_glm_video_placeholders.py && python3 /opt/glm53/patch_suppress_stops_in_reasoning.py && python3 /opt/glm53/patch_scheduler_decode_floor.py && python3 /opt/glm53/patch_glm5_drafter_group.py && python3 /opt/glm53/patch_hybrid_prefix_hit.py && python3 /opt/glm53/patch_apc_per_group_retention.py && python3 /opt/glm53/patch_apc_no_store.py && python3 /opt/glm53/patch_kv_capacity_log.py && python3 /opt/glm53/patch_tool_choice_none.py && python3 /opt/glm53/patch_xgrammar_termination.py && python3 /opt/glm53/patch_kpool_tail_slotmap.py && python3 /opt/glm53/patch_spinwait.py && python3 /opt/glm53/patch_adaptive_k.py && python3 /opt/glm53/patch_default_max_new_tokens.py && python3 /opt/glm53/patch_indexer_workspace.py && python3 /opt/glm53/patch_cache_reset.py && python3 /opt/glm53/patch_ablit.py && exec vllm serve "$@"' vllm \
             "''${args[@]}"
         '';
         ExecStop = "-${pkgs.podman}/bin/podman stop -t 60 ${containerName}";
@@ -466,8 +512,8 @@ in
           echo "fetching ${modelId} (revision ${modelRevision}) ..."
           "$hfBin" download "${modelId}" --revision "${modelRevision}" ${dlExcludes}
 
-          echo "fetching ${dflashId} ..."
-          "$hfBin" download "${dflashId}"
+          echo "fetching ${dflashId} (revision ${dflashRevision}) ..."
+          "$hfBin" download "${dflashId}" --revision "${dflashRevision}"
 
           # hf download can leave refs/main empty; member units also fall
           # back to latest snapshot on their own, this keeps the cache
@@ -514,6 +560,83 @@ in
             "taki@${cfg.workerIP}:${cfg.hfHome}/hub/${dflashCacheName}/"
 
           echo "worker sync complete"
+        '';
+      };
+    };
+
+    # Worker gate: block the worker unit until the head's rendezvous port
+    # (TCPStore) is accepting connections. Fails loudly (exit 1) after
+    # ~45 min so the worker's Restart=always keeps cycling.
+    #
+    # 2026-09-19 post-mortem of the "root-in-unit /dev/tcp silently fails"
+    # saga (400+ missed polls, then 10 min of missed live store windows
+    # even after switching the gate to User=taki): NOT a network, cgroup,
+    # or user-context problem at all. Systemd unit contexts run with a
+    # minimal PATH, and this unit's PATH had no bash directory. The poll
+    # `timeout 2 bash -c "</dev/tcp/…"` resolved `timeout` (coreutils) but
+    # the inner `bash` failed PATH lookup → exit 127 on every single poll,
+    # hidden by 2>/dev/null. Fix: absolute store paths for every binary,
+    # so PATH resolution can never matter again.
+    #
+    # RemainAfterExit keeps the unit "active (exited)" after success so
+    # later switches/worker restarts don't re-run the poll and block
+    # multi-user.target (which made `nh os switch` hang for many minutes).
+    systemd.services.glm53-exl3-wait-head = lib.mkIf (cfg.role == "worker") {
+      description = "Wait for the GLM-5.3 head rendezvous port";
+      before = [ "glm53-exl3-worker.service" ];
+      wantedBy = [ "glm53-exl3-worker.service" ];
+
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        User = "taki";
+        TimeoutStartSec = "50min";
+        ExecStart = pkgs.writeShellScript "glm53-exl3-wait-head" ''
+          for i in $(seq 1 540); do
+            if ${pkgs.coreutils}/bin/timeout 2 ${pkgs.bash}/bin/bash -c "</dev/tcp/${cfg.headIP}/${toString cfg.masterPort}" 2>/dev/null; then
+              echo "head rendezvous port is open (after ~$((i * 5))s)"
+              exit 0
+            fi
+            ${pkgs.coreutils}/bin/sleep 5
+          done
+          echo "head rendezvous port never opened within 45min"; exit 1
+        '';
+      };
+    };
+
+    # Post-health DFlash2/sampler/kpool shape warmup (upstream
+    # GLM53_BOOT_SHAPE_WARMUP=1 default, scripts/boot-shape-warmup.sh).
+    # Their start.sh runs it host-side after /health; ours is a oneshot that
+    # waits for health, then burns the uncovered shapes once per image.
+    # Non-fatal: uncovered shapes JIT mid-serve instead.
+    systemd.services.glm53-exl3-warmup = lib.mkIf (cfg.role == "head") {
+      description = "GLM-5.3-Flash EXL3 post-health boot shape warmup";
+      after = [ "glm53-exl3-head.service" ];
+      wants = [ "glm53-exl3-head.service" ];
+      wantedBy = [ "multi-user.target" ];
+
+      serviceConfig = {
+        Type = "oneshot";
+        TimeoutStartSec = "45min";
+        ExecStart = pkgs.writeShellScript "glm53-exl3-warmup" ''
+          set -uo pipefail
+          PATH="${pkgs.curl}/bin:${pkgs.bash}/bin:$PATH"
+
+          # wait for /health (boot takes ~25-40 min; JIT caches may rebuild)
+          for i in $(seq 1 120); do
+            code=$(curl -s -m 3 -o /dev/null -w "%{http_code}" http://127.0.0.1:${toString cfg.port}/health 2>/dev/null || true)
+            [ "$code" = "200" ] && break
+            sleep 30
+          done
+          [ "$code" = "200" ] || { echo "warmup: head never went healthy"; exit 0; }
+
+          GLM53_WARMUP_MAX_CONCURRENCY=4 \
+          GLM53_WARMUP_REQ_TIMEOUT=240 \
+          GLM53_WARMUP_DFLASH_K=7 \
+          GLM53_WARMUP_TRITON_CACHE_DIR=/var/lib/vllm-glm53-flash/triton \
+            bash ${inputs.glm53-flash}/scripts/boot-shape-warmup.sh \
+              http://127.0.0.1:${toString cfg.port} GLM-5.3-Flash-EXL3 \
+            || echo "warmup: incomplete — uncovered shapes may JIT mid-serve"
         '';
       };
     };
