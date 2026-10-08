@@ -59,6 +59,7 @@ in
     ];
     extraPackages = [
       pkgs.ripgrep # For Telescope live-grep
+      pkgs.racket # Racket (LSP via raco pkg install --auto racket-langserver)
       pkgs.bash-language-server # Bash :-)
       pkgs.nil # Nix Language Server
       pkgs.nixfmt-rs # Nix Formatter (https://github.com/Mic92/nixfmt-rs)
@@ -149,15 +150,6 @@ in
           # lua
           ''
             require("mini.ai").setup()
-          '';
-      }
-      {
-        plugin = mini-map;
-        type = "lua";
-        config =
-          # lua
-          ''
-            require("mini.map").setup()
           '';
       }
       {

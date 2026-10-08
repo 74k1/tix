@@ -62,6 +62,9 @@ vim.lsp.enable('html')
 vim.lsp.config('bashls',{})
 vim.lsp.enable('bashls')
 
+vim.lsp.config('racket_ls', {})
+vim.lsp.enable('racket_ls')
+
 vim.lsp.config('nil_ls',{
   cmd = { "nil" },
   filetypes = { "nix" },
